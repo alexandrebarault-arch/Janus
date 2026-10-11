@@ -27,7 +27,7 @@ def test_constraint_solver_recovers_known_linear_solution():
     B1 = 0.022
     B2 = B1 - (1.0 - bg.c**2) * E_prime
     dphi = state.Phi1 - state.Phi2
-    fsum = ((B1-state.E)*(bg.H+bg.H_omega) - 2*bg.c**2*dphi) / bg.c**2
+    fsum = ((B1-E_prime)*(bg.H+bg.H_omega) - 2*bg.c**2*dphi) / bg.c**2
     d = (bg.H-bg.H_omega)*dphi
     F1 = (bg.H_omega*fsum - d)/(bg.H+bg.H_omega)
     F2 = fsum - F1
