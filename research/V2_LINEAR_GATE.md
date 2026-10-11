@@ -115,7 +115,7 @@ If the modified/unscreened regime switches on only around `z=10`, the same `1e-5
 
 ### Interpretation
 
-A dramatic late-time twin-sector segregation cannot be generated from an arbitrarily tiny relative seed by the linear two-metric mechanism alone.
+A dramatic late-time twin-sector segregation cannot be generated from an arbitrarily tiny relative seed by the **symmetric linear** two-metric mechanism alone.
 
 At least one of the following must occur:
 
@@ -126,7 +126,84 @@ At least one of the following must occur:
 
 ---
 
-## 4. Scale tension if `m_eff ~ H0`
+## 4. Unequal-sector control: relative mode can be generated, but at a cost
+
+A second transparent control model now lives in:
+
+`numerics/asymmetric_twofluid.py`
+
+with tests in:
+
+`tests/test_asymmetric_twofluid.py`.
+
+It intentionally keeps the same V1 quasi-static spin-2 kernel while allowing unequal background weights `f_g` and `f_f=1-f_g` in an EdS expansion.
+
+The effective density-coupling matrix is
+
+```
+M = [[f_g Q_self,  f_f Q_cross],
+     [f_g Q_cross, f_f Q_self ]]
+```
+
+with
+
+`Q_self = 1 + 4x/3`,
+
+`Q_cross = 1 - 4x/3`.
+
+### Symmetric control
+
+For `f_g=f_f=1/2` and `x=1`, the eigenvalues are exactly
+
+`1` and `4/3`.
+
+Equal initial density contrasts remain equal: no relative mode is generated, as expected.
+
+### Asymmetric example
+
+For the deliberately simplified example
+
+`f_g=2/3`, `f_f=1/3`, `x=1`,
+
+the matrix eigenvalues are approximately
+
+`1.58610` and `0.74723`,
+
+corresponding in EdS to growing-mode exponents approximately
+
+`p_fast = 1.31258`,
+
+`p_slow = 0.83782`.
+
+Starting at `z=1100` with the same fractional seed in both sectors (`delta_g=delta_f=1e-5`) and the same GR-like initial derivative, the toy system evolves to approximately
+
+`delta_g = +0.0742`,
+
+`delta_f = -0.0155`.
+
+Thus background asymmetry can indeed rotate an initially equal physical-sector perturbation into a strong relative/anti-correlated component.
+
+### But this is not a victory
+
+The same effect occurs because the visible-sector linear gravitational response is now strongly modified. In other words, the mechanism that efficiently generates segregation is also the mechanism most likely to be constrained by CMB/LSS/RSD/lensing data.
+
+This sharpens the central tension:
+
+> **Efficient linear generation of the Janus-like relative mode and observational invisibility are competing requirements.**
+
+This asymmetric EdS calculation is a diagnostic only. It is not a prediction of the full non-homothetic Hassan-Rosen cosmology because
+
+- the two metrics have distinct lapses/scale factors in the real model,
+- the effective coupling matrix is time dependent,
+- radiation/baryons matter at early times,
+- kinetic/sound-speed stability is not encoded,
+- Vainshtein/nonlinear physics is absent.
+
+Its role is to show that non-homothetic/asymmetric sourcing is a genuine possible escape from the exact symmetric no-generation limit, while simultaneously exposing why a full transfer calculation is mandatory.
+
+---
+
+## 5. Scale tension if `m_eff ~ H0`
 
 Using
 
@@ -151,7 +228,7 @@ Nonlinear screening can alter this conclusion, but then it must operate well bey
 
 ---
 
-## 5. CMB / isocurvature warning
+## 6. CMB / isocurvature warning
 
 Planck 2018 finds no evidence for the standard primordial isocurvature modes. For the standard uncorrelated, scale-invariant cold-dark-matter isocurvature template, the quoted 95% limit is
 
@@ -176,7 +253,7 @@ A potentially important loophole is a compensated relative mode: standard baryon
 
 ---
 
-## 6. Gate-2 status
+## 7. Gate-2 status
 
 `LINEAR_COSMOLOGY = AT_RISK, NOT REJECTED`
 
@@ -196,9 +273,9 @@ If the full transfer calculation shows that the only stable/allowed relative mod
 
 ---
 
-## 7. Next implementation
+## 8. Next implementation
 
-The next code should no longer be another algebraic background scan.
+The next code should no longer be another algebraic background scan or another EdS toy model.
 
 Build a coupled linear perturbation prototype with state variables for
 
