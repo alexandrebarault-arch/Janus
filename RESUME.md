@@ -13,16 +13,33 @@ After any interruption:
 1. read this file first;
 2. confirm PR #1 is still draft/open/unmerged;
 3. compare `research/v2-flrw` against `main` and inspect commits newer than this file;
-4. read the authoritative notes listed below;
-5. resume from **NEXT ACTIONS**;
-6. never overwrite newer branch work from chat memory;
-7. record every meaningful correction/result in Git before moving on.
+4. read `LATEST.md` and `research/VERDICT_V2_JANUS.md`;
+5. read the authoritative notes listed below as needed;
+6. resume from **NEXT ACTIONS**;
+7. never overwrite newer branch work from chat memory;
+8. record every meaningful correction/result in Git before moving on.
 
 ## Current headline verdict
 
-`JANUS-EXACT = NOT_CLOSED`.
+### Literal Jean-Pierre Petit Janus
 
-The only serious surviving continuation is
+`LITERAL_PUBLISHED_JANUS = REJECT_AS_ESTABLISHED_THEORY`.
+
+If forced into a binary true/false decision today, this research selects:
+
+**MOST LIKELY FALSE OR FUNDAMENTALLY INCOMPLETE AS WRITTEN.**
+
+Reason: Janus 2024 still leaves the exact general nonlinear cross-sector interaction tensor unspecified; several characteristic claims (fundamental negative mass, exact universal `+G/-G`, isolated negative photon lensing) are not recovered when the idea is rebuilt inside a modern ghost-free bimetric framework.
+
+Authoritative conclusion:
+
+- `research/VERDICT_V2_JANUS.md`
+
+Do **not** spend further time trying to rescue literal negative-mass Janus unless genuinely new mathematics closes the nonlinear theory.
+
+### Surviving R&D continuation
+
+The only serious continuation is
 
 `ENVIRONMENT_DEPENDENT_NONLINEAR_JANUS_R`:
 
@@ -92,17 +109,17 @@ Regular time-symmetric conformally-flat two-matter constraints exist for
 - external g shell;
 - asymptotically flat exterior.
 
-Reference:
+Two independent implementations/checks now exist in the branch, including `numerics/two_sector_initial_constraints.py`.
 
-- `beta1=1`, `beta2=-0.2`, `beta3=0`;
-- flat completion `beta0=-2.4`, `beta4=-0.4`;
-- interaction `0.02`;
-- `kappa_g=kappa_f=1`;
-- f centre amp `0.04`, sigma `2`;
-- g shell amp `0.025`, radius `5`, sigma `1`;
-- `r_max=25`.
+Newest local TDD check for that independent solver:
 
-Reference solution remains positive, with conformal factors near 1 and sub-micro collocation residuals.
+- RED: `ModuleNotFoundError` before implementation;
+- GREEN: `3 passed in 0.51s`.
+
+Exploratory positive-matter core/shell scan:
+
+- moderate grid: `100/100` converged;
+- deliberately strong grid: `47/48` converged.
 
 This is **not** yet a cosmological void, an attractor, or a dynamical stability result.
 
