@@ -1,9 +1,13 @@
-"""Constraint-based first-order reduction for the Comelli two-matter scalars.
+"""Constraint reduction for the Comelli two-matter scalar system.
 
-This is not yet the full JANUS-R transfer integrator. It solves the seven
-linear scalar constraints that determine conformal-time first derivatives of
-(E, Phi1, Phi2) plus the auxiliary invariants (B1, B2, F1, F2) at fixed
-background and matter sources.
+The seven scalar constraint/identity equations have rank six when the gauge
+invariants are transcribed correctly. E' is therefore a genuine dynamical
+input, not an algebraically determined quantity. At fixed E', the remaining
+six quantities (Phi1', Phi2', B1, B2, F1, F2) are determined on the physical
+constraint manifold.
+
+This is still not the full JANUS-R transfer integrator: the trace/evolution
+equations must determine E'' and propagate the dynamical state.
 """
 
 from __future__ import annotations
@@ -46,6 +50,8 @@ class MatterSources:
 class ConstraintSolution:
     vector: np.ndarray
     condition_number: float
+    reduced_rank: int
+    consistency_residual: float
 
     @property
     def E_prime(self): return float(self.vector[0])
@@ -109,8 +115,8 @@ def constraint_residual_vector(q, bg: ScalarBackground, s: MetricState,
         bg.H_omega * F2 - bg.H * F1
         - (bg.H - bg.H_omega) * (s.Phi1 - s.Phi2)
     )
-    # Direct substitution of the published gauge-invariant definitions gives
-    # B1-E_prime here; the searchable PDF text layer drops this prime.
+    # Direct substitution of the gauge-invariant definitions gives B1-E'.
+    # The searchable PDF text layer drops this prime in A.3/A.18.
     a18 = (
         c2 * (F2 + F1)
         - (B1 - E_p) * (bg.H + bg.H_omega)
@@ -131,9 +137,44 @@ def constraint_matrix(bg: ScalarBackground, s: MetricState,
     return A, b
 
 
-def solve_metric_constraints(bg: ScalarBackground, s: MetricState,
-                             src: MatterSources) -> ConstraintSolution:
+def solve_metric_constraints(
+    bg: ScalarBackground,
+    s: MetricState,
+    src: MatterSources,
+    *,
+    E_prime: float,
+    consistency_rtol: float = 1e-10,
+) -> ConstraintSolution:
+    """Solve the six nondynamical quantities after prescribing E'.
+
+    The full 7x7 affine system has rank six. Removing the E' column leaves a
+    7x6 full-column-rank system; the seventh equation is a consistency
+    condition selecting the physical constraint manifold. Least squares is
+    used only to exploit that redundant row, and a non-negligible residual is
+    treated as an inconsistent state rather than silently projected away.
+    """
     A, b = constraint_matrix(bg, s, src)
-    cond = float(np.linalg.cond(A))
-    q = np.linalg.solve(A, -b)
-    return ConstraintSolution(vector=q, condition_number=cond)
+    reduced = A[:, 1:]
+    rhs = -(b + A[:, 0] * float(E_prime))
+    x, _, rank, _ = np.linalg.lstsq(reduced, rhs, rcond=None)
+    rank = int(rank)
+    if rank != 6:
+        raise np.linalg.LinAlgError(
+            f"Reduced scalar constraint matrix has rank {rank}, expected 6"
+        )
+
+    q = np.concatenate(([float(E_prime)], x))
+    residual = float(np.linalg.norm(A @ q + b, ord=np.inf))
+    scale = max(1.0, float(np.linalg.norm(rhs, ord=np.inf)))
+    if residual > consistency_rtol * scale:
+        raise ValueError(
+            "State is off the scalar constraint manifold: "
+            f"residual={residual:.6g}, scale={scale:.6g}"
+        )
+
+    return ConstraintSolution(
+        vector=q,
+        condition_number=float(np.linalg.cond(reduced)),
+        reduced_rank=rank,
+        consistency_residual=residual,
+    )
