@@ -43,6 +43,7 @@ def reference_config_text(
         "",
         f"output.file = {output_file}",
         "output.binary = 0",
+        "out.diagnostics = 1",
         f"output.nOut = {int(n)}",
         "output.nSkip = 1",
         "output.mSkip = 1",
