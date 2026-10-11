@@ -44,7 +44,7 @@ def generate_reference_run(
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("directory", type=Path)
-    ap.add_argument("--n", type=int, default=400)
+    ap.add_argument("--n", type=int, default=500)
     ap.add_argument("--delta-r", type=float, default=0.05)
     ap.add_argument("--solve-points", type=int, default=1200)
     ap.add_argument("--steps", type=int, default=20)
