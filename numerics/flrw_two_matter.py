@@ -1,0 +1,255 @@
+"""Two-matter FLRW background solver for JANUS-R.
+
+Implements the dynamical FLRW branch of ghost-free Hassan-Rosen bigravity
+with separately coupled g- and f-sector dust, visible-sector radiation,
+and beta_0 = 0.
+
+Primary background equations follow Aoki & Maeda,
+"Cosmology in ghost-free bigravity theory with twin matter fluids"
+(arXiv:1312.7040), especially Eqs. (42), (44), (48)-(53).
+
+Conventions
+-----------
+H0 = 1, M_g = 1.
+alpha = M_f / M_g.
+Omega_f_m0 is rho_f0 / (3 M_g^2 H0^2), not the f-sector critical fraction.
+a_g(today) = 1 and y = a_f / a_g, with y(today) = y0.
+f-sector dust evolves as rho_f ~ a_f^-3.
+
+This file is a background diagnostic. It does NOT prove early-time
+perturbative stability. The benchmark intentionally enters H >> m_eff in
+the early universe, where linear bimetric perturbation theory is known to
+require nonlinear/Vainshtein treatment.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+import numpy as np
+
+
+@dataclass(frozen=True)
+class Params:
+    beta1: float = 1.0
+    beta2: float = -1.75
+    beta3: float = 0.0
+    beta4: float = 1.8160193651823988
+    alpha: float = 1.0
+    omega_g_m0: float = 0.30
+    omega_g_r0: float = 9.0e-5
+    omega_f_m0: float = 0.03
+    y0: float = 0.175
+    m2_over_H02: float = 5.765024453024453
+
+
+def U_g(y: np.ndarray | float, p: Params):
+    return 3.0 * p.beta1 * y + 3.0 * p.beta2 * y**2 + p.beta3 * y**3
+
+
+def U_f(y: np.ndarray | float, p: Params):
+    return (
+        p.beta4
+        + 3.0 * p.beta3 / y
+        + 3.0 * p.beta2 / y**2
+        + p.beta1 / y**3
+    )
+
+
+def omega_g(a: np.ndarray | float, p: Params):
+    return p.omega_g_m0 * a**-3 + p.omega_g_r0 * a**-4
+
+
+def omega_f_dust(a: np.ndarray | float, y: np.ndarray | float, p: Params):
+    return p.omega_f_m0 * (p.y0 / (a * y)) ** 3
+
+
+def friedmann_g(a: float, y: float, p: Params):
+    return omega_g(a, p) + p.m2_over_H02 * U_g(y, p) / 3.0
+
+
+def branch_constraint(a: float, y: float, p: Params):
+    """Difference between g Friedmann and y^2 times f Friedmann."""
+    return (
+        friedmann_g(a, y, p)
+        - y**2 * omega_f_dust(a, y, p) / p.alpha**2
+        - p.m2_over_H02 * y**2 * U_f(y, p) / (3.0 * p.alpha**2)
+    )
+
+
+def polynomial_coefficients(a: float, p: Params) -> np.ndarray:
+    """Quartic coefficients for the dynamical branch with f-sector dust only.
+
+    Multiplying the branch constraint by alpha^2*y removes inverse powers.
+    Coefficients are descending in y.
+    """
+    m2 = p.m2_over_H02
+    a2 = p.alpha**2
+    return np.array(
+        [
+            a2 * m2 * p.beta3 / 3.0,
+            a2 * m2 * p.beta2 - m2 * p.beta4 / 3.0,
+            a2 * m2 * p.beta1 - m2 * p.beta3,
+            a2 * omega_g(a, p) - m2 * p.beta2,
+            -p.omega_f_m0 * p.y0**3 * a**-3 - m2 * p.beta1 / 3.0,
+        ],
+        dtype=float,
+    )
+
+
+def positive_real_roots(a: float, p: Params, tol: float = 1e-9) -> np.ndarray:
+    coeff = np.trim_zeros(polynomial_coefficients(a, p), trim="f")
+    roots = np.roots(coeff)
+    out = sorted(r.real for r in roots if abs(r.imag) < tol and r.real > 0.0)
+    return np.asarray(out)
+
+
+def solve_branch(a_grid: np.ndarray, p: Params) -> np.ndarray:
+    """Follow the continuous positive root starting at y0.
+
+    a_grid must start at 1 and then move monotonically toward past or future.
+    At each step the positive real root closest in log(y) to the previous value
+    is selected.
+    """
+    a_grid = np.asarray(a_grid, dtype=float)
+    if len(a_grid) < 2 or not np.isclose(a_grid[0], 1.0):
+        raise ValueError("a_grid must start at a=1")
+    if not (np.all(np.diff(a_grid) < 0) or np.all(np.diff(a_grid) > 0)):
+        raise ValueError("a_grid must be monotonic after a=1")
+
+    y = np.empty_like(a_grid)
+    y[0] = p.y0
+    for i in range(1, len(a_grid)):
+        roots = positive_real_roots(float(a_grid[i]), p)
+        if roots.size == 0:
+            raise RuntimeError(f"No positive real branch root at a={a_grid[i]:.8g}")
+        prev = y[i - 1]
+        y[i] = min(roots, key=lambda r: abs(np.log(r / prev)))
+    return y
+
+
+def dy_dloga(a: np.ndarray, y: np.ndarray, p: Params) -> np.ndarray:
+    """Implicit derivative of the quartic branch equation."""
+    a = np.asarray(a, dtype=float)
+    y = np.asarray(y, dtype=float)
+    coeff = np.array([polynomial_coefficients(float(ai), p) for ai in a])
+    dP_dy = (
+        4.0 * coeff[:, 0] * y**3
+        + 3.0 * coeff[:, 1] * y**2
+        + 2.0 * coeff[:, 2] * y
+        + coeff[:, 3]
+    )
+    dP_dloga = (
+        p.alpha**2
+        * (-3.0 * p.omega_g_m0 * a**-3 - 4.0 * p.omega_g_r0 * a**-4)
+        * y
+        + 3.0 * p.omega_f_m0 * p.y0**3 * a**-3
+    )
+    return -dP_dloga / dP_dy
+
+
+def diagnostics(a_grid: np.ndarray, y: np.ndarray, p: Params) -> dict[str, np.ndarray]:
+    a = np.asarray(a_grid, dtype=float)
+    y = np.asarray(y, dtype=float)
+    yp = dy_dloga(a, y, p)
+    lapse_ratio = y + yp  # N_f/N_g = dot(a_f)/dot(a_g)
+
+    E2 = omega_g(a, p) + p.m2_over_H02 * U_g(y, p) / 3.0
+    J = p.beta1 + 2.0 * p.beta2 * y + p.beta3 * y**2
+    meff2 = (
+        p.m2_over_H02
+        * (1.0 + 1.0 / (p.alpha**2 * y**2))
+        * y
+        * J
+    )
+
+    dE2_dloga = (
+        -3.0 * p.omega_g_m0 * a**-3
+        - 4.0 * p.omega_g_r0 * a**-4
+        + p.m2_over_H02 * J * yp
+    )
+    q = -1.0 - 0.5 * dE2_dloga / E2
+
+    return {
+        "E2": E2,
+        "E": np.sqrt(E2),
+        "q": q,
+        "J": J,
+        "dy_dloga": yp,
+        "lapse_ratio": lapse_ratio,
+        "meff2_over_H02": meff2,
+        "meff2_over_H2": meff2 / E2,
+        "linear_higuchi_margin_over_H02": meff2 - 2.0 * E2,
+    }
+
+
+def find_crossing(z: np.ndarray, values: np.ndarray, target: float) -> float | None:
+    for i in range(len(values) - 1):
+        u = values[i] - target
+        v = values[i + 1] - target
+        if u == 0.0:
+            return float(z[i])
+        if u * v < 0.0:
+            frac = -u / (v - u)
+            return float(z[i] + frac * (z[i + 1] - z[i]))
+    return None
+
+
+def benchmark_checks() -> None:
+    p = Params()
+    assert abs(friedmann_g(1.0, p.y0, p) - 1.0) < 1e-12
+    assert abs(branch_constraint(1.0, p.y0, p)) < 1e-12
+
+    past_a = np.geomspace(1.0, 1e-8, 700)
+    past_y = solve_branch(past_a, p)
+    past = diagnostics(past_a, past_y, p)
+    assert np.all(past_y > 0.0)
+    assert np.all(past["lapse_ratio"] > 0.0)
+    assert np.all(past["J"] > 0.0)
+    assert np.all(past["E2"] > 0.0)
+
+    # Deep radiation-era finite branch: y approaches proportionality to a.
+    slope = past["dy_dloga"][-1] / past_y[-1]
+    assert abs(slope - 1.0) < 2e-3
+
+    future_a = np.geomspace(1.0, 100.0, 350)
+    future_y = solve_branch(future_a, p)
+    future = diagnostics(future_a, future_y, p)
+    assert np.all(future["lapse_ratio"] > 0.0)
+    assert np.all(future["J"] > 0.0)
+    assert abs(future["q"][-1] + 1.0) < 1e-4
+    assert future["meff2_over_H02"][-1] > 2.0 * future["E2"][-1]
+
+
+def benchmark_summary() -> None:
+    p = Params()
+    a = np.geomspace(1.0, 1e-4, 1400)
+    y = solve_branch(a, p)
+    d = diagnostics(a, y, p)
+    z = 1.0 / a - 1.0
+
+    omega_lambda = 1.0 - p.omega_g_m0 - p.omega_g_r0
+    E_lcdm = np.sqrt(
+        p.omega_g_m0 * a**-3 + p.omega_g_r0 * a**-4 + omega_lambda
+    )
+    mask = z <= 2.0
+    max_h_dev = np.max(np.abs(d["E"][mask] / E_lcdm[mask] - 1.0))
+
+    z_acc = find_crossing(z, d["q"], 0.0)
+    z_higuchi = find_crossing(z, d["meff2_over_H2"], 2.0)
+
+    print("JANUS-R FLRW benchmark")
+    print(f"beta = (0, {p.beta1}, {p.beta2}, {p.beta3}, {p.beta4})")
+    print(f"y0 = {p.y0}")
+    print(f"m^2/H0^2 = {p.m2_over_H02}")
+    print(f"max |H/H_LCDM - 1|, 0<=z<=2 = {max_h_dev:.6f}")
+    print(f"q0 = {d['q'][0]:.6f}")
+    print(f"z_acc = {z_acc:.4f}")
+    print(f"m_eff/H0 today = {np.sqrt(d['meff2_over_H02'][0]):.6f}")
+    print(f"linear Higuchi crossing z ~= {z_higuchi:.3f}")
+    print(f"y(a=1e-4) = {y[-1]:.8g}")
+    print(f"Nf/Ng(a=1e-4) = {d['lapse_ratio'][-1]:.8g}")
+
+
+if __name__ == "__main__":
+    benchmark_checks()
+    benchmark_summary()
