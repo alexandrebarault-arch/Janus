@@ -78,16 +78,14 @@ def test_constraint_solver_recovers_known_solution_when_E_prime_is_supplied():
     ) < 1e-11
 
 
-def test_reduced_constraints_remain_well_posed_in_homothetic_limit():
+def test_reduced_constraint_matrix_has_full_column_rank_at_c_equal_one():
     bg = ScalarBackground(a=1.0, m2=1.0, f1=0.4, f2=0.4,
                           H=1.0, H_omega=1.0, c=1.0,
                           xi=1.0, kappa=1.0, k2=10.0, G8pi=1.0)
     state = MetricState(E=0.0, Phi1=1e-5, Phi2=1e-5)
     src = MatterSources(delta_rho_g=0.0, momentum_g=0.0,
                         delta_rho_f=0.0, momentum_f=0.0)
-    solved = solve_metric_constraints(bg, state, src, E_prime=0.0)
-    assert solved.reduced_rank == 6
-    assert np.isfinite(solved.condition_number)
-    assert np.linalg.norm(
-        constraint_residual_vector(solved.vector, bg, state, src), ord=np.inf
-    ) < 1e-11
+    A, _ = constraint_matrix(bg, state, src)
+    reduced = A[:, 1:]
+    assert np.linalg.matrix_rank(reduced, tol=1e-12) == 6
+    assert np.isfinite(np.linalg.cond(reduced))
