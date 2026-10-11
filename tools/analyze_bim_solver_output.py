@@ -104,12 +104,47 @@ def _interior(frame: OutputFrame, n_ghost: int) -> np.ndarray:
     return data[n_ghost:-n_ghost] if n_ghost else data
 
 
+def _rest_mass(data: np.ndarray, field_index: dict[str, int], density_name: str) -> float:
+    """Return the spherical Valencia rest-mass integral 4*pi*int D r^2 dr.
+
+    The absolute value is a grid diagnostic rather than an ADM mass.  Its
+    relative drift is the useful short-run conservation test.  For the
+    cell-centred uniform grids used by the reference experiment, `gradient(r)`
+    is exactly the cell width away from floating-point roundoff.
+    """
+    if "r" not in field_index or density_name not in field_index or len(data) < 2:
+        return float("nan")
+    r = data[:, field_index["r"]]
+    D = data[:, field_index[density_name]]
+    if not np.all(np.isfinite(r)) or not np.all(np.isfinite(D)):
+        return float("nan")
+    if np.any(np.diff(r) <= 0.0):
+        return float("nan")
+    dr = np.gradient(r)
+    return float(4.0 * np.pi * np.sum(D * r**2 * dr))
+
+
+def _relative_drift(values: list[float], *, zero_tol: float = 1.0e-30) -> float:
+    arr = np.asarray(values, dtype=float)
+    if arr.size == 0 or not np.all(np.isfinite(arr)):
+        return float("nan")
+    ref = float(arr[0])
+    if abs(ref) <= zero_tol:
+        return 0.0 if bool(np.all(np.abs(arr) <= zero_tol)) else float("inf")
+    return float(np.max(np.abs(arr - ref)) / abs(ref))
+
+
 def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
     """Summarize short-run health without assigning a physics verdict.
 
     `pfFS_t` is deliberately excluded from the initial-rest zero-RHS control:
     the f lapse is spatially varying on the reference slice, so f momentum can
     start accelerating even though both fluids initially have zero velocity.
+
+    The summary also monitors quantities that must stay in the physical domain
+    before any Janus interpretation is allowed: positive spatial metric factors,
+    non-negative conserved dust densities, subluminal physical radial speeds and
+    independent g/f rest-mass conservation.
     """
     constraint_names = [x for x in ("C_1", "C_2", "C_3", "C_4") if x in out.fields]
     rest_zero_rhs = tuple(
@@ -122,7 +157,13 @@ def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
     frame_summaries = []
     all_finite = True
     same_oriented = True
+    metric_positive = True
+    density_nonnegative = True
+    fluid_subluminal = True
     global_constraint = 0.0
+    rest_mass_g: list[float] = []
+    rest_mass_f: list[float] = []
+
     for frame in out.frames:
         data = _interior(frame, n_ghost)
         all_finite = all_finite and bool(np.all(np.isfinite(data)))
@@ -164,11 +205,58 @@ def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
         else:
             item["R_min"] = item["R_max"] = float("nan")
 
+        metric_fields = [x for x in ("gA", "gB", "fA", "fB") if x in field_index]
+        if len(metric_fields) == 4:
+            metric_values = np.column_stack([data[:, field_index[x]] for x in metric_fields])
+            item["metric_min_factor"] = float(np.min(metric_values))
+            good_metric = bool(np.all(np.isfinite(metric_values)) and np.all(metric_values > 0.0))
+            item["metric_positive"] = good_metric
+            metric_positive = metric_positive and good_metric
+        else:
+            item["metric_min_factor"] = float("nan")
+            item["metric_positive"] = False
+            metric_positive = False
+
+        frame_speed_good = True
+        for prefix, A_name, v_name in (
+            ("g", "gA", "pfv"),
+            ("f", "fA", "pfFv"),
+        ):
+            if A_name in field_index and v_name in field_index:
+                physical_speed = np.abs(
+                    data[:, field_index[A_name]] * data[:, field_index[v_name]]
+                )
+                vmax = float(np.max(physical_speed))
+                item[f"{prefix}_speed_max"] = vmax
+                frame_speed_good = frame_speed_good and bool(
+                    np.all(np.isfinite(physical_speed)) and np.all(physical_speed < 1.0)
+                )
+            else:
+                item[f"{prefix}_speed_max"] = float("nan")
+        item["fluid_subluminal"] = frame_speed_good
+        fluid_subluminal = fluid_subluminal and frame_speed_good
+
+        frame_density_good = True
         for name in ("pfD", "pfFD"):
             if name in field_index:
-                item[f"{name}_max_abs"] = float(
-                    np.max(np.abs(data[:, field_index[name]]))
+                density = data[:, field_index[name]]
+                item[f"{name}_min"] = float(np.min(density))
+                item[f"{name}_max_abs"] = float(np.max(np.abs(density)))
+                frame_density_good = frame_density_good and bool(
+                    np.all(np.isfinite(density)) and np.all(density >= 0.0)
                 )
+            else:
+                item[f"{name}_min"] = float("nan")
+        item["density_nonnegative"] = frame_density_good
+        density_nonnegative = density_nonnegative and frame_density_good
+
+        mg = _rest_mass(data, field_index, "pfD")
+        mf = _rest_mass(data, field_index, "pfFD")
+        item["rest_mass_g"] = mg
+        item["rest_mass_f"] = mf
+        rest_mass_g.append(mg)
+        rest_mass_f.append(mf)
+
         frame_summaries.append(item)
 
     first = _interior(out.frames[0], n_ghost)
@@ -200,6 +288,11 @@ def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
         "times": tuple(float(f.time) for f in out.frames),
         "all_finite": all_finite,
         "same_oriented_lapse": same_oriented,
+        "metric_positive": metric_positive,
+        "density_nonnegative": density_nonnegative,
+        "fluid_subluminal": fluid_subluminal,
+        "rest_mass_g_rel_drift_max": _relative_drift(rest_mass_g),
+        "rest_mass_f_rel_drift_max": _relative_drift(rest_mass_f),
         "constraint_fields": tuple(constraint_names),
         "constraint_global_max": global_constraint if constraint_names else float("nan"),
         "initial_rest_rhs_fields": rest_zero_rhs,
