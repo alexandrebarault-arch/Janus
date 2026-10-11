@@ -2,164 +2,91 @@
 
 Date: 2026-10-11
 Branch: `research/v2-flrw`
-Status: `NONLINEAR_ESCAPE_EXISTS_FOR_SOME_PARAMETERS__NOT_YET_DYNAMICAL_PROOF`
+Status: `ALGEBRAIC_BRANCH_TOPOLOGY_DIAGNOSTIC__PHYSICAL_INTERPRETATION_CORRECTED`
 
-## Question
+## Purpose
 
-The linear V2 scan exposes a stability–mixing tension: the easiest way to obtain an early healthy branch is to approach the small-`alpha` GR-decoupling regime, but this suppresses the visible massive spin-2 response required for a strong Janus-like segregation signal.
+The linear V2 scan exposes a stability–mixing tension: parameter regions that remain healthy to very early epochs tend toward the GR-decoupling regime, suppressing the visible massive-spin-2 response needed for a strong Janus-like signal.
 
-The remaining credible escape is nonlinear generation/amplification of the relative mode.
+A possible escape is nonlinear dynamics of the relative/Stueckelberg mode. The first diagnostic implemented here asks only:
 
-This note tests the first necessary condition:
+> At fixed background curvature, does a chosen real scalar root remain connected when an anti-correlated two-matter source is increased?
 
-> Does the Aoki–Maeda–Namba nonlinear scalar branch remain real and continuously connected when a Janus-like anti-correlated source is increased?
+This is a branch-topology test, **not** a time-dependent cosmology and not a direct bound on a density contrast.
 
-This is **not** yet a full time-dependent proof.
+## Implementation
 
----
+- nonlinear scalar equation: `numerics/aoki_scalar_polynomial.py`
+- fixed-background continuation: `numerics/nonlinear_source_continuation.py`
+- tests: `tests/test_nonlinear_source_continuation.py`
 
-## Diagnostic
-
-The repository already implements the seventh-order scalar equation of Aoki, Maeda & Namba (2015) in
-
-`numerics/aoki_scalar_polynomial.py`.
-
-A new continuation diagnostic is in
-
-`numerics/nonlinear_source_continuation.py`.
-
-Tests are in
-
-`tests/test_nonlinear_source_continuation.py`.
-
-At fixed `H^2`, the source is varied as
+The source is parameterized as
 
 `source_g = -s`,
 
 `source_f = +s`,
 
-which has the sign structure of a visible underdensity plus a twin-sector overdensity.
+which has the sign structure of a visible-sector underdensity plus a twin-sector overdensity.
 
-The code follows the real scalar root continuously connected to a chosen branch. A sudden loss of a nearby real root is flagged as a branch endpoint/merger candidate.
+## Case A
 
-The finite-step criterion is only a numerical topology diagnostic. A true physical singularity requires refinement and the full dynamical equations.
+For the Aoki–Maeda–Namba example
 
----
+`beta2 = -3`, `beta3 = 3`, `m_g^2 = m_f^2 = 0.5`,
 
-## Case A: robust connected nonlinear branch
+at the illustrative fixed value `H^2 = 0.01`, the nonlinear root near `mu ~= 0.692` remains continuously real in this diagnostic as `s` is increased at least to `s=5`.
 
-For the published Case A interaction parameters
+Result:
 
-`beta2 = -3`,
+`CASE_A_FIXED_H_ROOT_CONTINUITY = PASS_IN_ALGEBRAIC_DIAGNOSTIC`.
 
-`beta3 = +3`,
+This proves only that a large source does not automatically destroy that particular algebraic nonlinear branch.
 
-with
+## Case B
 
-`m_g^2 = m_f^2 = 0.5`,
+For
 
-and at the illustrative late value
+`beta2 = -1`, `beta3 = 0.5`, `m_g^2 = m_f^2 = 0.5`,
 
-`H^2 = 0.01`,
+starting from the late linear root `mu=0` at fixed `H^2=0.01`, the nearby-root tracker loses the connected algebraic branch near
 
-the zero-source nonlinear root is near
+`s ~= 0.4757`.
 
-`mu ~= 0.6921`.
+Result:
 
-Increasing the anti-correlated source continuously to at least
+`CASE_B_FIXED_H_ROOT_CONTINUITY = ENDPOINT_AT_FINITE_DIMENSIONAL_SOURCE`.
 
-`s = 5`
+### Correction to the earlier interpretation
 
-does **not** destroy the connected real branch in this diagnostic.
+The number `s ~= 0.4757` is **not** a realistic void-density threshold.
 
-As the source grows the scalar root shifts smoothly rather than running into an immediate root merger.
+The source `s` has dimensions of curvature/mass squared. In a matter-era scaling one expects schematically
 
-### Result
+`s ~ H^2 delta_rel`.
 
-`CASE_A_ANTI_CORRELATED_SOURCE_CONTINUITY = PASS_IN_THIS_ALGEBRAIC_GATE`.
+At the illustrative `H^2=0.01`, interpreting `s=0.4757` as `H^2 delta` would correspond to a contrast of order `delta~48`, far outside the regime of a realistic cosmological void perturbation.
 
-This establishes that a strong relative source does not generically force the nonlinear scalar equation to become complex or disconnected.
+Therefore this fixed-H endpoint must **not** be used to claim that Case B fails for realistic void amplitudes.
 
-It does **not** establish kinetic/gradient stability or actual density amplification.
+The physically more relevant result comes from `numerics/cosmic_branch_path.py`, which evolves `H^2` and the relative source together. That diagnostic still finds that the Case-B adiabatic branch loses continuity around the transition `H^2/m^2 ~ 10^-2`, consistent with the qualitative conclusion of Aoki–Maeda–Namba for `w<1/3`.
 
----
+## What survives from this gate
 
-## Case B: finite source endpoint
+The useful conclusions are structural:
 
-For the published Case B interaction parameters
-
-`beta2 = -1`,
-
-`beta3 = +0.5`,
-
-with the same illustrative
-
-`m_g^2 = m_f^2 = 0.5`, `H^2 = 0.01`,
-
-start from the late linear root
-
-`mu = 0`.
-
-Under the same anti-correlated source continuation, the connected root terminates/merges at approximately
-
-`s ~= 0.476`
-
-in the finite-step diagnostic.
-
-Refining the source step from `1e-2` to `1e-4` places the endpoint near `0.4757`.
-
-### Result
-
-`CASE_B_ANTI_CORRELATED_SOURCE_CONTINUITY = FAIL_BEYOND_FINITE_SOURCE`.
-
-This reproduces the qualitative branch-risk emphasized by Aoki–Maeda–Namba: nonlinear roots can merge and disappear as the matter/source configuration changes.
-
----
-
-## Scientific interpretation
-
-The nonlinear escape route is therefore neither automatically dead nor automatically safe.
-
-The useful conclusion is structural:
-
-- there **are** parameter choices where a Janus-like anti-correlated source can live on a real connected nonlinear scalar branch;
-- there are also nearby-looking choices where the desired branch ends at finite source amplitude;
-- therefore branch continuity is a genuine model-selection criterion, not a detail.
-
-This strengthens the case for a targeted parameter search around Case-A-like regions rather than a generic claim that Vainshtein screening saves JANUS-R.
-
----
-
-## Crucial limitation
-
-The algebraic Stueckelberg equation answers
-
-`what scalar configuration is compatible with a chosen H and matter source?`
-
-It does **not** answer
-
-`does the theory dynamically create a large twin/visible anti-correlation from realistic initial conditions?`
-
-The latter requires the time-dependent coupled perturbation/fluid equations.
-
-Thus the present result is only a **necessary topology gate**.
-
-The central unresolved question remains whether a branch can simultaneously
-
-1. be regular through the early nonlinear regime;
-2. return to an observationally acceptable near-GR phase;
-3. generate or preserve a substantial relative density mode;
-4. emerge late enough to produce a measurable dynamics/lensing mismatch;
-5. avoid CMB/LSS constraints.
-
----
+1. nonlinear scalar branches can remain real under large anti-correlated sources for selected parameters;
+2. other parameter choices contain branch mergers/endpoints;
+3. a dimensional source threshold at one fixed `H` cannot be interpreted directly as a cosmological density-contrast bound;
+4. the relevant problem is the joint evolution of curvature, matter sources and branch identity through `H~m_eff`.
 
 ## Updated decision
 
-`LINEAR_STRONG_JANUS = SEVERELY_CONSTRAINED`
+`FIXED_H_NONLINEAR_BRANCH_EXISTENCE = PASS_FOR_SELECTED_PARAMETERS`
 
-`NONLINEAR_BRANCH_EXISTENCE = PASS_FOR_SELECTED_PARAMETERS`
+`FIXED_H_ENDPOINT_AS_VOID_BOUND = RETRACTED`
 
-`NONLINEAR_DYNAMIC_GENERATION_OF_SEGREGATION = OPEN`
+`GLOBAL_NONLINEAR_TO_LINEAR_COSMIC_TRANSITION = OPEN`
 
-The next worthwhile calculation is the dynamical evolution of the relative matter mode through a Case-A-like nonlinear-to-linear transition. Merely finding more algebraic roots is no longer sufficient.
+`LOCAL_STATIC_VOID_TRANSITION = SEPARATE_GATE`
+
+The next conclusions must come from the cosmic-transition and static-void diagnostics, not from the raw number `s~=0.4757`.
