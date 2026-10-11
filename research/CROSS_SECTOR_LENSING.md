@@ -1,4 +1,4 @@
-# Cross-sector lensing: direct derivation
+# Cross-sector lensing and force: direct derivation
 
 Date: 2026-10-11
 
@@ -10,17 +10,57 @@ Scope: linear weak-field ghost-free bimetric gravity with two separately coupled
 
 If an `f`-sector point mass repels a slow `g`-sector test mass in the short-distance linear regime, does it also act as a divergent (negative) gravitational lens for `g`-sector photons?
 
-## Input
+## Input: Hohmann point-source solution
 
-Using the PPN solution of Manuel Hohmann, arXiv:1701.07700 / Phys. Rev. D 95, 124049 (2017), the cross-sector Newtonian coefficient is
+Using the PPN solution of Manuel Hohmann, arXiv:1701.07700 / Phys. Rev. D 95, 124049 (2017), the cross-sector coefficient multiplying the Newtonian `1/r` potential is
 
-`alpha_gf(r) = [3 - 4 exp(-mu r)] / [24 pi (m_g^2 + m_f^2)]`.
+`alpha_gf(r) = [3 - 4 exp(-mu r)] / [24 pi (m_g^2 + m_f^2)]`
 
-Hence slow visible matter is repelled when
+in the author's general rescaled notation (with the equal-Planck-mass specialization differing only by the corresponding overall normalization).
 
-`mu r < ln(4/3)`.
+Hohmann notes that this coefficient becomes negative for
 
-The spatial metric also contains `gamma_gf(r)` and an anisotropic `theta_gf(r) x_i x_j/r^3` term. It is therefore incorrect to infer photon deflection from the sign of `alpha_gf` alone.
+`mu r < ln(4/3) ~= 0.287682`
+
+and interprets this as a repulsive regime.
+
+### Important correction: potential-sign threshold != force-sign threshold
+
+Because `alpha_gf` depends on radius, the physical acceleration is obtained by differentiating the full potential, not by inspecting `alpha_gf` alone.
+
+Up to a positive normalization, the cross Newtonian potential is
+
+`U_gf(r) ~ [1 - (4/3) exp(-mu r)] / r`.
+
+The slow-particle radial acceleration is proportional to
+
+`dU_gf/dr ~ -[1 - (4/3)(1 + u) exp(-u)]/r^2`,
+
+where `u = mu r` and an inward/attractive acceleration corresponds to the usual positive long-range Newton coupling.
+
+Therefore the actual cross force is **repulsive** when
+
+`1 - (4/3)(1 + u) exp(-u) < 0`,
+
+or equivalently
+
+`4(1 + u) exp(-u) > 3`.
+
+The unique positive root is
+
+`u_force = 0.9612787631...`.
+
+Thus the physical point-particle force remains repulsive out to
+
+`r < 0.96128 / mu`,
+
+which is substantially farther than the radius `ln(4/3)/mu` at which the potential itself changes sign.
+
+This distinction follows directly from Hohmann's Eq. (75a)/(77)/(78) and is retained in JANUS-R as a correction to the shorthand interpretation based only on the radius-dependent PPN coefficient.
+
+## Photon metric is not determined by `alpha_gf` alone
+
+The spatial metric also contains `gamma_gf(r)` and an anisotropic `theta_gf(r) x_i x_j/r^3` term. It is therefore incorrect to infer photon deflection from either the sign of the potential or the sign of the slow-particle force alone.
 
 ## Direct null-ray derivation
 
@@ -34,7 +74,7 @@ With `u = mu b`, the cross-sector deflection is
 
 `Delta theta_gf(b) = - C * M_f/b * [1 - u K_1(u)]`,
 
-where `C > 0` is the positive mixing normalization (for Hohmann's rescaled variables, `C = 1/[2 pi (m_g^2 + m_f^2)]`) and `K_1` is the modified Bessel function of the second kind.
+where `C > 0` is the positive mixing normalization and `K_1` is the modified Bessel function of the second kind.
 
 The sign convention here takes negative transverse deflection to mean bending toward a positive source located at the origin.
 
@@ -65,7 +105,7 @@ It interpolates between:
 - `Delta theta_gf -> 0` as `mu b -> 0`;
 - ordinary convergent/attractive lensing as `mu b -> infinity`.
 
-This remains true even in the radius range where `alpha_gf < 0` and slow visible matter is repelled.
+This remains true throughout the larger physical-force repulsive range `mu r < 0.96128`.
 
 ## Independent physical check
 
@@ -99,6 +139,7 @@ Examples:
 | 0.10 | -0.1753863 |
 | 0.28768 | -0.9379823 |
 | 0.50 | -2.0613533 |
+| 0.96128 | -4.597 (approximately) |
 | 1.00 | -4.7771132 |
 | 2.00 | -8.6432188 |
 | 10.0 | -11.9977621 |
@@ -111,7 +152,8 @@ This is a major difference from a literal negative-mass interpretation of Janus:
 
 - slow `g` matter can be repelled by an `f` source;
 - `g` photons do **not** become negatively lensed by that same source in this linear ghost-free bimetric mechanism;
-- at short distance the cross-sector lensing tends to cancellation rather than sign reversal.
+- at short distance the cross-sector lensing tends to cancellation rather than sign reversal;
+- the physical repulsive-force range is wider than suggested by the zero of the radius-dependent potential coefficient.
 
 Therefore `JANUS-R` must not claim Petit's negative-lensing prediction.
 
