@@ -1,8 +1,8 @@
 from numerics.two_matter_tophat import (
     v2_tophat_control_candidate,
-    v2_late_mixing_control_candidate,
     evolve_homogeneous_patch,
 )
+from numerics.tophat_candidates import v2_late_mixing_control_candidate
 
 
 def test_zero_perturbation_reproduces_background():
