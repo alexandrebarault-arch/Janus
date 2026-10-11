@@ -1,5 +1,6 @@
 from numerics.two_matter_tophat import (
     v2_tophat_control_candidate,
+    v2_late_mixing_control_candidate,
     evolve_homogeneous_patch,
 )
 
@@ -44,3 +45,18 @@ def test_large_primordial_twin_seed_can_preserve_anticorrelation():
     )
     assert result.delta_g_final < 0.0
     assert result.delta_f_final > 0.0
+
+
+def test_late_mixing_control_amplifies_equal_anticorrelated_seed():
+    model = v2_late_mixing_control_candidate()
+    result = evolve_homogeneous_patch(
+        model,
+        a_initial=1.0 / 4.0,
+        delta_g_initial=-1e-5,
+        delta_f_initial=+1e-5,
+        visible_growth_slope=1.0,
+    )
+    assert result.delta_g_final < 0.0
+    # This control deliberately sits close to the late healthy-boundary and
+    # shows the strong response that motivates the next stability calculation.
+    assert result.delta_f_final > 2e-4
