@@ -2,142 +2,280 @@
 
 Last updated: 2026-10-11
 
-## Executive status
+## Executive verdict
 
-### JANUS-EXACT
+### JANUS-EXACT (published Petit formulation)
 
-**Status:** `NOT_CLOSED`
+**Status:** `NOT_CLOSED_AS_FUNDAMENTAL_THEORY`
 
-The published Janus formulation is not presently accepted here as a fully specified general relativistic bimetric theory. The central issue is not that two metrics or cross-sector repulsion are impossible. It is that the general interaction structure is not fully defined in a way from which all field equations and conservation laws follow uniquely.
+The published Janus program contains genuine mathematical constructions and a physically meaningful Newtonian attraction/repulsion target, but the present general-relativistic formulation is not sufficiently closed to function as a complete fundamental bimetric theory.
 
-### JANUS-R Late
+Main reasons:
 
-**Status:** `ACTIVE_MAIN_BRANCH`
+1. The 2015 constrained variation does not independently derive both field equations without an extra assumption.
+2. The 2024 interaction sector is not specified in a unique complete nonlinear form from which all cross-sector source tensors follow.
+3. The exact two-sector Newtonian sign matrix `[[+1,-1],[-1,+1]]` is singular and is structurally difficult to embed in a healthy canonical two-spin-2 theory.
+4. Literal fundamental negative-energy matter is not needed to obtain effective cross-sector repulsion and introduces avoidable stability risks.
+
+### JANUS-R Late (our continuation)
+
+**Status:** `MATHEMATICALLY_PLAUSIBLE_BUT_STRONGLY_CONSTRAINED`
 
 Current best continuation:
 
-- two Lorentzian metrics `g` and `f`;
-- two positive-energy matter sectors;
-- ghost-free Hassan-Rosen type interaction potential;
-- ordinary baryons + conventional CDM retained in the visible `g` sector for the main branch;
-- no explicit cosmological constant term in the visible sector (`beta_0 = 0`) while testing self-acceleration;
-- local/galactic deviations must be hidden by nonlinear Vainshtein screening;
-- any Janus-like cross-sector effect must emerge outside the screened regime and must be derived, not imposed.
+- Hassan-Rosen ghost-free bimetric potential;
+- two positive-energy matter sectors, each minimally coupled to its own metric;
+- ordinary baryons + conventional CDM retained in the visible `g` sector in the main branch;
+- no explicit visible-sector cosmological constant while testing self-acceleration (`beta_0 = 0` as a research choice, not a theorem);
+- finite/healthy cosmological branch only;
+- Vainshtein/nonlinear screening required locally and in the early Universe;
+- any Janus-like large-scale segregation must emerge dynamically and satisfy current lensing + velocity data.
 
-The next decisive target is the metric/lensing response in and around large cosmic voids.
+This branch is worth continuing only as a quantitatively constrained modified-gravity/hidden-sector model, **not** as evidence that Petit's exact Janus cosmology is correct.
 
-## Established conclusions from the audit
+## Core derived results
 
-### 1. Constrained variation in the 2015 Janus derivation is insufficient to derive two independent equations
+### 1. 2015 constrained-variation defect
 
-If an action `S[g_+, g_-]` is varied subject to
+For `S[g_+,g_-]`, with the imposed variation
 
-`delta g_- = - delta g_+`,
+`delta g_- = -delta g_+`,
 
-then
+one gets
 
 `delta S = (E_+ - E_-) delta g_+`.
 
-The variational condition therefore enforces only a relation between the two Euler-Lagrange tensors, not independently `E_+ = 0` and `E_- = 0` without an additional assumption.
+Stationarity therefore gives the combined condition
 
-**Consequence:** the two published field equations can be sufficient to satisfy the constrained variation while not being uniquely derived by it.
+`E_+ - E_- = 0`,
 
-### 2. Janus 2024 improves the architecture but still leaves the general interaction incompletely specified
+not independently `E_+=0` and `E_-=0` without another postulate.
 
-The 2024 action introduces interaction Lagrangian terms, but their complete field dependence/general relativistic form is not supplied sufficiently to reconstruct a unique closed nonlinear theory in all regimes.
+**Verdict:** published separate equations can be sufficient to satisfy the constrained variation but are not uniquely derived by it.
 
-**Status:** `OPEN_DEFECT`.
+### 2. 2024 Janus interaction sector remains incomplete
 
-### 3. Exact Newtonian sign matrix is singular
+The modern paper introduces interaction Lagrangian/source terms but does not provide a fully specified nonlinear interaction functional sufficient to reconstruct the unique general cross-sector tensor in all relativistic regimes.
 
-The idealized Janus interaction matrix
+**Verdict:** `OPEN_DEFECT`.
 
-```
-J = [[ 1, -1],
-     [-1,  1]]
-```
+### 3. Exact Janus Newtonian matrix is structurally singular
+
+`J = [[1,-1],[-1,1]]`
 
 has
 
-`det(J) = 0`
+`det J = 0`, eigenvalues `0,2`.
 
-and eigenvalues `0` and `2`.
+This exact equal-strength rule is not reproduced by the ordinary linear ghost-free bimetric propagator structure.
 
-This is a structural clue: an exact equal-magnitude attraction/repulsion rule is difficult to realize with two independent canonical metric sectors.
+### 4. Cross-sector repulsion is nevertheless real in a healthy class
 
-### 4. Cross-sector repulsion itself is not impossible
+In the two-matter Hassan-Rosen weak-field solution, massless and massive spin-2 modes combine so that a positive-energy `f` source can repel a slow `g` test mass over part of the linear regime.
 
-Ghost-free bimetric theories with two matter sectors can generate an effective repulsive cross interaction in some regimes through the coexistence/mixing of massless and massive spin-2 modes.
+Therefore:
 
-Therefore the binary statement "bimetric cross-sector repulsion is impossible" is rejected.
+`CROSS_SECTOR_REPULSION_POSSIBLE = YES`.
 
-### 5. Fundamental negative energy is not currently required
+### 5. Correct physical force threshold
 
-The research branch no longer assumes that the second sector must have a fundamentally negative Hamiltonian density. Repulsion can arise effectively while both matter sectors have positive energy.
+For equal Planck masses the cross potential has the form
 
-This is currently preferred because it avoids introducing a negative kinetic-energy degree of freedom unless observation or consistency later requires it.
+`U_gf ~ [1 - (4/3) exp(-u)]/r`, `u=mu r`.
 
-## Rejected / downgraded branches
+The force sign comes from differentiating the whole expression. Repulsion persists while
 
-### A. Minimal `beta_1` self-accelerating model
+`4(1+u) exp(-u) > 3`.
 
-**Reason:** attractive background expansion, but scalar perturbation instability at early times/small scales.
+The positive root is
 
-**Verdict:** `REJECTED_AS_FINAL_MODEL`.
+`u_force = 0.9612787631...`.
 
-### B. `beta_1-beta_4` infinite branch as primary candidate
+This is distinct from the smaller radius `ln(4/3)=0.28768` where the position-dependent potential coefficient itself changes sign.
 
-Initially considered promising because of gradient-stability properties. Later downgraded because the evolution of the metric ratio conflicts with the healthy/Higuchi requirement on the relevant branch.
+### 6. Isolated positive twin matter does NOT produce negative lensing in the linear ghost-free solution
 
-**Verdict:** `REJECTED_AS_PRIMARY_BRANCH`.
+Direct null-ray integration of the full PPN metric gives
 
-### C. Constant-mass unified model where the same twin sector is all dark matter and also causes large-scale Janus repulsion
+`Delta theta_gf(b) = - C M_f/b [1 - u K_1(u)]`, `u=mu b`, `C>0`.
 
-A constant effective graviton mass cannot naturally make the same second sector behave as ordinary attractive dark matter on the required scales while remaining Janus-like repulsive over tens-to-hundreds of Mpc without severe tension between regimes.
+Since `0 < u K_1(u) < 1` for `u>0`, the deflection is always convergent/toward the source and tends to zero as `u->0`.
 
-**Verdict:** `REJECTED_UNIFIED_CONSTANT_MASS`.
+Thus a slow visible particle may be repelled while a visible photon is not divergently lensed.
 
-### D. Naive cosmological extrapolation of the linear Yukawa repulsive regime
+**Verdict:** Petit's literal negative-lens signature is not inherited by JANUS-R.
 
-Choosing a tiny graviton mass solely to extend the linear repulsive Yukawa regime to ~100 Mpc ignores local constraints on the same unscreened linear solution.
+### 7. Linear two-metric cross repulsion is weaker than exact Janus
 
-**Verdict:** `REJECTED_NAIVE_LINEAR_EXTRAPOLATION`.
+Define
 
-**Correction:** any viable large-scale effect must incorporate nonlinear screening (Vainshtein or equivalent) and cannot be inferred by extending the flat-background point-source solution everywhere.
+`x = k^2/(k^2+a^2 mu^2)`.
 
-## Active branches
+For equal Planck masses, the linear slow-matter kernels are
 
-### JANUS-R Late — MAIN
+`Q_dyn,self = 1 + 4x/3`,
 
-Question:
+`Q_dyn,cross = 1 - 4x/3`.
 
-Can a ghost-free two-metric, two-positive-energy-sector theory be indistinguishable from GR in screened high-density regions, while producing a distinctive late-time large-scale cross-sector response around voids/cosmic-web structures and potentially contributing to cosmic acceleration without an explicit Lambda term?
+At `x->1`:
 
-### JANUS-R2 — HIGH RISK
+- self response -> `7/3`;
+- cross response -> `-1/3`.
 
-Allow effective graviton mass/mixing parameters to evolve through the cosmological metric ratio `xi(t)`.
+The modern linear ghost-free mechanism therefore reaches `-G/3`, not exact `-G`, in the normalized ultraviolet limit.
 
-Purpose: test whether early-time and late-time interaction regimes can differ strongly enough to mimic multiple cosmological roles without adding an arbitrary new scalar field.
+### 8. Adding more ordinary ghost-free metrics does not automatically restore `-G`
 
-Status: `EXPLORATORY`; must pass ghost/gradient/lapse/singularity tests.
+For a canonical multimetric linearization with positive Einstein-Hilbert kinetic terms, one massless spin-2 mode plus massive Fierz-Pauli modes, completeness of the mixing matrix implies for distinct sectors:
 
-### JANUS-R3 — EXPLORATORY
+- high-momentum photon cross response -> `0`;
+- high-momentum slow-matter cross response -> `-1/3` relative to the long-range massless cross coupling.
 
-Use 3+ metrics in a modern ghost-free multimetric interaction graph to investigate whether an approximate or exact Janus `+G/-G` sign pattern can emerge without pathological kinetic mixing.
+**Verdict:** `JANUS-R3` cannot be justified simply by increasing `N`.
 
-Status: `EXPLORATORY_LOW_PRIORITY`.
+### 9. Linear segregation exists but is modest
 
-## Immediate scientific gate
+For equal background densities the common and relative modes are
 
-Derive or numerically solve the visible metric response to an extended `f`-sector overdensity associated with a large void environment, including the screened-to-unscreened transition.
+`delta_+ = delta_g + delta_f`,
 
-Required outputs:
+`delta_- = delta_g - delta_f`.
 
-1. `Psi_g(r)` — nonrelativistic potential.
-2. `Phi_g(r)` — spatial curvature potential.
-3. Weyl/lensing potential `(Phi_g + Psi_g)/2`.
-4. Deflection angle `alpha(R)`.
-5. Projected convergence `kappa(R)`.
-6. Sign and amplitude comparison with a matched Lambda-CDM void profile.
+In the maximally unscreened linear regime the relative mode has effective strength `4/3`, giving in an Einstein-de Sitter approximation
 
-No claim of "negative lensing" is allowed until these quantities are derived.
+`delta_- ~ a^1.186`,
+
+versus
+
+`delta_+ ~ a`.
+
+Thus the relative/common ratio grows only as `a^0.186`.
+
+A late unscreened phase cannot generate enormous segregation from an initially negligible relative perturbation by linear growth alone.
+
+### 10. Nonlinear two-matter scalar dynamics exist and directly source the Janus relative mode
+
+Aoki-Maeda-Namba (2015) derive a seventh-order nonlinear scalar/Stueckelberg equation with both matter sectors. Its leading relative source is
+
+`S_rel ~ kappa_g^2 rho_g delta_g - K^2 kappa_f^2 rho_f delta_f`.
+
+For a visible void plus twin overdensity,
+
+`delta_g<0`, `delta_f>0`,
+
+the contributions add in magnitude rather than cancel.
+
+The same theory possesses nonlinear branches that can restore a GR-like stable early-Universe phase for suitable parameters.
+
+**Verdict:** nonlinear screening/relative-mode dynamics are a real mechanism, not a hypothetical patch.
+
+### 11. But nonlinear branch continuity is not generic
+
+Published examples include:
+
+- Case A (`beta2=-3`, `beta3=3`, equal metric mass scales): stable early matter branch near `mu~0.40` and stable late nonlinear root `mu=0.698872...`;
+- Case B (`beta2=-1`, `beta3=0.5`): early stable root near `mu~1.1`, but no stable adiabatic connection to the late stable linear branch for matter domination.
+
+Branches may merge/disappear in the adiabatic polynomial analysis.
+
+**Verdict:** a healthy Janus-like cosmological trajectory must be demonstrated parameter by parameter.
+
+## Current scale window
+
+A standard one-matter-sector bimetric DESI DR2+CMB+SNe analysis in 2025 finds viable masses around/above a few `10^-32 eV` (model-dependent). For orientation only, at
+
+`m_FP = 3e-32 eV`, `H0=69 km/s/Mpc`,
+
+the reduced Compton length is about
+
+`lambda ~= 213 Mpc`,
+
+and the unscreened point-force repulsive radius would be
+
+`~0.961 lambda ~= 205 Mpc`.
+
+The crude condition `H~m` occurs around `z~10` for this scale.
+
+This coincidence with large-void/supervoid scales is interesting but **not validation**. The extra matter sector changes the phenomenology and must be fitted separately.
+
+## Observational gate (2025-2026)
+
+### Void lensing
+
+DESI Legacy Survey DR9 LRG voids cross-correlated with Planck 2018 CMB lensing give
+
+`A_kappa = 1.016 +/- 0.054`
+
+for the full sample relative to calibrated Lambda-CDM mocks (Sartori et al. 2025).
+
+Strong arbitrary distortions of void lensing are therefore disfavored.
+
+### Lensing versus velocities
+
+DESI DR1 + KiDS/DES/HSC `E_G` measurements are consistent with the Planck GR+Lambda-CDM prediction to `z~1` (Rauhut et al. 2025).
+
+A large universal JANUS-R dynamics/lensing mismatch is therefore not observed.
+
+### DESI scale-dependent gravity sensitivity
+
+A 2026 DESI DR1 full-shape analysis constrains a scalar Hu-Sawicki `f(R)` correction scale to `<17.81 Mpc` in that model and finds no evidence for modified gravity.
+
+This numerical limit does **not** apply directly to spin-2 JANUS-R, but shows that new gravity on tens-to-hundreds of Mpc scales is observationally testable now.
+
+## Correct void diagnostic
+
+For
+
+`delta_g=-D`, `delta_f=R D`,
+
+the linear visible responses relative to a GR visible-only void are
+
+`A_lens = (1+x) - R(1-x)`,
+
+`A_dyn = (1+4x/3) - R(1-4x/3)`.
+
+For the equal anti-correlated Janus-like mode `R=1`:
+
+`A_lens=2x`,
+
+`A_dyn=8x/3`,
+
+so
+
+`A_lens/A_dyn=3/4`.
+
+A key consequence is that at `x=1/2`, lensing is exactly GR-like (`A_lens=1`) while the slow-matter dynamics is enhanced by `4/3`.
+
+Using the measured `A_kappa` only as a toy single-scale inversion gives
+
+`x ~= 0.508 +/- 0.027`,
+
+which would imply
+
+`A_dyn ~= 1.355 +/- 0.072`.
+
+This is **not a formal fit**, but it identifies the most discriminating future observable: void velocities/RSD jointly with void lensing.
+
+## Branch status
+
+| Branch | Status |
+|---|---|
+| `JANUS-EXACT` | `NOT_CLOSED` |
+| literal fundamental negative mass | `NOT_REQUIRED / DISFAVORED_AS_FOUNDATION` |
+| naive linear cosmological Yukawa extrapolation | `REJECTED` |
+| minimal beta1 final model | `REJECTED` |
+| beta1-beta4 infinite branch | `REJECTED_AS_PRIMARY` |
+| constant-mass twin sector = all DM + large-scale repulsion | `REJECTED` |
+| `JANUS-R Late` finite/healthy + screening | `OPEN_BUT_CONSTRAINED` |
+| `JANUS-R2` evolving effective mass | `HIGH_RISK_EXPLORATORY` |
+| `JANUS-R3` ordinary multimetric route to exact -G | `DOWNGRADED_EXPLORATORY` |
+
+## Bottom line
+
+The research does **not** support the statement "Janus is demonstrated".
+
+It does support a narrower and technically respectable statement:
+
+> A positive-energy, two-sector ghost-free bimetric theory can contain an emergent cross-sector repulsive force and nonlinear relative-sector dynamics reminiscent of part of Petit's physical intuition. However, the exact `+G/-G` Janus law, fundamental negative mass and negative lensing do not survive our present healthy-theory audit, while current large-scale observations already constrain any strong late-time version.
+
+The remaining scientifically serious problem is to compute and fit the full two-matter cosmological perturbations/nonlinear void solutions. Until that is done, JANUS-R is a research hypothesis, not a cosmological replacement for Lambda-CDM.
