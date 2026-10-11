@@ -83,6 +83,8 @@ def _write_config(
     output_name: str,
     steps: int,
     cfl: float,
+    b=None,
+    title: str = "JANUS-R twin-wall A1 short gate",
 ) -> Path:
     from numerics.bim_solver_reference_config import reference_config_text
 
@@ -97,9 +99,42 @@ def _write_config(
             output_file=output_name,
             steps=steps,
             cfl=cfl,
+            b=b,
+            title=title,
         )
     )
     return path
+
+
+def _run_patched_control(
+    binary: Path,
+    directory: Path,
+    rows: np.ndarray,
+    *,
+    runtime_b,
+    title: str,
+    n: int,
+    delta_r: float,
+    steps: int,
+    cfl: float,
+):
+    from tools.analyze_bim_solver_output import parse_text_output, short_run_summary
+
+    directory = Path(directory)
+    _write_rows(directory / "initial.txt", rows)
+    _write_config(
+        directory,
+        n=n,
+        delta_r=delta_r,
+        input_name="initial.txt",
+        output_name="output.txt",
+        steps=steps,
+        cfl=cfl,
+        b=runtime_b,
+        title=title,
+    )
+    _run([str(binary), "config.ini"], cwd=directory, label=title)
+    return short_run_summary(parse_text_output(directory / "output.txt"), n_ghost=10)
 
 
 def execute_a1(
@@ -115,14 +150,24 @@ def execute_a1(
     regression_abs_tol: float = 1.0e-11,
     regression_rel_tol: float = 1.0e-11,
 ) -> dict:
-    """Execute the first real twin-fluid standard-3+1 gate in a local GPL checkout.
+    """Execute the first controlled twin-fluid standard-3+1 gate.
 
-    The checkout is verified while pristine, compiled once, then patched in place
-    and compiled again.  The untouched executable is retained, so upstream and
-    patched zero-f runs use two genuinely different binaries against the exact
-    same common initial state.
+    Sequence:
+      1. verify/compile untouched pinned upstream;
+      2. upstream vs patched exact zero-f regression;
+      3. constrained patched g-only control;
+      4. constrained sector-dual patched f-only control;
+      5. full reference twin-wall run.
+
+    The checkout is patched in place only after the untouched executable/output
+    exist.  No physics verdict is inferred from a successful short run alone;
+    resolution/Courant convergence remains the subsequent A2 gate.
     """
     from numerics.reference_bim_solver_twin_input import reference_wall_rows
+    from numerics.sector_dual_control_input import (
+        reference_g_only_control_rows,
+        reference_f_only_dual_control_rows,
+    )
     from tools.verify_upstream_manifest import verify_manifest
     from tools.prepare_bim_solver_twin import prepare_checkout
     from tools.compare_bim_solver_outputs import compare_output_files, require_regression
@@ -135,7 +180,6 @@ def execute_a1(
     if n < 4 or delta_r <= 0 or steps <= 0 or not (0 < cfl <= 0.5):
         raise ValueError("invalid A1 grid/time configuration")
 
-    # Prove that the source tree is exactly the audited upstream before mutation.
     verify_manifest(checkout)
 
     bin_dir = workdir / "bin"
@@ -143,19 +187,13 @@ def execute_a1(
     patched_binary = bin_dir / "bim-solver-std-twin"
     _build(checkout, upstream_binary, compiler=compiler)
 
-    # One constrained Janus-like geometry is used to derive all three run inputs.
-    ref = reference_wall_rows(
-        n=n,
-        delta_r=delta_r,
-        solve_points=solve_points,
-    )
+    # Exact A/B regression state: same common state, f conserved variables zero.
+    ref = reference_wall_rows(n=n, delta_r=delta_r, solve_points=solve_points)
     full_rows = np.asarray(ref["rows"], dtype=float)
     patched_zero_rows, upstream_zero_rows = make_zero_f_inputs(full_rows)
 
     upstream_dir = workdir / "upstream_zero_f"
     patched_zero_dir = workdir / "patched_zero_f"
-    twin_dir = workdir / "patched_twin"
-
     _write_rows(upstream_dir / "initial.txt", upstream_zero_rows)
     _write_config(
         upstream_dir,
@@ -165,10 +203,10 @@ def execute_a1(
         output_name="output.txt",
         steps=steps,
         cfl=cfl,
+        title="untouched upstream zero-f regression",
     )
     _run([str(upstream_binary), "config.ini"], cwd=upstream_dir, label="untouched upstream zero-f run")
 
-    # Patch only after the untouched binary and reference output exist.
     prepare_checkout(checkout)
     _build(checkout, patched_binary, compiler=compiler)
 
@@ -181,6 +219,7 @@ def execute_a1(
         output_name="output.txt",
         steps=steps,
         cfl=cfl,
+        title="patched zero-f regression",
     )
     _run([str(patched_binary), "config.ini"], cwd=patched_zero_dir, label="patched zero-f run")
 
@@ -195,6 +234,38 @@ def execute_a1(
         rel_tol=regression_rel_tol,
     )
 
+    # C: solve fresh constrained g-only and sector-dual f-only initial data.
+    g_control = reference_g_only_control_rows(
+        n=n, delta_r=delta_r, solve_points=solve_points
+    )
+    f_control = reference_f_only_dual_control_rows(
+        n=n, delta_r=delta_r, solve_points=solve_points
+    )
+    g_only_summary = _run_patched_control(
+        patched_binary,
+        workdir / "patched_g_only",
+        g_control["rows"],
+        runtime_b=g_control["runtime_b"],
+        title="patched constrained g-only control",
+        n=n,
+        delta_r=delta_r,
+        steps=steps,
+        cfl=cfl,
+    )
+    f_only_summary = _run_patched_control(
+        patched_binary,
+        workdir / "patched_f_only_dual",
+        f_control["rows"],
+        runtime_b=f_control["runtime_b"],
+        title="patched constrained f-only sector-dual control",
+        n=n,
+        delta_r=delta_r,
+        steps=steps,
+        cfl=cfl,
+    )
+
+    # D: first actual twin-wall experiment.
+    twin_dir = workdir / "patched_twin"
     _write_rows(twin_dir / "initial.txt", full_rows)
     _write_config(
         twin_dir,
@@ -204,13 +275,11 @@ def execute_a1(
         output_name="output.txt",
         steps=steps,
         cfl=cfl,
+        b=tuple(float(x) * float(ref["interaction"]) for x in ref["beta"]),
+        title="patched reference twin-wall experiment",
     )
     _run([str(patched_binary), "config.ini"], cwd=twin_dir, label="patched twin-wall run")
-
-    twin_summary = short_run_summary(
-        parse_text_output(twin_dir / "output.txt"),
-        n_ghost=10,
-    )
+    twin_summary = short_run_summary(parse_text_output(twin_dir / "output.txt"), n_ghost=10)
 
     return {
         "pinned_upstream": PINNED_UPSTREAM,
@@ -225,7 +294,11 @@ def execute_a1(
             "worst_rel": comparison.worst_rel,
             "common_field_count": len(comparison.fields),
         },
+        "g_only_physical_domain_ok": physical_domain_ok(g_only_summary),
+        "f_only_physical_domain_ok": physical_domain_ok(f_only_summary),
         "twin_physical_domain_ok": physical_domain_ok(twin_summary),
+        "g_only_summary": g_only_summary,
+        "f_only_summary": f_only_summary,
         "twin_summary": twin_summary,
     }
 
@@ -259,8 +332,13 @@ def main() -> int:
         regression_rel_tol=args.regression_rel_tol,
     )
     print(json.dumps(report, indent=2, sort_keys=True, allow_nan=True))
-    if not report["twin_physical_domain_ok"]:
-        print("A1 hard physical-domain gate: FAIL")
+    hard_flags = (
+        report["g_only_physical_domain_ok"],
+        report["f_only_physical_domain_ok"],
+        report["twin_physical_domain_ok"],
+    )
+    if not all(hard_flags):
+        print("A1 hard physical-domain gate: FAIL in at least one patched control/experiment")
         return 2
     print("A1 hard physical-domain gate: PASS (constraints/convergence still require A2)")
     return 0
