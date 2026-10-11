@@ -10,6 +10,7 @@ from __future__ import annotations
 import math
 import numpy as np
 from scipy.integrate import solve_ivp
+from scipy.optimize import brentq
 
 
 def coupling_matrix(f_g: float, x: float) -> np.ndarray:
@@ -69,3 +70,56 @@ def integrate_equal_seed(
         "delta_f": float(df),
         "velocity_f": float(vf),
     }
+
+
+def critical_visible_fraction_for_twin_sign_flip(
+    *,
+    z_start: float,
+    x: float = 1.0,
+    f_min: float = 0.500001,
+    f_max: float = 0.999999,
+) -> float:
+    """Return f_g for which an initially common seed ends with delta_f=0.
+
+    For a negative common seed (a proto-void), f_g above this threshold makes
+    the final twin perturbation positive: true anti-correlation. This is only
+    an EdS constant-x upper-bound diagnostic.
+    """
+
+    def final_twin(f_g: float) -> float:
+        return integrate_equal_seed(
+            f_g=f_g, x=x, z_start=z_start, seed=1.0
+        )["delta_f"]
+
+    lo, hi = final_twin(f_min), final_twin(f_max)
+    if lo == 0.0:
+        return f_min
+    if hi == 0.0:
+        return f_max
+    if lo * hi > 0.0:
+        raise ValueError("no twin sign-flip threshold in the requested f_g interval")
+    return float(brentq(final_twin, f_min, f_max, xtol=1e-12, rtol=1e-12))
+
+
+def critical_unscreened_strength_for_twin_sign_flip(
+    *,
+    f_g: float,
+    z_start: float,
+    x_min: float = 0.0,
+    x_max: float = 1.0,
+) -> float:
+    """Return x for which an initially common seed ends with delta_f=0."""
+
+    def final_twin(x: float) -> float:
+        return integrate_equal_seed(
+            f_g=f_g, x=x, z_start=z_start, seed=1.0
+        )["delta_f"]
+
+    lo, hi = final_twin(x_min), final_twin(x_max)
+    if lo == 0.0:
+        return x_min
+    if hi == 0.0:
+        return x_max
+    if lo * hi > 0.0:
+        raise ValueError("no twin sign-flip threshold in the requested x interval")
+    return float(brentq(final_twin, x_min, x_max, xtol=1e-12, rtol=1e-12))
