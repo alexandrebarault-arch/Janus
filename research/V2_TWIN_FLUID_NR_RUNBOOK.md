@@ -1,7 +1,7 @@
 # V2 Twin-Fluid Numerical-Relativity Runbook
 
 Date: 2026-10-11
-Status: `DESIGN_READY__UPSTREAM_BUILD_NOT_YET_EXECUTABLE_IN_CURRENT_SANDBOX`
+Status: `DESIGN_READY__GENERAL_TWIN_LAPSE_FOUND__UPSTREAM_BUILD_NOT_YET_EXECUTABLE_IN_CURRENT_SANDBOX`
 
 ## Purpose
 
@@ -25,7 +25,9 @@ Direct local clone/download from GitHub failed in the current execution environm
 
 `Could not resolve host: github.com`
 
-Therefore no claim is made that the upstream C++ solver has been compiled or run in this session. Source inspection is grounded through the GitHub connector only.
+Direct attempts to download the arXiv ancillary Mathematica files also failed in the local runtime, although arXiv exposes them publicly on the paper page.
+
+Therefore no claim is made that the upstream C++ solver has been compiled or run in this session. Source inspection is grounded through the GitHub connector and published equations.
 
 ## First formulation to extend
 
@@ -96,7 +98,8 @@ A search for the existing `pf*` state in the standard formulation identifies at 
 1. `src/bim-solver-std.cpp`
    - state registration;
    - evolved/input/output fields;
-   - radial derivatives and preparation.
+   - radial derivatives and preparation;
+   - origin/right-boundary parity and extrapolation.
 2. `include/eom-std/eomMatter.h`
    - g Valencia RHS/primitives.
 3. `include/eom-std/eomSources.h`
@@ -109,7 +112,9 @@ A search for the existing `pf*` state in the standard formulation identifies at 
 6. `include/eom-std/eomEvolution.h`
    - `gSig_t` contains a direct `S_g` matter term; the f-symmetric term is absent.
 7. `include/eom-std/eomLapseRatios.h`
-   - the lapse relation contains explicit `D_g,S_g,tau_g` terms and was algebraically generated under the one-fluid assumption.
+   - the lapse relation contains explicit `D_g,S_g,tau_g` terms and was algebraically specialized to the one-fluid case.
+8. `include/maximalSlice.h`
+   - the maximal-slicing operator also hard-codes the g fluid and contains upstream TODO/fixme notes about the source/factor. Do not use this implementation as a twin-fluid physical diagnostic without rederivation.
 
 Therefore a physically complete twin-fluid extension is broader than merely adding `f_rho`.
 
@@ -145,7 +150,7 @@ Combining the two momentum constraints to eliminate `p` shows that the current m
 
 in the current code conventions (`R=B_f/B_g`).
 
-This is a useful regression identity: the corrected `C_3` must reduce exactly to the upstream expression when `S_f=0`.
+This agrees structurally with the general mixed constraint of Kocic-Lundkvist-Torsello, which contains the matter momenta from both sectors. It is a useful regression identity: the corrected `C_3` must reduce exactly to the upstream expression when `S_f=0`.
 
 ## Source-function correction structure
 
@@ -159,16 +164,67 @@ At minimum:
 
 The `JK/JKD` additions must be obtained by the exact g<->f sector symmetry of the matter-only portions of `eq_g_JK` and `eq_g_JKD`, not by modifying interaction terms.
 
-## Lapse-ratio warning
+## Major correction: the general twin-matter lapse ratio is already published
 
-`include/eom-std/eomLapseRatios.h` explicitly contains the g Valencia variables. It is not safe to assume that merely adding f source functions elsewhere yields the correct two-fluid lapse relation.
+Primary reference:
 
-Before the first evolution, one must either:
+M. Kocic, A. Lundkvist, F. Torsello, *On the ratio of lapses in bimetric relativity*, Class. Quantum Grav. 36 (2019) 225013, arXiv:1903.09646.
 
-1. regenerate/derive the lapse relation with both conserved matter tensors; or
-2. use a gauge/lapse prescription whose validity follows directly from the full 3+1 constraint propagation with both matter sectors.
+The paper starts from the fully general action with **both** minimally coupled matter sectors and derives the standard-3+1 constraints with both matter momenta. Preservation of the secondary bimetric constraint gives, in spherical symmetry,
 
-Do **not** silently retain the one-fluid lapse formula and call the result twin-matter bigravity.
+`0 ~= W_g alpha + W_f alpha_f`
+
+(up to their common nonzero normalization `W_c`), hence
+
+`alpha = -(W_f/W_g) alpha_f`.
+
+The authors explicitly state that `W_g` and `W_f` depend on spatial metrics, extrinsic curvatures, derivatives **and the matter stress-energy tensors**, and therefore matter coupled to either metric automatically affects the lapse of the other metric.
+
+The explicit formulas are Eqs. (2.20)-(2.22), with coefficient functions `c_i,d_i` in Appendix D. The paper also gives the duality
+
+`g <-> f`, `beta_{4-n} <-> beta_n`, `p <-> -p`,
+
+under which `W_g <-> -W_f`.
+
+### Ancillary derivation files
+
+The arXiv record explicitly lists machine-readable ancillary material, including:
+
+- `src/02-lapse-ratio.nb`
+- `src/bimetric-lapses-nr.m`
+- `src/bimetric-ss-nr.m`
+
+and the later dust-collapse paper arXiv:1904.08617 also publishes `bimetric-lapses-nr.m` and related source files.
+
+The current sandbox could not download these files because of network/cache restrictions. **Do not manually transcribe the full Appendix-D algebra into production C++ if the ancillary source can be obtained in the actual fork environment.** Prefer importing/translating the authors' symbolic expressions and validating them.
+
+### Required implementation strategy for the lapse
+
+Replace the old vague instruction "derive a two-fluid lapse" with this concrete gate:
+
+1. obtain the published ancillary symbolic expression;
+2. implement general `W_g,W_f` with both matter sectors;
+3. unit-test the `g <-> f` duality;
+4. set all f-matter variables to zero and require numerical/algebraic agreement with upstream `eomLapseRatios.h` over randomized regular states;
+5. only then enable twin-fluid evolution.
+
+This regression is mandatory. The existing one-fluid lapse formula must **not** be silently retained.
+
+### Gauge after the ratio is known
+
+Once `W=-W_f/W_g` is available, one lapse remains a gauge choice. A symmetric geometric-mean gauge is available through the published relation
+
+`H^2 lambda = alpha alpha_f`.
+
+For a chosen geometric-mean lapse `H`, the two sector lapses follow from `W`. This is preferable for a symmetric twin-matter diagnostic to arbitrarily fixing both lapses.
+
+Cases where `W_g` or `W_f` vanishes/diverges are physical/numerical branch warnings and must be monitored explicitly.
+
+## Maximal-slicing shortcut rejected
+
+The upstream `include/maximalSlice.h` solves a lapse BVP whose source explicitly contains the g perfect fluid, and the file itself carries TODO/fixme comments about the factor/source choice. It was designed for the existing one-fluid experiments.
+
+Therefore do **not** use this routine to infer the initial acceleration of twin matter. The correct two-fluid lapse ratio is the general `W_g,W_f` relation above.
 
 ## Initial-data reference already available
 
@@ -203,7 +259,7 @@ Use at least three radial resolutions/Courant factors and monitor:
 - both Hamiltonian constraints;
 - both momentum constraints;
 - secondary bimetric constraint;
-- lapse ratio;
+- lapse ratio `W` and separately `W_g,W_f`;
 - separation `p`;
 - metric determinants / positivity;
 - g and f conserved rest masses separately;
@@ -216,16 +272,20 @@ The 2020 paper reports only short reliable bimetric evolutions in the standard f
 
 Conversely, do not excuse a nonconvergent immediate wall failure as 'just numerics' without a successful control run.
 
+The standard-3+1 **constraint propagation subsystem** has separately been shown to be first-order symmetric hyperbolic in bimetric relativity; this supports using convergent constraint growth as a meaningful diagnostic, while it does not by itself establish strong hyperbolicity of every gauge-fixed evolution implementation.
+
 ## Next execution checkpoint
 
 When a local clone/fork can actually be materialized:
 
 1. build untouched `bim-solver-STD`;
 2. reproduce one one-fluid baseline;
-3. write RED tests/diagnostics for the second state;
-4. implement second state + symmetric Valencia equations;
-5. correct all hard-coded matter assumptions listed above;
-6. validate time-symmetric constraints;
-7. run the short wall evolution.
+3. obtain the arXiv symbolic lapse-ratio ancillary files;
+4. write RED tests for the second matter state and general `W_g,W_f`;
+5. implement second state + symmetric Valencia equations;
+6. correct all hard-coded matter assumptions listed above;
+7. prove `T_f=0` lapse/source regression against upstream;
+8. validate time-symmetric constraints;
+9. run the short wall evolution.
 
 No cosmological or observational claim is allowed before this sequence.
