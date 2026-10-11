@@ -20,7 +20,7 @@ Close Gate 2B: determine the full non-homothetic scalar transfer of Candidate C 
 - This is NOT sufficient validation: its local 8D Jacobian reproduces the visible radiation pair at `c = 1/sqrt(3)`, proving the k/time normalization is correct, but the second propagating pair is only about `c = 0.0159` at `z=1`, whereas the independent De Felice high-k scalar prediction is about `c_s = 0.8319` there.
 - De Felice et al. Eq. (86) gives three scalar high-frequency speeds for the two-fluid problem: one gravitational scalar speed plus the sound speed of the g-fluid plus the sound speed of the f-fluid. Thus the slow pair in the current reduction cannot replace the missing helicity-0 pair.
 - Replacing differentiated `g00` by differentiated `f00` as the twelfth closure equation leaves the local eigenvalue spectrum unchanged to numerical precision. The choice of which differentiated 00 equation closes the 12x12 system is therefore not the cause of the missing gravity pair.
-- Candidate C itself has visible dust + visible radiation coupled to g and twin dust coupled to f, i.e. one more matter scalar than the two-fluid De Felice setup. A clean diagnostic must therefore also test an exactly one-fluid-per-metric background before blaming the Comelli reduction.
+- A self-consistent local dust+dust diagnostic was run with the Candidate-C interaction parameters but visible radiation set to zero in the background itself. At `a=0.5`, `k=0.5 h/Mpc`, it gives `c=0.93708463` and the independent De Felice gravitational speed `c_s=0.83190833`. The current 6D `(E,E',delta_g,u_g,delta_f,u_f)` reduction still produces only the pair `-1.95236 +/- 23.89281 i`, i.e. propagation speed `23.89281/1498.96229 = 0.0159396`, plus real dust/gravity modes. Therefore the effective visible dust+radiation approximation is decisively NOT the source of the missing helicity-0 pair.
 - Therefore the present 12x12 reduction does not yet reproduce the physical helicity-0 principal symbol. Do not integrate it for physics conclusions.
 - The current red TDD test is `tests/test_comelli_native_scalar.py`; it asks for a native high-k scalar system matching the De Felice propagation speed. `numerics/comelli_native_scalar.py` does not yet exist.
 
@@ -31,6 +31,7 @@ Close Gate 2B: determine the full non-homothetic scalar transfer of Candidate C 
 - Replacing `(B1-E')` by `(B1-E)` to match extracted PDF text: rejected for now; direct substitution of the gauge-invariant definitions yields `(B1-E')`. Any reversal requires an explicit derivation from the raw definitions, not PDF OCR/text extraction.
 - Treating the current 12x12 closure as validated just because Bianchi residuals vanish: rejected. A Bianchi-consistent reduction can still project out the physical helicity-0 mode.
 - Blaming the use of differentiated `g00` rather than differentiated `f00`: rejected; swapping them does not change the spectrum.
+- Blaming the Candidate-C visible dust+radiation mixture or the single-effective-fluid approximation: rejected by the self-consistent dust+dust background test; the same slow spurious pair remains while De Felice predicts `c_s~0.832`.
 
 ## Active task list
 
@@ -43,7 +44,7 @@ Close Gate 2B: determine the full non-homothetic scalar transfer of Candidate C 
 - [x] Add independent high-k scalar-speed regression against De Felice.
 - [x] Diagnose local 8D eigenmodes: radiation correct, helicity-0 speed wrong/missing.
 - [ ] **T1 — Derive the high-k principal symbol directly from the published Comelli scalar equations, retaining only terms that scale as `omega^2`, `omega k`, or `k^2`.** IN PROGRESS.
-- [ ] **T1a — Build a self-consistent one-fluid-per-metric local background (preferably dust+dust, no visible radiation) and test the closure there.** This separates a genuine metric-reduction error from the effective-fluid approximation used on Candidate C.
+- [x] **T1a — Build a self-consistent one-fluid-per-metric local background (dust+dust, no visible radiation) and test the closure there.** Result: same failure; mixture hypothesis rejected.
 - [ ] **T2 — Compare that principal symbol with the De Felice scalar speed on the same background, and on Candidate C at (`a=0.5`, `k=0.5 h/Mpc`).**
 - [ ] **T3 — Identify which equation/identity in the 12x12 closure changes the principal-symbol rank or removes the helicity-0 pair. Test equation substitutions one at a time; do not tune coefficients.** `d(g00)` vs `d(f00)` has already been ruled out.
 - [ ] **T4 — Implement the minimal corrected native scalar system in `numerics/comelli_native_scalar.py`.**
@@ -66,4 +67,4 @@ If this cannot be obtained from the equations currently transcribed, stop and re
 
 ## Immediate restart instruction
 
-Start at **T1/T1a**. First test the reduction on a self-consistent one-fluid-per-metric background so that the De Felice two-fluid degree count applies exactly. Then inspect the principal high-k coefficients of the Comelli equations and the existing closure. Do not modify physical coefficients merely to fit De Felice. Every change must be justified by a published equation or a direct derivation from the gauge-invariant definitions, followed by a red/green test. Update this file immediately after every new ruling or completed task.
+Start at **T1**. T1a is complete and shows the bug is intrinsic to the current metric reduction/transcription, not the matter mixture. Derive the principal high-k system directly from the undifferentiated published Comelli equations and compare its gravity pair to De Felice before changing the 12x12 closure. Do not modify physical coefficients merely to fit De Felice. Every change must be justified by a published equation or a direct derivation from the gauge-invariant definitions, followed by a red/green test. Update this file immediately after every new ruling or completed task.
