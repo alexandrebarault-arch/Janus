@@ -27,46 +27,60 @@ The Candidate-C background is under control, but the current 12x12 metric closur
 
 - Comelli matter conservation A.7-A.9 and Einstein scalar equations A.10-A.16 have been independently recross-checked against the primary paper.
 - Slip relations used by JANUS agree with Comelli Eq. (4.1).
-- The implemented A1/A2 sum/difference identities agree with the primary Comelli 2012 formulas, including the signs of `B1`, `B1'`, `E'`, `E''`, `c'`, `Psi2-Psi1`, `H`, and `H_omega`.
-- A.17 is algebraically valid and must not be deleted merely because some selected minors look better without it.
-- A.18 remains a notation/typography ambiguity: direct substitution of the gauge-invariant definitions gives `(B1-E')`, while the printed 2014 equation shows `(B1-E)`. Testing either choice inside the existing closure does **not** restore the missing high-k pair.
-- Comelli Appendix B.2 explicitly proves the underlying published system contains the helicity-0 gradient. For Case C, Eq. (B.5) contains an `O(k^2 E)` term.
-- In the benchmark `w1=1/3`, `w2=0`, `a2=a3=0` so `f1=f2`, B.5 decouples to
-  `E'' + (3/tau) E' - (2/3) k^2 E = 0` inside the horizon. Therefore the first required Case-C principal factor is `3 q^2 - 2` for a local growing/decaying ansatz with `s=q k` at `k tau >> 1`.
+- The implemented A1/A2 sum/difference identities agree with the primary Comelli 2012 formulas.
+- A.17 is algebraically valid and must not be deleted merely because selected minors look better without it.
+- A.18 remains a notation/typography ambiguity: direct substitution of the gauge-invariant definitions gives `(B1-E')`, while the printed equation shows `(B1-E)`. Testing either choice in the current closure does not restore the missing high-k pair.
+- Comelli Appendix B.2 explicitly contains the helicity-0 gradient. For `w1=1/3`, `w2=0`, `a2=a3=0`, hence `f1=f2`, B.5 reduces inside the horizon to
+  `E'' + (3/tau) E' - (2/3) k^2 E = 0`.
+  The required leading sub-horizon factor is therefore `3 q^2 - 2` for a local ansatz `s=q k`.
 
 ### Current JANUS closure and failure
 
-- Seven scalar constraints/identities have rank 6 at fixed `E'`; the other six nondynamical quantities can be solved.
-- Metric acceleration layer and Candidate-C 12x12 closure are implemented and pass algebraic residual, linearity, and held-out `f00` Bianchi checks.
-- These checks are insufficient physically.
-- At Candidate C, `a=0.5`, `k=0.5 h/Mpc`, the local 8D Jacobian correctly recovers visible radiation propagation at `1/sqrt(3)`, proving the time/k normalization is correct.
-- The second oscillatory pair is only `c~0.0159`, while the independent De Felice gravitational scalar prediction is `c_s~0.8319`.
-- On a self-consistent dust+dust Candidate-C background the same spurious pair remains. Visible dust+radiation mixing is therefore not the cause.
-- Increasing k makes the faulty oscillatory frequency approach a constant `omega~23.894 H0`, so its apparent speed falls as `1/k`; the reconstructed `E''` coefficient tends to about `-571`, not `-c_s^2 k^2`. The gradient term is structurally absent.
-- Swapping differentiated `g00` and differentiated `f00` as the closure equation leaves the spectrum unchanged.
-- Zeroing or varying individual background derivatives does not restore the gradient.
-- Flipping only the f-sector spatial-trace interaction sign changes the slow speed only from about `0.01594` to `0.01557`; it is rejected as a sufficient fix. No physical coefficient was changed in Git.
-- The closure matrix is ill-conditioned (`cond~1.7e9` at the Candidate-C comparison point), but this is **not** the cause: an 80-digit solve gives `E''=-571.3163904968205`, while double precision differs by only ~`4e-16` relative. The missing `k^2` term is not floating-point loss.
+- Seven scalar constraints/identities have rank 6 at fixed `E'`; the other six nondynamical variables can be solved.
+- Metric acceleration and the Candidate-C 12x12 closure pass algebraic residual, linearity, and held-out `f00` Bianchi checks, but these checks are not sufficient physically.
+- Candidate C at `a=0.5`, `k=0.5 h/Mpc` recovers visible radiation at exactly `1/sqrt(3)`, proving the k/time normalization is correct.
+- The second oscillatory pair is only `c~0.0159`, while independent De Felice gives gravitational `c_s~0.8319`.
+- A self-consistent dust+dust Candidate-C background gives the same spurious pair; the visible dust+radiation mixture is not the cause.
+- Increasing k makes the faulty frequency approach `omega~23.894 H0`; its apparent speed falls as `1/k`. The reconstructed `E''` coefficient tends to about `-571`, rather than `-c_s^2 k^2`: the gradient term is structurally absent.
+- Swapping differentiated `g00`/`f00`, varying individual background derivatives, changing A.18 prime/unprime, and an isolated f-trace interaction-sign flip do not repair the Candidate-C closure.
+- The closure conditioning is not the cause: an 80-digit solve agrees with double precision at ~`4e-16` relative for the relevant `E''` coefficient.
 
-### Correct Case-C asymptotic ordering
+## Correct Case-C asymptotics — IMPORTANT CORRECTION
 
-- The original Comelli derivation first expands in the early-time parameter `epsilon=m/H`, then studies sub-horizon `k tau >> 1`.
-- The exact a1-only on-shell Case-C family can be parameterized by `epsilon=xi`, with `H=1/epsilon`, `rho1=3/epsilon^2-3 epsilon`, `rho2=3/epsilon^4-1/epsilon^3`, and `c -> 2` for `w1=1/3`, `w2=0`.
-- The authors normalize the gravitational scalar as `E_N=E/tau^2`; in radiation `tau~epsilon`, so `E~epsilon^2 E_N`.
-- Natural first-step scalings are therefore: `E/epsilon^2`, `Phi1`, `Phi2`, `F1`, `F2`, density contrasts = `O(1)`; shifts and velocity potentials = `O(epsilon)`.
-- Taking only `k->infinity` at fixed epsilon is not the correct regression for Comelli B.5; the limits are singular and need the `epsilon` hierarchy first.
-- With the proper `epsilon` normalization, the leading 13x11 direct system has rank 9. Its two-dimensional right kernel lies in the gravitational `(E,B,F)` sector. The dispersion therefore appears through higher-order solvability, not through a naive leading determinant.
-- The first `O(epsilon)` compatibility calculation still does not reproduce B.5, with either printed or derivative A.18. This means the gravity dispersion appears at a higher compatibility order and/or requires retaining the complete spatial-equation hierarchy. Do not interpret a first-order determinant as the physical dispersion relation.
+A previous scratch benchmark incorrectly imposed **`xi = epsilon`**, where `epsilon = m/H`. That mixes two distinct limits and is **not** the Case-C expansion used by Comelli. Treat all results that depended on `xi=epsilon` as mixed-limit diagnostics only, not decisive Case-C regressions.
 
-### Exact benchmark point retained for numerical checks
+The correct ordering is:
 
-For `epsilon=1/1000`:
+1. `epsilon = m/H -> 0` while `xi = X` is held `O(1)` at leading order;
+2. only after the early-time epsilon expansion, take the sub-horizon limit `k tau >> 1`.
 
-- `a=1`, `xi=1/1000`, `kappa=m^2=a1=G=1`, `w1=1/3`, `w2=0`, `H=1000`;
-- `rho1=2999999997/1000`;
-- `rho2=2999000000000`;
-- `c=2000999997/1000000001`;
-- background derivatives must be generated consistently from the exact family, not inserted approximately.
+For the exact on-shell `a1`-only benchmark in units `a=1`, `m^2=kappa=a1=8piG=1`, with `w1=1/3`, `w2=0`, `H=1/epsilon`, and independent fixed `xi=X`:
+
+- `rho1 = 3/epsilon^2 - 3 X`;
+- `rho2 = 3/(epsilon^2 X^2) - 1/X^3`;
+- `c = -(3 X^2 epsilon^2 - 2X - epsilon^2)/(X*(X epsilon^2+1)) = 2 + epsilon^2*(1/X - 5X) + O(epsilon^4)`;
+- `f1=f2=X` for the `a1`-only benchmark;
+- consistent derivatives are generated from this exact family; do not insert the old `xi=epsilon` derivatives.
+
+Use the authors' normalized gravitational scalar `E_N=E/tau^2`. Natural weights are `E~epsilon^2 E_N`, `B~epsilon`, velocity potentials `u~epsilon`, while `Phi`, `F`, and density contrasts are `O(1)`.
+
+With the correct fixed-X family and row/variable scaling:
+
+- the leading direct 13x11 system has rank 9 and a two-dimensional gravitational right kernel;
+- the full `O(epsilon)` Fredholm compatibility operator is **exactly zero**. This is a major consistency check and replaces the earlier mixed-limit result where a spurious first-order obstruction appeared;
+- the first nontrivial compatibility is therefore `O(epsilon^2)`;
+- at large sub-horizon `K=k epsilon`, the `O(epsilon^2)` compatibility matrix in one convenient kernel basis has leading form
+
+  ```text
+  [ -X/6      2X    ]
+  [ -X q/4    3X q  ]
+  [  1/(6X)  -2/X   ]
+  [  q/(4X)   q/X   ]
+  ```
+
+  for the equations as currently transcribed. The first three rows require kernel-amplitude ratio `a=12 b`, while the fourth requires `a=-4 b` for `q!=0`. The remaining incompatibility is therefore localized to the f-sector compatibility/spatial hierarchy at this order.
+- As a diagnostic only, flipping the f-trace interaction block makes the **leading** large-K rows mutually consistent (`a=12b`), but this is not accepted as a correction: the same isolated sign flip already fails the Candidate-C speed test, and subleading compatibility has not yet yielded `3 q^2-2`.
+- Do not change a physical sign in Git unless the full Case-C B.5 regression and independent Candidate-C De Felice regression both require it.
 
 ## Rejected / resolved hypotheses
 
@@ -75,12 +89,13 @@ For `epsilon=1/1000`:
 - choosing `d(g00)` rather than `d(f00)` — rejected.
 - one bad background derivative — rejected.
 - De Felice normalization/transcription error — rejected.
-- simple A1/A2 sign typo — strongly rejected by primary-source comparison.
-- A.18 prime vs unprime as the sole cause — rejected by direct closure tests; notation issue remains open only for exact derivation consistency.
-- isolated f-trace interaction-sign flip — rejected as sufficient fix.
-- double-precision conditioning — rejected by 80-digit solve.
-- interpreting Bianchi residuals as proof of correct physical mode content — rejected.
-- interpreting a single selected high-k minor as the dispersion relation — rejected.
+- simple A1/A2 typo — rejected by primary-source comparison.
+- A.18 prime vs unprime as sole cause — rejected.
+- isolated f-trace sign flip as sufficient fix — rejected on Candidate C; remains only a Case-C diagnostic clue.
+- double-precision conditioning — rejected by high-precision solve.
+- Bianchi residuals as proof of correct mode content — rejected.
+- a selected high-k minor as the dispersion relation — rejected.
+- `xi=epsilon` as the Case-C asymptotic family — **rejected; it mixes limits**.
 
 ## Active task list
 
@@ -92,21 +107,20 @@ For `epsilon=1/1000`:
 - [x] Implement/test 12x12 closure plus held-out Bianchi diagnostic.
 - [x] Add independent De Felice high-k regression.
 - [x] Diagnose local 8D modes: radiation correct, helicity-0 missing.
-- [x] Rule out dust/radiation mixture, d00 choice, derivative coefficients, simple A1/A2 typo, isolated f-trace sign, target normalization, and floating-point loss.
 - [x] **T1a** — self-consistent one-fluid-per-metric dust+dust comparison.
 - [x] **T1b** — primary-source audit of Comelli equations and De Felice target.
-- [ ] **T1c — Reproduce Comelli Case-C B.5 from the direct equations using the correct double asymptotic expansion.** IN PROGRESS.
-  - [x] T1c.1 — construct exact on-shell `epsilon` family.
-  - [x] T1c.2 — introduce `E_N=E/epsilon^2` and natural epsilon weights.
-  - [x] T1c.3 — compute leading system; rank is 9 with a two-dimensional gravitational right kernel.
-  - [x] T1c.4 — compute first-order left/right-kernel solvability; insufficient to recover B.5.
-  - [ ] **T1c.5 — carry the singular solvability expansion to the next nonzero order until the common Case-C compatibility factor is obtained. Acceptance: recover B.5 and `3 q^2-2` without deleting valid equations or tuning coefficients.**
-  - [ ] T1c.6 — verify the result is invariant under replacing Bianchi-redundant row representatives.
-- [ ] **T2 — Apply the validated principal reduction to a dust+dust Candidate-C point and recover the independent De Felice gravity speed.**
+- [ ] **T1c — Reproduce Comelli Case-C B.5 from the direct equations with the correct two-stage asymptotics.** IN PROGRESS.
+  - [x] T1c.1 — replace the invalid `xi=epsilon` path by an exact two-parameter on-shell family (`epsilon->0`, `xi=X=O(1)`).
+  - [x] T1c.2 — apply `E_N=E/tau^2` and natural epsilon weights.
+  - [x] T1c.3 — compute leading system: rank 9, gravitational right kernel dimension 2.
+  - [x] T1c.4 — show the `O(epsilon)` compatibility operator vanishes exactly on the correct family.
+  - [ ] **T1c.5 — compute the next Fredholm/sub-horizon compatibility orders until the published B.5 factor `3 q^2-2` is recovered without deleting valid equations or tuning coefficients.**
+  - [ ] T1c.6 — verify invariance under Bianchi-redundant row representatives.
+- [ ] **T2 — Apply the validated principal reduction to dust+dust Candidate C and recover the independent De Felice gravity speed.**
 - [ ] **T3 — Locate the exact structural mistake in the current 12x12 closure by comparing it term-by-term with the validated reduction.**
-- [ ] **T4 — Implement the corrected native scalar system in `numerics/comelli_native_scalar.py`.**
+- [ ] **T4 — Implement corrected `numerics/comelli_native_scalar.py`.**
 - [ ] **T5 — Make `tests/test_comelli_native_scalar.py` green and add >=3 additional `(z,k)` high-k regressions.**
-- [ ] **T6 — Re-run all Gate-2B constraint/acceleration/Bianchi tests; no regression allowed.**
+- [ ] **T6 — Re-run every Gate-2B constraint/acceleration/Bianchi test; no regression allowed.**
 - [ ] **T7 — Only then build the time-domain transfer RHS and integrate a fundamental transfer matrix.**
 - [ ] **T8 — Track the GR-connected/adiabatic mode continuously; do not define it merely by `delta_g=delta_f`.**
 - [ ] **T9 — Compute `T_gg`, `T_gf`, `T_fg`, `T_ff` and relative-mode growth over the linearly stable interval.**
@@ -114,18 +128,18 @@ For `epsilon=1/1000`:
 
 ## Current red regression
 
-`tests/test_comelli_native_scalar.py`
-
-It imports the not-yet-created `numerics/comelli_native_scalar.py` and requires a native scalar system whose high-k gravity pair matches De Felice at Candidate C.
+`tests/test_comelli_native_scalar.py` imports the not-yet-created `numerics/comelli_native_scalar.py` and requires a native scalar high-k gravity pair matching De Felice at Candidate C. Do not implement around this test until T1c is closed.
 
 ## Immediate restart instruction
 
-**Resume at T1c.5.**
+**Resume at T1c.5 on the fixed-X family.**
 
-1. Use the symbolic exact `epsilon` family, not a fixed-epsilon `k->infinity` shortcut.
-2. Work with `E_N=E/epsilon^2`, density contrasts rather than raw `delta rho`, and the established natural epsilon weights.
-3. Expand the row-scaled direct 13x11 polynomial system beyond first compatibility order using right/left nullspaces (singular perturbation / Fredholm solvability).
-4. Continue until a nonzero compatibility matrix produces the published Case-C equation B.5. In the `w1=1/3`, `w2=0`, `f1=f2` benchmark, the sub-horizon factor must reduce to `3 q^2-2`.
-5. Do not delete A.17, do not tune coefficients, and do not change physical signs merely to fit the target.
-6. After every new hard ruling, update this file before proceeding.
-7. Only after B.5 is recovered move to T2 and Candidate C.
+1. Keep `epsilon=m/H` and `xi=X` independent; never restore `xi=epsilon`.
+2. Use the exact on-shell background and consistent derivatives.
+3. Work with `E_N=E/tau^2`, density contrasts, and established epsilon row/variable weights.
+4. Starting from the exact result `M1=0`, compute the `O(epsilon^2)` and higher Fredholm compatibility together with the large-`K=k epsilon` expansion.
+5. Allow the kernel vector/amplitude ratio itself to have a `1/K` expansion; do not infer dispersion from one leading ratio or selected minor.
+6. Acceptance remains the published B.5 result and, in the benchmark, the high-k factor `3 q^2-2`.
+7. Do not delete A.17, tune coefficients, or change physical signs merely to fit the target.
+8. Update this file after every new hard ruling.
+9. Only after B.5 is recovered move to T2 Candidate C.
