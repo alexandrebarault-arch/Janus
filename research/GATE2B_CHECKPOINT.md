@@ -26,74 +26,80 @@ The Candidate-C background/convention bridge is under control. The old 12x12 per
 ### Published scalar equations
 
 - Comelli matter conservation A.7-A.9, Einstein scalar equations A.10-A.16, slips, A.17, and the A1/A2 auxiliary identities have been independently re-audited.
-- The complete primary-source A.12/A.16 spatial equations were checked **before** slip reduction. Each contains an anisotropic block plus a pure-trace block. JANUS slips are exactly the vanishing of those anisotropic brackets, so the post-slip trace equations are not missing an explicit spatial-gradient term.
-- Primary Comelli A.16 really has the positive f-sector trace interaction block in Comelli's variables. An opposite sign seen in an independent Lagos-Ferreira formulation is convention-dependent and is not evidence for changing JANUS.
-- A.17 is algebraically valid; do not remove it to improve a determinant.
-- A.18 has a real notation/typography issue. Raw gauge-invariant definitions give `Xi2-c^2 Xi1 = calB1-calE'`, hence `(calB1-calE')`, while the printed appendix shows `(calB1-calE)`.
-- **A.18 changes constraint rank.** On `H_omega=cH`, for variables `[E',Phi1',Phi2',B1,B2,F1,F2]`, the seven constraint/identity equations have rank 6 with derived `(B1-E')`, but rank 7 with printed `(B1-E)` for generic `c!=1`. The printed-form determinant is proportional to `H^3 a^4 c^2 f2^2 m^4 (c-1)/(kappa xi^2)`.
-- Therefore declaring `E'` freely dynamical is justified only in the derived-prime organization and must not be assumed while auditing the printed system.
-- Comelli Appendix B.2 explicitly contains the missing helicity-0 gradient. For `w1=1/3`, `w2=0`, `a2=a3=0`, `f1=f2`, B.5 reduces sub-horizon to `E'' + (3/tau) E' - (2/3) k^2 E = 0`, so the benchmark dispersion must contain `q^2=2/3` (`3q^2-2`).
-- With `E=tau^2 e(x)` and `x=k tau`, that benchmark is equivalently `x^2 e_xx + 7 x e_x + 8 e - (2/3) x^2 e = 0`. This normalized operator is the current acceptance target before any WKB substitution.
+- The complete A.12/A.16 equations were checked before slip reduction. The anisotropic brackets vanish exactly under the JANUS slip relations, so no explicit spatial-gradient block was accidentally dropped there.
+- Primary Comelli A.16 has the positive f-sector trace interaction block in Comelli conventions. Flipping only this sign in scratch changes the spurious speed from ~`0.01594` to ~`0.01557`, not to the De Felice value; this is not the fix.
+- A.17 is algebraically valid and must not be removed to improve a determinant.
+- A.18 has a genuine notation/typography ambiguity. Raw gauge-invariant definitions give `(calB1-calE')`; the printed appendix shows `(calB1-calE)`.
+- A.18 changes constraint rank. On `H_omega=cH`, the seven constraint/identity equations have rank 6 with derived-prime A.18 but rank 7 with printed-unprime A.18 for generic `c!=1`.
+- Comelli Appendix B.2 explicitly contains the missing helicity-0 gradient. For `w1=1/3`, `w2=0`, `a2=a3=0`, `f1=f2`, B.5 reduces sub-horizon to `E'' + (3/tau)E' - (2/3)k^2 E = 0`.
+- With `E=tau^2 e(x)` and `x=k tau`, the exact acceptance operator is `x^2 e_xx + 7x e_x + 8e - (2/3)x^2 e = 0`; only after recovering this should one take the high-x/WKB factor `3q^2-2`.
 
 ### Old JANUS closure failure
 
-- The old closure is built on the derived-prime A.18 and rank-6-at-fixed-`E'` assumption.
-- It passes residual, linearity and held-out `f00` Bianchi tests but fails physical mode content.
+- The old closure is built on derived-prime A.18 and a rank-6-at-fixed-`E'` organization.
+- It passes residual, linearity and held-out Bianchi checks but fails physical mode content.
 - Candidate C at `a=0.5`, `k=0.5 h/Mpc` recovers radiation speed exactly `1/sqrt(3)`, proving k/time normalization.
-- Its supposed gravity pair is only `c~0.0159`, versus independent De Felice `c_s~0.8319`.
+- Its second oscillatory pair is only `c~0.0159`, versus independent De Felice gravity speed `c_s~0.8319`.
 - Dust+dust Candidate C gives the same spurious pair.
-- As k grows, the faulty frequency tends to `omega~23.894 H0`, so speed falls as `1/k`; reconstructed `E''` tends to a constant coefficient ~`-571`, not `-c_s^2 k^2`.
-- Swapping differentiated `g00/f00`, varying individual background derivatives, dropping in printed vs derived A.18 inside the same closure, isolated f-trace sign flip, and 80-digit solving do not repair it.
+- As k grows, the faulty frequency tends to `omega~23.894 H0`, so speed falls as `1/k`; reconstructed `E''` approaches a constant coefficient ~`-571`, not `-c_s^2 k^2`.
+- Swapping differentiated `g00/f00`, varying individual background derivatives, printed vs derived A.18 inside the same closure, isolated f-trace sign flip, and 80-digit solving do not repair it.
 
 ## Dynamically on-shell Comelli Case-C benchmark
 
 Use `8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`, with `rho1=3/a^4`, `rho2=3/(a xi)^3`.
 
-Exact branch relation: `a^4 xi^2 + xi - a - a^4/3 = 0`.
+Exact branch:
 
-Positive root: `xi(a)=[-1+sqrt(1+4a^5+(4/3)a^8)]/(2a^4)`.
+`a^4 xi^2 + xi - a - a^4/3 = 0`.
 
-Early-time series:
+Positive root:
+
+`xi(a)=[-1+sqrt(1+4a^5+(4/3)a^8)]/(2a^4)`.
+
+Early time:
 
 - `xi(a)=a+a^4/3-a^6-(2/3)a^9+...`;
 - `a'=sqrt(1+a^4 xi)`;
-- `tau(a)=a-a^6/12-a^9/54+7a^11/88+...`;
-- `a(tau)=tau+tau^6/12+tau^9/54-5tau^11/132+...`;
-- `xi(tau)=tau+tau^4/3-11tau^6/12-29tau^9/54+...`.
+- `a~tau`, `xi~tau`, `H~1/tau`, `H_omega~2/tau`, `rho1~3/tau^4`, `rho2~3/tau^6`, `c->2`.
 
-Leading physical background: `a~tau`, `xi~tau`, `H~1/tau`, `H_omega~2/tau`, `rho1~3/tau^4`, `rho2~3/tau^6`, `c->2`.
+### Executable benchmark added
 
-The older fixed-`xi` family and frozen-`a`, `xi=epsilon` family are diagnostic only; they are not dynamically on-shell Case-C trajectories.
+- `numerics/comelli_case_c.py` now codifies the exact positive root, implicit first/second derivatives, exact on-shell background coefficients, and the scaled derivative identity for `tau^p f(k tau)`.
+- `tests/test_comelli_case_c.py` pins the exact branch residual, the early-time `c->2`, `H a->1` behavior, `f1=f2=xi`, dimensionless `k`, and the operator formulas
+  `D_tau[tau^p f]=tau^(p-1)(p+x d_x)f` and
+  `D_tau^2[tau^p f]=tau^(p-2)(p-1+x d_x)(p+x d_x)f`.
+- Targeted local reconstruction/run: **3 tests passed**.
+- Commit trail: RED test `0e9de06`, interface correction `40a270f`, GREEN implementation `e33a376`.
 
 ## Descriptor / DAE findings
 
-- `numerics/comelli_descriptor.py` represents the published scalar problem directly as `P(s)=P0+sP1+s^2P2`, **13 equations x 11 variables**, without predeclaring any state variable dynamical. Both A.18 variants are retained.
-- `tests/test_comelli_descriptor.py` was written before implementation. Local reconstruction verified `max|P(s)x-direct_residual|=5.55e-17`; the A.18 difference regression also matches analytically.
-- Arbitrary square 11-row subsets are not physical evidence. Some minors omitting A.17 approach `q~sqrt(2/3)` at large `k/H`, but their null vectors have huge cancelling `F1/F2` and fail the full 13-row system.
-- Exact PGCD tests of maximal minors after **freezing time and replacing D_tau by a commuting number s** give 1 for both A.18 variants. This is now rejected as a physical mode criterion: time-dependent Bianchi identities are differential-operator identities, and freezing `D_tau->s` before elimination destroys the operator ordering/hidden-constraint structure one is trying to diagnose.
-- The correct Case-C asymptotic variable is `x=k tau`. Keep `D_tau = partial_tau + (x/tau) partial_x` through elimination. Use `E=tau^2 e(x)`, shifts/velocity potentials `~tau`, and `Phi/F/density-contrast~O(1)` as first weights.
-- The full leading normalized 13-equation hierarchy has a gravitational kernel; the `E` dynamics is not fixed at leading order. For the gravity-connected kernel, induced f-sector metric/matter corrections first appear around `O(tau^3)` while the g-sector corrections appear around `O(tau^5)`.
-- A first hand elimination that **set the leading matter/metric homogeneous amplitudes to zero too early** produced an incorrect second-order equation rather than B.5. That result is rejected as physical: it demonstrates the asymptotic hierarchy is singular and all leading kernel amplitudes/solvability conditions must be retained until compatibility is imposed.
-- Printed-unprime A.18 enters the hierarchy at a different correction order than derived-prime A.18, further confirming that the A.18 ambiguity changes the DAE index/constraint chain rather than one coefficient.
-- T1c.6c therefore remains open. The next derivation must build the Laurent/operator hierarchy with **all** leading kernel amplitudes retained, compute left/right solvability order by order, and only then reduce to an `e(x)` equation.
+- `numerics/comelli_descriptor.py` represents the direct scalar problem as a rectangular `13 equations x 11 variables` quadratic frozen-coefficient polynomial audit tool; no variable is declared dynamical a priori.
+- `tests/test_comelli_descriptor.py` verifies exact reconstruction and keeps both A.18 variants distinct.
+- Arbitrary square 11-row subsets are not physical evidence. Some minors can show `q~sqrt(2/3)` while their null vectors fail the full 13-row system.
+- Frozen-time replacement `D_tau->s` before elimination is insufficient because variable-coefficient Bianchi identities are differential-operator identities; operator ordering and hidden constraints are lost.
+- The correct asymptotic variable is `x=k tau`. Preserve `D_tau=partial_tau+(x/tau)partial_x` through elimination.
+- Natural first weights: `E=tau^2 e(x)`, shifts/velocity potentials `~tau`, `Phi/F/density contrasts~O(1)`.
+- The leading normalized 13-equation hierarchy has a gravitational kernel; E dynamics appears only through higher-order Fredholm compatibility.
+- A previous hand elimination that set homogeneous matter/metric kernel amplitudes to zero too early produced the wrong equation. This is rejected; all kernel amplitudes must survive until compatibility fixes them.
+- Printed-unprime and derived-prime A.18 enter at different orders, so they must be treated as separate descriptor-index chains.
 
 ## Rejected / resolved hypotheses
 
-- k/time-unit normalization error — rejected.
-- visible dust+radiation mixture — rejected.
+- k/time normalization error — rejected by exact radiation speed.
+- visible dust+radiation mixture — rejected by dust+dust comparison.
 - differentiated `g00` vs `f00` choice — rejected.
 - one bad background derivative — rejected.
 - De Felice normalization/transcription error — rejected.
 - simple A1/A2 typo — rejected by primary-source audit.
-- omitted anisotropic/spatial-gradient block after slip reduction — rejected.
-- isolated f-trace interaction-sign flip — rejected as sufficient repair.
-- floating-point conditioning — rejected.
+- omitted anisotropic gradient block after slip — rejected.
+- isolated f-trace interaction-sign flip — rejected.
+- floating-point conditioning — rejected by high-precision solve.
 - Bianchi residuals as proof of physical mode content — rejected.
 - selected square minor as dispersion relation — rejected.
-- frozen-time PGCD of commuting polynomial minors as the full variable-coefficient descriptor dispersion — rejected.
-- A.18 prime/unprime as a simple drop-in fix to old closure — rejected; structural ambiguity remains open because ranks/indices differ.
-- fixed-`xi` or frozen-`a` Case-C asymptotic families as physical trajectories — rejected.
-- setting all non-gravity homogeneous kernel amplitudes to zero before Fredholm compatibility — rejected.
+- frozen-time commuting-PGCD as full descriptor criterion — rejected.
+- A.18 prime/unprime as a simple drop-in fix — rejected; structural ambiguity remains because rank/index changes.
+- fixed-xi/frozen-a Case-C trajectories — rejected as off-shell.
+- setting non-gravity homogeneous kernel amplitudes to zero before Fredholm compatibility — rejected.
 
 ## Active task list
 
@@ -117,15 +123,15 @@ The older fixed-`xi` family and frozen-`a`, `xi=epsilon` family are diagnostic o
     - [x] T1c.6a — old-organization differential elimination fails for both A.18 variants.
     - [x] T1c.6b — rank difference: derived-prime 6 vs printed-unprime 7.
     - [ ] **T1c.6c — differential descriptor hierarchy.**
-      - [x] build direct 13x11 quadratic frozen-coefficient polynomial as an audit tool;
-      - [x] add regression tests and verify exact reconstruction;
+      - [x] direct 13x11 descriptor audit tool + tests;
       - [x] reject isolated square-minor roots;
-      - [x] reject frozen-time commuting-PGCD as sufficient variable-coefficient mode criterion;
-      - [x] identify `x=k tau`, `E=tau^2 e(x)` operator formulation and leading correction weights;
+      - [x] reject frozen-time commuting-PGCD criterion;
+      - [x] identify `x=k tau`, `E=tau^2 e(x)` and natural weights;
+      - [x] codify/test the dynamically on-shell Case-C background and scaled derivative operator (`comelli_case_c.py`);
       - [ ] retain all leading kernel amplitudes and compute Laurent/operator left-right compatibility order by order for derived-prime A.18;
       - [ ] repeat descriptor-index/compatibility chain for printed-unprime A.18;
       - [ ] select the physically consistent chain only by B.5 + degree count + Bianchi consistency.
-    - [ ] T1c.6d — eliminate to `e(x)` with validated chain. Acceptance: `x^2 e''+7xe'+8e-(2/3)x^2e=0`, hence B.5 / `3q^2-2`.
+    - [ ] T1c.6d — eliminate to `e(x)` with validated chain. Acceptance: `x^2 e''+7xe'+8e-(2/3)x^2e=0`.
   - [ ] T1c.7 — verify B.5 under Bianchi-redundant row representatives and consistent A.18 bookkeeping.
 - [ ] **T2 — Apply validated reduction to dust+dust Candidate C and recover De Felice gravity speed.**
 - [ ] **T3 — Identify exact structural mistake in old 12x12 closure.**
@@ -145,13 +151,12 @@ The older fixed-`xi` family and frozen-`a`, `xi=epsilon` family are diagnostic o
 
 **Resume at T1c.6c — differential descriptor hierarchy.**
 
-1. Use the dynamically on-shell Case-C branch above.
+1. Use `numerics/comelli_case_c.py` for the dynamically on-shell benchmark; do not rebuild an approximate/frozen background.
 2. Work in `x=k tau` and preserve `D_tau=partial_tau+(x/tau)partial_x`; do not freeze `D_tau->s` before eliminating constraints.
-3. Keep all leading right-kernel amplitudes (gravity + matter/metric constrained modes) until left-kernel/Fredholm compatibility fixes them. Do not set them to zero by hand.
+3. Keep all leading right-kernel amplitudes until left-kernel/Fredholm compatibility fixes them. Do not set them to zero by hand.
 4. Build coefficient operators order by order in tau with `E=tau^2 e(x)`, `B/u~tau`, `Phi/F/density contrasts~O(1)` and allow correction orders demanded by the equations.
 5. Do this separately for derived-prime and printed-unprime A.18 because their constraint chains differ.
-6. Acceptance for T1c.6d is exactly `x^2 e_xx + 7x e_x + 8e - (2/3)x^2e = 0` on the benchmark.
-7. Only after that take a WKB/high-x limit and recover `3q^2-2`.
-8. Do not delete A.17, tune coefficients, or change signs to fit the target.
-9. Update this file after every hard ruling.
-10. Move to T2 Candidate C only after B.5 is recovered.
+6. Acceptance is exactly `x^2 e_xx + 7x e_x + 8e - (2/3)x^2 e = 0` on Case C, then `3q^2-2` at high x.
+7. Do not delete A.17, tune coefficients, or change signs to fit the target.
+8. Update this file after every hard ruling.
+9. Move to T2 Candidate C only after B.5 is recovered.
