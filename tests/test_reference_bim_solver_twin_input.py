@@ -19,3 +19,24 @@ def test_write_reference_wall_input_round_trips_text(tmp_path):
     result = write_reference_wall_input(path, n=12, delta_r=0.25, solve_points=60)
     loaded = np.loadtxt(path)
     np.testing.assert_allclose(loaded, result["rows"], rtol=1e-12, atol=1e-14)
+
+
+def test_cubic_resample_preserves_cubic_and_derivative():
+    from numerics.reference_bim_solver_twin_input import cubic_resample
+
+    x = np.linspace(0, 1, 9)
+    y = 1 + 2 * x - 3 * x**2 + 0.5 * x**3
+    xt = np.linspace(0.05, 0.95, 17)
+    yt, dyt = cubic_resample(x, y, xt)
+    np.testing.assert_allclose(
+        yt,
+        1 + 2 * xt - 3 * xt**2 + 0.5 * xt**3,
+        rtol=1e-12,
+        atol=1e-12,
+    )
+    np.testing.assert_allclose(
+        dyt,
+        2 - 6 * xt + 1.5 * xt**2,
+        rtol=1e-11,
+        atol=1e-11,
+    )
