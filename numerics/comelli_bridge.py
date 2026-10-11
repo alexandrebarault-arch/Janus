@@ -71,3 +71,59 @@ def janus_branch_potential_lhs(y: float, kappa: float, beta: Sequence[float]) ->
     U_g = beta0 + 3.0 * beta1 * y + 3.0 * beta2 * y**2 + beta3 * y**3
     U_f = beta4 + 3.0 * beta3 / y + 3.0 * beta2 / y**2 + beta1 / y**3
     return (U_g - y**2 * U_f / kappa) / 3.0
+
+
+def additional_gauge_invariants(
+    *,
+    H: float,
+    H_omega: float,
+    c: float,
+    c_prime: float,
+    B1: float,
+    B1_prime: float,
+    E: float,
+    E_prime: float,
+    E_double_prime: float,
+    Phi1: float,
+    Phi2: float,
+    Psi1: float,
+    Psi2: float,
+) -> dict[str, float]:
+    """Reconstruct Comelli-Crisostomi-Pilo additional scalar invariants.
+
+    Implements Eqs. (A.1)--(A.6) of arXiv:1202.1986. These identities are
+    reused by the two-matter perturbation system of arXiv:1403.5679.
+    Primes denote conformal-time derivatives.
+    """
+    if c == 0.0:
+        raise ValueError("c must be non-zero")
+    denom = H + H_omega
+    if denom == 0.0:
+        raise ValueError("H + H_omega must be non-zero")
+
+    B2 = B1 - (1.0 - c**2) * E_prime
+
+    dphi = Phi1 - Phi2
+    f_sum = ((B1 - E) * (H + H_omega) - 2.0 * c**2 * dphi) / c**2
+    f_weighted = (H - H_omega) * dphi
+    F1 = (H_omega * f_sum - f_weighted) / denom
+    F2 = f_sum - F1
+
+    a_diff = (
+        (B1 - E_prime) * (c * (H - H_omega) - c_prime) / c**2
+    )
+    a_sum = (
+        2.0 * c**3 * (Psi2 - Psi1)
+        + B1 * (c * (H_omega + H) - 3.0 * c_prime)
+        + 3.0 * c_prime * E_prime
+        + c
+        * (
+            2.0 * B1_prime
+            - 2.0 * E_double_prime
+            - E_prime * (H_omega + H)
+        )
+    ) / c**2
+    A1 = 0.5 * (a_sum - a_diff)
+    A2 = 0.5 * (a_sum + a_diff)
+
+    return {"B2": B2, "F1": F1, "F2": F2, "A1": A1, "A2": A2}
