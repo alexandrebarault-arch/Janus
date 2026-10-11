@@ -109,9 +109,11 @@ def constraint_residual_vector(q, bg: ScalarBackground, s: MetricState,
         bg.H_omega * F2 - bg.H * F1
         - (bg.H - bg.H_omega) * (s.Phi1 - s.Phi2)
     )
+    # Direct substitution of the published gauge-invariant definitions gives
+    # B1-E_prime here; the searchable PDF text layer drops this prime.
     a18 = (
         c2 * (F2 + F1)
-        - (B1 - s.E) * (bg.H + bg.H_omega)
+        - (B1 - E_p) * (bg.H + bg.H_omega)
         + 2.0 * c2 * (s.Phi1 - s.Phi2)
     )
     return np.array([g00, f00, g0i, f0i, a1, a17, a18], dtype=float)
