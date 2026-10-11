@@ -1,8 +1,8 @@
-# Gate 1 — two-matter FLRW background
+# Gate 1 — two-matter FLRW background and high-k stability
 
 Date: 2026-10-11
 
-Status: `BACKGROUND_PASS_WITH_EARLY_NONLINEAR_CONDITION`
+Status: `BACKGROUND_PASS__LINEAR_STABILITY_REQUIRES_PARAMETER_SELECTION_AND_EARLY_NONLINEAR_MATCHING`
 
 ## Purpose
 
@@ -12,49 +12,72 @@ Construct an explicit, reproducible JANUS-R background on the dynamical FLRW bra
 - separately coupled positive-energy matter sectors;
 - `beta_0 = 0` (no explicit visible-sector cosmological constant);
 - ordinary visible matter + radiation retained in `g`;
-- a subdominant twin dust background in `f`;
+- twin dust in `f`;
 - late self-acceleration from the interaction potential.
 
-Primary equations: Aoki & Maeda, *Cosmology in ghost-free bigravity theory with twin matter fluids* (arXiv:1312.7040), especially Eqs. (42), (44), (48)-(53):
-https://arxiv.org/abs/1312.7040
+Background equations: Aoki & Maeda, arXiv:1312.7040.
+High-k perturbative diagnostics: De Felice et al., arXiv:1404.0008.
+Early nonlinear reference: Aoki, Maeda & Namba, arXiv:1506.04543.
 
 Implementation: `numerics/flrw_two_matter.py`.
 
-## Equations used
+## Background equations
 
 For flat FLRW,
 
-`y = a_f / a_g`.
+`y = a_f/a_g`.
 
 On the dynamical Bianchi branch,
 
 `H_g = y H_f`.
 
-With `M_f/M_g = alpha`, `beta_0=0`, and `H0=M_g=1`, the visible Friedmann equation is
+With `M_f/M_g = alpha`, `beta_0=0`, and `H0=M_g=1`,
 
 `E^2 = Omega_g(a) + (m^2/3) U_g(y)`,
 
-with
-
 `U_g = 3 beta_1 y + 3 beta_2 y^2 + beta_3 y^3`.
 
-The second Friedmann equation combined with `H_g=y H_f` gives the algebraic constraint
+Combining the second Friedmann equation with the Bianchi relation gives
 
-`Omega_g + (m^2/3) U_g - y^2 Omega_f/alpha^2 - (m^2 y^2/3 alpha^2) U_f = 0`,
+`Omega_g + (m^2/3)U_g - y^2 Omega_f/alpha^2 - (m^2 y^2/3 alpha^2)U_f = 0`,
 
 where
 
 `U_f = beta_4 + 3 beta_3/y + 3 beta_2/y^2 + beta_1/y^3`.
 
-For f-sector dust only, multiplying by `alpha^2 y` reduces this exactly to a quartic in `y`. The solver follows the continuous positive real root rather than integrating two independent scale factors.
+For f-sector dust this reduces exactly to a quartic in `y`; the code follows the continuous positive real root.
 
-The lapse ratio is derived from Bianchi rather than guessed:
+The relative lapse is
 
-`N_f/N_g = y + d y / d ln a`.
+`n/N = y + d y/d ln a`,
 
-## Explicit benchmark
+and the De-Felice variable is
 
-The first simple benchmark retained for V2 is
+`ctilde = n a_g/(N a_f) = 1 + d ln y/d ln a`.
+
+## Correction to the first Gate-1 analysis
+
+An earlier version of this file treated
+
+`m_eff^2 > 2 H^2`
+
+as the general high-redshift Higuchi/no-ghost test. That was too strong and is **corrected here**.
+
+For the two-fluid healthy branch, De Felice et al. derive the relevant high-k scalar kinetic condition in terms of
+
+`B = 2 W + y^2 (rho_f + P_f)/(kappa M_g^2)`,
+
+with `kappa=alpha^2`. The simple `m_eff^2-2H^2` expression is recovered only in an appropriate low-energy / pure-gravity limit. Therefore a zero of `W` or of the naive de-Sitter inequality is not by itself a demonstrated ghost in the two-fluid cosmology.
+
+The code now evaluates explicitly:
+
+- `J` — vector kinetic sign;
+- `Gamma` and the exact background-dependent `m_eff`;
+- `B` — scalar high-k no-ghost quantity;
+- scalar high-k `c_s^2`;
+- vector high-k `c_V^2`.
+
+## Baseline A — clean background existence point
 
 ```text
 beta_0 = 0
@@ -62,108 +85,118 @@ beta_1 = 1
 beta_2 = -1.75
 beta_3 = 0
 beta_4 = 1.8160193651823988
-alpha = M_f/M_g = 1
+alpha = 1
 Omega_g,m0 = 0.30
 Omega_g,r0 = 9e-5
-Omega_f,m0 = 0.03   # normalized to 3 M_g^2 H0^2
+Omega_f,m0 = 0.03
 y0 = 0.175
 m^2/H0^2 = 5.765024453024453
 ```
 
-This is **not** claimed to be a best fit. It is a clean existence benchmark with moderate interaction coefficients and a non-negligible twin sector.
+Background properties:
 
-## Reproducible checks
+- regular continuous positive branch;
+- positive lapse;
+- `J>0`;
+- self-acceleration with `beta_0=0`;
+- `q0 ~= -0.566`, `z_acc ~= 0.70`;
+- maximum `|H/H_LCDM-1|` over `0<=z<=2` about 1.3%;
+- regular future de Sitter solution;
+- exact `m_eff,0/H0 ~= 3.510` using the De-Felice `Gamma`, not the earlier simplified estimate.
 
-The code verifies:
+### Exact high-k diagnosis
 
-- present visible Friedmann normalization `E(0)=1`;
-- the second Friedmann/branch constraint to numerical precision;
-- one continuous positive root from `a=1e-8` through today;
-- positive lapse ratio throughout every finite sampled epoch;
-- `J(y)=beta_1+2 beta_2 y+beta_3 y^2 > 0` throughout the sampled history;
-- positive `H^2`;
-- continuation from today to `a=100` without branch loss;
-- future approach to de Sitter (`q -> -1`);
-- late de Sitter massive-spin-2 mass well above the de Sitter Higuchi bound.
+For Baseline A:
 
-## Background numbers
+- `B>0` throughout the sampled history: **no scalar high-k ghost detected**;
+- `c_V^2>0` throughout the sampled interval: **no vector gradient instability detected** there;
+- scalar `c_s^2(0) ~= 0.903`;
+- scalar `c_s^2` crosses zero at
 
-For the benchmark:
+`z ~= 1.822`.
 
-- `m_eff/H0(today) = 3.62717`;
-- acceleration begins at `z_acc ~= 0.70`;
-- `q0 ~= -0.566` (analytic implicit derivative; not a one-sided finite-difference estimate);
-- maximum `|H/H_LCDM - 1|` over `0 <= z <= 2` is about **1.3%**;
-- comoving-distance difference relative to matched `Omega_m=0.30` flat LCDM is about **+0.36% at z=0.5**, **+0.61% at z=1**, **+0.84% at z=2**;
-- dimensionless age differs from matched LCDM by about **+0.7%**;
-- future asymptote: `y -> 0.179824...`, `E^2 -> 0.71045...`, `q -> -1`.
+Thus the real linear defect of Baseline A is a **scalar gradient instability above z~1.82**, not the previously claimed ghost at `z~17`.
 
-Representative expansion values:
+Baseline A remains useful as a background regression test but is **rejected as the main perturbative candidate**.
 
-| z | H/H0 JANUS-R | H/H0 matched LCDM | fractional difference |
-|---:|---:|---:|---:|
-| 0 | 1.0000 | 1.0000 | 0 |
-| 0.5 | 1.2994 | 1.3088 | -0.72% |
-| 1 | 1.7413 | 1.7611 | -1.12% |
-| 2 | 2.9317 | 2.9677 | -1.21% |
-| 5 | 8.0660 | 8.1004 | -0.42% |
-| 10 | 20.0162 | 20.0329 | -0.083% |
+## Stability–range search
 
-The interaction therefore becomes practically invisible in the background at high redshift even though the two metrics are not identical.
+A numerical parameter search was then performed with:
 
-## Important early-time caveat
+- `beta_0=0`;
+- present Friedmann normalization enforced analytically;
+- `beta_4` determined by the present second Friedmann constraint;
+- continuous positive branch;
+- positive lapse, `J`, `B` and late-time vector speed;
+- near-LCDM low-redshift background;
+- preference for a present spin-2 Compton range of order tens-to-hundreds of Mpc rather than a very short-range force.
 
-The benchmark is a **finite branch**. Deep in radiation domination,
+A robust tradeoff appears:
 
-`y ~ 1.786 a`,
+**pushing linear scalar stability to very high redshift generally makes the massive spin-2 mode heavier and shortens the Compton range.**
 
-so the lapse ratio tends to zero only asymptotically at the big-bang boundary and remains positive at every finite sampled scale factor.
+Examples found in the scan include models stable linearly to very high redshift with `lambda_g ~ 10 Mpc`, but that range is too short for the large-void JANUS-R objective. Conversely, keeping `lambda_g ~ 100-150 Mpc` makes a nonlinear early phase difficult to avoid.
 
-However,
+This is now considered a central design constraint, not a numerical accident.
 
-`m_eff^2 / H^2`
+## Candidate C — stability-extended Janus-range stress test
 
-becomes very small at high redshift. The naive *linear* de Sitter-like Higuchi criterion `m_eff^2 > 2 H^2` stops being satisfied at approximately
+The current stress-test candidate is
 
-`z ~ 17`.
+```text
+beta_0 = 0
+beta_1 = 1
+beta_2 = -4.2383993109
+beta_3 = 13.6801214252
+beta_4 = -38.5117901844
+alpha = 0.10879548725
+Omega_g,m0 = 0.30
+Omega_g,r0 = 9e-5
+Omega_f,m0 = 0.23958426762
+y0 = 0.55688253212
+m^2/H0^2 = 23.3348939346
+```
 
-This is not hidden or counted as a linear-stability pass. It is precisely the regime in which Aoki, Maeda & Namba showed that linear bimetric perturbation theory becomes unreliable and nonlinear scalar/Vainshtein effects can restore a GR-like stable early universe for suitable interaction parameters:
-https://arxiv.org/abs/1506.04543
+Diagnostics:
 
-Therefore the current verdict is:
+- maximum background deviation from matched LCDM over `0<=z<=2`: about **3%**;
+- `q0 ~= -0.517`;
+- `m_eff,0/H0 ~= 42.31`;
+- corresponding `c/(H0 m_eff/H0)` scale for `H0=70 km/s/Mpc`: about **101 Mpc**;
+- `B>0` throughout the tested branch;
+- scalar `c_s^2>0` until approximately **z=142.4**;
+- vector `c_V^2>0` through that entire scalar-linear regime;
+- naive vector high-k sign changes only much deeper in the extrapolated linear branch, around `z~8e4`, where the scalar linear description has already failed badly;
+- regular late future.
 
-`BACKGROUND_PASS_WITH_EARLY_NONLINEAR_CONDITION`
+It also satisfies
 
-not `FULL_STABILITY_PASS`.
+`beta_2 < 0`,
 
-## What this result establishes
+and
 
-It falsifies a possible objection that a JANUS-R continuation necessarily fails already at homogeneous background level once `beta_0=0`, a twin matter density, a positive lapse and a regular future are required.
+`beta_2^2 - beta_1 beta_3 > 0`.
 
-At least one simple parameter point gives:
+Those coefficient signs are sufficient for a healthy nonlinear early branch in the **homothetic/spherical approximation** studied by Aoki-Maeda-Namba. They are **not** a proof for this non-homothetic dynamical Candidate C, so the result is recorded only as encouraging compatibility.
 
-- radiation era;
-- matter era;
-- late acceleration without explicit Lambda;
-- background expansion close to LCDM;
-- no background branch singularity;
-- no sign change of `J`;
-- a regular de Sitter future.
+## What Gate 1 now establishes
 
-## What it does NOT establish
+1. A regular two-matter `beta_0=0` self-accelerating background exists.
+2. The generalized two-fluid no-ghost test is less restrictive than the naive de-Sitter Higuchi inequality.
+3. Simple moderate-parameter backgrounds can still fail by a scalar gradient instability at low redshift.
+4. Parameter choices can postpone that instability by orders of magnitude while keeping a cosmologically interesting ~100 Mpc spin-2 scale.
+5. This produces a real **stability–range tradeoff**: demanding linear validity arbitrarily far into the radiation era tends to remove the large-scale Janus effect by making the massive mode too heavy.
 
-It does not yet prove:
+## What Gate 1 does NOT establish
 
-- scalar/vector/tensor perturbative stability over the full history;
-- successful CMB transfer functions;
-- a viable twin-sector initial spectrum;
-- nonlinear branch continuity for this exact beta point;
-- observational superiority over LCDM.
+It does not prove that Candidate C survives the nonlinear transition around the regime where the linear scalar mode ceases to be trustworthy. The 2023 literature still describes the GR/Vainshtein-to-bigravity transition as unsettled, despite explicit nonlinear solutions and numerical examples without catastrophic instabilities.
 
-These are Gates 2 and 3.
+Therefore the appropriate status is not `FULL_STABILITY_PASS`.
 
 ## Gate-1 decision
 
-**Retain benchmark for the next calculations.**
+- **Baseline A:** background PASS, perturbative candidate FAIL.
+- **Candidate C:** retain as the main stability/range stress test.
+- **Next decisive problem:** determine whether the nonlinear early GR/Vainshtein phase can connect continuously to Candidate C and, crucially, whether that transition can generate a significant relative `g-f` mode rather than merely suppressing it.
 
-Do not optimize its background fit further yet. A 1% background improvement is scientifically irrelevant if the perturbations later fail.
+Do not spend effort optimizing the background to sub-percent precision until this segregation/transition gate is passed.
