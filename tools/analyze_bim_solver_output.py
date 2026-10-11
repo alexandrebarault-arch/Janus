@@ -177,6 +177,24 @@ def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
         rhs = np.column_stack([first[:, field_index[x]] for x in rest_zero_rhs])
         initial_rhs_max = float(np.max(np.abs(rhs)))
 
+    def momentum_identity(momentum_rhs, lapse_r, density, tau):
+        needed = (momentum_rhs, lapse_r, density, tau)
+        if not all(x in field_index for x in needed):
+            return float("nan")
+        err = (
+            first[:, field_index[momentum_rhs]]
+            + first[:, field_index[lapse_r]]
+            * (first[:, field_index[density]] + first[:, field_index[tau]])
+        )
+        return float(np.max(np.abs(err)))
+
+    initial_g_momentum_identity_max = momentum_identity(
+        "pfS_t", "gAlp_r", "pfD", "pftau"
+    )
+    initial_f_momentum_identity_max = momentum_identity(
+        "pfFS_t", "fAlp_r", "pfFD", "pfFtau"
+    )
+
     return {
         "frame_count": len(out.frames),
         "times": tuple(float(f.time) for f in out.frames),
@@ -186,5 +204,7 @@ def short_run_summary(out: BimTextOutput, *, n_ghost: int = 10) -> dict:
         "constraint_global_max": global_constraint if constraint_names else float("nan"),
         "initial_rest_rhs_fields": rest_zero_rhs,
         "initial_rest_rhs_max": initial_rhs_max,
+        "initial_g_momentum_identity_max": initial_g_momentum_identity_max,
+        "initial_f_momentum_identity_max": initial_f_momentum_identity_max,
         "frames": frame_summaries,
     }
