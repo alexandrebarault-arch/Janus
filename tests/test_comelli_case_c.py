@@ -2,8 +2,6 @@ import math
 import sys
 from pathlib import Path
 
-import numpy as np
-
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_case_c import (
@@ -22,12 +20,13 @@ def test_case_c_exact_branch_relation_and_early_limit():
 
 
 def test_case_c_background_is_dynamically_on_shell():
-    bg = case_c_background_from_a(1e-3, k_hmpc=0.1)
+    bg = case_c_background_from_a(1e-3, k=10.0)
     assert bg.metric.c > 1.99 and bg.metric.c < 2.01
     assert math.isclose(bg.metric.H * 1e-3, 1.0, rel_tol=2e-6)
     assert math.isclose(bg.metric.H_omega / bg.metric.H, bg.metric.c, rel_tol=1e-13)
     assert math.isclose(bg.metric.f1, bg.metric.xi, rel_tol=1e-13)
     assert math.isclose(bg.metric.f2, bg.metric.xi, rel_tol=1e-13)
+    assert math.isclose(bg.metric.k2, 100.0, rel_tol=0.0, abs_tol=0.0)
 
 
 def test_scaled_derivative_coefficients_preserve_x_operator():
