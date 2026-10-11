@@ -26,6 +26,7 @@ The Candidate-C background/convention bridge is under control. The current 12x12
 ### Published scalar equations
 
 - Comelli matter conservation A.7-A.9, Einstein scalar equations A.10-A.16, slips, and the A1/A2 auxiliary identities have been independently re-audited.
+- The complete primary-source A.12/A.16 spatial equations have now been checked **before** slip reduction. Each contains an anisotropic block `(partial_i partial_j-delta_ij Delta)(...)` plus a pure-trace block. The JANUS slip relations are exactly the vanishing of those anisotropic brackets, so after imposing the slips the remaining trace equations in `comelli_scalar_equations.py`/`comelli_dae.py` are not missing an explicit spatial-gradient term. This closes T1c.5.
 - A.17 is algebraically valid; do not remove it to improve a determinant.
 - A.18 has a real notation/typography issue. From the raw gauge-invariant definitions,
   `Xi2-c^2 Xi1 = calB1-calE'`, so the derived identity contains `(calB1-calE')`; the printed appendix shows `(calB1-calE)`. Both variants have been tested in the present reduction and neither alone restores the physical mode.
@@ -90,7 +91,7 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 - The first compatibility conditions collapse to a single relation among gravitational kernel amplitudes (one convenient basis gives `-4 a1 + a2 + 12 a3 = 0`).
 - After imposing that relation, the next lower-order compatibility vanishes, as expected for a singular constrained system.
 - Continuing with a local WKB substitution on the direct equations has still **not** produced `3q^2-2`, for either the derived `(B1-E')` or printed `(B1-E)` A.18. This is not yet evidence against B.5: local substitution before differential elimination may change the singular hierarchy.
-- The next method is therefore to reproduce B.5 by **differential-operator elimination on the dynamically on-shell Case-C expansion first**, and only then take the sub-horizon/WKB limit.
+- The full A.12/A.16 audit rules out an omitted post-slip anisotropic `k^2` term. The remaining task is true differential-operator elimination on the dynamically on-shell series, keeping `Phi1/Phi2` and the constrained variables until elimination is complete.
 
 ## Rejected / resolved hypotheses
 
@@ -100,6 +101,7 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 - one bad background derivative — rejected.
 - De Felice normalization/transcription — rejected.
 - simple A1/A2 typo — rejected by primary-source audit.
+- omitted anisotropic/spatial-gradient block in A.12/A.16 after slip reduction — rejected by full primary-source audit.
 - A.18 prime/unprime as the sole cause — rejected in current closure; typography issue remains relevant to exact derivation bookkeeping.
 - isolated f-trace interaction-sign flip as sufficient repair — rejected on Candidate C.
 - floating-point conditioning — rejected by 80-digit solve.
@@ -125,7 +127,7 @@ This leading background satisfies the two fluid conservation laws. It replaces t
   - [x] T1c.2 — derive the exact dynamically on-shell `a1`-only relation `xi(a)` and early-time `a(tau),xi(tau)` series.
   - [x] T1c.3 — verify the leading dynamic background satisfies both fluid conservations and yields a nontrivial gravitational kernel.
   - [x] T1c.4 — show the first Fredholm compatibility reduces to a single kernel-amplitude relation rather than the previous off-shell contradiction.
-  - [ ] **T1c.5 — audit the complete A.12/A.16 spatial equations from primary source, including every anisotropic/spatial-gradient term before slip reduction.**
+  - [x] **T1c.5 — audit the complete A.12/A.16 spatial equations from primary source, including every anisotropic/spatial-gradient term before slip reduction.** Result: post-slip trace implementation is complete; no missing explicit `k^2` block.
   - [ ] **T1c.6 — eliminate nondynamical variables as differential operators on the dynamic Case-C series, then derive the E equation before substituting `D->qk`. Acceptance: recover B.5 and high-k `3q^2-2`.**
   - [ ] T1c.7 — verify the result is invariant under Bianchi-redundant row representatives and under consistent A.18 derivation bookkeeping.
 - [ ] **T2 — Apply the validated reduction to dust+dust Candidate C and recover the independent De Felice gravity speed.**
@@ -144,13 +146,14 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 
 ## Immediate restart instruction
 
-**Resume at T1c.5.**
+**Resume at T1c.6.**
 
 1. Use the dynamically on-shell Case-C branch above. Never vary epsilon at frozen `a`.
-2. Audit full A.12/A.16 from a primary source before further reduction; do not rely on clipped PDF/HTML text.
-3. Keep the equations as differential operators during constraint elimination. Do **not** substitute `s=qk` until a reduced E equation has been obtained.
-4. Use `E_N=E/tau^2` and the consistent early-time background series.
-5. Acceptance is Comelli B.5; for `w1=1/3,w2=0,f1=f2`, the sub-horizon E equation must give factor `3q^2-2`.
-6. Do not delete A.17, tune coefficients, or change physical signs merely to fit the target.
-7. Update this file immediately after every new hard ruling.
-8. Only after B.5 is recovered move to T2 Candidate C.
+2. The full A.12/A.16 spatial audit is complete; do not reopen it unless a new contradiction points there.
+3. Keep `Phi1`, `Phi2`, `F1`, `F2`, shifts and matter variables until differential elimination is complete. In particular, do not set the potentials to zero merely because B.5 decouples after reduction.
+4. Keep the equations as differential operators during constraint elimination. Do **not** substitute `s=qk` until a reduced E equation has been obtained.
+5. Use `E_N=E/tau^2` and the consistent early-time background series.
+6. Acceptance is Comelli B.5; for `w1=1/3,w2=0,f1=f2`, the sub-horizon E equation must give factor `3q^2-2`.
+7. Do not delete A.17, tune coefficients, or change physical signs merely to fit the target.
+8. Update this file immediately after every new hard ruling.
+9. Only after B.5 is recovered move to T2 Candidate C.
