@@ -40,3 +40,20 @@ def test_reference_config_matches_wall_model_and_short_control_run():
     assert float(cfg["model.b_2"]) == -0.004
     assert float(cfg["model.b_3"]) == 0.0
     assert float(cfg["model.b_4"]) == -0.008
+
+
+def test_reference_config_accepts_sector_dual_coefficients_and_title():
+    dual = (-0.008, 0.0, -0.004, 0.02, -0.048)
+    cfg = parse_config(
+        reference_config_text(
+            n=100,
+            delta_r=0.1,
+            input_file="dual.txt",
+            output_file="dual-out.txt",
+            steps=4,
+            b=dual,
+            title="JANUS-R f-only sector-dual control",
+        )
+    )
+    assert cfg["model.title"] == "JANUS-R f-only sector-dual control"
+    assert tuple(float(cfg[f"model.b_{i}"]) for i in range(5)) == dual
