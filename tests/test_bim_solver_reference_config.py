@@ -28,6 +28,7 @@ def test_reference_config_matches_wall_model_and_short_control_run():
     assert cfg["input.binary"] == "0"
     assert cfg["output.file"] == "wall-out.txt"
     assert cfg["output.binary"] == "0"
+    assert cfg["out.diagnostics"] == "1"
     assert cfg["slicing.method"] == "constg"
     assert cfg["integ.method"] == "RK4"
     assert float(cfg["integ.delta_t"]) == 0.005
