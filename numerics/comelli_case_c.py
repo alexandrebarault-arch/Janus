@@ -1,7 +1,7 @@
 """Dynamically on-shell Comelli Case-C benchmark for Gate 2B.
 
 This module codifies the exact a1-only radiation+dust background used to
-reproduce Appendix B.2 of Comelli, Crisostomi & Pilo.  The benchmark is
+reproduce Appendix B.2 of Comelli, Crisostomi & Pilo. The benchmark is
 intentionally dimensionless: k is supplied directly in the same units as the
 conformal-time equations.
 """
@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
+import numpy as np
 
 from numerics.comelli_dae import ScalarBackground, ScalarBackgroundDerivatives
 
@@ -53,11 +54,60 @@ def _xi_derivatives(a: float, xi: float) -> tuple[float, float]:
     return float(xi_a), float(xi_aa)
 
 
+def _a_prime(a: float) -> float:
+    xi = case_c_xi_of_a(a)
+    return math.sqrt(1.0 + a**4*xi)
+
+
+def case_c_tau_of_a(a: float, *, quadrature_order: int = 48) -> float:
+    """Conformal time from the Big Bang to scale factor ``a``.
+
+    Uses fixed Gauss-Legendre quadrature on
+        tau(a) = integral_0^a da_tilde / sqrt(1+a_tilde^4 xi(a_tilde)).
+    This stays on the exact Case-C branch and adds no SciPy dependency.
+    """
+    if not (a >= 0.0 and math.isfinite(a)):
+        raise ValueError("a must be finite and non-negative")
+    if a == 0.0:
+        return 0.0
+    if quadrature_order < 8:
+        raise ValueError("quadrature_order must be at least 8")
+
+    nodes, weights = np.polynomial.legendre.leggauss(int(quadrature_order))
+    aa = 0.5*a*(nodes + 1.0)
+    vals = np.empty_like(aa)
+    for i, ai in enumerate(aa):
+        vals[i] = 1.0/_a_prime(float(ai))
+    return float(0.5*a*np.dot(weights, vals))
+
+
+def case_c_a_of_tau(tau: float, *, quadrature_order: int = 48) -> float:
+    """Invert ``case_c_tau_of_a`` monotonically by bisection."""
+    if not (tau >= 0.0 and math.isfinite(tau)):
+        raise ValueError("tau must be finite and non-negative")
+    if tau == 0.0:
+        return 0.0
+
+    lo = 0.0
+    hi = max(1.05*tau, 1.0e-12)
+    while case_c_tau_of_a(hi, quadrature_order=quadrature_order) < tau:
+        hi *= 2.0
+
+    for _ in range(80):
+        mid = 0.5*(lo + hi)
+        value = case_c_tau_of_a(mid, quadrature_order=quadrature_order)
+        if value < tau:
+            lo = mid
+        else:
+            hi = mid
+    return float(0.5*(lo + hi))
+
+
 def case_c_background_from_a(a: float, *, k: float) -> CaseCBackgroundPoint:
     """Return the exact on-shell Case-C background at scale factor ``a``.
 
     Conventions are 8piG=kappa=m^2=a1=1, a0=a2=a3=a4=0,
-    w1=1/3 and w2=0.  The Friedmann equation is a'^2=1+a^4 xi.
+    w1=1/3 and w2=0. The Friedmann equation is a'^2=1+a^4 xi.
     """
     if not (a > 0.0 and math.isfinite(a)):
         raise ValueError("a must be finite and positive")
@@ -125,6 +175,14 @@ def case_c_background_from_a(a: float, *, k: float) -> CaseCBackgroundPoint:
     )
 
 
+def case_c_background_from_tau(tau: float, *, k: float) -> CaseCBackgroundPoint:
+    """Return the exact on-shell Case-C background at conformal time ``tau``."""
+    if not (tau > 0.0 and math.isfinite(tau)):
+        raise ValueError("tau must be finite and positive")
+    a = case_c_a_of_tau(tau)
+    return case_c_background_from_a(a, k=k)
+
+
 def scaled_derivative_coefficients(
     p: float,
     x: float,
@@ -135,7 +193,7 @@ def scaled_derivative_coefficients(
     """Coefficients after differentiating tau^p f(k tau).
 
     Returns the bracket multiplying tau^(p-1) after one derivative and the
-    bracket multiplying tau^(p-2) after two derivatives.  This keeps the
+    bracket multiplying tau^(p-2) after two derivatives. This keeps the
     non-commuting x d/dx structure explicit during the Case-C hierarchy.
     """
     first = p*f + x*f_x
