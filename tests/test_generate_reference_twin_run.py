@@ -25,3 +25,26 @@ def test_generate_reference_run_creates_matching_input_and_config(tmp_path: Path
     assert "output.file = output.txt" in text
     assert "integ.t_1 = 0.2" in text
     assert result["W_min"] > 0
+
+
+def test_cli_default_grid_preserves_reference_outer_radius(monkeypatch, tmp_path):
+    import sys
+    import tools.generate_reference_twin_run as mod
+
+    seen = {}
+
+    def fake(directory, **kwargs):
+        seen.update(kwargs)
+        return {
+            "initial_path": tmp_path / "initial.txt",
+            "config_path": tmp_path / "config.ini",
+            "W_min": 1.0,
+            "W_max": 1.0,
+        }
+
+    monkeypatch.setattr(mod, "generate_reference_run", fake)
+    monkeypatch.setattr(sys, "argv", ["generate_reference_twin_run.py", str(tmp_path)])
+    assert mod.main() == 0
+    assert seen["n"] == 500
+    assert seen["delta_r"] == 0.05
+    assert seen["n"] * seen["delta_r"] == 25.0
