@@ -48,7 +48,6 @@ S. F. Hassan & R. A. Rosen, JHEP 02 (2012) 126, arXiv:1109.3515.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
 
 import numpy as np
 from scipy.optimize import brentq
@@ -107,6 +106,18 @@ class Model:
             m2=m2,
             omega_f_m0=omega_f_m0,
         )
+
+
+def _require_calibrated(m: Model) -> None:
+    """Reject use of background equations before model calibration.
+
+    ``m2`` and ``omega_f_m0`` are the two derived quantities required by the
+    FLRW background functions below.  Keeping this guard explicit avoids
+    silently converting ``None`` through ``float()`` and gives callers a clear
+    instruction to use ``Model.calibrated()`` first.
+    """
+    if m.m2 is None or m.omega_f_m0 is None:
+        raise ValueError("model must be calibrated() before FLRW evolution")
 
 
 def u_g(y: float | np.ndarray, b: Beta):
