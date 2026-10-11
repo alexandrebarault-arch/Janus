@@ -56,7 +56,7 @@ Thus the physical point-particle force remains repulsive out to
 
 which is substantially farther than the radius `ln(4/3)/mu` at which the potential itself changes sign.
 
-This distinction follows directly from Hohmann's Eq. (75a)/(77)/(78) and is retained in JANUS-R as a correction to the shorthand interpretation based only on the radius-dependent PPN coefficient.
+This distinction follows directly from differentiating Hohmann's radius-dependent cross potential and is retained in JANUS-R as a correction to the shorthand interpretation based only on the position-dependent PPN coefficient.
 
 ## Photon metric is not determined by `alpha_gf` alone
 
@@ -139,7 +139,7 @@ Examples:
 | 0.10 | -0.1753863 |
 | 0.28768 | -0.9379823 |
 | 0.50 | -2.0613533 |
-| 0.96128 | -4.597 (approximately) |
+| 0.96128 | -4.5798769 |
 | 1.00 | -4.7771132 |
 | 2.00 | -8.6432188 |
 | 10.0 | -11.9977621 |
