@@ -29,20 +29,24 @@ The Candidate-C background/convention bridge is under control. The current 12x12
 - The complete primary-source A.12/A.16 spatial equations have now been checked **before** slip reduction. Each contains an anisotropic block `(partial_i partial_j-delta_ij Delta)(...)` plus a pure-trace block. The JANUS slip relations are exactly the vanishing of those anisotropic brackets, so after imposing the slips the remaining trace equations in `comelli_scalar_equations.py`/`comelli_dae.py` are not missing an explicit spatial-gradient term. This closes T1c.5.
 - A.17 is algebraically valid; do not remove it to improve a determinant.
 - A.18 has a real notation/typography issue. From the raw gauge-invariant definitions,
-  `Xi2-c^2 Xi1 = calB1-calE'`, so the derived identity contains `(calB1-calE')`; the printed appendix shows `(calB1-calE)`. Both variants have been tested in the present reduction and neither alone restores the physical mode.
+  `Xi2-c^2 Xi1 = calB1-calE'`, so the derived identity contains `(calB1-calE')`; the printed appendix shows `(calB1-calE)`.
+- **A.18 changes the constraint rank, so the ambiguity is structural, not cosmetic.** On the dynamical branch `H_omega=c H`, using variables `[E',Phi1',Phi2',B1,B2,F1,F2]`, the seven scalar constraint/identity equations have rank 6 with the derived `(B1-E')` identity, but rank 7 with the printed `(B1-E)` identity for generic `c!=1`. The symbolic determinant of the printed-A.18 7x7 coefficient matrix is
+  `36 H^3 a^4 c^2 f2^2 m2^2 (c-1)/(kappa xi^2)`
+  (`m2` here denotes the coefficient called `m^2`, so this is proportional to the fourth power of the mass parameter in ordinary notation). Therefore the present practice of declaring `E'` a freely prescribable state variable is justified only for the derived-prime system and must not be assumed when auditing the printed system.
+- Both A.18 variants have been inserted into the current reduced closure and neither alone restores the physical high-k mode. This does **not** settle which form belongs in the correct DAE because the two variants have different phase-space/constraint structure.
 - Comelli Appendix B.2 explicitly contains the missing helicity-0 gradient. For `w1=1/3`, `w2=0`, `a2=a3=0`, hence `f1=f2`, B.5 reduces inside the horizon to
   `E'' + (3/tau) E' - (2/3) k^2 E = 0`.
   Therefore the benchmark high-k dispersion must contain `q^2=2/3` (equivalently factor `3q^2-2`) for `s=qk`.
 
 ### Current JANUS closure failure
 
-- The seven scalar constraints/identities have rank 6 at fixed `E'`.
+- The current closure is built on the **derived-prime A.18** and therefore on the rank-6 assumption at fixed `E'`.
 - The metric-acceleration layer and 12x12 closure pass algebraic residual, linearity, and held-out `f00` Bianchi checks.
 - Candidate C at `a=0.5`, `k=0.5 h/Mpc` gives radiation speed exactly `1/sqrt(3)`, so k/time normalization is correct.
 - The supposed gravity pair is only `c~0.0159`, versus independent De Felice `c_s~0.8319`.
 - On a self-consistent dust+dust Candidate-C background the same spurious pair remains.
 - As k grows, its frequency tends to `omega~23.894 H0`, so speed falls as `1/k`; the reconstructed `E''` coefficient tends to ~`-571`, rather than `-c_s^2 k^2`. The physical gradient is structurally absent.
-- Swapping differentiated `g00`/`f00`, perturbing individual background derivatives, changing A.18 prime/unprime, an isolated f-trace interaction-sign flip, and high-precision linear solving do not repair the Candidate-C closure.
+- Swapping differentiated `g00`/`f00`, perturbing individual background derivatives, changing A.18 prime/unprime *inside the already-chosen closure architecture*, an isolated f-trace interaction-sign flip, and high-precision linear solving do not repair the Candidate-C closure.
 
 ## Case-C asymptotics — corrected physical trajectory
 
@@ -85,13 +89,15 @@ Leading physical background:
 
 This leading background satisfies the two fluid conservation laws. It replaces the old frozen-a epsilon family for all future B.5 regressions.
 
-### Fredholm findings on the dynamic background
+### Differential/Fredholm findings on the dynamic background
 
 - With `E=tau^2 E_N`, shifts/velocity potentials weighted as `O(tau)`, and the direct row-scaled scalar system, the leading matrix has a gravitational nullspace rather than killing the mode.
 - The first compatibility conditions collapse to a single relation among gravitational kernel amplitudes (one convenient basis gives `-4 a1 + a2 + 12 a3 = 0`).
 - After imposing that relation, the next lower-order compatibility vanishes, as expected for a singular constrained system.
-- Continuing with a local WKB substitution on the direct equations has still **not** produced `3q^2-2`, for either the derived `(B1-E')` or printed `(B1-E)` A.18. This is not yet evidence against B.5: local substitution before differential elimination may change the singular hierarchy.
-- The full A.12/A.16 audit rules out an omitted post-slip anisotropic `k^2` term. The remaining task is true differential-operator elimination on the dynamically on-shell series, keeping `Phi1/Phi2` and the constrained variables until elimination is complete.
+- Continuing with a local WKB substitution on the direct equations has still **not** produced `3q^2-2`, for either the derived `(B1-E')` or printed `(B1-E)` A.18. Local substitution before differential elimination is therefore not accepted as a decisive dispersion calculation.
+- A first differential-operator elimination on the leading dynamic Case-C hierarchy was then carried out while retaining the induced metric/matter variables. With the derived-prime A.18, the reduced compatibility relations still fail to generate the target `-(2/3)x^2 E_N` gradient. Repeating the leading elimination with the printed unprimed A.18 also fails to generate the target. Thus merely postponing the WKB substitution is not sufficient inside the present variable/constraint organization.
+- The full A.12/A.16 audit rules out an omitted post-slip anisotropic `k^2` term.
+- The new rank result above changes the next method: **do not preselect `E'` as a state variable or solve a 6-variable constraint block.** Build the full scalar system as a descriptor/DAE polynomial matrix, retain hidden algebraic constraints, and determine its finite generalized modes/constraint index for both A.18 variants. Only after the physical degree count is recovered should differential elimination to B.5 resume.
 
 ## Rejected / resolved hypotheses
 
@@ -102,7 +108,7 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 - De Felice normalization/transcription — rejected.
 - simple A1/A2 typo — rejected by primary-source audit.
 - omitted anisotropic/spatial-gradient block in A.12/A.16 after slip reduction — rejected by full primary-source audit.
-- A.18 prime/unprime as the sole cause — rejected in current closure; typography issue remains relevant to exact derivation bookkeeping.
+- A.18 prime/unprime as a **simple drop-in fix to the existing closure** — rejected. However A.18 remains an unresolved structural issue because the two forms have different constraint rank.
 - isolated f-trace interaction-sign flip as sufficient repair — rejected on Candidate C.
 - floating-point conditioning — rejected by 80-digit solve.
 - Bianchi residuals as proof of physical mode content — rejected.
@@ -114,7 +120,7 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 
 - [x] Map JANUS conventions to Comelli/De Felice.
 - [x] Implement/test scalar constraints and identities.
-- [x] Establish rank-6 constraint manifold with dynamic `E'`.
+- [x] Establish rank-6 constraint manifold **for the derived-prime A.18 formulation**.
 - [x] Implement/test metric acceleration layer.
 - [x] Implement exact Candidate-C transfer background adapter.
 - [x] Implement/test 12x12 closure plus held-out Bianchi diagnostic.
@@ -127,11 +133,15 @@ This leading background satisfies the two fluid conservation laws. It replaces t
   - [x] T1c.2 — derive the exact dynamically on-shell `a1`-only relation `xi(a)` and early-time `a(tau),xi(tau)` series.
   - [x] T1c.3 — verify the leading dynamic background satisfies both fluid conservations and yields a nontrivial gravitational kernel.
   - [x] T1c.4 — show the first Fredholm compatibility reduces to a single kernel-amplitude relation rather than the previous off-shell contradiction.
-  - [x] **T1c.5 — audit the complete A.12/A.16 spatial equations from primary source, including every anisotropic/spatial-gradient term before slip reduction.** Result: post-slip trace implementation is complete; no missing explicit `k^2` block.
-  - [ ] **T1c.6 — eliminate nondynamical variables as differential operators on the dynamic Case-C series, then derive the E equation before substituting `D->qk`. Acceptance: recover B.5 and high-k `3q^2-2`.**
-  - [ ] T1c.7 — verify the result is invariant under Bianchi-redundant row representatives and under consistent A.18 derivation bookkeeping.
+  - [x] T1c.5 — audit complete A.12/A.16 spatial equations before slip reduction. Result: post-slip trace implementation is complete; no missing explicit `k^2` block.
+  - [ ] **T1c.6 — recover the correct scalar descriptor/DAE structure and then derive B.5.**
+    - [x] T1c.6a — differential elimination with both A.18 variants inside the old state organization still fails to recover the gradient.
+    - [x] T1c.6b — compute A.18-dependent constraint rank: derived-prime rank 6; printed-unprime rank 7 for generic non-homothetic `c!=1`.
+    - [ ] **T1c.6c — construct the full scalar descriptor/polynomial matrix without prescribing `E'`; compute finite generalized modes, algebraic constraint count/index, and physical scalar degree count for both A.18 variants on the dynamic Case-C background.**
+    - [ ] T1c.6d — use the physically consistent descriptor structure for differential elimination. Acceptance: reproduce B.5 and high-k `3q^2-2`.
+  - [ ] T1c.7 — verify B.5 result is invariant under Bianchi-redundant row representatives and consistent A.18 bookkeeping.
 - [ ] **T2 — Apply the validated reduction to dust+dust Candidate C and recover the independent De Felice gravity speed.**
-- [ ] **T3 — Identify the exact structural mistake in the current 12x12 closure by term-by-term comparison with the validated reduction.**
+- [ ] **T3 — Identify the exact structural mistake in the current 12x12 closure by term-by-term comparison with the validated descriptor reduction.**
 - [ ] **T4 — Implement corrected `numerics/comelli_native_scalar.py`.**
 - [ ] **T5 — Make `tests/test_comelli_native_scalar.py` green and add >=3 additional `(z,k)` high-k regressions.**
 - [ ] **T6 — Re-run all Gate-2B constraint/acceleration/Bianchi tests; no regression allowed.**
@@ -146,14 +156,15 @@ This leading background satisfies the two fluid conservation laws. It replaces t
 
 ## Immediate restart instruction
 
-**Resume at T1c.6.**
+**Resume at T1c.6c.**
 
-1. Use the dynamically on-shell Case-C branch above. Never vary epsilon at frozen `a`.
-2. The full A.12/A.16 spatial audit is complete; do not reopen it unless a new contradiction points there.
-3. Keep `Phi1`, `Phi2`, `F1`, `F2`, shifts and matter variables until differential elimination is complete. In particular, do not set the potentials to zero merely because B.5 decouples after reduction.
-4. Keep the equations as differential operators during constraint elimination. Do **not** substitute `s=qk` until a reduced E equation has been obtained.
-5. Use `E_N=E/tau^2` and the consistent early-time background series.
-6. Acceptance is Comelli B.5; for `w1=1/3,w2=0,f1=f2`, the sub-horizon E equation must give factor `3q^2-2`.
-7. Do not delete A.17, tune coefficients, or change physical signs merely to fit the target.
-8. Update this file immediately after every new hard ruling.
-9. Only after B.5 is recovered move to T2 Candidate C.
+1. Use the dynamically on-shell Case-C branch above.
+2. Do not assume the rank-6 derived-prime constraint organization is the physical one; the printed A.18 has rank 7 for `c!=1`.
+3. Build the complete linear scalar equations as a descriptor/DAE or polynomial matrix in the perturbation variables and their derivatives, without prescribing `E'` or differentiating constraints merely to force a square ODE system.
+4. For both A.18 variants, determine rank, hidden algebraic constraints/constraint index, finite generalized eigenmodes, and scalar degree count on the dynamic Case-C hierarchy.
+5. Select/validate the formulation by independent requirements: Comelli B.5, De Felice high-k degree/speed count, and Bianchi consistency. Do not choose a variant just because it gives the desired number.
+6. Only after the descriptor structure is fixed perform differential elimination to `E`/`E_N`; then and only then take the sub-horizon/WKB limit.
+7. Acceptance remains Comelli B.5 and factor `3q^2-2` for the benchmark.
+8. Do not delete A.17, tune coefficients, or change physical signs to fit the target.
+9. Update this file after every new hard ruling.
+10. Only after B.5 is recovered move to T2 Candidate C.
