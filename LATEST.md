@@ -29,7 +29,9 @@ Only the following continuation remains serious:
 - static source-coverage audit for STD + explicit RK + `constg`: `PASS_STATIC_AUDIT`;
 - exact zero-f upstream input projection implemented;
 - cell/time/field zero-f output comparator implemented;
-- runtime analyzer now checks constraints, lapse orientation, metric positivity, non-negative densities, physical radial speeds and separate g/f rest-mass drift;
+- runtime analyzer checks constraints, lapse orientation, metric positivity, non-negative densities, physical radial speeds and separate g/f rest-mass drift;
+- constrained g-only and exact sector-dual f-only initial controls are generated independently;
+- g-only and f-only dual constraint solutions exchange metric sectors to machine precision in the checked symmetric setup;
 - Actions/workflows intentionally removed/disabled. Do not use CI as evidence.
 
 ## Pinned upstream
@@ -56,18 +58,22 @@ The runner performs, in order:
 6. patched C++ rebuild;
 7. patched zero-f run;
 8. cell-by-cell/time-by-time regression over all common fields;
-9. full reference twin-wall run;
-10. physical-domain/constraint/conservation summary.
+9. freshly constraint-solved patched g-only control;
+10. freshly constraint-solved patched f-only **sector-dual** control with reversed interaction coefficients;
+11. full reference twin-wall run;
+12. physical-domain/constraint/conservation summaries for the patched controls and twin experiment.
 
-It deliberately stops with an error if the zero-f regression fails.
+It deliberately stops with an error if the zero-f regression fails. The command also reports a hard physical-domain failure if g-only, f-only or twin evolution leaves the finite/same-oriented/positive-density/positive-metric/subluminal domain.
 
-## Manual TDD evidence for newest infrastructure
+## Manual TDD / numerical evidence for newest infrastructure
 
 Module-level only; not a C++ build:
 
 - `upstream_baseline_input`: RED missing module -> GREEN `4 passed in 0.03s`;
-- `run_a1_gate`: RED missing module -> GREEN `3 passed in 0.03s`;
-- analyzer health calculations: focused numerical checks confirm 1% density change -> 1% rest-mass drift and zero->nonzero sector leakage -> infinite relative drift.
+- `run_a1_gate` core contracts: RED missing module -> GREEN `3 passed in 0.03s`;
+- runner + default/custom sector-dual config contracts: `5 passed in 0.04s` in the focused local check;
+- analyzer health calculations: 1% density change -> 1% rest-mass drift; zero->nonzero sector leakage -> infinite relative drift;
+- independent initial constraint solve: g-only and reversed-beta f-only conformal factors exchange at about `2.2e-16` in the checked setup.
 
 Do not convert these into a claim that the full branch or C++ solver passes.
 
@@ -84,8 +90,8 @@ Do not convert these into a claim that the full branch or C++ solver passes.
 
 The next scientifically valid action is executable evidence from the pinned STD solver:
 
-`UPSTREAM BUILD -> ZERO-F REGRESSION -> F-ONLY DUAL CONTROL -> TWIN WALL -> RESOLUTION/COURANT MATRIX`.
+`UPSTREAM BUILD -> ZERO-F REGRESSION -> G-ONLY CONTROL -> F-ONLY DUAL CONTROL -> TWIN WALL -> RESOLUTION/COURANT MATRIX`.
 
-If A/B/C controls fail, fix the implementation/numerics before interpreting D.
-If D alone develops a convergent wall-localized pathology while controls remain healthy, that counts against JANUS-R.
-If D survives, move the resolved background to the full seven-DOF spherical stability machinery before any observational claim.
+If A/B/C controls fail, fix the implementation/numerics before interpreting the twin wall.
+If the twin run alone develops a convergent wall-localized pathology while controls remain healthy, that counts against JANUS-R.
+If the twin wall survives, move the resolved background to the full seven-DOF spherical stability machinery before any observational claim.
