@@ -1,273 +1,428 @@
-# Janus Research Resume Checklist
+# Janus Research — Authoritative Resume Checkpoint
 
 Date: 2026-10-11
 Active branch: `research/v2-flrw`
-Draft PR: `#1` — keep open/draft, do not merge yet
-GitHub Actions / workflows: **disabled by user**. Never infer verification from CI.
+Draft PR: `#1` — keep open/draft and **do not merge yet**
+Base: `main`
+GitHub Actions/workflows: **disabled by user**. Never infer verification from CI.
 
-## Purpose
+## How to resume after any interruption
 
-This is the authoritative restart point after any interruption. Read this file first. Do not restart superseded algebraic scans, dimensional source-threshold arguments or ad-hoc lapse derivations.
+Read this file first. Then:
 
-## Scientific state — compressed truth
+1. confirm PR #1 is still draft/open/unmerged;
+2. compare `research/v2-flrw` against `main` and inspect commits newer than this file;
+3. read the authoritative documents listed below;
+4. resume from **NEXT ACTIONS**, not from old chat context;
+5. do not repeat superseded algebraic scans or hand-derive the huge lapse formula;
+6. record every meaningful correction/result in Git before moving on.
 
-1. `JANUS-EXACT` is **NOT CLOSED** as a complete generally covariant nonlinear bimetric theory.
-2. Main continuation is `JANUS-R`: ghost-free Hassan-Rosen bigravity, two positive-energy matter sectors.
-3. Literal universal `+G/-G`, fundamental negative mass and isolated negative photon lensing are **not** recovered/required by the healthy two-metric continuation.
-4. Linear cross repulsion exists but is weaker (`-G/3` in the symmetric asymptotic normalization), and slow-matter dynamics differs from photon lensing.
-5. Linear relative-mode growth (`p≈1.186` maximally unscreened in EdS) is too weak to create dramatic late segregation from an arbitrarily tiny seed by itself.
-6. Lambda-CDM-like `H(z)` is not a stability pass. Exploratory scans expose a strong stability-vs-visible-mixing tension: making the theory healthy earlier drives it toward GR-like decoupling.
-7. The only serious surviving path is **environment-dependent nonlinear JANUS-R**.
-8. Aoki-Maeda-Namba 2015 give the key nonlinear two-matter scalar equation; visible underdensity + twin overdensity adds coherently to its relative source.
-9. Fixed-H source thresholds are dimensionful and must not be read as density-contrast thresholds.
-10. Algebraic double-root endpoints at a compensation wall are signs that the algebraic/small-gradient approximation fails there, not automatic physical singularities.
-11. Aoki-Mizuno static Ricci-flat Vainshtein instabilities are a major warning, not a universal no-go for a non-Ricci-flat cosmological two-matter wall.
-12. Brizuela-de Cesare-Soler Oficial 2024 provide general perturbation machinery once a genuine gradient-resolved spherical background exists.
+## Authoritative documents
+
+Implementation / dynamic wall:
+
+- `research/V2_TWIN_FLUID_NR_RUNBOOK.md`
+- `research/V2_TWIN_FLUID_PATCH_SPEC.md`
+- `docs/superpowers/plans/2026-10-11-twin-fluid-nr.md`
+- `research/V2_NR_FEASIBILITY_AND_LAPSE_GATE.md`
+- `research/V2_MEAN_GAUGE_AND_LAPSE_REPRESENTATION.md`
+- `research/V2_FULL_SPHERICAL_GATE.md`
+- `research/V2_INITIAL_DATA_GATE.md`
+
+Scientific background / earlier gates:
+
+- `research/V2_ENVIRONMENTAL_SCREENING.md`
+- `research/V2_STATIC_VOID_GATE.md`
+- `research/V2_COSMIC_TRANSITION_GATE.md`
+- `research/V2_GOLDILOCKS_AND_GLOBAL_GROWTH.md`
+- `research/V2_STABILITY_MIXING_TENSION.md`
+- `research/NONLINEAR_TWIN_SCREENING.md`
+- `research/V2_LINEAR_GATE.md`
+- `research/STATE.md`
+- `research/VERDICT_V1.md`
+
+## Scientific truth — compressed
+
+### Janus exact
+
+1. `JANUS-EXACT = NOT_CLOSED` as a fully specified nonlinear generally covariant bimetric theory.
+2. The 2015 constrained variation does not independently derive both published field equations.
+3. Janus 2024 improves the structure but does not fully specify the general relativistic interaction sector needed for a closed theory in all regimes.
+4. Literal fundamental negative mass is not required by the best surviving continuation.
+5. Literal universal `+G/-G` is not recovered in the healthy linear two-metric continuation.
+6. An isolated positive-energy twin source does not give negative/divergent photon lensing in the linear ghost-free two-metric mechanism.
+
+### JANUS-R
+
+Main continuation:
+
+- Hassan–Rosen ghost-free bigravity;
+- two separately and minimally coupled positive-energy matter sectors;
+- ordinary visible sector retained;
+- Janus-like behaviour must emerge dynamically, not be inserted as a sign rule;
+- nonlinear screening is essential.
+
+Linear results:
+
+- cross-sector slow-matter repulsion exists in part of parameter space;
+- symmetric asymptotic cross strength approaches about `-G/3`, not `-G`;
+- actual force-sign threshold from the Yukawa potential is `mu r ~= 0.9612787631`;
+- cross photon lensing remains non-negative in the corresponding linear solution;
+- dynamics and lensing differ, giving a potentially falsifiable signal;
+- maximally unscreened symmetric relative mode grows only as `a^1.186...`, too slowly to create dramatic late segregation from an arbitrarily tiny seed.
+
+### Stability-versus-effect tension
+
+A Lambda-CDM-like background `H(z)` is easy to obtain and is **not** evidence of viability.
+
+Exploratory V2 scans show a robust qualitative tension:
+
+- making the linear cosmology healthy farther back in redshift tends to reduce visible mixing of the massive mode;
+- strong universal linear JANUS-R then either becomes observationally conspicuous or is driven toward GR-like decoupling.
+
+Decision:
+
+`STRONG_LINEAR_JANUS_R = DOWNGRADED`
+
+The only serious surviving path is:
+
+`ENVIRONMENT_DEPENDENT_NONLINEAR_JANUS_R`.
+
+## Nonlinear two-matter result
+
+Primary source: Aoki–Maeda–Namba 2015.
+
+Their nonlinear scalar equation retains both matter sectors. The weighted relative source is schematically
+
+`S_rel ~ kappa_g^2 rho_g delta_g - K^2 kappa_f^2 rho_f delta_f`.
+
+For a visible underdensity plus twin overdensity the two contributions add coherently.
+
+Important corrections:
+
+- old fixed-`H` source endpoints are dimensionful and must not be read as density-contrast thresholds;
+- an algebraic double-root endpoint in the compensation wall marks breakdown of the small-gradient/algebraic approximation, not automatically a physical singularity;
+- the decisive region is therefore a **gradient-resolved radial transition wall**.
 
 ## Full spherical / numerical-relativity breakthrough
 
-### Aoki-Maeda-Tanabe 2016
+### Static two-matter equations already exist
 
-`Relativistic stars in bigravity theory`, arXiv:1602.02227.
+Aoki–Maeda–Tanabe 2016 derive full static spherical Hassan–Rosen equations with **both matter sectors**, reducible to first-order radial equations plus an algebraic constraint.
 
-Full static spherical Hassan-Rosen equations already exist **with both matter sectors retained**: radial Einstein equations, both matter conservation laws and the bimetric constraint, reducible to seven first-order ODEs plus an algebraic constraint.
+### Dynamic spherical architecture already exists
 
-### Kocic-Torsello-Hogas-Mortsell 2020
+Kocic–Torsello–Högås–Mörtsell, arXiv:1904.08617, provide full spherical standard-3+1 bimetric evolution and public GPLv3 code:
 
-`Initial data and first evolutions of dust clouds in bimetric relativity`, arXiv:1904.08617.
+`nubirel/bim-solver`
 
-Correct dynamical architecture already exists:
-
-- full spherical standard `3+1` bigravity;
-- nonbidiagonal separation/relative shift;
-- Hamiltonian + momentum + secondary constraints;
-- short dust-cloud evolutions;
-- no simple analytic LTB analogue.
-
-Public code: `nubirel/bim-solver` (GPLv3), pinned for this research at tree/commit:
+Pinned upstream revision:
 
 `8852e8e9921edeeedf1a447d3bf27b82ec24433c`
 
-The current sandbox cannot clone/download it (`Could not resolve host: github.com`). Source inspection is through the GitHub connector only; **the C++ solver has not been compiled here**.
+The public numerical implementation evolves matter only in `g`, but the bimetric geometry is already fully dynamical.
 
-## Gate A0 — constrained Janus-like initial data: PASS
+Current execution environment can inspect that repository through the GitHub connector but cannot clone/compile it locally. **Never claim that upstream C++ has been built or run here.**
 
-Files:
+## Gate A0 — initial constraints
+
+`INITIAL_DATA_EXISTENCE = PASS`
+
+Time-symmetric conformally-flat two-matter Hamiltonian constraints have regular positive solutions for a central f concentration plus external g shell.
+
+Relevant files include:
 
 - `numerics/twin_lane_emden_initial.py`
-- `tests/test_twin_lane_emden_initial.py`
-- `research/V2_FULL_SPHERICAL_GATE.md`
+- `numerics/two_matter_initial_data.py`
+- corresponding tests
+- `research/V2_INITIAL_DATA_GATE.md`
 
-Time-symmetric conformally-flat constraints were solved for:
+Manual TDD evidence includes GREEN `3 passed` for the two-matter initial-data module. Reference conformal factors remained positive and close to unity in the baseline case.
 
-- central positive f density;
-- regular positive g compensating shell;
-- asymptotic bi-Minkowski boundary;
-- positive conformal factors.
+Interpretation only:
 
-Manual TDD:
+- two-sector centre/wall initial geometry is not forbidden by the nonlinear constraints;
+- this is **not** yet a cosmological void, evolution, attractor or stability proof.
 
-- RED: `ModuleNotFoundError`
-- GREEN: `3 passed in 0.48s`
+## Twin-fluid patch is now source-level specified
 
-Verdict:
+See:
 
-`JANUS_LIKE_INITIAL_DATA_EXISTENCE = PASS`
+`research/V2_TWIN_FLUID_PATCH_SPEC.md`
 
-Meaning only: the desired central twin concentration + visible wall is not forbidden by the time-symmetric elliptic constraints. Formation/evolution/stability/FLRW embedding remain open.
+Pinned upstream standard-3+1 files were inspected directly.
 
-## Important rejected shortcuts
+### New f Valencia state
 
-### Ad-hoc expanding CMC Lane-Emden
+Add an independent state such as
 
-Rejected. At `K_ij != 0`, momentum and secondary constraints no longer vanish automatically. A radial f/g ratio through the wall requires consistent extrinsic curvature + separation/shift; simply inserting `K=-3H` is invalid.
+`Df,Sf,tauf,vf`
 
-### ADM sign as repulsion diagnostic
+with its own RHS and radial derivatives. Never reuse g-fluid storage.
 
-Rejected. A positive f source can give positive long-range ADM mass in both metrics while still producing finite-range cross repulsion through the massive mode. ADM probes the asymptotic massless mode, not the force sign at finite range.
+### Sector-symmetric f hydrodynamics
 
-### Upstream maximal-slicing routine as twin-matter kick
+Use the exact f-geometry dual of the existing g Valencia dust equations.
 
-Rejected. `include/maximalSlice.h` is specialized to g matter and contains upstream TODO/fixme source/factor notes. Do not infer twin-fluid physics from it.
+Matter projections:
 
-## Exact twin-fluid extension map in `bim-solver`
+`rho_f^m=(Df+tauf)/(fA fB^2)`
 
-**First use standard 3+1 (`bim-solver-STD`), not cBSSN.** It is the published short-evolution formulation and is easier to audit. Only harden to cBSSN after a short standard evolution passes.
+`j_f^m=Sf/(fA fB^2)`
 
-The existing single Valencia state is `pfD,pfS,pftau,pfv`. A real twin-fluid extension needs an independent f state and changes at least:
+`J1_f^m=Sf vf/(fA fB^2)`
 
-1. `src/bim-solver-std.cpp` — state registration, evolution, derivatives, parity/boundaries.
-2. `include/eom-std/eomMatter.h` — f-sector Valencia equations using only f geometry/lapse/shift.
-3. `include/eom-std/eomSources.h` — add f matter to `f_rho,f_j,f_JK,f_JKD`.
-4. `include/eom-std/eomConstraints.h` — mixed constraint `C_3` currently assumes `S_f=0`.
-5. `include/eom-std/eomMiscEquations.h` — `eq_base_p_f` currently assumes `S_f=0`.
-6. `include/eom-std/eomEvolution.h` — direct `S_g` source has missing f-sector dual term.
-7. `include/eom-std/eomLapseRatios.h` — currently specialized to one-fluid matter.
-8. `include/maximalSlice.h` only if maximal slicing is later used; avoid initially.
+`J2_f^m=0`.
 
-Exact momentum-sector corrections already derived:
+### Gravitational source corrections
 
-- `base_p_f -> base_p_f - S_f/(A_f A_g B_g^2 P_2_1(R))` in current solver conventions;
-- corrected mixed-constraint matter part is proportional to
-  `-k_g k_f (S_g + S_f)/(2 B_g^2)`.
+Add exactly once:
 
-These follow from eliminating the separation variable between the two momentum constraints; they are not guessed patches.
+`eq_f_rho += (Df+tauf)/(fA fB^2)`
 
-## Major new result — general twin-matter lapse ratio already exists
+`eq_f_j += Sf/(fA fB^2)`
 
-Primary reference:
+`eq_f_JK += fAlp*(3Df-Sf*vf+3tauf)/(2 fA fB^2)`
 
-Kocic, Lundkvist, Torsello, `On the ratio of lapses in bimetric relativity`, arXiv:1903.09646.
+`eq_f_JKD += fAlp*Sf*vf/(fA fB^2)`.
 
-This paper is derived with **both matter sectors present**. Preservation of the secondary constraint gives in spherical symmetry
+Do not patch unused `JK1/JK2` in the first implementation.
 
-`0 ~= W_g alpha + W_f alpha_f`,
+### Separation / mixed momentum corrections
+
+In upstream conventions:
+
+`base_p_f -> base_p_f - Sf/(fA*gA*gB^2*P_2_1(R))`
+
+and the explicit matter piece of `C_3` becomes
+
+`-k_g*k_f*(Sg+Sf)/(2*gB^2)`.
+
+### Direct fSig matter source
+
+Add
+
+`-k_f*fAlp*Sf/(2*fB^3)`.
+
+### State-machine locations
+
+The independent f state must be added to:
+
+- enum/storage;
+- input list;
+- evolved-GF list;
+- output/diagnostics;
+- `emitField`;
+- radial derivatives;
+- derived primitive velocity;
+- origin parity;
+- outer extrapolation.
+
+## General twin-matter lapse — decisive implementation block
+
+Primary source:
+
+Kocic–Lundkvist–Torsello, *On the ratio of lapses in bimetric relativity*, arXiv:1903.09646.
+
+With both matter sectors,
+
+`0 = W_g alpha + W_f alpha_f`,
 
 therefore
 
-`alpha = -(W_f/W_g) alpha_f`.
+`W := alpha/alpha_f = -W_f/W_g`.
 
-The authors explicitly state that `W_g,W_f` depend on both matter stress-energy tensors: matter coupled to either metric affects the lapse of the other.
+The published expressions contain both matter stress-energy tensors. Matter coupled to either metric affects the lapse of the other.
 
-Explicit formulas are Eqs. (2.20)-(2.22), coefficients in Appendix D. Under the sector duality `g<->f`, `beta_(4-n)<->beta_n`, `p<->-p`, one has `W_g<->-W_f`.
+Exact duality:
 
-### Machine-readable source exists
+`g <-> f`, `beta_(4-n) <-> beta_n`, `p <-> -p`, `W_g <-> -W_f`.
 
-The arXiv record lists ancillary derivation files:
+### Important source-localization result
 
-- `src/02-lapse-ratio.nb`
-- `src/bimetric-lapses-nr.m`
-- `src/bimetric-ss-nr.m`
+At the pinned upstream revision, `pfD/pfS/pftau` occur only **four times** in the generated `eomLapseRatios.h`:
 
-and arXiv:1904.08617 republishes related machine-readable source.
+- monolithic `eq_gW`;
+- monolithic `eq_fW`;
+- runtime split `eq_gW_2`;
+- runtime split `eq_fW_2`.
 
-The current sandbox cannot fetch them because of network/cache restrictions. **When a real fork environment is available, obtain these first. Do not manually transcribe Appendix D into production C++ if the authors' symbolic source is available.**
+The standard solver actually reconstructs
 
-### Mandatory lapse implementation regression
+`W = W0 + r(W1+r W2)`.
 
-1. import/translate the authors' general `W_g,W_f` expression;
-2. test the `g<->f` duality;
-3. set all f-matter variables to zero;
-4. require agreement with upstream one-fluid `eomLapseRatios.h` over randomized regular states;
-5. only then permit twin-fluid evolution.
+Thus explicit one-fluid matter dependence used at runtime is localized in the `W2` pair.
 
-This removes the biggest conceptual blocker of Gate A1.
+This makes a two-fluid extension tractable, but the exact dual transformation also changes powers of `R=fB/gB` and beta ordering. **Do not hand-simplify the generated expression.**
 
-### Gauge
+The authors published machine-readable Mathematica ancillary files. Obtain/translate those in the real fork if possible.
 
-Once `W=-W_f/W_g` is known, only one lapse is gauge freedom. The paper also gives the geometric-mean relation
+## Mean-gauge result
 
-`H^2 lambda = alpha alpha_f`.
+See:
 
-A symmetric geometric-mean gauge is therefore a good research choice for the wall test. Monitor zeros/divergences of `W_g,W_f` as branch warnings.
+`research/V2_MEAN_GAUGE_AND_LAPSE_REPRESENTATION.md`
 
-## Integrator / solver traps
+The geometric-mean gauge does **not** bypass `W`.
 
-- GitHub Actions/workflows disabled by user.
-- Use explicit RK3/RK4 first; DIRK/Jacobian work only if demonstrated stiffness requires it.
-- `src/bim-solver-BSSN.cpp` defaults `_TEST_MODE=1`; any future cBSSN physics build must explicitly use `-D_TEST_MODE=0` and verify evolved-field names/count.
-- cBSSN full strong hyperbolicity remains less established than in GR; treat it as research-grade.
-- Standard-3+1 constraint propagation has been shown to form a first-order symmetric-hyperbolic subsystem; constraint convergence is therefore a meaningful diagnostic even though it does not prove the entire gauge-fixed evolution system is ideal.
+Relations:
 
-## Authoritative implementation documents
+`H^2 lambda = alpha alpha_f`
 
-Read before any twin-fluid code:
+`alpha^2 = H^2 lambda W`
 
-- `research/V2_TWIN_FLUID_NR_RUNBOOK.md`
-- `docs/superpowers/plans/2026-10-11-twin-fluid-nr.md`
-- `research/V2_FULL_SPHERICAL_GATE.md`
+`alpha_f^2 = H^2/(lambda W)`.
 
-The runbook contains the exact source map and corrections.
+Decision:
 
-## Mandatory resume order
+`MEAN_GAUGE = RECOMMENDED_AFTER_W_IS_KNOWN`
 
-1. Read `RESUME.md`.
-2. Read the three implementation documents immediately above.
-3. Confirm branch `research/v2-flrw` and PR #1 draft/unmerged.
-4. Inspect commits newer than this file before writing.
-5. Do not return to old algebraic root scans unless new mathematics directly requires it.
+A mean gauge is sector-symmetric and therefore attractive for the eventual wall experiment.
 
-## Verification policy while Actions are disabled
+### New explicit branch gate
 
-- TDD for behavioral/numerical code where feasible.
-- Record exact RED and GREEN output.
-- Verify GitHub file SHA/content after writes.
-- Never claim full-repository verification unless actually executed.
-- No C++ build/run claim until a real local upstream fork has been materialized and compiled.
+For a real mean lapse and same time orientation:
 
-Known module-level evidence includes:
+`W = -W_f/W_g > 0`.
 
-- asymmetric two-fluid control: `3 passed`;
-- cosmological nonlinear trajectory: `3 passed`;
-- Higuchi scale window: `3 passed`;
-- self-consistent transition: `4 passed`;
-- static Case-A branch selection: `4 passed in 0.75s`;
-- environmental screening: RED `ModuleNotFoundError` -> GREEN `3 passed in 0.03s`;
-- twin Lane-Emden data: RED `ModuleNotFoundError` -> GREEN `3 passed in 0.48s`;
-- published Aoki-Maeda-Namba roots reproduced.
+Therefore monitor as physical/branch warnings:
 
-These are not full branch CI.
+- `W_g -> 0` with `W_f != 0`;
+- `W_f -> 0` with `W_g != 0`;
+- `W < 0`;
+- simultaneous `W_g,W_f -> 0` as a special degenerate case requiring separate analysis.
 
-## Immediate next actions
+A future wall is not accepted as regular merely because the metric components stay finite; `W` must remain finite and positive on the selected mean-time branch.
 
-### Gate A1 — general twin-fluid 3+1 state
+## Numerical-relativity feasibility
 
-When the upstream fork can be materialized:
+See:
 
-1. compile untouched `bim-solver-STD` and reproduce a one-fluid baseline;
-2. obtain arXiv ancillary `bimetric-lapses-nr.m` / notebook source;
-3. add independent `D_f,S_f,tau_f,v_f` state;
-4. implement sector-symmetric f Valencia equations;
-5. add f matter to all source/constraint/separation/evolution locations listed above;
-6. implement general published `W_g,W_f`;
-7. prove `T_f=0` regression against upstream lapse/source equations;
-8. map the Python Lane-Emden profile into 3+1 fields and verify all constraints.
+`research/V2_NR_FEASIBILITY_AND_LAPSE_GATE.md`.
 
-### Gate A2 — short-time wall evolution
+Search through 2026 found no published spherical Hassan–Rosen numerical evolution with independent dynamical matter fluids in both sectors that supersedes the planned experiment.
 
-Only after A1:
+No general standard-3+1 no-go was found either.
 
-- vacuum / g-only / f-only / full twin controls;
-- RK3/RK4 at >=3 resolutions/Courant factors;
-- monitor both Hamiltonian + momentum constraints, secondary constraint, `W_g,W_f`, lapse ratio, separation, metric positivity, both rest masses and velocities;
-- classify wall as regular/dispersing/collapsing/branch-failing only from convergent evidence.
+Kocic 2019 shows the bimetric constraint violations form a first-order symmetric-hyperbolic system (assuming the field/matter equations), with characteristic cone given by the union of the two metric null cones.
 
-### Gate A3 — expanding cosmological embedding
+Adding separately minimally coupled f matter does not itself introduce a new higher-derivative gravitational principal part.
 
-Only after local A2 passes:
+This is only a **feasibility pass**, not proof that the chosen gauge-fixed wall evolution is stable or globally strongly hyperbolic.
 
-- solve full non-time-symmetric constraints;
-- include extrinsic curvature and separation consistently;
-- FLRW exterior, not asymptotic Minkowski;
-- then evolve compensated cosmic void.
+Decision:
 
-### Gate B/C/D
+`FIRST_DYNAMIC_IMPLEMENTATION = STANDARD_3+1`, not cBSSN.
 
-B: perturbative/principal-symbol stability of the evolved wall.
+## Manual verification policy
 
-C: test whether ordinary initial conditions generate the anti-correlated state rather than merely allow tuned initial data.
+Actions/workflows are disabled.
 
-D: only then compute velocity/lensing profiles and fit DESI/RSD/`E_G`/void lensing/BAO/SNe/CMB.
+For new numerical behaviour:
 
-## Stop / downgrade conditions
+1. write the failing test first;
+2. observe RED;
+3. implement minimally;
+4. observe GREEN locally when possible;
+5. record the exact output;
+6. separately verify GitHub content/SHA after writes;
+7. never describe a full branch as tested unless it was actually executed.
 
-Strongly downgrade/reject JANUS-R if:
+Previously recorded module-level passes include multiple 3- and 4-test suites, published-root regressions and the initial-data BVP. These are **not** full repository CI.
+
+## NEXT ACTIONS — resume exactly here
+
+### A1. Remove the general-lapse implementation block
+
+Preferred route:
+
+1. obtain the authors' machine-readable `bimetric-lapses-nr.m` / notebook source in a real fork environment;
+2. generate the full two-matter `W_g,W_f`;
+3. verify exact sector duality;
+4. set all f-matter variables to zero and reproduce pinned upstream `eomLapseRatios.h` numerically;
+5. set all g-matter variables to zero and verify the dual case;
+6. both fluids on: verify secondary-constraint preservation;
+7. use mean-lapse gauge only **after** this ratio is correct.
+
+If ancillary source remains unavailable:
+
+- reconstruct only the matter-dependent coefficient block from the compact published `c_i,d_i` equations with symbolic algebra;
+- do not hand-copy the full generated C++ expression.
+
+### A2. Materialize a GPL-compatible fork when an executable environment is available
+
+1. pin upstream revision `8852e8e...`;
+2. build untouched `bim-solver-STD`;
+3. reproduce a one-fluid baseline;
+4. write RED tests for f state / sector symmetry / lapse duality;
+5. implement the source-level patch specified above;
+6. require `T_f=0` regression against upstream.
+
+### A3. Short dynamic wall experiment
+
+Controls:
+
+- vacuum;
+- g-only shell;
+- f-only centre;
+- full twin centre+wall.
+
+Use RK3/RK4, at least three resolutions/Courant factors.
+
+Monitor:
+
+- both Hamiltonian constraints;
+- both momentum constraints;
+- secondary constraint;
+- `W_g,W_f,W`;
+- separation `p`;
+- metric positivity/determinants;
+- square-root branch reality/causal compatibility;
+- independent g/f rest masses;
+- both fluid velocities.
+
+Classify `DYNAMIC_WALL = PASS/PARTIAL/FAIL` only from resolution-convergent evidence.
+
+### A4. Only if local wall survives
+
+Construct the non-time-symmetric / FLRW exterior problem with consistent extrinsic curvature and separation. Do not return to an ad-hoc `K=-3H` Lane–Emden slice.
+
+### B. Stability
+
+Apply the general spherical perturbation/principal-symbol machinery to the actual evolved wall. Reject unavoidable ghost or gradient instability.
+
+### C. Formation / attractor
+
+Prove ordinary initial conditions can **generate** the anti-correlated state. Existence of tuned initial data is not enough.
+
+### D. Observables
+
+Only after A–C:
+
+- visible velocity profile;
+- `Psi_g`, `Phi_g`;
+- Weyl/lensing profile;
+- joint velocity-vs-lensing prediction;
+- DESI/RSD/`E_G`/void lensing/BAO/SNe/CMB comparison.
+
+## Stop / downgrade JANUS-R if
 
 1. no regular gradient-resolved wall evolution exists;
 2. every wall evolution has unavoidable ghost/gradient instability;
 3. healthy solutions require forbidden early isocurvature;
 4. healthy regions decouple the visible massive mode so strongly that the effect is negligible;
-5. early screening also kills the late effect;
-6. viable solutions reduce observationally to GR+LambdaCDM with extra unconstrained parameters.
+5. early screening also kills the desired late effect;
+6. all acceptable solutions reduce observationally to GR+LambdaCDM with extra unconstrained parameters.
 
-## Do not redo unless new mathematics appears
+## Do not redo unless genuinely new mathematics appears
 
 - exact universal `+G/-G` in the same linear two-metric architecture;
-- fundamental negative mass as required mechanism;
-- isolated positive twin matter giving divergent negative photon lensing;
-- viability from `H(z)` alone;
-- dimensional source thresholds interpreted as density contrast;
-- algebraic root endpoints treated automatically as physical singularities;
-- static Ricci-flat no-go extrapolated blindly to cosmological wall;
-- ad-hoc expanding CMC Lane-Emden data;
-- hand-written twin lapse that ignores the published general `W_g,W_f` result.
+- fundamental negative mass as a required mechanism;
+- isolated positive twin matter producing divergent negative photon lensing;
+- viability judgments from `H(z)` alone;
+- dimensional source endpoints interpreted as physical density contrast;
+- algebraic root endpoints treated automatically as spacetime singularities;
+- static Ricci-flat instability extrapolated blindly to a cosmological wall;
+- ad-hoc expanding CMC Lane–Emden initial data;
+- a twin lapse that ignores the published `W_g,W_f` relation;
+- mean gauge used as if it removed the need for the dynamical lapse ratio.
