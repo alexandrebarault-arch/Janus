@@ -27,7 +27,7 @@ That descendant is **not literal Janus**. In this repository it is called `JANUS
 
 ## 1. Fatal issue for literal Janus: the nonlinear theory is not closed
 
-Petit, Margnat & Zejli (EPJC 2024) write an action containing interaction terms `S_int` / interaction tensors between the two sectors, but do not provide their exact general nonlinear form.
+Petit, Margnat & Zejli (EPJC 2024) write an action containing interaction terms / interaction tensors between the two sectors, but do not provide their exact general nonlinear form.
 
 The paper explicitly states, in its strong-field discussion, that one is not obliged to provide the exact source/interaction tensor and that its exact form might be supplied in the future.
 
@@ -149,18 +149,28 @@ Aoki-Maeda-Namba's nonlinear scalar equation contains a weighted source differen
 
 ### 6.4 Regular separated initial data exist
 
-The new `numerics/two_sector_initial_constraints.py` restores matter in both Hamiltonian constraints of the Kocic-Torsello-Högås-Mörtsell spherical initial-data system.
+The repository now contains independent implementations/checks of the two-sector spherical Hamiltonian constraint problem, including `numerics/two_sector_initial_constraints.py`.
 
-For an exchange-symmetric bi-Minkowski interaction and positive matter only:
+For exchange-symmetric bi-Minkowski interactions and positive matter only:
 
 - central `f` Gaussian core;
 - surrounding `g` Gaussian shell;
 
 regular positive solutions exist.
 
-A moderate 100-point parameter scan converged in `100/100` cases; a deliberately much stronger grid converged in `47/48` cases.
+Newest independent check:
+
+- TDD: RED `ModuleNotFoundError` -> GREEN `3 passed in 0.51s`;
+- moderate positive-matter core/shell scan: `100/100` converged;
+- deliberately strong scan: `47/48` converged.
 
 Thus spatial separation itself is not forbidden by the nonlinear constraints.
+
+### 6.5 The initial secondary/lapse branch has a finite healthy basin
+
+Separate repository work reconstructed the time-symmetric two-matter lapse ratio and scanned the initial wall. The reference wall has a finite positive same-oriented lapse branch, and a broad but not unlimited parameter/amplitude basin survives. Outside that basin the lapse relation develops forbidden sign/zero behavior inside the compensation wall.
+
+Therefore a nontrivial separated two-sector initial slice can pass both Hamiltonian and initial lapse/secondary-constraint gates.
 
 Verdict:
 
@@ -185,7 +195,11 @@ Known facts:
 - the algebraic approximation develops branch endpoints near the wall in Janus-like void sign configurations;
 - this signals breakdown of the small-gradient approximation, not automatically a physical singularity;
 - a known static Ricci-flat Vainshtein background studied by Aoki-Mizuno suffers ghost/gradient instability, though this is not a theorem for a cosmological non-Ricci-flat two-fluid void;
-- Brizuela-de Cesare-Soler Oficial provide the formal perturbation machinery for arbitrary spherical bimetric backgrounds, but a regular two-fluid cosmological wall background must first be constructed.
+- Brizuela-de Cesare-Soler Oficial provide the formal perturbation machinery for arbitrary spherical bimetric backgrounds, but a regular two-fluid cosmological wall background must first be evolved.
+
+The branch now contains a detailed patch specification and runbook for extending the public `nubirel/bim-solver` standard-3+1 spherical evolution code to an independent `f`-sector Valencia dust fluid, including the f-matter contribution to the secondary/lapse relation and control/regression tooling.
+
+The remaining blocker is practical executable evidence: the pinned upstream GPL code has not been materialized/compiled in the current sandbox.
 
 Therefore:
 
@@ -217,7 +231,7 @@ These are scientific assessment scores, not statistical probabilities.
 | Core idea: two sectors can gravitationally segregate | **15** | genuinely viable research idea |
 | Hassan-Rosen JANUS-R mathematical skeleton | **16** | well-defined ghost-free framework |
 | JANUS-R as actual cosmology today | **9** | major stability/formation/observational gates remain |
-| Value of continuing a targeted numerical wall experiment | **13** | worthwhile as R&D, not as validation of Janus |
+| Value of one targeted numerical two-fluid wall experiment | **13** | worthwhile R&D, not validation of Janus |
 
 ---
 
@@ -249,11 +263,13 @@ But if a future simulation demonstrates a stable version of it, the resulting th
 
 There is only one remaining calculation with enough information value to justify a V3:
 
-1. extend the public spherical `bim-solver` evolution from one Valencia matter fluid to two separately coupled fluids;
-2. initialize the regular segregated two-sector data established in V2;
-3. evolve the compensation/transition wall;
-4. test all constraints and then the seven gravitational perturbative degrees of freedom through the wall.
+1. materialize and build the pinned public `bim-solver` revision;
+2. reproduce the untouched one-fluid baseline;
+3. apply the prepared independent f-fluid source/lapse patch;
+4. require exact/numerical zero-f regression and sector-dual controls;
+5. evolve the regular segregated two-sector wall at several resolutions/Courant factors;
+6. if it survives, test all seven gravitational perturbative degrees of freedom through the resolved wall.
 
-If that wall cannot evolve regularly and stably in any physically interesting parameter region, the remaining JANUS-R segregation program should be stopped.
+If the wall cannot evolve regularly and stably in any physically interesting parameter region, the remaining JANUS-R segregation program should be stopped.
 
 If it does survive, the next step is an observational void velocity/lensing prediction — **not** a return to negative mass or exact `+G/-G`.
