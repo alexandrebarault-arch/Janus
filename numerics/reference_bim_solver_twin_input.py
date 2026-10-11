@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import numpy as np
+from scipy.interpolate import CubicSpline
 
 from numerics.twin_lane_emden_initial import (
     Params,
@@ -21,6 +22,21 @@ from numerics.twin_lane_emden_initial import (
 )
 from numerics.time_symmetric_lapse_gate import time_symmetric_w
 from numerics.bim_solver_twin_input import build_rows, uniform_centers, write_text_input
+
+
+def cubic_resample(x, y, x_target):
+    """Smoothly resample a BVP field and its radial derivative."""
+    x = np.asarray(x, dtype=float)
+    y = np.asarray(y, dtype=float)
+    xt = np.asarray(x_target, dtype=float)
+    if x.ndim != 1 or y.shape != x.shape or xt.ndim != 1 or len(x) < 4:
+        raise ValueError("invalid spline inputs")
+    if np.any(np.diff(x) <= 0):
+        raise ValueError("source radius must be strictly increasing")
+    if xt.size and (xt[0] < x[0] or xt[-1] > x[-1]):
+        raise ValueError("target radii must lie inside the BVP domain")
+    spline = CubicSpline(x, y, bc_type="not-a-knot")
+    return np.asarray(spline(xt)), np.asarray(spline(xt, 1))
 
 
 def reference_wall_rows(
@@ -58,13 +74,9 @@ def reference_wall_rows(
     solve_r = np.asarray(sol.r, dtype=float)
     solve_pg = np.asarray(sol.psi_g, dtype=float)
     solve_pf = np.asarray(sol.psi_f, dtype=float)
-    dpg_solve = np.gradient(solve_pg, solve_r, edge_order=2)
-    dpf_solve = np.gradient(solve_pf, solve_r, edge_order=2)
 
-    pg = np.interp(r, solve_r, solve_pg)
-    pf = np.interp(r, solve_r, solve_pf)
-    dpg = np.interp(r, solve_r, dpg_solve)
-    dpf = np.interp(r, solve_r, dpf_solve)
+    pg, dpg = cubic_resample(solve_r, solve_pg, r)
+    pf, dpf = cubic_resample(solve_r, solve_pf, r)
     Dg = np.asarray(Dg_fn(r), dtype=float)
     Df = np.asarray(Df_fn(r), dtype=float)
 
