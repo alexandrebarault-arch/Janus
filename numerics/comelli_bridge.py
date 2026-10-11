@@ -91,9 +91,11 @@ def additional_gauge_invariants(
 ) -> dict[str, float]:
     """Reconstruct Comelli-Crisostomi-Pilo additional scalar invariants.
 
-    Implements Eqs. (A.1)--(A.6) of arXiv:1202.1986. These identities are
-    reused by the two-matter perturbation system of arXiv:1403.5679.
-    Primes denote conformal-time derivatives.
+    Implements identities derived from the gauge-invariant definitions in
+    arXiv:1202.1986 and reused by arXiv:1403.5679. The searchable PDF text
+    drops the prime on E in the F1+F2 relation; direct substitution of the
+    published definitions gives B1-E_prime. Primes denote conformal-time
+    derivatives.
     """
     if c == 0.0:
         raise ValueError("c must be non-zero")
@@ -104,7 +106,7 @@ def additional_gauge_invariants(
     B2 = B1 - (1.0 - c**2) * E_prime
 
     dphi = Phi1 - Phi2
-    f_sum = ((B1 - E) * (H + H_omega) - 2.0 * c**2 * dphi) / c**2
+    f_sum = ((B1 - E_prime) * (H + H_omega) - 2.0 * c**2 * dphi) / c**2
     f_weighted = (H - H_omega) * dphi
     F1 = (H_omega * f_sum - f_weighted) / denom
     F2 = f_sum - F1
