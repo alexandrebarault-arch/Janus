@@ -40,3 +40,66 @@ def test_background_constraint_potential_parts_are_same_equation():
     lhs_comelli = comelli_branch_lhs(y, kappa, a)
     lhs_janus = janus_branch_potential_lhs(y, kappa, beta)
     assert math.isclose(lhs_comelli, -lhs_janus, rel_tol=0.0, abs_tol=1e-12)
+
+
+def test_additional_gauge_invariants_satisfy_comelli_2012_relations():
+    from numerics.comelli_bridge import additional_gauge_invariants
+
+    H = 1.7
+    H_omega = 1.1
+    c = 0.83
+    c_prime = -0.07
+    B1 = 0.12
+    B1_prime = -0.04
+    E = 0.03
+    E_prime = 0.05
+    E_double_prime = -0.02
+    Phi1, Phi2 = 0.011, -0.004
+    Psi1, Psi2 = -0.010, 0.006
+
+    gi = additional_gauge_invariants(
+        H=H,
+        H_omega=H_omega,
+        c=c,
+        c_prime=c_prime,
+        B1=B1,
+        B1_prime=B1_prime,
+        E=E,
+        E_prime=E_prime,
+        E_double_prime=E_double_prime,
+        Phi1=Phi1,
+        Phi2=Phi2,
+        Psi1=Psi1,
+        Psi2=Psi2,
+    )
+
+    assert math.isclose(
+        gi["B2"], B1 - (1.0 - c**2) * E_prime, abs_tol=1e-12
+    )
+    assert math.isclose(
+        H_omega * gi["F2"] - H * gi["F1"],
+        (H - H_omega) * (Phi1 - Phi2),
+        abs_tol=1e-12,
+    )
+    assert math.isclose(
+        c**2 * (gi["F2"] + gi["F1"]),
+        (B1 - E) * (H + H_omega) - 2.0 * c**2 * (Phi1 - Phi2),
+        abs_tol=1e-12,
+    )
+    assert math.isclose(
+        c**2 * (gi["A2"] - gi["A1"]),
+        (B1 - E_prime) * (c * (H - H_omega) - c_prime),
+        abs_tol=1e-12,
+    )
+    expected_sum = (
+        2.0 * c**3 * (Psi2 - Psi1)
+        + B1 * (c * (H_omega + H) - 3.0 * c_prime)
+        + 3.0 * c_prime * E_prime
+        + c
+        * (
+            2.0 * B1_prime
+            - 2.0 * E_double_prime
+            - E_prime * (H_omega + H)
+        )
+    )
+    assert math.isclose(c**2 * (gi["A2"] + gi["A1"]), expected_sum, abs_tol=1e-12)
