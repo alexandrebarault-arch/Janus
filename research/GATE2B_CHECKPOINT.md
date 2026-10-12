@@ -23,12 +23,12 @@ Candidate-C background conventions are under control. The old 12x12 scalar closu
 - Comelli A.7-A.16, slips, A.17, and A1/A2 identities were independently re-audited.
 - Full A.12/A.16 were checked before slip reduction; their anisotropic brackets vanish exactly under the JANUS slips. No explicit gradient block was dropped there.
 - A.17 is algebraically valid; never delete it merely to improve a determinant.
-- A.18 is genuinely ambiguous: raw gauge-invariant definitions give `(calB1-calE')`, printed appendix gives `(calB1-calE)`.
+- A.18 is genuinely ambiguous: raw gauge-invariant definitions suggest `(calB1-calE')`, while the printed appendix gives `(calB1-calE)`.
 - A.18 changes descriptor rank: derived-prime gives rank 6 for the seven constraint/identity equations at fixed background; printed-unprime gives rank 7 for generic `c!=1`.
 - Appendix B.2 proves the missing helicity-0 gradient exists. For `w1=1/3`, `w2=0`, `a2=a3=0`, `f1=f2`, B.5 reduces to `E''+(3/tau)E'-(2/3)k^2E=0` sub-horizon.
-- With `E=tau^2 e(x)`, `x=k tau`, the acceptance operator is exactly
-  `x^2 e_xx + 7x e_x + 8e - (2/3)x^2 e = 0`.
-  Only after recovering this may one take high-x/WKB and read `3q^2-2`.
+- With `E=tau^2 e(x)`, `x=k tau`, the acceptance operator is exactly `x^2 e_xx + 7x e_x + 8e - (2/3)x^2 e = 0`.
+- The primary Comelli reduction explicitly states that `B1` and the lapse potentials are **nondynamical** and can be expressed in terms of `E`, `Phi1`, `Phi2`; only `E`, `Phi1`, `Phi2` obey the three second-order scalar equations. This is now a central structural constraint on any JANUS reduction.
+- At leading Case-C order the direct equations already reproduce the two matter/metric modes independently: the visible radiation `Phi1` equation agrees with the GR equation, and the twin-dust `Phi2` equation agrees with Comelli B.4. The remaining missing mode is therefore specifically the gravitational `E` mode governed by B.5.
 
 ### Old closure failure
 
@@ -36,6 +36,7 @@ Candidate-C background conventions are under control. The old 12x12 scalar closu
 - Dust+dust gives the same spurious pair.
 - As k increases, the faulty frequency tends to `omega~23.894 H0`; apparent speed falls as `1/k`, so the `k^2 E` gravity gradient is structurally absent.
 - Ruled out as fixes: dust/radiation mixture, `d(g00)` vs `d(f00)`, individual background derivatives, simple A1/A2 typo, isolated f-trace sign flip, double precision/conditioning, De Felice normalization, and dropping in the alternate A.18 inside the same old closure.
+- The old acceleration layer promotes `B1'` to an independent unknown together with `E''`, `Phi1''`, `Phi2''`. This conflicts with the published degree-of-freedom organization in which `B1` is nondynamical. **Promoting `B1` before eliminating the constraints is now the leading structural suspect for why the old closure projects out the helicity-0 gradient.**
 
 ## Exact dynamically on-shell Case-C benchmark
 
@@ -50,30 +51,23 @@ Positive root:
 Early time:
 `a~tau`, `xi~tau`, `H~1/tau`, `H_omega~2/tau`, `rho1~3/tau^4`, `rho2~3/tau^6`, `c->2`.
 
-### Executable benchmark now in Git
+### Executable benchmark in Git
 
-- `numerics/comelli_case_c.py` implements the exact branch, implicit `xi_a/xi_aa`, exact on-shell background derivatives, and dimensionless k.
-- It now also implements exact conformal time
-  `tau(a)=integral_0^a da/sqrt(1+a^4 xi(a))`
-  by Gauss-Legendre quadrature, monotonic inversion `a(tau)`, and `case_c_background_from_tau`.
-- It implements the scaled derivative identities
-  `D_tau[tau^p f(k tau)] = tau^(p-1)(p+x d_x)f` and
-  `D_tau^2[tau^p f] = tau^(p-2)(p-1+x d_x)(p+x d_x)f`.
-- `tests/test_comelli_case_c.py` pins branch residual, `c->2`, `H a->1`, `f1=f2=xi`, dimensionless k, conformal-time series/inversion, and scaled derivatives.
-- Verification performed locally: original benchmark tests **3/3 passed**; conformal-map test gives zero displayed series error at `a=1e-2` and inversion error `~1.7e-18`.
-- Commit trail: test `0e9de06`, k-interface correction `40a270f`, benchmark implementation `e33a376`, conformal-map RED `036381c`, conformal-map implementation `3ddf3f5`.
+- `numerics/comelli_case_c.py` implements the exact branch, exact on-shell background derivatives, dimensionless k, conformal time `tau(a)`, monotonic inversion `a(tau)`, and `case_c_background_from_tau`.
+- It implements `D_tau[tau^p f(k tau)] = tau^(p-1)(p+x d_x)f` and the corresponding second derivative.
+- `tests/test_comelli_case_c.py` pins branch residual, `c->2`, `H a->1`, `f1=f2=xi`, conformal-time inversion and scaled derivatives.
+- Verification performed locally: benchmark tests passed; conformal-map inversion error was ~`1.7e-18` at the control point.
 
 ## Descriptor / DAE findings
 
 - `numerics/comelli_descriptor.py` keeps the direct system rectangular: 13 equations x 11 variables, quadratic in a frozen commuting derivative only as an audit representation.
-- `tests/test_comelli_descriptor.py` verifies exact reconstruction and keeps both A.18 variants distinct.
-- Arbitrary 11-row minors are not physical evidence; some show `q~sqrt(2/3)` while their null vectors fail the full 13-row system.
-- Frozen-time `D_tau->s`/PGCD is insufficient because variable-coefficient Bianchi identities are differential-operator identities; freezing before elimination destroys ordering/hidden constraints.
-- Correct asymptotic variable: `x=k tau`. Preserve `D_tau=partial_tau+(x/tau)partial_x` through elimination.
+- Arbitrary square minors and frozen-time `D_tau->s`/PGCD are rejected as physical mode criteria because variable-coefficient Bianchi identities are differential-operator identities.
+- Correct asymptotic variable: `x=k tau`; preserve `D_tau=partial_tau+(x/tau)partial_x` through elimination.
 - Natural first weights: `E=tau^2 e(x)`, shifts/velocity potentials `~tau`, `Phi/F/density contrasts~O(1)`.
-- The leading normalized hierarchy has a gravitational right kernel. E dynamics appears only through higher-order Fredholm compatibility.
-- A previous hand reduction set homogeneous kernel amplitudes to zero too early and produced the wrong ODE. Reject that procedure.
-- Derived-prime and printed-unprime A.18 enter at different hierarchy orders and must be treated as separate descriptor-index chains.
+- A sparse Laurent/Taylor-jet operator audit confirms that homogeneous kernel amplitudes cannot be either reintroduced freely at every order or set to zero wholesale; both procedures corrupt Fredholm compatibility.
+- Local Taylor jets at regular `x0!=0` are preferable to a Laurent basis around `x=0` for diagnosing B.5 because the latter has Frobenius resonance/logarithmic structure.
+- Treating `B1` as an independent evolving leading function causes both the derived-prime and printed-unprime A.18 descriptor chains to overconstrain the gravitational jet rather than recover the two-dimensional solution space of B.5.
+- This failure, together with the paper's explicit nondynamical status of `B1`, motivates a new elimination order: solve `B1` algebraically from the constraint chain **before** constructing any second-order dynamics.
 
 ## Rejected hypotheses
 
@@ -92,32 +86,32 @@ Early time:
 - A.18 as a simple drop-in fix to the old closure (structural ambiguity remains because rank/index changes).
 - fixed-xi/frozen-a Case-C trajectories.
 - setting non-gravity homogeneous kernel amplitudes to zero before Fredholm compatibility.
+- promoting `B1'` as though `B1` were an independent physical scalar is now disfavored by the published degree count and failed descriptor chains.
 
 ## Active task list
 
 - [x] Convention bridge and Candidate-C background.
-- [x] Scalar constraints/identities and acceleration layer.
+- [x] Scalar constraints/identities and old acceleration layer.
 - [x] Old 12x12 closure + Bianchi diagnostics.
 - [x] Independent De Felice regression and diagnosis of missing gravity pair.
 - [x] **T1a** — dust+dust Candidate-C comparison.
 - [x] **T1b** — primary-source audit.
 - [ ] **T1c — reproduce Comelli Case-C B.5 on the dynamically on-shell branch.** IN PROGRESS.
   - [x] reject off-shell/frozen-a benchmarks;
-  - [x] derive exact dynamic `xi(a)` and early-time series;
+  - [x] derive exact dynamic `xi(a)` and conformal-time map;
   - [x] establish singular Fredholm structure;
   - [x] audit full spatial equations before slip;
   - [x] establish A.18 rank/index difference;
   - [x] build/test direct 13x11 descriptor audit tool;
   - [x] reject selected minors and frozen-time PGCD;
-  - [x] identify `x=k tau`, `E=tau^2e(x)`, natural weights;
-  - [x] codify/test exact Case-C branch, `tau(a)`, `a(tau)`, and scaled derivative operator;
-  - [ ] **T1c.6c-derived** — retain all leading kernel amplitudes and compute Laurent/operator left-right compatibility order by order for derived-prime A.18;
-  - [ ] **T1c.6c-printed** — repeat for printed-unprime A.18;
-  - [ ] choose physical descriptor chain only by B.5 + degree count + Bianchi consistency;
-  - [ ] **T1c.6d** — eliminate to `e(x)` and recover exactly `x^2e''+7xe'+8e-(2/3)x^2e=0`;
-  - [ ] verify under Bianchi-redundant row representatives.
+  - [x] verify leading `Phi1` radiation and `Phi2` dust equations;
+  - [x] show descriptor chains with dynamically promoted `B1` do not reproduce the two-dimensional B.5 gravity space;
+  - [ ] **T1c.6e — eliminate nondynamical `B1` algebraically before dynamics.** Start with exact Case C and the printed equation organization used in the paper; then repeat with the derived-prime interpretation as a cross-check.
+  - [ ] **T1c.6f — derive the reduced three-field system (`E,Phi1,Phi2`) and recover exact B.5 for the pure-E Case-C mode.**
+  - [ ] **T1c.6g — choose the physically consistent A.18 bookkeeping by B.5 + three-scalar degree count + Bianchi consistency.**
+  - [ ] verify B.5 under Bianchi-redundant row representatives.
 - [ ] **T2** — apply validated reduction to dust+dust Candidate C; recover De Felice speed.
-- [ ] **T3** — identify exact structural error in old 12x12 closure.
+- [ ] **T3** — identify exact structural error in old 12x12 closure and replace it.
 - [ ] **T4** — implement corrected `numerics/comelli_native_scalar.py`.
 - [ ] **T5** — make `tests/test_comelli_native_scalar.py` green + >=3 extra `(z,k)` regressions.
 - [ ] **T6** — full Gate-2B regression suite.
@@ -132,14 +126,15 @@ Early time:
 
 ## Immediate restart instruction
 
-**Resume at T1c.6c-derived.**
+**Resume at T1c.6e — nondynamical `B1` elimination.**
 
-1. Use `case_c_background_from_tau`; do not approximate `a=tau` inside the operator hierarchy.
-2. Keep `x=k tau` and the non-commuting scaled derivative operator explicit.
-3. Retain every leading right-kernel amplitude until left-kernel/Fredholm compatibility fixes it.
-4. Build Laurent/operator coefficients order by order in tau; allow correction orders demanded by the equations.
-5. Finish derived-prime A.18 first, then repeat printed-unprime separately.
-6. Acceptance is the exact normalized B.5 operator, then `3q^2-2` at high x.
-7. Never delete A.17, tune coefficients, or change physical signs merely to hit the target.
-8. Update this checkpoint after each hard ruling.
-9. Move to T2 only after B.5 is recovered.
+1. Use the exact Case-C background from `numerics/comelli_case_c.py`.
+2. Start from the full direct Comelli scalar equations, not the old 12x12 acceleration closure.
+3. Treat `B1`, `Psi1`, `Psi2` and matter constraint variables as algebraic/nondynamical whenever the published reduction does; do **not** introduce `B1'` as an independent state.
+4. Eliminate matter perturbations through `00/0i` + conservation consistently, then eliminate `F1/F2` with A.17/A.18 and solve `B1` algebraically.
+5. Reduce to the three physical scalar fields `E,Phi1,Phi2` and test the pure-E Case-C sector.
+6. Acceptance is exactly `E''+(3/tau)E'-(2/3)k^2E=0`, equivalently `x^2e''+7xe'+8e-(2/3)x^2e=0`.
+7. Test printed A.18 first because it is the organization used in the published appendix; repeat the derived-prime bookkeeping only as a cross-check.
+8. Never tune coefficients or signs merely to hit B.5.
+9. Update this checkpoint after every hard ruling.
+10. Move to T2 only after B.5 is recovered.
