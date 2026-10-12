@@ -4,8 +4,16 @@ Transcribes the scalar metric terms of Lagos & Ferreira, arXiv:1610.00553,
 Eqs. (3.6)-(3.8), specialized to massive bigravity: constant Planck masses
 and alpha_L=0. Matter perturbation actions are intentionally not included yet.
 
-All returned Lagrangians use the common normalization M1^2 a^3 and Fourier
-convention partial^2 -> -k^2.
+All returned Lagrangians use the common normalization M1^2 a^3.
+``ScalarBackground.k2`` is the comoving Fourier k^2. Lagos Appendix A defines
+spatial index contractions with the background metric of the sector on which
+the derivative acts, so a self-sector Laplacian translates as
+
+    partial_1^2 -> -k^2/a^2,
+    partial_2^2 -> -k^2/b^2.
+
+Cross-metric interaction gradients are kept in their separately audited
+Eq. (3.8) convention and must not be inferred from the self-sector rule.
 """
 
 from __future__ import annotations
@@ -108,8 +116,12 @@ def einstein_hilbert_lagrangian(bg: ScalarBackground, state, rates) -> float:
     """Pure EH scalar self-actions, common-normalized by M1^2 a^3.
 
     This is the non-interaction metric part of Lagos Eqs. (3.6)-(3.7) for
-    constant Planck masses. The explicit metric-1 matter-background correction
-    to Phi1^2 is not included here; matter is added separately later.
+    constant Planck masses. ``bg.k2`` is comoving k^2, while Lagos ``partial^2``
+    is a background-metric contraction. Therefore the self-sector Fourier
+    eigenvalues are ``k2/a^2`` and ``k2/b^2`` respectively.
+
+    The explicit metric-1 matter-background correction to Phi1^2 is not
+    included here; matter is added separately later.
     """
     Psi1, Psi2, E1, E2, Phi1, Phi2, B1, B2 = _state(state)
     P1d, P2d, E1d, E2d = _rates(rates)
@@ -120,21 +132,26 @@ def einstein_hilbert_lagrangian(bg: ScalarBackground, state, rates) -> float:
     Hb = bg.H_omega/bg.a
     if Nbar == 0.0:
         raise ValueError("Nbar must be non-zero")
+    if a == 0.0 or b == 0.0:
+        raise ValueError("sector scale factors must be non-zero")
+
+    lap1 = k2/(a*a)
+    lap2 = k2/(b*b)
 
     l1 = (
         -3.0*P1d*P1d - 6.0*H*P1d*Phi1
-        - 2.0*a*a*k2*E1d*(P1d+H*Phi1)
-        + 2.0*k2*P1d*B1
-        + k2*Psi1*Psi1 - 2.0*k2*Phi1*Psi1
-        + 2.0*H*k2*Phi1*B1 - 3.0*H*H*Phi1*Phi1
+        - 2.0*a*a*lap1*E1d*(P1d+H*Phi1)
+        + 2.0*lap1*P1d*B1
+        + lap1*Psi1*Psi1 - 2.0*lap1*Phi1*Psi1
+        + 2.0*H*lap1*Phi1*B1 - 3.0*H*H*Phi1*Phi1
     )
     l2_inner = (
         -3.0*P2d*P2d/(Nbar*Nbar)
         - 6.0*Hb*P2d*Phi2/(Nbar*Nbar)
-        - 2.0*b*b*k2*E2d*(P2d+Hb*Phi2)/(Nbar*Nbar)
-        + 2.0*k2*P2d*B2/Nbar
-        + k2*Psi2*Psi2 - 2.0*k2*Phi2*Psi2
-        + 2.0*Hb*k2*Phi2*B2/Nbar
+        - 2.0*b*b*lap2*E2d*(P2d+Hb*Phi2)/(Nbar*Nbar)
+        + 2.0*lap2*P2d*B2/Nbar
+        + lap2*Psi2*Psi2 - 2.0*lap2*Phi2*Psi2
+        + 2.0*Hb*lap2*Phi2*B2/Nbar
         - 3.0*Hb*Hb*Phi2*Phi2/(Nbar*Nbar)
     )
     factor2 = Nbar*r**3*bg.kappa
