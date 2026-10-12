@@ -51,8 +51,6 @@ def eh_scalar_quadratic_density_flat(
     k4 = k2*k2
     k6 = k4*k2
 
-    # 1/(4N^2) (gamma^ik gamma^jl-gamma^ij gamma^kl)
-    # Hdot_ij Hdot_kl.
     kinetic = (
         -6.0*psi_dot*psi_dot/N**2
         + k4*E_dot*E_dot/(6.0*N**2)
@@ -60,19 +58,20 @@ def eh_scalar_quadratic_density_flat(
 
     lapse_kinetic = 12.0*H*Phi*psi_dot/N
 
-    # Shift couplings from Vi=D_i B and the scalar traceless H_ij piece.
+    # Fourier bilinears always pair k with -k.  For the traceless scalar
+    # H^T_xx=-(2/3)k^2 E, this fixes the B*E_dot sign below.
     shift = (
-        (2.0/3.0)*k4*B*E_dot/(N*a)
+        -(2.0/3.0)*k4*B*E_dot/(N*a)
         - 4.0*k2*psi_dot*B/(N*a)
         + 4.0*H*k2*Phi*B/a
     )
 
-    # Spatial derivative terms in Eq. (44), K=0.
+    # Direct scalar contractions of the spatial derivative terms in Eq. (44).
     spatial = (
         4.0*k2*Phi*psi
-        - (2.0/3.0)*k4*Phi*E
+        + (2.0/3.0)*k4*Phi*E
         + 2.0*k2*psi*psi
-        - (2.0/3.0)*k4*psi*E
+        + (2.0/3.0)*k4*psi*E
         + (1.0/18.0)*k6*E*E
     ) / (a*a)
 
