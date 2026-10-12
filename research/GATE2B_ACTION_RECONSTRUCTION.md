@@ -21,63 +21,76 @@ Purpose: reconstruct the healthy-branch scalar dynamics independently of the Com
 - Their Eq. (86) gives three high-frequency speeds: one gravitational scalar speed plus the two matter sound speeds. This is the first action-derived regression target.
 - Lagos & Ferreira arXiv:1610.00553 give an explicit quadratic metric action for general non-derivative bimetric theories. In the massive-bigravity specialization, `Phi_A` and `B_A` are auxiliary; after integrating them out the kinetic term of `Psi2` vanishes, making it auxiliary too, leaving one physical gravitational scalar after gauge removal.
 - Massive bigravity is obtained in their parameters with `alpha_L=0`, constant Planck masses, and their `Z,Ztilde` specialized to the dRGT beta potential.
-- Exact JANUS -> Lagos background dictionary is now fixed analytically:
+- Exact JANUS -> Lagos background dictionary is fixed analytically:
   - `r=b/a=xi`;
   - `Nbar=c*xi`;
   - `H_LF=calH/a` and `Hb_LF=H_omega/a` because Lagos uses g-sector cosmic time;
   - with `M_g^2=1`, `M_1^2=1`, `M_2^2=kappa`, `nu^2=1/kappa`;
-  - Lagos Eq. (3.14): `Z=m^2(beta1+2 beta2 r+beta3 r^2)=m^2 J=m^2 f2/xi`;
-  - Lagos Eq. (3.15): `Ztilde=m^2[beta1+beta2(r+Nbar)+beta3 r Nbar]=m^2 Gamma/xi=m^2 f1/xi`.
-- The healthy-branch kinematics also gives `db/da=xi+y_N=c*xi=Nbar` on Candidate C, providing a background-only cross-check independent of perturbations.
+  - `Z=m^2(beta1+2 beta2 r+beta3 r^2)=m^2 J=m^2 f2/xi`;
+  - `Ztilde=m^2[beta1+beta2(r+Nbar)+beta3 r Nbar]=m^2 Gamma/xi=m^2 f1/xi`.
+- Healthy-branch kinematics gives `db/da=xi+y_N=c*xi=Nbar` on Candidate C.
+- **Spatial derivative normalization ruling:** Lagos raises spatial indices with each sector's background spatial metric. For a comoving Fourier wave number `k`, `partial_1^2 -> -k^2/a^2` and `partial_2^2 -> -k^2/b^2`. Therefore factors such as `a^2 partial_1^2` and `b^2 partial_2^2` in Eqs. (3.6)-(3.7) cancel the metric scale factors. Do not use the earlier incorrect convention `partial^2 -> -k^2` directly inside those terms.
+- With that convention, the complete B-shift interaction terms from Lagos Eqs. (3.6)-(3.8) combine into
+  `a M1^2 Z k^2/[2(Nbar+r)] * [r B1-(Nbar/r)B2]^2`.
+- The raw velocity Hessian has identically zero rows/columns for `Phi1,B1,Phi2,B2`. The Einstein-Hilbert cross-velocity coefficients are `K(Psi1,E1)=-2 k^2 a^3 M1^2` and `K(Psi2,E2)=-2 k^2 (Nbar b^3 M2^2)/Nbar^2` in the module's Hessian convention.
 
 ## RED/GREEN ledger
 
-- A1 RED: `tests/test_lagos_bridge.py` added in commit `ce5aee2`; production module absent.
-- RED was reproduced locally as `ModuleNotFoundError: numerics.lagos_bridge`.
-- A1 GREEN core: minimal bridge formulas passed 2/2 standalone scratch tests and were committed as `numerics/lagos_bridge.py` in `dca0d52`.
-- Full repository execution of `tests/test_lagos_bridge.py` remains to be run when the complete checkout is locally available; the test itself covers Candidate C at `a=1,0.5,0.1`, exact Case C, and the healthy-branch `db/da=Nbar` identity.
+- A1 RED: `tests/test_lagos_bridge.py` commit `ce5aee2`; reproduced as `ModuleNotFoundError`.
+- A1 GREEN core: `numerics/lagos_bridge.py` commit `dca0d52`; standalone bridge checks passed.
+- Full repository execution of `tests/test_lagos_bridge.py` remains pending when a complete checkout is locally available.
+- A2 initial RED: `tests/test_bigravity_scalar_action.py` commit `917aec5`; module absent.
+- A2 first implementation: `numerics/bigravity_scalar_action.py` commit `f0de003`.
+- Root-cause audit found the initial test itself used the wrong spatial-derivative normalization. This was a test/specification error, not a physics result.
+- Corrected RED test committed as `f56c58f`; it failed against the old implementation on both the shift-square and kinetic cross-term normalization, as expected.
+- Corrected implementation committed as `3984612`; the two source-normalized local checks pass. The obsolete earlier scratch assertion remains intentionally invalid and must not be reused.
 
 ## Active task list
 
-- [x] **A0 — establish independent source route.** De Felice reduced action and Lagos–Ferreira explicit quadratic action identified; PDF pages visually checked.
+- [x] **A0 — establish independent source route.**
 - [ ] **A1 — close convention map JANUS ↔ Lagos–Ferreira.** CORE MAP COMPLETE / FULL-REPO TEST PENDING.
-  - [x] map `a,b,Nbar,r,H,Hb,M1,M2` to JANUS `a,xi,c,H,H_omega,kappa`;
-  - [x] map Lagos `Z,Ztilde` to JANUS `J,Gamma/f1,f2` and beta conventions;
-  - [x] encode map independently in `numerics/lagos_bridge.py`;
-  - [ ] run `tests/test_lagos_bridge.py` against the complete repository checkout and record exact output.
-- [ ] **A2 — encode the gravity quadratic action independently.** NEXT ACTIVE TASK.
-  - [ ] inspect/lock scalar perturbation normalization used in Lagos Eqs. (3.6)-(3.8);
-  - [ ] write a failing action-structure test before production code;
-  - [ ] create `numerics/bigravity_scalar_action.py` only after RED;
-  - [ ] represent the 8 scalar metric amplitudes in Fourier space;
-  - [ ] implement Einstein-Hilbert pieces + dRGT interaction from Lagos Eqs. (3.6)-(3.8), with `alpha_L=0`;
-  - [ ] do not import `comelli_dae`, `comelli_transfer`, or `comelli_descriptor` in this module.
+  - [x] map `a,b,Nbar,r,H,Hb,M1,M2`;
+  - [x] map `Z,Ztilde`;
+  - [x] encode `numerics/lagos_bridge.py`;
+  - [ ] run full `tests/test_lagos_bridge.py` in complete checkout and record output.
+- [ ] **A2 — encode the gravity quadratic action independently.** IN PROGRESS.
+  - [x] lock scalar perturbation normalization and cosmic-time conventions;
+  - [x] lock spatial derivative/Fourier normalization;
+  - [x] establish raw field order `Phi1,B1,Psi1,E1,Phi2,B2,Psi2,E2`;
+  - [x] TDD slice: auxiliary fields have no velocity Hessian rows/columns;
+  - [x] TDD slice: correct relative-shift quadratic block;
+  - [x] TDD slice: Einstein-Hilbert Psi/E cross-velocity coefficients;
+  - [ ] **A2.4 — encode the remaining raw Einstein-Hilbert scalar blocks from Eqs. (3.6)-(3.7), one independently testable coefficient family at a time.** NEXT.
+  - [ ] **A2.5 — encode the dRGT scalar interaction block Eq. (3.8), one coefficient family at a time.**
+  - [ ] keep module independent of `comelli_dae`, `comelli_transfer`, `comelli_descriptor`.
 - [ ] **A3 — algebraically eliminate auxiliary lapses/shifts.**
-  - [ ] eliminate `Phi1,Phi2,B1,B2` by their algebraic Euler-Lagrange equations;
-  - [ ] verify the reduced kinetic Hessian loses the `Psi2` direction as Lagos states;
-  - [ ] eliminate that remaining auxiliary scalar;
-  - [ ] remove two gauge directions or work directly in gauge-invariant combinations.
+  - [ ] eliminate `Phi1,Phi2,B1,B2`;
+  - [ ] verify reduced kinetic Hessian loses `Psi2` direction;
+  - [ ] eliminate remaining auxiliary scalar;
+  - [ ] remove gauge directions / use gauge invariants.
 - [ ] **A4 — principal-symbol regression.**
-  - [ ] add two independent barotropic matter actions/sound-speed blocks;
-  - [ ] derive the high-k generalized eigenproblem from the reduced action;
-  - [ ] recover matter speeds and De Felice Eq. (86) gravitational `c_s^2` on Candidate C;
-  - [ ] require >=3 `(a,k/H)` points and convergence as `k/H` increases.
+  - [ ] add two barotropic matter action/sound-speed blocks;
+  - [ ] derive high-k generalized eigenproblem;
+  - [ ] recover matter speeds and De Felice Eq. (86) gravity `c_s^2`;
+  - [ ] >=3 `(a,k/H)` points with convergence.
 - [ ] **A5 — exact Case-C regression.**
-  - [ ] evaluate the action reduction on `numerics/comelli_case_c.py` background;
-  - [ ] derive the pure-gravity relative scalar equation;
-  - [ ] recover B.5 or an explicitly equivalent equation under an invertible variable map.
-- [ ] **A6 — comparison back to Comelli.**
+  - [ ] evaluate on `numerics/comelli_case_c.py`;
+  - [ ] derive pure-gravity relative scalar equation;
+  - [ ] recover B.5 or explicit invertible equivalent.
+- [ ] **A6 — compare back to Comelli.**
   - [ ] transform action variables to Comelli gauge invariants;
-  - [ ] compare nondynamical constraints and f-sector spatial interaction term-by-term;
-  - [ ] identify the exact source of the missing `k^2 E` term in the old transcription/reduction.
-- [ ] **A7 — replace native solver.** Only after A1-A6 pass, implement/rename the native scalar system and make `tests/test_comelli_native_scalar.py` green without fitting.
+  - [ ] compare constraints and f-sector spatial interaction term-by-term;
+  - [ ] identify exact source of missing `k^2 E` in old reduction.
+- [ ] **A7 — replace native solver** only after A1-A6 pass.
 
 ## Immediate restart instruction
 
-Resume at **A2**.
+Resume at **A2.4**.
 
-1. Read Lagos–Ferreira 1610.00553 Eqs. (3.6)-(3.8) and the scalar perturbation definitions around Eqs. (2.24)-(2.29).
-2. Lock the exact Fourier/sign/normalization convention for `Phi_A,B_A,Psi_A,E_A` before writing action code.
-3. Write a failing test that checks the auxiliary-field structure (`Phi_A,B_A` have no time-derivative Hessian entries) and at least one independently readable interaction coefficient from Eq. (3.8).
-4. Implement only enough of the action to make that test green, then extend by RED/GREEN slices.
-5. Keep this file updated after every hard source fact, rejected mapping, RED/GREEN transition, or change in restart point.
+1. Re-open Lagos–Ferreira Eqs. (3.6)-(3.7) before adding each coefficient family; preserve their spatial-metric derivative convention.
+2. Add one failing test for a raw Einstein-Hilbert coefficient family (recommended: `Phi-Psi_dot`, `B-Psi_dot`, and spatial `Psi^2/Phi Psi` terms for sector 1 first).
+3. Verify RED against the current module.
+4. Implement only that family and verify GREEN before moving to sector 2.
+5. Then add Eq. (3.8) dRGT interaction terms by separate RED/GREEN slices.
+6. Do not import or compare against Comelli until the independent action has passed A3-A5.
+7. Update this file after every hard ruling, corrected test specification, RED/GREEN transition, or restart-point change.
