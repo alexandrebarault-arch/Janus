@@ -22,3 +22,19 @@ def test_candidate_c_a05_recovers_three_independent_high_k_speeds():
     assert abs(out.extrapolated[0]-expected_f)<5e-4
     assert abs(out.extrapolated[1]-expected_g)<5e-4
     assert abs(out.extrapolated[2]-expected_gravity)<5e-4
+
+
+def test_candidate_c_a02_recovers_three_independent_high_k_speeds():
+    """RED: production reduction must remain physical on the early Candidate-C point."""
+    bg=candidate_c_raw_background(0.2)
+    out=candidate_c_three_mode_extrapolation(
+        0.2,
+        k_values=(250.0, 600.0, 1000.0),
+    )
+    expected=np.array(sorted((
+        math.sqrt(0.11385802652451096),
+        bg.ctilde*math.sqrt(0.3),
+        math.sqrt(0.4),
+    )))
+    measured=np.array(sorted(out.extrapolated))
+    assert np.allclose(measured, expected, rtol=0.0, atol=5e-4)
