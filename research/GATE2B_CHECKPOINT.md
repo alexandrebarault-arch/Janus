@@ -8,105 +8,98 @@ Purpose: **authoritative restart point after any interruption**. Read this file 
 
 **Gate 2B remains OPEN / NOT VALIDATED.**
 
-The Candidate-C background bridge is under control. The old direct Comelli 12x12 closure and a later correctly index-reduced Comelli reconstruction both fail to recover the physical helicity-0 gradient, despite reproducing the visible radiation mode. They must not be used for transfer/segregation conclusions.
+The Candidate-C background bridge is under control. The old direct Comelli closure and a later correctly index-reduced Comelli reconstruction both fail to recover the physical helicity-0 gradient, despite reproducing the visible radiation mode. They must not be used for transfer/segregation conclusions.
 
-The active route is now an **independent scalar quadratic-action reconstruction**, primarily from De Felice et al. arXiv:1404.0008 and Lagos & Ferreira arXiv:1610.00553, followed only afterwards by a term-by-term comparison back to Comelli.
+The active route is an **independent scalar quadratic-action reconstruction** from De Felice 1404.0008 and Lagos-Ferreira 1610.00553, followed only afterwards by comparison back to Comelli.
 
 ## Closed facts
 
 ### JANUS / De Felice / Lagos conventions
 
 - JANUS -> Comelli/De Felice: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi*J`, `f1=Gamma`.
-- Lagos massive-bigravity variables map as
-  - `r = xi`,
-  - `Nbar = xi*c`,
-  - `Z = m^2 J = m^2 f2/xi`,
-  - `Z_tilde = m^2 Gamma/xi = m^2 f1/xi`.
-- Therefore `r*Z = m^2 f2` and `r*Z_tilde = m^2 f1` exactly.
-- This action-level map is independent of the Comelli scalar field equations.
-- Lagos massive bigravity has `alpha_L=0`. Hence there is no direct interaction term of the form `(partial^2 E)^2` from the extra `alpha_L` operator. The helicity-0 spatial gradient must emerge after eliminating lapse/shift auxiliaries together with the Einstein-Hilbert kinetic structure; it is not expected to be one isolated explicit `k^2 E` interaction block.
+- Lagos massive-bigravity: `r=xi`, `Nbar=xi*c`, `Z=m^2 f2/xi=m^2 J`, `Z_tilde=m^2 f1/xi=m^2 Gamma/xi`.
+- Thus `r*Z=m^2 f2`, `r*Z_tilde=m^2 f1`.
+- Massive bigravity has `alpha_L=0`; there is no direct interaction `(partial^2 E)^2` term. The helicity-0 gradient emerges only after auxiliary elimination combined with Einstein-Hilbert structure.
 
 ### De Felice principal action
 
-- De Felice scalar reduction integrates out nondynamical `B,b,Phi,varphi`, leaving three physical scalar variables and a quadratic action with matrices `K,N,M`.
-- Their Eq. (86) contains one gravitational scalar speed plus the two matter sound speeds.
-- `numerics/de_felice_action_principal.py` independently implements Eqs. (80), (82), (86) without calling the historical `flrw_two_matter.diagnostics()` implementation.
-- Candidate-C cross-checks reproduce the same `c_s^2` at `a=1,0.5,0.2`.
-- At `a=0.5` (`z=1`): `c_s^2 ~= 0.69207999`, `c_s ~= 0.83191345`.
-- The flat high-k scalar kinetic coefficient is `NG3 -> (3/8) m^2 a^4 xi J B`.
+- `numerics/de_felice_action_principal.py` independently implements the high-k scalar principal coefficients from De Felice Eqs. (80),(82),(86), without calling the historical diagnostics implementation.
+- Candidate-C cross-checks agree at `a=1,0.5,0.2`.
+- At `a=0.5`: `c_s^2 ~= 0.69207999`, `c_s ~= 0.83191345`.
+- Flat high-k scalar kinetic coefficient: `NG3 -> (3/8) m^2 a^4 xi J B`.
 
-### Lagos scalar interaction transcription
+### Lagos scalar action reconstruction
 
-- `tests/test_lagos_scalar_interaction.py` RED commit: `b51940f`.
-- `numerics/lagos_scalar_action.py` initial interaction transcription: `894b692`.
-- **Important PDF parsing correction:** in Lagos Eq. (3.7), the coefficient rendered by text extraction as something like `nu 2 Nbar r 2` is `nu^2 * Nbar * r^2`; the final `2` is the exponent of `r`, not a denominator.
-- The corrected metric-2 `Z_tilde` coefficient inside Eq. (3.7), for constant `M1`, is `2 nu^2 Nbar r^2 Z_tilde`.
-- After the Eq. (3.7) overall prefactor is converted to the common `M1^2 a^3` normalization, the corresponding healthy-branch contribution is `2 Nbar^2 r^5 Z_tilde Psi2(3/2 Psi2 + b^2 k^2 E2)`.
-- Correction commit: `2de9354`.
-- Independent scratch evaluation on Candidate C with a generic scalar state gives raw and healthy-branch interaction actions equal to ~`5e-16` relative precision after this correction.
-- With `alpha_L=0`, a pure `E1/E2` configuration and all lapse/shift/curvature perturbations set to zero has no direct interaction `E^2` term. The physical helicity-0 gradient must arise after auxiliary elimination.
+- Interaction RED test: `tests/test_lagos_scalar_interaction.py`, commit `b51940f`.
+- Interaction implementation: `894b692`.
+- PDF parsing correction: Lagos Eq. (3.7) contains `nu^2*Nbar*r^2`, not `nu^2*Nbar*r/2`; correction commit `2de9354`.
+- Raw Eq. (3.6)-(3.8) interaction and healthy-branch simplification agree in scratch at ~`5e-16` relative on Candidate C.
+- Pure `E1/E2` has no direct interaction `E^2` term when `alpha_L=0`.
+- Einstein-Hilbert RED tests: `tests/test_lagos_pure_metric_action.py`, commit `0996450`.
+- EH self-action implementation (constant Planck masses): `f1b5cc3`.
+- Primary PDF confirms the `E_dot` gradient-mixing factors are `a^2 k^2` for metric 1 and `b^2 k^2/Nbar^2` for metric 2; they are not divided by `a^2`/`b^2`.
+- The pure metric action is exactly symmetric under `1<->2` on a proportional background in scratch.
+- Auxiliary-elimination RED test: `tests/test_lagos_auxiliary_elimination.py`, commit `a9d1d8b`.
+- Algebraic elimination of `Phi1,Phi2,B1,B2`: implementation commit `7fcdd15`.
+- On a proportional equal-Planck background the auxiliary Hessian has rank 4 and the stationarity residual is at machine precision.
+- After eliminating these four auxiliaries, the reduced velocity Hessian on `(Psi1,Psi2,E1,E2)` has **rank 1**. This persists in scratch scans over `H={0.2,0.8,1.5}` and `k={1,3,10}`.
+- The nonzero kinetic direction is the relative metric scalar (the `E1-E2` sector); this is consistent with one ghost-free massive scalar metric DoF. Do not extrapolate this pure-metric proportional control directly to Candidate C before the matter/background terms are included.
 
 ### A.3 / A.18 issue
 
-- Printed Comelli/earlier-paper A.3/A.18 contains `(calB1-calE)`.
-- Raw gauge-invariant definitions give `Xi2-c^2 Xi1 = calB1-calE'` exactly.
-- Bianchi tests on the exact Case-C background select the derived-prime form at finite tau.
-- Printed-unprime remains only a typo/control branch.
+- Printed Comelli A.3/A.18 has `(calB1-calE)`; raw invariants give `(calB1-calE')` exactly.
+- Bianchi finite-tau tests select the derived-prime form. Printed-unprime remains only a typo/control branch.
 
-### Direct Comelli reconstruction — closed negative result
+### Direct Comelli route — closed negative result
 
-- Old closure: Candidate C radiation speed is exactly `1/sqrt(3)` but the supposed gravity pair is only `c~0.0159` instead of `~0.8319`.
-- Dust+dust gives the same failure.
-- At large k the bad frequency approaches a constant rather than scaling with k; the gravity `k^2` term is structurally absent.
-- Correctly treating `B1` as nondynamical and index-reducing the direct system reproduces the expected three second-order physical fields but still fails the Case-C gravitational equation.
-- Simple fixes already rejected: matter mixture, g00/f00 closure choice, individual background derivatives, A1/A2 typo, A.18 swap inside old closure, f-trace sign flips, numerical conditioning, selected square minors, frozen-time PGCD, and eliminating `B1'` alone.
+- Candidate C radiation speed is exactly `1/sqrt(3)`, but the supposed gravity pair is `c~0.0159` instead of `~0.8319`.
+- Dust+dust fails identically.
+- At large k the bad frequency approaches a constant: the physical gravity `k^2 E` term is structurally absent.
+- Correctly treating `B1` as nondynamical and index-reducing the system still fails Case-C B.5.
+- Ruled out: matter mixture, g00/f00 closure row, isolated derivative errors, A1/A2 typo, A.18 swap in old closure, f-trace sign flips, conditioning, selected minors, frozen-time PGCD, and eliminating `B1'` alone.
 
 ## Exact Case-C benchmark
 
-Use `8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`.
+`8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`.
 
-- `rho1=3/a^4`, `rho2=3/(a xi)^3`.
 - Exact branch: `a^4 xi^2 + xi - a - a^4/3 = 0`.
-- `numerics/comelli_case_c.py` implements exact branch, conformal map `tau(a)`, inverse `a(tau)`, background derivatives and scaled `D_tau` operator.
-- Published acceptance equation: `E'' + (3/tau) E' - (2/3) k^2 E = 0`.
-- With `E=tau^2 e(x)`, `x=k tau`: `x^2 e_xx + 7 x e_x + 8e - (2/3)x^2 e = 0`.
-- High-x factor: `3 q^2 - 2`.
+- `numerics/comelli_case_c.py` supplies exact branch, conformal map and derivatives.
+- Acceptance B.5: `E''+(3/tau)E'-(2/3)k^2E=0`.
+- With `E=tau^2e(x)`: `x^2 e_xx+7x e_x+8e-(2/3)x^2e=0`.
+- High-x factor: `3q^2-2`.
 
-## Action-route files / commits
+## Action-route commits
 
-- `tests/test_lagos_action_bridge.py` — RED `85ede8f`.
-- `numerics/lagos_action_bridge.py` — implementation `89c1482`.
-- `tests/test_de_felice_action_principal.py` — RED `c761e4c`.
-- `numerics/de_felice_action_principal.py` — implementation `e510107`.
-- `tests/test_lagos_scalar_interaction.py` — RED `b51940f`.
-- `numerics/lagos_scalar_action.py` — implementation `894b692`, corrected Eq. (3.7) prefactor `2de9354`.
+- Lagos bridge test `85ede8f`; implementation `89c1482`.
+- De Felice principal-action test `c761e4c`; implementation `e510107`.
+- Lagos interaction test `b51940f`; implementation `894b692`; corrected Eq. (3.7) `2de9354`.
+- EH/pure-metric test `0996450`; implementation `f1b5cc3`.
+- Auxiliary-elimination test `a9d1d8b`; implementation `7fcdd15`.
 
-Container network cannot clone/download GitHub in this environment, so these new pytest files have not yet been executed as a repository suite. Core algebra has been independently checked in scratch calculations; do not mark the suite green until an executable checkout is available.
+Container network cannot clone/download GitHub, so the newly added pytest files have not been run as a repository suite. Core formulas and the key rank/symmetry checks were independently evaluated in scratch. Do not label the suite green until executable checkout becomes available.
 
 ## Active task list
 
-- [x] Convention bridge and exact Candidate-C background.
-- [x] Audit old Comelli scalar equations / closure.
-- [x] Independent De Felice high-k regression.
-- [x] Exact Case-C dynamically on-shell benchmark.
-- [x] Resolve A.3/A.18 bookkeeping in favor of `E'`.
-- [x] Correctly index-reduce `B1` as nondynamical in the direct Comelli route.
-- [x] Demonstrate that the correctly index-reduced Comelli transcription still misses B.5.
-- [ ] **T1c — replace/validate the scalar reduction independently.** IN PROGRESS.
+- [x] Convention bridge / exact Candidate-C and Case-C backgrounds.
+- [x] Audit and reject faulty direct Comelli scalar closure for Gate-2B physics.
+- [x] Independent De Felice principal-action regression.
+- [ ] **T1c — independently reconstruct and validate the scalar action.** IN PROGRESS.
   - [x] **T1c.6o.1 — Lagos action convention bridge.**
   - [x] **T1c.6o.2 — independent De Felice principal action.**
-  - [ ] **T1c.6o.3 — transcribe the Hassan-Rosen Lagos scalar quadratic action.**
-    - [x] **T1c.6o.3a — interaction potential (`Z`,`Z_tilde`, `alpha_L=0`) in Fourier space.** Raw and healthy-branch forms independently cross-checked; Eq. (3.7) `r^2` parsing error corrected.
-    - [ ] **T1c.6o.3b — add the Einstein-Hilbert scalar self-actions for metric 1 and metric 2 with constant Planck masses.** Keep `Phi1,Phi2,B1,B2` algebraic.
-    - [ ] **T1c.6o.3c — construct the full pure-metric quadratic Hessian / velocity form and test metric-exchange symmetry on a proportional background.**
-  - [ ] **T1c.6o.4 — integrate out `Phi1,Phi2,B1,B2`; verify one scalar physical metric DoF after gauge removal.**
-  - [ ] **T1c.6o.5 — add separately coupled g/f barotropic matter and derive the high-k principal matrix; recover De Felice Eq. (86) rather than inserting it.**
-  - [ ] **T1c.6p — compare action-derived constraints and reduced gradient to Comelli term-by-term; identify exact lost structure.**
+  - [x] **T1c.6o.3a — Lagos interaction potential in Fourier space.**
+  - [x] **T1c.6o.3b — Einstein-Hilbert scalar self-actions, constant Planck masses.**
+  - [x] **T1c.6o.3c — pure-metric quadratic action / exchange-symmetry control.** Scratch verified; repository pytest still pending.
+  - [ ] **T1c.6o.4 — auxiliary/gauge reduction of pure metric action.**
+    - [x] **6o.4a — integrate out `Phi1,Phi2,B1,B2` algebraically.**
+    - [x] **6o.4b — proportional-background kinetic count:** reduced velocity Hessian rank 1 across several H,k controls.
+    - [ ] **6o.4c — identify the reduced relative/gauge variables explicitly and derive the one-field pure-metric reduced action.** Verify the nonzero kinetic eigenvector is the relative `E` direction and separate the two gauge directions without choosing dynamics by hand.
+  - [ ] **T1c.6o.5 — add separately coupled g/f barotropic matter actions and derive the high-k principal matrix; recover De Felice Eq. (86) rather than inserting it.**
+  - [ ] **T1c.6p — compare action-derived constraints/reduced gradient to Comelli term-by-term and locate the lost structure.**
   - [ ] **T1c.6q — Case-C acceptance:** recover B.5 exactly or an explicitly equivalent action-variable equation.
-  - [ ] verify result under Bianchi-redundant representatives.
-- [ ] **T2 — Candidate C full scalar validation:** recover De Felice gravity speed from the new reduced system.
+  - [ ] verify Bianchi/gauge representative invariance.
+- [ ] **T2 — Candidate-C full scalar validation from the new reduced action.**
 - [ ] **T3 — replace faulty old scalar closure.**
-- [ ] **T4 — implement `numerics/comelli_native_scalar.py` or a clearly named action-based replacement.**
+- [ ] **T4 — implement native/action-based transfer scalar solver.**
 - [ ] **T5 — make `tests/test_comelli_native_scalar.py` green + >=3 extra `(z,k)` regressions.**
 - [ ] **T6 — full Gate-2B regression suite.**
 - [ ] **T7 — time-domain transfer RHS + fundamental matrix.**
@@ -116,16 +109,16 @@ Container network cannot clone/download GitHub in this environment, so these new
 
 ## Current RED regression
 
-`tests/test_comelli_native_scalar.py` still imports the intentionally absent `numerics/comelli_native_scalar.py`. Do not implement around it until T1c is independently closed.
+`tests/test_comelli_native_scalar.py` remains intentionally RED until T1c is closed.
 
 ## Immediate restart instruction
 
-**Resume at T1c.6o.3b — Einstein-Hilbert scalar self-actions.**
+**Resume at T1c.6o.4c — explicit relative/gauge reduction.**
 
-1. Extend `numerics/lagos_scalar_action.py` with the non-interaction scalar terms of Lagos Eqs. (3.6) and (3.7), constant Planck masses and Fourier `partial^2 -> -k^2`.
-2. Preserve the two time normalizations exactly: metric 1 is normalized by `M1^2 a^3`; metric 2 by `Nbar b^3 M2^2`, converted explicitly to the common normalization.
-3. Keep `Phi1,Phi2,B1,B2` algebraic and do not differentiate their constraints.
-4. Add a RED test before implementation that checks the pure-metric action is quadratic and is symmetric under metric exchange on a proportional background (`r=Nbar=c=1`, equal Planck masses), modulo relabeling 1<->2.
-5. After the full pure-metric action is assembled, form its velocity/Hessian matrix and verify auxiliary variables have no own time derivatives.
-6. Only then perform algebraic auxiliary elimination (T1c.6o.4).
-7. Update this checkpoint immediately after every hard ruling or completed subtask.
+1. Work from `numerics/lagos_scalar_action.py`; do not return to the direct Comelli closure.
+2. On the proportional equal-Planck control, diagonalize the reduced velocity Hessian after auxiliary elimination and pin its one nonzero eigenvector to the relative metric scalar sector.
+3. Construct an explicit relative/common variable transform for `(Psi1,Psi2,E1,E2)` and show the common/gauge directions carry no physical kinetic eigenvalue.
+4. Derive the one-field pure-metric reduced Lagrangian on this control background; use it only as a structural check, not as Candidate-C physics.
+5. Then add the two separately coupled matter sectors (T1c.6o.5). Candidate-C rank/speed is not interpretable before this step.
+6. Recover De Felice Eq. (86) from the reduced action, then apply the same machinery to exact Case C and require B.5.
+7. Update this checkpoint after every hard finding or completed subtask.
