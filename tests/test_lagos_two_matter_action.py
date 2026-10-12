@@ -88,3 +88,47 @@ def test_two_matter_lapses_and_shifts_are_algebraically_eliminated():
     assert solution.stationarity_residual < 2e-11
     assert np.all(np.isfinite(solution.auxiliaries))
     assert math.isfinite(solution.reduced_lagrangian)
+
+
+def test_metric_only_matter_residual_is_only_the_background_lapse_correction():
+    """Lagos S_T already contains the other metric-only matter terms.
+
+    For a general P(X) fluid the residual lapse susceptibility is the canonical
+    Lagos correction plus the c_s-dependent difference from De Felice Eq. (54),
+    giving (rho+P)/(2 c_s^2) Phi^2 per sector in its own volume measure.
+    """
+    bg = _proportional_background()
+    matter_g = two.KessenceBackground(rho=3.2, pressure=0.7, cs2=0.4)
+    matter_f = two.KessenceBackground(rho=2.7, pressure=0.5, cs2=0.3)
+    state = np.array([
+        0.13, -0.08, 0.021, -0.017,
+        0.032, -0.026, 0.011, -0.014,
+        0.0, 0.0,
+    ])
+    rates = np.array([0.041, -0.037, 0.016, -0.012, 0.0, 0.0])
+
+    measured = two.two_matter_lagrangian_healthy(
+        bg, matter_g, matter_f, state, rates
+    ) - pure_metric_lagrangian_healthy(bg, state[:8], rates[:4])
+    expected = 0.5 * bg.G8pi * (
+        (matter_g.rho + matter_g.pressure) / matter_g.cs2 * state[4] ** 2
+        + (matter_f.rho + matter_f.pressure) / matter_f.cs2 * state[5] ** 2
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-12, abs_tol=2e-12)
+
+
+def test_reduced_two_matter_velocity_hessian_has_three_kinetic_directions():
+    """Two fluid scalars plus one helicity-0 gravity scalar must propagate."""
+    bg = _proportional_background()
+    matter_g = two.KessenceBackground(rho=3.2, pressure=0.7, cs2=0.4)
+    matter_f = two.KessenceBackground(rho=2.7, pressure=0.5, cs2=0.3)
+
+    assert hasattr(two, "reduced_two_matter_velocity_hessian"), (
+        "reduced two-matter velocity Hessian is not implemented"
+    )
+    kinetic = two.reduced_two_matter_velocity_hessian(
+        bg, matter_g, matter_f
+    )
+    assert kinetic.shape == (6, 6)
+    assert np.allclose(kinetic, kinetic.T, rtol=1e-12, atol=1e-12)
+    assert np.linalg.matrix_rank(kinetic, tol=1e-9) == 3
