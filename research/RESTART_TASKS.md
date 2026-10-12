@@ -4,8 +4,8 @@ Date: 2026-10-12
 Canonical active branch: `research/v2-flrw`
 Stable baseline: `main`
 Gate 2B consolidation merge: `35f5edc19443a059308e8c2710deb656bfdd8fbc` (PR #2)
-Scientific implementation checkpoint before this hygiene pass: `af50032a23acaf58d134df16ed2e599cdbe087d9`
-Research checkpoint before this hygiene pass: `d351098e84b8d970be6e96a1475f589de749b4bf`
+Scientific implementation checkpoint before repository-hygiene pass: `af50032a23acaf58d134df16ed2e599cdbe087d9`
+Repository/restart consolidation checkpoints: `8e9257719f95066c0b109501f0da77ce75bf1438`, `a616e8752d9ecb6daa69aee0448c8d684134eb91`, `523db21d7a7cb9c5ba60f370c042f922a251eeab`
 
 Purpose: **first file to read after any interruption**. It is the authoritative queue. Update it whenever a hard result, blocker, branch policy, or verified test result changes.
 
@@ -16,8 +16,9 @@ Purpose: **first file to read after any interruption**. It is the authoritative 
 3. Do **not** return to literal published Janus, the failed direct Comelli closure, or another algebraic root scan.
 4. Resume **P1c**, specifically the independent reconstruction of the full two-matter quadratic action and its background reduction.
 5. First diagnostic target: determine exactly which metric-only matter terms are already contained in the Lagos background-reduced block and which are currently being removed incorrectly by `numerics/lagos_two_matter_action.py`.
-6. Add a RED test before any production-code correction.
-7. Before stopping, record exact result, commit SHA, tests/tolerances, and the next single blocker here.
+6. Treat `tests/test_lagos_two_matter_action.py::test_metric_only_matter_residual_is_only_the_background_lapse_correction` as a **hypothesis test whose premise is reopened**, not as established physics.
+7. Add a RED test before any production-code correction.
+8. Before stopping, record exact result, commit SHA, tests/tolerances, and the next single blocker here.
 
 ## 1 — Git / repository state
 
@@ -108,7 +109,9 @@ The current implementation contains an internal assumption that now needs to be 
 
 That makes over-subtraction of background-reduced matter terms the current **P1 hypothesis** for the missing gravity gradient.
 
-Independent De Felice Eq. (54) provides a concrete audit target. Setting the matter perturbation variable to zero gives, before multiplication by `N a^3`, a metric-only contribution of the form
+### Exact Eq. (54) zero-matter-perturbation diagnostic
+
+Independent algebraic expansion of the implemented De Felice Eq. (54), with the matter perturbation and its rate set to zero, gives before multiplication by the background volume `N a^3`:
 
 `C_Phi Phi^2 - (rho/2) k^2 B_DF^2 + P[3 psi_DF^2/2 - k^4 E_DF^2/6] - 3 rho Phi psi_DF`,
 
@@ -116,7 +119,41 @@ with
 
 `C_Phi = rho/2 + (rho+P)/(2 c_s^2)`.
 
-The current compatibility remainder restores only the susceptibility piece `(rho+P) Phi^2/(2 c_s^2)` after subtracting the complete metric-only action. Therefore the `rho/2 Phi^2`, shift, spatial-metric, and `Phi*psi` structures are the first terms to track through the Lagos background reduction. **This is a diagnostic derivation, not yet a production-code correction.**
+Using the current bridge implemented in `lagos_two_matter_action.py`,
+
+- `B_DF = B_L/a`,
+- `psi_DF = -Psi_L - k^2 E_L/3`,
+- `E_DF = 2 E_L`,
+- `Phi_DF = Phi_L`,
+
+the same expression becomes exactly
+
+`[rho/2 + (rho+P)/(2 c_s^2)] Phi^2`
+` - rho k^2 B^2/(2 a^2)`
+` + P[3 Psi^2/2 + k^2 Psi E - k^4 E^2/2]`
+` + 3 rho Phi Psi + rho k^2 Phi E`.
+
+The current compatibility remainder restores only
+
+`(rho+P) Phi^2/(2 c_s^2)`.
+
+Therefore the structures presently removed by the bridge, before deciding whether background equations legitimately absorb them, are:
+
+1. `+ rho Phi^2/2`;
+2. `- rho k^2 B^2/(2 a^2)`;
+3. `+ P[3 Psi^2/2 + k^2 Psi E - k^4 E^2/2]`;
+4. `+ 3 rho Phi Psi`;
+5. `+ rho k^2 Phi E`.
+
+For the f sector the same bracket must be evaluated with its own scale factor `b=a*r`, lapse `Nbar`, matter background and then weighted by its own volume `Nbar*b^3`; after common normalization by `a^3` this introduces the expected `Nbar*r^3` volume factor.
+
+**Do not add these five structures blindly.** Some can be hidden by the background Friedmann/acceleration equations used in the Lagos reduction. The task is to prove the accounting term by term.
+
+### Test that currently bakes in the reopened assumption
+
+`tests/test_lagos_two_matter_action.py::test_metric_only_matter_residual_is_only_the_background_lapse_correction`
+
+currently asserts that only the susceptibility term remains. This test is no longer an acceptance oracle. P1c.1 must first replace/reframe it with an independent reference-action diagnostic. Do not delete it merely to make a new implementation pass; the old behavior should remain visible as a regression/control branch until the reference derivation settles the issue.
 
 ## 6 — Ordered task queue
 
@@ -139,12 +176,13 @@ The current compatibility remainder restores only the susceptibility piece `(rho
 Immediate P1c sequence — execute in this order:
 
 1. [x] audit Lagos interaction coefficients and commit the two proven corrections;
-2. [ ] **P1c.1 — CURRENT:** derive the full metric-only part of De Felice Eq. (54) in Lagos variables for each sector and write RED tests that expose which structures are absent after the current subtraction;
-3. [ ] P1c.2: reconstruct the corresponding two-matter background-reduced metric action directly from the underlying Hassan-Rosen/De Felice formulation, without assuming the one-matter Lagos reduction generalizes by symmetry;
-4. [ ] P1c.3: compare the independent reference action term-by-term with `lagos_two_matter_action.py`, classifying every difference as background-equation equivalent, convention-equivalent, or genuinely missing;
-5. [ ] P1c.4: correct production code only for differences proven genuine, one RED->GREEN change at a time;
-6. [ ] P1c.5: re-run auxiliary Hessian rank, proportional exchange symmetry, matter speeds, and Candidate-C gravity speed;
-7. [ ] P1c.6: if gravity still lacks `omega ~ k`, derive the principal action directly from the unreduced two-matter theory and stop treating Lagos (3.6)-(3.8) as a safe two-matter starting point.
+2. [x] derive and algebraically verify the complete zero-matter-perturbation part of implemented De Felice Eq. (54), including its exact Lagos-variable mapping;
+3. [ ] **P1c.1 — CURRENT:** build an independent reference for which of the five removed metric structures survive the Lagos background reduction; start with the one-matter g sector, then independently derive the f sector;
+4. [ ] P1c.2: add RED diagnostics that compare the reference action against `full - metric_only + background_lapse`, without modifying production code first;
+5. [ ] P1c.3: classify every difference against `lagos_two_matter_action.py` as background-equation equivalent, convention-equivalent, or genuinely missing;
+6. [ ] P1c.4: correct production code only for differences proven genuine, one RED->GREEN change at a time;
+7. [ ] P1c.5: re-run auxiliary Hessian rank, proportional exchange symmetry, matter speeds, and Candidate-C gravity speed;
+8. [ ] P1c.6: if gravity still lacks `omega ~ k`, derive the principal action directly from the unreduced two-matter theory and stop treating Lagos (3.6)-(3.8) as a safe two-matter starting point.
 
 ### P2 — physical high-k scalar acceptance
 
@@ -189,4 +227,4 @@ Before any pause or context loss:
 5. record one sentence beginning `NEXT:` with the single next operation;
 6. never leave the next agent to infer whether a negative result was already established.
 
-**NEXT:** implement P1c.1 as a RED diagnostic: pin the full zero-matter-perturbation Eq. (54) metric remainder in Lagos variables and compare it against what the current `full - metric_only + background_lapse` assembly retains.
+**NEXT:** execute P1c.1: derive from the original one-matter background reduction which of the five explicitly identified Eq. (54) metric structures are already absorbed by the Lagos metric coefficients; then derive the f-sector accounting independently before writing any production correction.
