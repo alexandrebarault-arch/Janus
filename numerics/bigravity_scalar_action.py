@@ -7,6 +7,7 @@ and is extended by TDD slices.
 
 from __future__ import annotations
 
+import math
 import numpy as np
 
 
@@ -68,6 +69,75 @@ def sector2_eh_velocity_lagrangian(
         + 2.0 * k**2 * Psi2_dot * B2 / (bg.Nbar * bg.b**2)
     )
     return float(bg.Nbar * bg.b**3 * bg.M2sq * bracket)
+
+
+def _elementary_symmetric_4(eigenvalues: tuple[float, float, float, float]) -> tuple[float, ...]:
+    l0, l1, l2, l3 = eigenvalues
+    e0 = 1.0
+    e1 = l0 + l1 + l2 + l3
+    e2 = (
+        l0*l1 + l0*l2 + l0*l3
+        + l1*l2 + l1*l3 + l2*l3
+    )
+    e3 = l0*l1*l2 + l0*l1*l3 + l0*l2*l3 + l1*l2*l3
+    e4 = l0*l1*l2*l3
+    return e0, e1, e2, e3, e4
+
+
+def hr_diagonal_scalar_potential_density(
+    *,
+    a: float,
+    r: float,
+    Nbar: float,
+    m2: float,
+    M1sq: float,
+    betas,
+    k: float,
+    Psi1: float,
+    E1: float,
+    Psi2: float,
+    E2: float,
+) -> float:
+    """Exact HR potential density for diagonal scalar spatial perturbations.
+
+    The Fourier wave vector is aligned with x.  Lapses and shifts are kept at
+    their background values, while
+
+        g_xx/a^2 = 1-2 Psi1-2 k^2 E1,
+        g_yy/a^2 = g_zz/a^2 = 1-2 Psi1,
+
+    and similarly for f with ``b/a=r``.  Because both metrics are diagonal,
+    the square-root matrix eigenvalues are obtained exactly.  The returned
+    quantity is the positive-convention interaction density
+
+        m^2 M1^2 sqrt(-g) sum_n beta_n e_n(sqrt(g^{-1} f)).
+
+    No precomputed J, Gamma, Z or Ztilde enters this evaluator.
+    """
+    betas = tuple(float(x) for x in betas)
+    if len(betas) != 5:
+        raise ValueError("betas must contain beta_0 through beta_4")
+    if not all(math.isfinite(v) for v in (a, r, Nbar, m2, M1sq, k)):
+        raise ValueError("background parameters must be finite")
+    if a <= 0.0 or r <= 0.0 or Nbar <= 0.0:
+        raise ValueError("a, r and Nbar must be positive")
+
+    gx = 1.0 - 2.0*Psi1 - 2.0*k*k*E1
+    gy = 1.0 - 2.0*Psi1
+    fx = 1.0 - 2.0*Psi2 - 2.0*k*k*E2
+    fy = 1.0 - 2.0*Psi2
+    if min(gx, gy, fx, fy) <= 0.0:
+        raise ValueError("diagonal spatial metric factors must stay positive")
+
+    lam_t = Nbar
+    lam_x = r * math.sqrt(fx / gx)
+    lam_y = r * math.sqrt(fy / gy)
+    eigenvalues = (lam_t, lam_x, lam_y, lam_y)
+    es = _elementary_symmetric_4(eigenvalues)
+
+    sqrt_minus_g = a**3 * math.sqrt(gx) * gy
+    potential = sum(beta * en for beta, en in zip(betas, es))
+    return float(m2 * M1sq * sqrt_minus_g * potential)
 
 
 def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
