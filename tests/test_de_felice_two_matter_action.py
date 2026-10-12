@@ -102,6 +102,17 @@ def test_bd_elimination_leaves_positive_three_by_three_case_c_kinetic_matrix():
         assert physical.zdot_kinetic_residual < 3e-7
 
 
+def test_physical_speed_extractor_recovers_decoupled_known_branches():
+    a=0.5
+    k=20.0
+    expected=np.array([-2.0/3.0,1.0/3.0,0.4])
+    K=np.diag([2.0,3.0,5.0])
+    M=-K@np.diag(expected*(k/a)**2)
+    H=np.block([[M,np.zeros((3,3))],[np.zeros((3,3)),K]])
+    measured=np.sort(physical_squared_phase_speeds(H,a=a,k=k))
+    assert np.allclose(measured,np.sort(expected),rtol=1e-12,atol=1e-12)
+
+
 def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
     # Case C is a sharp independent benchmark: the g fluid is radiation,
     # the f-fluid speed in g-coordinate units is ctilde^2 * c_sf^2, and
