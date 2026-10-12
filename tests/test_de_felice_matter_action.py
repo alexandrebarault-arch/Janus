@@ -85,7 +85,8 @@ def test_lagos_to_de_felice_scalar_metric_bridge_follows_metric_ansatz():
     m = lagos_scalar_metric_to_de_felice(
         scale_factor=a, k=k, Phi_lagos=PhiL, B_lagos=BL, Psi_lagos=PsiL, E_lagos=EL,
     )
-    assert math.isclose(m.Phi, PhiL)
+    # Lagos: g00=-N^2(1+Phi_L); De Felice: g00=-N^2(1+2 Phi_DF).
+    assert math.isclose(m.Phi, PhiL / 2.0)
     assert math.isclose(m.B, BL / a)
     assert math.isclose(m.E, 2.0 * EL)
     assert math.isclose(m.psi, -PsiL - k**2 * EL / 3.0)
