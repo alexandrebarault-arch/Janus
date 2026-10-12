@@ -7,10 +7,12 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_dae import ScalarBackground
+from numerics.lagos_action_bridge import lagos_bigravity_parameters
 from numerics.lagos_scalar_action import (
     INTERACTION_STATE_ORDER,
     RATE_ORDER,
     pure_metric_lagrangian_healthy,
+    einstein_hilbert_lagrangian,
     velocity_hessian,
 )
 
@@ -27,6 +29,22 @@ def _proportional_background():
         xi=1.0,
         kappa=1.0,
         k2=9.0,
+        G8pi=1.0,
+    )
+
+
+def _nontrivial_background(*, a=0.63):
+    return ScalarBackground(
+        a=a,
+        m2=1.7,
+        f1=0.83,
+        f2=0.91,
+        H=0.74,
+        H_omega=0.74 * 0.88,
+        c=0.88,
+        xi=1.27,
+        kappa=0.61,
+        k2=11.0,
         G8pi=1.0,
     )
 
@@ -52,6 +70,43 @@ def _swap_rates(v):
     return out
 
 
+def _mixed_rate_coefficient(bg, i, j):
+    state = np.zeros(8)
+    ei = np.zeros(4)
+    ej = np.zeros(4)
+    ei[i] = 1.0
+    ej[j] = 1.0
+    return (
+        einstein_hilbert_lagrangian(bg, state, ei + ej)
+        - einstein_hilbert_lagrangian(bg, state, ei)
+        - einstein_hilbert_lagrangian(bg, state, ej)
+        + einstein_hilbert_lagrangian(bg, state, np.zeros(4))
+    )
+
+
+def test_sector1_Edot_Psidot_uses_background_metric_laplacian():
+    # Lagos Appendix A defines partial^2 with the background spatial metric.
+    # Thus partial^2 -> -k_com^2/a^2 and the explicit a^2 in Eq. (3.6)
+    # cancels. The mixed Edot*Psidot coefficient is -2 k_com^2.
+    for a in (0.41, 0.73, 1.37):
+        bg = _nontrivial_background(a=a)
+        measured = _mixed_rate_coefficient(
+            bg, RATE_ORDER.index("Psi1_dot"), RATE_ORDER.index("E1_dot")
+        )
+        assert math.isclose(measured, -2.0 * bg.k2, rel_tol=2e-13, abs_tol=2e-13)
+
+
+def test_sector2_Edot_Psidot_uses_its_own_background_metric_laplacian():
+    bg = _nontrivial_background(a=0.63)
+    p = lagos_bigravity_parameters(bg)
+    factor2 = p.Nbar * p.r**3 * bg.kappa
+    expected = factor2 * (-2.0 * bg.k2 / p.Nbar**2)
+    measured = _mixed_rate_coefficient(
+        bg, RATE_ORDER.index("Psi2_dot"), RATE_ORDER.index("E2_dot")
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-13, abs_tol=2e-13)
+
+
 def test_pure_metric_action_is_exchange_symmetric_on_proportional_background():
     bg = _proportional_background()
     state = np.array([0.13, -0.08, 0.021, -0.017, 0.032, -0.026, 0.011, -0.014])
@@ -66,7 +121,6 @@ def test_auxiliary_lapses_and_shifts_have_no_velocity_slots():
     bg = _proportional_background()
     H = velocity_hessian(bg)
 
-    # Only Psi1,Psi2,E1,E2 have rate slots. Lapses/shifts are algebraic by construction.
     assert RATE_ORDER == ("Psi1_dot", "Psi2_dot", "E1_dot", "E2_dot")
     assert H.shape == (4, 4)
     assert np.all(np.isfinite(H))
