@@ -55,7 +55,7 @@ def eliminate_time_dependent_null_coordinate(K,C,Q,Cdot,*,null_index=-1,tol=1e-1
     d=C[keep,z]-C[z,keep]
     r=Q[keep,z]-Cdot[z,keep]
     qzz=float(Q[z,z]-Cdot[z,z])
-    qscale=max(1.0,float(np.max(np.abs(Q))))
+    qscale=max(1.0,abs(float(Q[z,z])),abs(float(Cdot[z,z])))
     if abs(qzz)<=tol*qscale:
         raise np.linalg.LinAlgError("time-dependent null coordinate remains non-algebraic")
     return ReducedQuadraticMatrices(
