@@ -2,7 +2,7 @@
 
 Transcribes the scalar metric terms of Lagos & Ferreira, arXiv:1610.00553,
 Eqs. (3.6)-(3.8), specialized to massive bigravity: constant Planck masses
-and alpha_L=0.  Matter perturbation actions are intentionally not included yet.
+and alpha_L=0. Matter perturbation actions are intentionally not included yet.
 
 All returned Lagrangians use the common normalization M1^2 a^3 and Fourier
 convention partial^2 -> -k^2.
@@ -10,6 +10,7 @@ convention partial^2 -> -k^2.
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 import numpy as np
 
 from numerics.comelli_dae import ScalarBackground
@@ -20,6 +21,16 @@ INTERACTION_STATE_ORDER = (
     "Psi1", "Psi2", "E1", "E2", "Phi1", "Phi2", "B1", "B2",
 )
 RATE_ORDER = ("Psi1_dot", "Psi2_dot", "E1_dot", "E2_dot")
+AUXILIARY_ORDER = ("Phi1", "Phi2", "B1", "B2")
+DYNAMIC_ORDER = ("Psi1", "Psi2", "E1", "E2")
+
+
+@dataclass(frozen=True)
+class AuxiliarySolution:
+    auxiliaries: np.ndarray
+    auxiliary_hessian_rank: int
+    stationarity_residual: float
+    reduced_lagrangian: float
 
 
 def _state(x):
@@ -131,14 +142,11 @@ def einstein_hilbert_lagrangian(bg: ScalarBackground, state, rates) -> float:
 
 
 def pure_metric_lagrangian_healthy(bg: ScalarBackground, state, rates) -> float:
-    return float(
-        einstein_hilbert_lagrangian(bg, state, rates)
-        + interaction_lagrangian_healthy(bg, state)
-    )
+    return float(einstein_hilbert_lagrangian(bg, state, rates) + interaction_lagrangian_healthy(bg, state))
 
 
 def velocity_hessian(bg: ScalarBackground) -> np.ndarray:
-    """Hessian d^2 L/d(rate_i)d(rate_j) at zero fields/rates."""
+    """Hessian d^2 L/d(rate_i)d(rate_j) before auxiliary elimination."""
     zero_s = np.zeros(8, dtype=float)
     n = len(RATE_ORDER)
     Hmat = np.empty((n, n), dtype=float)
@@ -150,4 +158,78 @@ def velocity_hessian(bg: ScalarBackground) -> np.ndarray:
             mixed = pure_metric_lagrangian_healthy(bg, zero_s, basis[i]+basis[j])
             hij = mixed-Lbasis[i]-Lbasis[j]
             Hmat[i, j] = Hmat[j, i] = hij
+    return Hmat
+
+
+def _state_from_dynamic_aux(dynamic, auxiliaries) -> np.ndarray:
+    q = np.asarray(dynamic, dtype=float)
+    aux = np.asarray(auxiliaries, dtype=float)
+    if q.shape != (4,) or aux.shape != (4,):
+        raise ValueError("dynamic and auxiliary vectors must have length 4")
+    return np.array([q[0], q[1], q[2], q[3], aux[0], aux[1], aux[2], aux[3]], dtype=float)
+
+
+def _auxiliary_quadratic_form(bg: ScalarBackground, dynamic, rates):
+    """Return auxiliary Hessian A, linear term g, and L(aux=0)."""
+    q = np.asarray(dynamic, dtype=float)
+    v = _rates(rates)
+    n = len(AUXILIARY_ORDER)
+    z = np.zeros(n, dtype=float)
+    base = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, z), v)
+    eye = np.eye(n)
+    grad = np.empty(n, dtype=float)
+    A = np.empty((n, n), dtype=float)
+    for i in range(n):
+        lp = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, eye[i]), v)
+        lm = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, -eye[i]), v)
+        grad[i] = 0.5*(lp-lm)
+        A[i, i] = lp+lm-2.0*base
+        for j in range(i+1, n):
+            lpp = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, eye[i]+eye[j]), v)
+            lpm = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, eye[i]-eye[j]), v)
+            lmp = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, -eye[i]+eye[j]), v)
+            lmm = pure_metric_lagrangian_healthy(bg, _state_from_dynamic_aux(q, -eye[i]-eye[j]), v)
+            A[i, j] = A[j, i] = 0.25*(lpp-lpm-lmp+lmm)
+    return A, grad, float(base)
+
+
+def eliminate_auxiliaries(bg: ScalarBackground, dynamic, rates) -> AuxiliarySolution:
+    """Integrate out Phi1,Phi2,B1,B2 by their algebraic stationarity equations."""
+    A, grad, base = _auxiliary_quadratic_form(bg, dynamic, rates)
+    rank = int(np.linalg.matrix_rank(A))
+    if rank != len(AUXILIARY_ORDER):
+        raise np.linalg.LinAlgError(f"auxiliary Hessian rank {rank}, expected {len(AUXILIARY_ORDER)}")
+    aux = np.linalg.solve(A, -grad)
+    residual = float(np.linalg.norm(A@aux+grad, ord=np.inf))
+    reduced = float(base + grad@aux + 0.5*aux@A@aux)
+    return AuxiliarySolution(
+        auxiliaries=np.asarray(aux, dtype=float),
+        auxiliary_hessian_rank=rank,
+        stationarity_residual=residual,
+        reduced_lagrangian=reduced,
+    )
+
+
+def reduced_pure_metric_lagrangian(bg: ScalarBackground, dynamic, rates) -> float:
+    return eliminate_auxiliaries(bg, dynamic, rates).reduced_lagrangian
+
+
+def reduced_velocity_hessian(bg: ScalarBackground) -> np.ndarray:
+    """Velocity Hessian after algebraically integrating out lapse/shift fields."""
+    q = np.zeros(4, dtype=float)
+    n = len(RATE_ORDER)
+    z = np.zeros(n, dtype=float)
+    base = reduced_pure_metric_lagrangian(bg, q, z)
+    eye = np.eye(n)
+    Hmat = np.empty((n, n), dtype=float)
+    for i in range(n):
+        lp = reduced_pure_metric_lagrangian(bg, q, eye[i])
+        lm = reduced_pure_metric_lagrangian(bg, q, -eye[i])
+        Hmat[i, i] = lp+lm-2.0*base
+        for j in range(i+1, n):
+            lpp = reduced_pure_metric_lagrangian(bg, q, eye[i]+eye[j])
+            lpm = reduced_pure_metric_lagrangian(bg, q, eye[i]-eye[j])
+            lmp = reduced_pure_metric_lagrangian(bg, q, -eye[i]+eye[j])
+            lmm = reduced_pure_metric_lagrangian(bg, q, -eye[i]-eye[j])
+            Hmat[i, j] = Hmat[j, i] = 0.25*(lpp-lpm-lmp+lmm)
     return Hmat
