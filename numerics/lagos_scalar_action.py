@@ -64,13 +64,13 @@ def interaction_lagrangian_raw(bg: ScalarBackground, state) -> float:
         ratio = (Nbar-r)/(H-Hb)
 
     l1 = (
-        r*Z/(2.0*(Nbar+r))*k2*B1*B1
+        r*r*Z/(2.0*(Nbar+r))*k2*B1*B1
         + 2.0*r*Zt*Psi1*(1.5*Psi1+a*a*k2*E1)
         + ratio*H*Z*Phi1*(3.0*Psi1+a*a*k2*E1)
     )
     factor2 = Nbar*r**3/nu2
     shift2 = nu2*Nbar*Z/(2.0*r**3*(Nbar+r))*k2*B2*B2
-    zt2 = 2.0*nu2*Nbar*r*r*Zt*Psi2*(1.5*Psi2+b*b*k2*E2)
+    zt2 = 2.0*nu2/(Nbar*r*r)*Zt*Psi2*(1.5*Psi2+b*b*k2*E2)
     if abs(H-Hb) > 1e-13*max(1.0, abs(H), abs(Hb)):
         lapse2 = Hb*nu2*Z*(Nbar-r)/(Nbar*r**3*(H-Hb))*Phi2*(3.0*Psi2+b*b*k2*E2)
     elif H == 0.0:
@@ -93,11 +93,11 @@ def interaction_lagrangian_healthy(bg: ScalarBackground, state) -> float:
     r, Nbar, Z, Zt = p.r, p.Nbar, p.Z, p.Z_tilde
     c, a, b, k2 = bg.c, bg.a, bg.a*p.r, bg.k2
     return float(
-        r*Z/(2.0*(Nbar+r))*k2*B1*B1
+        r*r*Z/(2.0*(Nbar+r))*k2*B1*B1
         + Nbar*Nbar*Z/(2.0*(Nbar+r))*k2*B2*B2
         - Z*Nbar/(Nbar+r)*k2*B1*B2
         + 2.0*r*Zt*Psi1*(1.5*Psi1+a*a*k2*E1)
-        + 2.0*Nbar*Nbar*r**5*Zt*Psi2*(1.5*Psi2+b*b*k2*E2)
+        + 2.0*r*Zt*Psi2*(1.5*Psi2+b*b*k2*E2)
         - 2.0*r*Zt*(3.0*Psi2*Psi1+a*a*k2*Psi2*E1+b*b*k2*Psi1*E2)
         + r*Z*Phi1*(3.0*(Psi2-Psi1)+k2*(b*b*E2-a*a*E1))
         + c*r*Z*Phi2*(3.0*(Psi1-Psi2)+k2*(a*a*E1-b*b*E2))
