@@ -1,157 +1,111 @@
-# Gate 2B — persistent checkpoint and restart plan
+# Gate 2B — authoritative restart checkpoint
 
 Date: 2026-10-12
 Branch: `research/gate2b-nonhomothetic-transfer`
-Purpose: **authoritative restart point after any interruption**. Read this file first and update it after every hard finding, rejected hypothesis, task-state change, or restart-point change.
+Purpose: single restart point after interruption. Update after every hard finding or task-state change.
 
 ## Verdict
 
 **Gate 2B remains OPEN / NOT VALIDATED.**
 
-The direct Comelli route is closed negatively. The active route is an independent quadratic-action reconstruction. The combined two-matter action now passes the published De Felice scalar degree-count **after the correct gauge-fixing order** on exact Case C, but a newly isolated Lagos spatial-derivative convention must be audited before the BD mode and propagation speeds can be trusted.
+The historical Comelli 12x12 closure is rejected for physics because it loses the helicity-0 `k^2 E` gradient. The active route is an independent quadratic-action reconstruction. A Lagos+two-matter hybrid was useful as an audit tool but is now proven unsuitable as the final two-matter action because Lagos 1610.00553 specializes the background/action reduction to matter coupled only to metric 1.
 
-## Closed facts
+## Closed hard facts
 
-### JANUS / bigravity convention bridge
+### JANUS / bimetric bridge
 
-- JANUS -> De Felice/Comelli: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi*J`, `f1=Gamma`.
-- Lagos massive-bigravity: `r=xi`, `Nbar=xi*c`, `Z=m^2 J=m^2 f2/xi`, `Z_tilde=m^2 Gamma/xi=m^2 f1/xi`.
-- Independent De Felice principal-action module gives Candidate C at `a=0.5`: `c_s^2 ~= 0.69208`, `c_s ~= 0.83191`.
+- JANUS -> De Felice/Comelli: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi J`, `f1=Gamma`.
+- Independent De Felice high-k target on Candidate C at `a=0.5`: `c_s^2 ~= 0.69208`, `c_s ~= 0.83191`.
+- Exact Case-C benchmark is in `numerics/comelli_case_c.py`; acceptance remains `E''+(3/tau)E'-(2/3)k^2 E=0`.
 
-### Direct Comelli route — closed negative result
+### Historical Comelli closure
 
-- Candidate C reproduces the visible radiation speed exactly but gives a false gravity pair `c~0.0159` instead of `~0.8319`.
-- Dust+dust gives the same failure; at large k the false frequency tends to a constant, proving the physical helicity-0 `k^2 E` term is structurally absent from the old reduction.
-- Correctly treating `B1` as nondynamical still does not recover Case-C B.5.
-- Ruled out as sufficient fixes: unit conversion, matter mixture, closure-row choice, single derivative coefficient, A1/A2 typo, A.18 drop-in swap, f-trace sign flip, conditioning, selected minors, frozen-time PGCD, and merely eliminating `B1'`.
-- Printed A.3/A.18 has `calE`; raw gauge invariants give `calE'` exactly and finite-tau Bianchi checks support the derived-prime identity. Keep printed-unprime only as a typo/control branch.
+- Radiation propagation is recovered exactly, but the supposed gravity pair is `c~0.0159` instead of `~0.8319`.
+- Dust+dust gives the same failure; at large k the false frequency tends to a constant, proving the gravity gradient is structurally absent.
+- Unit conversion, matter mixture, row choice, individual background derivatives, simple sign changes, conditioning, selected minors and merely eliminating `B1'` were ruled out.
+- Raw gauge-invariant definitions require the A.3/A.18 relation with `calE'`; the printed unprimed form is kept only as a typo/control branch.
 
-### Exact Case-C benchmark
+### De Felice matter block
 
-Use `8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`.
-
-- Exact branch: `a^4 xi^2 + xi - a - a^4/3 = 0`.
-- `numerics/comelli_case_c.py` supplies exact background/conformal map and `rho1`, `rho2`.
-- Acceptance: `E''+(3/tau)E'-(2/3)k^2E=0`.
-- Equivalently `E=tau^2e(x)`, `x=k tau`: `x^2e_xx+7xe_x+8e-(2/3)x^2e=0`.
-
-## Action reconstruction status
-
-### De Felice P(X) matter layer
-
-`numerics/de_felice_matter_action.py` implements the complete scalar quadratic matter block of De Felice Eq. (54).
-
-- Flat scalar identities: `TrH=6 psi`, `H_ij H^ij=12 psi^2+(2/3)k^4E^2`, `V_iV^i=k^2B^2`.
-- Metric-off action gives `L = h/(2cs2) qdot^2 - N^2 h k^2 q^2/(2a^2)`, hence `c_coord^2=N^2 cs2/a^2` directly from the action.
-- One-sector TDD: RED `9630a68`, GREEN `d686ccb`.
-- Lagos -> De Felice bridge currently used:
-  - `Phi_DF = Phi_L`;
-  - `B_DF = B_L/a_sector`;
-  - `E_DF = 2E_L`;
+- `numerics/de_felice_matter_action.py` implements the scalar P(X) quadratic matter block of De Felice Eq. (54).
+- Metric-off action reproduces intrinsic sound speed.
+- Correct Lagos -> De Felice scalar bridge is now:
+  - `Phi_DF = Phi_L / 2`;
+  - `B_DF = B_L / a_sector`;
+  - `E_DF = 2 E_L`;
   - `psi_DF = -Psi_L - k^2 E_L/3`.
-- Lapse bridge correction TDD: RED `5340f9e`, GREEN `541b483`.
-- Generic sector wrapper includes `N a_sector^3`; common-normalized wrapper divides by `M_g^2 a_ref^3`. TDD normalization: RED `cbc39fe`, GREEN `740bf02`.
-- For f sector `b=a*r`, `Nbar=r*c`, metric-off speed is `(Nbar/b)^2 cs_f^2=(c/a)^2 cs_f^2`.
-- Keep `cs2>0` through unreduced P(X); take dust only after constrained reduction.
+- The lapse factor 1/2 follows directly from Lagos `g00=-N^2(1+Phi_L)` versus De Felice `g00=-N^2(1+2 Phi_DF)`.
+- TDD commits for this correction: RED `53c9af3`, GREEN `2ee436d`.
 
-### Combined two-matter action and correct degree count
+### Lagos spatial-derivative audit
 
-- `numerics/two_matter_scalar_action.py` sums the Lagos metric block and two normalized Eq. (54) matter sectors and algebraically eliminates `Phi1,Phi2,B1,B2`.
-- Initial scaffold `b9187b5`, implementation `8efad30`.
-- The old expectation that the ungauged post-auxiliary 6x6 velocity Hessian must already have rank 3 was wrong. De Felice Sec. IV.E leaves six variables at this stage: two scalar gauge directions plus one non-dynamical BD combination are still present.
-- Correct De Felice order: eliminate lapse/shift -> fix two scalar gauges -> expose/eliminate BD -> three physical scalars.
-- g-flat test RED `b654ad5`; implementation `28c27bd` imposes `Psi1=E1=0` after auxiliary elimination, leaving `(Psi2,E2,q_g,q_f)`.
-- Exact Case-C scratch control at `a=0.1`, `k=12`, visible radiation `cs_g^2=1/3`, f dust regularized with `cs_f^2=0.1` gives a 4x4 kinetic Hessian with **rank 3** and one numerically null eigenvalue, as required before BD elimination.
-- Representative eigenvalues were approximately `[-3.9998e4, -6.6776e2, 6.9e-7, 2.998e-2]`; the smallest is ~`1.7e-11` of the dominant scale.
-- Therefore 6o.5c.4a and 6o.5c.4b are closed in scratch. Full pytest remains unavailable because the container cannot clone GitHub.
+Completed on the branch:
 
-### De Felice-only GR cross-check
+- L1/L2 tests pin self-sector Laplacians to the sector background metric.
+- L3 corrected EH contractions (`252a4dd` -> `11c9b5a`).
+- L4 audited and corrected interaction spatial gradients (`af6b315` -> `68e1c17`).
+- Lagos Appendix A indeed states spatial indices are raised/lowered with the background metric of the field on which the derivative acts.
 
-A private direct reconstruction of De Felice Eq. (44) + Eq. (54), in the same De Felice variables, was used as an independent control.
+### Critical new finding: Lagos hybrid cannot be the final two-matter action
 
-- After lapse/shift elimination and flat gauge in single-metric GR, exactly one scalar remains.
-- Its high-k coordinate speed approaches its intrinsic `cs^2` without inserting the target. Example control with `cs^2=0.35`: measured speed squared approaches `0.3485` at `k=30` and `0.349985` at `k=300`.
-- This strongly validates the Eq. (54) matter transcription and provides a reference against which the Lagos self-action bridge can be tested.
+After the spatial corrections, the Case-C g-flat 4x4 kinetic Hessian became rank 4 when the old matter lapse bridge was used. Correcting `Phi_DF=Phi_L/2` restores near-rank-3 at very early times, but the residual eigenvalue is not numerical noise and grows as `~a^2`.
 
-## New hard finding — Lagos spatial derivative convention
+At exact Case C `a=0.2`, `k=20`, holding the geometry fixed and multiplying only the f-sector matter density by a factor `r_f`, the smallest eigenvalue is:
 
-Before eliminating the BD combination, the Lagos metric action must be re-audited for its Fourier/Laplacian convention.
+- `r_f=0`: `0`;
+- `0.1`: `0.00149811`;
+- `0.5`: `0.00749056`;
+- `1.0`: `0.01498111`;
+- `2.0`: `0.02996214`.
 
-Lagos Appendix A defines spatial index raising/lowering with the **background metric of the metric sector on which the derivative acts**. Thus on flat FLRW:
+Thus the spurious kinetic direction is **linear in the second-sector density** and disappears when `rho_f=0`.
 
-- metric 1: `partial^2 -> -k_com^2/a^2`;
-- metric 2: `partial^2 -> -k_com^2/b^2`.
+This is exactly consistent with the scope of Lagos 1610.00553: the paper assumes metric 1 is minimally coupled to matter; its final quadratic metric action uses those one-matter background relations and explicitly includes metric terms originating from that matter action. Therefore adding a second independent Eq. (54) matter sector to the already-specialized Lagos action is not a valid general two-matter construction.
 
-This matters because the published action contains explicit factors such as `a^2 partial^2 E1_dot` and `b^2 partial^2 E2_dot`; those should reduce to common comoving `-k_com^2 E_dot`, not `-a^2 k_com^2 E_dot` or `-b^2 k_com^2 E_dot`.
-
-Current `numerics/lagos_scalar_action.py` declares `partial^2 -> -k^2` while keeping explicit `a^2` and `b^2` factors. Since `ScalarBackground.k2` is comoving/Fourier `k^2` everywhere else in JANUS, this is a concrete convention mismatch candidate.
-
-Examples in the current EH code that require audit:
-
-- `-2*a^2*k2*E1_dot*(Psi1_dot+H Phi1)` should be tested against Lagos `2 a^2 partial^2 E1_dot(...)` with `partial^2=-k_com^2/a^2`;
-- shift term `+2*k2*Psi1_dot*B1` should be checked for the corresponding `1/a^2` contraction;
-- sector-2 counterparts require `b`, not `a`;
-- interaction cross-gradient terms must be audited separately because their contraction convention can differ from a pure self-sector Laplacian.
-
-Do **not** identify/eliminate the BD mode or interpret its kinetic signs until this convention audit is closed.
+**Ruling:** keep `lagos_scalar_action.py` as a convention/audit reference, but do not use the Lagos+two-matter hybrid to identify the BD mode or physical scalar speeds.
 
 ## Active task list
 
-- [x] Convention bridge / Candidate-C / Case-C backgrounds.
-- [x] Reject direct Comelli closure for Gate-2B physics.
-- [x] Independent De Felice high-k target.
-- [x] Full one-sector De Felice Eq. (54) P(X) matter action.
-- [x] Lagos/De Felice scalar-variable bridge and g/f volume normalization.
-- [x] Common `M_g^2 a^3` normalization helper.
-- [ ] **T1c — independent scalar action reconstruction.** IN PROGRESS.
-  - [x] 6o.5a — one-sector P(X) action.
-  - [x] 6o.5b — two-sector normalization/bridge.
-  - [ ] **6o.5c — combined metric + two-fluid quadratic action.**
-    - [x] 6o.5c.1 — common normalization.
-    - [x] 6o.5c.2 — add `(q_g,q_f)` at action level.
-    - [x] 6o.5c.3 — algebraically eliminate `Phi1,Phi2,B1,B2`.
-    - [ ] **6o.5c.4 — De Felice gauge/BD reduction.**
-      - [x] 6o.5c.4a — g-flat gauge `Psi1=E1=0` implemented.
-      - [x] 6o.5c.4b — exact Case-C 4x4 gauge-fixed kinetic rank = 3 with one null direction (scratch verified).
-      - [ ] **6o.5c.4-L — audit/fix Lagos spatial derivative (`partial^2`) convention before trusting the BD vector.**
-        - [ ] L1 — add RED regression for sector-1 EH `E_dot-Psi_dot` coefficient: it must depend on comoving `k^2`, not `a^2 k^2`.
-        - [ ] L2 — add corresponding sector-2 `b`/`Nbar` regression.
-        - [ ] L3 — correct Lagos EH self-sector spatial contractions and re-run pure-metric structural controls.
-        - [ ] L4 — audit interaction spatial-gradient contractions separately against Lagos Eq. (3.8).
-        - [ ] L5 — re-run exact Case-C g-flat rank-3 control after corrections.
-      - [ ] 6o.5c.4c — identify the null/BD combination and eliminate it algebraically at action level.
-      - [ ] 6o.5c.4d — express three remaining variables in a basis equivalent to De Felice `Y1,Y2,Y3`.
-  - [ ] **6o.5d — derive 3x3 high-k kinetic/gradient matrices and recover three speeds.**
-  - [ ] 6o.6p — compare action-derived constraints with Comelli and identify what the old closure lost.
-  - [ ] 6o.6q — Case-C acceptance: recover B.5 or explicitly equivalent action equation.
-- [ ] T2 — Candidate-C full scalar validation.
-- [ ] T3 — replace faulty old scalar closure.
-- [ ] T4 — native/action-based transfer solver.
-- [ ] T5 — make `tests/test_comelli_native_scalar.py` green + >=3 extra `(z,k)` regressions.
+- [x] Convention bridge / Candidate-C / exact Case-C backgrounds.
+- [x] Reject historical Comelli closure for Gate-2B physics.
+- [x] Independent De Felice high-k gravity-speed target.
+- [x] De Felice Eq. (54) one-sector P(X) matter action.
+- [x] Correct Lagos/De Felice scalar-variable bridge, including `Phi_DF=Phi_L/2`.
+- [x] Lagos self-sector Laplacian audit (L1-L3).
+- [x] Lagos interaction-gradient audit (L4).
+- [x] L5 diagnostic: show Lagos+second-matter hybrid violates rank-3 in proportion to `rho_f`.
+- [ ] **T1c-DF — reconstruct/use the full De Felice two-matter quadratic scalar action.** ACTIVE.
+  - [ ] DF1 — audit/transcribe the gravitational quadratic action used by De Felice before scalar reduction, in the same variables as Eq. (54), without importing Lagos one-matter background simplifications.
+  - [ ] DF2 — combine both P(X) sectors and verify auxiliary lapse/shift equations are algebraic.
+  - [ ] DF3 — impose g-flat gauge and reproduce the published count: four variables before BD elimination, kinetic rank 3 exactly/on-shell.
+  - [ ] DF4 — identify and eliminate the BD/non-dynamical scalar combination at action level.
+  - [ ] DF5 — obtain the final 3x3 kinetic/gradient matrices and recover the three high-k speeds (g-fluid, f-fluid, gravity).
+  - [ ] DF6 — Case-C acceptance: recover B.5 or an exactly equivalent reduced equation.
+- [ ] T2 — apply validated action reduction to Candidate C and recover De Felice `c_s~0.8319` over >=3 `(z,k)` points.
+- [ ] T3 — identify precisely what the old Comelli 12x12 closure projected out.
+- [ ] T4 — implement the native/action-based transfer solver.
+- [ ] T5 — make `tests/test_comelli_native_scalar.py` green + >=3 regressions.
 - [ ] T6 — full Gate-2B regression suite.
-- [ ] T7 — time-domain transfer matrix.
-- [ ] T8 — continuous GR-connected mode tracking.
-- [ ] T9 — `T_gg,T_gf,T_fg,T_ff` and relative growth.
-- [ ] T10 — Gate-2B scientific verdict.
+- [ ] T7 — time-domain fundamental transfer matrix.
+- [ ] T8 — continuous GR-connected/adiabatic mode tracking.
+- [ ] T9 — compute `T_gg,T_gf,T_fg,T_ff` and relative growth.
+- [ ] T10 — Gate-2B scientific verdict with tolerances/domain.
 
 ## Test execution caveat
 
-Container network cannot clone/download the GitHub repository. Newly added pytest files therefore cannot currently be run as a full checkout suite. TDD RED/GREEN commits are preserved in Git and core algebra is independently checked in scratch. Do not claim the full repository suite is green.
+The container cannot clone the GitHub repository over the network. Git commits preserve RED/GREEN steps; focused algebraic controls are reproduced in scratch. Do not claim the entire repository pytest suite is green.
 
-## Current RED regressions
+## Current intentional RED
 
-- `tests/test_comelli_native_scalar.py` remains intentionally RED until T1c closes.
-- Next intended RED is the Lagos EH spatial-Laplacian regression in `tests/test_lagos_pure_metric_action.py`.
+`tests/test_comelli_native_scalar.py` remains RED until the action reduction is independently validated.
 
 ## Immediate restart instruction
 
-**Resume at T1c / 6o.5c.4-L1 — Lagos Laplacian convention audit.**
+**Resume at T1c-DF / DF1.**
 
-1. Treat `ScalarBackground.k2` as comoving Fourier `k^2`.
-2. In Lagos self-sector derivatives use the sector background metric when translating `partial^2`: metric1 `k^2/a^2`, metric2 `k^2/b^2`.
-3. First write a RED test isolating the `E1_dot * Psi1_dot` EH coefficient at two different `a`; after correct translation its mixed coefficient is proportional to `-2 k_com^2` and is independent of `a`.
-4. Add the analogous sector-2 test including `Nbar` and the overall second-metric factor.
-5. Only after self-sector EH is fixed, audit interaction Eq. (3.8) cross-gradient contractions; do not blindly apply the same metric factor to cross terms.
-6. Re-run (scratch if necessary) pure-metric exchange symmetry, auxiliary stationarity, relative kinetic rank, and exact Case-C g-flat rank=3.
-7. Only then identify/eliminate the BD combination and proceed to 3x3 propagation speeds.
-8. Update this checkpoint after every hard finding or completed subtask.
+1. Use De Felice 1404.0008 as the primary two-matter action framework, not the Lagos one-matter specialization.
+2. Keep all metric and matter variables in De Felice conventions through auxiliary elimination; only map to JANUS variables after the reduced action is validated.
+3. First recover the correct scalar degree count (rank 3 after gauge fixing, before/after explicit BD elimination as appropriate).
+4. Then derive the high-k 3x3 kinetic/gradient matrices and compare to De Felice's published gravity speed.
+5. Only after that return to Candidate C transfer integration.
+6. Update this file after each hard finding.
