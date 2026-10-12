@@ -10,6 +10,7 @@ from numerics.bigravity_scalar_action import (
     RAW_FIELD_ORDER,
     raw_kinetic_hessian,
     sector1_eh_velocity_lagrangian,
+    sector2_eh_velocity_lagrangian,
     shift_interaction_lagrangian,
 )
 from numerics.lagos_bridge import LagosBackground
@@ -78,24 +79,41 @@ def test_sector1_eh_velocity_block_matches_lagos_eq_3_6():
     B1 = -0.13
     Psi1_dot = 0.21
     E1_dot = -0.17
-
     measured = sector1_eh_velocity_lagrangian(
-        bg,
-        k=k,
-        Phi1=Phi1,
-        B1=B1,
-        Psi1_dot=Psi1_dot,
-        E1_dot=E1_dot,
+        bg, k=k, Phi1=Phi1, B1=B1,
+        Psi1_dot=Psi1_dot, E1_dot=E1_dot,
     )
-
-    # Lagos Eq. (3.6), using partial_1^2 -> -k^2/a^2:
-    # a^3 M1^2[-3 Psidot^2 -6 H Phi Psidot
-    #            -2 k^2 Edot(Psidot+H Phi)
-    #            +2 k^2/a^2 Psidot B].
     expected = bg.a**3 * bg.M1sq * (
         -3.0 * Psi1_dot**2
         - 6.0 * bg.H * Psi1_dot * Phi1
         - 2.0 * k**2 * E1_dot * (Psi1_dot + bg.H * Phi1)
         + 2.0 * k**2 / bg.a**2 * Psi1_dot * B1
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_sector2_eh_velocity_block_matches_lagos_eq_3_7():
+    bg = _bg()
+    k = 2.3
+    Phi2 = -0.06
+    B2 = 0.11
+    Psi2_dot = -0.19
+    E2_dot = 0.14
+
+    measured = sector2_eh_velocity_lagrangian(
+        bg,
+        k=k,
+        Phi2=Phi2,
+        B2=B2,
+        Psi2_dot=Psi2_dot,
+        E2_dot=E2_dot,
+    )
+
+    # Lagos Eq. (3.7), using partial_2^2 -> -k^2/b^2.
+    expected = bg.Nbar * bg.b**3 * bg.M2sq * (
+        -3.0 * Psi2_dot**2 / bg.Nbar**2
+        - 6.0 * bg.Hb * Psi2_dot * Phi2 / bg.Nbar**2
+        - 2.0 * k**2 * E2_dot * (Psi2_dot + bg.Hb * Phi2) / bg.Nbar**2
+        + 2.0 * k**2 * Psi2_dot * B2 / (bg.Nbar * bg.b**2)
     )
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
