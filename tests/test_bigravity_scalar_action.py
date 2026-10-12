@@ -87,17 +87,22 @@ def test_sector2_eh_velocity_block_matches_lagos_eq_3_7():
 
 def _mixed_second(fun, name1, name2, h=2e-5):
     def f(s1, s2):
-        kw = dict(Psi1=0.0, E1=0.0, Psi2=0.0, E2=0.0)
+        kw = dict(Phi1=0.0, Phi2=0.0, Psi1=0.0, E1=0.0, Psi2=0.0, E2=0.0)
         kw[name1] = s1
         kw[name2] = s2
         return fun(**kw)
     return (f(h,h)-f(h,-h)-f(-h,h)+f(-h,-h))/(4*h*h)
 
 
-def test_hr_potential_spatial_cross_terms_are_controlled_by_ztilde():
+def _hr_test_params():
     a=0.73; r=1.21; Nbar=1.08; m2=0.67; M1sq=1.4; k=2.6
-    beta0,beta1,beta2,beta3,beta4 = (0.19,0.41,-0.23,0.17,0.31)
-    betas=(beta0,beta1,beta2,beta3,beta4)
+    betas=(0.19,0.41,-0.23,0.17,0.31)
+    return a,r,Nbar,m2,M1sq,k,betas
+
+
+def test_hr_potential_spatial_cross_terms_are_controlled_by_ztilde():
+    a,r,Nbar,m2,M1sq,k,betas = _hr_test_params()
+    beta0,beta1,beta2,beta3,beta4 = betas
     ztilde = m2*(beta1 + beta2*(r+Nbar) + beta3*r*Nbar)
 
     def potential(**kw):
@@ -114,5 +119,28 @@ def test_hr_potential_spatial_cross_terms_are_controlled_by_ztilde():
     assert math.isclose(pp, 6.0*scale, rel_tol=2e-5, abs_tol=2e-6)
     assert math.isclose(pe, 2.0*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
     assert math.isclose(ep, 2.0*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
-    # Ghost-free tuning: there is no k^4 E1 E2 mixed term in this block.
     assert abs(ee) < 2e-5*max(1.0, abs(scale)*k**4)
+
+
+def test_hr_potential_lapse_spatial_cross_terms_are_controlled_by_z():
+    a,r,Nbar,m2,M1sq,k,betas = _hr_test_params()
+    beta0,beta1,beta2,beta3,beta4 = betas
+    z = m2*(beta1 + 2.0*beta2*r + beta3*r*r)
+
+    def potential(**kw):
+        return hr_diagonal_scalar_potential_density(
+            a=a,r=r,Nbar=Nbar,m2=m2,M1sq=M1sq,betas=betas,k=k,**kw
+        )
+
+    p1p2 = _mixed_second(potential,"Phi1","Phi2")
+    p1s2 = _mixed_second(potential,"Phi1","Psi2")
+    p2s1 = _mixed_second(potential,"Phi2","Psi1")
+    p1e2 = _mixed_second(potential,"Phi1","E2")
+    p2e1 = _mixed_second(potential,"Phi2","E1")
+
+    scale = a**3*M1sq*z
+    assert abs(p1p2) < 2e-5*max(1.0,abs(scale))
+    assert math.isclose(p1s2, -1.5*r*scale, rel_tol=2e-5, abs_tol=2e-6)
+    assert math.isclose(p2s1, -1.5*Nbar*scale, rel_tol=2e-5, abs_tol=2e-6)
+    assert math.isclose(p1e2, -0.5*r*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
+    assert math.isclose(p2e1, -0.5*Nbar*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
