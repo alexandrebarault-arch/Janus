@@ -81,7 +81,11 @@ def lagos_scalar_metric_to_de_felice(
     *, scale_factor: float, k: float, Phi_lagos: float, B_lagos: float,
     Psi_lagos: float, E_lagos: float,
 ) -> DeFeliceScalarMetric:
-    """Map one Lagos-Ferreira scalar metric sector to De Felice variables."""
+    """Map one Lagos-Ferreira scalar metric sector to De Felice variables.
+
+    Lagos writes the lapse perturbation as ``g00=-N^2(1+Phi_L)`` whereas
+    De Felice uses ``g00=-N^2(1+2 Phi_DF)``. Therefore ``Phi_DF=Phi_L/2``.
+    """
     vals = (scale_factor, k, Phi_lagos, B_lagos, Psi_lagos, E_lagos)
     if not all(math.isfinite(v) for v in vals):
         raise ValueError("metric bridge inputs must be finite")
@@ -90,7 +94,7 @@ def lagos_scalar_metric_to_de_felice(
     if k < 0.0:
         raise ValueError("k must be non-negative")
     return DeFeliceScalarMetric(
-        Phi=float(Phi_lagos),
+        Phi=float(0.5 * Phi_lagos),
         B=float(B_lagos / scale_factor),
         psi=float(-Psi_lagos - k**2 * E_lagos / 3.0),
         E=float(2.0 * E_lagos),
