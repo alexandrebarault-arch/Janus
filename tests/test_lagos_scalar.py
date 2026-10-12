@@ -3,6 +3,8 @@ import math
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_bridge import janus_J_Gamma
@@ -17,13 +19,17 @@ def test_lagos_interaction_bridge_matches_janus_J_gamma():
     beta = (0.0, 1.0, -4.2383993109, 13.6801214252, -38.5117901844)
     xi = 0.5922763712069927
     c = 0.8512702016825817
-    m2 = 2.3
 
-    coeff = lagos_interaction_coefficients(beta, xi=xi, c=c, m2=m2)
+    coeff = lagos_interaction_coefficients(beta, xi=xi, c=c)
     J, Gamma = janus_J_Gamma(xi, c, beta)
 
-    assert math.isclose(coeff.Z, m2 * J, rel_tol=0.0, abs_tol=1e-12)
-    assert math.isclose(xi * coeff.Z_tilde, m2 * Gamma, rel_tol=0.0, abs_tol=1e-12)
+    assert math.isclose(coeff.Z, J, rel_tol=0.0, abs_tol=1e-12)
+    assert math.isclose(xi * coeff.Z_tilde, Gamma, rel_tol=0.0, abs_tol=1e-12)
+
+    # arXiv:1410.0207 defines Z and Z_tilde without m^2; its equations carry
+    # m^2 explicitly. Reject the alternative convention at this API boundary.
+    with pytest.raises(TypeError):
+        lagos_interaction_coefficients(beta, xi=xi, c=c, m2=2.3)
 
 
 def test_beta1_radiation_background_satisfies_branch_friedmann_and_conservation():
