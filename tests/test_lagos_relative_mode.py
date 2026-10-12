@@ -7,7 +7,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_dae import ScalarBackground
-from numerics.lagos_scalar_action import relative_common_kinetic_projection
+from numerics.lagos_relative_mode import relative_common_kinetic_projection
 
 
 def _bg(k=3.0):
