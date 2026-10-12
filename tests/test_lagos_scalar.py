@@ -82,21 +82,27 @@ def test_lagos_auxiliary_equations_have_rank_four_and_reconstruct_constraints():
 
 def test_lagos_eq323_loses_all_psi2_time_derivatives_after_auxiliary_elimination():
     from numerics.lagos_scalar import (
+        LagosScalarState,
         beta1_radiation_background,
-        lagos_frozen_reduced_matrix,
+        lagos_eq323_reduced_residual,
     )
 
     bg = beta1_radiation_background(N=0.1, a=1.0, beta1=1.0, m2=1.0)
     beta = (0.0, 1.0, 0.0, 0.0, 0.0)
+    common = dict(E1=0.021, E1_prime=-0.014, E2=0.032,
+                  E2_prime=0.017, psi2=0.011)
 
-    # Rows are Eqs. (3.23),(3.24),(3.27); columns are (E1,E2,psi2).
     values = []
-    for s in (-2.0, -1.0, 0.0, 1.0, 2.0):
-        matrix = lagos_frozen_reduced_matrix(
-            s, bg, k=5.0, w=1.0 / 3.0, beta=beta, m2=1.0, nu2=1.0
-        )
-        assert matrix.shape == (3, 3)
-        values.append(matrix[0, 2])
+    for psi2_prime, psi2_double_prime in ((-0.006, 0.0), (0.2, -0.3), (-0.5, 0.7)):
+        state = LagosScalarState(**common, psi2_prime=psi2_prime)
+        values.append(lagos_eq323_reduced_residual(
+            bg, state,
+            E1_double_prime=0.03,
+            E2_double_prime=-0.04,
+            psi2_double_prime=psi2_double_prime,
+            k=5.0, w=1.0 / 3.0, beta=beta, m2=1.0, nu2=1.0,
+            derivative_step=1e-6,
+        ))
 
     scale = max(1.0, max(abs(v) for v in values))
-    assert max(abs(v - values[2]) for v in values) < 5e-11 * scale
+    assert max(abs(v - values[0]) for v in values) < 5e-8 * scale
