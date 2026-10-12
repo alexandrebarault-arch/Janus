@@ -6,12 +6,13 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_dae import ScalarBackground
+from numerics.comelli_case_c import case_c_background_from_a
 from numerics.lagos_scalar_action import pure_metric_lagrangian_healthy
 from numerics.two_matter_scalar_action import (
     KessenceFluid,
     combined_scalar_lagrangian,
     eliminate_combined_auxiliaries,
-    reduced_combined_velocity_hessian,
+    reduced_flat_gauge_velocity_hessian,
 )
 
 
@@ -56,16 +57,22 @@ def test_combined_auxiliary_solution_is_stationary():
     assert sol.stationarity_residual < 2e-9
 
 
-def test_two_matter_reduced_velocity_hessian_has_three_kinetic_directions():
-    bg = _proportional_background()
-    g = KessenceFluid(rho=2.8, pressure=0.7, cs2=0.42)
-    f = KessenceFluid(rho=3.6, pressure=0.4, cs2=0.31)
+def test_flat_gauge_case_c_velocity_hessian_has_one_nondynamical_bd_direction():
+    point = case_c_background_from_a(0.1, k=12.0)
+    bg = point.metric
+    g = KessenceFluid(rho=point.rho1, pressure=point.rho1 / 3.0, cs2=1.0 / 3.0)
+    # The exact Case-C f-background is dust. Keep a positive P(X) sound-speed
+    # regulator until after the constrained action is reduced.
+    f = KessenceFluid(rho=point.rho2, pressure=0.0, cs2=0.1)
 
-    K = reduced_combined_velocity_hessian(
+    K = reduced_flat_gauge_velocity_hessian(
         bg, g_fluid=g, f_fluid=f, M_g2=1.0
     )
     eig = np.linalg.eigvalsh(K)
-    assert K.shape == (6, 6)
-    assert np.allclose(K, K.T, rtol=2e-12, atol=2e-12)
-    assert np.linalg.matrix_rank(K, tol=1e-8) == 3
-    assert np.count_nonzero(np.abs(eig) > 1e-8) == 3
+    assert K.shape == (4, 4)
+    assert np.allclose(K, K.T, rtol=2e-11, atol=2e-11)
+
+    scale = max(1.0, float(np.max(np.abs(eig))))
+    tol = 2e-8 * scale
+    assert np.count_nonzero(np.abs(eig) > tol) == 3
+    assert np.min(np.abs(eig)) < tol
