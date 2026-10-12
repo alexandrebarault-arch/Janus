@@ -7,6 +7,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_case_c import case_c_background_from_a
+from numerics.de_felice_action_principal import gravity_principal_action
 from numerics.de_felice_two_matter_action import (
     DFKessenceFluid,
     matter_log_phidot_rates,
@@ -114,9 +115,8 @@ def test_physical_speed_extractor_recovers_decoupled_known_branches():
 
 
 def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
-    # Case C is a sharp independent benchmark: the g fluid is radiation,
-    # the f-fluid speed in g-coordinate units is ctilde^2 * c_sf^2, and
-    # Comelli B.5 gives the helicity-0 gradient speed squared -2/3.
+    # Compare the reconstructed physical 3-field action against a completely
+    # independent principal-action implementation of De Felice Eqs. 80/82/86.
     point, g, f = _case_c(0.05, 400.0)
     physical = eliminate_bd_mode(
         point.metric, point.derivatives,
@@ -128,10 +128,15 @@ def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
         a=point.metric.a,
         k=math.sqrt(point.metric.k2),
     ))
+    grav = gravity_principal_action(
+        point.metric,
+        rho_f_plus_p_f=point.rho2,
+    )
     expected = np.sort(np.array([
-        -2.0/3.0,
+        grav.cs2,
         g.cs2,
         point.metric.c**2 * f.cs2,
     ]))
+    assert math.isclose(grav.cs2, -0.6665833419871022, rel_tol=2e-10, abs_tol=2e-10)
     assert measured.shape == (3,)
     assert np.allclose(measured, expected, rtol=0.08, atol=0.03)
