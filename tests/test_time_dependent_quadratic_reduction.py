@@ -35,3 +35,13 @@ def test_de_felice_y2hat_map_includes_Rdot():
     combo_dot=0.05+12.0**2*0.04/6.0
     assert np.isclose(mapped.u_f,0.3+0.4*combo)
     assert np.isclose(mapped.u_f_dot,-0.2+0.4*combo_dot-0.07*combo)
+
+
+def test_null_coordinate_singularity_scale_is_local_to_null_block():
+    K=np.diag([1.0,0.0])
+    C=np.zeros((2,2))
+    Q=np.diag([1.0e20,2.0])
+    Cdot=np.zeros((2,2)); Cdot[1,1]=0.5
+    red=eliminate_time_dependent_null_coordinate(K,C,Q,Cdot,null_index=1)
+    assert red.K.shape==(1,1)
+    assert np.isclose(red.K[0,0],1.0)
