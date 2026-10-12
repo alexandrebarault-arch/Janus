@@ -8,7 +8,7 @@ Global first restart file: `research/RESTART_TASKS.md`
 
 **Gate 2B remains OPEN / NOT VALIDATED.**
 
-The direct Comelli closure, including the corrected-index reconstruction, fails to recover the physical helicity-0 gradient. The active route is an independent scalar quadratic-action reconstruction from De Felice et al. 1404.0008 and Lagos & Ferreira 1610.00553.
+The direct Comelli closure is a closed negative route: it does not recover the physical helicity-0 gradient. The active route is an independent scalar quadratic-action reconstruction checked against De Felice et al. 1404.0008 and Lagos & Ferreira 1610.00553.
 
 ## Closed facts
 
@@ -16,99 +16,85 @@ The direct Comelli closure, including the corrected-index reconstruction, fails 
 
 - JANUS -> De Felice/Comelli: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi*J`, `f1=Gamma`.
 - Lagos massive bigravity: `r=xi`, `Nbar=xi*c`, `Z=m^2 f2/xi=m^2 J`, `Z_tilde=m^2 f1/xi=m^2 Gamma/xi`.
-- Massive bigravity has `alpha_L=0`; the helicity-0 gradient appears only after lapse/shift elimination together with the Einstein-Hilbert structure.
+- massive bigravity has `alpha_L=0`; the helicity-0 gradient appears only after lapse/shift elimination together with the Einstein-Hilbert/background structure.
+- use `Phi_DF = Phi_L`; do not introduce a factor-of-two patch.
 
 ### Independent De Felice principal action
 
-- `numerics/de_felice_action_principal.py` independently implements the relevant high-k coefficients.
-- Candidate-C checks agree at `a=1,0.5,0.2`.
-- At `a=0.5`: `c_s^2 ~= 0.69207999`, `c_s ~= 0.83191345`.
+- `numerics/de_felice_action_principal.py` independently implements the relevant high-k coefficients;
+- Candidate-C checks exist at `a=1,0.5,0.2`;
+- at `a=0.5`: `c_s^2 ~= 0.6920799927`, `c_s ~= 0.83191345`.
 
-### Lagos pure-metric action
+### Lagos pure-metric/action work already established
 
 - interaction potential and EH scalar self-actions independently reconstructed;
-- pure metric action exchange-symmetric on proportional equal-Planck controls;
-- `Phi1,Phi2,B1,B2` eliminated algebraically at action level;
-- post-auxiliary velocity Hessian rank = 1 on proportional controls;
-- in the relative/common basis only `E-=(E1-E2)/sqrt(2)` carries the pure-metric kinetic projection;
-- the one-field relative slice is structural only, not Candidate-C physics without matter/background terms.
+- two proven Lagos coefficient errors corrected;
+- lapse/shift auxiliaries eliminated algebraically;
+- proportional-control post-auxiliary kinetic rank identified;
+- two P(X) matter characteristics are independently recovered by the current pencil, including f-lapse rescaling.
 
 ### Direct Comelli route — closed negative result
 
 - radiation mode is recovered at `1/sqrt(3)`;
-- the supposed gravity pair gives `c~0.0159` instead of the independent `~0.8319` benchmark;
-- dust+dust fails identically and the bad high-k frequency saturates instead of scaling with k;
-- the physical gravity `k^2 E` structure is absent from that closure;
+- the supposed gravity pair fails the independent De Felice benchmark;
+- the bad high-k gravity frequency saturates instead of scaling with `k`;
 - changing matter mixture, closure rows, selected signs/minors, or making `B1` nondynamical does not repair it.
 
-### A.3 / A.18
+## Current hard failure
 
-Raw invariants select `(calB1-calE')`; the printed `(calB1-calE)` form is retained only as a typo/control branch.
+The coupled Lagos/P(X) assembly has three kinetic directions and correctly tracks the two matter sound characteristics, but its third scalar branch still lacks the required `omega ~ k` gravity propagation.
 
-## Exact Case-C acceptance benchmark
+Therefore the current action bridge is still incomplete or incorrectly background-reduced. The quadratic pencil is **not** the leading suspect because the two independent matter characteristics move correctly when their sound speeds are changed.
 
-`8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`.
+## Current leading hypothesis
 
-- branch: `a^4 xi^2 + xi - a - a^4/3 = 0`;
-- required B.5: `E''+(3/tau)E'-(2/3)k^2 E=0`.
+`numerics/lagos_two_matter_action.py` subtracts the complete zero-matter-perturbation part of De Felice Eq. (54), on the assumption that all those metric-only matter terms are already present in the Lagos metric block, and then restores only
 
-## New matter-action result
+`(rho+P) Phi^2 / (2 c_s^2)`
 
-`numerics/de_felice_matter_action.py` now contains the full flat-Fourier scalar specialization of the P(X) quadratic matter action, including lapse, shift, scalar spatial metric, matter-field velocity and gradient terms.
+in each sector.
 
-TDD history:
+But `numerics/lagos_scalar_action.py` builds `pure_metric_lagrangian_healthy()` from EH + interaction terms and explicitly documents that at least the matter-background lapse correction is not included. This creates a concrete risk of over-subtraction.
 
-- RED `b12ad1d95cde5926bdbc4896454cdc4f352274cd` -> GREEN `0448eef3ad05f6937aca8fadcab9a04d4916c712`;
-- RED `3e13f971447213d3510c940303330355383c7eff` -> GREEN `d26017a1b65e391d9cb80edc75ca308829819d20`.
+For De Felice Eq. (54), setting the matter perturbation variable to zero gives the bracket-level metric-only structure
 
-Focused reconstructed local run: `8 passed`.
+`C_Phi Phi^2 - (rho/2) k^2 B_DF^2 + P[3 psi_DF^2/2 - k^4 E_DF^2/6] - 3 rho Phi psi_DF`,
 
-Hard checks now pinned:
+where
 
-- free P(X): `omega^2=c_s^2 N^2 k^2/a^2`;
-- pure-lapse limit reproduces the earlier Eq. (54) coefficient exactly;
-- shift appears through `delta_phi/phi_dot_0 + a B/N`;
-- `Tr(H)=6 psi` and `H_ij H^ij=12 psi^2+(2/3)k^4 E^2`;
-- multiplying by `N a^3` gives the explicit background volume normalization;
-- with `b=a*r`, `Nbar=r*c`, the free f-sector mode has `omega_f^2=c_s,f^2 c^2 k^2/a^2` in common coordinate time.
+`C_Phi = rho/2 + (rho+P)/(2 c_s^2)`.
 
-The unreduced P(X) representation remains singular at exact `c_s^2=0`; take the dust limit only after the constrained action has been reduced.
+The next task is to map this entire expression into Lagos variables and establish, term by term, which pieces are genuinely already absorbed by the one-matter background reduction and which must be retained in a two-matter action.
 
-## Test execution caveat
-
-A clean repository checkout/full pytest suite is still unavailable from the local compiler sandbox. Focused reconstructed tests were executed locally. Do not describe the whole repository suite as green.
+This is a **diagnostic target**, not permission to add the terms blindly.
 
 ## Active task list
 
-- [x] Convention bridge / exact Candidate-C and Case-C backgrounds.
-- [x] Reject direct Comelli closure for Gate-2B physics.
-- [x] Independent De Felice principal-action regression.
-- [ ] **T1c — independently reconstruct and validate scalar action.** IN PROGRESS.
-  - [x] Lagos action convention bridge.
-  - [x] independent De Felice principal action.
-  - [x] pure-metric Lagos quadratic action + exchange controls.
-  - [x] algebraic elimination of `Phi1,Phi2,B1,B2`.
-  - [x] proportional-control kinetic rank = 1 and explicit relative/common reduction.
-  - [x] **T1c.6o.5a:** one-sector barotropic/P(X) scalar matter action.
-  - [x] **T1c.6o.5b:** g/f lapse, scale-factor and `N a^3` volume normalization.
-  - [ ] **T1c.6o.5c — ACTIVE:** assemble metric + g fluid + f fluid in the common `M1^2 a^3` normalization and eliminate all nondynamical variables.
-  - [ ] **T1c.6o.5d:** derive high-k kinetic/gradient matrix and recover three physical speeds without inserting the De Felice result.
-  - [ ] compare the action-derived reduced structure to Comelli and identify the lost term.
-  - [ ] Case-C acceptance: recover B.5 or an explicitly equivalent action-variable equation.
-- [ ] Candidate-C full scalar validation from the new action.
-- [ ] native/action-based transfer solver and continuous mode tracking.
-- [ ] compute `T_gg,T_gf,T_fg,T_ff` and relative-mode growth.
-- [ ] final Gate-2B verdict with tolerances/domain.
+- [x] convention bridge / exact Candidate-C and Case-C backgrounds;
+- [x] reject direct Comelli closure for Gate-2B physics;
+- [x] independent De Felice principal-action regression;
+- [x] one-sector P(X) scalar matter action;
+- [x] g/f lapse, scale-factor and volume normalization;
+- [x] first two-matter assembly and auxiliary elimination;
+- [x] Lagos interaction coefficient audit and corrections;
+- [ ] **T1c.6o.5c-R — ACTIVE:** independently reconstruct the two-matter background-reduced metric+matter action rather than assuming the one-matter Lagos reduction generalizes;
+  - [ ] map full De Felice metric-only Eq. (54) remainder into Lagos variables for g and f sectors;
+  - [ ] add RED diagnostics for the shift, spatial metric, `Phi*psi`, and remaining lapse structures;
+  - [ ] classify every difference against the Lagos block as background-equation equivalent or genuinely missing;
+  - [ ] correct only proven missing structures, RED->GREEN;
+  - [ ] re-run auxiliary rank and exchange controls;
+  - [ ] re-run high-k matter speeds and Candidate-C gravity speed;
+- [ ] recover exactly three physical high-k scalar modes with healthy kinetic/gradient signs;
+- [ ] only then build the non-homothetic transfer solver and mode tracking.
 
 ## Immediate restart instruction
 
-**Resume at T1c.6o.5c.**
+**Resume at T1c.6o.5c-R.**
 
-1. Use `pure_metric_lagrangian_healthy()` as the gravitational block; do not import the failed Comelli closure.
-2. Add the g-sector Eq. (54) action with background `(N,a)=(1,a)`.
-3. Add the f-sector Eq. (54) action with `(Nbar,b)=(r*c,a*r)`.
-4. Divide both matter actions by the same pure-metric normalization `M1^2 a^3`; with `M1^-2=8piG`, this means the g and f matter weights must be derived explicitly rather than guessed.
-5. First RED test: zero matter must reduce exactly to `pure_metric_lagrangian_healthy()`.
-6. Second RED test: proportional equal-Planck/equal-matter data must be exchange symmetric.
-7. Only then extend auxiliary elimination to include matter variables and derive the principal matrix.
-8. Update `research/RESTART_TASKS.md` and this file at the next hard result.
+1. Do not modify the frozen quadratic pencil to force the benchmark.
+2. Do not return to the direct Comelli closure.
+3. Use the exact De Felice Eq. (54) zero-matter-perturbation remainder as the first independent audit object.
+4. Check the g-sector mapping first, then obtain the f-sector by its own lapse/scale/volume normalization rather than by visual symmetry.
+5. First production change must be preceded by a RED test that fails for the current `full - metric_only + background_lapse` construction.
+6. Acceptance after correction: matter speeds unchanged and gravity branch approaches the independent Candidate-C `omega^2/k^2` benchmark at `a=1,0.5,0.2`.
+7. Update `research/RESTART_TASKS.md`, this file and `LATEST.md` at the next hard result.
