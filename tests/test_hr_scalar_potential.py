@@ -11,7 +11,7 @@ from numerics.hr_scalar_potential import (
 )
 
 
-def test_full_hr_scalar_potential_matches_existing_diagonal_limit():
+def test_full_hr_scalar_potential_matches_existing_standard_beta_diagonal_limit():
     a = 0.73
     r = 1.21
     nbar = 1.08
@@ -44,9 +44,6 @@ def test_full_hr_scalar_potential_matches_existing_diagonal_limit():
 
 
 def test_quadratic_hr_shift_block_matches_de_felice_delta_rank_one_form():
-    # beta1-only => J=1 exactly.  Eq. (45)-(46) gives
-    # L_shift = (1/2) m^2 Mg^2 N a^3 xi J/(ctilde+1)
-    #           * k^2 (B_g-ctilde B_f)^2.
     N = 1.0
     a = 0.8
     xi = 1.17
@@ -82,13 +79,15 @@ def test_quadratic_hr_shift_block_matches_de_felice_delta_rank_one_form():
     assert math.isclose(q11*q22-q12*q12, 0.0, abs_tol=3e-5)
 
 
-def test_quadratic_helper_reduces_to_exact_diagonal_potential_when_shifts_vanish():
+def test_de_felice_quadratic_helper_has_opposite_diagonal_sign_to_standard_beta_potential():
+    # De Felice uses alpha_i L_i(K), K=I-sqrt(g^-1 f).  In the standard
+    # beta_n e_n(sqrt(g^-1 f)) basis this carries the opposite overall sign.
     kwargs = dict(
         N=1.0, a=0.8, n=1.06, alpha=0.92,
         m2=0.7, Mg2=1.3, betas=(0.2,0.4,-0.1,0.15,0.3), k=2.2,
         Phi_g=0.03, B_g=0.0, psi_g=-0.02, E_g=0.004,
         Phi_f=-0.01, B_f=0.0, psi_f=0.015, E_f=-0.003,
     )
-    exact = hr_scalar_potential_density_de_felice(**kwargs)
-    quadratic = hr_scalar_quadratic_potential_density_de_felice(**kwargs)
-    assert math.isclose(quadratic, exact, rel_tol=3e-13, abs_tol=3e-13)
+    standard = hr_scalar_potential_density_de_felice(**kwargs)
+    de_felice = hr_scalar_quadratic_potential_density_de_felice(**kwargs)
+    assert math.isclose(de_felice, -standard, rel_tol=3e-13, abs_tol=3e-13)
