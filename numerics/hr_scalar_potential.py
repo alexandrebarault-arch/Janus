@@ -1,10 +1,14 @@
-"""Exact Hassan-Rosen scalar-mode interaction potential.
+"""Hassan-Rosen scalar-mode interaction potential in De Felice variables.
 
-The function in this module evaluates the non-derivative bimetric potential
-on one flat scalar Fourier mode written in De Felice variables.  Choosing the
-wave-vector along x makes both metrics block diagonal: one 2x2 time/longitudinal
-block plus two identical transverse entries.  The principal square root of the
-2x2 block is therefore analytic and no background field equation is used.
+``hr_scalar_potential_density_de_felice`` evaluates the exact local matrix
+potential and is reliable for diagonal scalar perturbations.  A Fourier scalar
+shift is a spatial gradient, however, so inserting ``k B`` as a real local
+matrix entry loses the k/-k phase information at quadratic order.
+
+For perturbation theory use
+``hr_scalar_quadratic_potential_density_de_felice``: it keeps the exact
+shift-free potential and adds the shift square from De Felice et al.
+Eq. (45)-(46) analytically.
 """
 
 from __future__ import annotations
@@ -42,10 +46,10 @@ def hr_scalar_potential_density_de_felice(
     psi_f: float,
     E_f: float,
 ) -> float:
-    """Return ``m^2 Mg^2 sqrt(-g) sum beta_n e_n(sqrt(g^-1 f))``.
+    """Return the exact local HR potential density for a scalar-mode matrix.
 
-    The scalar metric convention is De Felice et al. Eq. (41),(67), with the
-    Fourier wave-vector aligned with x.  ``k`` is the comoving wave number.
+    Do not use nonzero ``B_g``/``B_f`` from this exact local helper to build a
+    Fourier quadratic action.  Use the quadratic helper below instead.
     """
     betas = tuple(float(x) for x in betas)
     if len(betas) != 5:
@@ -64,9 +68,6 @@ def hr_scalar_potential_density_de_felice(
         raise ValueError("k must be non-negative")
 
     k2 = k*k
-
-    # De Felice scalar spatial perturbation:
-    # H_xx=2 psi-(2/3)k^2 E, H_yy=H_zz=2 psi+(1/3)k^2 E.
     gx = a*a*(1.0 + 2.0*psi_g - (2.0/3.0)*k2*E_g)
     gy = a*a*(1.0 + 2.0*psi_g + (1.0/3.0)*k2*E_g)
     fx = alpha*alpha*(1.0 + 2.0*psi_f - (2.0/3.0)*k2*E_f)
@@ -95,15 +96,68 @@ def hr_scalar_potential_density_de_felice(
     denom2 = trA + 2.0*root_det
     if denom2 <= 0.0:
         raise ValueError("principal square-root denominator is non-positive")
-    denom = math.sqrt(denom2)
-    S2 = (A + root_det*np.eye(2)) / denom
+    S2 = (A + root_det*np.eye(2)) / math.sqrt(denom2)
 
     trS = float(np.trace(S2))
     detS = float(np.linalg.det(S2))
     ell = math.sqrt(fy/gy)
     es = _e4_from_uvll(trS, detS, ell)
-
-    # sqrt(-g) for the block-diagonal mode: sqrt(-det(g2))*g_yy,
-    # with y and z transverse entries equal.
     sqrt_minus_g = math.sqrt(-det_g2) * gy
     return float(m2 * Mg2 * sqrt_minus_g * sum(b*e for b, e in zip(betas, es)))
+
+
+def hr_scalar_quadratic_potential_density_de_felice(
+    *,
+    N: float,
+    a: float,
+    n: float,
+    alpha: float,
+    m2: float,
+    Mg2: float,
+    betas,
+    k: float,
+    Phi_g: float,
+    B_g: float,
+    psi_g: float,
+    E_g: float,
+    Phi_f: float,
+    B_f: float,
+    psi_f: float,
+    E_f: float,
+) -> float:
+    """Quadratic-action-safe HR potential for one scalar Fourier mode.
+
+    The diagonal/lapse/spatial part is evaluated from the exact HR potential at
+    zero shifts.  The shift dependence is the explicit De Felice Eq. (46)
+    contribution
+
+      (m^2 Mg^2 / 2) N a^3 xi J /(ctilde+1)
+      * k^2 (B_g-ctilde B_f)^2,
+
+    where ``xi=alpha/a`` and ``ctilde=n*a/(N*alpha)``.  This preserves the
+    rank-one relative-shift structure of ghost-free bigravity.
+    """
+    betas = tuple(float(x) for x in betas)
+    if len(betas) != 5:
+        raise ValueError("betas must contain beta_0 through beta_4")
+    if min(N, a, n, alpha) <= 0.0:
+        raise ValueError("lapses and scale factors must be positive")
+
+    diagonal = hr_scalar_potential_density_de_felice(
+        N=N, a=a, n=n, alpha=alpha,
+        m2=m2, Mg2=Mg2, betas=betas, k=k,
+        Phi_g=Phi_g, B_g=0.0, psi_g=psi_g, E_g=E_g,
+        Phi_f=Phi_f, B_f=0.0, psi_f=psi_f, E_f=E_f,
+    )
+
+    xi = alpha/a
+    ctilde = n*a/(N*alpha)
+    _, beta1, beta2, beta3, _ = betas
+    J = beta1 + 2.0*beta2*xi + beta3*xi*xi
+    if ctilde + 1.0 == 0.0:
+        raise ValueError("ctilde+1 must be non-zero")
+    shift = (
+        0.5*m2*Mg2*N*a**3*xi*J/(ctilde + 1.0)
+        * k*k * (B_g - ctilde*B_f)**2
+    )
+    return float(diagonal + shift)
