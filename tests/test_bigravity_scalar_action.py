@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from numerics.bigravity_scalar_action import (
     RAW_FIELD_ORDER,
     raw_kinetic_hessian,
+    sector1_eh_velocity_lagrangian,
     shift_interaction_lagrangian,
 )
 from numerics.lagos_bridge import LagosBackground
@@ -35,9 +36,6 @@ def test_lagos_shift_terms_form_source_normalized_relative_shift_square():
     k = 2.3
     B1, B2 = 0.17, -0.09
     measured = shift_interaction_lagrangian(bg, k=k, B1=B1, B2=B2)
-    # Lagos raises spatial indices with the background metric of each sector.
-    # Combining the B1^2, B2^2 and B1 B2 terms of Eqs. (3.6)-(3.8) therefore
-    # gives this comoving-k normalization.
     expected = (
         bg.a * bg.M1sq * bg.Z * k**2
         / (2.0 * (bg.Nbar + bg.r))
@@ -62,9 +60,6 @@ def test_raw_lagos_action_has_no_lapse_or_shift_velocities():
         i = RAW_FIELD_ORDER.index(name)
         assert np.linalg.norm(K[i, :]) > 0.0
 
-    # Eqs. (3.6)-(3.7) contain 2 a^2 partial^2 Edot_1 Psidot_1 and
-    # 2 b^2/Nbar^2 partial^2 Edot_2 Psidot_2.  Since partial^2_A gives
-    # -k^2/a_A^2 on a comoving Fourier mode, the scale factors cancel.
     p1 = RAW_FIELD_ORDER.index("Psi1")
     e1 = RAW_FIELD_ORDER.index("E1")
     p2 = RAW_FIELD_ORDER.index("Psi2")
@@ -74,3 +69,33 @@ def test_raw_lagos_action_has_no_lapse_or_shift_velocities():
         K[p2, e2],
         -2.0 * k**2 / bg.Nbar**2 * (bg.Nbar * bg.b**3 * bg.M2sq),
     )
+
+
+def test_sector1_eh_velocity_block_matches_lagos_eq_3_6():
+    bg = _bg()
+    k = 2.3
+    Phi1 = 0.08
+    B1 = -0.13
+    Psi1_dot = 0.21
+    E1_dot = -0.17
+
+    measured = sector1_eh_velocity_lagrangian(
+        bg,
+        k=k,
+        Phi1=Phi1,
+        B1=B1,
+        Psi1_dot=Psi1_dot,
+        E1_dot=E1_dot,
+    )
+
+    # Lagos Eq. (3.6), using partial_1^2 -> -k^2/a^2:
+    # a^3 M1^2[-3 Psidot^2 -6 H Phi Psidot
+    #            -2 k^2 Edot(Psidot+H Phi)
+    #            +2 k^2/a^2 Psidot B].
+    expected = bg.a**3 * bg.M1sq * (
+        -3.0 * Psi1_dot**2
+        - 6.0 * bg.H * Psi1_dot * Phi1
+        - 2.0 * k**2 * E1_dot * (Psi1_dot + bg.H * Phi1)
+        + 2.0 * k**2 / bg.a**2 * Psi1_dot * B1
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
