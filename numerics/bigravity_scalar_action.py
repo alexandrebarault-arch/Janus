@@ -97,18 +97,21 @@ def hr_diagonal_scalar_potential_density(
     E1: float,
     Psi2: float,
     E2: float,
+    Phi1: float = 0.0,
+    Phi2: float = 0.0,
 ) -> float:
-    """Exact HR potential density for diagonal scalar spatial perturbations.
+    """Exact HR potential density for diagonal scalar perturbations.
 
-    The Fourier wave vector is aligned with x.  Lapses and shifts are kept at
-    their background values, while
+    The Fourier wave vector is aligned with x. In Lagos conventions
 
+        g_00 = -(1+Phi1),
+        f_00 = -Nbar^2(1+Phi2),
         g_xx/a^2 = 1-2 Psi1-2 k^2 E1,
-        g_yy/a^2 = g_zz/a^2 = 1-2 Psi1,
+        f_xx/b^2 = 1-2 Psi2-2 k^2 E2,
 
-    and similarly for f with ``b/a=r``.  Because both metrics are diagonal,
-    the square-root matrix eigenvalues are obtained exactly.  The returned
-    quantity is the positive-convention interaction density
+    with the y/z spatial factors obtained by setting E_A=0. Because both
+    metrics are diagonal, all four eigenvalues of ``sqrt(g^{-1}f)`` are exact.
+    The returned quantity uses the positive interaction convention
 
         m^2 M1^2 sqrt(-g) sum_n beta_n e_n(sqrt(g^{-1} f)).
 
@@ -117,25 +120,27 @@ def hr_diagonal_scalar_potential_density(
     betas = tuple(float(x) for x in betas)
     if len(betas) != 5:
         raise ValueError("betas must contain beta_0 through beta_4")
-    if not all(math.isfinite(v) for v in (a, r, Nbar, m2, M1sq, k)):
-        raise ValueError("background parameters must be finite")
+    scalars = (a, r, Nbar, m2, M1sq, k, Phi1, Phi2, Psi1, E1, Psi2, E2)
+    if not all(math.isfinite(v) for v in scalars):
+        raise ValueError("background and perturbation parameters must be finite")
     if a <= 0.0 or r <= 0.0 or Nbar <= 0.0:
         raise ValueError("a, r and Nbar must be positive")
 
+    gt = 1.0 + Phi1
+    ft = 1.0 + Phi2
     gx = 1.0 - 2.0*Psi1 - 2.0*k*k*E1
     gy = 1.0 - 2.0*Psi1
     fx = 1.0 - 2.0*Psi2 - 2.0*k*k*E2
     fy = 1.0 - 2.0*Psi2
-    if min(gx, gy, fx, fy) <= 0.0:
-        raise ValueError("diagonal spatial metric factors must stay positive")
+    if min(gt, ft, gx, gy, fx, fy) <= 0.0:
+        raise ValueError("diagonal metric factors must stay positive")
 
-    lam_t = Nbar
+    lam_t = Nbar * math.sqrt(ft / gt)
     lam_x = r * math.sqrt(fx / gx)
     lam_y = r * math.sqrt(fy / gy)
-    eigenvalues = (lam_t, lam_x, lam_y, lam_y)
-    es = _elementary_symmetric_4(eigenvalues)
+    es = _elementary_symmetric_4((lam_t, lam_x, lam_y, lam_y))
 
-    sqrt_minus_g = a**3 * math.sqrt(gx) * gy
+    sqrt_minus_g = a**3 * math.sqrt(gt) * math.sqrt(gx) * gy
     potential = sum(beta * en for beta, en in zip(betas, es))
     return float(m2 * M1sq * sqrt_minus_g * potential)
 
