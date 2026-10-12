@@ -20,7 +20,7 @@ def eh_scalar_quadratic_density_flat(*, lapse, scale_factor, H, Hdot_over_lapse,
     N=lapse; a=scale_factor; k2=k*k; k4=k2*k2; k6=k4*k2; Hd=Hdot_over_lapse
     return float(
         -6*psi_dot**2/N**2+k4*E_dot**2/(6*N**2)+12*H*Phi*psi_dot/N
-        +B*(2*k4*E_dot/(3*N*a)-4*k2*psi_dot/(N*a))
+        +B*(-2*k4*E_dot/(3*N*a)-4*k2*psi_dot/(N*a))
         +4*H*k2*Phi*B/a+4*k2*Phi*psi/a**2+2*k2*psi**2/a**2
         +2*k4*Phi*E/(3*a**2)+2*k4*psi*E/(3*a**2)+k6*E**2/(18*a**2)
         -9*H**2*Phi**2+18*H**2*Phi*psi+3*H**2*k2*B**2
