@@ -10,6 +10,7 @@ from numerics.de_felice_matter_action import (
     kessence_scalar_quadratic_density,
     lagos_scalar_metric_to_de_felice,
     kessence_lagos_sector_quadratic_lagrangian,
+    kessence_lagos_sector_common_normalized_lagrangian,
 )
 
 
@@ -18,18 +19,9 @@ def _expected(rho, pressure, cs2):
 
 
 def test_de_felice_eq54_pure_lapse_coefficient_for_generic_kessence():
-    for rho, pressure, cs2 in (
-        (2.7, 0.4, 0.63),
-        (1.9, 0.0, 0.2),
-        (3.2, 1.1, 1.0),
-    ):
-        measured = kessence_lapse_quadratic_coefficient(
-            rho=rho, pressure=pressure, cs2=cs2
-        )
-        assert math.isclose(
-            measured, _expected(rho, pressure, cs2),
-            rel_tol=2e-14, abs_tol=2e-14,
-        )
+    for rho, pressure, cs2 in ((2.7, 0.4, 0.63), (1.9, 0.0, 0.2), (3.2, 1.1, 1.0)):
+        measured = kessence_lapse_quadratic_coefficient(rho=rho, pressure=pressure, cs2=cs2)
+        assert math.isclose(measured, _expected(rho, pressure, cs2), rel_tol=2e-14, abs_tol=2e-14)
 
 
 def test_same_matter_formula_applies_to_g_and_f_sectors_before_volume_factors():
@@ -76,8 +68,7 @@ def test_metric_off_principal_matter_action_has_intrinsic_sound_speed():
     rho, pressure, cs2 = 3.9, 0.6, 1.0 / 3.0
     lapse, a, k = 1.17, 0.81, 3.2
     h = rho + pressure
-    q = 0.053
-    qdot = -0.071
+    q, qdot = 0.053, -0.071
     measured = kessence_scalar_quadratic_density(
         rho=rho, pressure=pressure, cs2=cs2, lapse=lapse, scale_factor=a, k=k,
         Phi=0.0, B=0.0, psi=0.0, E=0.0,
@@ -85,9 +76,7 @@ def test_metric_off_principal_matter_action_has_intrinsic_sound_speed():
     )
     expected = h / (2.0 * cs2) * qdot**2 - lapse**2 * h * k**2 / (2.0 * a**2) * q**2
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
-    kinetic = h / cs2
-    gradient = lapse**2 * h / a**2
-    assert math.isclose(gradient / kinetic, lapse**2 * cs2 / a**2, rel_tol=2e-14)
+    assert math.isclose((lapse**2 * h / a**2) / (h / cs2), lapse**2 * cs2 / a**2, rel_tol=2e-14)
 
 
 def test_lagos_to_de_felice_scalar_metric_bridge_follows_metric_ansatz():
@@ -96,8 +85,6 @@ def test_lagos_to_de_felice_scalar_metric_bridge_follows_metric_ansatz():
     m = lagos_scalar_metric_to_de_felice(
         scale_factor=a, k=k, Phi_lagos=PhiL, B_lagos=BL, Psi_lagos=PsiL, E_lagos=EL,
     )
-    # Lagos Eq. (2.23) gives delta N_1=Phi_1, which fixes the same lapse
-    # perturbation normalization as De Felice g_00=-N^2(1+2 Phi).
     assert math.isclose(m.Phi, PhiL)
     assert math.isclose(m.B, BL / a)
     assert math.isclose(m.E, 2.0 * EL)
@@ -107,9 +94,7 @@ def test_lagos_to_de_felice_scalar_metric_bridge_follows_metric_ansatz():
 def test_f_sector_lagos_wrapper_has_expected_lapse_rescaled_sound_speed():
     rho, pressure, cs2 = 5.2, 0.4, 0.29
     a, r, c = 0.76, 1.31, 0.87
-    b = a * r
-    nbar = r * c
-    k = 2.8
+    b, nbar, k = a * r, r * c, 2.8
     q, qdot = 0.041, -0.052
     measured = kessence_lagos_sector_quadratic_lagrangian(
         rho=rho, pressure=pressure, cs2=cs2, lapse=nbar, scale_factor=b, k=k,
@@ -120,3 +105,25 @@ def test_f_sector_lagos_wrapper_has_expected_lapse_rescaled_sound_speed():
     density = h / (2.0 * cs2) * qdot**2 - nbar**2 * h * k**2 / (2.0 * b**2) * q**2
     assert math.isclose(measured, nbar * b**3 * density, rel_tol=2e-14, abs_tol=2e-14)
     assert math.isclose((nbar / b) ** 2 * cs2, (c / a) ** 2 * cs2, rel_tol=2e-14)
+
+
+def test_common_normalization_matches_lagos_Mg2_a3_convention_for_both_sectors():
+    Mg2 = 1.7
+    a, r, c, k = 0.72, 1.18, 0.91, 2.3
+    b, nbar = a * r, r * c
+    common = Mg2 * a**3
+    kwargs = dict(
+        rho=4.1, pressure=0.5, cs2=0.32, k=k,
+        Phi_lagos=0.07, B_lagos=-0.03, Psi_lagos=0.04, E_lagos=-0.012,
+        delta_phi_over_phidot=0.021, delta_phidot_over_phidot=-0.034,
+    )
+    g_full = kessence_lagos_sector_quadratic_lagrangian(lapse=1.0, scale_factor=a, **kwargs)
+    f_full = kessence_lagos_sector_quadratic_lagrangian(lapse=nbar, scale_factor=b, **kwargs)
+    g_norm = kessence_lagos_sector_common_normalized_lagrangian(
+        reference_scale_factor=a, M_g2=Mg2, lapse=1.0, scale_factor=a, **kwargs
+    )
+    f_norm = kessence_lagos_sector_common_normalized_lagrangian(
+        reference_scale_factor=a, M_g2=Mg2, lapse=nbar, scale_factor=b, **kwargs
+    )
+    assert math.isclose(g_norm, g_full / common, rel_tol=2e-14, abs_tol=2e-14)
+    assert math.isclose(f_norm, f_full / common, rel_tol=2e-14, abs_tol=2e-14)
