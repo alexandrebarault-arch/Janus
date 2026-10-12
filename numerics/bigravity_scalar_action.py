@@ -17,15 +17,7 @@ RAW_FIELD_ORDER = (
 
 
 def shift_interaction_lagrangian(bg, *, k: float, B1: float, B2: float) -> float:
-    """Return the complete quadratic shift-interaction block.
-
-    Lagos raises spatial indices with the background spatial metric of the
-    corresponding sector. For a comoving Fourier wave number k, combining
-    the B1^2, B2^2 and B1 B2 pieces of Eqs. (3.6)-(3.8) gives
-
-        a M1^2 Z k^2 / [2(Nbar+r)]
-        * (r B1 - (Nbar/r) B2)^2.
-    """
+    """Return the complete quadratic shift-interaction block."""
     if bg.Nbar + bg.r == 0.0 or bg.r == 0.0:
         raise ValueError("Nbar+r and r must be non-zero")
     pref = (
@@ -44,12 +36,7 @@ def sector1_eh_velocity_lagrangian(
     Psi1_dot: float,
     E1_dot: float,
 ) -> float:
-    """Velocity-dependent sector-1 Einstein-Hilbert scalar block.
-
-    This is the unambiguous velocity family in Lagos-Ferreira Eq. (3.6),
-    evaluated on a comoving Fourier mode. Their spatial Laplacian obeys
-    ``partial_1^2 -> -k^2/a^2``.
-    """
+    """Velocity-dependent sector-1 Einstein-Hilbert scalar block."""
     bracket = (
         -3.0 * Psi1_dot**2
         - 6.0 * bg.H * Psi1_dot * Phi1
@@ -59,17 +46,32 @@ def sector1_eh_velocity_lagrangian(
     return float(bg.a**3 * bg.M1sq * bracket)
 
 
-def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
-    """Velocity Hessian of the raw metric action, before constraint reduction.
+def sector2_eh_velocity_lagrangian(
+    bg,
+    *,
+    k: float,
+    Phi2: float,
+    B2: float,
+    Psi2_dot: float,
+    E2_dot: float,
+) -> float:
+    """Velocity-dependent sector-2 Einstein-Hilbert scalar block.
 
-    The order is ``RAW_FIELD_ORDER``. For massive bigravity with
-    ``alpha_L=0`` and constant Planck masses, Lagos-Ferreira Eqs. (3.6)-(3.7)
-    contain velocities only for ``Psi_A`` and ``E_A``. Lapses ``Phi_A`` and
-    shifts ``B_A`` therefore have identically zero velocity rows/columns.
-
-    Their ``partial^2`` uses the spatial background metric. Thus
-    ``a^2 partial_1^2 -> -k^2`` and ``b^2 partial_2^2 -> -k^2`` for comoving k.
+    Lagos-Ferreira Eq. (3.7) is written in g-sector cosmic time, so lapse
+    factors remain explicit. The sector-2 spatial Laplacian obeys
+    ``partial_2^2 -> -k^2/b^2`` for comoving k.
     """
+    bracket = (
+        -3.0 * Psi2_dot**2 / bg.Nbar**2
+        - 6.0 * bg.Hb * Psi2_dot * Phi2 / bg.Nbar**2
+        - 2.0 * k**2 * E2_dot * (Psi2_dot + bg.Hb * Phi2) / bg.Nbar**2
+        + 2.0 * k**2 * Psi2_dot * B2 / (bg.Nbar * bg.b**2)
+    )
+    return float(bg.Nbar * bg.b**3 * bg.M2sq * bracket)
+
+
+def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
+    """Velocity Hessian of the raw metric action, before constraint reduction."""
     K = np.zeros((8, 8), dtype=float)
 
     i_p1 = RAW_FIELD_ORDER.index("Psi1")
@@ -79,12 +81,10 @@ def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
 
     pref1 = bg.a**3 * bg.M1sq
     K[i_p1, i_p1] = -6.0 * pref1
-    cross1 = -2.0 * k**2 * pref1
-    K[i_p1, i_e1] = K[i_e1, i_p1] = cross1
+    K[i_p1, i_e1] = K[i_e1, i_p1] = -2.0 * k**2 * pref1
 
     pref2 = bg.Nbar * bg.b**3 * bg.M2sq
     K[i_p2, i_p2] = -6.0 / bg.Nbar**2 * pref2
-    cross2 = -2.0 * k**2 / bg.Nbar**2 * pref2
-    K[i_p2, i_e2] = K[i_e2, i_p2] = cross2
+    K[i_p2, i_e2] = K[i_e2, i_p2] = -2.0 * k**2 / bg.Nbar**2 * pref2
 
     return K
