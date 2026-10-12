@@ -14,6 +14,7 @@ from numerics.de_felice_two_matter_action import (
     eliminate_flat_gauge_auxiliaries,
     bd_basis_transform,
     eliminate_bd_mode,
+    physical_squared_phase_speeds,
 )
 
 
@@ -99,3 +100,27 @@ def test_bd_elimination_leaves_positive_three_by_three_case_c_kinetic_matrix():
         assert np.all(eig > 0.0)
         assert abs(physical.bd_algebraic_coefficient) > 1e-10
         assert physical.zdot_kinetic_residual < 3e-7
+
+
+def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
+    # Case C is a sharp independent benchmark: the g fluid is radiation,
+    # the f-fluid speed in g-coordinate units is ctilde^2 * c_sf^2, and
+    # Comelli B.5 gives the helicity-0 gradient speed squared -2/3.
+    point, g, f = _case_c(0.05, 400.0)
+    physical = eliminate_bd_mode(
+        point.metric, point.derivatives,
+        betas=(0.0,1.0,0.0,0.0,0.0),
+        g_fluid=g, f_fluid=f, finite_difference_step=2e-5,
+    )
+    measured = np.sort(physical_squared_phase_speeds(
+        physical.physical_hessian,
+        a=point.metric.a,
+        k=math.sqrt(point.metric.k2),
+    ))
+    expected = np.sort(np.array([
+        -2.0/3.0,
+        g.cs2,
+        point.metric.c**2 * f.cs2,
+    ]))
+    assert measured.shape == (3,)
+    assert np.allclose(measured, expected, rtol=0.08, atol=0.03)
