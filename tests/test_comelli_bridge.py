@@ -42,7 +42,7 @@ def test_background_constraint_potential_parts_are_same_equation():
     assert math.isclose(lhs_comelli, -lhs_janus, rel_tol=0.0, abs_tol=1e-12)
 
 
-def test_additional_gauge_invariants_satisfy_relations_derived_from_definitions():
+def test_additional_gauge_invariants_match_published_useful_relations():
     from numerics.comelli_bridge import additional_gauge_invariants
 
     H = 1.7
@@ -73,6 +73,10 @@ def test_additional_gauge_invariants_satisfy_relations_derived_from_definitions(
         Psi2=Psi2,
     )
 
+    # Comelli et al. 2012 Appendix A: A.1/A.3 are respectively
+    # B2=B1-(1-c^2)E' and c^2(F2+F1)=(B1-E)(H+Hw)-2c^2(Phi1-Phi2).
+    # A.4 separately contains (B1-E'), so prime and unprimed E must remain
+    # distinct rather than being globally "corrected".
     assert math.isclose(
         gi["B2"], B1 - (1.0 - c**2) * E_prime, abs_tol=1e-12
     )
@@ -81,12 +85,9 @@ def test_additional_gauge_invariants_satisfy_relations_derived_from_definitions(
         (H - H_omega) * (Phi1 - Phi2),
         abs_tol=1e-12,
     )
-    # The PDF text layer of arXiv:1202.1986/1403.5679 drops the prime on E
-    # in this identity. Direct substitution of Xi_i=B_i+E_i' and
-    # calB1=B2-c^2 B1+(1-c^2)E1' gives calB1-E' = Xi2-c^2 Xi1.
     assert math.isclose(
         c**2 * (gi["F2"] + gi["F1"]),
-        (B1 - E_prime) * (H + H_omega) - 2.0 * c**2 * (Phi1 - Phi2),
+        (B1 - E) * (H + H_omega) - 2.0 * c**2 * (Phi1 - Phi2),
         abs_tol=1e-12,
     )
     assert math.isclose(
