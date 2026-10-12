@@ -30,20 +30,18 @@ The active route is an **independent scalar quadratic-action reconstruction** fr
 
 ### Lagos scalar action reconstruction
 
-- Interaction RED test: `tests/test_lagos_scalar_interaction.py`, commit `b51940f`.
-- Interaction implementation: `894b692`.
-- PDF parsing correction: Lagos Eq. (3.7) contains `nu^2*Nbar*r^2`, not `nu^2*Nbar*r/2`; correction commit `2de9354`.
-- Raw Eq. (3.6)-(3.8) interaction and healthy-branch simplification agree in scratch at ~`5e-16` relative on Candidate C.
+- Interaction RED test `b51940f`; implementation `894b692`; corrected Eq. (3.7) `r^2` parsing commit `2de9354`.
+- Raw interaction and healthy-branch simplification agree in scratch at ~`5e-16` relative on Candidate C.
 - Pure `E1/E2` has no direct interaction `E^2` term when `alpha_L=0`.
-- Einstein-Hilbert RED tests: `tests/test_lagos_pure_metric_action.py`, commit `0996450`.
-- EH self-action implementation (constant Planck masses): `f1b5cc3`.
-- Primary PDF confirms the `E_dot` gradient-mixing factors are `a^2 k^2` for metric 1 and `b^2 k^2/Nbar^2` for metric 2; they are not divided by `a^2`/`b^2`.
-- The pure metric action is exactly symmetric under `1<->2` on a proportional background in scratch.
-- Auxiliary-elimination RED test: `tests/test_lagos_auxiliary_elimination.py`, commit `a9d1d8b`.
-- Algebraic elimination of `Phi1,Phi2,B1,B2`: implementation commit `7fcdd15`.
-- On a proportional equal-Planck background the auxiliary Hessian has rank 4 and the stationarity residual is at machine precision.
-- After eliminating these four auxiliaries, the reduced velocity Hessian on `(Psi1,Psi2,E1,E2)` has **rank 1**. This persists in scratch scans over `H={0.2,0.8,1.5}` and `k={1,3,10}`.
-- The nonzero kinetic direction is the relative metric scalar (the `E1-E2` sector); this is consistent with one ghost-free massive scalar metric DoF. Do not extrapolate this pure-metric proportional control directly to Candidate C before the matter/background terms are included.
+- EH/pure-metric RED test `0996450`; implementation `f1b5cc3`.
+- Primary PDF confirms `a^2 k^2` and `b^2 k^2/Nbar^2` in the `E_dot` kinetic mixing terms.
+- Pure metric action is exchange-symmetric on a proportional equal-Planck background.
+- Auxiliary-elimination RED test `a9d1d8b`; implementation `7fcdd15`.
+- `Phi1,Phi2,B1,B2` are eliminated algebraically from the action; no differentiated auxiliary constraints are introduced.
+- On proportional equal-Planck controls the auxiliary Hessian has rank 4, stationarity residual is at machine precision, and the post-auxiliary velocity Hessian has **rank 1** over scans `H={0.2,0.8,1.5}`, `k={1,3,10}`.
+- Explicit relative/common projection RED/interface commits: `e573916`, `263f9c7`; focused implementation `numerics/lagos_relative_mode.py` commit `35c1a14`.
+- In the orthonormal basis `(Psi+,Psi-,E+,E-)`, the only nonzero kinetic projection is `E-=(E1-E2)/sqrt(2)` on the proportional control; `Psi+`, `Psi-`, and `E+` are kinetic-null. This pins the unique massive scalar kinetic direction independently of Comelli.
+- This pure-metric proportional control is structural only. Candidate-C rank/speed must not be inferred before matter/background contributions are added.
 
 ### A.3 / A.18 issue
 
@@ -72,11 +70,12 @@ The active route is an **independent scalar quadratic-action reconstruction** fr
 
 - Lagos bridge test `85ede8f`; implementation `89c1482`.
 - De Felice principal-action test `c761e4c`; implementation `e510107`.
-- Lagos interaction test `b51940f`; implementation `894b692`; corrected Eq. (3.7) `2de9354`.
+- Lagos interaction test `b51940f`; implementation `894b692`; correction `2de9354`.
 - EH/pure-metric test `0996450`; implementation `f1b5cc3`.
 - Auxiliary-elimination test `a9d1d8b`; implementation `7fcdd15`.
+- Relative-mode test `e573916` / interface correction `263f9c7`; implementation `35c1a14`.
 
-Container network cannot clone/download GitHub, so the newly added pytest files have not been run as a repository suite. Core formulas and the key rank/symmetry checks were independently evaluated in scratch. Do not label the suite green until executable checkout becomes available.
+Container network cannot clone/download GitHub, so the newly added pytest files have not been run as a repository suite. Core formulas and key rank/symmetry/projection checks were independently evaluated in scratch. Do not label the suite green until executable checkout becomes available.
 
 ## Active task list
 
@@ -87,14 +86,15 @@ Container network cannot clone/download GitHub, so the newly added pytest files 
   - [x] **T1c.6o.1 — Lagos action convention bridge.**
   - [x] **T1c.6o.2 — independent De Felice principal action.**
   - [x] **T1c.6o.3a — Lagos interaction potential in Fourier space.**
-  - [x] **T1c.6o.3b — Einstein-Hilbert scalar self-actions, constant Planck masses.**
-  - [x] **T1c.6o.3c — pure-metric quadratic action / exchange-symmetry control.** Scratch verified; repository pytest still pending.
+  - [x] **T1c.6o.3b — Einstein-Hilbert scalar self-actions.**
+  - [x] **T1c.6o.3c — pure-metric quadratic action / exchange-symmetry control.**
   - [ ] **T1c.6o.4 — auxiliary/gauge reduction of pure metric action.**
-    - [x] **6o.4a — integrate out `Phi1,Phi2,B1,B2` algebraically.**
-    - [x] **6o.4b — proportional-background kinetic count:** reduced velocity Hessian rank 1 across several H,k controls.
-    - [ ] **6o.4c — identify the reduced relative/gauge variables explicitly and derive the one-field pure-metric reduced action.** Verify the nonzero kinetic eigenvector is the relative `E` direction and separate the two gauge directions without choosing dynamics by hand.
+    - [x] **6o.4a — eliminate `Phi1,Phi2,B1,B2` algebraically.**
+    - [x] **6o.4b — reduced kinetic rank 1 on proportional controls.**
+    - [x] **6o.4c.1 — explicit common/relative kinetic projection:** only `E-` is kinetic.
+    - [ ] **6o.4c.2 — derive a one-field relative-metric reduced Lagrangian / gauge-fixed structural control and separate residual gauge-null coordinates explicitly.** Do not interpret its mass/gradient as Candidate-C physics.
   - [ ] **T1c.6o.5 — add separately coupled g/f barotropic matter actions and derive the high-k principal matrix; recover De Felice Eq. (86) rather than inserting it.**
-  - [ ] **T1c.6p — compare action-derived constraints/reduced gradient to Comelli term-by-term and locate the lost structure.**
+  - [ ] **T1c.6p — compare action-derived constraints/reduced gradient to Comelli and locate the lost structure.**
   - [ ] **T1c.6q — Case-C acceptance:** recover B.5 exactly or an explicitly equivalent action-variable equation.
   - [ ] verify Bianchi/gauge representative invariance.
 - [ ] **T2 — Candidate-C full scalar validation from the new reduced action.**
@@ -113,12 +113,12 @@ Container network cannot clone/download GitHub, so the newly added pytest files 
 
 ## Immediate restart instruction
 
-**Resume at T1c.6o.4c — explicit relative/gauge reduction.**
+**Resume at T1c.6o.4c.2, then T1c.6o.5.**
 
-1. Work from `numerics/lagos_scalar_action.py`; do not return to the direct Comelli closure.
-2. On the proportional equal-Planck control, diagonalize the reduced velocity Hessian after auxiliary elimination and pin its one nonzero eigenvector to the relative metric scalar sector.
-3. Construct an explicit relative/common variable transform for `(Psi1,Psi2,E1,E2)` and show the common/gauge directions carry no physical kinetic eigenvalue.
-4. Derive the one-field pure-metric reduced Lagrangian on this control background; use it only as a structural check, not as Candidate-C physics.
-5. Then add the two separately coupled matter sectors (T1c.6o.5). Candidate-C rank/speed is not interpretable before this step.
-6. Recover De Felice Eq. (86) from the reduced action, then apply the same machinery to exact Case C and require B.5.
+1. Work from `numerics/lagos_scalar_action.py` and `numerics/lagos_relative_mode.py`; do not return to the direct Comelli closure.
+2. Use the proportional equal-Planck background only as a structural/gauge control. The unique kinetic direction is already pinned to `E-`.
+3. Build the one-field relative-metric slice/reduced Lagrangian and verify the common/gauge directions stay kinetic-null.
+4. Do not interpret its gradient on an arbitrary proportional background unless that background is dynamically on-shell.
+5. Next add the two separately coupled matter sectors. Candidate-C rank/speed is not interpretable before matter/background terms are present.
+6. Recover De Felice Eq. (86) from the reduced matter+metric action; only then apply the same machinery to exact Case C and require B.5.
 7. Update this checkpoint after every hard finding or completed subtask.
