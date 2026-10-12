@@ -8,7 +8,7 @@ Purpose: **authoritative restart point after any interruption**. Read this file 
 
 **Gate 2B remains OPEN / NOT VALIDATED.**
 
-The direct Comelli route is closed negatively. The active route is an independent quadratic-action reconstruction. The De Felice matter action is now under control, but the first attempt to append it to the background-reduced Lagos metric action fails the single-fluid GR degree-count control. Therefore `numerics/two_matter_scalar_action.py` is currently an **experimental RED implementation**, not a validated physical solver.
+The direct Comelli route is closed negatively. The active route is an independent quadratic-action reconstruction. The De Felice matter action and Lagos pure-metric structural action are both available. The current combined two-matter action is still experimental, but the earlier claim that its post-lapse/shift 6x6 kinetic Hessian must already have rank 3 was **wrong**: De Felice explicitly states that after eliminating the four lapse/shift variables, six scalar variables remain, including two pure-gauge modes and one would-be BD mode. Gauge fixing and BD elimination come afterwards.
 
 ## Closed facts
 
@@ -24,64 +24,63 @@ The direct Comelli route is closed negatively. The active route is an independen
 - Dust+dust gives the same failure; at large k the false frequency tends to a constant, proving the physical helicity-0 `k^2 E` term is structurally absent from the old reduction.
 - Correctly treating `B1` as nondynamical still does not recover Case-C B.5.
 - Ruled out as sufficient fixes: unit conversion, matter mixture, closure-row choice, single derivative coefficient, A1/A2 typo, A.18 drop-in swap, f-trace sign flip, conditioning, selected minors, frozen-time PGCD, and merely eliminating `B1'`.
-- A.3/A.18 printed form contains `calE`; raw gauge-invariant definitions give `calE'` exactly. Finite-tau Bianchi checks support the derived-prime identity. Keep printed-unprime only as a typo/control branch.
+- Printed A.3/A.18 has `calE`; raw gauge invariants give `calE'` exactly and finite-tau Bianchi checks support the derived-prime identity. Keep printed-unprime only as a typo/control branch.
 
 ### Exact Case-C benchmark
 
 Use `8piG=kappa=m^2=a1=1`, `a0=a2=a3=a4=0`, `w1=1/3`, `w2=0`.
 
 - Exact branch: `a^4 xi^2 + xi - a - a^4/3 = 0`.
-- `numerics/comelli_case_c.py` supplies the exact background and conformal map.
-- Acceptance equation: `E''+(3/tau)E'-(2/3)k^2E=0`.
+- `numerics/comelli_case_c.py` supplies exact background/conformal map and `rho1`, `rho2`.
+- Acceptance: `E''+(3/tau)E'-(2/3)k^2E=0`.
 - Equivalently `E=tau^2e(x)`, `x=k tau`: `x^2e_xx+7xe_x+8e-(2/3)x^2e=0`.
 
 ## Action reconstruction status
 
-### Pure metric Lagos layer
+### Pure-metric Lagos structural layer
 
-- `numerics/lagos_scalar_action.py` reconstructs the Lagos-Ferreira massive-bigravity scalar metric action and algebraically eliminates `Phi1,Phi2,B1,B2`.
-- On pure-metric proportional controls the post-auxiliary kinetic Hessian has rank 1 and only the relative scalar `E-` carries kinetic weight.
-- This layer remains useful as a structural bigravity check, but it is **not yet safe to combine with an independently added general matter action**, because Lagos Eq. (3.6)-(3.7) is background-reduced and already contains matter-background metric terms in its one-matter derivation.
+- `numerics/lagos_scalar_action.py` reconstructs the Lagos-Ferreira metric scalar action and algebraically eliminates `Phi1,Phi2,B1,B2`.
+- On pure-metric proportional controls the post-auxiliary kinetic Hessian has one physical relative-scalar kinetic direction.
+- This remains a structural control; physical two-matter validation is still pending.
 
-### De Felice P(X) matter layer — validated algebraically
+### De Felice P(X) matter layer
 
-`numerics/de_felice_matter_action.py` now implements the complete scalar quadratic matter block of De Felice Eq. (54).
+`numerics/de_felice_matter_action.py` implements the complete scalar quadratic matter block of De Felice Eq. (54).
 
 - Flat scalar identities: `TrH=6 psi`, `H_ij H^ij=12 psi^2+(2/3)k^4E^2`, `V_iV^i=k^2B^2`.
-- With metric perturbations off: `L = h/(2cs2) qdot^2 - N^2 h k^2 q^2/(2a^2)`, so the action itself gives `c_coord^2=N^2 cs2/a^2`.
-- One-sector full-action TDD: RED `9630a68`, GREEN `d686ccb`.
-- Lagos -> De Felice scalar bridge currently used:
-  - `Phi_DF = Phi_L` (corrected after checking Lagos ADM relation `delta N = Phi_L`; PDF text extraction can lose the factor 2 in `g_00`);
+- Metric-off action gives `L = h/(2cs2) qdot^2 - N^2 h k^2 q^2/(2a^2)`, hence `c_coord^2=N^2 cs2/a^2` directly from the action.
+- One-sector TDD: RED `9630a68`, GREEN `d686ccb`.
+- Lagos -> De Felice scalar bridge:
+  - `Phi_DF = Phi_L` (Lagos ADM relation `delta N=Phi_L` fixes the same lapse normalization as De Felice `g00=-N^2(1+2Phi)`; the PDF text extraction of the Lagos line element can lose the printed 2);
   - `B_DF = B_L/a_sector`;
-  - `E_DF = 2 E_L`;
+  - `E_DF = 2E_L`;
   - `psi_DF = -Psi_L - k^2 E_L/3`.
-- Bridge correction TDD: RED `5340f9e`, GREEN `541b483`.
-- Generic sector wrapper includes volume `N a_sector^3`.
-- For f sector `b=a*r`, `Nbar=r*c`, metric-off propagation gives `(Nbar/b)^2 cs_f^2=(c/a)^2 cs_f^2`.
-- Common normalization helper divides each full matter sector by `M_g^2 a_ref^3`, matching the normalization of the Lagos metric action. TDD: RED `cbc39fe`, GREEN `740bf02`.
+- Lapse bridge correction TDD: RED `5340f9e`, GREEN `541b483`.
+- Generic sector wrapper includes `N a_sector^3`; common-normalized wrapper divides by `M_g^2 a_ref^3`. TDD normalization: RED `cbc39fe`, GREEN `740bf02`.
+- For f sector `b=a*r`, `Nbar=r*c`, metric-off speed is `(Nbar/b)^2 cs_f^2=(c/a)^2 cs_f^2`.
 - Keep `cs2>0` through unreduced P(X); take dust only after constrained reduction.
 
-### First combined two-matter attempt — RED / diagnostic only
+### Experimental combined two-matter action
 
-- RED test: `b9187b5`.
-- Experimental implementation: `8efad30`, `numerics/two_matter_scalar_action.py`.
-- It sums the Lagos metric action with two normalized Eq. (54) matter sectors and algebraically eliminates `Phi1,Phi2,B1,B2`.
-- Auxiliary stationarity can be solved, but the physical degree-count control fails:
-  - arbitrary proportional background: reduced 6-variable kinetic Hessian rank 6, not 3;
-  - actual on-shell Candidate-C background: still rank 6;
-  - more decisively, **single-metric GR + one P(X) fluid already gives rank 3 instead of the expected one scalar mode** when the current Lagos/EH block is combined with Eq. (54).
-- Therefore the failure occurs before bigravity and before the second matter sector.
-- Do **not** tune coefficients or proceed to propagation eigenvalues from `two_matter_scalar_action.py`.
+- RED test scaffold: `b9187b5`.
+- Implementation: `8efad30`, `numerics/two_matter_scalar_action.py`.
+- It sums the Lagos metric action + two normalized Eq. (54) matter sectors and algebraically eliminates `Phi1,Phi2,B1,B2`.
+- The raw post-auxiliary 6x6 velocity Hessian can have rank 6. **This is not by itself a failure.** De Felice Sec. IV.E explicitly says that after integrating out `B,b,Phi,varphi`, the action still depends on six variables `(psi,Sigma,E,S,delta_phi_g,delta_phi_f)`; two are pure gauge and one additional combination is the non-dynamical would-be BD mode.
+- De Felice then fixes the flat gauge `E=psi=0` and integrates out the BD combination, leaving three physical scalars `Y1,Y2,Y3`.
+- Therefore the old test expectation “6x6 rank=3 immediately after lapse/shift elimination” is superseded and must be replaced by a gauge-fixed / BD-reduced criterion.
+- In Lagos variables, g-flat gauge corresponds to `E1=0` and `Psi1=0`, because `E_DF=2E1` and `psi_DF=-Psi1-k^2E1/3`.
 
-## Root-cause localization
+## Important correction to the previous diagnosis
 
-The present best explanation is an **action-layer mismatch**, not a two-fluid instability:
+The earlier checkpoint claimed that a single-fluid GR post-auxiliary Hessian rank >1 proved an EH/matter action mismatch. That criterion was premature: before fixing scalar gauge, the reduced variables still contain gauge directions. The authoritative De Felice reduction confirms the correct order:
 
-- Lagos Eq. (3.6)-(3.7) is written after using background equations and explicitly includes metric-only matter-background contributions in their one-matter setup.
-- Appending the completely general De Felice Eq. (54) matter action to that background-reduced Lagos gravitational block double-counts / mismatches the terms needed for scalar gauge degeneracy.
-- This is why the GR one-fluid kinetic rank already fails.
+1. expand full action;
+2. integrate out lapse/shift auxiliaries;
+3. fix the two scalar coordinate gauges (e.g. g-flat `E=psi=0`);
+4. identify and eliminate the remaining non-dynamical BD combination;
+5. only then count three physical bimetric scalars and extract propagation speeds.
 
-The clean repair is to reconstruct the gravitational quadratic action directly in **De Felice conventions**, from their general Einstein-Hilbert Eq. (44), and combine it with Eq. (54) before using background equations. Only after the single-fluid GR control is correct should the second metric and Hassan-Rosen interaction be added.
+The Lagos+matter assembly is therefore **not cleared**, but neither is it rejected by the raw 6x6 rank test.
 
 ## Active task list
 
@@ -95,16 +94,20 @@ The clean repair is to reconstruct the gravitational quadratic action directly i
 - [ ] **T1c — independent scalar action reconstruction.** IN PROGRESS.
   - [x] 6o.5a — one-sector P(X) action.
   - [x] 6o.5b — two-sector normalization/bridge.
-  - [ ] **6o.5c-R1 — rebuild a matter-compatible Einstein-Hilbert scalar action directly from De Felice Eq. (44).**
-    - [ ] **R1.1 — transcribe flat scalar Eq. (44) in De Felice variables `(Phi,B,psi,E)` without using matter background substitutions.**
-    - [ ] **R1.2 — combine Eq. (44)+Eq. (54) for one GR metric + one regular P(X) fluid.**
-    - [ ] **R1.3 — algebraically eliminate lapse and shift and require physical scalar kinetic rank = 1.**
-    - [ ] **R1.4 — derive the remaining high-k eigenvalue and require `c^2=N^2 cs2/a^2` without inserting it.**
-  - [ ] **6o.5c-R2 — duplicate the validated EH+matter sector for the f metric (`n,b,M_f`).**
-  - [ ] **6o.5c-R3 — add the Hassan-Rosen interaction using De Felice Eq. (45)-(46) / equivalent source-consistent form before background reduction.**
-  - [ ] **6o.5c-R4 — eliminate four bimetric lapse/shift auxiliaries; require exactly 3 scalar kinetic directions for two fluids + helicity-0.**
-  - [ ] **6o.5d — derive the three high-k speeds; gravity must match independent De Felice Eq. (86), matter speeds must match sector light-cone rescalings.**
-  - [ ] 6o.6p — compare action-derived constraints with Comelli and identify the structure lost by the old closure.
+  - [ ] **6o.5c — combined metric + two-fluid quadratic action.**
+    - [x] 6o.5c.1 — common normalization.
+    - [x] 6o.5c.2 — add `(q_g,q_f)` at action level.
+    - [x] 6o.5c.3 — algebraically eliminate `Phi1,Phi2,B1,B2`.
+    - [ ] **6o.5c.4 — replace invalid raw-rank test by De Felice reduction order.**
+      - [ ] 6o.5c.4a — impose g-flat gauge `Psi1=E1=0` after auxiliary elimination.
+      - [ ] 6o.5c.4b — compute 4-variable gauge-fixed velocity Hessian on exact Case C / another on-shell healthy control; acceptance: one null/nondynamical BD direction and rank 3.
+      - [ ] 6o.5c.4c — identify the null/BD combination and eliminate it algebraically at action level.
+      - [ ] 6o.5c.4d — express the three remaining variables in a basis equivalent to De Felice `Y1,Y2,Y3`.
+  - [ ] **6o.5d — derive 3x3 high-k principal kinetic/gradient matrices and recover three speeds.**
+    - g-fluid speed from its own light cone;
+    - f-fluid speed from its lapse-rescaled light cone;
+    - gravity speed must equal independent De Felice Eq. (86) without importing Eq. (86) into the calculation.
+  - [ ] 6o.6p — compare action-derived constraints with Comelli and identify what the old closure lost.
   - [ ] 6o.6q — Case-C acceptance: recover B.5 or explicitly equivalent action equation.
 - [ ] T2 — Candidate-C full scalar validation.
 - [ ] T3 — replace faulty old scalar closure.
@@ -118,19 +121,18 @@ The clean repair is to reconstruct the gravitational quadratic action directly i
 
 ## Current RED regressions
 
-- `tests/test_comelli_native_scalar.py` remains intentionally RED until T1c is closed.
-- `tests/test_two_matter_scalar_action.py` rank=3 requirement is also intentionally RED under the current experimental Lagos+Eq54 assembly; do not make it green by coefficient tuning.
+- `tests/test_comelli_native_scalar.py` remains intentionally RED until T1c closes.
+- `tests/test_two_matter_scalar_action.py` currently contains the **obsolete** expectation that the ungauged post-auxiliary 6x6 kinetic Hessian has rank 3. Replace this test before interpreting its failure.
 
 ## Immediate restart instruction
 
-**Resume at T1c / 6o.5c-R1.1 — De Felice Einstein-Hilbert Eq. (44).**
+**Resume at T1c / 6o.5c.4a — De Felice gauge reduction.**
 
 1. Do not return to the direct Comelli closure.
-2. Do not use the experimental combined Lagos+matter action for physical conclusions.
-3. Work entirely in De Felice variables for the GR control: Eq. (44) + Eq. (54), same lapse/shift/spatial decomposition and same coordinate time.
-4. Preserve background `H`, `dot H`, lapse `N`, and scale factor `a` until after the quadratic action is assembled.
-5. Integrate shift time-derivative terms by parts only at the action level; never differentiate a constraint equation.
-6. First acceptance gate: one metric + one P(X) fluid on an on-shell GR FLRW background must reduce to exactly one scalar kinetic direction.
-7. Second gate: its high-k speed must emerge as `N^2 cs2/a^2`.
-8. Only then add the f-sector EH action and Hassan-Rosen mixing.
-9. Update this file immediately after every hard finding or completed subtask.
+2. Keep the current combined action experimental until the De Felice gauge/BD reduction passes.
+3. After eliminating `Phi1,Phi2,B1,B2`, impose g-flat gauge `E_DF=psi_DF=0`, i.e. `E1=Psi1=0` in the current Lagos variables.
+4. Work with remaining variables `(Psi2,E2,q_g,q_f)` and their rates.
+5. On an exact on-shell background, the gauge-fixed kinetic Hessian should have one non-dynamical direction and rank 3. Use exact Case C first because it supplies radiation + f-dust background equations; keep `cs_f^2>0` as a regulator until after reduction.
+6. Identify and eliminate the BD direction from the action, then transform to a three-variable gauge-invariant-equivalent basis.
+7. Only after the 3-variable action is obtained compute high-k propagation eigenvalues.
+8. Update this file immediately after every hard finding or task-state change.
