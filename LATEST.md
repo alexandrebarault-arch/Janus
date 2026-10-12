@@ -5,7 +5,7 @@ Canonical branch: `research/v2-flrw`
 Draft PR to `main`: `#1`
 Authoritative interruption/restart queue: `research/RESTART_TASKS.md`
 
-Read `RESUME.md` for the full history, `research/VERDICT_V2_JANUS.md` for the literal-Janus conclusion, and `research/GATE2B_CHECKPOINT.md` for the active scalar-action gate.
+Read `research/RESTART_TASKS.md` first after any interruption. Read `RESUME.md` for the broader history, `research/VERDICT_V2_JANUS.md` for the literal-Janus conclusion, and `research/GATE2B_CHECKPOINT.md` for the active scalar gate.
 
 ## Current conclusion
 
@@ -28,24 +28,22 @@ However:
 
 `TWO_SECTOR_BIMETRIC_SEGREGATION_IDEA = OPEN_AND_SCIENTIFICALLY_MEANINGFUL`.
 
-The surviving descendant is **not literal Janus**. JANUS-R uses:
-
-- a ghost-free Hassan-Rosen bimetric skeleton;
-- two positive-energy matter sectors, each minimally coupled to its own metric;
-- no fundamental negative-mass requirement;
-- no imposed universal exact `+G/-G` force law;
-- no claim that isolated twin matter gives negative photon lensing.
+The surviving descendant is **not literal Janus**. JANUS-R uses a ghost-free Hassan-Rosen bimetric skeleton with two positive-energy matter sectors, each minimally coupled to its own metric. It does not impose fundamental negative mass, a universal exact `+G/-G` force law, or isolated negative photon lensing by twin matter.
 
 ## Git/research consolidation
 
-The previously separate Gate 2B scalar-action line was merged into `research/v2-flrw` through PR #2 at merge commit `35f5edc19443a059308e8c2710deb656bfdd8fbc`.
+The former Gate-2B branch was merged into `research/v2-flrw` through PR #2 at merge commit `35f5edc19443a059308e8c2710deb656bfdd8fbc`.
 
-Repository policy now is:
+Audit on 2026-10-12 confirms:
 
 - `main` = stable pre-V2 baseline;
-- `research/v2-flrw` = one canonical active research line;
-- `research/gate2b-nonhomothetic-transfer` = historical only, no new work;
-- PR #1 remains draft and must not be interpreted as model validation.
+- `research/v2-flrw` = single canonical active research line;
+- `research/gate2b-nonhomothetic-transfer` = redundant historical branch whose head `fd430d73ed7e8c4638b6d94ba1c46f54fba3f5b5` is already a parent of the consolidation merge; no new work belongs there;
+- intended final structure is only `main` + `research/v2-flrw`;
+- branch deletion itself is not exposed by the current GitHub connector, so the historical ref remains only as a frozen cleanup item;
+- PR #1 is the only open PR, remains draft, and must not be interpreted as model validation.
+
+GitHub Actions/workflows remain intentionally disabled and are not evidence.
 
 ## Pre-evolution nonlinear-wall preparation already passed
 
@@ -64,46 +62,60 @@ Pinned upstream remains:
 
 `nubirel/bim-solver@8852e8e9921edeeedf1a447d3bf27b82ec24433c`
 
-GitHub Actions/workflows are intentionally disabled and are not evidence.
-
 ## Gate 2B exact scalar-action status
 
-The old direct Comelli scalar closure is a closed negative route: it reproduces the radiation mode but misses the physical helicity-0 gradient.
-
-The independent Lagos/De Felice action route has now reached:
+The direct Comelli closure is a closed negative route. The independent Lagos/De Felice action route has reached:
 
 - independently reconstructed pure-metric scalar action;
 - algebraic lapse/shift elimination;
 - rank-one pure-metric scalar kinetic direction on proportional controls;
 - independent De Felice Candidate-C gravity-speed benchmark;
 - full one-sector P(X) scalar matter quadratic action;
-- explicit g/f lapse, scale-factor and `N a^3` volume normalization.
+- explicit g/f lapse, scale-factor and volume normalization;
+- first two-matter assembly and rank-3 reduced kinetic structure;
+- a frozen quadratic-pencil diagnostic that correctly recovers and tracks both matter characteristics;
+- two independently proven Lagos interaction-coefficient corrections.
 
-Latest focused TDD result:
+Latest focused verification before this documentation pass was `15 passed`; this is **not** a clean full-repository-suite result.
 
-- RED `b12ad1d` -> GREEN `0448eef`: full scalar matter action slice;
-- RED `3e13f971` -> GREEN `d26017a1`: two-sector volume/lapse normalization;
-- reconstructed focused run: `8 passed`.
+### Hard failure
 
-This is not a full repository-suite result.
+The third scalar characteristic still does not recover the physical helicity-0 `omega ~ k` propagation. At Candidate-C `a=0.5`, the independent target remains approximately
+
+`c_grav^2 = 0.6920799927` (`c_grav = 0.83191345`).
+
+The current assembled branch behaves instead like a finite mass/time-scale mode at high `k`.
+
+### Leading root cause
+
+The current two-matter bridge subtracts the complete zero-matter-perturbation part of De Felice Eq. (54), assuming that those metric-only matter terms are already contained in the Lagos metric block, then restores only the lapse susceptibility `(rho+P) Phi^2/(2 c_s^2)`.
+
+That assumption is now reopened. `pure_metric_lagrangian_healthy()` is explicitly EH + interaction and its own implementation notes that at least a matter-background lapse correction is not included. The priority is therefore to determine whether the bridge has **over-subtracted metric-only matter structures** needed for the gravity gradient.
+
+The independent Eq. (54) audit target, before multiplication by `N a^3`, is
+
+`C_Phi Phi^2 - (rho/2) k^2 B_DF^2 + P[3 psi_DF^2/2 - k^4 E_DF^2/6] - 3 rho Phi psi_DF`,
+
+with
+
+`C_Phi = rho/2 + (rho+P)/(2 c_s^2)`.
+
+This is a diagnostic derivation, not yet a justified production patch.
 
 ## Immediate next action
 
-**Do not return to literal Janus. Do not return to the failed Comelli closure. Do not add another algebraic root scan.**
+**Do not return to literal Janus. Do not return to the failed Comelli closure. Do not add another root scan. Do not tune the quadratic pencil.**
 
-Immediate analytic blocker:
+Resume `P1c.1 / T1c.6o.5c-R`:
 
-`METRIC ACTION + g MATTER + f MATTER -> COMMON NORMALIZATION -> AUXILIARY ELIMINATION -> HIGH-k KINETIC/GRADIENT MATRIX`.
+1. map the full De Felice Eq. (54) metric-only remainder into Lagos variables for the g sector;
+2. independently map the f sector with its own lapse/scale/volume factors;
+3. add a RED diagnostic showing which shift/spatial/`Phi*psi`/lapse structures the current `full - metric_only + background_lapse` bridge removes;
+4. reconstruct the two-matter background reduction independently and classify every difference;
+5. correct only terms proven genuinely missing;
+6. re-check matter characteristics and the De Felice gravity benchmark at `a=1,0.5,0.2`.
 
-Acceptance before any exact transfer claim:
-
-1. zero-matter limit exactly reproduces the existing pure-metric action;
-2. equal-sector proportional control is exchange symmetric;
-3. lapse/shift variables remain algebraic;
-4. recovered matter speeds are intrinsic (`c_s`) with the correct f-lapse rescaling;
-5. the gravitational scalar speed reproduces the independent De Felice Candidate-C benchmark at `a=1,0.5,0.2` without inserting that benchmark into the derivation.
-
-Only if that scalar gate passes should we decide whether to execute the expensive nonlinear spherical sequence:
+Only if the scalar gate passes should the expensive nonlinear spherical sequence be executed:
 
 `UPSTREAM BUILD -> ZERO-F REGRESSION -> G-ONLY CONTROL -> F-ONLY DUAL CONTROL -> TWIN WALL -> RESOLUTION/COURANT MATRIX`.
 
@@ -111,5 +123,5 @@ Only if that scalar gate passes should we decide whether to execute the expensiv
 
 - Literal Janus: **conclusion reached; do not spend more effort rescuing its negative-mass / exact +/-G formulation absent genuinely new mathematics.**
 - JANUS-R: **continue only as targeted falsification-driven R&D.**
-- Current next blocker: **T1c.6o.5c / P1c, coupled two-matter action assembly.**
+- Current blocker: **exact two-matter background-reduced scalar action, with metric-only matter over-subtraction as the leading hypothesis.**
 - PR #1 remains draft and must not be merged as a validated cosmological model.
