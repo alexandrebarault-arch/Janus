@@ -6,7 +6,7 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 ## Verdict
 
-**Gate 2B remains OPEN / NOT VALIDATED**, but the action reconstruction has crossed an important validation threshold: the full two-matter De Felice/Hassan-Rosen action reproduces the Boulware–Deser constraint, the scalar degree count, and the Eq. (72) physical-variable basis on exact Case C. The current frontier is the physical high-k dispersion of the resulting 3-field action.
+**Gate 2B remains OPEN / NOT VALIDATED.** The full De Felice/Hassan-Rosen two-matter action reconstruction correctly reproduces the Boulware–Deser constraint, the scalar degree count, and the Eq. (72) physical-variable basis, but its current reduced physical action still fails the decisive high-k helicity-0 propagation test. Do not proceed to Candidate-C transfer integration yet.
 
 ## Closed hard facts
 
@@ -14,7 +14,8 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 - JANUS -> De Felice/Comelli: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi J`, `f1=Gamma`.
 - Independent De Felice high-k gravity target on Candidate C at `a=0.5`: `c_s^2 ~= 0.69208`, `c_s ~= 0.83191`.
-- Exact Case-C background lives in `numerics/comelli_case_c.py`; acceptance remains `E''+(3/tau)E'-(2/3)k^2E=0`.
+- Exact Case-C background lives in `numerics/comelli_case_c.py`; asymptotic acceptance remains `E''+(3/tau)E'-(2/3)k^2E=0`.
+- Independent `de_felice_action_principal.py` gives the finite-a Case-C gravity target `c_s^2=-0.6665833419871022` at `a=0.05`.
 
 ### Historical Comelli closure — rejected for physics
 
@@ -42,45 +43,43 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 - `numerics/de_felice_gravity_action.py` directly specializes De Felice Eq. (44) to flat scalar Fourier modes.
 - TDD scaffold: RED `bb86701`, initial GREEN `85b008c`.
-- A later direct contraction audit found three Fourier-sign mistakes: `B E_dot`, `Phi E`, `psi E`. RED `a7d41b3`, fix `256cefd`.
-- The coefficient `12 H Phi psi_dot/N` is confirmed directly by `Tr Hdot = 6 psi_dot`; an earlier apparent factor-2 discrepancy with Lagos was an invalid cross-convention comparison and is superseded.
+- A direct contraction audit found three Fourier-sign mistakes: `B E_dot`, `Phi E`, `psi E`. RED `a7d41b3`, fix `256cefd`.
 
 ### Hassan-Rosen interaction
 
 - `numerics/hr_scalar_potential.py` contains an exact local standard-beta matrix potential and a perturbative De Felice helper.
 - Exact diagonal standard-beta potential matches the independent diagonal implementation at machine precision (`35fcfdb` -> `cfa9e5c`).
-- A local real matrix treatment of scalar shifts is invalid for Fourier quadratic theory because `V_i=D_iB` carries k/-k phase information. Its shift Hessian disagreed with De Felice Eq. (46), including the cross-term sign.
-- The physical perturbative helper therefore uses the explicit rank-one shift block
-  `+(m^2 M_g^2/2) N a^3 xi J/(ctilde+1) k^2 (B_g-ctilde B_f)^2`.
-  RED `04934f9`, fix `b5de9b6`.
-- De Felice uses `+ alpha_i L_i(K)` with `K=I-S`; under their published alpha/beta correspondence this is **minus** the standard-beta `sum beta_n e_n(S)` potential. RED `3f345e7`, fix `9851c3d`.
-
-### Full two-matter action and BD constraint
-
-- `numerics/de_felice_two_matter_action.py` assembles both EH sectors, the De Felice-sign HR interaction, and both Eq. (54) matter sectors.
-- It works in g-flat gauge (`psi_g=E_g=0`) and eliminates `Phi_g,Phi_f,B_g,B_f` by Schur complement.
-- RED degree-count test `ea2ecb6`, initial module `2072ff6`, physical HR assembly `d79f1d2`.
-- Exact Case-C verification after HR sign/shift corrections gives one null kinetic direction and exactly three scalar kinetic directions.
-- The null rate direction in `(Sigma_dot,S_dot,qg_dot,qf_dot)` is `(1,0,0,1/(n H_f))`, matching De Felice Eq. (72).
+- The Fourier relative-shift block is inserted analytically from De Felice Eqs. (45)-(46): `+(m^2 M_g^2/2) N a^3 xi J/(ctilde+1) k^2 (B_g-ctilde B_f)^2`.
+- De Felice-sign correction of the standard-beta potential: RED `3f345e7`, fix `9851c3d`.
 
 ### DF4 — physical basis and BD removal CLOSED
 
 - Eq. (72) basis transform is implemented as `(Y1,Y2,Y3,Z_BD)` with `Z_BD=Sigma`.
-- `Z_BD_dot` has no quadratic kinetic direction on exact Case C; remaining linear `Y*Zdot` terms are canonically integrated by parts at frozen coefficients.
-- `Z_BD` is algebraically invertible and is eliminated by Schur complement, leaving a 6x6 quadratic Hessian for `(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)` and a positive 3x3 kinetic matrix on the Case-C control points.
-- TDD/implementation trail: `9145fe1` (RED), `c7db4d1` (BD elimination), `e1c7ea5` (canonicalization RED), `2fc77e0` (canonicalization fix).
+- `Z_BD_dot` has no quadratic kinetic direction on exact Case C.
+- `Z_BD` is algebraically eliminated, leaving a 6x6 quadratic Hessian for `(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)` and a positive 3x3 kinetic matrix on Case-C control points.
+- TDD/implementation trail: `9145fe1`, `c7db4d1`, `e1c7ea5`, `2fc77e0`.
 
-### DF5 — physical high-k dispersion ACTIVE
+### DF5 — physical high-k dispersion: CURRENT FAILURE
 
-- A new RED regression `bb43d94` requires the physical 6x6 action on high-k Case C to recover three scalar branches in g-coordinate units:
-  1. gravity `c_s^2 -> -2/3` (Comelli B.5);
-  2. g-fluid `c_s^2 -> 1/3`;
-  3. f-fluid `c_s^2 -> ctilde^2 c_{s,f}^2`.
-- `physical_squared_phase_speeds()` was added in `3dc45ce`. It constructs the frozen Euler-Lagrange system
-  `K Yddot + (C.T-C) Ydot - M Y = 0`
-  from the physical Hessian and returns `c_s^2=-(a lambda/k)^2` from its +/- eigenvalue pairs.
-- The extractor itself was independently checked in scratch on a decoupled synthetic action and recovered `(-2/3,1/3,0.4)` to ~`1e-16`. The same synthetic regression is now committed in `18d1fec`.
-- The integrated physical Case-C speed regression has not yet been executed in the container because the repo is not mountable/cloneable there. Do **not** mark DF5 green until that physical action test is actually run or equivalently reproduced independently.
+- RED Case-C regression `bb43d94`; speed extractor added `3dc45ce`; exact synthetic 3-mode regression committed `18d1fec`.
+- `physical_squared_phase_speeds()` is independently validated: on a synthetic quadratic action it recovers `(-2/3,1/3,0.4)` to about `1e-16`.
+- The Case-C regression now compares against independent `gravity_principal_action()` rather than forcing the strict asymptotic `-2/3`; commit `0f849c9`.
+- A uniform high-k finite-difference step can leave the perturbative metric domain because `k^2 E_f` is the actual small combination. The test step was reduced in `8395e21` so a RED result reflects dispersion rather than a square-root domain failure.
+- A focused mini-package was reconstructed and DF5c was executed locally. Uniform small-step runs already showed the wrong third branch. A dimensionally scaled Hessian was then used as a diagnostic, with steps chosen so `k^2 E`, `kB`, velocities and rate variables remain perturbatively small.
+- With that scaled diagnostic the two matter branches move toward their expected limits, while the third branch is stable but behaves as a finite-frequency mode:
+  - `k=200`: approximately `(0.2633, 0.3315, 487.23)`;
+  - `k=400`: approximately `(0.3158, 0.3690, 123.78)`;
+  - `k=800`: approximately `(0.3290, 0.3782, 31.09)`;
+  - `k=1200`: approximately `(0.3314, 0.3796, 13.84)`.
+- The product `k^2 * c_s^2` of the third branch is approximately constant, so its apparent `c_s^2` scales like `1/k^2`. This is a massive/finite-frequency mode, **not** the required helicity-0 gradient branch.
+- Therefore DF5c is a genuine structural failure, not a unit-conversion error, speed-extractor bug, or ordinary floating-point-conditioning effect.
+- **Do not mark DF5 green and do not advance to Candidate C.** The action/reduction must be re-audited to locate the missing principal spatial contribution.
+
+## Leading suspects for DF5 root cause
+
+1. The frozen-coefficient canonicalization of linear `Y*Z_BD_dot` terms may be invalid for the high-k principal reduction because the Eq. (72) basis contains explicit `k^2` factors. Time derivatives of the transformation/coefficient may therefore survive at principal order instead of being a lower-order mass correction.
+2. The perturbative Hassan-Rosen block may not reproduce every scalar spatial term of De Felice Eqs. (45)-(46), especially the `Gamma (H-h)^2` tensor/spatial contribution, even though its diagonal potential and relative-shift pieces pass separate audits.
+3. Less likely but still open: one scalar spatial contraction in the Eq. (44) EH specialization is incomplete despite previous sign audits.
 
 ## Active task list
 
@@ -90,17 +89,22 @@ Purpose: single restart point after interruption. Update after every hard findin
 - [x] De Felice Eq. (54) one-sector P(X) matter action.
 - [x] Lagos audits and proof that the Lagos+two-matter hybrid is invalid.
 - [ ] **T1c-DF — full De Felice two-matter scalar action.** ACTIVE.
-  - [x] **DF1** — transcribe/audit both gravitational EH sectors in De Felice variables.
+  - [x] **DF1** — transcribe/audit both gravitational EH sectors.
   - [x] **DF2** — combine two P(X) sectors + HR interaction; lapse/shift auxiliaries algebraic.
-  - [x] **DF3** — g-flat gauge degree count: 4 variables before BD removal, kinetic rank exactly 3 on Case C.
-  - [x] **DF4** — transform to `(Y1,Y2,Y3,Z_BD)`, remove `Z_BD_dot`, and algebraically eliminate `Z_BD`.
-  - [ ] **DF5** — recover the three physical high-k speeds from the 3-field action. IN PROGRESS.
-    - [x] DF5a — define frozen Euler-Lagrange mode extractor from 6x6 physical Hessian.
-    - [x] DF5b — validate extractor on a synthetic exactly-solvable 3-mode action.
-    - [ ] **DF5c — run/reproduce the integrated high-k Case-C action regression and confirm `(-2/3,1/3,ctilde^2 c_sf^2)`.** NEXT.
-    - [ ] DF5d — once Case C is green, test the gravity branch on Candidate C against De Felice `scalar_cs2`.
-  - [ ] **DF6** — Case-C acceptance: recover B.5 or exactly equivalent reduced action/equation.
-- [ ] **T2** — Candidate-C validation: recover De Felice `c_s~0.8319` at >=3 `(z,k)` points.
+  - [x] **DF3** — kinetic degree count exactly 3 on Case C.
+  - [x] **DF4** — Eq. (72) basis + BD algebraic elimination.
+  - [ ] **DF5 — recover the three physical high-k speeds. BLOCKED BY STRUCTURAL FAILURE.**
+    - [x] DF5a — frozen Euler-Lagrange speed extractor.
+    - [x] DF5b — synthetic exactly-solvable validation.
+    - [x] **DF5c — execute integrated Case-C regression: FAIL.** Helicity-0 branch scales as `1/k^2` instead of approaching independent De Felice `c_s^2`.
+    - [ ] **DF5e — root-cause audit of the missing principal spatial term.** NEXT.
+      - [ ] DF5e.1 — audit De Felice Eq. (45)-(46) scalar spatial/tensor block against `hr_scalar_potential.py` term-by-term;
+      - [ ] DF5e.2 — test DF4 without frozen integration-by-parts of `Z_BD_dot`, retaining the full descriptor/DAE including the time-dependent Eq. (72) transform;
+      - [ ] DF5e.3 — isolate EH+HR pure-gravity principal block from matter and compare directly to independent De Felice `NG3`/gradient coefficients;
+      - [ ] DF5e.4 — only after root cause is identified, add a RED regression and implement one minimal fix.
+    - [ ] DF5d — Candidate-C gravity regression only after Case C is green.
+  - [ ] **DF6** — Case-C acceptance: recover B.5 or equivalent reduced action/equation.
+- [ ] **T2** — Candidate-C validation at >=3 `(z,k)` points.
 - [ ] **T3** — identify exactly what the old Comelli 12x12 closure projected out.
 - [ ] **T4** — native/action-based transfer solver.
 - [ ] **T5** — make `tests/test_comelli_native_scalar.py` green + >=3 regressions.
@@ -112,19 +116,19 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 ## Test caveat
 
-The container cannot clone the repo over the network. RED/GREEN commits are preserved in Git and focused algebra is independently reproduced in scratch. Do not claim the entire repository pytest suite is green.
+The full repository still cannot be cloned from the container. Focused local mini-package reproduction is valid evidence for DF5c, but do not claim the entire pytest suite is green.
 
 ## Current intentional RED
 
-`tests/test_comelli_native_scalar.py` remains intentionally RED until the action reduction is independently validated through DF5/DF6.
+- `tests/test_de_felice_two_matter_action.py::test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches` is intentionally RED until DF5e finds and repairs the missing principal gradient.
+- `tests/test_comelli_native_scalar.py` remains intentionally RED until DF5/DF6 are closed.
 
 ## Immediate restart instruction
 
-**Resume at T1c-DF / DF5c.**
+**Resume at DF5e.1.**
 
-1. Reproduce or execute the integrated Case-C test in `tests/test_de_felice_two_matter_action.py::test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches`.
-2. If it fails, inspect the measured three `c_s^2` values before changing any coefficient. Do not tune the test target.
-3. The expected high-k branches are `-2/3`, `1/3`, and `ctilde^2 c_sf^2` in g-coordinate units.
-4. If Case C passes, add Candidate-C high-k regression(s) using the independent De Felice `diagnostics()['scalar_cs2']` target.
-5. Only after DF5 passes should DF6 reduce the gravity eigenvector/equation to B.5 explicitly.
-6. Update this checkpoint immediately after every hard finding.
+1. Re-open De Felice arXiv:1404.0008 Eqs. (44)-(46) from the primary PDF and audit every scalar spatial term against `de_felice_gravity_action.py` and `hr_scalar_potential.py`.
+2. In particular verify the full `Gamma (H-h)^2` term of Eq. (45)-(46); do not assume the exact diagonal beta potential plus shift block reproduces it automatically.
+3. Separately test whether `_canonicalize_linear_zdot_frozen` changes the high-k principal symbol when the `k^2`-dependent Eq. (72) transform is time dependent.
+4. Do not tune physical coefficients or the target. The independent finite-a Case-C target is `c_s^2=-0.6665833419871022` at `a=0.05`.
+5. Update this checkpoint immediately after the first hard ruling, then continue to the next DF5e subtask.
