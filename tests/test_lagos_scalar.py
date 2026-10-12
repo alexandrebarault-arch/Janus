@@ -81,11 +81,8 @@ def test_lagos_auxiliary_equations_have_rank_four_and_reconstruct_constraints():
 
 
 def test_lagos_eq323_loses_all_psi2_time_derivatives_after_auxiliary_elimination():
-    from numerics.lagos_scalar import (
-        LagosScalarState,
-        beta1_radiation_background,
-        lagos_eq323_reduced_residual,
-    )
+    from numerics.lagos_scalar import LagosScalarState, beta1_radiation_background
+    from numerics.lagos_reduction import lagos_eq323_reduced_residual
 
     bg = beta1_radiation_background(N=0.1, a=1.0, beta1=1.0, m2=1.0)
     beta = (0.0, 1.0, 0.0, 0.0, 0.0)
