@@ -13,8 +13,10 @@ scalar specialization below uses flat-space Fourier convention ``Delta ->
     V_i = D_i B,
     H_ij = 2 psi delta_ij + (D_i D_j - delta_ij Delta/3) E.
 
-The returned densities are the bracket-level coefficients before multiplication
-by the background volume factor ``N a^3`` (or its f-sector analogue).
+The density helper returns the bracket-level coefficient before multiplication
+by the background volume factor ``N a^3``.  The Lagrangian helper includes
+that factor explicitly, so it can be applied independently to the g and f
+matter sectors with ``(N,a)=(1,a)`` and ``(Nbar,b)`` respectively.
 """
 
 from __future__ import annotations
@@ -146,3 +148,16 @@ def kessence_scalar_quadratic_density(
         * shifted_field**2
     )
     return float(matter_time + gradient)
+
+
+def kessence_scalar_quadratic_lagrangian(**kwargs) -> float:
+    """Eq. (54) scalar bracket multiplied by ``N a^3``.
+
+    Keeping this factor outside the density helper makes the g/f duplication
+    explicit.  In the f sector use its own lapse and scale factor, e.g.
+    ``lapse=Nbar`` and ``scale_factor=b=a*r``.
+    """
+    lapse = float(kwargs["lapse"])
+    scale_factor = float(kwargs["scale_factor"])
+    density = kessence_scalar_quadratic_density(**kwargs)
+    return float(lapse * scale_factor**3 * density)
