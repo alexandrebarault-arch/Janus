@@ -1,8 +1,8 @@
 """Independent scalar quadratic-action reconstruction for massive bigravity.
 
 This module is intentionally independent of the old Comelli perturbation
-reduction.  It starts from Lagos & Ferreira, arXiv:1610.00553, Eqs. (3.6)-(3.8)
-and will be extended by TDD slices.
+reduction. It starts from Lagos & Ferreira, arXiv:1610.00553, Eqs. (3.6)-(3.8)
+and is extended by TDD slices.
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ def shift_interaction_lagrangian(bg, *, k: float, B1: float, B2: float) -> float
     """Return the complete quadratic shift-interaction block.
 
     Lagos raises spatial indices with the background spatial metric of the
-    corresponding sector.  For a comoving Fourier wave number k, combining
+    corresponding sector. For a comoving Fourier wave number k, combining
     the B1^2, B2^2 and B1 B2 pieces of Eqs. (3.6)-(3.8) gives
 
         a M1^2 Z k^2 / [2(Nbar+r)]
@@ -35,15 +35,39 @@ def shift_interaction_lagrangian(bg, *, k: float, B1: float, B2: float) -> float
     return float(pref * (bg.r * B1 - (bg.Nbar / bg.r) * B2) ** 2)
 
 
+def sector1_eh_velocity_lagrangian(
+    bg,
+    *,
+    k: float,
+    Phi1: float,
+    B1: float,
+    Psi1_dot: float,
+    E1_dot: float,
+) -> float:
+    """Velocity-dependent sector-1 Einstein-Hilbert scalar block.
+
+    This is the unambiguous velocity family in Lagos-Ferreira Eq. (3.6),
+    evaluated on a comoving Fourier mode. Their spatial Laplacian obeys
+    ``partial_1^2 -> -k^2/a^2``.
+    """
+    bracket = (
+        -3.0 * Psi1_dot**2
+        - 6.0 * bg.H * Psi1_dot * Phi1
+        - 2.0 * k**2 * E1_dot * (Psi1_dot + bg.H * Phi1)
+        + 2.0 * k**2 / bg.a**2 * Psi1_dot * B1
+    )
+    return float(bg.a**3 * bg.M1sq * bracket)
+
+
 def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
     """Velocity Hessian of the raw metric action, before constraint reduction.
 
-    The order is ``RAW_FIELD_ORDER``.  For massive bigravity with
+    The order is ``RAW_FIELD_ORDER``. For massive bigravity with
     ``alpha_L=0`` and constant Planck masses, Lagos-Ferreira Eqs. (3.6)-(3.7)
-    contain velocities only for ``Psi_A`` and ``E_A``.  Lapses ``Phi_A`` and
+    contain velocities only for ``Psi_A`` and ``E_A``. Lapses ``Phi_A`` and
     shifts ``B_A`` therefore have identically zero velocity rows/columns.
 
-    Their ``partial^2`` uses the spatial background metric.  Thus
+    Their ``partial^2`` uses the spatial background metric. Thus
     ``a^2 partial_1^2 -> -k^2`` and ``b^2 partial_2^2 -> -k^2`` for comoving k.
     """
     K = np.zeros((8, 8), dtype=float)
