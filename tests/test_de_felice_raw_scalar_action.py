@@ -29,7 +29,21 @@ def test_eq44_pure_traceless_kinetic_slice():
 def test_eq44_shift_velocity_cross_slice():
     N = 1.2; a = 0.9; H = 0.0; k = 1.7; B = .13; psid = -.21; Ed = .17
     measured = eh_scalar_quadratic_density_flat(lapse=N, scale_factor=a, H=H, Hdot_over_lapse=0.0, k=k, Phi=0.0, B=B, psi=0.0, E=0.0, psi_dot=psid, E_dot=Ed)
-    expected = B*(2*k**4*Ed/(3*N*a)-4*k**2*psid/(N*a)) - 6*psid**2/N**2 + k**4*Ed**2/(6*N**2)
+    expected = B*(-2*k**4*Ed/(3*N*a)-4*k**2*psid/(N*a)) - 6*psid**2/N**2 + k**4*Ed**2/(6*N**2)
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_eq44_pure_scalar_edot_shift_is_gauge_cancelled():
+    N = 1.2; a = 0.9; k = 1.7; B_lagos = .13; E_lagos_dot = .17
+    # De Felice <-> Lagos scalar bridge:
+    # psi_DF = -Psi_L - k^2 E_L/3, E_DF = 2 E_L, B_DF = B_L/a.
+    measured = eh_scalar_quadratic_density_flat(
+        lapse=N, scale_factor=a, H=0.0, Hdot_over_lapse=0.0, k=k,
+        Phi=0.0, B=B_lagos/a, psi=0.0, E=0.0,
+        psi_dot=-(k*k/3.0)*E_lagos_dot, E_dot=2.0*E_lagos_dot,
+    )
+    # Eq. (44) must reduce to the Lagos EH block, which has no B*E_dot term.
+    expected = 0.0
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
 
 
