@@ -7,9 +7,11 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_dae import ScalarBackground
+from numerics.lagos_action_bridge import lagos_bigravity_parameters
 from numerics.lagos_scalar_action import (
     INTERACTION_STATE_ORDER,
     RATE_ORDER,
+    interaction_lagrangian_healthy,
     pure_metric_lagrangian_healthy,
     velocity_hessian,
 )
@@ -27,6 +29,24 @@ def _proportional_background():
         xi=1.0,
         kappa=1.0,
         k2=9.0,
+        G8pi=1.0,
+    )
+
+
+def _nonproportional_background():
+    a = 0.7
+    c = 0.8
+    return ScalarBackground(
+        a=a,
+        m2=2.1,
+        f1=0.8,
+        f2=0.55,
+        H=a*0.9,
+        H_omega=a*c*0.9,
+        c=c,
+        xi=0.6,
+        kappa=0.37,
+        k2=13.0,
         G8pi=1.0,
     )
 
@@ -80,3 +100,32 @@ def test_pure_metric_action_is_quadratic():
     l1 = pure_metric_lagrangian_healthy(bg, state, rates)
     l2 = pure_metric_lagrangian_healthy(bg, 2.0*state, 2.0*rates)
     assert math.isclose(l2, 4.0*l1, rel_tol=2e-12, abs_tol=2e-12)
+
+
+def test_metric1_shift_self_coefficient_matches_lagos_eq36():
+    bg = _nonproportional_background()
+    p = lagos_bigravity_parameters(bg)
+    B1 = 0.17
+    state = np.zeros(8)
+    state[INTERACTION_STATE_ORDER.index("B1")] = B1
+
+    measured = interaction_lagrangian_healthy(bg, state)
+    expected = (
+        p.r**2 * p.Z / (2.0*(p.Nbar + p.r))
+        * bg.k2 * B1**2
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_metric2_ztilde_self_coefficient_matches_common_normalized_lagos_eq37():
+    bg = _nonproportional_background()
+    p = lagos_bigravity_parameters(bg)
+    Psi2 = -0.13
+    state = np.zeros(8)
+    state[INTERACTION_STATE_ORDER.index("Psi2")] = Psi2
+
+    measured = interaction_lagrangian_healthy(bg, state)
+    # Eq. (3.7) has (nu^2/(Nbar*r^2))*2*Ztilde inside
+    # Nbar*b^3*M2^2. Dividing by M1^2*a^3 leaves 2*r*Ztilde.
+    expected = 2.0*p.r*p.Z_tilde*Psi2*(1.5*Psi2)
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
