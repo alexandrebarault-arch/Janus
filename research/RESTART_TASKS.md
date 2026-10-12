@@ -4,7 +4,7 @@ Date: 2026-10-12
 Canonical active branch: `research/v2-flrw`
 Stable baseline: `main`
 Gate 2B consolidation merge: `35f5edc19443a059308e8c2710deb656bfdd8fbc` (PR #2)
-Latest completed implementation checkpoint: `d26017a1b65e391d9cb80edc75ca308829819d20`
+Latest completed implementation checkpoint: `796662db13fc3aec595bbcd99fec87e164a13122`
 
 Purpose: **first file to read after any interruption**. Update it whenever the active blocker changes.
 
@@ -29,40 +29,47 @@ The published literal negative-mass / exact `+G/-G` formulation is not the activ
 
 `TWO_SECTOR_BIMETRIC_SEGREGATION_IDEA = OPEN_AND_SCIENTIFICALLY_MEANINGFUL`
 
-The surviving descendant is JANUS-R: ghost-free Hassan-Rosen bimetric gravity, two positive-energy matter sectors, separate minimal couplings, and no imposed universal exact `+G/-G` force law.
+JANUS-R keeps only the healthy descendant: ghost-free Hassan-Rosen bimetric gravity, two positive-energy matter sectors, separate minimal couplings, and no imposed universal exact `+G/-G` force law.
 
 ### Gate 2B
 
 `GATE_2B_NONHOMOTHETIC_SCALAR_TRANSFER = OPEN / NOT VALIDATED`
 
-The direct Comelli reduction is closed as a negative route: it reproduces the radiation mode but misses the physical helicity-0 gradient. The independent Lagos/De Felice quadratic-action route is active.
+The direct Comelli reduction is a closed negative route. The independent Lagos/De Felice quadratic-action route is active.
 
 Established before the current checkpoint:
 
 - independent De Felice high-k coefficients reproduce the Candidate-C scalar-speed benchmark;
 - Lagos pure-metric scalar action has been reconstructed independently;
-- lapse/shift auxiliaries are eliminated algebraically from the action;
-- the proportional-background post-auxiliary scalar velocity Hessian has rank one;
-- the unique pure-metric kinetic direction is the relative scalar metric mode.
+- `Phi1,Phi2,B1,B2` are algebraic auxiliaries;
+- the proportional-background pure-metric post-auxiliary scalar velocity Hessian has rank one.
 
-## Latest hard result — matter action bridge
+## Latest hard result — corrected two-matter action bridge
 
-TDD commits on `research/v2-flrw`:
+TDD history on `research/v2-flrw`:
 
-- RED `b12ad1d95cde5926bdbc4896454cdc4f352274cd` -> GREEN `0448eef3ad05f6937aca8fadcab9a04d4916c712`: full scalar specialization of De Felice Eq. (54);
-- RED `3e13f971447213d3510c940303330355383c7eff` -> GREEN `d26017a1b65e391d9cb80edc75ca308829819d20`: explicit background-volume normalization `N a^3` and g/f coordinate-speed control.
+- RED `b12ad1d95cde5926bdbc4896454cdc4f352274cd` -> GREEN `0448eef3ad05f6937aca8fadcab9a04d4916c712`: scalar specialization of De Felice Eq. (54);
+- RED `3e13f971447213d3510c940303330355383c7eff` -> GREEN `d26017a1b65e391d9cb80edc75ca308829819d20`: explicit g/f `N a^3` normalization;
+- RED `b44f8305af9b501076629a033214e8e00523eb87` -> GREEN `6057075a9f3bf64763a05d4cd796ce7cf7da9e09`: initial metric + two-matter assembly and algebraic auxiliary elimination;
+- RED `4f32b85f9bee546910568cfcaa7051baf06ac726` -> GREEN `796662db13fc3aec595bbcd99fec87e164a13122`: fix the Lagos/De Felice matter split and preserve the physical scalar kinetic degeneracy.
 
-Focused reconstructed local test run: `8 passed`.
+The important debugging result was that adding the complete De Felice Eq. (54) on top of the background-reduced Lagos metric action double-counted metric-only matter terms. That incorrect bridge produced a reduced velocity Hessian of rank 6. Lagos explicitly puts the metric-only matter pieces in its metric block and separates the terms involving the matter perturbation. The corrected bridge therefore adds:
 
-The new matter action checks:
+1. only the `delta_phi`-dependent difference of the De Felice matter action;
+2. the residual background lapse susceptibility `(rho+P) Phi^2/(2 c_s^2)` in each sector's own volume measure;
+3. the exact scalar-variable conversion between the Lagos and De Felice decompositions.
 
-- free P(X) scalar: `omega^2 = c_s^2 N^2 k^2/a^2`;
-- pure-lapse limit exactly reproduces the pre-existing De Felice Eq. (54) identity;
-- shift occurs in the spatial combination `delta_phi/phi_dot_0 + a B/N`;
-- scalar metric contractions use `Tr(H)=6 psi` and `H_ij H^ij=12 psi^2+(2/3)k^4 E^2`;
-- for the f sector, `b=a r` and `Nbar=r c` give `omega_f^2=c_s,f^2 c^2 k^2/a^2` in the common coordinate time.
+On the proportional control used by the regression, the corrected six-variable post-auxiliary velocity Hessian has eigenvalues numerically
 
-Caveat: this is a focused reconstructed test run, not a clean checkout/full repository pytest run. Do not call the whole suite green.
+`~{0,0,0,9.0823,26.0576,83.2826}`
+
+and therefore rank 3, matching two matter scalars plus one helicity-0 gravity scalar. The three nonzero directions are positive on this control.
+
+Fresh reconstructed focused verification after the correction:
+
+`13 passed in 0.37 s`
+
+This is **not** a clean checkout/full repository test run; do not describe the whole suite as green.
 
 ## Ordered task queue
 
@@ -76,22 +83,21 @@ Caveat: this is a focused reconstructed test run, not a clean checkout/full repo
 
 ### P1 — complete the double-matter scalar action
 
-Goal: add two separately coupled matter sectors and the required background terms to the independent Lagos scalar quadratic action.
+- [x] **P1a / T1c.6o.5a:** one-sector barotropic/P(X) scalar quadratic action.
+- [x] **P1b / T1c.6o.5b:** independent g/f lapse, scale-factor and volume normalization.
+- [x] **P1c / T1c.6o.5c:** metric + g matter + f matter in one normalization; algebraic elimination of `Phi1,Phi2,B1,B2`; zero-matter and exchange controls; corrected no-double-counting matter bridge.
+- [ ] **P1d / T1c.6o.5d — ACTIVE BLOCKER:** derive the physical principal kinetic/gradient system and recover the g-fluid, f-fluid and gravity high-k propagation eigenvalues without inserting the De Felice answer.
 
-- [x] **P1a / T1c.6o.5a:** transcribe and test one-sector barotropic/P(X) scalar quadratic action.
-- [x] **P1b / T1c.6o.5b:** establish independent g/f volume and lapse/scale normalization.
-- [ ] **P1c / T1c.6o.5c — ACTIVE BLOCKER:** assemble Lagos metric action + g matter + f matter in one common normalization and integrate all nondynamical variables at action level.
-- [ ] **P1d / T1c.6o.5d:** derive the principal kinetic/gradient matrices and recover the g-fluid, f-fluid and gravity high-k propagation eigenvalues without inserting the De Felice answer.
+P1d immediate sequence:
 
-P1c acceptance conditions:
+1. [x] verify the reduced velocity Hessian has rank 3 on a proportional two-matter control;
+2. [ ] construct the full frozen-background quadratic principal form, including velocity-position mixing;
+3. [ ] project/eliminate the three zero-kinetic constraint/gauge directions without imposing the desired eigenvalues;
+4. [ ] recover the two intrinsic matter speeds with the correct f-lapse rescaling;
+5. [ ] recover the gravity scalar speed and compare only afterwards to the independent De Felice benchmark;
+6. [ ] repeat at Candidate-C `a=1,0.5,0.2` and document tolerances.
 
-1. matter-free limit equals `pure_metric_lagrangian_healthy()` exactly;
-2. `Phi1,Phi2,B1,B2` remain algebraic auxiliaries;
-3. proportional equal-Planck/equal-matter control is exchange symmetric;
-4. common normalization is explicitly derived from `M1^2 a^3`: g matter contributes `8piG * N_g * (...)`, f matter contributes `8piG * Nbar*r^3 * (...)` when `b=a*r`;
-5. no failed Comelli closure equation is imported.
-
-### P2 — extract the physical high-k scalar principal system
+### P2 — physical high-k scalar acceptance
 
 Acceptance conditions:
 
@@ -131,6 +137,6 @@ Stop or strongly downgrade JANUS-R if robust independent checks show any of:
 1. Read this file first.
 2. Read `LATEST.md` for the broad verdict.
 3. Read `research/GATE2B_CHECKPOINT.md` and `research/GATE2B_ACTION_RECONSTRUCTION.md` for the active derivation.
-4. Confirm the active branch is `research/v2-flrw` and inspect commits after `d26017a1b65e391d9cb80edc75ca308829819d20`.
-5. Resume **P1c / T1c.6o.5c** unless a newer commit in this file says otherwise.
-6. Before stopping, record the exact result, commit SHA, test status, tolerance and next blocker here.
+4. Confirm the active branch is `research/v2-flrw` and inspect commits after `796662db13fc3aec595bbcd99fec87e164a13122`.
+5. Resume **P1d / T1c.6o.5d**, starting from construction of the full frozen-background quadratic principal form.
+6. Before stopping, record the exact result, commit SHA, test status, numerical tolerance and next blocker here.
