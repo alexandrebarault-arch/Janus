@@ -26,8 +26,6 @@ def test_lagos_interaction_bridge_matches_janus_J_gamma():
     assert math.isclose(coeff.Z, J, rel_tol=0.0, abs_tol=1e-12)
     assert math.isclose(xi * coeff.Z_tilde, Gamma, rel_tol=0.0, abs_tol=1e-12)
 
-    # arXiv:1410.0207 defines Z and Z_tilde without m^2; its equations carry
-    # m^2 explicitly. Reject the alternative convention at this API boundary.
     with pytest.raises(TypeError):
         lagos_interaction_coefficients(beta, xi=xi, c=c, m2=2.3)
 
@@ -80,3 +78,25 @@ def test_lagos_auxiliary_equations_have_rank_four_and_reconstruct_constraints():
 
     assert solution.rank == 4
     assert max(abs(x) for x in residuals) < 2e-11
+
+
+def test_lagos_eq323_loses_all_psi2_time_derivatives_after_auxiliary_elimination():
+    from numerics.lagos_scalar import (
+        beta1_radiation_background,
+        lagos_frozen_reduced_matrix,
+    )
+
+    bg = beta1_radiation_background(N=0.1, a=1.0, beta1=1.0, m2=1.0)
+    beta = (0.0, 1.0, 0.0, 0.0, 0.0)
+
+    # Rows are Eqs. (3.23),(3.24),(3.27); columns are (E1,E2,psi2).
+    values = []
+    for s in (-2.0, -1.0, 0.0, 1.0, 2.0):
+        matrix = lagos_frozen_reduced_matrix(
+            s, bg, k=5.0, w=1.0 / 3.0, beta=beta, m2=1.0, nu2=1.0
+        )
+        assert matrix.shape == (3, 3)
+        values.append(matrix[0, 2])
+
+    scale = max(1.0, max(abs(v) for v in values))
+    assert max(abs(v - values[2]) for v in values) < 5e-11 * scale
