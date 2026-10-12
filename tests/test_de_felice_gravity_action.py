@@ -11,17 +11,20 @@ from numerics.de_felice_gravity_action import eh_scalar_quadratic_density_flat
 from numerics.lagos_scalar_action import einstein_hilbert_lagrangian
 
 
-def test_de_felice_eh_velocity_block_matches_lagos_after_variable_bridge():
-    a = 0.73
-    k = 2.4
-    H_phys = 0.91
-    bg = ScalarBackground(
+def _background(a=0.73, k=2.4, H_phys=0.91):
+    return ScalarBackground(
         a=a, m2=1.0, f1=0.8, f2=0.9,
         H=H_phys * a, H_omega=H_phys * a * 0.87,
         c=0.87, xi=1.2, kappa=0.6, k2=k*k, G8pi=1.0,
     )
 
-    # Lagos rates for metric 1.
+
+def test_de_felice_eh_velocity_block_matches_lagos_after_variable_bridge():
+    a = 0.73
+    k = 2.4
+    H_phys = 0.91
+    bg = _background(a=a, k=k, H_phys=H_phys)
+
     psi_l_dot = 0.041
     e_l_dot = 0.016
     lagos = einstein_hilbert_lagrangian(
@@ -30,8 +33,6 @@ def test_de_felice_eh_velocity_block_matches_lagos_after_variable_bridge():
         np.array([psi_l_dot, 0.0, e_l_dot, 0.0]),
     )
 
-    # De Felice scalar variables: E_DF=2 E_L and
-    # psi_DF=-Psi_L-k^2 E_L/3.  With all fields zero only rates remain.
     psi_df_dot = -psi_l_dot - k*k*e_l_dot/3.0
     e_df_dot = 2.0*e_l_dot
     df_density = eh_scalar_quadratic_density_flat(
@@ -47,10 +48,62 @@ def test_de_felice_eh_velocity_block_matches_lagos_after_variable_bridge():
         psi_dot=psi_df_dot,
         E_dot=e_df_dot,
     )
-
-    # IEH=(Mg^2/2) int N a^3 L_EH. Lagos helper returns the full
-    # Mg^2 a^3-normalized sector, hence the comparison is N*L_EH/2.
     assert math.isclose(lagos, 0.5*df_density, rel_tol=2e-13, abs_tol=2e-13)
+
+
+def test_de_felice_eh_rate_couplings_match_lagos_with_nonzero_lapse_and_shift():
+    """Cross-publication regression for the full rate-dependent EH block.
+
+    Compare only L(fields,rates)-L(fields,0), so background/spatial terms and
+    the one-matter Lagos background simplification cannot affect this test.
+    """
+    a = 0.68
+    k = 2.7
+    H_phys = 0.83
+    bg = _background(a=a, k=k, H_phys=H_phys)
+
+    PhiL = 0.12
+    BL = -0.09
+    PsiL = 0.035
+    EL = -0.014
+    PsiL_dot = 0.041
+    EL_dot = -0.019
+
+    state = np.array([PsiL, 0.0, EL, 0.0, PhiL, 0.0, BL, 0.0])
+    rates = np.array([PsiL_dot, 0.0, EL_dot, 0.0])
+    zero_rates = np.zeros(4)
+    lagos_rate_part = (
+        einstein_hilbert_lagrangian(bg, state, rates)
+        - einstein_hilbert_lagrangian(bg, state, zero_rates)
+    )
+
+    Phi = PhiL / 2.0
+    B = BL / a
+    psi = -PsiL - k*k*EL/3.0
+    E = 2.0*EL
+    psi_dot = -PsiL_dot - k*k*EL_dot/3.0
+    E_dot = 2.0*EL_dot
+
+    kwargs = dict(
+        lapse=1.0,
+        scale_factor=a,
+        H=H_phys,
+        Hdot_over_lapse=0.0,
+        k=k,
+        Phi=Phi,
+        B=B,
+        psi=psi,
+        E=E,
+    )
+    df_rate_part = 0.5 * (
+        eh_scalar_quadratic_density_flat(
+            **kwargs, psi_dot=psi_dot, E_dot=E_dot
+        )
+        - eh_scalar_quadratic_density_flat(
+            **kwargs, psi_dot=0.0, E_dot=0.0
+        )
+    )
+    assert math.isclose(lagos_rate_part, df_rate_part, rel_tol=3e-12, abs_tol=3e-12)
 
 
 def test_de_felice_eh_scalar_density_is_quadratic():
