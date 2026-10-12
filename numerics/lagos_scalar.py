@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
+import numpy as np
 
 
 @dataclass(frozen=True)
@@ -34,6 +35,40 @@ class LagosBeta1RadiationBackground:
     X_prime: float
     h: float
     h_prime: float
+
+
+@dataclass(frozen=True)
+class LagosScalarState:
+    """Variables needed by the four Lagos auxiliary scalar equations."""
+
+    E1: float
+    E1_prime: float
+    E2: float
+    E2_prime: float
+    psi2: float
+    psi2_prime: float
+
+
+@dataclass(frozen=True)
+class LagosAuxiliarySolution:
+    """Solution order is ``(B1, B2, phi1, phi2)``."""
+
+    vector: np.ndarray
+    rank: int
+    condition_number: float
+    residual: float
+
+    @property
+    def B1(self): return float(self.vector[0])
+
+    @property
+    def B2(self): return float(self.vector[1])
+
+    @property
+    def phi1(self): return float(self.vector[2])
+
+    @property
+    def phi2(self): return float(self.vector[3])
 
 
 def lagos_interaction_coefficients(
@@ -74,17 +109,7 @@ def beta1_radiation_background(
     beta1: float = 1.0,
     m2: float = 1.0,
 ) -> LagosBeta1RadiationBackground:
-    """Exact beta1-only one-matter radiation background in Lagos notation.
-
-    For beta0=beta2=beta3=beta4=0 and w=1/3, Eq. (3.12) gives
-
-        rho_star = m^2 beta1 (1/N - 3N),
-
-    while Eq. (3.4) reduces to H^2=a^2 m^2 beta1/(3N). Conservation fixes
-    N' and the healthy-branch identity h=XH then fixes X. Derivatives are
-    analytic and are included so later scalar-equation tests need no finite
-    differencing of the background.
-    """
+    """Exact beta1-only one-matter radiation background in Lagos notation."""
     if not (0.0 < N < 1.0 / math.sqrt(3.0)):
         raise ValueError("N must lie in the positive-density beta1 radiation branch")
     if not (a > 0.0 and beta1 > 0.0 and m2 > 0.0):
@@ -114,4 +139,98 @@ def beta1_radiation_background(
         X_prime=float(X_prime),
         h=float(h),
         h_prime=float(h_prime),
+    )
+
+
+def lagos_auxiliary_residuals(
+    auxiliary,
+    bg: LagosBeta1RadiationBackground,
+    state: LagosScalarState,
+    *,
+    k: float,
+    w: float,
+    beta,
+    m2: float = 1.0,
+    nu2: float = 1.0,
+) -> np.ndarray:
+    """Residuals of Lagos-Ferreira Eqs. (3.21),(3.22),(3.25),(3.26).
+
+    Auxiliary-vector order is ``(B1,B2,phi1,phi2)``.  These four equations
+    are algebraic in those variables after the gauge ``psi1=chi=0``.
+    """
+    x = np.asarray(auxiliary, dtype=float)
+    if x.shape != (4,):
+        raise ValueError("auxiliary vector must have length 4")
+    if not (k >= 0.0 and math.isfinite(k)):
+        raise ValueError("k must be finite and non-negative")
+
+    B1, B2, phi1, phi2 = x
+    coeff = lagos_interaction_coefficients(beta, xi=bg.N, c=bg.X)
+    Z = coeff.Z
+    k2 = k * k
+    a2 = bg.a * bg.a
+    combo_g = 3.0 * state.psi2 + k2 * state.E2
+    combo_rel = 3.0 * state.psi2 + k2 * (state.E2 - state.E1)
+
+    r21 = (
+        2.0 * bg.H * (3.0 * state.psi2_prime + k2 * state.E2_prime)
+        + ((1.0 + w) * bg.rho_star * combo_g + m2 * bg.N * Z * combo_rel) * a2
+        + 2.0 * (state.psi2 * k2 + bg.H * (3.0 * phi2 * bg.H - k2 * B2))
+    )
+    r22 = (
+        2.0 * (bg.X + 1.0) * state.psi2_prime
+        + 2.0 * bg.H * (bg.X + 1.0) * phi2
+        - m2 * Z * bg.N * (bg.X * B1 - B2)
+        + (1.0 + w) * bg.rho_star * (1.0 + bg.X) * B2
+    )
+    r25 = (
+        2.0 * bg.N * bg.h * k2 * state.E1_prime
+        - a2 * nu2 * Z * combo_rel * bg.X**2
+        - 2.0 * bg.N * bg.h * k2 * B1 * bg.X
+        + 6.0 * phi1 * bg.h**2 * bg.N
+    )
+    r26 = (
+        2.0 * bg.h * phi1 * bg.N * (bg.X + 1.0)
+        + nu2 * bg.X * a2 * Z * (bg.X * B1 - B2)
+    )
+    return np.array([r21, r22, r25, r26], dtype=float)
+
+
+def solve_lagos_auxiliaries(
+    bg: LagosBeta1RadiationBackground,
+    state: LagosScalarState,
+    *,
+    k: float,
+    w: float,
+    beta,
+    m2: float = 1.0,
+    nu2: float = 1.0,
+) -> LagosAuxiliarySolution:
+    """Solve the four algebraic scalar auxiliaries from Eqs. 3.21/22/25/26."""
+    zero = np.zeros(4, dtype=float)
+    base = lagos_auxiliary_residuals(
+        zero, bg, state, k=k, w=w, beta=beta, m2=m2, nu2=nu2
+    )
+    matrix = np.empty((4, 4), dtype=float)
+    for j in range(4):
+        basis = np.zeros(4, dtype=float)
+        basis[j] = 1.0
+        matrix[:, j] = lagos_auxiliary_residuals(
+            basis, bg, state, k=k, w=w, beta=beta, m2=m2, nu2=nu2
+        ) - base
+
+    rank = int(np.linalg.matrix_rank(matrix))
+    if rank != 4:
+        raise np.linalg.LinAlgError(
+            f"Lagos auxiliary matrix has rank {rank}, expected 4"
+        )
+    vector = np.linalg.solve(matrix, -base)
+    residuals = lagos_auxiliary_residuals(
+        vector, bg, state, k=k, w=w, beta=beta, m2=m2, nu2=nu2
+    )
+    return LagosAuxiliarySolution(
+        vector=vector,
+        rank=rank,
+        condition_number=float(np.linalg.cond(matrix)),
+        residual=float(np.linalg.norm(residuals, ord=np.inf)),
     )
