@@ -18,9 +18,10 @@ Purpose: **first file to read after any interruption**.
    `Y2hat = u_f - (Sigma + k^2 S/6)/(n H_f)`.
    With `R=1/(n H_f)`, retain
    `u_f_dot = Y2hat_dot + R(Sigma_dot+k^2 S_dot/6) + Rdot(Sigma+k^2 S/6)`.
-6. Candidate-C `a=0.5` is now a **committed passing 3-mode regression**: both matter modes and the De Felice helicity-0 speed are recovered.
-7. `a=1` is preliminarily consistent; `a=0.2` is the active numerical-conditioning / mode-tracking gate and is **not yet passed**.
-8. NEXT: make the multi-epoch physical reduction robust at `a=0.2` without loosening physics tolerances, then freeze `a=1` and `a=0.2` regressions before repairing Lagos production transfer code.
+6. Candidate-C `a=0.5` is a **committed passing 3-mode regression**: both matter modes and the De Felice helicity-0 speed are recovered.
+7. Candidate-C `a=0.2` now has a **committed RED** (`fb75b9614e82ab986ec135472b4fcb38ddf51525`): production nested finite-difference reduction becomes non-physical at high k.
+8. Read `research/A4_A02_DIAGNOSTIC.md` before touching the early-epoch reduction. A stable local matrix prototype removes the catastrophic conditioning failure, but still leaves an unexplained `~1e-3` gravity-speed bias and is therefore **NOT GREEN**.
+9. NEXT: remove the ambiguity caused by the current inconsistent probe-fluid embedding. Build a self-consistent single-P(X) control or an analytic matter-eliminated principal-symbol control; only then decide whether the residual gravity bias is source/reduction error and promote the stable matrix route with RED/GREEN tests.
 
 ## 1 — Git / repository state
 
@@ -30,7 +31,7 @@ Purpose: **first file to read after any interruption**.
 - PR #1 remains draft (`research/v2-flrw` -> `main`); do not merge as model validation.
 - GitHub Actions/workflows remain intentionally disabled.
 
-Latest implementation lineage:
+Latest implementation / diagnostic lineage:
 
 - `64bfd19a184a7df39b9d075822f9a621c62fd59f` — RED Eq. (44) Fourier shift-cancellation regression.
 - `7d9f57d8a892cf51c1c9823b9c74655f2e914e71` — GREEN fix of Eq. (44) `B*E_dot` sign.
@@ -39,7 +40,9 @@ Latest implementation lineage:
 - `afce1faaf404393b03f89e1d33534e37f81be737` — RED null-Schur conditioning-scale regression.
 - `e865ccf3e1fc4eb6c7191cec3aebc7cc814d0ea5` — GREEN local null-block conditioning scale.
 - `2553b53bd8a2a9aac8482300651602d3ad0360c2` — RED Candidate-C physical 3-mode regression.
-- `cebd1e2b04c7a7b0ae1c2deb9d8dcc7246efae7e` — GREEN Candidate-C physical 3-mode benchmark.
+- `cebd1e2b04c7a7b0ae1c2deb9d8dcc7246efae7e` — GREEN Candidate-C `a=0.5` physical 3-mode benchmark.
+- `fb75b9614e82ab986ec135472b4fcb38ddf51525` — RED Candidate-C `a=0.2` three-mode gate.
+- `0a5d730e1730bb76631b5a7f4f121d8b75ba18cb` — diagnostic note freezing the early-epoch conditioning/source audit.
 
 ## 2 — Scientific status
 
@@ -65,6 +68,12 @@ Do not redo these unless new contradictory evidence appears:
 - On de Sitter, the source-level EH plus the background determinant term maps exactly to the Lagos EH block.
 - At `ctilde=xi=1`, the raw HR relative block maps exactly to the healthy Lagos interaction block.
 - In Minkowski, raw Eq. (44)+Fierz-Pauli gives `omega^2=k^2+m_eff^2` (up to internal mass normalization), hence high-k `c_s^2=1`.
+
+Open subtlety — **do not silently close this**:
+
+- De Felice Eq. (54) uses `delta phi_dot / phi_dot_0`.
+- If `u = delta phi / phi_dot_0`, then on an evolving background `delta phi_dot / phi_dot_0 = u_dot + (phi_ddot_0/phi_dot_0) u`.
+- The present Candidate-C regression intentionally imposes probe sound speeds on a background that is g=matter+radiation and f=dust, so it is not a self-consistent pair of single P(X) backgrounds. A naive `phi_ddot/phi_dot` add-back was tested locally and rejected as a production patch because it changes the probe embedding itself.
 
 ## 4 — Why the old frozen pencil failed
 
@@ -101,13 +110,13 @@ At `a=0.5`, probes `c_g^2=0.4`, `c_f^2=0.3`, using `k=(100,150,250)` and a linea
 - gravity absolute error: about `4.3e-5`;
 - physical 3x3 kinetic matrix is positive in the committed `a=0.5, k=150` regression.
 
-Targeted reconstructed verification after all committed reduction changes:
+Last clean targeted reconstructed verification **before** adding the new `a=0.2` RED:
 
 `python -m pytest -q tests/test_time_dependent_quadratic_reduction.py tests/test_de_felice_raw_scalar_action.py tests/test_de_felice_candidate_c_reduction.py`
 
 Result on 2026-10-12: **`16 passed in 4.07s`**.
 
-This is **not** a clean full-repository-suite result.
+After commit `fb75b...`, the targeted Candidate-C test is intentionally RED at `a=0.2`. Do not quote `16 passed` as current branch status.
 
 ## 6 — Multi-epoch A4 status
 
@@ -122,7 +131,7 @@ Preliminary two-point derivative benchmark:
 
 Promising, but not yet frozen as an acceptance regression.
 
-### `a=0.2` — ACTIVE BLOCKER
+### `a=0.2` — ACTIVE BLOCKER / COMMITTED RED
 
 Independent targets for the default probes:
 
@@ -130,11 +139,19 @@ Independent targets for the default probes:
 - f matter `ctilde*sqrt(0.3) ~ 0.38012193`;
 - g matter `sqrt(0.4) ~ 0.63245553`.
 
-The two slow branches approach/cross in magnitude, so sorting roots by speed permutes their identities. At larger k the nested finite-difference coefficient derivatives also become ill-conditioned, while the g branch remains stable.
+Production reduction with `k=(250,600,1000)` becomes non-physical at high k; one extracted branch grows to `~5.8` instead of approaching the gravity characteristic. This is now frozen by the RED test in `fb75b...`.
 
-A symmetric 5-point derivative experiment was tried and **rejected** because it degraded the already-good `a=0.5` gravity regression by roughly `6e-3`. It was never pushed to Git.
+Read `research/A4_A02_DIAGNOSTIC.md` for the complete experiment log. Key facts:
 
-Do not widen tolerances or cherry-pick favorable k values. The next implementation must improve mode identity/conditioning objectively.
+- sorting roots only by speed is insufficient because the two slow branches approach/cross;
+- nested finite-difference Hessians and time derivatives are the main source of the catastrophic production instability;
+- a local direct-matrix/Schur prototype restores three regular branches and stable matter characteristics;
+- 70-digit `mpmath` reproduction shows the remaining small gravity bias is **not** ordinary floating-point roundoff;
+- at `a=0.2`, the stable prototype tends near `0.339` while Eq. (86) gives `0.33742855`;
+- the bias grows with non-homotheticity (`ctilde` farther from 1), localizing the remaining audit to the gravity interaction/background reduction or benchmark embedding;
+- no interaction coefficient tuning is allowed.
+
+Do not widen tolerances or cherry-pick favorable k values.
 
 ## 7 — Ordered task queue
 
@@ -162,8 +179,13 @@ Do not widen tolerances or cherry-pick favorable k values. The next implementati
 - [x] recover g matter speed at `a=0.5`.
 - [x] recover f matter speed at `a=0.5`.
 - [x] recover De Felice gravity speed at `a=0.5`.
+- [x] commit explicit RED for `a=0.2` production failure.
+- [x] demonstrate locally that direct matrix assembly removes the catastrophic high-k branch blow-up.
+- [x] falsify ordinary double-precision roundoff as the explanation for the residual gravity bias using 70-digit arithmetic.
+- [ ] **ACTIVE:** build self-consistent single-P(X) early-epoch control OR matter-eliminated analytic principal-symbol control.
+- [ ] decide whether the residual `~1e-3` gravity bias is source/reduction error or inconsistent probe-fluid embedding.
+- [ ] GREEN the `a=0.2` committed regression without tolerance inflation.
 - [ ] freeze robust `a=1` regression.
-- [ ] **ACTIVE:** solve `a=0.2` conditioning/mode-tracking without tolerance inflation.
 - [ ] verify gravitational kinetic sign against the independent De Felice Eq. (80)/(82) benchmark at all accepted epochs.
 
 ### A5/A6 — only after A4 passes
@@ -173,14 +195,14 @@ Do not widen tolerances or cherry-pick favorable k values. The next implementati
 - [ ] repair production transfer code with RED/GREEN tests.
 - [ ] only then resume JANUS-R phenomenology/nonlinear-wall work.
 
-## 8 — Preferred next numerical strategy
+## 8 — Preferred next numerical / analytic strategy
 
-For `a=0.2`, prioritize:
+For `a=0.2`, priority is now:
 
-1. **Mode continuation by eigenvector overlap** across k rather than sorting eigenvalues by magnitude.
-2. Improve coefficient-time derivatives without the rejected nested 5-point stencil. Prefer analytic/semianalytic derivatives of background-dependent coefficients or a well-conditioned local polynomial/chain-rule route.
-3. Use an objective convergence criterion over a k window; do not select k values because they match the target.
-4. Require the method to preserve the already-passing `a=0.5` regression before accepting any numerical change.
+1. **Do not implement the local stable matrix prototype in production yet.** It fixes the large conditioning failure but not the independent Eq. (86) agreement to the required standard.
+2. Build a self-consistent P(X) control where `(rho,P,c_s^2,phi_dot)` obey Eqs. (18)-(19), or analytically eliminate matter from the high-k principal symbol so the gravity branch can be compared without the arbitrary probe-fluid embedding.
+3. Keep mode continuation by eigenvector overlap in physically rescaled coordinates (`u_g`, `Y2hat`, `k^2 S`) as the preferred identification method once the principal-symbol ambiguity is closed.
+4. Preserve the already-passing `a=0.5` regression and require step/window stability. No target-driven choice of k, derivative step, polynomial degree, or coefficient scaling.
 
 ## 9 — Interruption protocol
 
@@ -192,4 +214,4 @@ Before any pause:
 4. state rejected numerical experiments as well as accepted ones;
 5. end with one explicit `NEXT:` instruction.
 
-**NEXT:** make `a=0.2` robust by tracking physical eigenmodes across k and replacing the ill-conditioned nested coefficient derivatives with an objective better-conditioned derivative route; preserve the committed `a=0.5` 3-mode regression, then add acceptance tests for `a=1` and `a=0.2` before any Lagos production repair.
+**NEXT:** read `research/A4_A02_DIAGNOSTIC.md`; construct a self-consistent single-P(X) control or an analytic matter-eliminated principal-symbol control for Candidate-C-like non-homothetic backgrounds. Use it to determine whether the residual early-epoch gravity-speed bias is physical/source-level or only caused by the current inconsistent probe-fluid embedding. Only after that turn the stable matrix/Schur prototype into a GREEN production implementation for the committed `a=0.2` RED.
