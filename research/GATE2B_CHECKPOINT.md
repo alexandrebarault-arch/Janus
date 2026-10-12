@@ -6,129 +6,111 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 ## Verdict
 
-**Gate 2B remains OPEN / NOT VALIDATED.** The full De Felice/Hassan-Rosen two-matter action reconstruction correctly reproduces the Boulware–Deser constraint, the scalar degree count, and the Eq. (72) physical-variable basis, but its current reduced physical action still fails the decisive high-k helicity-0 propagation test. Do not proceed to Candidate-C transfer integration yet.
+**Gate 2B remains OPEN / NOT VALIDATED.** The full De Felice/Hassan-Rosen two-matter reconstruction reproduces the BD constraint, scalar degree count and Eq. (72) physical basis, but the current lapse/shift reduction gives the wrong high-k helicity-0 kinetic invariant. Do not proceed to Candidate-C transfer integration.
 
 ## Closed hard facts
 
-### Background / conventions
+### Background / targets
 
 - JANUS -> De Felice/Comelli: `beta_n=n! a_n`, `xi=y`, `kappa=alpha^2`, `c=ctilde`, `f2=xi J`, `f1=Gamma`.
-- Independent De Felice high-k gravity target on Candidate C at `a=0.5`: `c_s^2 ~= 0.69208`, `c_s ~= 0.83191`.
-- Exact Case-C background lives in `numerics/comelli_case_c.py`; asymptotic acceptance remains `E''+(3/tau)E'-(2/3)k^2E=0`.
-- Independent `de_felice_action_principal.py` gives the finite-a Case-C gravity target `c_s^2=-0.6665833419871022` at `a=0.05`.
+- Independent Candidate-C target at `a=0.5`: `c_s^2 ~= 0.69208`, `c_s ~= 0.83191`.
+- Exact Case-C background is in `numerics/comelli_case_c.py`; asymptotic acceptance is `E''+(3/tau)E'-(2/3)k^2E=0`.
+- Independent `de_felice_action_principal.py` gives finite-a Case-C `c_s^2=-0.6665833419871022` at `a=0.05`.
 
-### Historical Comelli closure — rejected for physics
+### Historical Comelli closure — rejected
 
-- It recovers visible radiation propagation but replaces the physical gravity pair by `c~0.0159`.
-- Dust+dust gives the same failure; the false frequency tends to a constant at high k, proving the helicity-0 `k^2 E` term was projected out.
-- Unit conversion, matter mixture, closure-row choice, simple coefficient/sign swaps, conditioning, selected minors and merely eliminating `B1'` were ruled out.
+- Radiation branch is correct but the putative gravity branch has `c~0.0159` and finite high-k frequency, proving loss of the helicity-0 gradient.
+- Unit conversion, matter mixture, row choice, individual derivative coefficients, simple sign/factor swaps, conditioning, selected minors and eliminating `B1'` alone were ruled out.
 
-### Lagos route — retained only as audit reference
+### De Felice action pieces — individually audited
 
-- Lagos 1610.00553 specializes its final quadratic action to matter coupled to metric 1 and uses those background equations.
-- Adding an independent second Eq. (54) matter block to that specialized action produces a spurious fourth kinetic direction linear in `rho_f`.
-- Therefore Lagos is useful for convention/cross-check work, but **must not be used as the final two-matter scalar action**.
-- Spatial derivative audits L1-L4 are complete (`252a4dd`, `11c9b5a`, `af6b315`, `68e1c17`).
-- Lagos -> De Felice lapse convention is `Phi_DF=Phi_L/2`; TDD RED/GREEN `53c9af3` / `2ee436d`.
+- `de_felice_matter_action.py` matches Eq. (54), including the spatial `-N^2(rho+P)k^2(q+aB/N)^2/(2a^2)` block.
+- `de_felice_gravity_action.py` matches the scalar Fourier contractions of Eq. (44), including `B E_dot`, `Phi E`, `psi E`, and the `k^6 E^2/18` term.
+- `hr_scalar_potential.py` uses the De Felice sign of the HR potential and the analytic relative-shift block from Eqs. (45)-(46).
+- A direct beta1-only Case-C audit of the HR pure-`E_f^2` Hessian reproduces the analytic `xi k^4/6` coefficient to better than `1e-6` relative with an appropriately scaled perturbation step. The separate `Gamma(H-h)^2` spatial block is therefore present.
+- Multiplying only the HR relative-shift coefficient over factors `1/8 ... 8` changes amplitudes but never removes the bad `k^2` scaling of the reconstructed kinetic invariant; no single missing shift multiplier is the fix.
 
-## Validated De Felice two-matter action reconstruction
+### DF4 — degree count / BD basis CLOSED, but not sufficient for principal dynamics
 
-### Matter
+- Eq. (72) basis `(Y1,Y2,Y3,Z_BD)` is implemented and gives the correct null kinetic direction before BD removal.
+- `Z_BD` is algebraically eliminable; three scalar kinetic directions remain.
+- The old frozen integration-by-parts of linear `Y*Zdot` terms is not a valid standalone derivation of the full high-k equations because Eq. (84) retains time derivatives of the coefficient matrices. However, restoring those derivative/measure terms does **not** repair the bad kinetic scaling described below, so this is not the root cause of `N_G^(3)`.
 
-- `numerics/de_felice_matter_action.py` implements De Felice Eq. (54) for one P(X) sector.
-- Metric-off action reproduces the intrinsic matter sound speed.
-- Both matter sectors are added independently, each with its own metric/lapse/scale factor.
+### DF5 — decisive kinetic-invariant failure
 
-### Einstein-Hilbert
+- `physical_squared_phase_speeds()` is independently validated on a synthetic three-mode action; a normalized generalized-QZ calculation gives the same bad Case-C third branch as the original `K^{-1}` extractor. The failure is not caused by ill-conditioned inversion of `K`.
+- The published kinetic invariant is
+  `NG3 = det(K)/(K11*K22-K12^2)` (De Felice Eq. 77), with exact finite-k Eq. (78) and high-k Eq. (80):
+  `NG3 -> (3/8) m^2 a^4 xi J B`.
+- On Case C at `a=0.05`, the independent exact Eq. (78) gives approximately:
+  - `k=50`: `0.010901`;
+  - `k=100`: `0.015890`;
+  - `k=200`: `0.017943`;
+  - `k=400`: `0.018542`;
+  - `k=800`: `0.018698`;
+  - asymptotic Eq. (80): `0.0187507871`.
+  Thus `k=400` is already ~98.9% asymptotic.
+- The reconstructed physical kinetic matrix instead gives, in the paper variable `Y3=S`:
+  - `k=50`: `~0.06510`;
+  - `k=100`: `~0.26041`;
+  - `k=200`: `~1.04162`;
+  - `k=400`: `~4.16620`;
+  - `k=800`: `~16.6607`;
+  - `k=1200`: `~37.47`;
+  - `k=2000`: `~103.94`.
+  Therefore reconstructed `NG3 ~ k^2` instead of approaching a constant.
+- This scaling is stable over more than two decades of finite-difference step when variables are perturbatively rescaled (`k^2 E`, `kB`, etc. kept small). It is not cancellation noise.
+- The wrong `k^2` kinetic term is already present **before BD Schur elimination**. At `k=400`, raw `K33(Y3dot^2) ~ 4.16624`, while the BD correction is only `~2.8e-5`; final `K33 ~4.16621`.
+- Varying the f-fluid intrinsic sound speed from `c_sf^2=0.001` to `1` leaves reconstructed `NG3` essentially unchanged (`~4.166589` at `k=400`). This mirrors the published independence of `NG3` from `c_sf` and rules out the f-fluid sound-speed block as the cause.
+- The auxiliary Hessian entries themselves have the expected large-k coefficients. Example on Case C: after dividing the shift block by `k^2`, `Q_BB ~ [[0.16667287,-0.03333540],[-0.03333540,0.16668522]]`; decomposition into EH + matter + HR reproduces the first entry, so the apparent `B_g^2` excess was not an error.
+- **Localization:** the error is introduced at or before the Schur elimination of the four auxiliaries `(Phi_g,Phi_f,B_g,B_f)`, specifically through some cross-coupling needed for the high-k cancellation. It is not introduced by the later BD Schur, speed extraction, or the intrinsic fluid sounds.
 
-- `numerics/de_felice_gravity_action.py` directly specializes De Felice Eq. (44) to flat scalar Fourier modes.
-- TDD scaffold: RED `bb86701`, initial GREEN `85b008c`.
-- A direct contraction audit found three Fourier-sign mistakes: `B E_dot`, `Phi E`, `psi E`. RED `a7d41b3`, fix `256cefd`.
+## Current root-cause priority
 
-### Hassan-Rosen interaction
-
-- `numerics/hr_scalar_potential.py` contains an exact local standard-beta matrix potential and a perturbative De Felice helper.
-- Exact diagonal standard-beta potential matches the independent diagonal implementation at machine precision (`35fcfdb` -> `cfa9e5c`).
-- The Fourier relative-shift block is inserted analytically from De Felice Eqs. (45)-(46): `+(m^2 M_g^2/2) N a^3 xi J/(ctilde+1) k^2 (B_g-ctilde B_f)^2`.
-- De Felice-sign correction of the standard-beta potential: RED `3f345e7`, fix `9851c3d`.
-
-### DF4 — physical basis and BD removal CLOSED
-
-- Eq. (72) basis transform is implemented as `(Y1,Y2,Y3,Z_BD)` with `Z_BD=Sigma`.
-- `Z_BD_dot` has no quadratic kinetic direction on exact Case C.
-- `Z_BD` is algebraically eliminated, leaving a 6x6 quadratic Hessian for `(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)` and a positive 3x3 kinetic matrix on Case-C control points.
-- TDD/implementation trail: `9145fe1`, `c7db4d1`, `e1c7ea5`, `2fc77e0`.
-
-### DF5 — physical high-k dispersion: CURRENT FAILURE
-
-- RED Case-C regression `bb43d94`; speed extractor added `3dc45ce`; exact synthetic 3-mode regression committed `18d1fec`.
-- `physical_squared_phase_speeds()` is independently validated: on a synthetic quadratic action it recovers `(-2/3,1/3,0.4)` to about `1e-16`.
-- The Case-C regression now compares against independent `gravity_principal_action()` rather than forcing the strict asymptotic `-2/3`; commit `0f849c9`.
-- A uniform high-k finite-difference step can leave the perturbative metric domain because `k^2 E_f` is the actual small combination. The test step was reduced in `8395e21` so a RED result reflects dispersion rather than a square-root domain failure.
-- A focused mini-package was reconstructed and DF5c was executed locally. Uniform small-step runs already showed the wrong third branch. A dimensionally scaled Hessian was then used as a diagnostic, with steps chosen so `k^2 E`, `kB`, velocities and rate variables remain perturbatively small.
-- With that scaled diagnostic the two matter branches move toward their expected limits, while the third branch is stable but behaves as a finite-frequency mode:
-  - `k=200`: approximately `(0.2633, 0.3315, 487.23)`;
-  - `k=400`: approximately `(0.3158, 0.3690, 123.78)`;
-  - `k=800`: approximately `(0.3290, 0.3782, 31.09)`;
-  - `k=1200`: approximately `(0.3314, 0.3796, 13.84)`.
-- The product `k^2 * c_s^2` of the third branch is approximately constant, so its apparent `c_s^2` scales like `1/k^2`. This is a massive/finite-frequency mode, **not** the required helicity-0 gradient branch.
-- Therefore DF5c is a genuine structural failure, not a unit-conversion error, speed-extractor bug, or ordinary floating-point-conditioning effect.
-- **Do not mark DF5 green and do not advance to Candidate C.** The action/reduction must be re-audited to locate the missing principal spatial contribution.
-
-## Leading suspects for DF5 root cause
-
-1. The frozen-coefficient canonicalization of linear `Y*Z_BD_dot` terms may be invalid for the high-k principal reduction because the Eq. (72) basis contains explicit `k^2` factors. Time derivatives of the transformation/coefficient may therefore survive at principal order instead of being a lower-order mass correction.
-2. The perturbative Hassan-Rosen block may not reproduce every scalar spatial term of De Felice Eqs. (45)-(46), especially the `Gamma (H-h)^2` tensor/spatial contribution, even though its diagonal potential and relative-shift pieces pass separate audits.
-3. Less likely but still open: one scalar spatial contraction in the Eq. (44) EH specialization is incomplete despite previous sign audits.
+The most promising unresolved possibility is **an incorrect HR lapse/spatial cross coupling**, not a pure `E^2` or pure shift term. Eq. (46) contains couplings such as `(Phi-ctilde*varphi)(Tr H-Tr h)` and related trace/traceless combinations. Such cross terms directly control the lapse/shift constraints and can spoil `NG3` while leaving isolated `E^2` and `B^2` audits green.
 
 ## Active task list
 
 - [x] Convention bridge / Candidate-C / exact Case-C backgrounds.
 - [x] Reject historical Comelli closure for Gate-2B physics.
 - [x] Independent De Felice high-k gravity target.
-- [x] De Felice Eq. (54) one-sector P(X) matter action.
-- [x] Lagos audits and proof that the Lagos+two-matter hybrid is invalid.
-- [ ] **T1c-DF — full De Felice two-matter scalar action.** ACTIVE.
-  - [x] **DF1** — transcribe/audit both gravitational EH sectors.
-  - [x] **DF2** — combine two P(X) sectors + HR interaction; lapse/shift auxiliaries algebraic.
-  - [x] **DF3** — kinetic degree count exactly 3 on Case C.
-  - [x] **DF4** — Eq. (72) basis + BD algebraic elimination.
-  - [ ] **DF5 — recover the three physical high-k speeds. BLOCKED BY STRUCTURAL FAILURE.**
-    - [x] DF5a — frozen Euler-Lagrange speed extractor.
-    - [x] DF5b — synthetic exactly-solvable validation.
-    - [x] **DF5c — execute integrated Case-C regression: FAIL.** Helicity-0 branch scales as `1/k^2` instead of approaching independent De Felice `c_s^2`.
-    - [ ] **DF5e — root-cause audit of the missing principal spatial term.** NEXT.
-      - [ ] DF5e.1 — audit De Felice Eq. (45)-(46) scalar spatial/tensor block against `hr_scalar_potential.py` term-by-term;
-      - [ ] DF5e.2 — test DF4 without frozen integration-by-parts of `Z_BD_dot`, retaining the full descriptor/DAE including the time-dependent Eq. (72) transform;
-      - [ ] DF5e.3 — isolate EH+HR pure-gravity principal block from matter and compare directly to independent De Felice `NG3`/gradient coefficients;
-      - [ ] DF5e.4 — only after root cause is identified, add a RED regression and implement one minimal fix.
-    - [ ] DF5d — Candidate-C gravity regression only after Case C is green.
-  - [ ] **DF6** — Case-C acceptance: recover B.5 or equivalent reduced action/equation.
-- [ ] **T2** — Candidate-C validation at >=3 `(z,k)` points.
-- [ ] **T3** — identify exactly what the old Comelli 12x12 closure projected out.
-- [ ] **T4** — native/action-based transfer solver.
-- [ ] **T5** — make `tests/test_comelli_native_scalar.py` green + >=3 regressions.
-- [ ] **T6** — full Gate-2B regression suite.
-- [ ] **T7** — time-domain fundamental transfer matrix.
-- [ ] **T8** — continuous GR-connected/adiabatic mode tracking.
-- [ ] **T9** — compute `T_gg,T_gf,T_fg,T_ff` and relative growth.
-- [ ] **T10** — Gate-2B scientific verdict.
-
-## Test caveat
-
-The full repository still cannot be cloned from the container. Focused local mini-package reproduction is valid evidence for DF5c, but do not claim the entire pytest suite is green.
+- [x] De Felice Eq. (54) matter action.
+- [x] EH scalar Eq. (44) direct audit.
+- [x] HR pure spatial and relative-shift audits.
+- [x] DF3 degree count exactly 3.
+- [x] DF4 Eq. (72) basis + BD algebraic degree removal.
+- [ ] **DF5 — recover the three physical high-k speeds. BLOCKED.**
+  - [x] DF5a — physical mode extractor + synthetic validation.
+  - [x] DF5c — integrated Case-C speed regression: FAIL.
+  - [x] DF5e.1 — rule out simple missing `Gamma(H-h)^2`, relative-shift multiplier, EH scalar block, matter Eq. (54), finite-difference cancellation, `K^{-1}` conditioning, and BD Schur as root causes.
+  - [ ] **DF5e.2 — add a direct `NG3` RED regression against De Felice Eq. (78), then audit the full HR lapse/spatial cross-Hessian term-by-term before auxiliary elimination.** NEXT.
+  - [ ] DF5e.3 — derive/compare the high-k auxiliary Schur analytically and identify the exact cross entry that prevents the Eq. (78) cancellation.
+  - [ ] DF5e.4 — only after root cause is identified, implement one minimal physical fix and make the `NG3` regression green.
+  - [ ] DF5d — Candidate-C gravity regression only after Case C is green.
+- [ ] DF6 — recover B.5/equivalent reduced action on Case C.
+- [ ] T2 — Candidate-C validation at >=3 `(z,k)` points.
+- [ ] T3 — identify exactly what old Comelli closure projected out.
+- [ ] T4 — native/action-based transfer solver.
+- [ ] T5 — green `tests/test_comelli_native_scalar.py` + >=3 regressions.
+- [ ] T6 — full Gate-2B regression suite.
+- [ ] T7 — time-domain fundamental transfer matrix.
+- [ ] T8 — continuous GR-connected/adiabatic mode tracking.
+- [ ] T9 — compute `T_gg,T_gf,T_fg,T_ff` and relative growth.
+- [ ] T10 — Gate-2B scientific verdict.
 
 ## Current intentional RED
 
-- `tests/test_de_felice_two_matter_action.py::test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches` is intentionally RED until DF5e finds and repairs the missing principal gradient.
-- `tests/test_comelli_native_scalar.py` remains intentionally RED until DF5/DF6 are closed.
+- Case-C physical speed regression remains RED.
+- `tests/test_comelli_native_scalar.py` remains RED.
+- Next add a more local `NG3` RED test; do not tune its target.
 
 ## Immediate restart instruction
 
-**Resume at DF5e.1.**
+**Resume at DF5e.2.**
 
-1. Re-open De Felice arXiv:1404.0008 Eqs. (44)-(46) from the primary PDF and audit every scalar spatial term against `de_felice_gravity_action.py` and `hr_scalar_potential.py`.
-2. In particular verify the full `Gamma (H-h)^2` term of Eq. (45)-(46); do not assume the exact diagonal beta potential plus shift block reproduces it automatically.
-3. Separately test whether `_canonicalize_linear_zdot_frozen` changes the high-k principal symbol when the `k^2`-dependent Eq. (72) transform is time dependent.
-4. Do not tune physical coefficients or the target. The independent finite-a Case-C target is `c_s^2=-0.6665833419871022` at `a=0.05`.
-5. Update this checkpoint immediately after the first hard ruling, then continue to the next DF5e subtask.
+1. Add a helper/test computing `NG3 = det(K)/(K11*K22-K12^2)` from the reconstructed 3x3 kinetic matrix.
+2. At exact Case C `a=0.05,k=400`, compare it to independent De Felice Eq. (78), approximately `0.018542` (not merely the asymptotic limit).
+3. Keep the failing reconstructed value visible in the assertion/debug output; expected current value is about `4.166`.
+4. Then derive the complete HR scalar quadratic cross-Hessian in g-flat gauge from Eqs. (45)-(46), especially lapse/trace terms, and compare entry-by-entry with `hr_scalar_potential.py` **before** any auxiliary Schur.
+5. Do not modify physical coefficients until one exact mismatched Hessian entry is identified.
+6. Update this checkpoint immediately after that first exact mismatch or after all HR cross entries are cleared.
