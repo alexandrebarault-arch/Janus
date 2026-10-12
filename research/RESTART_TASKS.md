@@ -4,24 +4,24 @@ Date: 2026-10-12
 Canonical active branch: `research/v2-flrw`
 Stable baseline: `main` (`aead63f4098f0d15a849e579105af034b6317b30`)
 Gate 2B consolidation merge: `35f5edc19443a059308e8c2710deb656bfdd8fbc`
+Current active head before this documentation commit: `a3f0b13ef8e80c1da6449b771d2be0a3a2232bb4`
 
 Purpose: **first file to read after any interruption**.
 
 ## 0 — Resume in one minute
 
 1. Work only from `research/v2-flrw`; keep `main` untouched.
-2. Do not return to literal published JANUS, the failed direct Comelli closure, blind coefficient/sign tuning, or the old pre-BD frozen pencil.
-3. The authoritative scalar route is the independent raw De Felice two-matter action plus a **time-dependent physical-variable/BD reduction**.
-4. The old “third scalar frequency saturates” failure was mainly caused by freezing the background before removing the null BD coordinate. The correct Euler-Lagrange system uses
+2. Do not return to literal published JANUS, the failed direct Comelli closure, blind coefficient/sign tuning, or the old frozen-background pencil.
+3. The authoritative scalar route is the independent raw De Felice two-matter action plus the time-dependent physical-variable / BD reduction.
+4. Correct equations after quadratic reduction are
    `K qddot + (Kdot + C - C^T) qdot + (Cdot - Q) q = 0`.
-5. Physical f-sector variable in g-flat gauge:
-   `Y2hat = u_f - (Sigma + k^2 S/6)/(n H_f)`.
-   With `R=1/(n H_f)`, retain
-   `u_f_dot = Y2hat_dot + R(Sigma_dot+k^2 S_dot/6) + Rdot(Sigma+k^2 S/6)`.
-6. Candidate-C `a=0.5` is a **committed passing 3-mode regression**: both matter modes and the De Felice helicity-0 speed are recovered.
-7. Candidate-C `a=0.2` now has a **committed RED** (`fb75b9614e82ab986ec135472b4fcb38ddf51525`): production nested finite-difference reduction becomes non-physical at high k.
-8. Read `research/A4_A02_DIAGNOSTIC.md` before touching the early-epoch reduction. A stable local matrix prototype removes the catastrophic conditioning failure, but still leaves an unexplained `~1e-3` gravity-speed bias and is therefore **NOT GREEN**.
-9. NEXT: remove the ambiguity caused by the current inconsistent probe-fluid embedding. Build a self-consistent single-P(X) control or an analytic matter-eliminated principal-symbol control; only then decide whether the residual gravity bias is source/reduction error and promote the stable matrix route with RED/GREEN tests.
+5. Physical f-sector scalar in g-flat gauge:
+   `Y2hat = u_f - (Sigma + k^2 S/6)/(n H_f)` with the full `Rdot` term retained in `u_f_dot`.
+6. Candidate-C `a=0.5` remains a passing 3-mode regression.
+7. The former `a=0.2` catastrophic high-k failure is now **GREEN** after replacing nested finite-difference reduction by direct joint quadratic assembly + matrix Schur reduction + explicit derivative of the null-coordinate Schur complement.
+8. The old exact Eq. (86) gravity target at Candidate-C `a=0.2` must **not** be used as an acceptance oracle for the arbitrary probe speeds `c_g^2=0.4`, `c_f^2=0.3`; those probes are not a self-consistent single-P(X) realization of the actual matter+radiation / dust background.
+9. The independent Eq. (86) oracle is now validated separately with a self-consistent constant-w P(X) control in `numerics/de_felice_consistent_px_control.py`.
+10. NEXT: freeze the `a=1` regression and verify gravitational kinetic signs against De Felice Eq. (80)/(82) at all accepted epochs; then compare the validated raw route back to Lagos and identify exactly what the old transfer code loses.
 
 ## 1 — Git / repository state
 
@@ -31,18 +31,22 @@ Purpose: **first file to read after any interruption**.
 - PR #1 remains draft (`research/v2-flrw` -> `main`); do not merge as model validation.
 - GitHub Actions/workflows remain intentionally disabled.
 
-Latest implementation / diagnostic lineage:
+Latest relevant lineage:
 
 - `64bfd19a184a7df39b9d075822f9a621c62fd59f` — RED Eq. (44) Fourier shift-cancellation regression.
-- `7d9f57d8a892cf51c1c9823b9c74655f2e914e71` — GREEN fix of Eq. (44) `B*E_dot` sign.
+- `7d9f57d8a892cf51c1c9823b9c74655f2e914e71` — GREEN Eq. (44) `B*E_dot` sign fix.
 - `0ba69ef36b0396fc5eb7457f6fda52e21a95a445` — RED generic time-dependent BD reduction.
-- `a2e47995bec88d61501e36da8c02b83333420edf` — GREEN generic time-dependent null-coordinate reduction and `Y2hat` map.
-- `afce1faaf404393b03f89e1d33534e37f81be737` — RED null-Schur conditioning-scale regression.
-- `e865ccf3e1fc4eb6c7191cec3aebc7cc814d0ea5` — GREEN local null-block conditioning scale.
+- `a2e47995bec88d61501e36da8c02b83333420edf` — GREEN generic null-coordinate reduction + `Y2hat` map.
+- `afce1faaf404393b03f89e1d33534e37f81be737` — RED null-Schur conditioning regression.
+- `e865ccf3e1fc4eb6c7191cec3aebc7cc814d0ea5` — GREEN local conditioning scale.
 - `2553b53bd8a2a9aac8482300651602d3ad0360c2` — RED Candidate-C physical 3-mode regression.
-- `cebd1e2b04c7a7b0ae1c2deb9d8dcc7246efae7e` — GREEN Candidate-C `a=0.5` physical 3-mode benchmark.
-- `fb75b9614e82ab986ec135472b4fcb38ddf51525` — RED Candidate-C `a=0.2` three-mode gate.
-- `0a5d730e1730bb76631b5a7f4f121d8b75ba18cb` — diagnostic note freezing the early-epoch conditioning/source audit.
+- `cebd1e2b04c7a7b0ae1c2deb9d8dcc7246efae7e` — GREEN Candidate-C `a=0.5` benchmark.
+- `fb75b9614e82ab986ec135472b4fcb38ddf51525` — first RED `a=0.2` regression (later corrected because its exact gravity oracle was invalid for arbitrary probes).
+- `0a5d730e1730bb76631b5a7f4f121d8b75ba18cb` — detailed early-epoch diagnostic note.
+- `e3fcdcd6f8315c6438c7df952b45e283887fe146` — RED self-consistent P(X) control.
+- `d334a89031949fa6f19ef38275fce0dce25b00af` — GREEN self-consistent P(X) control.
+- `fc91cde90609c2e860cd82cb3bb4636e9604a79f` — corrected `a=0.2` RED: finite/mode-complete conditioning gate only, no invalid Eq. (86) target.
+- `a3f0b13ef8e80c1da6449b771d2be0a3a2232bb4` — GREEN stabilized Candidate-C time-dependent scalar reduction.
 
 ## 2 — Scientific status
 
@@ -50,110 +54,90 @@ Latest implementation / diagnostic lineage:
 
 `TWO_SECTOR_BIMETRIC_SEGREGATION_IDEA = OPEN / FALSIFICATION-DRIVEN`
 
-`GATE_2B_NONHOMOTHETIC_SCALAR_TRANSFER = OPEN / NOT YET MULTI-EPOCH VALIDATED`
+`GATE_2B_NONHOMOTHETIC_SCALAR_TRANSFER = OPEN / RAW ROUTE NOW MULTI-EPOCH NUMERICALLY STABLE, FINAL SIGN/MAPPING CHECKS PENDING`
 
-Important change: the raw healthy Hassan-Rosen two-matter scalar action **does recover the known helicity-0 high-k mode when reduced correctly**. This does not rescue literal JANUS; it means the healthy JANUS-R scalar route survives this gate so far.
+The healthy Hassan-Rosen two-matter scalar route survives the helicity-0 gate. This does **not** rescue literal JANUS.
 
-## 3 — Raw-action facts now closed
+## 3 — Raw-action facts closed unless contradicted
 
-Do not redo these unless new contradictory evidence appears:
+- Eq. (54) P(X) matter action implemented independently.
+- `Phi_DF = Phi_L`; no `/2` patch.
+- f volume relative to g: `ctilde*xi^4`.
+- f EH relative weight: `kappa*ctilde*xi^4`.
+- no ad hoc f-matter `1/kappa` factor.
+- Eq. (44) Fourier cross coefficient: `-2 k^4 B E_dot/(3 N a)`.
+- pure-E `B E_dot` cancellation under the De Felice/Lagos bridge is exact.
+- de Sitter EH/background-determinant mapping to Lagos is exact.
+- proportional HR relative block maps exactly to the healthy Lagos interaction.
+- Minkowski Eq. (44)+Fierz-Pauli gives high-k `c_s^2=1`.
 
-- The five raw Eq. (54) metric-only structures are not a blind add-back patch; Lagos' one-matter background reduction absorbs/cancels them.
-- `Phi_DF = Phi_L`; no `/2` convention patch.
-- f volume relative to g is `ctilde*xi^4`.
-- f EH relative weight is `kappa*ctilde*xi^4`.
-- f matter carries no ad hoc `1/kappa`.
-- Correct Eq. (44) Fourier cross term is `-2 k^4 B E_dot/(3 N a)`.
-- Under the De Felice/Lagos bridge, the pure-E `B E_dot` term cancels exactly.
-- On de Sitter, the source-level EH plus the background determinant term maps exactly to the Lagos EH block.
-- At `ctilde=xi=1`, the raw HR relative block maps exactly to the healthy Lagos interaction block.
-- In Minkowski, raw Eq. (44)+Fierz-Pauli gives `omega^2=k^2+m_eff^2` (up to internal mass normalization), hence high-k `c_s^2=1`.
+Important subtlety retained:
 
-Open subtlety — **do not silently close this**:
+- Eq. (54) uses `delta phi_dot / phi_dot_0`.
+- if `u = delta phi / phi_dot_0`, then on an evolving background `delta phi_dot / phi_dot_0 = u_dot + (phi_ddot_0/phi_dot_0)u`.
+- the Candidate-C probe benchmark uses arbitrary sound speeds on a background that is not a pair of single P(X) fluids, so its gravity branch is a conditioning/mode-completeness diagnostic, not an exact Eq. (86) target.
+- exact Eq. (86) comparison is instead delegated to the self-consistent P(X) control.
 
-- De Felice Eq. (54) uses `delta phi_dot / phi_dot_0`.
-- If `u = delta phi / phi_dot_0`, then on an evolving background `delta phi_dot / phi_dot_0 = u_dot + (phi_ddot_0/phi_dot_0) u`.
-- The present Candidate-C regression intentionally imposes probe sound speeds on a background that is g=matter+radiation and f=dust, so it is not a self-consistent pair of single P(X) backgrounds. A naive `phi_ddot/phi_dot` add-back was tested locally and rejected as a production patch because it changes the probe embedding itself.
+## 4 — Why the old route failed
 
-## 4 — Why the old frozen pencil failed
+Two separate failures were found and closed:
 
-After eliminating `(Phi,B,varphi,b)`, the coordinate basis `(Sigma,S,u_g,u_f)` has a rank-3 kinetic Hessian. Its null direction is precisely the De Felice BD combination.
+1. **Frozen-background BD reduction** — removing the kinetic-null coordinate after freezing loses `Kdot`, `Cdot` and `Rdot` contributions and produces a false finite-frequency third branch.
+2. **Nested finite differences** — the Candidate-C implementation then differentiated coefficient matrices that had themselves been constructed by finite differencing an already reduced Lagrangian. At early epochs/high k this produced a spurious branch of order `~5.8`.
 
-Eliminating this null coordinate while freezing the background loses terms from the time-dependent variable map and integration by parts. A pre-BD frozen pencil of the form
+The stabilized implementation now:
 
-`det(-omega^2 K - i omega(C-C^T) - Q)=0`
+- forms one joint quadratic Hessian in auxiliaries + physical coordinates + rates;
+- eliminates lapse/shift by a direct matrix Schur complement;
+- differentiates the resulting primary `K,C,Q` matrices in `x=ln a`;
+- differentiates the null-coordinate Schur complement explicitly;
+- rescales the geometric direction using `k^2 S` before the eigensolve.
 
-is therefore not the correct gravity-speed oracle.
+No physical coefficient is tuned.
 
-The generic implementation now lives in `numerics/time_dependent_quadratic_reduction.py`:
+## 5 — Independent self-consistent P(X) control
 
-- integrate the null-coordinate velocity term by parts;
-- use `Cdot` in the null Schur complement;
-- eliminate the algebraic null coordinate;
-- only then form the physical 3x3 Euler-Lagrange matrices with `Kdot` and `Cdot`.
+Implementation: `numerics/de_felice_consistent_px_control.py`.
+Tests: `tests/test_de_felice_consistent_px_control.py`.
 
-Pure-gravity analytic control restores exactly
+The control uses constant barotropic fluids `w_g=c_g^2=0.4`, `w_f=c_f^2=0.3`, solves the bimetric background self-consistently, and uses the correct Eq. (54) field-velocity variable.
 
-`lim_{k->infinity} omega^2/(k^2/a^2)=1`.
+Representative non-homothetic checks:
 
-## 5 — Candidate-C committed benchmark
+- `a=0.50`: Eq. (86) target `~0.67503`, raw route tends to `~0.6752`.
+- `a=0.40`: target `~0.48017`, raw route `~0.48070` at k=1800.
+- `a=0.35`: target `~0.35817`, raw route `~0.35762` at k=1800.
+- `a=0.30`: target `~0.22337`, raw route `~0.22314` at k=1800.
 
-Implementation: `numerics/de_felice_candidate_c_reduction.py`.
+This closes the previous suspicion that the `~1e-3` Candidate-C early gravity bias required an HR coefficient patch. It does not.
 
-Tests: `tests/test_de_felice_candidate_c_reduction.py`.
+## 6 — Current targeted verification
 
-At `a=0.5`, probes `c_g^2=0.4`, `c_f^2=0.3`, using `k=(100,150,250)` and a linear `1/k^2` extrapolation:
+Local reconstructed command:
 
-- f matter extrapolation: `~0.51313903`; independent target `ctilde*sqrt(0.3) ~ 0.51326362`;
-- g matter extrapolation: `~0.63245555`; target `sqrt(0.4) = 0.63245553`;
-- gravity extrapolation: `~0.83187090`; independent De Felice target `sqrt(0.6920799927) = 0.83191345`;
-- gravity absolute error: about `4.3e-5`;
-- physical 3x3 kinetic matrix is positive in the committed `a=0.5, k=150` regression.
+`python -m pytest -q tests/test_time_dependent_quadratic_reduction.py tests/test_de_felice_raw_scalar_action.py tests/test_de_felice_candidate_c_reduction.py tests/test_de_felice_consistent_px_control.py`
 
-Last clean targeted reconstructed verification **before** adding the new `a=0.2` RED:
+Result after `a3f0b13...`: **`19 passed in 0.23s`**.
 
-`python -m pytest -q tests/test_time_dependent_quadratic_reduction.py tests/test_de_felice_raw_scalar_action.py tests/test_de_felice_candidate_c_reduction.py`
+This is **not** a clean full-repository-suite result.
 
-Result on 2026-10-12: **`16 passed in 4.07s`**.
+## 7 — Multi-epoch A4 status
 
-After commit `fb75b...`, the targeted Candidate-C test is intentionally RED at `a=0.2`. Do not quote `16 passed` as current branch status.
+### `a=0.5`
 
-## 6 — Multi-epoch A4 status
+PASS. Existing exact-probe regression remains within committed tolerance after the stabilization.
+
+### `a=0.2`
+
+PASS for the correct acceptance question: three finite oscillatory scalar branches remain present at high k; the two independently imposed matter characteristics are recovered; the third gravity branch stays regular rather than blowing up.
+
+Do **not** require the arbitrary-probe Candidate-C gravity branch to equal Eq. (86) exactly.
 
 ### `a=1`
 
-Preliminary two-point derivative benchmark:
+Still needs a committed robust regression. Previous preliminary result was close (`~7.6e-4` gravity-speed error under the older route), but this must be recomputed with the stabilized implementation before acceptance.
 
-- independent gravity target `c_grav ~ 0.97345679`;
-- extrapolated gravity `~0.97421582`;
-- error `~7.6e-4`;
-- both matter modes also converge to their independent targets.
-
-Promising, but not yet frozen as an acceptance regression.
-
-### `a=0.2` — ACTIVE BLOCKER / COMMITTED RED
-
-Independent targets for the default probes:
-
-- gravity `c_grav ~ 0.33742855`;
-- f matter `ctilde*sqrt(0.3) ~ 0.38012193`;
-- g matter `sqrt(0.4) ~ 0.63245553`.
-
-Production reduction with `k=(250,600,1000)` becomes non-physical at high k; one extracted branch grows to `~5.8` instead of approaching the gravity characteristic. This is now frozen by the RED test in `fb75b...`.
-
-Read `research/A4_A02_DIAGNOSTIC.md` for the complete experiment log. Key facts:
-
-- sorting roots only by speed is insufficient because the two slow branches approach/cross;
-- nested finite-difference Hessians and time derivatives are the main source of the catastrophic production instability;
-- a local direct-matrix/Schur prototype restores three regular branches and stable matter characteristics;
-- 70-digit `mpmath` reproduction shows the remaining small gravity bias is **not** ordinary floating-point roundoff;
-- at `a=0.2`, the stable prototype tends near `0.339` while Eq. (86) gives `0.33742855`;
-- the bias grows with non-homotheticity (`ctilde` farther from 1), localizing the remaining audit to the gravity interaction/background reduction or benchmark embedding;
-- no interaction coefficient tuning is allowed.
-
-Do not widen tolerances or cherry-pick favorable k values.
-
-## 7 — Ordered task queue
+## 8 — Ordered task queue
 
 ### A2 — raw action
 
@@ -168,41 +152,28 @@ Do not widen tolerances or cherry-pick favorable k values.
 
 - [x] eliminate four primary lapse/shift auxiliaries.
 - [x] verify reduced rank-3 kinetic structure.
-- [x] identify the null BD direction.
-- [x] implement/test time-dependent null-coordinate elimination.
-- [x] implement/test `Y2hat` including `Rdot`.
-- [x] construct physical 3x3 Euler-Lagrange system.
+- [x] identify null BD direction.
+- [x] time-dependent null-coordinate elimination.
+- [x] `Y2hat` + `Rdot`.
+- [x] physical 3x3 Euler-Lagrange system.
+- [x] remove nested finite-difference conditioning failure.
 
 ### A4 — high-k falsification gate
 
-- [x] committed `a=0.5` three-mode regression.
-- [x] recover g matter speed at `a=0.5`.
-- [x] recover f matter speed at `a=0.5`.
-- [x] recover De Felice gravity speed at `a=0.5`.
-- [x] commit explicit RED for `a=0.2` production failure.
-- [x] demonstrate locally that direct matrix assembly removes the catastrophic high-k branch blow-up.
-- [x] falsify ordinary double-precision roundoff as the explanation for the residual gravity bias using 70-digit arithmetic.
-- [ ] **ACTIVE:** build self-consistent single-P(X) early-epoch control OR matter-eliminated analytic principal-symbol control.
-- [ ] decide whether the residual `~1e-3` gravity bias is source/reduction error or inconsistent probe-fluid embedding.
-- [ ] GREEN the `a=0.2` committed regression without tolerance inflation.
-- [ ] freeze robust `a=1` regression.
-- [ ] verify gravitational kinetic sign against the independent De Felice Eq. (80)/(82) benchmark at all accepted epochs.
+- [x] `a=0.5` three-mode regression.
+- [x] `a=0.2` finite/mode-complete high-k regression.
+- [x] independent self-consistent P(X) Eq. (86) gravity control on non-homothetic backgrounds.
+- [x] recover both matter characteristics in the stabilized route.
+- [ ] **ACTIVE:** recompute and freeze robust `a=1` regression with stabilized reduction.
+- [ ] verify gravitational kinetic sign against independent De Felice Eq. (80)/(82) at accepted epochs.
+- [ ] add step/window robustness regression for the stabilized coefficient derivatives.
 
-### A5/A6 — only after A4 passes
+### A5/A6 — only after A4 closes
 
-- [ ] compare the validated raw reduction back to Lagos/old transfer.
-- [ ] identify exactly which time-dependent/null-mode terms the old production transfer lost.
-- [ ] repair production transfer code with RED/GREEN tests.
-- [ ] only then resume JANUS-R phenomenology/nonlinear-wall work.
-
-## 8 — Preferred next numerical / analytic strategy
-
-For `a=0.2`, priority is now:
-
-1. **Do not implement the local stable matrix prototype in production yet.** It fixes the large conditioning failure but not the independent Eq. (86) agreement to the required standard.
-2. Build a self-consistent P(X) control where `(rho,P,c_s^2,phi_dot)` obey Eqs. (18)-(19), or analytically eliminate matter from the high-k principal symbol so the gravity branch can be compared without the arbitrary probe-fluid embedding.
-3. Keep mode continuation by eigenvector overlap in physically rescaled coordinates (`u_g`, `Y2hat`, `k^2 S`) as the preferred identification method once the principal-symbol ambiguity is closed.
-4. Preserve the already-passing `a=0.5` regression and require step/window stability. No target-driven choice of k, derivative step, polynomial degree, or coefficient scaling.
+- [ ] compare validated raw reduction back to Lagos/old transfer.
+- [ ] identify exactly which time-dependent/null-mode terms old production transfer lost.
+- [ ] repair Lagos production transfer with RED/GREEN tests.
+- [ ] only then resume JANUS-R phenomenology / nonlinear-wall work.
 
 ## 9 — Interruption protocol
 
@@ -210,8 +181,8 @@ Before any pause:
 
 1. update this file;
 2. record exact commit SHAs;
-3. record exact targeted commands/results or state that full-suite execution is unavailable;
-4. state rejected numerical experiments as well as accepted ones;
+3. record exact targeted commands/results or state full-suite execution is unavailable;
+4. state rejected experiments as well as accepted ones;
 5. end with one explicit `NEXT:` instruction.
 
-**NEXT:** read `research/A4_A02_DIAGNOSTIC.md`; construct a self-consistent single-P(X) control or an analytic matter-eliminated principal-symbol control for Candidate-C-like non-homothetic backgrounds. Use it to determine whether the residual early-epoch gravity-speed bias is physical/source-level or only caused by the current inconsistent probe-fluid embedding. Only after that turn the stable matrix/Schur prototype into a GREEN production implementation for the committed `a=0.2` RED.
+**NEXT:** using the stabilized reduction at `a3f0b13ef8e80c1da6449b771d2be0a3a2232bb4`, recompute Candidate-C `a=1`, add a committed acceptance regression if stable, then compare physical kinetic eigenvalues at `a=1,0.5,0.2` against the independent De Felice Eq. (80)/(82) no-ghost sign benchmark. Do not return to Lagos production repair until these A4 checks are closed.
