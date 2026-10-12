@@ -8,6 +8,7 @@ from numerics.bigravity_scalar_action import hr_diagonal_scalar_potential_densit
 from numerics.hr_scalar_potential import (
     hr_scalar_potential_density_de_felice,
     hr_scalar_quadratic_potential_density_de_felice,
+    hr_scalar_quadratic_action_density_de_felice,
 )
 
 
@@ -80,8 +81,8 @@ def test_quadratic_hr_shift_block_matches_de_felice_delta_rank_one_form():
 
 
 def test_de_felice_quadratic_helper_has_opposite_diagonal_sign_to_standard_beta_potential():
-    # De Felice uses alpha_i L_i(K), K=I-sqrt(g^-1 f).  In the standard
-    # beta_n e_n(sqrt(g^-1 f)) basis this carries the opposite overall sign.
+    # Historical audit helper: this evaluates the exact diagonal potential
+    # plus the analytic shift block, rather than extracting only O(delta^2).
     kwargs = dict(
         N=1.0, a=0.8, n=1.06, alpha=0.92,
         m2=0.7, Mg2=1.3, betas=(0.2,0.4,-0.1,0.15,0.3), k=2.2,
@@ -91,3 +92,38 @@ def test_de_felice_quadratic_helper_has_opposite_diagonal_sign_to_standard_beta_
     standard = hr_scalar_potential_density_de_felice(**kwargs)
     de_felice = hr_scalar_quadratic_potential_density_de_felice(**kwargs)
     assert math.isclose(de_felice, -standard, rel_tol=3e-13, abs_tol=3e-13)
+
+
+def test_analytic_quadratic_hr_beta1_case_has_expected_scalar_hessian():
+    N=1.0; a=0.8; xi=1.17; c=0.86
+    alpha=a*xi; n=N*xi*c
+    m2=0.7; Mg2=1.3; k=2.2
+    common=dict(
+        N=N,a=a,n=n,alpha=alpha,m2=m2,Mg2=Mg2,
+        betas=(0.0,1.0,0.0,0.0,0.0),k=k,
+        B_g=0.0,psi_g=0.0,E_g=0.0,
+    )
+    # x=(Sigma,S,Phi_g,Phi_f).  The beta1-only Hessian follows directly
+    # from De Felice Eqs. (45)-(46), including the last (ctilde-1) term in Delta.
+    steps=(2e-5,2e-5,2e-5,2e-5)
+    def V(x):
+        Sigma,S,Pg,Pf=x
+        return hr_scalar_quadratic_action_density_de_felice(
+            **common,Phi_g=Pg,Phi_f=Pf,psi_f=Sigma,E_f=S,B_f=0.0
+        )
+    import numpy as np
+    H=np.zeros((4,4)); z=np.zeros(4); base=V(z)
+    for i in range(4):
+        ei=np.zeros(4); ei[i]=steps[i]
+        H[i,i]=(V(ei)-2*base+V(-ei))/steps[i]**2
+        for j in range(i+1,4):
+            ej=np.zeros(4); ej[j]=steps[j]
+            H[i,j]=H[j,i]=(V(ei+ej)-V(ei-ej)-V(-ei+ej)+V(-ei-ej))/(4*steps[i]*steps[j])
+    pref=m2*Mg2*N*a**3
+    expected=np.zeros((4,4))
+    expected[0,0]=pref*3.0*xi
+    expected[1,1]=pref*xi*k**4/6.0
+    expected[2,2]=pref*3.0*xi
+    expected[3,3]=pref*xi*c
+    expected[0,2]=expected[2,0]=-pref*3.0*xi
+    assert np.allclose(H,expected,rtol=2e-10,atol=2e-10)
