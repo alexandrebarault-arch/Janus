@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from numerics.comelli_case_c import case_c_background_from_a
 from numerics.de_felice_action_principal import gravity_principal_action
+from numerics.de_felice_invariants import kinetic_ng3
 from numerics.de_felice_two_matter_action import (
     DFKessenceFluid,
     matter_log_phidot_rates,
@@ -16,7 +17,6 @@ from numerics.de_felice_two_matter_action import (
     bd_basis_transform,
     eliminate_bd_mode,
     physical_squared_phase_speeds,
-    kinetic_ng3,
 )
 
 
