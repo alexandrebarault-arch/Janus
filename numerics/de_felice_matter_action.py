@@ -2,7 +2,7 @@
 
 The scalar matter sectors are kept separate from the Lagos-Ferreira metric
 action until the variable-normalization bridge is fully closed.  This module
-therefore uses the De Felice lapse convention directly:
+uses the De Felice lapse convention directly:
 
     g_00 = -N^2 (1 + 2 Phi),
     V_i = D_i B,
@@ -10,8 +10,8 @@ therefore uses the De Felice lapse convention directly:
            + (D_i D_j - gamma_ij Delta/3) E.
 
 For a P(X) matter sector, Eq. (54) gives the complete quadratic scalar matter
-action.  The functions below return the bracket-level density before the
-background volume factor ``N a^3`` (or its f-sector analogue) is applied.
+action. The functions below return either the bracket-level density or the
+sector Lagrangian including its background volume factor.
 """
 
 from __future__ import annotations
@@ -76,26 +76,15 @@ def kessence_scalar_quadratic_density(
 
     ``delta_phi_over_phidot`` denotes ``delta phi / dot(phi_0)`` and
     ``delta_phidot_over_phidot`` denotes ``delta dot(phi) / dot(phi_0)`` at
-    the evaluation time.  No slow-background replacement of one by the time
-    derivative of the other is made inside this algebraic action block.
+    the evaluation time. No slow-background replacement is made internally.
 
     The return value is ``L_matter^(2)`` before multiplication by ``N a^3``.
     The P(X) representation requires ``cs2 > 0``; dust is taken only after
     reducing the constrained action.
     """
     _validate_kessence_inputs(
-        rho,
-        pressure,
-        lapse,
-        scale_factor,
-        k,
-        Phi,
-        B,
-        psi,
-        E,
-        delta_phi_over_phidot,
-        delta_phidot_over_phidot,
-        cs2=cs2,
+        rho, pressure, lapse, scale_factor, k, Phi, B, psi, E,
+        delta_phi_over_phidot, delta_phidot_over_phidot, cs2=cs2,
     )
     if lapse <= 0.0 or scale_factor <= 0.0:
         raise ValueError("lapse and scale_factor must be positive")
@@ -121,11 +110,7 @@ def kessence_scalar_quadratic_density(
         + 0.5 * enthalpy * (Phi - qdot) * (2.0 * Phi - tr_h)
     )
     spatial_matter_block = (
-        -0.5
-        * lapse**2
-        * enthalpy
-        / scale_factor**2
-        * k**2
+        -0.5 * lapse**2 * enthalpy / scale_factor**2 * k**2
         * (q + scale_factor * B / lapse) ** 2
     )
     return float(metric_pressure_block + temporal_matter_block + spatial_matter_block)
@@ -142,22 +127,17 @@ def lagos_scalar_metric_to_de_felice(
 ) -> DeFeliceScalarMetric:
     """Map one Lagos-Ferreira scalar metric sector to De Felice variables.
 
-    Lagos uses
+    Lagos Eq. (2.23) gives ``delta N = Phi_L``. Therefore its lapse scalar has
+    the same normalization as De Felice's ``g_00=-N^2(1+2 Phi)`` even though
+    the PDF text extraction of Lagos Eq. (2.21) can lose the printed factor 2.
+    Comparing the shift and spatial line elements gives, in flat Fourier space,
 
-        ds^2 = -N^2(1+Phi_L)dt^2 + 2 N d_i B_L dt dx^i
-             + a^2[(1-2 Psi_L)delta_ij+2 d_i d_j E_L]dx^i dx^j,
-
-    with the explicit factor ``N`` absent for metric 1 because its background
-    lapse is fixed to one. De Felice uses ``1+2 Phi`` and a trace/traceless
-    split for the spatial scalar. Comparing the two line elements gives
-
-        Phi = Phi_L/2,
+        Phi = Phi_L,
         B = B_L/a,
         E = 2 E_L,
-        psi = -Psi_L - k^2 E_L/3
+        psi = -Psi_L - k^2 E_L/3.
 
-    in flat Fourier space. The same map applies to the second metric with its
-    own scale factor ``b``.
+    The same map applies to the second metric using its own scale factor ``b``.
     """
     vals = (scale_factor, k, Phi_lagos, B_lagos, Psi_lagos, E_lagos)
     if not all(math.isfinite(v) for v in vals):
@@ -167,7 +147,7 @@ def lagos_scalar_metric_to_de_felice(
     if k < 0.0:
         raise ValueError("k must be non-negative")
     return DeFeliceScalarMetric(
-        Phi=float(0.5 * Phi_lagos),
+        Phi=float(Phi_lagos),
         B=float(B_lagos / scale_factor),
         psi=float(-Psi_lagos - k**2 * E_lagos / 3.0),
         E=float(2.0 * E_lagos),
@@ -192,28 +172,15 @@ def kessence_lagos_sector_quadratic_lagrangian(
     """One minimally coupled P(X) sector in Lagos metric variables.
 
     The returned quantity includes the background volume factor ``N a^3``.
-    It is therefore directly addable to another sector written in the same
-    coordinate time, once the gravitational action normalization is matched.
     """
     metric = lagos_scalar_metric_to_de_felice(
-        scale_factor=scale_factor,
-        k=k,
-        Phi_lagos=Phi_lagos,
-        B_lagos=B_lagos,
-        Psi_lagos=Psi_lagos,
-        E_lagos=E_lagos,
+        scale_factor=scale_factor, k=k, Phi_lagos=Phi_lagos,
+        B_lagos=B_lagos, Psi_lagos=Psi_lagos, E_lagos=E_lagos,
     )
     density = kessence_scalar_quadratic_density(
-        rho=rho,
-        pressure=pressure,
-        cs2=cs2,
-        lapse=lapse,
-        scale_factor=scale_factor,
-        k=k,
-        Phi=metric.Phi,
-        B=metric.B,
-        psi=metric.psi,
-        E=metric.E,
+        rho=rho, pressure=pressure, cs2=cs2, lapse=lapse,
+        scale_factor=scale_factor, k=k,
+        Phi=metric.Phi, B=metric.B, psi=metric.psi, E=metric.E,
         delta_phi_over_phidot=delta_phi_over_phidot,
         delta_phidot_over_phidot=delta_phidot_over_phidot,
     )
