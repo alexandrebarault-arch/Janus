@@ -61,66 +61,121 @@ def _raw_bg(b):
     return RawBimetricBackground(N=1.0,a=b.a,xi=b.xi,ctilde=b.ctilde,kappa=b.kappa,H=b.H,Hf=b.Hf,Hdot_over_N=b.Hdot,Hfdot_over_n=b.Hfdot_over_n,mu_g=b.mu_g,mu_f=b.mu_f,zeta=b.zeta,gamma_m=b.gamma_m,Mgsq=1.0)
 
 
-def _hessian(fun, scales):
-    scales=np.asarray(scales,float); n=len(scales); out=np.zeros((n,n)); z=np.zeros(n); f0=fun(z)
+def _quadratic_hessian(fun, scales):
+    """Exact-quadratic coefficient extraction in one joint variable space."""
+    scales=np.asarray(scales,float); n=len(scales); out=np.zeros((n,n)); z=np.zeros(n)
+    f0=fun(z); fi=[]
     for i in range(n):
         ei=np.zeros(n); ei[i]=scales[i]
-        fp=fun(ei); fm=fun(-ei)
-        out[i,i]=(fp+fm-2*f0)/scales[i]**2
+        vi=fun(ei); fi.append(vi)
+        out[i,i]=2.0*(vi-f0)/scales[i]**2
         for j in range(i):
             ej=np.zeros(n); ej[j]=scales[j]
-            out[i,j]=out[j,i]=(fun(ei+ej)-fun(ei-ej)-fun(-ei+ej)+fun(-ei-ej))/(4*scales[i]*scales[j])
+            out[i,j]=out[j,i]=(fun(ei+ej)-vi-fi[j]+f0)/(scales[i]*scales[j])
     return out
 
 
-def _eliminate_primary(b,k,p,v,cs2_g,cs2_f):
-    # p=(u_g,Y2hat,S,Sigma), v in the same order.
-    ug,Y2,S,Sigma=p; ugd,Y2d,Sd,Sigmad=v
-    mapped=de_felice_y2hat_map(k=k,R=b.R,Rdot=b.Rdot,Y2hat=Y2,S=S,Sigma=Sigma,Y2hat_dot=Y2d,S_dot=Sd,Sigma_dot=Sigmad)
-    def Laux(aux):
-        Phi,B,varphi,bshift=aux
-        d=raw_two_matter_scalar_density_g_flat(_raw_bg(b),k=k,Phi=Phi,B=B,varphi=varphi,b=bshift,Sigma=Sigma,S=S,Sigma_dot=Sigmad,S_dot=Sd,rho_g=b.rho_g,pressure_g=b.pressure_g,cs2_g=cs2_g,u_g=ug,u_g_dot=ugd,rho_f=b.rho_f,pressure_f=b.pressure_f,cs2_f=cs2_f,u_f=mapped.u_f,u_f_dot=mapped.u_f_dot)
-        return b.a**3*d
-    s=np.array([1.0,b.a/max(k,1.0),1.0,b.a*b.xi/max(k,1.0)])
-    A=_hessian(Laux,s)
-    z=np.zeros(4); f0=Laux(z); g=np.zeros(4)
-    for i in range(4):
-        e=np.zeros(4); e[i]=s[i]
-        g[i]=(Laux(e)-Laux(-e))/(2*s[i])
-    return float(f0-0.5*g@np.linalg.solve(A,g))
-
-
 def _primary_matrices(a,k,cs2_g,cs2_f):
+    """Return primary K,C,Q after one Schur elimination of lapse/shift.
+
+    Building the full joint Hessian first avoids the former nested finite
+    differences of an already numerically reduced Lagrangian.
+    """
     b=candidate_c_raw_background(a)
-    qscale=np.array([1.0,1.0,1.0/max(k*k,1.0),1.0])
-    scale=np.r_[qscale,qscale]
-    def F(x): return _eliminate_primary(b,k,x[:4],x[4:],cs2_g,cs2_f)
-    H=_hessian(F,scale)
-    return b,H[4:,4:],H[4:,:4],H[:4,:4]
+    scales=np.array([
+        1.0,b.a/max(k,1.0),1.0,b.a*b.xi/max(k,1.0),
+        1.0,1.0,1.0/max(k*k,1.0),1.0,
+        1.0,1.0,1.0/max(k*k,1.0),1.0,
+    ])
+    def lag(x):
+        Phi,B,varphi,bshift=x[:4]
+        ug,Y2,S,Sigma=x[4:8]
+        ugd,Y2d,Sd,Sigmad=x[8:12]
+        mapped=de_felice_y2hat_map(
+            k=k,R=b.R,Rdot=b.Rdot,Y2hat=Y2,S=S,Sigma=Sigma,
+            Y2hat_dot=Y2d,S_dot=Sd,Sigma_dot=Sigmad,
+        )
+        density=raw_two_matter_scalar_density_g_flat(
+            _raw_bg(b),k=k,Phi=Phi,B=B,varphi=varphi,b=bshift,
+            Sigma=Sigma,S=S,Sigma_dot=Sigmad,S_dot=Sd,
+            rho_g=b.rho_g,pressure_g=b.pressure_g,cs2_g=cs2_g,
+            u_g=ug,u_g_dot=ugd,rho_f=b.rho_f,pressure_f=b.pressure_f,
+            cs2_f=cs2_f,u_f=mapped.u_f,u_f_dot=mapped.u_f_dot,
+        )
+        return b.a**3*density
+    H=_quadratic_hessian(lag,scales)
+    A=H[:4,:4]
+    X=H[:4,4:]
+    D=H[4:,4:]
+    reduced=D-X.T@np.linalg.solve(A,X)
+    return b,reduced[4:,4:],reduced[4:,:4],reduced[:4,:4]
+
+
+def _primary_derivatives(a,k,cs2_g,cs2_f,diff_step):
+    """Five-point derivatives in x=ln(a) of primary coefficient matrices."""
+    h=float(diff_step)
+    vals=[_primary_matrices(a*math.exp(j*h),k,cs2_g,cs2_f) for j in (-2,-1,0,1,2)]
+    b,K,C,Q=vals[2]
+    def d1(idx):
+        fm2,fm1,_,fp1,fp2=[v[idx] for v in vals]
+        return (fm2-8.0*fm1+8.0*fp1-fp2)/(12.0*h)
+    def d2(idx):
+        fm2,fm1,f0,fp1,fp2=[v[idx] for v in vals]
+        return (-fp2+16.0*fp1-30.0*f0+16.0*fm1-fm2)/(12.0*h*h)
+    Kx=d1(1); Cx=d1(2); Qx=d1(3); Cxx=d2(2)
+    Kdot=b.H*Kx
+    Cdot=b.H*Cx
+    Qdot=b.H*Qx
+    Cddot=b.Hdot*Cx+b.H*b.H*Cxx
+    return b,K,C,Q,Kdot,Cdot,Qdot,Cddot
+
+
+def _physical_with_derivatives(a,k,cs2_g,cs2_f,diff_step):
+    b,K,C,Q,Kdot,Cdot,Qdot,Cddot=_primary_derivatives(a,k,cs2_g,cs2_f,diff_step)
+    keep=[0,1,2]; z=3
+    d=C[keep,z]-C[z,keep]
+    r=Q[keep,z]-Cdot[z,keep]
+    q=float(Q[z,z]-Cdot[z,z])
+    if abs(q)<=1e-14*max(1.0,abs(float(Q[z,z])),abs(float(Cdot[z,z]))):
+        raise np.linalg.LinAlgError("time-dependent null coordinate remains non-algebraic")
+    Kred=K[np.ix_(keep,keep)]-np.outer(d,d)/q
+    Cred=C[np.ix_(keep,keep)]-np.outer(d,r)/q
+    Qred=Q[np.ix_(keep,keep)]-np.outer(r,r)/q
+
+    dd=Cdot[keep,z]-Cdot[z,keep]
+    rd=Qdot[keep,z]-Cddot[z,keep]
+    qdot=float(Qdot[z,z]-Cddot[z,z])
+    Kred_dot=(
+        Kdot[np.ix_(keep,keep)]
+        -(np.outer(dd,d)+np.outer(d,dd))/q
+        +np.outer(d,d)*qdot/q**2
+    )
+    Cred_dot=(
+        Cdot[np.ix_(keep,keep)]
+        -(np.outer(dd,r)+np.outer(d,rd))/q
+        +np.outer(d,r)*qdot/q**2
+    )
+    red=eliminate_time_dependent_null_coordinate(K,C,Q,Cdot,null_index=3,tol=1e-8)
+    return b,red,Kred_dot,Cred_dot
 
 
 def physical_matrices(a,k,*,cs2_g=0.4,cs2_f=0.3,diff_step=5e-4):
-    b,K,C,Q=_primary_matrices(a,k,cs2_g,cs2_f)
-    ap=a*math.exp(diff_step); am=a*math.exp(-diff_step)
-    _,_,Cp,_=_primary_matrices(ap,k,cs2_g,cs2_f)
-    _,_,Cm,_=_primary_matrices(am,k,cs2_g,cs2_f)
-    Cdot=b.H*(Cp-Cm)/(2*diff_step)
-    red=eliminate_time_dependent_null_coordinate(K,C,Q,Cdot,null_index=3,tol=1e-8)
+    b,red,_,_=_physical_with_derivatives(a,k,cs2_g,cs2_f,diff_step)
     return b,red
 
 
 def mode_speeds(a,k,*,cs2_g=0.4,cs2_f=0.3,diff_step=5e-4):
-    b,red=physical_matrices(a,k,cs2_g=cs2_g,cs2_f=cs2_f,diff_step=diff_step)
-    outer=5.0*diff_step
-    _,rp=physical_matrices(a*math.exp(outer),k,cs2_g=cs2_g,cs2_f=cs2_f,diff_step=diff_step)
-    _,rm=physical_matrices(a*math.exp(-outer),k,cs2_g=cs2_g,cs2_f=cs2_f,diff_step=diff_step)
-    Kdot=b.H*(rp.K-rm.K)/(2*outer)
-    Cdot=b.H*(rp.C-rm.C)/(2*outer)
+    b,red,Kdot,Cdot=_physical_with_derivatives(a,k,cs2_g,cs2_f,diff_step)
     eom=euler_lagrange_matrices(red.K,red.C,red.Q,Kdot,Cdot)
-    Ki=np.linalg.inv(eom.K)
-    A=np.block([[np.zeros((3,3)),np.eye(3)],[-Ki@eom.E,-Ki@eom.D]])
+    # Rescale the geometric S direction before the eigensolve. This is a
+    # similarity-equivalent coordinate conditioning, not a physics change.
+    T=np.diag([1.0,1.0,1.0/(k*k)])
+    K=T.T@eom.K@T
+    D=T.T@eom.D@T
+    E=T.T@eom.E@T
+    A=np.block([[np.zeros((3,3)),np.eye(3)],[-np.linalg.solve(K,E),-np.linalg.solve(K,D)]])
     roots=np.linalg.eigvals(A)
-    speeds=sorted([float(r.imag*a/k) for r in roots if r.imag>1e-6])
+    speeds=sorted(float(r.imag*a/k) for r in roots if r.imag>1e-6)
     if len(speeds)!=3:
         raise RuntimeError(f"expected 3 oscillatory scalar pairs, got {len(speeds)}")
     return np.asarray(speeds)
