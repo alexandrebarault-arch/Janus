@@ -1,12 +1,12 @@
 # Gate 2B — authoritative restart checkpoint
 
-Date: 2026-10-12
+Date: 2026-10-13
 Branch: `research/gate2b-nonhomothetic-transfer`
 Purpose: single restart point after interruption. Update after every hard finding or task-state change.
 
 ## Verdict
 
-**Gate 2B remains OPEN / NOT VALIDATED**, but the action reconstruction has crossed an important validation threshold: the full two-matter De Felice/Hassan-Rosen action now reproduces the published Boulware–Deser constraint and scalar degree count on exact Case C without using the Lagos one-matter specialization.
+**Gate 2B remains OPEN / NOT VALIDATED**, but the action reconstruction has crossed an important validation threshold: the full two-matter De Felice/Hassan-Rosen action reproduces the Boulware–Deser constraint, the scalar degree count, and the Eq. (72) physical-variable basis on exact Case C. The current frontier is the physical high-k dispersion of the resulting 3-field action.
 
 ## Closed hard facts
 
@@ -57,16 +57,30 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 ### Full two-matter action and BD constraint
 
-- `numerics/de_felice_two_matter_action.py` assembles:
-  1. both De Felice Eq. (44) EH sectors;
-  2. the De Felice-sign HR interaction with analytic relative-shift block;
-  3. both Eq. (54) matter sectors.
+- `numerics/de_felice_two_matter_action.py` assembles both EH sectors, the De Felice-sign HR interaction, and both Eq. (54) matter sectors.
 - It works in g-flat gauge (`psi_g=E_g=0`) and eliminates `Phi_g,Phi_f,B_g,B_f` by Schur complement.
 - RED degree-count test `ea2ecb6`, initial module `2072ff6`, physical HR assembly `d79f1d2`.
-- Exact Case-C scratch verification after the HR sign/shift corrections gives one kinetic eigenvalue null to relative precision roughly `1e-11`–`1e-14` at `a=0.1,0.2,0.4`, leaving exactly three scalar kinetic directions.
-- The null rate direction in `(Sigma_dot,S_dot,qg_dot,qf_dot)` is
-  `(1,0,0,1/(n H_f))` within numerical precision, exactly matching the De Felice Eq. (72) transformation at fixed `Y1,Y2,Y3` in g-flat gauge.
-- This is the first reconstruction in the branch that simultaneously reproduces the ghost-free degree count and the published physical-variable basis without tuning.
+- Exact Case-C verification after HR sign/shift corrections gives one null kinetic direction and exactly three scalar kinetic directions.
+- The null rate direction in `(Sigma_dot,S_dot,qg_dot,qf_dot)` is `(1,0,0,1/(n H_f))`, matching De Felice Eq. (72).
+
+### DF4 — physical basis and BD removal CLOSED
+
+- Eq. (72) basis transform is implemented as `(Y1,Y2,Y3,Z_BD)` with `Z_BD=Sigma`.
+- `Z_BD_dot` has no quadratic kinetic direction on exact Case C; remaining linear `Y*Zdot` terms are canonically integrated by parts at frozen coefficients.
+- `Z_BD` is algebraically invertible and is eliminated by Schur complement, leaving a 6x6 quadratic Hessian for `(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)` and a positive 3x3 kinetic matrix on the Case-C control points.
+- TDD/implementation trail: `9145fe1` (RED), `c7db4d1` (BD elimination), `e1c7ea5` (canonicalization RED), `2fc77e0` (canonicalization fix).
+
+### DF5 — physical high-k dispersion ACTIVE
+
+- A new RED regression `bb43d94` requires the physical 6x6 action on high-k Case C to recover three scalar branches in g-coordinate units:
+  1. gravity `c_s^2 -> -2/3` (Comelli B.5);
+  2. g-fluid `c_s^2 -> 1/3`;
+  3. f-fluid `c_s^2 -> ctilde^2 c_{s,f}^2`.
+- `physical_squared_phase_speeds()` was added in `3dc45ce`. It constructs the frozen Euler-Lagrange system
+  `K Yddot + (C.T-C) Ydot - M Y = 0`
+  from the physical Hessian and returns `c_s^2=-(a lambda/k)^2` from its +/- eigenvalue pairs.
+- The extractor itself was independently checked in scratch on a decoupled synthetic action and recovered `(-2/3,1/3,0.4)` to ~`1e-16`. The same synthetic regression is now committed in `18d1fec`.
+- The integrated physical Case-C speed regression has not yet been executed in the container because the repo is not mountable/cloneable there. Do **not** mark DF5 green until that physical action test is actually run or equivalently reproduced independently.
 
 ## Active task list
 
@@ -79,8 +93,12 @@ Purpose: single restart point after interruption. Update after every hard findin
   - [x] **DF1** — transcribe/audit both gravitational EH sectors in De Felice variables.
   - [x] **DF2** — combine two P(X) sectors + HR interaction; lapse/shift auxiliaries algebraic.
   - [x] **DF3** — g-flat gauge degree count: 4 variables before BD removal, kinetic rank exactly 3 on Case C.
-  - [ ] **DF4 — transform to `(Y1,Y2,Y3,Z_BD)` using Eq. (72), verify `Z_BD_dot` disappears, and algebraically eliminate `Z_BD`.** NEXT.
-  - [ ] **DF5** — obtain physical 3x3 kinetic/gradient matrices and recover the three high-k speeds (g fluid, f fluid, gravity).
+  - [x] **DF4** — transform to `(Y1,Y2,Y3,Z_BD)`, remove `Z_BD_dot`, and algebraically eliminate `Z_BD`.
+  - [ ] **DF5** — recover the three physical high-k speeds from the 3-field action. IN PROGRESS.
+    - [x] DF5a — define frozen Euler-Lagrange mode extractor from 6x6 physical Hessian.
+    - [x] DF5b — validate extractor on a synthetic exactly-solvable 3-mode action.
+    - [ ] **DF5c — run/reproduce the integrated high-k Case-C action regression and confirm `(-2/3,1/3,ctilde^2 c_sf^2)`.** NEXT.
+    - [ ] DF5d — once Case C is green, test the gravity branch on Candidate C against De Felice `scalar_cs2`.
   - [ ] **DF6** — Case-C acceptance: recover B.5 or exactly equivalent reduced action/equation.
 - [ ] **T2** — Candidate-C validation: recover De Felice `c_s~0.8319` at >=3 `(z,k)` points.
 - [ ] **T3** — identify exactly what the old Comelli 12x12 closure projected out.
@@ -102,15 +120,11 @@ The container cannot clone the repo over the network. RED/GREEN commits are pres
 
 ## Immediate restart instruction
 
-**Resume at T1c-DF / DF4.**
+**Resume at T1c-DF / DF5c.**
 
-1. In g-flat gauge define normalized physical variables using De Felice Eq. (72):
-   - `Y1 ~ q_g`;
-   - `Y3 = S`;
-   - `Y2/phi_f_dot = q_f - (Sigma + k^2 S/6)/(n H_f)` for `Delta=-k^2`.
-2. Introduce one fourth variable `Z_BD=Sigma`.
-3. Transform the full post-auxiliary 8x8 quadratic Hessian, not only the 4x4 kinetic block.
-4. Verify the row/column of `Z_BD_dot` vanishes to numerical tolerance on exact Case C.
-5. Eliminate the algebraic `Z_BD` position by Schur complement, leaving a 6x6 quadratic form for `(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)`.
-6. Only then extract 3x3 kinetic/gradient principal matrices and compare their speeds to De Felice.
-7. Update this checkpoint after each hard finding.
+1. Reproduce or execute the integrated Case-C test in `tests/test_de_felice_two_matter_action.py::test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches`.
+2. If it fails, inspect the measured three `c_s^2` values before changing any coefficient. Do not tune the test target.
+3. The expected high-k branches are `-2/3`, `1/3`, and `ctilde^2 c_sf^2` in g-coordinate units.
+4. If Case C passes, add Candidate-C high-k regression(s) using the independent De Felice `diagnostics()['scalar_cs2']` target.
+5. Only after DF5 passes should DF6 reduce the gravity eigenvector/equation to B.5 explicitly.
+6. Update this checkpoint immediately after every hard finding.
