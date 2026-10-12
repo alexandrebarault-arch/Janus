@@ -56,10 +56,11 @@ class FlatGaugeReducedAction:
 @dataclass(frozen=True)
 class PhysicalFlatGaugeAction:
     transformed_hessian: np.ndarray
+    canonical_hessian: np.ndarray
     physical_hessian: np.ndarray
     kinetic_hessian: np.ndarray
     bd_algebraic_coefficient: float
-    zdot_residual: float
+    zdot_kinetic_residual: float
 
 
 def _as4(values,name: str)->np.ndarray:
@@ -180,39 +181,27 @@ def eliminate_flat_gauge_auxiliaries(
 
 
 def bd_basis_transform(bg: ScalarBackground,bgp: ScalarBackgroundDerivatives)->np.ndarray:
-    """Map Eq. (72) variables plus the BD scalar to old g-flat variables.
+    """Map Eq. (72) variables plus BD scalar to the old g-flat variables.
 
-    New coordinate order is ``(Y1,Y2,Y3,Z,Y1dot,Y2dot,Y3dot,Zdot)`` with
-    normalized matter variables
-
-      Y1=q_g,
-      Y3=S=E_f,
-      Y2=q_f-(Sigma+k^2 S/6)/(n H_f),
-      Z=Sigma=psi_f.
-
-    Old order is ``(Sigma,S,q_g,q_f,Sigma_dot,S_dot,q_g_dot,q_f_dot)``.
-    The time dependence of ``A=1/(n H_f)=a/H_omega`` is retained through
-    ``A_dot`` in the position-to-rate block.
+    New order is ``(Y1,Y2,Y3,Z,Y1dot,Y2dot,Y3dot,Zdot)`` and old order is
+    ``(Sigma,S,q_g,q_f,Sigma_dot,S_dot,q_g_dot,q_f_dot)``. Matter variables
+    are normalized by their background field velocities.
     """
     if bg.H_omega==0.0:
         raise ValueError("H_omega must be non-zero for the Eq. (72) basis")
-    A=bg.a/bg.H_omega
+    A=bg.a/bg.H_omega  # =1/(n H_f)
     A_dot=(bg.H*bg.H_omega-bgp.H_omega_prime)/(bg.H_omega*bg.H_omega)
     C=bg.k2/6.0
-
     T=np.zeros((4,4),dtype=float)
-    # old (Sigma,S,qg,qf) from new (Y1,Y2,Y3,Z)
-    T[0,3]=1.0
-    T[1,2]=1.0
-    T[2,0]=1.0
-    T[3,1]=1.0
+    T[0,3]=1.0                  # Sigma=Z
+    T[1,2]=1.0                  # S=Y3
+    T[2,0]=1.0                  # q_g=Y1
+    T[3,1]=1.0                  # q_f=Y2+A(Z+C Y3)
     T[3,2]=A*C
     T[3,3]=A
-
     Tdot=np.zeros((4,4),dtype=float)
     Tdot[3,2]=A_dot*C
     Tdot[3,3]=A_dot
-
     M=np.zeros((8,8),dtype=float)
     M[:4,:4]=T
     M[4:8,:4]=Tdot
@@ -220,24 +209,56 @@ def bd_basis_transform(bg: ScalarBackground,bgp: ScalarBackgroundDerivatives)->n
     return M
 
 
+def _canonicalize_linear_zdot_frozen(H: np.ndarray)->np.ndarray:
+    """Integrate Y*Zdot by parts at frozen coefficients.
+
+    This is the local/principal canonical form used for DF4/DF5. Time
+    derivatives of the mixed coefficients contribute only to the lower-order
+    mass block and must be restored in the future time-domain solver.
+    """
+    H=np.asarray(H,dtype=float)
+    if H.shape!=(8,8):
+        raise ValueError("BD-basis Hessian must be 8x8")
+    H=0.5*(H+H.T)
+    Hxx=H[:4,:4].copy()
+    C=H[:4,4:8].copy()
+    K=H[4:8,4:8].copy()
+    z=3
+    c=C[:,z].copy()
+    for i in range(3):
+        C[z,i]-=c[i]
+    # c[z] Z Zdot is a total derivative at frozen coefficient.
+    C[:,z]=0.0
+    K[z,:]=0.0
+    K[:,z]=0.0
+    out=np.block([[Hxx,C],[C.T,K]])
+    return 0.5*(out+out.T)
+
+
 def eliminate_bd_mode(
     bg: ScalarBackground,bgp: ScalarBackgroundDerivatives,*,betas,
     g_fluid: DFKessenceFluid,f_fluid: DFKessenceFluid,
     finite_difference_step: float=5.0e-5,
 )->PhysicalFlatGaugeAction:
-    """Transform to Eq. (72), remove Zdot, and integrate out algebraic Z."""
+    """Transform to Eq. (72), canonicalize Zdot, and integrate out Z."""
     reduced=eliminate_flat_gauge_auxiliaries(
         bg,bgp,betas=betas,g_fluid=g_fluid,f_fluid=f_fluid,
         finite_difference_step=finite_difference_step)
     M=bd_basis_transform(bg,bgp)
     H=M.T@reduced.reduced_hessian@M
     H=0.5*(H+H.T)
-    scale=max(1.0,float(np.linalg.norm(H,ord=np.inf)))
-    zdot_residual=float(max(np.linalg.norm(H[7,:],ord=np.inf),np.linalg.norm(H[:,7],ord=np.inf))/scale)
 
-    # Zdot is absent in the exact action. Drop its numerically residual row/col.
+    Kraw=H[4:8,4:8]
+    kscale=max(1.0,float(np.linalg.norm(Kraw,ord=np.inf)))
+    zdot_kinetic_residual=float(max(
+        np.linalg.norm(Kraw[3,:],ord=np.inf),
+        np.linalg.norm(Kraw[:,3],ord=np.inf),
+    )/kscale)
+
+    Hc=_canonicalize_linear_zdot_frozen(H)
+    # Zdot is now identically absent. Drop it.
     keep7=[0,1,2,3,4,5,6]
-    H7=H[np.ix_(keep7,keep7)]
+    H7=Hc[np.ix_(keep7,keep7)]
     zidx=3
     hzz=float(H7[zidx,zidx])
     if abs(hzz)<=1e-14*max(1.0,float(np.linalg.norm(H7,ord=np.inf))):
@@ -250,8 +271,9 @@ def eliminate_bd_mode(
     K=0.5*(Hphys[3:6,3:6]+Hphys[3:6,3:6].T)
     return PhysicalFlatGaugeAction(
         transformed_hessian=np.asarray(H,dtype=float),
+        canonical_hessian=np.asarray(Hc,dtype=float),
         physical_hessian=np.asarray(Hphys,dtype=float),
         kinetic_hessian=np.asarray(K,dtype=float),
         bd_algebraic_coefficient=hzz,
-        zdot_residual=zdot_residual,
+        zdot_kinetic_residual=zdot_kinetic_residual,
     )
