@@ -16,6 +16,7 @@ from numerics.de_felice_two_matter_action import (
     bd_basis_transform,
     eliminate_bd_mode,
     physical_squared_phase_speeds,
+    kinetic_ng3,
 )
 
 
@@ -80,8 +81,6 @@ def test_eq72_bd_basis_has_no_Zdot_kinetic_direction():
         transformed = M.T @ reduced.reduced_hessian @ M
         K = transformed[4:8,4:8]
         scale = max(1.0,float(np.linalg.norm(K,ord=np.inf)))
-        # Zdot may appear linearly as Y*Zdot; those terms are removable by
-        # integration by parts. It must not appear in the velocity Hessian.
         assert np.linalg.norm(K[3,:],ord=np.inf) < 3e-7*scale
         assert np.linalg.norm(K[:,3],ord=np.inf) < 3e-7*scale
 
@@ -114,17 +113,24 @@ def test_physical_speed_extractor_recovers_decoupled_known_branches():
     assert np.allclose(measured,np.sort(expected),rtol=1e-12,atol=1e-12)
 
 
+def test_case_c_finite_k_ng3_matches_de_felice_eq78():
+    point, g, f = _case_c(0.05, 400.0)
+    physical = eliminate_bd_mode(
+        point.metric, point.derivatives,
+        betas=(0.0,1.0,0.0,0.0,0.0),
+        g_fluid=g, f_fluid=f, finite_difference_step=2e-6,
+    )
+    measured = kinetic_ng3(physical.kinetic_hessian)
+    expected = 0.0185421788  # De Felice Eq. (78)-(81), same exact Case-C point.
+    assert math.isclose(measured, expected, rel_tol=0.03, abs_tol=5e-4), (measured, expected)
+
+
 def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
-    # Compare the reconstructed physical 3-field action against a completely
-    # independent principal-action implementation of De Felice Eqs. 80/82/86.
     point, g, f = _case_c(0.05, 400.0)
     physical = eliminate_bd_mode(
         point.metric, point.derivatives,
         betas=(0.0,1.0,0.0,0.0,0.0),
         g_fluid=g, f_fluid=f,
-        # E_f is sampled through k^2 E_f in the exact HR helper; at k=400 a
-        # uniform 2e-5 step leaves the perturbative metric domain.  Keep this
-        # RED regression inside the local quadratic neighbourhood instead.
         finite_difference_step=2e-6,
     )
     measured = np.sort(physical_squared_phase_speeds(
