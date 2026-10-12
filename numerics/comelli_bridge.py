@@ -91,11 +91,10 @@ def additional_gauge_invariants(
 ) -> dict[str, float]:
     """Reconstruct Comelli-Crisostomi-Pilo additional scalar invariants.
 
-    Implements identities derived from the gauge-invariant definitions in
-    arXiv:1202.1986 and reused by arXiv:1403.5679. The searchable PDF text
-    drops the prime on E in the F1+F2 relation; direct substitution of the
-    published definitions gives B1-E_prime. Primes denote conformal-time
-    derivatives.
+    Implements the useful relations in Appendix A of arXiv:1202.1986,
+    reused in arXiv:1403.5679.  The distinction is important:
+    A.1 and A.4 contain E_prime, while A.3 contains unprimed E.
+    Primes denote conformal-time derivatives.
     """
     if c == 0.0:
         raise ValueError("c must be non-zero")
@@ -103,17 +102,21 @@ def additional_gauge_invariants(
     if denom == 0.0:
         raise ValueError("H + H_omega must be non-zero")
 
+    # Comelli 2012 A.1.
     B2 = B1 - (1.0 - c**2) * E_prime
 
     dphi = Phi1 - Phi2
-    f_sum = ((B1 - E_prime) * (H + H_omega) - 2.0 * c**2 * dphi) / c**2
+    # Comelli 2012 A.3 / Comelli 2014 A.18: E is unprimed here.
+    f_sum = ((B1 - E) * (H + H_omega) - 2.0 * c**2 * dphi) / c**2
     f_weighted = (H - H_omega) * dphi
     F1 = (H_omega * f_sum - f_weighted) / denom
     F2 = f_sum - F1
 
+    # Comelli 2012 A.4: E is primed here, independently of A.3.
     a_diff = (
         (B1 - E_prime) * (c * (H - H_omega) - c_prime) / c**2
     )
+    # Comelli 2012 A.5-A.6.
     a_sum = (
         2.0 * c**3 * (Psi2 - Psi1)
         + B1 * (c * (H_omega + H) - 3.0 * c_prime)
