@@ -8,8 +8,9 @@ background simplifications:
    Fourier relative-shift square inserted from Eqs. (45)-(46);
 3. one Eq. (54) P(X) matter action for each metric.
 
-The first reduction is performed in g-flat gauge (psi_g=E_g=0). Lapses and
-shifts are algebraic auxiliaries and are eliminated by a Schur complement.
+The reduction is performed in g-flat gauge (psi_g=E_g=0). Lapses and shifts
+are eliminated first. The remaining Boulware-Desser algebraic scalar is then
+made explicit with the gauge-invariant variables of De Felice Eq. (72).
 """
 
 from __future__ import annotations
@@ -24,9 +25,10 @@ from numerics.de_felice_matter_action import kessence_scalar_quadratic_density
 from numerics.hr_scalar_potential import hr_scalar_quadratic_potential_density_de_felice
 
 
-FLAT_DYNAMIC_ORDER = ("psi_f", "E_f", "q_g", "q_f")
-FLAT_RATE_ORDER = ("psi_f_dot", "E_f_dot", "q_g_dot", "q_f_dot")
-AUXILIARY_ORDER = ("Phi_g", "Phi_f", "B_g", "B_f")
+FLAT_DYNAMIC_ORDER=("psi_f","E_f","q_g","q_f")
+FLAT_RATE_ORDER=("psi_f_dot","E_f_dot","q_g_dot","q_f_dot")
+AUXILIARY_ORDER=("Phi_g","Phi_f","B_g","B_f")
+PHYSICAL_ORDER=("Y1","Y2","Y3")
 
 
 @dataclass(frozen=True)
@@ -34,7 +36,6 @@ class DFKessenceFluid:
     rho: float
     pressure: float
     cs2: float
-
     def __post_init__(self):
         vals=(self.rho,self.pressure,self.cs2)
         if not all(math.isfinite(v) for v in vals):
@@ -50,6 +51,15 @@ class FlatGaugeReducedAction:
     auxiliary_hessian: np.ndarray
     auxiliary_rank: int
     auxiliary_condition_number: float
+
+
+@dataclass(frozen=True)
+class PhysicalFlatGaugeAction:
+    transformed_hessian: np.ndarray
+    physical_hessian: np.ndarray
+    kinetic_hessian: np.ndarray
+    bd_algebraic_coefficient: float
+    zdot_residual: float
 
 
 def _as4(values,name: str)->np.ndarray:
@@ -80,12 +90,6 @@ def matter_log_phidot_rates(
     bg: ScalarBackground,bgp: ScalarBackgroundDerivatives,*,
     g_fluid: DFKessenceFluid,f_fluid: DFKessenceFluid,
 )->tuple[float,float]:
-    """Return d ln(phi_dot_0)/dt for the two P(X) backgrounds.
-
-    De Felice Eqs. (17)-(18) give, for u=phi_dot/lapse,
-    ``d ln u/dt = -3 lapse H cs2``.  The g-cosmic-time choice has N=1,
-    while the f lapse is ``n=xi*c``.
-    """
     p=_cosmic_background(bg,bgp)
     rg=-3.0*p["Hg"]*g_fluid.cs2
     rf=p["n_dot_over_n"]-3.0*p["n"]*p["Hf"]*f_fluid.cs2
@@ -97,13 +101,6 @@ def flat_gauge_action_value(
     g_fluid: DFKessenceFluid,f_fluid: DFKessenceFluid,
     dynamic,rates,auxiliaries,
 )->float:
-    """Common-normalized quadratic action value in g-flat gauge.
-
-    ``q_g`` and ``q_f`` denote ``delta phi / phi_dot_0``.  Their supplied
-    rates are the true time derivatives of q.  Eq. (54), however, contains
-    ``delta phi_dot / phi_dot_0``; therefore the background drift of
-    ``phi_dot_0`` is added explicitly below.
-    """
     q=_as4(dynamic,"dynamic"); v=_as4(rates,"rates"); aux=_as4(auxiliaries,"auxiliaries")
     p=_cosmic_background(bg,bgp)
     psi_f,E_f,q_g,q_f=q
@@ -179,4 +176,82 @@ def eliminate_flat_gauge_auxiliaries(
         auxiliary_hessian=np.asarray(Qaa,dtype=float),
         auxiliary_rank=rank,
         auxiliary_condition_number=float(np.linalg.cond(Qaa)),
+    )
+
+
+def bd_basis_transform(bg: ScalarBackground,bgp: ScalarBackgroundDerivatives)->np.ndarray:
+    """Map Eq. (72) variables plus the BD scalar to old g-flat variables.
+
+    New coordinate order is ``(Y1,Y2,Y3,Z,Y1dot,Y2dot,Y3dot,Zdot)`` with
+    normalized matter variables
+
+      Y1=q_g,
+      Y3=S=E_f,
+      Y2=q_f-(Sigma+k^2 S/6)/(n H_f),
+      Z=Sigma=psi_f.
+
+    Old order is ``(Sigma,S,q_g,q_f,Sigma_dot,S_dot,q_g_dot,q_f_dot)``.
+    The time dependence of ``A=1/(n H_f)=a/H_omega`` is retained through
+    ``A_dot`` in the position-to-rate block.
+    """
+    if bg.H_omega==0.0:
+        raise ValueError("H_omega must be non-zero for the Eq. (72) basis")
+    A=bg.a/bg.H_omega
+    A_dot=(bg.H*bg.H_omega-bgp.H_omega_prime)/(bg.H_omega*bg.H_omega)
+    C=bg.k2/6.0
+
+    T=np.zeros((4,4),dtype=float)
+    # old (Sigma,S,qg,qf) from new (Y1,Y2,Y3,Z)
+    T[0,3]=1.0
+    T[1,2]=1.0
+    T[2,0]=1.0
+    T[3,1]=1.0
+    T[3,2]=A*C
+    T[3,3]=A
+
+    Tdot=np.zeros((4,4),dtype=float)
+    Tdot[3,2]=A_dot*C
+    Tdot[3,3]=A_dot
+
+    M=np.zeros((8,8),dtype=float)
+    M[:4,:4]=T
+    M[4:8,:4]=Tdot
+    M[4:8,4:8]=T
+    return M
+
+
+def eliminate_bd_mode(
+    bg: ScalarBackground,bgp: ScalarBackgroundDerivatives,*,betas,
+    g_fluid: DFKessenceFluid,f_fluid: DFKessenceFluid,
+    finite_difference_step: float=5.0e-5,
+)->PhysicalFlatGaugeAction:
+    """Transform to Eq. (72), remove Zdot, and integrate out algebraic Z."""
+    reduced=eliminate_flat_gauge_auxiliaries(
+        bg,bgp,betas=betas,g_fluid=g_fluid,f_fluid=f_fluid,
+        finite_difference_step=finite_difference_step)
+    M=bd_basis_transform(bg,bgp)
+    H=M.T@reduced.reduced_hessian@M
+    H=0.5*(H+H.T)
+    scale=max(1.0,float(np.linalg.norm(H,ord=np.inf)))
+    zdot_residual=float(max(np.linalg.norm(H[7,:],ord=np.inf),np.linalg.norm(H[:,7],ord=np.inf))/scale)
+
+    # Zdot is absent in the exact action. Drop its numerically residual row/col.
+    keep7=[0,1,2,3,4,5,6]
+    H7=H[np.ix_(keep7,keep7)]
+    zidx=3
+    hzz=float(H7[zidx,zidx])
+    if abs(hzz)<=1e-14*max(1.0,float(np.linalg.norm(H7,ord=np.inf))):
+        raise np.linalg.LinAlgError("BD scalar is not algebraically invertible at this point")
+    phys=[0,1,2,4,5,6]
+    Hp=H7[np.ix_(phys,phys)]
+    hpz=H7[np.ix_(phys,[zidx])]
+    Hphys=Hp-hpz@hpz.T/hzz
+    Hphys=0.5*(Hphys+Hphys.T)
+    K=0.5*(Hphys[3:6,3:6]+Hphys[3:6,3:6].T)
+    return PhysicalFlatGaugeAction(
+        transformed_hessian=np.asarray(H,dtype=float),
+        physical_hessian=np.asarray(Hphys,dtype=float),
+        kinetic_hessian=np.asarray(K,dtype=float),
+        bd_algebraic_coefficient=hzz,
+        zdot_residual=zdot_residual,
     )
