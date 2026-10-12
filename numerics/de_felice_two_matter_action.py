@@ -277,3 +277,65 @@ def eliminate_bd_mode(
         bd_algebraic_coefficient=hzz,
         zdot_kinetic_residual=zdot_kinetic_residual,
     )
+
+
+def physical_squared_phase_speeds(
+    physical_hessian: np.ndarray,
+    *,
+    a: float,
+    k: float,
+    pair_rtol: float = 5.0e-3,
+) -> np.ndarray:
+    """Return the three frozen-coefficient scalar phase speeds squared.
+
+    The physical quadratic action is written in the order
+    ``(Y1,Y2,Y3,Y1dot,Y2dot,Y3dot)`` as
+
+        L2 = 1/2 Y^T M Y + Y^T C Ydot + 1/2 Ydot^T K Ydot.
+
+    With coefficients frozen, the Euler-Lagrange equations are
+
+        K Yddot + (C.T-C) Ydot - M Y = 0.
+
+    The six first-order eigenvalues occur in +/- pairs.  For a mode
+    ``exp(lambda t)`` the dimensionless propagation speed in g-metric units is
+    ``c_s^2 = -(a lambda / k)^2``.  This convention therefore returns positive
+    values for oscillatory healthy modes and negative values for a gradient
+    instability such as Comelli Case-C B.5.
+    """
+    H=np.asarray(physical_hessian,dtype=float)
+    if H.shape!=(6,6):
+        raise ValueError("physical_hessian must be 6x6")
+    if not np.all(np.isfinite(H)):
+        raise ValueError("physical_hessian must be finite")
+    if not (a>0.0 and math.isfinite(a)):
+        raise ValueError("a must be finite and positive")
+    if not (k>0.0 and math.isfinite(k)):
+        raise ValueError("k must be finite and positive")
+
+    H=0.5*(H+H.T)
+    M=H[:3,:3]
+    C=H[:3,3:6]
+    K=0.5*(H[3:6,3:6]+H[3:6,3:6].T)
+    if np.linalg.matrix_rank(K)!=3:
+        raise np.linalg.LinAlgError("physical kinetic matrix must have rank 3")
+    gyro=C.T-C
+    F=np.block([
+        [np.zeros((3,3),dtype=float),np.eye(3,dtype=float)],
+        [np.linalg.solve(K,M),-np.linalg.solve(K,gyro)],
+    ])
+    lam=np.linalg.eigvals(F)
+    cs2=-(a*lam/k)**2
+    scale=np.maximum(1.0,np.abs(cs2.real))
+    good=np.abs(cs2.imag) <= 2.0e-5*scale
+    if np.count_nonzero(good)!=6:
+        raise RuntimeError("frozen scalar modes did not form three real c_s^2 pairs")
+    vals=np.sort(cs2.real[good])
+    out=np.empty(3,dtype=float)
+    for i in range(3):
+        lo=float(vals[2*i]); hi=float(vals[2*i+1])
+        mean=0.5*(lo+hi)
+        if abs(hi-lo)>pair_rtol*max(1.0,abs(mean)):
+            raise RuntimeError("scalar eigenvalues did not organize into +/- mode pairs")
+        out[i]=mean
+    return out
