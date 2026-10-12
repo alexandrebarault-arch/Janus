@@ -43,9 +43,9 @@ def test_background_constraint_potential_parts_are_same_equation():
 def test_additional_gauge_invariants_follow_raw_definitions_not_a3_typo():
     """A.3 must be derived from the raw definitions in Eqs. 4.6-4.7.
 
-    Those definitions imply calB1-calE' = Xi2-c^2 Xi1.  Substitution into
+    Those definitions imply calB1-calE' = Xi2-c^2 Xi1. Substitution into
     Phi_i and calF_i therefore fixes A.3 with calE', even though Appendix A
-    prints an unprimed calE.  This test is independent of the printed A.3.
+    prints an unprimed calE. This test is independent of the printed A.3.
     """
     from numerics.comelli_bridge import additional_gauge_invariants
 
@@ -54,16 +54,16 @@ def test_additional_gauge_invariants_follow_raw_definitions_not_a3_typo():
     c = 0.83
     c_prime = -0.07
 
-    # Raw scalar perturbations and their first derivatives.
     raw_B1, raw_B2 = 0.08, 0.14
     raw_E1, raw_E2 = 0.07, 0.04
-    raw_E1_prime, raw_E2_prime = 0.02, -0.01
+    raw_E1_prime, raw_E2_prime = 0.025, -0.015
     raw_F1, raw_F2 = 0.011, -0.006
 
     Xi1 = raw_B1 + raw_E1_prime
     Xi2 = raw_B2 + raw_E2_prime
     calE = raw_E1 - raw_E2
     calE_prime = raw_E1_prime - raw_E2_prime
+    assert not math.isclose(calE, calE_prime)
     calB1 = raw_B2 - c**2 * raw_B1 + (1.0 - c**2) * raw_E1_prime
 
     Phi1 = raw_F1 - H * Xi1
@@ -71,7 +71,6 @@ def test_additional_gauge_invariants_follow_raw_definitions_not_a3_typo():
     calF1 = raw_F2 - raw_F1 + (H - H_omega) * Xi1
     calF2 = raw_F2 - raw_F1 + (H - H_omega) * Xi2 / c**2
 
-    # Identity forced directly by the raw definitions.
     assert math.isclose(calB1 - calE_prime, Xi2 - c**2 * Xi1, abs_tol=1e-12)
 
     B1_prime = -0.04
@@ -101,8 +100,6 @@ def test_additional_gauge_invariants_follow_raw_definitions_not_a3_typo():
         - 2.0 * c**2 * (Phi1 - Phi2),
         abs_tol=1e-12,
     )
-
-    # A.1 and A.4 also contain calE'.
     assert math.isclose(
         gi["B2"], calB1 - (1.0 - c**2) * calE_prime, abs_tol=1e-12
     )
