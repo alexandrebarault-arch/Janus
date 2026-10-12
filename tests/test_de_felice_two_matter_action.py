@@ -121,7 +121,11 @@ def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
     physical = eliminate_bd_mode(
         point.metric, point.derivatives,
         betas=(0.0,1.0,0.0,0.0,0.0),
-        g_fluid=g, f_fluid=f, finite_difference_step=2e-5,
+        g_fluid=g, f_fluid=f,
+        # E_f is sampled through k^2 E_f in the exact HR helper; at k=400 a
+        # uniform 2e-5 step leaves the perturbative metric domain.  Keep this
+        # RED regression inside the local quadratic neighbourhood instead.
+        finite_difference_step=2e-6,
     )
     measured = np.sort(physical_squared_phase_speeds(
         physical.physical_hessian,
@@ -139,4 +143,4 @@ def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
     ]))
     assert math.isclose(grav.cs2, -0.6665833419871022, rel_tol=2e-10, abs_tol=2e-10)
     assert measured.shape == (3,)
-    assert np.allclose(measured, expected, rtol=0.08, atol=0.03)
+    assert np.allclose(measured, expected, rtol=0.08, atol=0.03), (measured, expected)
