@@ -110,9 +110,11 @@ def test_metric1_shift_self_coefficient_matches_lagos_eq36():
     state[INTERACTION_STATE_ORDER.index("B1")] = B1
 
     measured = interaction_lagrangian_healthy(bg, state)
+    # Lagos raises the derivative index with h_1^{ij}, so for the comoving
+    # Fourier wave number stored in bg.k2, partial_i B partial^i B = k^2 B^2/a^2.
     expected = (
         p.r**2 * p.Z / (2.0*(p.Nbar + p.r))
-        * bg.k2 * B1**2
+        * (bg.k2/bg.a**2) * B1**2
     )
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
 
