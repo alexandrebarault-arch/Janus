@@ -99,3 +99,15 @@ def test_candidate_c_physical_kinetic_signs_match_principal_no_ghost_sign():
         _,principal_kinetic=_principal_gravity_quantities(a)
         assert np.all(eig>0.0)
         assert principal_kinetic>0.0
+
+
+def test_candidate_c_high_k_extrapolation_is_stable_to_derivative_step():
+    cases=(
+        (1.0,(250.0,400.0,600.0)),
+        (0.5,(100.0,150.0,250.0)),
+        (0.2,(250.0,400.0,600.0)),
+    )
+    for a,k_values in cases:
+        fine=candidate_c_three_mode_extrapolation(a,k_values=k_values,diff_step=2.5e-4)
+        coarse=candidate_c_three_mode_extrapolation(a,k_values=k_values,diff_step=2.0e-3)
+        assert np.allclose(fine.extrapolated,coarse.extrapolated,rtol=0.0,atol=1e-4)
