@@ -1,3 +1,4 @@
+import math
 import sys
 from pathlib import Path
 
@@ -8,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from numerics.comelli_case_c import case_c_background_from_a
 from numerics.de_felice_two_matter_action import (
     DFKessenceFluid,
+    matter_log_phidot_rates,
     flat_gauge_quadratic_hessian,
     eliminate_flat_gauge_auxiliaries,
 )
@@ -16,9 +18,22 @@ from numerics.de_felice_two_matter_action import (
 def _case_c(a, k):
     point = case_c_background_from_a(a, k=k)
     g = DFKessenceFluid(rho=point.rho1, pressure=point.rho1/3.0, cs2=1.0/3.0)
-    # Keep a positive P(X) regulator until after constrained reduction.
     f = DFKessenceFluid(rho=point.rho2, pressure=0.0, cs2=0.1)
     return point, g, f
+
+
+def test_matter_rate_variables_include_background_phidot_drift():
+    point, g, f = _case_c(0.2,20.0)
+    rg, rf = matter_log_phidot_rates(point.metric, point.derivatives, g_fluid=g, f_fluid=f)
+    bg = point.metric; bgp = point.derivatives
+    Hg = bg.H/bg.a
+    expected_g = -3.0*Hg*g.cs2
+    n_dot_over_n = (bgp.xi_prime/bg.xi + bgp.c_prime/bg.c)/bg.a
+    n = bg.xi*bg.c
+    Hf = bg.H_omega/(bg.a*bg.xi*bg.c)
+    expected_f = n_dot_over_n - 3.0*n*Hf*f.cs2
+    assert math.isclose(rg, expected_g, rel_tol=2e-13, abs_tol=2e-13)
+    assert math.isclose(rf, expected_f, rel_tol=2e-13, abs_tol=2e-13)
 
 
 def test_two_matter_flat_gauge_hessian_is_symmetric():
