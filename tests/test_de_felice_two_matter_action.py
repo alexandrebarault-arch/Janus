@@ -12,6 +12,8 @@ from numerics.de_felice_two_matter_action import (
     matter_log_phidot_rates,
     flat_gauge_quadratic_hessian,
     eliminate_flat_gauge_auxiliaries,
+    bd_basis_transform,
+    eliminate_bd_mode,
 )
 
 
@@ -62,3 +64,35 @@ def test_two_matter_case_c_has_exactly_three_kinetic_directions_after_auxiliary_
         assert np.count_nonzero(np.abs(eig)>tol) == 3
         assert np.min(np.abs(eig)) < tol
         assert reduced.auxiliary_rank == 4
+
+
+def test_eq72_bd_basis_removes_Zdot_from_full_post_auxiliary_action():
+    for a,k in ((0.1,12.0),(0.2,20.0),(0.4,30.0)):
+        point, g, f = _case_c(a,k)
+        reduced = eliminate_flat_gauge_auxiliaries(
+            point.metric, point.derivatives,
+            betas=(0.0,1.0,0.0,0.0,0.0),
+            g_fluid=g, f_fluid=f, finite_difference_step=5e-5,
+        )
+        M = bd_basis_transform(point.metric, point.derivatives)
+        transformed = M.T @ reduced.reduced_hessian @ M
+        scale = max(1.0,float(np.linalg.norm(transformed,ord=np.inf)))
+        # New order: (Y1,Y2,Y3,Z,Y1dot,Y2dot,Y3dot,Zdot).
+        assert np.linalg.norm(transformed[7,:],ord=np.inf) < 3e-6*scale
+        assert np.linalg.norm(transformed[:,7],ord=np.inf) < 3e-6*scale
+
+
+def test_bd_elimination_leaves_three_by_three_physical_kinetic_matrix():
+    point, g, f = _case_c(0.2,20.0)
+    physical = eliminate_bd_mode(
+        point.metric, point.derivatives,
+        betas=(0.0,1.0,0.0,0.0,0.0),
+        g_fluid=g, f_fluid=f, finite_difference_step=5e-5,
+    )
+    assert physical.physical_hessian.shape == (6,6)
+    assert physical.kinetic_hessian.shape == (3,3)
+    assert np.all(np.isfinite(physical.physical_hessian))
+    eig = np.linalg.eigvalsh(physical.kinetic_hessian)
+    scale = max(1.0,float(np.max(np.abs(eig))))
+    assert np.count_nonzero(np.abs(eig)>1e-7*scale) == 3
+    assert abs(physical.bd_algebraic_coefficient) > 1e-10
