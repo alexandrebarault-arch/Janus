@@ -49,3 +49,34 @@ def test_beta1_radiation_background_satisfies_branch_friedmann_and_conservation(
                         rel_tol=2e-13, abs_tol=1e-13)
     assert math.isclose(bg.h, bg.H + bg.N_prime / N,
                         rel_tol=2e-13, abs_tol=1e-13)
+
+
+def test_lagos_auxiliary_equations_have_rank_four_and_reconstruct_constraints():
+    from numerics.lagos_scalar import (
+        LagosScalarState,
+        beta1_radiation_background,
+        lagos_auxiliary_residuals,
+        solve_lagos_auxiliaries,
+    )
+
+    bg = beta1_radiation_background(N=0.1, a=1.0, beta1=1.0, m2=1.0)
+    state = LagosScalarState(
+        E1=0.021,
+        E1_prime=-0.014,
+        E2=0.032,
+        E2_prime=0.017,
+        psi2=0.011,
+        psi2_prime=-0.006,
+    )
+
+    solution = solve_lagos_auxiliaries(
+        bg, state, k=5.0, w=1.0 / 3.0, beta=(0.0, 1.0, 0.0, 0.0, 0.0),
+        m2=1.0, nu2=1.0,
+    )
+    residuals = lagos_auxiliary_residuals(
+        solution.vector, bg, state, k=5.0, w=1.0 / 3.0,
+        beta=(0.0, 1.0, 0.0, 0.0, 0.0), m2=1.0, nu2=1.0,
+    )
+
+    assert solution.rank == 4
+    assert max(abs(x) for x in residuals) < 2e-11
