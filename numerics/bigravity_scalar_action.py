@@ -19,18 +19,20 @@ RAW_FIELD_ORDER = (
 def shift_interaction_lagrangian(bg, *, k: float, B1: float, B2: float) -> float:
     """Return the complete quadratic shift-interaction block.
 
-    With Fourier convention ``partial^2 -> -k^2``, the B1^2, B2^2 and B1 B2
-    terms from Lagos-Ferreira Eqs. (3.6)-(3.8) combine exactly into
+    Lagos raises spatial indices with the background spatial metric of the
+    corresponding sector.  For a comoving Fourier wave number k, combining
+    the B1^2, B2^2 and B1 B2 pieces of Eqs. (3.6)-(3.8) gives
 
-        a^3 M1^2 Z k^2 / [2(Nbar+r)] * (r B1 - Nbar B2)^2.
+        a M1^2 Z k^2 / [2(Nbar+r)]
+        * (r B1 - (Nbar/r) B2)^2.
     """
-    if bg.Nbar + bg.r == 0.0:
-        raise ValueError("Nbar+r must be non-zero")
+    if bg.Nbar + bg.r == 0.0 or bg.r == 0.0:
+        raise ValueError("Nbar+r and r must be non-zero")
     pref = (
-        bg.a**3 * bg.M1sq * bg.Z * k**2
+        bg.a * bg.M1sq * bg.Z * k**2
         / (2.0 * (bg.Nbar + bg.r))
     )
-    return float(pref * (bg.r * B1 - bg.Nbar * B2) ** 2)
+    return float(pref * (bg.r * B1 - (bg.Nbar / bg.r) * B2) ** 2)
 
 
 def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
@@ -40,6 +42,9 @@ def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
     ``alpha_L=0`` and constant Planck masses, Lagos-Ferreira Eqs. (3.6)-(3.7)
     contain velocities only for ``Psi_A`` and ``E_A``.  Lapses ``Phi_A`` and
     shifts ``B_A`` therefore have identically zero velocity rows/columns.
+
+    Their ``partial^2`` uses the spatial background metric.  Thus
+    ``a^2 partial_1^2 -> -k^2`` and ``b^2 partial_2^2 -> -k^2`` for comoving k.
     """
     K = np.zeros((8, 8), dtype=float)
 
@@ -50,12 +55,12 @@ def raw_kinetic_hessian(bg, *, k: float) -> np.ndarray:
 
     pref1 = bg.a**3 * bg.M1sq
     K[i_p1, i_p1] = -6.0 * pref1
-    cross1 = -2.0 * k**2 / bg.a**2 * pref1
+    cross1 = -2.0 * k**2 * pref1
     K[i_p1, i_e1] = K[i_e1, i_p1] = cross1
 
     pref2 = bg.Nbar * bg.b**3 * bg.M2sq
     K[i_p2, i_p2] = -6.0 / bg.Nbar**2 * pref2
-    cross2 = -2.0 * k**2 / (bg.b**2 * bg.Nbar**2) * pref2
+    cross2 = -2.0 * k**2 / bg.Nbar**2 * pref2
     K[i_p2, i_e2] = K[i_e2, i_p2] = cross2
 
     return K
