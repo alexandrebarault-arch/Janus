@@ -2,19 +2,30 @@
 
 This is the Gate-2B action-level bridge between the independently reconstructed
 Lagos-Ferreira pure-metric scalar action and the independent De Felice P(X)
-matter action.  It does not import the failed Comelli scalar closure.
+matter action. It does not import the failed Comelli scalar closure.
 
-The common normalization is ``M1^2 a^3``.  With ``M1^-2 = 8 pi G`` the raw
-matter actions therefore enter as
+A crucial convention point is that Lagos' metric block has already used the
+background equations and therefore already contains the metric-only matter
+terms. Lagos & Ferreira explicitly separate ``S_phi^(2)`` as the terms that
+contain the matter perturbation, while ``S_T1^(2)`` contains the quadratic
+metric terms inherited from the matter action. Adding the complete De Felice
+Eq. (54) on top of that block double-counts those terms and destroys the
+expected scalar kinetic degeneracy.
 
-    (8 pi G / a^3) * [L_g + L_f],
+The compatible assembly used here is therefore:
 
-where ``L_g`` already contains the g-sector background volume ``a^3`` and
-``L_f`` contains ``Nbar b^3`` with ``b=a*r`` and ``Nbar=r*c``.
+1. convert Lagos scalar metric variables to the De Felice decomposition;
+2. add only the part of De Felice Eq. (54) that depends on ``delta_phi``;
+3. add the residual background lapse susceptibility
+   ``(rho+P) Phi^2 / (2 c_s^2)`` in each sector's own volume measure.
 
-State order extends the pure-metric order by the two normalized matter-field
-perturbations ``u = delta_phi / phi_dot_0``.  Rate order extends the pure-metric
-rate order by ``delta_phi_dot / phi_dot_0`` for each sector.
+For ``c_s^2=1`` the last term reduces to the explicit canonical-scalar
+correction in Lagos & Ferreira Eq. (3.6). The general P(X) form follows by
+adding the only c_s-dependent pure-metric difference in De Felice Eq. (54).
+
+All returned Lagrangians use the common pure-metric normalization ``M1^2 a^3``.
+With ``M1^-2 = 8 pi G``, a sector remainder in its physical background volume
+is multiplied by ``8 pi G / a^3`` before being added to the metric block.
 """
 
 from __future__ import annotations
@@ -62,11 +73,40 @@ class TwoMatterAuxiliarySolution:
 
 
 def _matter_sector_lagrangian(
-    *, matter: KessenceBackground, lapse: float, scale_factor: float,
-    k: float, Phi: float, B: float, psi: float, E: float,
-    u: float, u_dot: float,
+    *,
+    matter: KessenceBackground,
+    lapse: float,
+    scale_factor: float,
+    k: float,
+    Phi: float,
+    B: float,
+    psi: float,
+    E: float,
+    u: float,
+    u_dot: float,
 ) -> float:
-    return kessence_scalar_quadratic_lagrangian(
+    """Return the matter remainder compatible with the Lagos metric block.
+
+    ``psi``, ``E`` and ``B`` on entry are Lagos variables. In flat Fourier
+    space their relation to the De Felice scalar decomposition is
+
+        B_DF   = B_L / a,
+        psi_DF = -Psi_L - k^2 E_L/3,
+        E_DF   = 2 E_L,
+        Phi_DF = Phi_L.
+
+    The spatial mapping follows directly by equating
+
+        a^2[(1-2 Psi_L) delta_ij + 2 d_i d_j E_L]
+
+    to ``a^2(delta_ij + H_ij)`` with De Felice's trace/traceless split. The
+    shift mapping follows from equating the ``dt dx^i`` terms.
+
+    We subtract the ``u=u_dot=0`` De Felice action because those metric-only
+    matter terms are already present in the background-reduced Lagos metric
+    block. The residual lapse susceptibility is then restored explicitly.
+    """
+    common = dict(
         rho=matter.rho,
         pressure=matter.pressure,
         cs2=matter.cs2,
@@ -74,12 +114,29 @@ def _matter_sector_lagrangian(
         scale_factor=scale_factor,
         k=k,
         Phi=Phi,
-        B=B,
-        psi=psi,
-        E=E,
+        B=B / scale_factor,
+        psi=-psi - (k * k / 3.0) * E,
+        E=2.0 * E,
+    )
+    full = kessence_scalar_quadratic_lagrangian(
+        **common,
         field_ratio=u,
         field_velocity_ratio=u_dot,
     )
+    metric_only = kessence_scalar_quadratic_lagrangian(
+        **common,
+        field_ratio=0.0,
+        field_velocity_ratio=0.0,
+    )
+    background_lapse = (
+        lapse
+        * scale_factor**3
+        * 0.5
+        * (matter.rho + matter.pressure)
+        / matter.cs2
+        * Phi**2
+    )
+    return float(full - metric_only + background_lapse)
 
 
 def two_matter_lagrangian_healthy(
@@ -240,3 +297,42 @@ def reduced_two_matter_lagrangian(
     return eliminate_two_matter_auxiliaries(
         bg, matter_g, matter_f, dynamic, rates
     ).reduced_lagrangian
+
+
+def reduced_two_matter_velocity_hessian(
+    bg,
+    matter_g: KessenceBackground,
+    matter_f: KessenceBackground,
+) -> np.ndarray:
+    """Velocity Hessian of the six-field action after auxiliary elimination."""
+    q = np.zeros(6, dtype=float)
+    zero = np.zeros(6, dtype=float)
+    base = reduced_two_matter_lagrangian(bg, matter_g, matter_f, q, zero)
+    eye = np.eye(6)
+    Hmat = np.empty((6, 6), dtype=float)
+
+    for i in range(6):
+        lp = reduced_two_matter_lagrangian(
+            bg, matter_g, matter_f, q, eye[i]
+        )
+        lm = reduced_two_matter_lagrangian(
+            bg, matter_g, matter_f, q, -eye[i]
+        )
+        Hmat[i, i] = lp + lm - 2.0 * base
+        for j in range(i + 1, 6):
+            lpp = reduced_two_matter_lagrangian(
+                bg, matter_g, matter_f, q, eye[i] + eye[j]
+            )
+            lpm = reduced_two_matter_lagrangian(
+                bg, matter_g, matter_f, q, eye[i] - eye[j]
+            )
+            lmp = reduced_two_matter_lagrangian(
+                bg, matter_g, matter_f, q, -eye[i] + eye[j]
+            )
+            lmm = reduced_two_matter_lagrangian(
+                bg, matter_g, matter_f, q, -eye[i] - eye[j]
+            )
+            Hmat[i, j] = Hmat[j, i] = 0.25 * (
+                lpp - lpm - lmp + lmm
+            )
+    return Hmat
