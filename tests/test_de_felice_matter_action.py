@@ -8,6 +8,8 @@ from numerics.de_felice_matter_action import (
     kessence_lapse_quadratic_coefficient,
     kessence_pure_lapse_quadratic_density,
     kessence_scalar_quadratic_density,
+    lagos_scalar_metric_to_de_felice,
+    kessence_lagos_sector_quadratic_lagrangian,
 )
 
 
@@ -104,9 +106,6 @@ def test_metric_off_principal_matter_action_has_intrinsic_sound_speed():
     rho, pressure, cs2 = 3.9, 0.6, 1.0 / 3.0
     lapse, a, k = 1.17, 0.81, 3.2
 
-    # With metric perturbations off, Eq. (54) reduces to
-    #   h/(2 cs2) qdot^2 - N^2 h k^2/(2 a^2) q^2.
-    # Thus omega^2/k^2 = (N^2/a^2) cs2.
     h = rho + pressure
     q = 0.053
     qdot = -0.071
@@ -131,3 +130,51 @@ def test_metric_off_principal_matter_action_has_intrinsic_sound_speed():
     gradient = lapse**2 * h / a**2
     coordinate_speed2 = gradient / kinetic
     assert math.isclose(coordinate_speed2, lapse**2 * cs2 / a**2, rel_tol=2e-14)
+
+
+def test_lagos_to_de_felice_scalar_metric_bridge_follows_metric_ansatz():
+    a, k = 0.73, 2.4
+    PhiL, BL, PsiL, EL = 0.12, -0.17, 0.08, -0.031
+    m = lagos_scalar_metric_to_de_felice(
+        scale_factor=a,
+        k=k,
+        Phi_lagos=PhiL,
+        B_lagos=BL,
+        Psi_lagos=PsiL,
+        E_lagos=EL,
+    )
+    assert math.isclose(m.Phi, 0.5 * PhiL)
+    assert math.isclose(m.B, BL / a)
+    assert math.isclose(m.E, 2.0 * EL)
+    assert math.isclose(m.psi, -PsiL - k**2 * EL / 3.0)
+
+
+def test_f_sector_lagos_wrapper_has_expected_lapse_rescaled_sound_speed():
+    rho, pressure, cs2 = 5.2, 0.4, 0.29
+    a, r, c = 0.76, 1.31, 0.87
+    b = a * r
+    nbar = r * c
+    k = 2.8
+    q, qdot = 0.041, -0.052
+
+    measured = kessence_lagos_sector_quadratic_lagrangian(
+        rho=rho,
+        pressure=pressure,
+        cs2=cs2,
+        lapse=nbar,
+        scale_factor=b,
+        k=k,
+        Phi_lagos=0.0,
+        B_lagos=0.0,
+        Psi_lagos=0.0,
+        E_lagos=0.0,
+        delta_phi_over_phidot=q,
+        delta_phidot_over_phidot=qdot,
+    )
+
+    h = rho + pressure
+    density = h / (2.0 * cs2) * qdot**2 - nbar**2 * h * k**2 / (2.0 * b**2) * q**2
+    assert math.isclose(measured, nbar * b**3 * density, rel_tol=2e-14, abs_tol=2e-14)
+
+    coordinate_speed2 = (nbar / b) ** 2 * cs2
+    assert math.isclose(coordinate_speed2, (c / a) ** 2 * cs2, rel_tol=2e-14)
