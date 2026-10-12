@@ -10,6 +10,7 @@ from numerics.bigravity_scalar_action import (
     RAW_FIELD_ORDER,
     hr_diagonal_scalar_potential_density,
     raw_kinetic_hessian,
+    sector1_eh_spatial_lagrangian,
     sector1_eh_velocity_lagrangian,
     sector2_eh_velocity_lagrangian,
     shift_interaction_lagrangian,
@@ -19,17 +20,8 @@ from numerics.lagos_bridge import LagosBackground
 
 def _bg():
     return LagosBackground(
-        a=0.7,
-        b=0.91,
-        Nbar=1.17,
-        r=1.3,
-        H=1.4,
-        Hb=1.05,
-        M1sq=1.0,
-        M2sq=0.25,
-        nu2=4.0,
-        Z=0.62,
-        Ztilde=0.81,
+        a=0.7, b=0.91, Nbar=1.17, r=1.3, H=1.4, Hb=1.05,
+        M1sq=1.0, M2sq=0.25, nu2=4.0, Z=0.62, Ztilde=0.81,
     )
 
 
@@ -71,6 +63,17 @@ def test_sector1_eh_velocity_block_matches_lagos_eq_3_6():
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
 
 
+def test_sector1_eh_spatial_constraint_block_matches_lagos_eq_3_6():
+    bg = _bg(); k=2.3; Phi1=.08; B1=-.13; Psi1=.16
+    measured = sector1_eh_spatial_lagrangian(
+        bg,k=k,Phi1=Phi1,B1=B1,Psi1=Psi1
+    )
+    expected = bg.a**3*bg.M1sq*(k**2/bg.a**2)*(
+        Psi1**2 - 2.0*Phi1*Psi1 + 2.0*bg.H*Phi1*B1
+    )
+    assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
 def test_sector2_eh_velocity_block_matches_lagos_eq_3_7():
     bg = _bg(); k=2.3; Phi2=-.06; B2=.11; Psi2_dot=-.19; E2_dot=.14
     measured = sector2_eh_velocity_lagrangian(
@@ -88,8 +91,7 @@ def test_sector2_eh_velocity_block_matches_lagos_eq_3_7():
 def _mixed_second(fun, name1, name2, h=2e-5):
     def f(s1, s2):
         kw = dict(Phi1=0.0, Phi2=0.0, Psi1=0.0, E1=0.0, Psi2=0.0, E2=0.0)
-        kw[name1] = s1
-        kw[name2] = s2
+        kw[name1] = s1; kw[name2] = s2
         return fun(**kw)
     return (f(h,h)-f(h,-h)-f(-h,h)+f(-h,-h))/(4*h*h)
 
@@ -102,45 +104,37 @@ def _hr_test_params():
 
 def test_hr_potential_spatial_cross_terms_are_controlled_by_ztilde():
     a,r,Nbar,m2,M1sq,k,betas = _hr_test_params()
-    beta0,beta1,beta2,beta3,beta4 = betas
+    _,beta1,beta2,beta3,_ = betas
     ztilde = m2*(beta1 + beta2*(r+Nbar) + beta3*r*Nbar)
-
     def potential(**kw):
         return hr_diagonal_scalar_potential_density(
             a=a,r=r,Nbar=Nbar,m2=m2,M1sq=M1sq,betas=betas,k=k,**kw
         )
-
-    pp = _mixed_second(potential,"Psi1","Psi2")
-    pe = _mixed_second(potential,"Psi1","E2")
-    ep = _mixed_second(potential,"E1","Psi2")
-    ee = _mixed_second(potential,"E1","E2")
-
-    scale = a**3*M1sq*r*ztilde
-    assert math.isclose(pp, 6.0*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert math.isclose(pe, 2.0*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert math.isclose(ep, 2.0*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert abs(ee) < 2e-5*max(1.0, abs(scale)*k**4)
+    pp=_mixed_second(potential,"Psi1","Psi2")
+    pe=_mixed_second(potential,"Psi1","E2")
+    ep=_mixed_second(potential,"E1","Psi2")
+    ee=_mixed_second(potential,"E1","E2")
+    scale=a**3*M1sq*r*ztilde
+    assert math.isclose(pp,6*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert math.isclose(pe,2*k**2*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert math.isclose(ep,2*k**2*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert abs(ee)<2e-5*max(1.0,abs(scale)*k**4)
 
 
 def test_hr_potential_lapse_spatial_cross_terms_are_controlled_by_z():
     a,r,Nbar,m2,M1sq,k,betas = _hr_test_params()
-    beta0,beta1,beta2,beta3,beta4 = betas
-    z = m2*(beta1 + 2.0*beta2*r + beta3*r*r)
-
+    _,beta1,beta2,beta3,_ = betas
+    z=m2*(beta1+2*beta2*r+beta3*r*r)
     def potential(**kw):
         return hr_diagonal_scalar_potential_density(
             a=a,r=r,Nbar=Nbar,m2=m2,M1sq=M1sq,betas=betas,k=k,**kw
         )
-
-    p1p2 = _mixed_second(potential,"Phi1","Phi2")
-    p1s2 = _mixed_second(potential,"Phi1","Psi2")
-    p2s1 = _mixed_second(potential,"Phi2","Psi1")
-    p1e2 = _mixed_second(potential,"Phi1","E2")
-    p2e1 = _mixed_second(potential,"Phi2","E1")
-
-    scale = a**3*M1sq*z
-    assert abs(p1p2) < 2e-5*max(1.0,abs(scale))
-    assert math.isclose(p1s2, -1.5*r*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert math.isclose(p2s1, -1.5*Nbar*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert math.isclose(p1e2, -0.5*r*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
-    assert math.isclose(p2e1, -0.5*Nbar*k**2*scale, rel_tol=2e-5, abs_tol=2e-6)
+    vals={p:_mixed_second(potential,*p) for p in [
+        ("Phi1","Phi2"),("Phi1","Psi2"),("Phi2","Psi1"),("Phi1","E2"),("Phi2","E1")
+    ]}
+    scale=a**3*M1sq*z
+    assert abs(vals[("Phi1","Phi2")])<2e-5*max(1.0,abs(scale))
+    assert math.isclose(vals[("Phi1","Psi2")],-1.5*r*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert math.isclose(vals[("Phi2","Psi1")],-1.5*Nbar*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert math.isclose(vals[("Phi1","E2")],-.5*r*k**2*scale,rel_tol=2e-5,abs_tol=2e-6)
+    assert math.isclose(vals[("Phi2","E1")],-.5*Nbar*k**2*scale,rel_tol=2e-5,abs_tol=2e-6)
