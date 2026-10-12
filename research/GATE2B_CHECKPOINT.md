@@ -23,20 +23,22 @@ Candidate-C background conventions are under control. The old 12x12 scalar closu
 - Comelli A.7-A.16, slips, A.17, and A1/A2 identities were independently re-audited.
 - Full A.12/A.16 were checked before slip reduction; their anisotropic brackets vanish exactly under the JANUS slips. No explicit gradient block was dropped there.
 - A.17 is algebraically valid; never delete it merely to improve a determinant.
-- A.18 is genuinely ambiguous: raw gauge-invariant definitions suggest `(calB1-calE')`, while the printed appendix gives `(calB1-calE)`.
-- A.18 changes descriptor rank: derived-prime gives rank 6 for the seven constraint/identity equations at fixed background; printed-unprime gives rank 7 for generic `c!=1`.
+- **A.18 prime ambiguity is now resolved.** Appendix A of arXiv:1202.1986 prints, in the same consecutive list of useful identities, A.3 with `(B1-E)` and A.4 with `(B1-E')`. The 2014 A.18 again uses `(B1-E)`. Therefore the previous global "prime correction" was wrong; it conflated raw perturbation variables with the gauge-invariant combinations. Physical bookkeeping must use unprimed `E` in A.3/A.18 and primed `E` only in A.1/A.4/A.5-A.6 where printed.
+- `numerics/comelli_bridge.py` and `tests/test_comelli_bridge.py` were corrected accordingly in TDD. RED numerical mismatch was `0.08128901146755702`; GREEN identity residuals are <=`3e-17`. Commits: test `65e786c`, implementation `b29270c`.
+- The old derived-prime A.18 organization is retained only as historical/debugging evidence. Its rank-6 result must no longer be used as physical justification for declaring `E'` freely dynamical.
 - Appendix B.2 proves the missing helicity-0 gradient exists. For `w1=1/3`, `w2=0`, `a2=a3=0`, `f1=f2`, B.5 reduces to `E''+(3/tau)E'-(2/3)k^2E=0` sub-horizon.
 - With `E=tau^2 e(x)`, `x=k tau`, the acceptance operator is exactly `x^2 e_xx + 7x e_x + 8e - (2/3)x^2 e = 0`.
-- The primary Comelli reduction explicitly states that `B1` and the lapse potentials are **nondynamical** and can be expressed in terms of `E`, `Phi1`, `Phi2`; only `E`, `Phi1`, `Phi2` obey the three second-order scalar equations. This is now a central structural constraint on any JANUS reduction.
-- At leading Case-C order the direct equations already reproduce the two matter/metric modes independently: the visible radiation `Phi1` equation agrees with the GR equation, and the twin-dust `Phi2` equation agrees with Comelli B.4. The remaining missing mode is therefore specifically the gravitational `E` mode governed by B.5.
+- The primary 2014 reduction explicitly states that `B1` and `Psi1/2` are nondynamical and can be expressed in terms of `E`, `Phi1`, `Phi2`; only `E`, `Phi1`, `Phi2` obey the three second-order scalar equations.
+- At leading Case-C order the direct equations already reproduce the two matter/metric modes independently: visible-radiation `Phi1` obeys the GR equation and twin-dust `Phi2` obeys Comelli B.4. The missing mode is specifically the gravitational `E` mode governed by B.5.
 
 ### Old closure failure
 
 - Candidate C at `a=0.5`, `k=0.5 h/Mpc`: radiation pair is exactly `1/sqrt(3)` but the second pair is only `c~0.0159` versus De Felice `c_s~0.8319`.
 - Dust+dust gives the same spurious pair.
 - As k increases, the faulty frequency tends to `omega~23.894 H0`; apparent speed falls as `1/k`, so the `k^2 E` gravity gradient is structurally absent.
-- Ruled out as fixes: dust/radiation mixture, `d(g00)` vs `d(f00)`, individual background derivatives, simple A1/A2 typo, isolated f-trace sign flip, double precision/conditioning, De Felice normalization, and dropping in the alternate A.18 inside the same old closure.
-- The old acceleration layer promotes `B1'` to an independent unknown together with `E''`, `Phi1''`, `Phi2''`. This conflicts with the published degree-of-freedom organization in which `B1` is nondynamical. **Promoting `B1` before eliminating the constraints is now the leading structural suspect for why the old closure projects out the helicity-0 gradient.**
+- Ruled out as fixes: dust/radiation mixture, `d(g00)` vs `d(f00)`, individual background derivatives, simple A1/A2 typo, isolated f-trace sign flip, double precision/conditioning, De Felice normalization, and merely swapping A.18 inside the same old closure.
+- The old constraint/acceleration organization was built around the now-rejected derived-prime A.18 and rank-6-at-fixed-`E'` assumption. Its structural interpretation must be redone.
+- Promoting `B1'` as an independent acceleration unknown is also inconsistent with the published statement that `B1` is nondynamical; however scratch elimination shows that fixing this alone does not restore B.5. It is a contributing structural issue, not yet a sufficient diagnosis.
 
 ## Exact dynamically on-shell Case-C benchmark
 
@@ -48,8 +50,11 @@ Exact branch:
 Positive root:
 `xi(a)=[-1+sqrt(1+4a^5+(4/3)a^8)]/(2a^4)`.
 
-Early time:
-`a~tau`, `xi~tau`, `H~1/tau`, `H_omega~2/tau`, `rho1~3/tau^4`, `rho2~3/tau^6`, `c->2`.
+Early-time conformal series retained from the on-shell solution:
+- `a=tau+tau^6/12+tau^9/54-5tau^11/132+...`;
+- `xi=tau+tau^4/3-11tau^6/12-29tau^9/54+...`;
+- hence `H=1/tau+O(tau^4)`, `H_omega=2/tau+O(tau^2)`, and crucially `c=2+tau^3+O(tau^5)`.
+- Because `rho2~tau^-6`, these nominally subleading background corrections can enter the same hierarchy order as induced `Phi2~tau^3`. Freezing `a=xi=tau,c=2` while retaining later perturbation terms is therefore inconsistent for B.5.
 
 ### Executable benchmark in Git
 
@@ -63,13 +68,12 @@ Early time:
 - `numerics/comelli_descriptor.py` keeps the direct system rectangular: 13 equations x 11 variables, quadratic in a frozen commuting derivative only as an audit representation.
 - Arbitrary square minors and frozen-time `D_tau->s`/PGCD are rejected as physical mode criteria because variable-coefficient Bianchi identities are differential-operator identities.
 - Correct asymptotic variable: `x=k tau`; preserve `D_tau=partial_tau+(x/tau)partial_x` through elimination.
-- Natural first weights: `E=tau^2 e(x)`, shifts/velocity potentials `~tau`, `Phi/F/density contrasts~O(1)`.
-- A sparse Laurent/Taylor-jet operator audit confirms that homogeneous kernel amplitudes cannot be either reintroduced freely at every order or set to zero wholesale; both procedures corrupt Fredholm compatibility.
-- Local Taylor jets at regular `x0!=0` are preferable to a Laurent basis around `x=0` for diagnosing B.5 because the latter has Frobenius resonance/logarithmic structure.
-- Treating `B1` as an independent evolving leading function causes both the derived-prime and printed-unprime A.18 descriptor chains to overconstrain the gravitational jet rather than recover the two-dimensional solution space of B.5.
-- This failure, together with the paper's explicit nondynamical status of `B1`, motivates a new elimination order: solve `B1` algebraically from the constraint chain **before** constructing any second-order dynamics.
+- Natural first weights for the pure gravity mode are `E=tau^2 e(x)`, induced `Phi2~tau^3 q3(x)`, induced `Phi1~tau^5 p5(x)`, shifts/velocity potentials with their constraint-determined weights, and no independent leading matter-mode amplitudes.
+- On the oversimplified frozen-leading background `a=xi=tau,c=2`, algebraic elimination with the now-correct printed A.18 produces an extra relation and the wrong gravity ODE. This is **not** accepted as a contradiction with B.5 because the exact Case-C corrections `c-2=O(tau^3)`, `xi-tau=O(tau^4)`, etc. multiply divergent sector-2 densities and contribute at the same order.
+- The derived-prime scratch chain happened to preserve a three-equation count but is no longer physically admissible after the primary-source audit; do not use that as evidence.
+- The next derivation must use the printed/unprimed A.18 together with the exact on-shell background expansion to the order at which `Phi2~tau^3` and `Phi1~tau^5` feed back into the E equation.
 
-## Rejected hypotheses
+## Rejected hypotheses / superseded rulings
 
 - k/time normalization error.
 - visible dust+radiation mixture.
@@ -83,35 +87,35 @@ Early time:
 - Bianchi residuals as proof of physical mode content.
 - selected square minor as dispersion relation.
 - frozen-time commuting-PGCD as full descriptor criterion.
-- A.18 as a simple drop-in fix to the old closure (structural ambiguity remains because rank/index changes).
 - fixed-xi/frozen-a Case-C trajectories.
 - setting non-gravity homogeneous kernel amplitudes to zero before Fredholm compatibility.
-- promoting `B1'` as though `B1` were an independent physical scalar is now disfavored by the published degree count and failed descriptor chains.
+- **Superseded:** the earlier claim that A.3/A.18 must contain `E'`. Primary source comparison shows A.3/A.18 use unprimed `E`, while A.4 separately uses `E'`.
+- **Rejected as sufficient fix:** eliminating `B1'` alone on the frozen-leading background; it does not recover B.5.
 
 ## Active task list
 
 - [x] Convention bridge and Candidate-C background.
-- [x] Scalar constraints/identities and old acceleration layer.
-- [x] Old 12x12 closure + Bianchi diagnostics.
+- [x] Scalar equations / old closure audit.
 - [x] Independent De Felice regression and diagnosis of missing gravity pair.
 - [x] **T1a** — dust+dust Candidate-C comparison.
 - [x] **T1b** — primary-source audit.
+- [x] **T1b.1 — resolve A.18 prime ambiguity from the 2012/2014 appendices; physical relation is unprimed.**
 - [ ] **T1c — reproduce Comelli Case-C B.5 on the dynamically on-shell branch.** IN PROGRESS.
   - [x] reject off-shell/frozen-a benchmarks;
   - [x] derive exact dynamic `xi(a)` and conformal-time map;
   - [x] establish singular Fredholm structure;
   - [x] audit full spatial equations before slip;
-  - [x] establish A.18 rank/index difference;
   - [x] build/test direct 13x11 descriptor audit tool;
   - [x] reject selected minors and frozen-time PGCD;
   - [x] verify leading `Phi1` radiation and `Phi2` dust equations;
-  - [x] show descriptor chains with dynamically promoted `B1` do not reproduce the two-dimensional B.5 gravity space;
-  - [ ] **T1c.6e — eliminate nondynamical `B1` algebraically before dynamics.** Start with exact Case C and the printed equation organization used in the paper; then repeat with the derived-prime interpretation as a cross-check.
-  - [ ] **T1c.6f — derive the reduced three-field system (`E,Phi1,Phi2`) and recover exact B.5 for the pure-E Case-C mode.**
-  - [ ] **T1c.6g — choose the physically consistent A.18 bookkeeping by B.5 + three-scalar degree count + Bianchi consistency.**
+  - [x] identify induced pure-E scalings `Phi2~tau^3`, `Phi1~tau^5`;
+  - [x] show `B1`-algebraic elimination alone on frozen-leading background is insufficient;
+  - [ ] **T1c.6h — rebuild the printed-A.18 hierarchy with the exact on-shell background series, retaining `c-2=O(tau^3)`, `xi-tau=O(tau^4)`, and all background terms that survive against `rho2~tau^-6`.**
+  - [ ] **T1c.6i — eliminate nondynamical variables order-by-order and recover the reduced three-field (`E,Phi1,Phi2`) system.**
+  - [ ] **T1c.6j — pure-E acceptance: recover exactly `E''+(3/tau)E'-(2/3)k^2E=0`, equivalently `x^2e''+7xe'+8e-(2/3)x^2e=0`.**
   - [ ] verify B.5 under Bianchi-redundant row representatives.
 - [ ] **T2** — apply validated reduction to dust+dust Candidate C; recover De Felice speed.
-- [ ] **T3** — identify exact structural error in old 12x12 closure and replace it.
+- [ ] **T3** — identify exact structural error(s) in old 12x12 closure and replace them.
 - [ ] **T4** — implement corrected `numerics/comelli_native_scalar.py`.
 - [ ] **T5** — make `tests/test_comelli_native_scalar.py` green + >=3 extra `(z,k)` regressions.
 - [ ] **T6** — full Gate-2B regression suite.
@@ -126,15 +130,13 @@ Early time:
 
 ## Immediate restart instruction
 
-**Resume at T1c.6e — nondynamical `B1` elimination.**
+**Resume at T1c.6h — printed A.18 + exact on-shell Case-C series.**
 
-1. Use the exact Case-C background from `numerics/comelli_case_c.py`.
-2. Start from the full direct Comelli scalar equations, not the old 12x12 acceleration closure.
-3. Treat `B1`, `Psi1`, `Psi2` and matter constraint variables as algebraic/nondynamical whenever the published reduction does; do **not** introduce `B1'` as an independent state.
-4. Eliminate matter perturbations through `00/0i` + conservation consistently, then eliminate `F1/F2` with A.17/A.18 and solve `B1` algebraically.
-5. Reduce to the three physical scalar fields `E,Phi1,Phi2` and test the pure-E Case-C sector.
-6. Acceptance is exactly `E''+(3/tau)E'-(2/3)k^2E=0`, equivalently `x^2e''+7xe'+8e-(2/3)x^2e=0`.
-7. Test printed A.18 first because it is the organization used in the published appendix; repeat the derived-prime bookkeeping only as a cross-check.
-8. Never tune coefficients or signs merely to hit B.5.
-9. Update this checkpoint after every hard ruling.
-10. Move to T2 only after B.5 is recovered.
+1. Use unprimed `E` in A.3/A.18 and primed `E` in A.1/A.4 exactly as the primary Appendix A states.
+2. Use `case_c_background_from_tau` or a symbolic series derived from the exact branch; do not freeze `a=xi=tau,c=2` beyond the strictly leading equations.
+3. Keep `x=k tau`, `E=tau^2 e(x)`, induced `Phi2=tau^3 q3(x)+...`, induced `Phi1=tau^5 p5(x)+...`.
+4. Retain enough background orders that products with `rho2~tau^-6` are correct through the first E-compatibility order; at minimum include `c=2+tau^3+...`, `xi=tau+tau^4/3+...`, and consistent H/H_omega/rho expansions.
+5. Eliminate `Psi1/2`, matter constraints, F1/F2, B1/B2 algebraically/order-by-order; do not promote B1 into a physical state.
+6. Acceptance is the exact B.5 benchmark operator, not merely the high-k root.
+7. Update this checkpoint after each hard ruling.
+8. Move to T2 only after B.5 is recovered.
