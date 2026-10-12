@@ -155,3 +155,35 @@ def test_spatial_metric_trace_and_shear_contractions_match_scalar_decomposition(
     )
     expected = pressure * (1.5 * psi**2 - (1.0 / 6.0) * k**4 * E**2)
     assert math.isclose(measured, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_background_volume_factor_gives_correct_g_and_f_coordinate_speeds():
+    cs2_g, cs2_f = 1.0 / 3.0, 0.27
+    a, r, c = 0.7, 1.8, 0.65
+    b = a * r
+    N_g = 1.0
+    N_f = r * c
+    k = 5.0
+
+    assert hasattr(matter_action, "kessence_scalar_quadratic_lagrangian")
+
+    def coefficients(lapse, scale, rho, pressure, cs2):
+        kinetic = matter_action.kessence_scalar_quadratic_lagrangian(
+            rho=rho, pressure=pressure, cs2=cs2,
+            lapse=lapse, scale_factor=scale, k=k,
+            Phi=0.0, B=0.0, psi=0.0, E=0.0,
+            field_ratio=0.0, field_velocity_ratio=1.0,
+        ) * 2.0
+        gradient = -matter_action.kessence_scalar_quadratic_lagrangian(
+            rho=rho, pressure=pressure, cs2=cs2,
+            lapse=lapse, scale_factor=scale, k=k,
+            Phi=0.0, B=0.0, psi=0.0, E=0.0,
+            field_ratio=1.0, field_velocity_ratio=0.0,
+        ) * 2.0
+        return kinetic, gradient
+
+    Kg, Gg = coefficients(N_g, a, 4.0, 4.0 / 3.0, cs2_g)
+    Kf, Gf = coefficients(N_f, b, 2.5, 0.4, cs2_f)
+
+    assert math.isclose(Gg / Kg, cs2_g * k**2 / a**2, rel_tol=2e-14)
+    assert math.isclose(Gf / Kf, cs2_f * c**2 * k**2 / a**2, rel_tol=2e-14)
