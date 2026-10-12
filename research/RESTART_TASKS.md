@@ -4,20 +4,55 @@ Date: 2026-10-12
 Canonical active branch: `research/v2-flrw`
 Stable baseline: `main`
 Gate 2B consolidation merge: `35f5edc19443a059308e8c2710deb656bfdd8fbc` (PR #2)
-Latest completed implementation checkpoint: `af50032a23acaf58d134df16ed2e599cdbe087d9`
+Scientific implementation checkpoint before this hygiene pass: `af50032a23acaf58d134df16ed2e599cdbe087d9`
+Research checkpoint before this hygiene pass: `d351098e84b8d970be6e96a1475f589de749b4bf`
 
-Purpose: **first file to read after any interruption**. Update it whenever the active blocker changes.
+Purpose: **first file to read after any interruption**. It is the authoritative queue. Update it whenever a hard result, blocker, branch policy, or verified test result changes.
 
-## Repository policy
+## 0 — Resume in one minute
 
-- `main` remains the stable pre-V2 baseline.
-- `research/v2-flrw` is the single canonical active research line.
-- `research/gate2b-nonhomothetic-transfer` is historical after PR #2; do not add work there.
-- PR #1 remains a draft research PR and is not evidence that JANUS-R is validated.
-- Do not create another long-lived branch unless an experiment truly needs isolation.
-- GitHub Actions/workflows are intentionally disabled and are not verification evidence.
+1. Work only from `research/v2-flrw` unless a genuinely isolated experiment requires a short-lived branch.
+2. Read this file, then `LATEST.md`, then `research/GATE2B_CHECKPOINT.md`.
+3. Do **not** return to literal published Janus, the failed direct Comelli closure, or another algebraic root scan.
+4. Resume **P1c**, specifically the independent reconstruction of the full two-matter quadratic action and its background reduction.
+5. First diagnostic target: determine exactly which metric-only matter terms are already contained in the Lagos background-reduced block and which are currently being removed incorrectly by `numerics/lagos_two_matter_action.py`.
+6. Add a RED test before any production-code correction.
+7. Before stopping, record exact result, commit SHA, tests/tolerances, and the next single blocker here.
 
-## Scientific state
+## 1 — Git / repository state
+
+Audit performed 2026-10-12.
+
+Branches observed:
+
+- `main` — stable pre-V2 baseline; keep.
+- `research/v2-flrw` — single canonical active research line; keep.
+- `research/gate2b-nonhomothetic-transfer` — redundant historical branch; **no unique work remains**.
+
+Why the old Gate-2B branch is redundant:
+
+- its head is `fd430d73ed7e8c4638b6d94ba1c46f54fba3f5b5`;
+- merge commit `35f5edc19443a059308e8c2710deb656bfdd8fbc` on `research/v2-flrw` has that commit as a parent;
+- therefore all work from that branch is already contained in the canonical line.
+
+Cleanup decision:
+
+- keep `main` + `research/v2-flrw` as the intended two-branch structure;
+- delete `research/gate2b-nonhomothetic-transfer` when branch-ref deletion is available; the current GitHub connector can read/move/create refs but does not expose ref deletion;
+- until then the historical branch is frozen: **never commit new work to it**.
+
+Pull requests:
+
+- PR #1 is the only open PR, remains **draft**, head `research/v2-flrw` -> base `main`;
+- PR #1 must not be interpreted as validation and must not be merged merely for housekeeping.
+
+Repository rules:
+
+- do not create another long-lived research branch;
+- GitHub Actions/workflows remain intentionally disabled and are not verification evidence;
+- a focused local/reconstructed test run is not a full repository-suite result.
+
+## 2 — Scientific state
 
 `LITERAL_PUBLISHED_JANUS = REJECT_AS_ESTABLISHED_THEORY`
 
@@ -25,9 +60,9 @@ Purpose: **first file to read after any interruption**. Update it whenever the a
 
 `GATE_2B_NONHOMOTHETIC_SCALAR_TRANSFER = OPEN / NOT VALIDATED`
 
-The direct Comelli closure is a closed negative route. The active route remains an independent action reconstruction checked against De Felice et al. 1404.0008 and Lagos & Ferreira 1610.00553.
+The direct Comelli closure is a closed negative route. The active route is an independent action reconstruction checked against De Felice et al. 1404.0008 and Lagos & Ferreira 1610.00553.
 
-## Established action results
+## 3 — Established results that must not be redone
 
 TDD history:
 
@@ -35,67 +70,93 @@ TDD history:
 - RED `3e13f971447213d3510c940303330355383c7eff` -> GREEN `d26017a1b65e391d9cb80edc75ca308829819d20`: g/f lapse, scale and volume normalization;
 - RED `b44f8305af9b501076629a033214e8e00523eb87` -> GREEN `6057075a9f3bf64763a05d4cd796ce7cf7da9e09`: first metric + two-matter assembly and auxiliary elimination;
 - RED `4f32b85f9bee546910568cfcaa7051baf06ac726` -> GREEN `796662db13fc3aec595bbcd99fec87e164a13122`: remove obvious metric-only matter double counting and recover rank-3 kinetic structure on the proportional control;
-- RED `0a75660a0048edb433a23a8ef8b83164e0bb3cfe` -> GREEN `af50032a23acaf58d134df16ed2e599cdbe087d9`: correct two independent Lagos interaction coefficients directly from Eqs. (3.6)-(3.8).
+- RED `0a75660a0048edb433a23a8ef8b83164e0bb3cfe` -> GREEN `af50032a23acaf58d134df16ed2e599cdbe087d9`: correct two Lagos interaction coefficients directly from Eqs. (3.6)-(3.8).
 
-The two coefficient corrections are:
+Proven Lagos coefficient corrections:
 
-1. metric-1 shift self term: `r^2 Z/[2(Nbar+r)] k^2 B1^2` (an `r` factor was missing);
+1. metric-1 shift self term: `r^2 Z/[2(Nbar+r)] k^2 B1^2` (an `r` factor had been missing);
 2. common-normalized metric-2 `Z_tilde` self term: `2 r Z_tilde Psi2(3 Psi2/2 + b^2 k^2 E2)` (the previous `Nbar^2 r^5` factor was wrong).
 
-A direct independent evaluator of Lagos Eqs. (3.6)-(3.8) confirms these discrepancies and agrees with the other tested interaction structures.
+A direct independent evaluator of Lagos Eqs. (3.6)-(3.8) agrees with the corrected interaction structures tested so far.
 
-Fresh reconstructed targeted verification after these corrections: `15 passed` (not a clean full-repository suite).
+Fresh targeted verification after those corrections: `15 passed` — **not** a clean full-repository suite.
 
-## Current hard failure / active blocker
+## 4 — Current hard failure
 
-The frozen quadratic-pencil solver is now informative because it independently recovers both matter characteristics and tracks them when the probe sound speeds are changed. On Candidate-C backgrounds it finds:
+The frozen quadratic-pencil solver is informative rather than the leading suspect:
 
-- g-fluid branch: correct intrinsic sound characteristic;
-- f-fluid branch: correct intrinsic sound characteristic including the f-lapse rescaling;
-- third scalar branch: still lacks the required `omega ~ k` helicity-0 propagation and behaves as a finite mass/time-scale mode at high k.
+- g-fluid characteristic is recovered correctly;
+- f-fluid characteristic is recovered correctly, including f-lapse rescaling;
+- changing probe sound speeds moves those two roots as expected;
+- the third scalar branch still does **not** show the required `omega ~ k` helicity-0 propagation and instead behaves like a finite mass/time-scale mode at high k.
 
-Independent De Felice benchmark remains nonzero, e.g. at `a=0.5`, `c_grav^2 ~= 0.6920799927` (`c_grav ~= 0.83191345` in the physical normalization). The current assembled Lagos route therefore **still fails the decisive gravity-gradient check**.
+Independent De Felice Candidate-C benchmark remains nonzero. At `a=0.5`:
 
-Important convention diagnostic: do **not** introduce a `Phi_DF = Phi_L/2` correction. The text extraction of Lagos Eq. (2.21) can drop the printed factor 2; its ADM relation `delta N1=Phi1` and Lagos' other presentation show the standard `1+2 Phi` convention. Current `Phi_DF = Phi_L` is the consistent bridge.
+- `c_grav^2 ~= 0.6920799927`;
+- `c_grav ~= 0.83191345` in the physical normalization.
 
-### Leading root-cause hypothesis now being tested
+Therefore the current assembled Lagos route still fails the decisive gravity-gradient check.
 
-Lagos Eqs. (3.6)-(3.8) are background-reduced for a setup with matter coupled to metric 1. Extending that already-reduced action to **two separately coupled matter sectors** by appending a symmetric f-sector matter remainder may omit background-reduced metric terms required by the second matter sector. This is now more plausible than a pencil/eigensolver error because the two matter speeds are recovered correctly while the gravity branch is not.
+Do not introduce a `Phi_DF = Phi_L/2` patch. The consistent bridge remains `Phi_DF = Phi_L`.
 
-## Ordered task queue
+## 5 — Leading root-cause hypothesis
+
+The current implementation contains an internal assumption that now needs to be falsified directly:
+
+- `numerics/lagos_two_matter_action.py` says the Lagos metric block already contains metric-only matter terms and therefore subtracts `Eq.(54)` evaluated at zero matter perturbation;
+- `numerics/lagos_scalar_action.py` constructs `pure_metric_lagrangian_healthy()` from an Einstein-Hilbert self-action plus interaction terms, and its own documentation explicitly notes that at least the metric-1 matter-background `Phi1^2` correction is not included there.
+
+That makes over-subtraction of background-reduced matter terms the current **P1 hypothesis** for the missing gravity gradient.
+
+Independent De Felice Eq. (54) provides a concrete audit target. Setting the matter perturbation variable to zero gives, before multiplication by `N a^3`, a metric-only contribution of the form
+
+`C_Phi Phi^2 - (rho/2) k^2 B_DF^2 + P[3 psi_DF^2/2 - k^4 E_DF^2/6] - 3 rho Phi psi_DF`,
+
+with
+
+`C_Phi = rho/2 + (rho+P)/(2 c_s^2)`.
+
+The current compatibility remainder restores only the susceptibility piece `(rho+P) Phi^2/(2 c_s^2)` after subtracting the complete metric-only action. Therefore the `rho/2 Phi^2`, shift, spatial-metric, and `Phi*psi` structures are the first terms to track through the Lagos background reduction. **This is a diagnostic derivation, not yet a production-code correction.**
+
+## 6 — Ordered task queue
 
 ### P0 — repository/restart hygiene
 
-- [x] Audit branches and PRs; consolidate Gate 2B into `research/v2-flrw` without touching `main`.
-- [x] Remove the accidental no-diff head commit from the earlier session.
+- [x] Audit branches and PRs.
+- [x] Prove old Gate-2B branch is fully contained in `research/v2-flrw`.
+- [x] Define intended two-branch policy: `main` + `research/v2-flrw`.
+- [ ] Delete historical branch when a ref-delete capability is available.
+- [x] Harden this restart ledger with exact SHAs, hard failure, no-go routes, and next diagnostic.
 - [ ] Keep this file current after every hard result.
 
 ### P1 — exact double-matter scalar action
 
 - [x] P1a: one-sector P(X) scalar quadratic action.
 - [x] P1b: g/f volume and lapse normalization.
-- [ ] **P1c — REOPENED / ACTIVE:** establish the exact two-matter metric+matter quadratic action without relying on a one-matter background reduction.
-- [ ] P1d: derive physical high-k kinetic/gradient system and recover all three scalar characteristics.
+- [ ] **P1c — ACTIVE:** establish the exact two-matter metric+matter quadratic action without relying on an unjustified one-matter background reduction.
+- [ ] P1d: derive the physical high-k kinetic/gradient system and recover all three scalar characteristics.
 
-Immediate P1c sequence:
+Immediate P1c sequence — execute in this order:
 
-1. [x] term-by-term Lagos interaction audit; commit the two proven coefficient corrections;
-2. [ ] construct an independent two-matter reference action directly from the underlying Hassan-Rosen/De Felice formulation, or equivalently rederive the background-reduced metric terms with both matter sectors present;
-3. [ ] compare that reference action term-by-term with `lagos_two_matter_action.py`;
-4. [ ] add RED tests for every missing/different term before correcting production code;
-5. [ ] re-run auxiliary rank, matter speeds and Candidate-C gravity speed.
+1. [x] audit Lagos interaction coefficients and commit the two proven corrections;
+2. [ ] **P1c.1 — CURRENT:** derive the full metric-only part of De Felice Eq. (54) in Lagos variables for each sector and write RED tests that expose which structures are absent after the current subtraction;
+3. [ ] P1c.2: reconstruct the corresponding two-matter background-reduced metric action directly from the underlying Hassan-Rosen/De Felice formulation, without assuming the one-matter Lagos reduction generalizes by symmetry;
+4. [ ] P1c.3: compare the independent reference action term-by-term with `lagos_two_matter_action.py`, classifying every difference as background-equation equivalent, convention-equivalent, or genuinely missing;
+5. [ ] P1c.4: correct production code only for differences proven genuine, one RED->GREEN change at a time;
+6. [ ] P1c.5: re-run auxiliary Hessian rank, proportional exchange symmetry, matter speeds, and Candidate-C gravity speed;
+7. [ ] P1c.6: if gravity still lacks `omega ~ k`, derive the principal action directly from the unreduced two-matter theory and stop treating Lagos (3.6)-(3.8) as a safe two-matter starting point.
 
 ### P2 — physical high-k scalar acceptance
 
-Must pass all:
+All must pass:
 
 1. exactly three physical scalar modes after gauge/constraint reduction;
 2. positive kinetic signs on the tested healthy branch;
 3. g and f matter speeds correct;
-4. Candidate-C gravity scalar speed agrees with independent De Felice at `a=1,0.5,0.2` within documented tolerance;
-5. radiation stays `c_s^2=1/3` and dust limit does not create a fake relativistic sound mode.
+4. Candidate-C gravity scalar speed agrees with the independent De Felice benchmark at `a=1,0.5,0.2` within documented tolerance;
+5. radiation stays `c_s^2=1/3` and the dust limit does not create a fake relativistic sound mode.
 
-If the gravity characteristic still fails after an independently reconstructed two-matter action, stop transfer work and reassess the whole scalar-action bridge.
+If the gravity characteristic still fails after an independently reconstructed two-matter action, stop transfer work and reassess the scalar-action bridge itself.
 
 ### P3 — only after P2 passes
 
@@ -105,17 +166,27 @@ Construct the non-homothetic transfer solver, continuous mode tracking, `T_gg,T_
 
 Only after the scalar gate is understood decide whether to execute:
 
-`UPSTREAM BUILD -> ZERO-F REGRESSION -> G-ONLY CONTROL -> F-ONLY DUAL CONTROL -> TWIN WALL -> RESOLUTION/COURANT MATRIX`
+`UPSTREAM BUILD -> ZERO-F REGRESSION -> G-ONLY CONTROL -> F-ONLY DUAL CONTROL -> TWIN WALL -> RESOLUTION/COURANT MATRIX`.
 
-## Stop conditions
+## 7 — Stop conditions
 
-Strongly downgrade/stop JANUS-R if robust independent checks show unavoidable ghost/gradient instability, no viable healthy non-homothetic region, negligible exact segregation unless excluded modified gravity is introduced, or a convergent twin-wall pathology absent in one-sector controls.
+Strongly downgrade/stop JANUS-R if robust independent checks show any of:
 
-## Resume protocol after interruption
+- unavoidable ghost or gradient instability on the intended branch;
+- no viable healthy non-homothetic region;
+- segregation negligible unless already-excluded modified-gravity behavior is introduced;
+- convergent twin-wall pathology absent in one-sector controls;
+- failure of the independently reconstructed two-matter scalar action to recover the known De Felice high-k characteristic.
 
-1. Read this file first.
-2. Read `LATEST.md` and `research/GATE2B_CHECKPOINT.md`.
-3. Confirm active branch `research/v2-flrw` and inspect commits after `af50032a23acaf58d134df16ed2e599cdbe087d9`.
-4. Resume **P1c**, specifically the independent two-matter reference action / background-reduction audit.
-5. Do not alter the quadratic pencil merely to force the benchmark; its matter-characteristic controls currently pass.
-6. Before stopping, record exact result, commit SHA, tests/tolerances and the next blocker here.
+## 8 — Interruption protocol
+
+Before any pause or context loss:
+
+1. commit or explicitly record uncommitted conceptual work;
+2. update the completed checkbox and exact active checkbox here;
+3. write the latest tested SHA(s);
+4. record the exact test command/result, or state explicitly that no executable full-suite verification was possible;
+5. record one sentence beginning `NEXT:` with the single next operation;
+6. never leave the next agent to infer whether a negative result was already established.
+
+**NEXT:** implement P1c.1 as a RED diagnostic: pin the full zero-matter-perturbation Eq. (54) metric remainder in Lagos variables and compare it against what the current `full - metric_only + background_lapse` assembly retains.
