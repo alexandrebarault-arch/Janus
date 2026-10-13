@@ -9,7 +9,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from numerics.comelli_case_c import case_c_background_from_a
 from numerics.de_felice_action_principal import gravity_principal_action
 from numerics.de_felice_invariants import kinetic_ng3
-from numerics.de_felice_bd_audit import bd_state_coefficient_decomposition
+from numerics.de_felice_bd_audit import (
+    bd_state_coefficient_decomposition,
+    case_c_time_dependent_physical_action,
+)
 from numerics.de_felice_two_matter_action import (
     DFKessenceFluid,
     matter_log_phidot_rates,
@@ -132,11 +135,10 @@ def test_physical_speed_extractor_recovers_decoupled_known_branches():
 
 
 def test_case_c_finite_k_ng3_matches_de_felice_eq78():
-    point, g, f = _case_c(0.05, 400.0)
-    physical = eliminate_bd_mode(
-        point.metric, point.derivatives,
-        betas=(0.0,1.0,0.0,0.0,0.0),
-        g_fluid=g, f_fluid=f, finite_difference_step=2e-6,
+    physical = case_c_time_dependent_physical_action(
+        a=0.05, k=400.0, f_cs2=0.1,
+        background_step_fraction=1.0e-3,
+        finite_difference_step=2.0e-6,
     )
     measured = kinetic_ng3(physical.kinetic_hessian)
     expected = 0.0185421788  # De Felice Eq. (78)-(81), same exact Case-C point.
@@ -145,11 +147,10 @@ def test_case_c_finite_k_ng3_matches_de_felice_eq78():
 
 def test_case_c_high_k_physical_action_recovers_three_scalar_speed_branches():
     point, g, f = _case_c(0.05, 400.0)
-    physical = eliminate_bd_mode(
-        point.metric, point.derivatives,
-        betas=(0.0,1.0,0.0,0.0,0.0),
-        g_fluid=g, f_fluid=f,
-        finite_difference_step=2e-6,
+    physical = case_c_time_dependent_physical_action(
+        a=0.05, k=400.0, f_cs2=0.1,
+        background_step_fraction=1.0e-3,
+        finite_difference_step=2.0e-6,
     )
     measured = np.sort(physical_squared_phase_speeds(
         physical.physical_hessian,
