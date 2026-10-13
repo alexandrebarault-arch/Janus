@@ -44,7 +44,7 @@ def test_full_hr_scalar_potential_matches_existing_standard_beta_diagonal_limit(
     assert math.isclose(new, old, rel_tol=3e-12, abs_tol=3e-12)
 
 
-def test_quadratic_hr_shift_block_matches_de_felice_delta_rank_one_form():
+def test_quadratic_hr_shift_block_matches_complete_de_felice_eq45_46():
     N = 1.0
     a = 0.8
     xi = 1.17
@@ -73,16 +73,21 @@ def test_quadratic_hr_shift_block_matches_de_felice_delta_rank_one_form():
     q22 = (V(0.0,h)-2.0*base+V(0.0,-h))/h**2
     q12 = (V(h,h)-V(h,-h)-V(-h,h)+V(-h,-h))/(4.0*h*h)
 
-    coeff = 0.5*m2*Mg2*N*a**3*xi/(ctilde+1.0)*k*k
-    assert math.isclose(q11, 2.0*coeff, rel_tol=3e-7, abs_tol=3e-7)
-    assert math.isclose(q12, -2.0*coeff*ctilde, rel_tol=3e-7, abs_tol=3e-7)
-    assert math.isclose(q22, 2.0*coeff*ctilde**2, rel_tol=3e-7, abs_tol=3e-7)
-    assert math.isclose(q11*q22-q12*q12, 0.0, abs_tol=3e-5)
+    pref = m2*Mg2*N*a**3
+    rhohat_g = 3.0*xi
+    rhohat_f = 1.0/xi**3
+    expected_q11 = pref*k*k*(-rhohat_g + xi/(ctilde+1.0))
+    expected_q22 = (
+        -m2*Mg2*n*alpha**3*rhohat_f*k*k
+        + pref*xi*k*k*ctilde**2/(ctilde+1.0)
+    )
+    expected_q12 = -pref*xi*k*k*ctilde/(ctilde+1.0)
+    assert math.isclose(q11, expected_q11, rel_tol=3e-7, abs_tol=3e-7)
+    assert math.isclose(q12, expected_q12, rel_tol=3e-7, abs_tol=3e-7)
+    assert math.isclose(q22, expected_q22, rel_tol=3e-7, abs_tol=3e-7)
 
 
 def test_de_felice_quadratic_helper_has_opposite_diagonal_sign_to_standard_beta_potential():
-    # Historical audit helper: this evaluates the exact diagonal potential
-    # plus the analytic shift block, rather than extracting only O(delta^2).
     kwargs = dict(
         N=1.0, a=0.8, n=1.06, alpha=0.92,
         m2=0.7, Mg2=1.3, betas=(0.2,0.4,-0.1,0.15,0.3), k=2.2,
@@ -103,8 +108,6 @@ def test_analytic_quadratic_hr_beta1_case_has_expected_scalar_hessian():
         betas=(0.0,1.0,0.0,0.0,0.0),k=k,
         B_g=0.0,psi_g=0.0,E_g=0.0,
     )
-    # x=(Sigma,S,Phi_g,Phi_f).  The beta1-only Hessian follows directly
-    # from De Felice Eqs. (45)-(46), including the last (ctilde-1) term in Delta.
     steps=(2e-5,2e-5,2e-5,2e-5)
     def V(x):
         Sigma,S,Pg,Pf=x
