@@ -23,6 +23,8 @@ class DustCanonicalAction:
     hamiltonian_hessian: np.ndarray
     kkt_matrix: np.ndarray
     velocity_momentum_map: np.ndarray
+    matter_momentum_map: np.ndarray
+    bd_state_map: np.ndarray
     bd_algebraic_coefficient: float
     zdot_kinetic_residual: float
     pdot_residual: float
@@ -35,7 +37,13 @@ def _extended_bd_transform(
     bg: ScalarBackground,
     bgp: ScalarBackgroundDerivatives,
 ) -> np.ndarray:
-    """Map Eq. (72) plus dust phase momenta to the old reduced variables."""
+    """Map 6 state/rate variables to reduced old variables.
+
+    Old reduced order is ``(Sigma,S,q_g,q_f, their rates, p_g,p_f)``.
+    New state order is ``(Y1,Y2,Y3,Z,p_g,p_f)`` followed by their six rates.
+    The two phase momenta are states; their rates do not enter before the BD
+    integration by parts.
+    """
     base = bd_basis_transform(bg, bgp)
     transform = np.zeros((10, 12), dtype=float)
     cols = [0, 1, 2, 3, 6, 7, 8, 9]
@@ -64,7 +72,14 @@ def _transformed_dust_hessian(
 def _hamiltonian_from_physical_phase_hessian(
     H: np.ndarray,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, float]:
-    """Legendre-KKT reduce the first-order dust action to canonical (Y,Pi)."""
+    """Legendre-KKT reduce the first-order dust action to (Y,Pi).
+
+    ``H`` has state order ``(Y1,Y2,Y3,p_g,p_f)`` and rate order
+    ``(Y1dot,Y2dot,Y3dot,p_gdot,p_fdot)``. The last two rates vanish
+    structurally. The definitions of the three canonical momenta and the two
+    algebraic equations dL/dp=0 form a 5x5 linear KKT system for
+    ``(Ydot1,Ydot2,Ydot3,p_g,p_f)``.
+    """
     H = np.asarray(H, dtype=float)
     if H.shape != (10, 10):
         raise ValueError("physical dust phase Hessian must be 10x10")
@@ -169,6 +184,15 @@ def dust_canonical_action(
     hamiltonian, kkt, solution_map, kkt_cond = _hamiltonian_from_physical_phase_hessian(
         physical,
     )
+
+    physical_map = np.zeros((10, 6), dtype=float)
+    physical_map[:3, :3] = np.eye(3, dtype=float)
+    physical_map[3:5, :] = solution_map[3:5, :]
+    physical_map[5:8, :] = solution_map[:3, :]
+    bd_row_physical = -H11[z, phys] / hzz
+    bd_state_map = bd_row_physical @ physical_map
+    matter_momentum_map = solution_map[3:5, :].copy()
+
     return DustCanonicalAction(
         transformed_hessian=np.asarray(transformed, dtype=float),
         canonical_hessian=np.asarray(canonical, dtype=float),
@@ -176,6 +200,8 @@ def dust_canonical_action(
         hamiltonian_hessian=np.asarray(hamiltonian, dtype=float),
         kkt_matrix=np.asarray(kkt, dtype=float),
         velocity_momentum_map=np.asarray(solution_map, dtype=float),
+        matter_momentum_map=np.asarray(matter_momentum_map, dtype=float),
+        bd_state_map=np.asarray(bd_state_map, dtype=float),
         bd_algebraic_coefficient=hzz,
         zdot_kinetic_residual=zdot_residual,
         pdot_residual=pdot_residual,
