@@ -51,7 +51,8 @@ def flat_gauge_two_dust_action_value(
     q = _as_vector(dynamic, 4, "dynamic")
     v = _as_vector(rates, 4, "rates")
     aux = _as_vector(auxiliaries, 6, "auxiliaries")
-    if not all(math.isfinite(x) and x > 0.0 for x in (rho_g, rho_f)):
+    vals = (rho_g, rho_f)
+    if not all(math.isfinite(x) and x > 0.0 for x in vals):
         raise ValueError("dust densities must be finite and positive")
 
     p = _cosmic_background(bg, bgp)
@@ -78,10 +79,6 @@ def flat_gauge_two_dust_action_value(
         psi_dot=psi_f_dot, E_dot=E_f_dot,
     )
 
-    # The exact dust limit is first order in the matter variables.  In the
-    # g sector the field-velocity drift tends to zero.  In the f sector the
-    # normalized field variable retains qdot + (dot n/n) q, hence the extra
-    # p_f * (dot n/n) * q_f term below.
     L_m_g = (
         p_g * q_g_dot
         + dust_phase_density(
@@ -131,12 +128,25 @@ def flat_gauge_two_dust_hessian(
             dynamic=z[:4], rates=z[4:8], auxiliaries=z[8:14],
         )
 
+    # The action is exactly quadratic, but its coefficients span many powers
+    # of k (up to k^6 in the scalar metric sector). Unit-vector polarization
+    # subtracts O(k^6) diagonal pieces to recover much smaller mixed terms and
+    # loses precision at the early/high-k benchmark. Rescale every coordinate
+    # from its diagonal curvature before polarizing. This changes only the
+    # numerical conditioning, not the quadratic form.
+    diagonal = np.array([2.0 * L(eye[i]) for i in range(nvar)], dtype=float)
+    scales = 1.0 / np.sqrt(np.maximum(np.abs(diagonal), 1.0))
+
     H = np.zeros((nvar, nvar), dtype=float)
-    single = np.array([L(eye[i]) for i in range(nvar)], dtype=float)
+    H[np.diag_indices(nvar)] = diagonal
     for i in range(nvar):
-        H[i, i] = 2.0 * single[i]
+        ui = scales[i] * eye[i]
         for j in range(i + 1, nvar):
-            value = L(eye[i] + eye[j]) - single[i] - single[j]
+            uj = scales[j] * eye[j]
+            value = (
+                L(ui + uj) - L(ui - uj)
+                - L(-ui + uj) + L(-ui - uj)
+            ) / (4.0 * scales[i] * scales[j])
             H[i, j] = H[j, i] = value
     return 0.5 * (H + H.T)
 
