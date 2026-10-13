@@ -89,3 +89,18 @@ def test_dust_dae_accepts_structural_pdot_rows_but_rejects_nonzero_pdot_dynamics
     bad[8,0] = bad[0,8] = 1e-3
     with np.testing.assert_raises_regex(np.linalg.LinAlgError, "pdot"):
         dust_dae_local_system(bad, HN10, H_g=.7)
+
+
+def test_candidate_dust_local_gravity_branch_converges_at_late_start():
+    from numerics.candidate_c_dust_background import candidate_c_dust_linear_start
+    from numerics.de_felice_dust_local_modes import candidate_c_dust_local_squared_speeds
+    a = candidate_c_dust_linear_start()
+    coarse = candidate_c_dust_local_squared_speeds(
+        a, k_hmpc=0.2, action_derivative_step_N=2e-3,
+        trajectory_derivative_step_N=2e-3,
+    )
+    fine = candidate_c_dust_local_squared_speeds(
+        a, k_hmpc=0.2, action_derivative_step_N=1e-3,
+        trajectory_derivative_step_N=1e-3,
+    )
+    assert math.isclose(coarse[2], fine[2], rel_tol=1e-2, abs_tol=2e-4)
