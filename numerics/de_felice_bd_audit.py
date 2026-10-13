@@ -1,9 +1,8 @@
 """Diagnostic decomposition of the De Felice BD algebraic scalar coefficient.
 
-This module is deliberately read-only with respect to the physical reduction.
-It decomposes the transformed Z^2 coefficient into contributions inherited from
-the auxiliary-reduced old variables (Sigma,S,q_g,q_f; rates).  It is used to
-locate DF5e.3e without tuning any coefficient in the action reconstruction.
+This module is deliberately read-only with respect to the baseline physical
+reduction.  It decomposes and time-canonicalizes the transformed BD scalar so
+DF5e can be audited without tuning any coefficient in the reconstructed action.
 """
 
 from __future__ import annotations
@@ -11,10 +10,12 @@ from __future__ import annotations
 import math
 import numpy as np
 
+from numerics.bd_time_canonicalization import canonicalize_linear_zdot_time_dependent
 from numerics.comelli_case_c import case_c_background_from_a
 from numerics.comelli_dae import ScalarBackground, ScalarBackgroundDerivatives
 from numerics.de_felice_two_matter_action import (
     DFKessenceFluid,
+    PhysicalFlatGaugeAction,
     eliminate_flat_gauge_auxiliaries,
     bd_basis_transform,
 )
@@ -133,6 +134,39 @@ def _case_c_audit_pieces(
     return pieces, point.metric
 
 
+def _case_c_transformed_hessian(
+    a: float,
+    k: float,
+    *,
+    f_cs2: float,
+    finite_difference_step: float,
+    f_pressure: float = 0.0,
+) -> tuple[np.ndarray, object]:
+    """Return the Eq. (72) Hessian on one exact Case-C background point."""
+    point = case_c_background_from_a(a, k=k)
+    g = DFKessenceFluid(
+        rho=point.rho1,
+        pressure=point.rho1 / 3.0,
+        cs2=1.0 / 3.0,
+    )
+    f = DFKessenceFluid(
+        rho=point.rho2,
+        pressure=f_pressure,
+        cs2=f_cs2,
+    )
+    reduced = eliminate_flat_gauge_auxiliaries(
+        point.metric,
+        point.derivatives,
+        betas=(0.0, 1.0, 0.0, 0.0, 0.0),
+        g_fluid=g,
+        f_fluid=f,
+        finite_difference_step=finite_difference_step,
+    )
+    transform = bd_basis_transform(point.metric, point.derivatives)
+    H = transform.T @ reduced.reduced_hessian @ transform
+    return 0.5 * (H + H.T), point
+
+
 def case_c_bd_effective_coefficient(
     *,
     a: float,
@@ -164,8 +198,8 @@ def case_c_bd_effective_coefficient(
 
     with ``dot(P_f)=-3 n H_f cs_f^2 (rho_f+P_f)`` at ``P_f=0``.
 
-    This helper remains diagnostic only and does not alter the physical
-    reducer.
+    This helper remains diagnostic only and does not alter the baseline
+    physical reducer.
     """
     values = (
         a, k, f_cs2, background_step_fraction,
@@ -246,3 +280,114 @@ def case_c_bd_effective_coefficient(
         "time_correction": float(time_correction),
         "effective_hZZ": float(effective),
     }
+
+
+def case_c_time_dependent_physical_action(
+    *,
+    a: float,
+    k: float,
+    f_cs2: float = 0.1,
+    background_step_fraction: float = 1.0e-3,
+    finite_difference_step: float = 2.0e-6,
+    pressure_probe_fraction: float = 1.0e-4,
+) -> PhysicalFlatGaugeAction:
+    """Canonicalize the Case-C BD scalar with coefficient time derivatives.
+
+    This is the finite-k DF5e.4 adapter.  It differentiates the complete
+    ``C[:,Z]`` column along the exact Case-C background while adding the local
+    P(X) pressure tangent separately for numerical conditioning.  The generic
+    canonicalizer itself remains background agnostic.
+    """
+    values = (
+        a, k, f_cs2, background_step_fraction,
+        finite_difference_step, pressure_probe_fraction,
+    )
+    if not all(math.isfinite(v) for v in values):
+        raise ValueError("all adapter inputs must be finite")
+    if a <= 0.0 or k <= 0.0 or f_cs2 <= 0.0:
+        raise ValueError("a, k and f_cs2 must be positive")
+    if background_step_fraction <= 0.0 or background_step_fraction >= 0.25:
+        raise ValueError("background_step_fraction must lie in (0,0.25)")
+    if pressure_probe_fraction <= 0.0 or pressure_probe_fraction >= 0.1:
+        raise ValueError("pressure_probe_fraction must lie in (0,0.1)")
+
+    da = a * background_step_fraction
+    if a - da <= 0.0:
+        raise ValueError("background step crosses a=0")
+
+    center, point = _case_c_transformed_hessian(
+        a, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
+    )
+    minus, _ = _case_c_transformed_hessian(
+        a - da, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
+    )
+    plus, _ = _case_c_transformed_hessian(
+        a + da, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
+    )
+
+    c_minus = minus[:4, 7]
+    c_plus = plus[:4, 7]
+    dc_da = (c_plus - c_minus) / (2.0 * da)
+
+    dP = point.rho2 * pressure_probe_fraction
+    pminus, _ = _case_c_transformed_hessian(
+        a, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=-dP,
+    )
+    pplus, _ = _case_c_transformed_hessian(
+        a, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=dP,
+    )
+    dc_dP = (pplus[:4, 7] - pminus[:4, 7]) / (2.0 * dP)
+
+    bg = point.metric
+    a_dot = bg.H
+    nHf = bg.H_omega / bg.a
+    dot_P_f = -3.0 * nHf * f_cs2 * point.rho2
+    dot_c = dc_da * a_dot + dc_dP * dot_P_f
+    mu_measure = 3.0 * bg.H / bg.a
+
+    Kraw = center[4:8, 4:8]
+    kscale = max(1.0, float(np.linalg.norm(Kraw, ord=np.inf)))
+    zdot_kinetic_residual = float(max(
+        np.linalg.norm(Kraw[3, :], ord=np.inf),
+        np.linalg.norm(Kraw[:, 3], ord=np.inf),
+    ) / kscale)
+
+    canonical = canonicalize_linear_zdot_time_dependent(
+        center,
+        dot_c=dot_c,
+        mu_measure=mu_measure,
+    )
+
+    # Zdot is now identically absent.  Drop it and Schur-eliminate Z.
+    keep7 = [0, 1, 2, 3, 4, 5, 6]
+    H7 = canonical[np.ix_(keep7, keep7)]
+    zidx = 3
+    hzz = float(H7[zidx, zidx])
+    if abs(hzz) <= 1.0e-14 * max(1.0, float(np.linalg.norm(H7, ord=np.inf))):
+        raise np.linalg.LinAlgError("BD scalar is not algebraically invertible")
+
+    phys = [0, 1, 2, 4, 5, 6]
+    Hp = H7[np.ix_(phys, phys)]
+    hpz = H7[np.ix_(phys, [zidx])]
+    Hphys = Hp - hpz @ hpz.T / hzz
+    Hphys = 0.5 * (Hphys + Hphys.T)
+    K = 0.5 * (Hphys[3:6, 3:6] + Hphys[3:6, 3:6].T)
+
+    return PhysicalFlatGaugeAction(
+        transformed_hessian=np.asarray(center, dtype=float),
+        canonical_hessian=np.asarray(canonical, dtype=float),
+        physical_hessian=np.asarray(Hphys, dtype=float),
+        kinetic_hessian=np.asarray(K, dtype=float),
+        bd_algebraic_coefficient=hzz,
+        zdot_kinetic_residual=zdot_kinetic_residual,
+    )
