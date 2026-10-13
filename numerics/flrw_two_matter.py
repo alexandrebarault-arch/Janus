@@ -143,6 +143,38 @@ def solve_branch(a_grid: np.ndarray, p: Params) -> np.ndarray:
     return y
 
 
+def branch_log_derivatives(a: float, y: float, p: Params) -> tuple[float, float]:
+    """Return dy/dN and d2y/dN2 on the algebraic branch, N=ln(a)."""
+    a = float(a)
+    y = float(y)
+    m2 = p.m2_over_H02
+    a2 = p.alpha**2
+
+    c4 = a2 * m2 * p.beta3 / 3.0
+    c3 = a2 * m2 * p.beta2 - m2 * p.beta4 / 3.0
+    c2 = a2 * m2 * p.beta1 - m2 * p.beta3
+    omega_m = p.omega_g_m0 * a**-3
+    omega_r = p.omega_g_r0 * a**-4
+
+    c1 = a2 * (omega_m + omega_r) - m2 * p.beta2
+    c1_N = a2 * (-3.0 * omega_m - 4.0 * omega_r)
+    c1_NN = a2 * (9.0 * omega_m + 16.0 * omega_r)
+    c0_N = 3.0 * p.omega_f_m0 * p.y0**3 * a**-3
+    c0_NN = -9.0 * p.omega_f_m0 * p.y0**3 * a**-3
+
+    p_y = 4.0*c4*y**3 + 3.0*c3*y**2 + 2.0*c2*y + c1
+    if abs(p_y) < 1e-14:
+        raise RuntimeError("branch derivative is singular")
+    p_N = c1_N*y + c0_N
+    y_N = -p_N/p_y
+
+    p_yy = 12.0*c4*y**2 + 6.0*c3*y + 2.0*c2
+    p_Ny = c1_N
+    p_NN = c1_NN*y + c0_NN
+    y_NN = -(p_NN + 2.0*p_Ny*y_N + p_yy*y_N**2)/p_y
+    return float(y_N), float(y_NN)
+
+
 def dy_dloga(a: np.ndarray, y: np.ndarray, p: Params) -> np.ndarray:
     """Implicit derivative of the quartic branch equation."""
     a = np.asarray(a, dtype=float)
@@ -168,7 +200,7 @@ def diagnostics(a_grid: np.ndarray, y: np.ndarray, p: Params) -> dict[str, np.nd
     a = np.asarray(a_grid, dtype=float)
     y = np.asarray(y, dtype=float)
     yp = dy_dloga(a, y, p)
-    ctilde = 1.0 + yp / y  # n a/(N a_f); lapse ratio n/N = ctilde*y
+    ctilde = 1.0 + yp / y
     lapse_ratio = ctilde * y
 
     E2 = omega_g(a, p) + p.m2_over_H02 * U_g(y, p) / 3.0
@@ -189,9 +221,7 @@ def diagnostics(a_grid: np.ndarray, y: np.ndarray, p: Params) -> dict[str, np.nd
         - E2
     )
 
-    # f dust density in units M_g^2 H0^2, i.e. rho_f/H0^2 = 3 Omega_f.
     omega_f = omega_f_dust(a, y, p)
-    # De Felice Eq. (82), flat case, f-dust pressure = 0.
     B = 2.0 * W + 3.0 * y**2 * omega_f / kappa
 
     with np.errstate(divide="ignore", invalid="ignore"):
@@ -266,7 +296,7 @@ def benchmark_checks(p: Params | None = None) -> None:
     assert np.all(d["lapse_ratio"] > 0.0)
     assert np.all(d["J"] > 0.0)
     assert np.all(d["E2"] > 0.0)
-    assert np.all(d["B_over_H02"] > 0.0)  # high-k scalar no ghost
+    assert np.all(d["B_over_H02"] > 0.0)
 
     future_a = np.geomspace(1.0, 100.0, 500)
     future_y = solve_branch(future_a, p)
