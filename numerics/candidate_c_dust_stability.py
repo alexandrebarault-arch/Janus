@@ -1,4 +1,4 @@
-"""Continuous exact-dust gravity-branch stability diagnostics."""
+"""Exact-dust scalar stability and mode-character diagnostics."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -18,6 +18,15 @@ class GravityStabilityTrack:
     eigenvalues: np.ndarray
     cs2: np.ndarray
     overlap_scores: np.ndarray
+    zero_crossings_a: tuple[float, ...]
+    late_healthy_start_a: float | None
+
+
+@dataclass(frozen=True)
+class PrincipalGravityStability:
+    a: np.ndarray
+    cs2: np.ndarray
+    eigenvalue_pairs: np.ndarray
     zero_crossings_a: tuple[float, ...]
     late_healthy_start_a: float | None
 
@@ -60,7 +69,7 @@ def track_gravity_stability(
     anchor_pair: tuple[int, int] | None = None,
     state_scale=None,
 ) -> GravityStabilityTrack:
-    """Track a gravity eigensubspace from today backward on a fixed grid."""
+    """Transport one spectral pair continuously from a chosen late anchor."""
     a = np.asarray(a_grid, dtype=float)
     G = np.asarray(generators_cosmic, dtype=float)
     kk = float(k)
@@ -94,6 +103,59 @@ def track_gravity_stability(
     )
 
 
+def principal_gravity_stability(
+    a_grid,
+    generators_cosmic,
+    *,
+    k: float,
+) -> PrincipalGravityStability:
+    """Identify the finite-speed principal scalar pair locally at each point.
+
+    In the exact pressureless system the two dust pairs have phase products
+    that vanish as k^-2, while the helicity-0 principal pair retains an O(1)
+    squared phase speed.  At the production high-k scales it is the pair with
+    the largest local |lambda|.  This diagnostic deliberately tracks *mode
+    character*, not eigenpair identity through an avoided crossing.
+    """
+    a = np.asarray(a_grid, dtype=float)
+    G = np.asarray(generators_cosmic, dtype=float)
+    kk = float(k)
+    if a.ndim != 1 or len(a) < 2 or not np.all(np.isfinite(a)) or np.any(a <= 0.0):
+        raise ValueError("a_grid must be a finite positive one-dimensional grid")
+    if not np.all(np.diff(a) > 0.0):
+        raise ValueError("a_grid must increase toward today")
+    if G.shape != (len(a), 6, 6) or not np.all(np.isfinite(G)):
+        raise ValueError("generators_cosmic must be finite with shape (len(a_grid),6,6)")
+    if not (math.isfinite(kk) and kk > 0.0):
+        raise ValueError("k must be finite and positive")
+
+    pairs = np.empty((len(a), 2), dtype=complex)
+    cs2 = np.empty(len(a), dtype=float)
+    for i, matrix in enumerate(G):
+        values = np.linalg.eigvals(matrix)
+        if not np.all(np.isfinite(values)):
+            raise np.linalg.LinAlgError(f"non-finite scalar spectrum at index {i}")
+        pair = values[np.argsort(np.abs(values))[-2:]]
+        pairs[i] = pair
+        cs2[i] = float(np.real(pair[0]*pair[1]) * (a[i]/kk)**2)
+    crossings = _zero_crossings(a, cs2)
+    return PrincipalGravityStability(
+        a=a.copy(),
+        cs2=cs2,
+        eigenvalue_pairs=pairs,
+        zero_crossings_a=crossings,
+        late_healthy_start_a=_late_healthy_start(a, cs2, crossings),
+    )
+
+
+def _candidate_generator_cosmic(trajectory, kh: float, N: float):
+    from numerics.candidate_c_dust_background import candidate_c_dust_background_point
+    a = math.exp(float(N))
+    point = candidate_c_dust_background_point(a, k_hmpc=kh)
+    Hg = point.metric.H / point.metric.a
+    return Hg * trajectory.generator_N(float(N)), point
+
+
 def track_candidate_c_dust_gravity(
     k_hmpc: float,
     *,
@@ -103,12 +165,11 @@ def track_candidate_c_dust_gravity(
     min_overlap: float = 0.90,
     max_refinements: int = 8,
 ) -> GravityStabilityTrack:
-    """Adaptively track the exact-dust Candidate-C-like gravity branch.
+    """Transport today's gravity-connected pair backward through mode mixing.
 
-    The physical branch is anchored at today and followed backward.  Intervals
-    are bisected whenever the bounded spectral-projector continuation score is
-    too small, preventing a coarse public sampling choice from silently
-    switching to another scalar pair near a quasi-degeneracy.
+    Low overlap that persists after refinement is returned rather than hidden:
+    it marks a genuine quasi-degenerate/mixed cluster.  This transported-pair
+    diagnostic must not be substituted for the principal stability test.
     """
     from numerics.candidate_c_dust_background import candidate_c_dust_background_point
     from numerics.candidate_c_dust_late_transfer import build_candidate_c_dust_trajectory
@@ -118,25 +179,21 @@ def track_candidate_c_dust_gravity(
         raise ValueError("k_hmpc must be finite and positive")
     if int(samples) < 11:
         raise ValueError("samples must be at least 11")
-    traj = trajectory or build_candidate_c_dust_trajectory(
-        kh, grid_size=max(21, int(samples)),
-    )
+    traj = trajectory or build_candidate_c_dust_trajectory(kh, grid_size=max(21, int(samples)))
     N0 = float(traj.N_grid[0])
     initial_N = np.linspace(N0, 0.0, int(samples))
 
-    def generator_cosmic(N: float) -> np.ndarray:
-        a = math.exp(float(N))
-        point = candidate_c_dust_background_point(a, k_hmpc=kh)
-        Hg = point.metric.H / point.metric.a
-        return Hg * traj.generator_N(float(N))
+    def generator(N: float) -> np.ndarray:
+        return _candidate_generator_cosmic(traj, kh, N)[0]
 
     N, branch = track_eigenpair_branch_adaptive(
-        generator_cosmic,
+        generator,
         initial_N,
         anchor_index=-1,
         state_scale=state_scale,
         min_score=float(min_overlap),
         max_refinements=int(max_refinements),
+        allow_unresolved_cluster=True,
     )
     a = np.exp(N)
     point0 = candidate_c_dust_background_point(float(a[0]), k_hmpc=kh)
@@ -153,4 +210,33 @@ def track_candidate_c_dust_gravity(
         overlap_scores=np.asarray(branch.overlap_scores, dtype=float),
         zero_crossings_a=crossings,
         late_healthy_start_a=_late_healthy_start(a, cs2, crossings),
+    )
+
+
+def candidate_c_dust_principal_stability(
+    k_hmpc: float,
+    *,
+    samples: int = 241,
+    trajectory=None,
+) -> PrincipalGravityStability:
+    """Map the exact-dust finite-speed principal stability to today."""
+    from numerics.candidate_c_dust_background import candidate_c_dust_background_point
+    from numerics.candidate_c_dust_late_transfer import build_candidate_c_dust_trajectory
+
+    kh = float(k_hmpc)
+    if not (math.isfinite(kh) and kh > 0.0):
+        raise ValueError("k_hmpc must be finite and positive")
+    if int(samples) < 41:
+        raise ValueError("samples must be at least 41")
+    traj = trajectory or build_candidate_c_dust_trajectory(kh, grid_size=max(41, int(samples)))
+    N = np.linspace(float(traj.N_grid[0]), 0.0, int(samples))
+    a = np.exp(N)
+    generators = np.empty((len(N), 6, 6), dtype=float)
+    for i, Ni in enumerate(N):
+        generators[i] = _candidate_generator_cosmic(traj, kh, float(Ni))[0]
+    point0 = candidate_c_dust_background_point(float(a[0]), k_hmpc=kh)
+    return principal_gravity_stability(
+        a,
+        generators,
+        k=math.sqrt(point0.metric.k2),
     )
