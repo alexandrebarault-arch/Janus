@@ -104,3 +104,41 @@ def test_biorthogonal_tracking_resists_nonnormal_right_eigenvector_alignment():
     anchor = tuple(np.argsort(np.abs(np.abs(vals0)-5.0))[:2])
     branch = track_eigenpair_branch(np.asarray([G0,G1]), anchor_index=0, anchor_pair=anchor)
     assert np.allclose(np.sort(np.abs(branch.eigenvalues[1].imag)), [5.0,5.0], atol=1e-9)
+
+
+def test_projector_overlap_is_bounded_for_nonnormal_idempotents():
+    from numerics.dust_mode_tracking import _projector_overlap
+    p1 = np.array([[1.0, 1.0], [0.0, 0.0]])
+    q1 = np.array([[1.0, 0.0], [1.0, 0.0]])
+    P = np.block([[p1, np.zeros((2,2))], [np.zeros((2,2)), p1]])
+    Q = np.block([[q1, np.zeros((2,2))], [np.zeros((2,2)), q1]])
+    assert np.allclose(P @ P, P)
+    assert np.allclose(Q @ Q, Q)
+    score = _projector_overlap(P, Q)
+    assert 0.0 <= score <= 1.0
+
+
+def test_adaptive_tracker_refines_fast_rotating_invariant_subspace():
+    from numerics.dust_mode_tracking import track_eigenpair_branch_adaptive
+    D = np.block([
+        [_osc(5.0), np.zeros((2,2)), np.zeros((2,2))],
+        [np.zeros((2,2)), _osc(2.0), np.zeros((2,2))],
+        [np.zeros((2,2)), np.zeros((2,2)), _osc(0.3)],
+    ])
+    def generator(t):
+        th = 1.2*float(t)
+        c, s = np.cos(th), np.sin(th)
+        Q = np.block([
+            [c*np.eye(2), -s*np.eye(2), np.zeros((2,2))],
+            [s*np.eye(2),  c*np.eye(2), np.zeros((2,2))],
+            [np.zeros((2,2)), np.zeros((2,2)), np.eye(2)],
+        ])
+        return Q @ D @ Q.T
+    grid, branch = track_eigenpair_branch_adaptive(
+        generator, np.array([0.0, 1.0]), anchor_index=-1,
+        min_score=0.90, max_refinements=8,
+    )
+    assert len(grid) > 2
+    measured = np.sort(np.abs(branch.eigenvalues.imag), axis=1)[:, -1]
+    assert np.max(np.abs(measured - 5.0)) < 1e-9
+    assert np.min(branch.overlap_scores[:-1]) >= 0.90
