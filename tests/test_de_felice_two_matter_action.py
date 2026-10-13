@@ -15,6 +15,7 @@ from numerics.de_felice_two_matter_action import (
     flat_gauge_quadratic_hessian,
     eliminate_flat_gauge_auxiliaries,
     bd_basis_transform,
+    bd_state_coefficient_decomposition,
     eliminate_bd_mode,
     physical_squared_phase_speeds,
 )
@@ -83,6 +84,23 @@ def test_eq72_bd_basis_has_no_Zdot_kinetic_direction():
         scale = max(1.0,float(np.linalg.norm(K,ord=np.inf)))
         assert np.linalg.norm(K[3,:],ord=np.inf) < 3e-7*scale
         assert np.linalg.norm(K[:,3],ord=np.inf) < 3e-7*scale
+
+
+def test_bd_state_coefficient_decomposition_reconstructs_transformed_hzz():
+    point, g, f = _case_c(0.05, 400.0)
+    pieces = bd_state_coefficient_decomposition(
+        point.metric, point.derivatives,
+        betas=(0.0,1.0,0.0,0.0,0.0),
+        g_fluid=g, f_fluid=f, finite_difference_step=2e-6,
+    )
+    explicit = (
+        pieces["Sigma2"] + pieces["2A_Sigma_qf"] + pieces["A2_qf2"]
+        + pieces["2Adot_Sigma_qfdot"] + pieces["2AAdot_qf_qfdot"]
+        + pieces["Adot2_qfdot2"]
+    )
+    assert math.isclose(explicit, pieces["raw_hZZ"], rel_tol=2e-10, abs_tol=2e-8)
+    assert math.isclose(pieces["raw_hZZ"], pieces["transformed_hZZ"], rel_tol=2e-10, abs_tol=2e-8)
+    assert math.isclose(pieces["C_ZZ"], pieces["transformed_C_ZZ"], rel_tol=2e-10, abs_tol=2e-8)
 
 
 def test_bd_elimination_leaves_positive_three_by_three_case_c_kinetic_matrix():
