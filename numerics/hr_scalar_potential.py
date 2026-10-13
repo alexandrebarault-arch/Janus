@@ -4,13 +4,13 @@
 matrix density ``+m^2 M_g^2 sqrt(-g) sum beta_n e_n(S)`` and is retained as a
 convention/audit helper.
 
-``hr_scalar_quadratic_potential_density_de_felice`` is the historical helper
-that evaluates the exact diagonal De-Felice-sign potential and adds the
-Fourier shift block.  It is useful for finite-difference audits but still
-contains background and linear pieces.
+``hr_scalar_quadratic_potential_density_de_felice`` evaluates the exact
+diagonal De-Felice-sign potential and adds the complete quadratic Fourier
+shift sector from Eqs. (45)-(46), including the shift-squared pieces hidden in
+the two volume determinants.
 
 ``hr_scalar_quadratic_action_density_de_felice`` implements directly the
-O(delta^2) interaction written in De Felice et al. Eqs. (45)-(46).  It has no
+O(delta^2) interaction written in De Felice et al. Eqs. (45)-(46). It has no
 background or linear term and is therefore the numerically stable helper to
 use when assembling a quadratic Hessian.
 """
@@ -37,7 +37,7 @@ def hr_scalar_potential_density_de_felice(
 ) -> float:
     """Return the exact local *standard-beta* HR potential density.
 
-    This raw helper uses ``+sum beta_n e_n(S)``.  It is not by itself the
+    This raw helper uses ``+sum beta_n e_n(S)``. It is not by itself the
     De-Felice interaction convention, and nonzero Fourier shifts should not be
     used to construct a quadratic action because their gradient phases are
     lost in a local real matrix representation.
@@ -91,11 +91,14 @@ def hr_scalar_quadratic_potential_density_de_felice(
     betas, k: float, Phi_g: float, B_g: float, psi_g: float, E_g: float,
     Phi_f: float, B_f: float, psi_f: float, E_f: float,
 ) -> float:
-    """Historical exact-diagonal De Felice helper plus analytic shift block.
+    """Exact diagonal potential plus the complete quadratic shift sector.
 
-    The diagonal/lapse/spatial piece is minus the exact standard-beta
-    potential.  It therefore contains background and linear pieces and should
-    be used for convention audits rather than high-k numerical Hessians.
+    Eq. (45) contains not only the relative-shift square in ``Delta`` but also
+    shift-squared pieces from ``-sqrt(-g) rhohat_g`` and
+    ``-sqrt(-f) rhohat_f``. The historical helper omitted those two volume
+    terms by setting the shifts to zero in the exact determinants and adding
+    only the relative-shift square. That changes the lapse/shift Schur
+    complement and spoils the high-k scalar kinetic invariant.
     """
     betas = tuple(float(x) for x in betas)
     if len(betas) != 5:
@@ -112,12 +115,21 @@ def hr_scalar_quadratic_potential_density_de_felice(
 
     xi = alpha/a
     ctilde = n*a/(N*alpha)
-    _,beta1,beta2,beta3,_ = betas
+    beta0,beta1,beta2,beta3,beta4 = betas
     J = beta1 + 2.0*beta2*xi + beta3*xi*xi
+    rhohat_g = beta0 + 3.0*beta1*xi + 3.0*beta2*xi*xi + beta3*xi**3
+    rhohat_f = beta4 + 3.0*beta3/xi + 3.0*beta2/(xi*xi) + beta1/(xi**3)
     if ctilde + 1.0 == 0.0:
         raise ValueError("ctilde+1 must be non-zero")
-    shift = 0.5*m2*Mg2*N*a**3*xi*J/(ctilde+1.0)*k*k*(B_g-ctilde*B_f)**2
-    return float(diagonal + shift)
+
+    k2 = k*k
+    volume_shift_g = -0.5*m2*Mg2*N*a**3*rhohat_g*k2*B_g*B_g
+    volume_shift_f = -0.5*m2*Mg2*n*alpha**3*rhohat_f*k2*B_f*B_f
+    relative_shift = (
+        0.5*m2*Mg2*N*a**3*xi*J/(ctilde+1.0)
+        * k2*(B_g-ctilde*B_f)**2
+    )
+    return float(diagonal + volume_shift_g + volume_shift_f + relative_shift)
 
 
 def hr_scalar_quadratic_action_density_de_felice(
@@ -128,7 +140,7 @@ def hr_scalar_quadratic_action_density_de_felice(
     """Return only the O(delta^2) HR interaction of De Felice Eqs. (45)-(46).
 
     Unlike the exact-potential audit helper above, this expression contains
-    neither the background nor linear perturbation pieces.  This avoids
+    neither the background nor linear perturbation pieces. This avoids
     catastrophic subtraction when the quadratic action is differentiated to
     obtain the lapse/shift constraints at large k.
     """
@@ -178,7 +190,7 @@ def hr_scalar_quadratic_action_density_de_felice(
         + 0.5*Phi_f*trf
     )
 
-    # Eq. (46): the last (ctilde-1) term is essential.  For scalar modes the
+    # Eq. (46): the last (ctilde-1) term is essential. For scalar modes the
     # cross-contraction (H+h):(H-h) reduces to H:H-h:h.
     delta_spatial = (trg*trg - trf*trf) - 2.0*(h2g-h2f)
     Delta_2 = (
