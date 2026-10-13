@@ -1,113 +1,96 @@
-# DF5e.4 — pressure-consistent time-dependent BD canonicalization plan
+# DF5e.4 — pressure-consistent time-dependent BD canonicalization
 
 Date: 2026-10-13
 Branch: `research/gate2b-nonhomothetic-transfer`
-Status: design/checkpoint only; production code and new tests not yet changed in this environment.
+Status: **kinetic branch implemented and verified in executable subset; full-repository suite still unavailable.**
 
-## Hard finding carried into DF5e.4
+## Result
 
-The O(1e3) discrepancy in the BD algebraic coefficient was not a wrong coefficient in De Felice Eqs. (44), (45), or (54). The Case-C audit differentiated `C_ZZ` while forcing `P_f=0` at neighboring points even though the diagnostic fluid uses finite `c_sf^2`.
+DF5e.4 resolves the finite-k De Felice kinetic invariant `NG3` without changing any physical coefficient.
 
-For barotropic k-essence,
+The two required ingredients are:
 
-`dot P_f = c_sf^2 dot rho_f = -3 n H_f c_sf^2 (rho_f+P_f)`.
+1. follow the local P(X) pressure tangent when differentiating the BD mixed coefficient,
+   `dot P_f = -3 n H_f c_sf^2 (rho_f+P_f)`;
+2. integrate the complete `C[:,Z] Zdot` column by parts with the `N a^3` measure, including `dot c_i + 3 H c_i`.
 
-At `a=0.05`, `k=400`, `c_sf^2=0.1`, the missing chain-rule contribution to `dot C_ZZ` is approximately `-2160.22`, moving the stable scratch result from `h_ZZ^eff ~ -2153.48` to `+6.7421`. The value required by De Felice Eq. (78) through the transformed kinetic Schur complement is about `+6.7417`.
+A second numerical issue was found while implementing this: differentiating a Hessian that is itself obtained by finite-differencing the nonlinear HR potential is unnecessarily noisy.  The repository already contains the direct O(delta^2) De Felice Eqs. (45)-(46) interaction, `hr_scalar_quadratic_action_density_de_felice`.  DF5e.4 therefore uses a separate exact-quadratic Hessian backend.  This changes no HR coefficient.
 
-No EH, matter, HR, Eq. (72), or background `dot(phi_f)/phi_f` coefficient is to be tuned.
+## Committed implementation
 
-## Canonicalization identity to implement
+- `numerics/bd_time_canonicalization.py`
+  - generic background-agnostic integration-by-parts helper;
+  - receives `dot_c` and `mu_measure` explicitly.
+- `numerics/de_felice_two_matter_exact_quadratic.py`
+  - same EH and P(X) pieces and same auxiliary Schur complement as the baseline reducer;
+  - HR contribution is evaluated directly from the already-quadratic Eqs. (45)-(46) helper.
+- `numerics/de_felice_bd_audit.py`
+  - pressure-consistent `h_ZZ^eff`;
+  - full Case-C time-dependent BD adapter;
+  - uses the exact-quadratic backend for differentiated coefficients.
+- regressions:
+  - pressure-chain rule;
+  - synthetic time-dependent canonicalizer;
+  - Eq. (78) NG3 at `k=100,200,400,800`.
 
-After the Eq. (72) transform, write the quadratic Hessian in state/rate form
+## Fresh executable-subset verification
 
-`H = [[M, C], [C^T, K]]`,
+The current environment cannot clone the full repository and GitHub Actions remain disabled.  A minimal executable workspace reconstructed from the committed formulas was therefore used for the DF5e.4 numerical checks.
 
-with state order `(Y1,Y2,Y3,Z)` and rate order `(Y1dot,Y2dot,Y3dot,Zdot)`.
+Fresh run:
 
-Let
+- pressure-chain + canonicalizer tests: `2 passed`;
+- Eq. (78) NG3:
+  - `k=100`: measured `0.0158886855`, target `0.015890`, relative `-0.008%`;
+  - `k=200`: measured `0.0179238512`, target `0.017943`, relative `-0.107%`;
+  - `k=400`: measured `0.0184631480`, target `0.0185421788`, relative `-0.426%`;
+  - `k=800`: measured `0.0191642249`, target `0.018698`, relative `+2.493%`.
 
-`c_i = C[i,Z]`.
+All four satisfy the existing `3%` Eq. (78) regression tolerance.  This is **not** a claim that the full repository suite is green.
 
-The action contains `mu_measure * dt` through the common measure `N a^3`, with
+At `a=0.05,k=400,c_sf^2=0.1`, the stable exact-quadratic audit gives `h_ZZ^eff ~= 6.7414`, consistent with the Eq. (78)/(79) value near `6.7418`.
 
-`mu_measure = d ln(N a^3)/dt`.
+## New hard finding: the old frozen speed extractor is not the De Felice dispersion relation
 
-For the current g-cosmic convention `N=1`, `mu_measure = 3 H_cosmic`.
+The Case-C three-speed regression remains RED.  This is a distinct problem from NG3.
 
-Integrating every `c_i X_i Zdot` term by parts gives:
+The old helper `physical_squared_phase_speeds()` assumes frozen coefficients and solves
 
-1. rate block / antisymmetric coupling
-   - `C_new[Z,i] = C[Z,i] - c_i` for `i != Z`;
-   - `C_new[:,Z] = 0`;
-   - the `Zdot` kinetic row/column remains zero.
+`K Yddot + (C.T-C) Ydot - M Y = 0`.
 
-2. state block
-   - for `i != Z`, `M_new[i,Z] = M[i,Z] - (dot c_i + mu_measure c_i)` and symmetrically `M_new[Z,i]`;
-   - for the diagonal BD entry,
-     `M_new[Z,Z] = M[Z,Z] - (dot c_Z + mu_measure c_Z)`.
+De Felice Eq. (73), however, has a time-dependent measure and time-dependent matrices.  Eq. (84) gives, for `N=1`,
 
-Thus
+`K Yddot + (dot K + 3 H K + 2 Nmat) Ydot + (dot Nmat + 3 H Nmat + M_DF) Y = 0`,
 
-`h_ZZ^eff = h_ZZ - (dot C_ZZ + mu_measure C_ZZ)`.
+and Eq. (85) is the corresponding high-frequency dispersion relation.  In repository Hessian conventions,
 
-The existing `_canonicalize_linear_zdot_frozen()` implements only the rate-block part with `dot c_i = mu_measure = 0`. DF5e.4 must add the state correction without changing the already-correct antisymmetric `Z-Ydot` structure.
+- `C = -Nmat`;
+- `M_hessian = -M_DF`;
 
-## Pressure-consistent derivative
+so the same equation is
 
-The generic canonicalizer should not know about Case C or k-essence thermodynamics. It should receive the coefficient derivative `dot c` and `mu_measure` explicitly.
+`K Yddot + (dot K + 3 H K + C.T-C) Ydot + (dot C.T + 3 H C.T - M_hessian) Y = 0`.
 
-The Case-C diagnostic/adapter should construct `dot c` on a locally consistent trajectory. For the f fluid at the control point,
+Therefore the frozen extractor is not a valid final acceptance test once time-dependent canonicalization is restored.
 
-`dP_f/da = dot P_f / dot a`,
+A direct nested finite-difference attempt at Eq. (85) is numerically ill-conditioned: the gravity state coefficient is obtained by cancellations of roughly nine orders of magnitude.  The two matter branches remain near their expected principal values, while the gravity branch is unstable under the outer derivative step.  Do not interpret that unstable number as a new physical instability.
 
-with
+## Next task — DF5e.5
 
-`dot a = calH`,
-`dot P_f = -3 n H_f c_sf^2 (rho_f+P_f)`.
+**DF5e.5 — reconstruct the De Felice Eq. (85) principal dispersion from the reduced action without catastrophic cancellation.**
 
-The exact Case-C `rho_f(a)` path already satisfies the density continuity equation at the center. The missing first-order datum is the pressure drift.
+1. Keep DF5e.4 NG3 regressions fixed.
+2. Treat Eq. (84)/(85), not the frozen Hessian eigenproblem, as the scalar-speed acceptance equation.
+3. Obtain `dot K` and `dot Nmat` in a conditioned way:
+   - preferably analytic differentiation of the exact-quadratic Schur/basis operations, or
+   - an equivalent high-k principal reduction that can be compared term-by-term to Eq. (86).
+4. Require the Case-C gravity branch to recover the independent target `c_s^2=-0.6665833419871022` while the matter branches recover `c_g^2` and `ctilde^2 c_f^2`.
+5. Only then move to Candidate C / DF5d.
 
-For the full physical-speed reconstruction, the pressure contribution affects the whole `c_i` column, not only `C_ZZ`. At `a=0.05,k=400,c_sf^2=0.1`, the scratch pressure-chain contributions to `dot c_i` are approximately
+## Non-negotiable constraints
 
-- `Y1`: negligible;
-- `Y2`: `-0.458`;
-- `Y3`: `-15.24`;
-- `Z`: `-2160.22`.
-
-The `Z` component controls NG3; the `Y2/Y3` components must also be retained when reconstructing the full physical Hessian and phase speeds.
-
-## TDD sequence for the next executable worktree
-
-1. **RED — pressure trajectory**
-   - Add a regression around Case C `a=0.05,k=400,c_sf^2=0.1`.
-   - Require a pressure-consistent derivative to produce O(1) `h_ZZ^eff` near the Eq. (78)-required value instead of O(1e3).
-   - Confirm the existing pressure-frozen derivative fails this assertion for the expected reason.
-
-2. **GREEN — diagnostic derivative only**
-   - Allow the audit trajectory evaluator to carry the first-order f-pressure drift.
-   - Do not modify the physical reducer yet.
-
-3. **RED — generic time-dependent canonicalization**
-   - Add a small synthetic quadratic action with known time-dependent `c_i(t)` and measure.
-   - Require the canonicalized state/rate blocks to match the integration-by-parts identities above exactly.
-
-4. **GREEN — minimal canonicalizer**
-   - Add a function that takes the transformed Hessian, `dot c`, and `mu_measure` explicitly.
-   - Keep the frozen helper if needed for principal/local diagnostics, but do not use it for the finite-k physical Case-C comparison.
-
-5. **RED/GREEN — De Felice Eq. (78)**
-   - Case C `a=0.05`, beta1 only, diagnostic `c_sf^2=0.1`.
-   - Require `NG3` to match Eq. (78) at `k=100,200,400,800`.
-   - Keep NG1/NG2 and the three-degree kinetic rank checks green.
-
-6. **Then physical speeds**
-   - Re-run the three scalar branches using the complete state corrections `dot c_i + mu_measure c_i`.
-   - Only after Case C is green continue to Candidate C.
-
-## Non-negotiable checks
-
-- No coefficient tuning to force Eq. (78).
-- Preserve the already-audited `dot(phi_f)/phi_f = dot(n)/n - 3 n H_f c_sf^2` relation.
-- Preserve the corrected HR shift-volume terms.
-- Preserve GR one-metric degeneracy.
-- Do not claim RED/GREEN execution until tests actually run in a repository worktree; GitHub Actions are intentionally disabled at this checkpoint.
+- no coefficient tuning;
+- do not remove `-3 n H_f c_sf^2` from the f-field drift;
+- keep the corrected HR shift-volume terms;
+- keep GR one-metric degeneracy;
+- do not claim the full suite green until an actual full repository worktree executes it.
