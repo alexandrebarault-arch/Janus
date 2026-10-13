@@ -5,7 +5,11 @@ from dataclasses import dataclass
 import math
 import numpy as np
 
-from numerics.dust_mode_tracking import track_eigenpair_branch, pair_phase_speed_squared
+from numerics.dust_mode_tracking import (
+    track_eigenpair_branch,
+    track_eigenpair_branch_adaptive,
+    pair_phase_speed_squared,
+)
 
 
 @dataclass(frozen=True)
@@ -56,12 +60,7 @@ def track_gravity_stability(
     anchor_pair: tuple[int, int] | None = None,
     state_scale=None,
 ) -> GravityStabilityTrack:
-    """Track a gravity eigensubspace from today backward and map its sign.
-
-    ``a_grid`` must increase toward today. The tracked pair is anchored at the
-    final point; when ``anchor_pair`` is omitted the generic tracker uses the
-    largest-|lambda| late pair.
-    """
+    """Track a gravity eigensubspace from today backward on a fixed grid."""
     a = np.asarray(a_grid, dtype=float)
     G = np.asarray(generators_cosmic, dtype=float)
     kk = float(k)
@@ -101,11 +100,15 @@ def track_candidate_c_dust_gravity(
     samples: int = 81,
     trajectory=None,
     state_scale=None,
+    min_overlap: float = 0.90,
+    max_refinements: int = 8,
 ) -> GravityStabilityTrack:
-    """Track the exact-dust Candidate-C-like gravity branch to today.
+    """Adaptively track the exact-dust Candidate-C-like gravity branch.
 
-    The production trajectory supplies the conditioned local generator. The
-    branch is anchored at today and followed backward by eigensubspace overlap.
+    The physical branch is anchored at today and followed backward.  Intervals
+    are bisected whenever the bounded spectral-projector continuation score is
+    too small, preventing a coarse public sampling choice from silently
+    switching to another scalar pair near a quasi-degeneracy.
     """
     from numerics.candidate_c_dust_background import candidate_c_dust_background_point
     from numerics.candidate_c_dust_late_transfer import build_candidate_c_dust_trajectory
@@ -115,20 +118,39 @@ def track_candidate_c_dust_gravity(
         raise ValueError("k_hmpc must be finite and positive")
     if int(samples) < 11:
         raise ValueError("samples must be at least 11")
-    traj = trajectory or build_candidate_c_dust_trajectory(kh, grid_size=max(21, int(samples)))
-    N = np.linspace(float(traj.N_grid[0]), 0.0, int(samples))
-    a = np.exp(N)
-    generators = np.empty((len(N), 6, 6), dtype=float)
-    k_h0 = None
-    for i, (Ni, ai) in enumerate(zip(N, a)):
-        point = candidate_c_dust_background_point(float(ai), k_hmpc=kh)
+    traj = trajectory or build_candidate_c_dust_trajectory(
+        kh, grid_size=max(21, int(samples)),
+    )
+    N0 = float(traj.N_grid[0])
+    initial_N = np.linspace(N0, 0.0, int(samples))
+
+    def generator_cosmic(N: float) -> np.ndarray:
+        a = math.exp(float(N))
+        point = candidate_c_dust_background_point(a, k_hmpc=kh)
         Hg = point.metric.H / point.metric.a
-        generators[i] = Hg * traj.generator_N(float(Ni))
-        if k_h0 is None:
-            k_h0 = math.sqrt(point.metric.k2)
-    return track_gravity_stability(
-        a,
-        generators,
-        k=float(k_h0),
+        return Hg * traj.generator_N(float(N))
+
+    N, branch = track_eigenpair_branch_adaptive(
+        generator_cosmic,
+        initial_N,
+        anchor_index=-1,
         state_scale=state_scale,
+        min_score=float(min_overlap),
+        max_refinements=int(max_refinements),
+    )
+    a = np.exp(N)
+    point0 = candidate_c_dust_background_point(float(a[0]), k_hmpc=kh)
+    k_h0 = math.sqrt(point0.metric.k2)
+    cs2 = np.asarray([
+        pair_phase_speed_squared(branch.eigenvalues[i], a=float(a[i]), k=k_h0)
+        for i in range(len(a))
+    ], dtype=float)
+    crossings = _zero_crossings(a, cs2)
+    return GravityStabilityTrack(
+        a=np.asarray(a, dtype=float),
+        eigenvalues=np.asarray(branch.eigenvalues, dtype=complex),
+        cs2=cs2,
+        overlap_scores=np.asarray(branch.overlap_scores, dtype=float),
+        zero_crossings_a=crossings,
+        late_healthy_start_a=_late_healthy_start(a, cs2, crossings),
     )
