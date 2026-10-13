@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build the first trustworthy time-domain scalar transfer solver for a strictly on-shell Candidate-C-like dust+dust benchmark, from the benchmark's own `m_eff/H=1` crossing to today, using the validated De Felice/Hassan-Rosen action and reporting physical sector-density conversion.
+**Goal:** Build the first trustworthy time-domain scalar transfer solver for a strictly on-shell Candidate-C-like dust+dust benchmark, from that benchmark's own `m_eff/H=1` crossing to today, using the validated De Felice/Hassan-Rosen action and reporting physical sector-density conversion.
 
-**Architecture:** First make the dust limit regular at the action level by Legendre-transforming each P(X) matter sector, then eliminate metric auxiliaries, dust momenta and the BD scalar to recover a regular three-coordinate quadratic action. Evolve its canonical phase variables `(Y,Pi)` so the solver never differentiates `K` or `C`, and carry explicit reconstruction maps back to the original matter momenta and density contrasts. Candidate-C background data come from one strictly on-shell dust+dust provider; the physical radiation background is used only as a comparison oracle.
+**Architecture:** Make the dust limit regular at the action level by Legendre-transforming each P(X) sector, then eliminate metric auxiliaries, dust phase momenta and the BD scalar to recover a regular three-coordinate quadratic action. Evolve canonical phase variables `(Y,Pi)` so the solver never differentiates `K` or `C`, while retaining reconstruction maps back to raw dust momenta and physical densities. All action coefficients and coefficient derivatives come from one strictly on-shell dust+dust background provider; full Candidate C with radiation is comparison data only.
 
 **Tech Stack:** Python, NumPy, SciPy `solve_ivp`, pytest, existing JANUS `numerics/*` De Felice/Hassan-Rosen modules.
 
@@ -12,24 +12,24 @@
 
 ## Global Constraints
 
-- Work on branch `research/gate2b-nonhomothetic-transfer`; create an isolated worktree before implementation.
+- Work on `research/gate2b-nonhomothetic-transfer`; create an isolated worktree before implementation.
 - Do not use the historical Comelli 12x12 closure as a physical input.
-- Do not tune Eq. (44), Eq. (45)-(46), Eq. (54), EH, HR or matter coefficients to hit a target.
+- Do not tune Eq. (44), Eq. (45)-(46), Eq. (54), EH, HR or matter coefficients.
 - Do not retain a finite artificial dust sound speed in production integration.
 - Do not mix a dust perturbation action with the radiation-containing Candidate-C metric background.
-- Every coefficient derivative used by the BD canonicalization must follow one strictly on-shell background family.
-- Use the direct O(delta^2) HR interaction; never finite-difference the nonlinear HR potential in this solver.
-- Preserve the already validated Eq. (72) basis and `canonicalize_linear_zdot_time_dependent()` identity.
-- The six-dimensional fundamental matrix is authoritative; no 2x2 density transfer matrix may hide arbitrary velocity initial conditions.
-- Full-repository GREEN claims require a real complete worktree run; minimal reconstructed subsets are not sufficient for that claim.
+- Every derivative entering BD canonicalization must follow one on-shell background family.
+- Use the direct O(delta^2) HR interaction, never the nonlinear-potential finite-difference route.
+- Preserve Eq. (72) and `canonicalize_linear_zdot_time_dependent()`.
+- The six-dimensional fundamental matrix is authoritative; a 2x2 density transfer is allowed only after an explicit phase-space lift is fixed.
+- Full-repository GREEN claims require a complete worktree test run.
 
 ## Review Focus
 
-1. **f-sector momentum normalization:** `n xi^3` must be applied exactly once when converting between canonical matter momentum and physical `delta_rho_f`; pin this in Task 2 and Task 6.
-2. **Boundary-term momentum shifts:** time-dependent `Y_i Zdot` integration by parts changes canonical momenta; observable pullback must undo that shift before reading matter density; pin this in Task 6.
-3. **Background consistency:** no action coefficient may be evaluated on full Candidate C while matter uses dust-only densities; pin branch constraint and derivative consistency in Task 1 and Task 4.
-4. **Near-singular reductions:** auxiliary, dust-momentum, BD and physical kinetic blocks must fail fast with diagnostic condition numbers instead of silently using unstable inverses; pin in Tasks 3, 4 and 5.
-5. **Mode identity/sign continuity:** the GR-connected adiabatic mode and later common/relative lift must be continuous under small changes of `a` and `k`; pin overlap/sign tests in Tasks 8 and 9.
+1. **f-sector momentum normalization:** apply `n xi^3` exactly once between local matter momentum and common-normalized momentum; tests in Tasks 2 and 6.
+2. **BD boundary momentum shift:** undo the time-dependent integration-by-parts generating function before reading physical matter momenta; Task 6.
+3. **Background consistency:** removing radiation requires re-solving the present dust branch root `y0`, and no low-level reducer may silently accept a full-radiation metric with dust-only densities; Tasks 1 and 4.
+4. **Near-singular reductions:** auxiliary, dust-momentum, BD and kinetic blocks must fail fast with condition diagnostics; Tasks 3-5.
+5. **Mode identity/sign continuity:** common and relative phase directions must vary continuously under small changes in `a` and `k`; Tasks 8-9.
 
 ---
 
@@ -37,58 +37,63 @@
 
 **Files:**
 - Modify: `numerics/flrw_two_matter.py`
+- Modify: `numerics/candidate_c_transfer.py`
 - Create: `numerics/candidate_c_dust_background.py`
 - Create: `tests/test_candidate_c_dust_background.py`
 - Reuse: `tests/test_candidate_c_transfer_background.py`
 
 **Interfaces:**
-- Produces: `branch_log_derivatives(a: float, y: float, p: Params) -> tuple[float, float]` in `flrw_two_matter.py`.
-- Produces: `candidate_c_dust_params() -> Params`.
-- Produces: `CandidateCDustBackgroundPoint` with `y`, `y_N`, `y_NN`, `metric`, `derivatives`, `rho_g_m`, `rho_f_m`.
-- Produces: `candidate_c_dust_background_point(a: float, *, k_hmpc: float) -> CandidateCDustBackgroundPoint`.
-- Produces: `candidate_c_dust_meff_over_H(a: float) -> float` and `candidate_c_dust_linear_start() -> float` returning the scale factor where `m_eff/H=1`.
+- Produces `branch_log_derivatives(a: float, y: float, p: Params) -> tuple[float, float]` in `flrw_two_matter.py`.
+- Produces `candidate_c_dust_params() -> Params`.
+- Produces `CandidateCDustBackgroundPoint(y,y_N,y_NN,metric,derivatives,rho_g_m,rho_f_m)`.
+- Produces `candidate_c_dust_background_point(a: float, *, k_hmpc: float) -> CandidateCDustBackgroundPoint`.
+- Produces `candidate_c_dust_meff_over_H(a: float) -> float` and `candidate_c_dust_linear_start() -> float`.
 
-- [ ] **Step 1: Write RED tests for the generic implicit branch derivatives**
+- [ ] **Step 1: Write RED tests for generic implicit branch derivatives**
 
-Add tests that compare `branch_log_derivatives()` against centered finite differences of `solve_branch()` for the original Candidate C at `z=0,10,100`, and require agreement with the current `candidate_c_transfer.py` values to `rtol<=2e-5`.
+Compare `branch_log_derivatives()` with centered differences of `solve_branch()` on full Candidate C at `z={0,10,100}` and with current `candidate_c_transfer.py` values; require `rtol<=2e-5`.
 
-- [ ] **Step 2: Run the derivative tests and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_candidate_c_dust_background.py::test_generic_branch_log_derivatives_match_candidate_c -v`
-Expected: FAIL because `branch_log_derivatives` does not exist.
+Expected: FAIL because `branch_log_derivatives` is absent.
 
-- [ ] **Step 3: Implement `branch_log_derivatives()` and refactor `candidate_c_transfer.py` to use it**
+- [ ] **Step 3: Implement the generic derivative helper and refactor `candidate_c_transfer.py` to call it**
 
-Keep the present implicit-polynomial analytic formula; make it parameter-generic without changing Candidate-C outputs.
+Keep the existing analytic implicit-polynomial derivative, parameterized by `Params`; do not change full Candidate-C outputs.
 
-- [ ] **Step 4: Verify original Candidate-C background regressions remain GREEN**
+- [ ] **Step 4: Verify the existing full-background tests**
 
 Run: `pytest tests/test_candidate_c_transfer_background.py tests/test_candidate_c_dust_background.py::test_generic_branch_log_derivatives_match_candidate_c -v`
 Expected: PASS.
 
-- [ ] **Step 5: Write RED tests for the dust benchmark background**
+- [ ] **Step 5: Write RED tests for `candidate_c_dust_params()`**
 
 Require:
-- `omega_g_r0 == 0` while all other `candidate_c()` interaction/matter parameters are unchanged;
-- branch constraint residual `<1e-11` at `a in {1,0.5,0.1,1/17}`;
-- `rho_g_m=3 Omega_gm0 a^-3` and `rho_f_m=3 Omega_fm0 (y0/(a y))^3`;
-- analytic `c_N` agrees with a centered on-shell branch difference to `rtol<=3e-5`;
-- the returned `m_eff/H=1` crossing brackets a unique continuous root in the late interval.
+- `omega_g_r0 == 0`;
+- `beta1..beta4`, `alpha`, `omega_g_m0`, `omega_f_m0`, `m2_over_H02` unchanged from `candidate_c()`;
+- `y0` is re-solved, not copied blindly;
+- present dust branch residual at `(a=1,y=y0_dust)` `<1e-12` with `omega_f=omega_f_m0`;
+- select the late healthy root continuously connected to the original Candidate-C root (numerically the shift is tiny, but the equation, not that smallness, defines it).
 
-- [ ] **Step 6: Implement the dust background provider and crossing finder**
+- [ ] **Step 6: Implement the strict dust parameter construction**
 
-Use `dataclasses.replace(candidate_c(), omega_g_r0=0.0)`, the same positive branch-continuation rule as Candidate C, and `branch_log_derivatives()` for derivatives. The crossing finder must solve on the same dust provider, not interpolate the full-radiation diagnostics.
+Start from `candidate_c()`, set radiation to zero, solve the **present-day dust branch constraint directly for y** with the same `omega_g_m0` and `omega_f_m0`, select the root continuously connected to full Candidate C, then return `dataclasses.replace(..., omega_g_r0=0.0, y0=y0_dust)`. Do not call `positive_real_roots()` until this normalized `y0_dust` has been fixed because its polynomial constant term contains `omega_f_m0*y0^3`.
 
-- [ ] **Step 7: Add a comparison regression against full Candidate C**
+- [ ] **Step 7: Write and implement dust-background tests/provider**
 
-At a deterministic grid from the dust crossing to `a=1`, record maxima of relative differences in `H`, `y`, `c`, `m_eff/H`, and principal gravity `c_s^2`; assert they are finite and the dust/full difference at `a=0.5` reproduces the known principal-speed shift `~1.2e-5` relative.
+At `a={1,0.5,0.1,1/17}` require branch residual `<1e-11`, correct dust density scalings, and analytic `c_N` agreement with centered on-shell branch differences to `rtol<=3e-5`. Locate a unique continuous late `m_eff/H=1` crossing on this dust provider.
 
-- [ ] **Step 8: Run Task-1 tests and commit**
+- [ ] **Step 8: Compare dust benchmark to full Candidate C**
+
+On a deterministic grid from dust crossing to today record finite relative differences in `H,y,c,m_eff/H,c_s,grav^2`. At `a=0.5`, reproduce the known principal-speed dust/full shift at order `1.2e-5` relative (tolerance loose enough to account for the newly re-solved `y0`).
+
+- [ ] **Step 9: Run Task-1 tests and commit**
 
 Run: `pytest tests/test_candidate_c_transfer_background.py tests/test_candidate_c_dust_background.py -v`
 Expected: PASS.
 
-Commit: `feat: add on-shell Candidate C dust background`
+Commit: `feat: add strictly on-shell Candidate C dust background`
 
 ---
 
@@ -100,36 +105,33 @@ Commit: `feat: add on-shell Candidate C dust background`
 - Reuse: `numerics/de_felice_matter_action.py`
 
 **Interfaces:**
-- Produces: `finite_cs2_phase_density(..., momentum: float, cs2: float) -> float` for the Legendre-transformed Eq. (54) matter block before the dust limit.
-- Produces: `dust_phase_density(*, rho, lapse, scale_factor, k, Phi, B, psi, E, q, momentum) -> float` for `P=0`, `cs2->0`.
-- Produces: `physical_density_from_phase_momentum(*, momentum_local, rho, psi) -> float` returning `delta_rho = momentum_local - 3 rho psi`.
-- Produces: `common_normalized_momentum(*, momentum_local, prefactor) -> float` and its inverse; f sector uses `prefactor=n*xi**3`.
+- `finite_cs2_phase_density(..., momentum: float, cs2: float) -> float`.
+- `dust_phase_density(*, rho, lapse, scale_factor, k, Phi, B, psi, E, q, momentum) -> float`.
+- `physical_density_from_phase_momentum(*, momentum_local, rho, psi) -> float`.
+- `common_normalized_momentum(*, momentum_local, prefactor) -> float` and inverse helper.
 
-- [ ] **Step 1: Write RED finite-`cs2` Legendre identity tests**
+- [ ] **Step 1: Write RED finite-`cs2` Legendre tests**
 
-For several generic tuples `(rho,P,cs2,Phi,B,psi,E,q,momentum)`, solve
-`qdot-Phi = cs2*(momentum/(rho+P)-3*psi)` and require
-`L_phase = momentum*qdot - H` to equal `kessence_scalar_quadratic_density()` after substitution to `rtol<=2e-13`.
+For generic tuples solve `qdot-Phi = cs2*(momentum/(rho+P)-3*psi)` and require the phase form to reproduce `kessence_scalar_quadratic_density()` after substitution to `rtol<=2e-13`.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_de_felice_dust_phase_action.py::test_finite_cs2_legendre_form_matches_eq54 -v`
-Expected: FAIL because the module/functions do not exist.
+Expected: FAIL because module/functions are absent.
 
-- [ ] **Step 3: Implement the finite-`cs2` phase form**
+- [ ] **Step 3: Implement finite-`cs2` phase form**
 
-Use the exact identity
-`H_temp = p*Phi + cs2/(2A)*(p-3A psi)^2 - A*Phi^2/2`, `A=rho+P`, plus the unchanged Eq. (54) metric-pressure and spatial blocks.
+Use `A=rho+P` and `H_temp = p*Phi + cs2*(p-3A*psi)^2/(2A) - A*Phi^2/2`, keeping the Eq. (54) pressure-metric and spatial terms unchanged.
 
-- [ ] **Step 4: Write and pass the exact dust-limit tests**
+- [ ] **Step 4: Pin the exact dust limit**
 
-Require the analytic `cs2->0`, `P->0` result to remain finite and equal the finite-`cs2` phase density limit after subtracting the vanishing `cs2*(p-3A psi)^2/(2A)` term. Pin `delta_rho = p-3 rho psi`.
+Require the `P=0,cs2->0` phase density to be finite and to equal the finite-`cs2` form with only the vanishing `cs2*(p-3A psi)^2/(2A)` removed. Pin `delta_rho=p-3 rho psi`.
 
 - [ ] **Step 5: Pin g/f normalization**
 
-With `prefactor=1` for g and `prefactor=n*xi**3` for f, round-trip local momentum -> common-normalized momentum -> local momentum at `1e-14` relative.
+Round-trip local momentum through prefactors `1` and `n*xi**3` at `1e-14` relative.
 
-- [ ] **Step 6: Run Task-2 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_de_felice_matter_action.py tests/test_de_felice_dust_phase_action.py -v`
 Expected: PASS.
@@ -145,39 +147,36 @@ Commit: `feat: add regular De Felice dust phase action`
 - Create: `tests/test_de_felice_two_dust_action.py`
 - Reuse: `numerics/de_felice_gravity_action.py`
 - Reuse: `numerics/hr_scalar_potential.py`
-- Reuse: `numerics/de_felice_two_matter_action.py::bd_basis_transform`
 
 **Interfaces:**
-- Produces constants `DUST_DYNAMIC_ORDER=("psi_f","E_f","q_g","q_f")`, `DUST_RATE_ORDER=(...)`, `DUST_AUXILIARY_ORDER=("Phi_g","Phi_f","B_g","B_f","p_g","p_f")`.
-- Produces dataclass `DustFlatGaugeReducedAction` containing `reduced_hessian: np.ndarray` (8x8), `metric_auxiliary_condition_number`, `dust_momentum_condition_number`, and reconstruction matrices for `(Phi_g,Phi_f,B_g,B_f,p_g,p_f)` from old states/rates.
-- Produces `eliminate_flat_gauge_two_dust(bg,bgp,*,betas,rho_g,rho_f) -> DustFlatGaugeReducedAction`.
+- `DUST_DYNAMIC_ORDER=("psi_f","E_f","q_g","q_f")`.
+- `DUST_RATE_ORDER=("psi_f_dot","E_f_dot","q_g_dot","q_f_dot")`.
+- `DUST_AUXILIARY_ORDER=("Phi_g","Phi_f","B_g","B_f","p_g","p_f")`.
+- `DustFlatGaugeReducedAction` stores final 8x8 Hessian, separate metric-aux/dust-momentum condition numbers, and reconstruction maps for all six eliminated variables from old states/rates.
+- `eliminate_flat_gauge_two_dust(bg,bgp,*,betas,rho_g,rho_f) -> DustFlatGaugeReducedAction`.
 
-- [ ] **Step 1: Write RED structural tests for the augmented exact quadratic action**
+- [ ] **Step 1: Write RED exact-quadratic structural test**
 
-Require the augmented Hessian in order `(4 states,4 rates,4 metric auxiliaries,2 dust momenta)` to be symmetric and finite, with no finite-`cs2` argument anywhere in the public API.
+Require augmented order `(4 states,4 rates,4 metric auxiliaries,2 dust momenta)`, symmetry/finite Hessian, and no public finite-`cs2` argument.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_de_felice_two_dust_action.py::test_two_dust_augmented_action_is_exact_quadratic_and_symmetric -v`
-Expected: FAIL because the module does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement the augmented action from audited pieces**
+- [ ] **Step 3: Implement augmented action**
 
-Reuse Eq. (44), direct O(delta^2) HR Eqs. (45)-(46), and Task-2 dust phase sectors. Evaluate its Hessian by exact quadratic polarization with unit basis vectors; do not use a small perturbation amplitude.
+Reuse audited Eq. (44), direct O(delta^2) HR, and Task-2 dust phase sectors. Extract the Hessian by exact quadratic polarization with unit basis vectors, not a tiny perturbation amplitude.
 
 - [ ] **Step 4: Write RED Schur/reconstruction tests**
 
-At Case C and Candidate-C dust control points require:
-- metric auxiliary block rank 4;
-- after metric-aux elimination, dust-momentum block rank 2;
-- final 8x8 old-variable Hessian finite/symmetric;
-- substituting the returned reconstruction map into the unreduced action agrees with the Schur-reduced quadratic value to `rtol<=1e-10` for deterministic test vectors.
+At Case C and Candidate-C dust control points require metric auxiliary rank 4, then dust-momentum rank 2 after metric elimination; final 8x8 Hessian finite/symmetric; reconstruction substitution must reproduce the Schur-reduced action for deterministic vectors to `rtol<=1e-10`.
 
-- [ ] **Step 5: Implement two-stage elimination with fail-fast conditioning**
+- [ ] **Step 5: Implement two-stage elimination with diagnostics**
 
-Reject rank loss and non-finite condition numbers. Store reconstruction maps instead of discarding eliminated-variable information.
+Fail on rank loss, non-finite blocks or unusable condition numbers. Preserve reconstruction maps.
 
-- [ ] **Step 6: Run Task-3 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_de_felice_two_dust_action.py -v`
 Expected: PASS.
@@ -186,7 +185,7 @@ Commit: `feat: reduce exact two-dust scalar action`
 
 ---
 
-### Task 4: Time-dependent BD reduction on an on-shell trajectory
+### Task 4: Time-dependent BD physical reduction on one on-shell family
 
 **Files:**
 - Create: `numerics/de_felice_dust_physical_action.py`
@@ -195,32 +194,33 @@ Commit: `feat: reduce exact two-dust scalar action`
 - Reuse: `numerics/de_felice_two_matter_action.py::bd_basis_transform`
 
 **Interfaces:**
-- Produces dataclass `DustPhysicalAction` with `transformed_hessian`, `canonical_hessian`, `physical_hessian` (6x6), `K`, `C`, `M`, `bd_algebraic_coefficient`, `zdot_kinetic_residual`, `condition_numbers`, and a composed reconstruction map to old states/rates/auxiliaries/dust momenta.
-- Produces `dust_physical_action(bg,bgp,*,betas,rho_g,rho_f,dot_c,mu_measure) -> DustPhysicalAction`.
-- Produces Candidate-C adapter `candidate_c_dust_physical_action(a: float, *, k_hmpc: float, derivative_step_N: float=1e-4) -> DustPhysicalAction`.
+- `validate_dust_background_consistency(bg,bgp,*,betas,rho_g,rho_f,rtol: float=1e-8) -> None`.
+- `DustPhysicalAction` stores transformed/canonical/physical Hessians, `K,C,M`, BD coefficient/residual, condition diagnostics, and composed reconstruction maps.
+- `dust_physical_action(bg,bgp,*,betas,rho_g,rho_f,dot_c,mu_measure,validate_background=True) -> DustPhysicalAction`.
+- `candidate_c_dust_physical_action(a: float, *, k_hmpc: float, derivative_step_N: float=1e-4) -> DustPhysicalAction`.
 
-- [ ] **Step 1: Write RED tests for time-dependent BD canonicalization on the dust reducer**
+- [ ] **Step 1: Write RED three-direction/BD tests**
 
-At deterministic Case-C and Candidate-C dust points require `Zdot` kinetic residual `<1e-8`, algebraic `Z` invertibility, and exactly three physical kinetic directions.
+At deterministic Case-C and Candidate-C dust points require `Zdot` kinetic residual `<1e-8`, algebraic `Z` invertibility and exactly three physical kinetic directions.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_de_felice_dust_physical_action.py::test_two_dust_bd_reduction_has_three_physical_directions -v`
-Expected: FAIL because the adapter does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement generic BD reduction while preserving reconstruction maps**
+- [ ] **Step 3: Implement generic BD reduction with map composition**
 
-Apply Eq. (72), `canonicalize_linear_zdot_time_dependent()`, then the algebraic `Z` Schur complement. Compose the Task-3 auxiliary/momentum reconstruction with the Eq. (72) transform and `Z` solution.
+Apply Eq. (72), `canonicalize_linear_zdot_time_dependent()`, then algebraic Z Schur elimination; retain the inverse/reconstruction information required by observables.
 
-- [ ] **Step 4: Implement the on-shell `dot_c` adapter with convergence check**
+- [ ] **Step 4: Implement on-shell `dot_c` adapter**
 
-Compute `C[:,Z]` on the dust background at `N±h` and `N±2h` and use the five-point derivative; use `mu_measure=3H_g`. Add a test comparing `h=2e-4,1e-4,5e-5` at `a=0.5,k=0.1 h/Mpc` and require each `dot_c` component to converge within a documented tolerance (`rtol<=2e-3` for non-negligible components, absolute scale-aware tolerance otherwise).
+Compute `C[:,Z]` at `N±h,N±2h` on `candidate_c_dust_background_point()` and use a five-point derivative; `mu_measure=3H_g`. Compare `h={2e-4,1e-4,5e-5}` and require `rtol<=2e-3` for non-negligible components with scale-aware absolute tolerance for near-zero components.
 
-- [ ] **Step 5: Pin off-shell rejection**
+- [ ] **Step 5: Pin background-consistency rejection**
 
-Add a test that deliberately passes a full-radiation Candidate-C metric point with dust-only densities through the Candidate-C dust adapter and require an explicit background-consistency error rather than silent evaluation.
+Call the **generic** `dust_physical_action()` with a full-radiation `candidate_c_background_point()` plus dust-only densities and `validate_background=True`; require a clear consistency error. Separately assert the Candidate-C dust adapter's internally used metric/densities equal `candidate_c_dust_background_point()` so the high-level path cannot mix families.
 
-- [ ] **Step 6: Run Task-4 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_bd_time_canonicalization.py tests/test_de_felice_dust_physical_action.py -v`
 Expected: PASS.
@@ -236,35 +236,33 @@ Commit: `feat: add on-shell dust BD physical reduction`
 - Create: `tests/test_canonical_quadratic_evolution.py`
 
 **Interfaces:**
-- Produces `canonical_phase_matrix(*, K, C, M, H_g) -> np.ndarray` returning the 6x6 cosmic-time matrix for state `(Y,Pi)`.
-- Produces `canonical_rhs(t, state, *, coefficients_provider) -> np.ndarray`.
-- Produces `fundamental_rhs(t, flat_matrix, *, coefficients_provider) -> np.ndarray` for a 6x6 fundamental matrix.
+- `canonical_phase_matrix(*, K,C,M,H_g) -> np.ndarray` returns the 6x6 cosmic-time matrix for `(Y,Pi)`.
+- `canonical_phase_matrix_N(*, K,C,M,H_g) -> np.ndarray` returns the matrix for `d/dN`, i.e. cosmic matrix divided by `H_g`.
+- `canonical_rhs(t,state,*,coefficients_provider) -> np.ndarray`.
+- `fundamental_rhs(t,flat_matrix,*,coefficients_provider) -> np.ndarray`.
 
-- [ ] **Step 1: Write RED synthetic constant-coefficient Hamilton tests**
+- [ ] **Step 1: Write RED constant-system test**
 
-For diagonal `K`, `C=0`, and known `M`, require `canonical_phase_matrix()` eigenvalues to match the analytic oscillator/growing-mode roots.
+For diagonal `K`, `C=0`, known `M`, require analytic oscillator/growing roots.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_canonical_quadratic_evolution.py::test_canonical_phase_matrix_matches_known_quadratic_system -v`
-Expected: FAIL because the module does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement the canonical equations**
+- [ ] **Step 3: Implement canonical equations**
 
-Use only
-`Ydot = solve(K, Pi-C.T@Y)` and
-`Pidot = M@Y + C@Ydot - 3H_g*Pi`.
-Do not numerically differentiate `K` or `C`.
+Use only `Ydot=solve(K,Pi-C.T@Y)` and `Pidot=M@Y+C@Ydot-3H_g*Pi`; never differentiate `K` or `C`.
 
 - [ ] **Step 4: Add time-dependent synthetic equivalence test**
 
-Choose analytic scalar `K(t),C(t),M(t)` and compare the canonical first-order solution with direct integration of the expanded Euler-Lagrange equation containing `dot K`, `dot C`, and `3H` over a short interval; require `rtol<=1e-8`.
+Compare canonical integration to the explicitly expanded Euler-Lagrange equation containing analytic `dot K,dot C,3H`; require `rtol<=1e-8` over a short interval.
 
-- [ ] **Step 5: Add condition-number failure test**
+- [ ] **Step 5: Add singular-K failure test**
 
-A singular or numerically rank-deficient `K` must raise `LinAlgError` with the kinetic condition number included in the diagnostic object/message.
+Rank-deficient or non-finite K must fail with condition diagnostics.
 
-- [ ] **Step 6: Run Task-5 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_canonical_quadratic_evolution.py -v`
 Expected: PASS.
@@ -278,37 +276,35 @@ Commit: `feat: add canonical quadratic phase evolution`
 **Files:**
 - Create: `numerics/de_felice_dust_observables.py`
 - Create: `tests/test_de_felice_dust_observables.py`
-- Modify: `numerics/de_felice_dust_physical_action.py` only if an additional reconstruction matrix must be exposed.
+- Modify: `numerics/de_felice_dust_physical_action.py` only if one missing reconstruction matrix must be exposed.
 
 **Interfaces:**
-- Produces dataclass `DustObservables(delta_rho_g,delta_rho_f,delta_g,delta_f,delta_common,delta_relative)`.
-- Produces `reconstruct_dust_observables(action: DustPhysicalAction, *, Y, Pi, rho_g, rho_f, bg) -> DustObservables`.
-- Produces low-level `undo_bd_boundary_momentum_shift(...)` for a separately testable boundary transformation.
+- `DustObservables(delta_rho_g,delta_rho_f,delta_g,delta_f,delta_common,delta_relative)`.
+- `undo_bd_boundary_momentum_shift(...)`.
+- `reconstruct_dust_observables(action: DustPhysicalAction, *, Y,Pi,rho_g,rho_f,bg) -> DustObservables`.
 
-- [ ] **Step 1: Write RED test for the BD boundary momentum shift**
+- [ ] **Step 1: Write RED boundary-shift round-trip test**
 
-Build a synthetic Eq. (72) Hessian with nonzero `c_i` and verify that applying then undoing the boundary generating function
-`F=sum_{i!=Z} c_i Y_i Z + 1/2 c_Z Z^2`
-round-trips canonical momenta to `1e-13`.
+For synthetic nonzero `c_i`, apply and undo the generating function `F=sum_{i!=Z} c_i Y_i Z + 1/2 c_Z Z^2`; require momentum round-trip to `1e-13`.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_de_felice_dust_observables.py::test_boundary_momentum_pullback_round_trips -v`
-Expected: FAIL because the observable module does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement reconstruction through all stored maps**
+- [ ] **Step 3: Implement full reconstruction**
 
-Recover `Ydot`, then `Z`, old states/rates, metric auxiliaries and local dust momenta. Convert f common-normalized momentum by dividing `n*xi**3` exactly once. Use `delta_rho = p_local-3 rho psi`.
+Recover `Ydot`, Z, old states/rates, metric auxiliaries and dust momenta. Divide f common-normalized momentum by `n*xi**3` exactly once; then use `delta_rho=p_local-3rho psi`.
 
 - [ ] **Step 4: Add finite-`cs2` oracle regression**
 
-At a generic regulated two-matter point, compare the density reconstructed by the phase-momentum identity with the direct P(X) relation implied by Eq. (54); require `rtol<=1e-9` for g and f.
+At a generic regulated point compare phase-momentum density with the direct Eq. (54) P(X) density identity for both sectors; `rtol<=1e-9`.
 
-- [ ] **Step 5: Add physical normalization tests**
+- [ ] **Step 5: Add linear scaling and density-domain tests**
 
-Scale the full perturbation state by factors `{0.1,3,-2}` and require every reconstructed density contrast to scale linearly. Require finite values when `rho_g,rho_f>0`, and explicit rejection when either background density is non-positive.
+Scale the whole perturbation state by `{0.1,3,-2}` and require linear observable scaling. Reject non-positive background densities.
 
-- [ ] **Step 6: Run Task-6 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_de_felice_dust_observables.py -v`
 Expected: PASS.
@@ -317,37 +313,37 @@ Commit: `feat: reconstruct dust density observables`
 
 ---
 
-### Task 7: Local physics regressions for the dust phase system
+### Task 7: Local physics regressions for the exact-dust phase system
 
 **Files:**
+- Create: `numerics/de_felice_dust_local_modes.py`
 - Create: `tests/test_de_felice_dust_local_regressions.py`
-- Optionally create: `numerics/de_felice_dust_local_modes.py` if mode extraction is more than a small helper.
 
 **Interfaces:**
-- Produces `local_phase_squared_speeds(action: DustPhysicalAction, *, a, k) -> np.ndarray` from the high-k eigenvalues of the canonical phase matrix.
+- `local_phase_squared_speeds(action: DustPhysicalAction, *, a,k,H_g) -> np.ndarray` from high-k eigenvalues of the canonical **N-time** phase matrix, paired into physical modes.
 
-- [ ] **Step 1: Write RED Case-C principal regression**
+- [ ] **Step 1: Write RED Case-C regression**
 
-At exact Case C `a=0.05`, require the gravity branch to approach `-0.6665833419871022` with the two dust branches approaching zero as `k` increases. Use at least `k={800,1600,3200}` and an extrapolation in `1/k^2`; gravity extrapolation tolerance `rtol<=5e-5`.
+At Case C `a=0.05`, use `k={800,1600,3200}` and `1/k^2` extrapolation; require gravity `c_s^2=-0.6665833419871022` to `rtol<=5e-5`, two dust branches -> 0.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_de_felice_dust_local_regressions.py::test_case_c_exact_dust_phase_recovers_principal_gravity_branch -v`
-Expected: FAIL until the dust physical pipeline is complete.
+Expected: FAIL until pipeline is complete.
 
-- [ ] **Step 3: Implement/finish the local canonical-mode extraction**
+- [ ] **Step 3: Implement mode pairing**
 
-Pair `+/-` eigenvalues by squared phase speed, preserve zero dust branches, and reject unpaired complex contamination above a scale-aware tolerance.
+Pair `+/-` eigenvalues by squared phase speed, preserve zero dust branches, reject unpaired complex contamination above scale-aware tolerance.
 
 - [ ] **Step 4: Add Candidate-C dust regression**
 
-At `a=0.5`, require gravity extrapolation `0.6920714772884699` to `rtol<=5e-5`, with both dust matter branches approaching zero.
+At `a=0.5`, require gravity extrapolation `0.6920714772884699` to `rtol<=5e-5`, two dust branches -> 0.
 
-- [ ] **Step 5: Add GR/decoupled control**
+- [ ] **Step 5: Add GR/decoupled dust control**
 
-In a one-metric/decoupled pressureless control, require the regular scalar matter mode to reproduce standard dust growth and no spurious propagating acoustic branch.
+Require standard pressureless growing/decaying behavior and no spurious acoustic branch.
 
-- [ ] **Step 6: Run Task-7 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_de_felice_dust_local_regressions.py -v`
 Expected: PASS.
@@ -356,48 +352,48 @@ Commit: `test: validate exact dust scalar principal modes`
 
 ---
 
-### Task 8: Late Candidate-C-like integration and adiabatic mode tracking
+### Task 8: Late integration and GR-connected adiabatic mode
 
 **Files:**
 - Create: `numerics/candidate_c_dust_late_transfer.py`
 - Create: `tests/test_candidate_c_dust_late_transfer.py`
 
 **Interfaces:**
-- Produces dataclass `LateDustTransferResult` containing deterministic arrays `a`, `Y`, `Pi`, `delta_g`, `delta_f`, `delta_common`, `delta_relative`, `R`, plus conditioning diagnostics.
-- Produces `select_gr_connected_adiabatic_mode(a: float, *, k_hmpc: float) -> np.ndarray` returning a normalized six-component phase vector.
-- Produces `solve_candidate_c_dust_late(k_hmpc: float, *, samples: int=600, rtol: float=1e-9, atol: float=1e-12) -> LateDustTransferResult`.
-- Produces `fundamental_matrix_candidate_c_dust(k_hmpc: float, ...) -> np.ndarray` sampled on the same grid.
+- `LateDustTransferResult(a,Y,Pi,delta_g,delta_f,delta_common,delta_relative,R,conditioning)`.
+- `select_gr_connected_adiabatic_mode(a: float, *, k_hmpc: float) -> np.ndarray`.
+- `solve_candidate_c_dust_late(k_hmpc: float, *, samples=600, rtol=1e-9, atol=1e-12) -> LateDustTransferResult`.
+- `fundamental_matrix_candidate_c_dust(k_hmpc: float, ...)` returning sampled 6x6 matrices.
 
-- [ ] **Step 1: Write RED initial-mode selection tests**
+- [ ] **Step 1: Write RED mode-selection test**
 
-At the dust benchmark crossing, choose the local regular mode with density pullback closest to `delta_g=delta_f`, positive common growth, and growth index nearest the GR growing value. Require normalization `delta_common=1`, `|delta_relative|<1e-6`, and sign continuity under `k -> k*(1±1e-3)`.
+At the dust crossing, eigendecompose the canonical `N`-matrix. Among regular finite directions select the real/growing direction minimizing a documented score dominated by `|delta_relative|/|delta_common|` and then `|growth_index-1|`; normalize `delta_common=1`, require `|delta_relative|<1e-6`, positive growth and sign/overlap continuity under `k -> k*(1±1e-3)`.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_candidate_c_dust_late_transfer.py::test_gr_connected_initial_mode_is_adiabatic_and_continuous -v`
-Expected: FAIL because the late-transfer module does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement continuous mode selection**
+- [ ] **Step 3: Implement mode selection and continuity convention**
 
-Use the canonical phase matrix at the crossing, the observable pullback, and overlap/sign continuity. Do not independently sort modes by eigenvalue at each later time; integration itself carries identity.
+Fix sign by positive common density. Later times are not re-sorted: integration itself carries the mode identity.
 
 - [ ] **Step 4: Implement `N=ln a` integration**
 
-Convert the cosmic canonical matrix by `d/dN=(1/H_g)d/dt`. Cache background/action coefficients on repeated RHS calls if needed, but do not interpolate across a rank/condition failure. Sample a deterministic `N` grid.
+Use `canonical_phase_matrix_N()`, adaptive `solve_ivp`, deterministic output grid, and coefficient caching only if it does not cross a failed rank/condition check.
 
-- [ ] **Step 5: Add zero-length and tolerance-convergence controls**
+- [ ] **Step 5: Add tolerance convergence**
 
-Require identity/fundamental behavior for `a_initial=a_final` in a low-level helper, and compare `rtol={1e-8,3e-9,1e-9}` for a representative `k=0.1 h/Mpc`; final `R` must converge within a predeclared numerical tolerance before scientific interpretation.
+For `k=0.1 h/Mpc`, compare `rtol={1e-8,3e-9,1e-9}`; final R must converge within a declared numerical tolerance before scientific interpretation.
 
-- [ ] **Step 6: Add the four required late scales**
+- [ ] **Step 6: Add required scales**
 
-Run `k={0.01,0.05,0.1,0.2} h/Mpc`. Tests require finite outputs, no rank loss, bounded condition diagnostics, and `R(a_initial)` consistent with zero. Do **not** assert the quasi-static `0.123` value; only persist the computed result after it is independently stable.
+Run `k={0.01,0.05,0.1,0.2} h/Mpc`. Require finite outputs, no rank loss, finite condition diagnostics and `R(a_initial)≈0`. Do not fit/assert the old quasi-static `0.123` reference.
 
-- [ ] **Step 7: Verify the fundamental matrix reproduces the direct adiabatic run**
+- [ ] **Step 7: Verify the fundamental matrix reproduces direct propagation**
 
-Multiply the sampled fundamental matrix by the selected initial phase vector and compare with direct integration to `rtol<=2e-7` for all six phase components after scale-aware normalization.
+Propagate the initial adiabatic vector through the sampled fundamental matrix and compare with direct integration to `rtol<=2e-7` after scale-aware normalization.
 
-- [ ] **Step 8: Run Task-8 tests and commit**
+- [ ] **Step 8: Run and commit**
 
 Run: `pytest tests/test_candidate_c_dust_late_transfer.py -v`
 Expected: PASS.
@@ -413,35 +409,35 @@ Commit: `feat: integrate late Candidate C dust transfer`
 - Create: `tests/test_candidate_c_dust_transfer_matrix.py`
 
 **Interfaces:**
-- Produces dataclass `DensityModeLift(common_phase: np.ndarray, relative_phase: np.ndarray, density_matrix: np.ndarray)`.
-- Produces `build_density_mode_lift(a: float, *, k_hmpc: float) -> DensityModeLift`.
-- Produces `density_transfer_matrix(k_hmpc: float, *, a_final: float=1.0) -> np.ndarray` with sector order `(g,f)` only after the lift is invertible and regression-tested.
+- `DensityModeLift(common_phase: np.ndarray, relative_phase: np.ndarray, density_matrix: np.ndarray)`.
+- `build_density_mode_lift(a: float, *, k_hmpc: float) -> DensityModeLift`.
+- `density_transfer_matrix(k_hmpc: float, *, a_final: float=1.0) -> np.ndarray`, sector order `(g,f)`.
 
-- [ ] **Step 1: Write RED lift tests**
+- [ ] **Step 1: Write RED lift normalization test**
 
-Require the common vector to have `delta_common=1`, `delta_relative≈0`; require the relative vector to have `delta_common≈0`, `delta_relative=1`; both must be regular finite phase-space directions and linearly independent.
+Require common phase `delta_common=1,delta_relative≈0`; relative phase `delta_common≈0,delta_relative=1`; finite, linearly independent, continuous under small k changes.
 
-- [ ] **Step 2: Run and witness RED**
+- [ ] **Step 2: Run RED**
 
 Run: `pytest tests/test_candidate_c_dust_transfer_matrix.py::test_common_relative_lift_has_declared_density_normalization -v`
-Expected: FAIL because the lift does not exist.
+Expected: FAIL.
 
-- [ ] **Step 3: Implement the regular relative/isocurvature lift**
+- [ ] **Step 3: Implement regular relative/isocurvature lift**
 
-Select the finite local mode/direction with maximal relative-density projection subject to orthogonality from the common density direction; fix its sign by positive `delta_relative` and track continuity by overlap.
+Use the local regular phase subspace at the initial crossing. Remove the common-mode projection in **density-observable space**, then choose the remaining finite direction with maximal relative-density projection; normalize `delta_relative=1`, require `delta_common≈0`, and fix sign positive. If no unique continuous finite direction exists, fail explicitly and keep only the 6D fundamental matrix rather than inventing a 2x2 lift.
 
-- [ ] **Step 4: Build and test the sector-density 2x2 transfer**
+- [ ] **Step 4: Build/test sector-density transfer**
 
-Use the six-dimensional fundamental matrix and the explicit lift. Verify that applying the 2x2 matrix to the sector-density basis agrees with full phase propagation followed by observable pullback for both basis columns.
+Use the 6D fundamental matrix and explicit lift. For both input basis columns, require 2x2 output to agree with full phase propagation + observable pullback.
 
 - [ ] **Step 5: Add basis-rescaling invariance**
 
-Rescale either phase lift vector before normalization and require the final 2x2 density transfer to remain unchanged to `rtol<=1e-10`.
+Rescale either raw phase direction before normalization; final 2x2 matrix unchanged to `rtol<=1e-10`.
 
-- [ ] **Step 6: Run Task-9 tests and commit**
+- [ ] **Step 6: Run and commit**
 
 Run: `pytest tests/test_candidate_c_dust_transfer_matrix.py -v`
-Expected: PASS.
+Expected: PASS or an explicitly documented non-existence of a unique regular 2x2 lift; the latter does not invalidate the 6D solver.
 
 Commit: `feat: expose dust sector density transfer matrix`
 
@@ -453,37 +449,34 @@ Commit: `feat: expose dust sector density transfer matrix`
 - Modify: `research/GATE2B_CHECKPOINT.md`
 - Modify: `research/GATE2B_RAF.md`
 - Create: `research/LATE_DUST_TRANSFER_RESULT.md`
-- No production coefficient changes in this task.
 
-**Interfaces:**
-- Consumes all Task-1..9 outputs.
-- Produces the authoritative numerical table for `k={0.01,0.05,0.1,0.2} h/Mpc` and the updated restart instruction.
+**Interfaces:** consumes Tasks 1-9; produces the authoritative late-dust numerical table and restart state.
 
-- [ ] **Step 1: Run the focused full solver suite in a complete worktree**
+- [ ] **Step 1: Run focused complete-worktree suite**
 
 Run:
 `pytest tests/test_candidate_c_dust_background.py tests/test_de_felice_dust_phase_action.py tests/test_de_felice_two_dust_action.py tests/test_de_felice_dust_physical_action.py tests/test_canonical_quadratic_evolution.py tests/test_de_felice_dust_observables.py tests/test_de_felice_dust_local_regressions.py tests/test_candidate_c_dust_late_transfer.py tests/test_candidate_c_dust_transfer_matrix.py -v`
-Expected: all PASS.
+Expected: all applicable tests PASS; Task-9 may explicitly report no unique 2x2 lift while the 6D solver remains valid.
 
-- [ ] **Step 2: Run the existing De Felice/Gate-2 regressions**
+- [ ] **Step 2: Run existing De Felice/Gate-2 regressions**
 
-At minimum run existing tests covering matter Eq. (54), exact-quadratic two-matter action, BD time canonicalization, Case-C audits, Candidate-C background and principal-action diagnostics. Expected: no new failures relative to the branch baseline.
+At minimum include Eq. (54), exact-quadratic two-matter, BD canonicalization, Case-C audits, Candidate-C background and principal-action tests. No unexplained new failures.
 
-- [ ] **Step 3: Run the complete repository test suite**
+- [ ] **Step 3: Run full repository suite**
 
 Run: `pytest -q`
-Expected: record exact pass/fail counts. Any intentionally RED historical test must be identified by name and either updated because its premise is superseded or left documented; do not call the branch GREEN while unexplained failures remain.
+Record exact pass/fail counts. Any intentional historical RED must be named and its premise classified as still active or superseded; do not claim full GREEN otherwise.
 
-- [ ] **Step 4: Record the scientific outputs without fitting them to the prior bound**
+- [ ] **Step 4: Record scientific outputs without fitting prior expectations**
 
-For each required `k`, record final `delta_g`, `delta_f`, `delta_common`, `delta_relative`, `R`, conditioning maxima, solver tolerance convergence, and dust-vs-full-background deviation over the integrated interval.
+For each `k={0.01,0.05,0.1,0.2} h/Mpc` record final `delta_g,delta_f,delta_common,delta_relative,R`, conditioning maxima, tolerance convergence, and dust/full-background deviation over the integrated interval.
 
-- [ ] **Step 5: Apply the decision rule**
+- [ ] **Step 5: Apply decision rule**
 
-Classify the late-linear spontaneous-conversion hypothesis as strongly disfavored if the validated solver keeps `|R(z=0,k)| << 1` on all required scales. If any `|R|=O(1)`, require regularity, kinetic/BD/auxiliary conditioning and mode continuity before treating it as a physical result.
+Late-linear spontaneous conversion is strongly disfavored if validated runs keep `|R(z=0,k)| << 1` on all required scales. Any `|R|=O(1)` is accepted for interpretation only if auxiliary/BD/kinetic regularity and continuous mode identity also hold.
 
 - [ ] **Step 6: Update checkpoint/RAF and commit**
 
 Commit: `research: record late dust transfer verdict`
 
-The next task after this plan is the three-fluid visible-radiation extension only if the dust benchmark survives its validation and the scientific question warrants the added degree of freedom.
+The three-fluid radiation extension is a later task only if this dust benchmark is validated and the scientific result warrants the added matter degree of freedom.
