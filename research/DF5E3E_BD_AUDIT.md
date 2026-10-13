@@ -19,14 +19,17 @@ The current reconstruction has the correct scalar degree count, correct first tw
 - Time-dependent integration by parts gives the formal correction `dot(C_ZZ)+3 H C_ZZ ~ 1.611e6`, leaving `h_ZZ^eff ~ -2.15e3`.
 - Eq. (78) would instead require an effective algebraic coefficient of order `+6.74175` at the same point.
 - The numerical clue `A_DF/6 + m^2 xi J c^2/(c+1)` is close to the required coefficient, but this is NOT accepted as a derivation or fit.
+- In repository conventions `ScalarBackground.H` is the conformal Hubble rate `calH=a H_cosmic`. Along Case C with g-lapse `N=1`, `dot a = calH`; this conversion is now explicit in the audit code.
 
-## New reproducible audit instrumentation
+## Reproducible audit instrumentation
 
 - Commit `8a4e876`: RED regression added for an explicit decomposition of the transformed `Z^2` coefficient.
 - Commit `a725fef`: added `numerics/de_felice_bd_audit.py` as a read-only diagnostic module.
 - Commit `6fe17c9`: test imports the isolated audit helper; no physical reduction coefficient was changed.
+- Commit `d555f6a`: RED tests added for the Case-C time correction and for the cosmic-time/conformal-H conversion.
+- Commit `f7506d3`: `case_c_bd_effective_coefficient()` implemented. It evaluates the raw BD coefficient and `C_ZZ` at neighboring exact Case-C background points, computes `dot C_ZZ=(dC_ZZ/da) calH`, adds the `3 H_cosmic C_ZZ` measure term, and returns `h_ZZ^eff` without altering the physical reducer.
 
-`bd_state_coefficient_decomposition()` now exposes the exact old-basis pieces for a pure Eq. (72) `Z` displacement:
+`bd_state_coefficient_decomposition()` exposes the exact old-basis pieces for a pure Eq. (72) `Z` displacement:
 
 - `Sigma2 = Q_{Sigma,Sigma}`;
 - `2A_Sigma_qf = 2 A Q_{Sigma,q_f}`;
@@ -41,22 +44,25 @@ Their sum must equal the directly transformed `H[Z,Z]`. The helper also reconstr
 
 - [x] DF5e.3e.1 — isolate BD-state audit from the physical solver.
 - [x] DF5e.3e.2 — expose exact raw `h_ZZ` decomposition and independent `C_ZZ` reconstruction.
-- [ ] **DF5e.3e.3 — compute `C_ZZ(a)` on the exact Case-C trajectory and evaluate `dot C_ZZ` with a convergence test in the background step.**
-- [ ] DF5e.3e.4 — decompose `dot C_ZZ` into derivatives of `A`, `A_dot`, and the underlying old-basis Hessian entries; identify which term carries the O(1e3) residual.
+- [x] **DF5e.3e.3 — implement `C_ZZ(a)`, `dot C_ZZ`, the measure term and an explicit background-step convergence regression on exact Case C.**
+- [ ] **DF5e.3e.4 — decompose `dot C_ZZ` into derivatives of `A`, `A_dot`, and the underlying old-basis Hessian entries; identify which term carries the O(1e3) residual. NEXT.**
 - [ ] DF5e.3e.5 — rederive the offending old-basis state/rate entry directly from De Felice Eqs. (44), (45), (54), including `dot(phi_f)/phi_f = dot(n)/n - 3 n H_f c_sf^2`.
 - [ ] DF5e.3e.6 — compare the derived result to Eq. (79) `A,B,C,D`; do not tune coefficients.
 - [ ] DF5e.4 — only after an exact mismatch is found, add a RED regression for that single coefficient, implement one fix, and require Eq. (78) NG3 green at `k=100,200,400,800`.
 - [ ] DF5d — Candidate-C gravity branch only after Case C is green.
 
+## Verification status
+
+The new diagnostic tests are committed but have not been executed in this environment because the working container has no network access to clone the GitHub repository and GitHub Actions are disabled for this project. Do not claim them green until they are run in a repository worktree or another execution environment. Their purpose is to make the next run deterministic and falsifiable.
+
 ## Restart instruction
 
-Resume at **DF5e.3e.3**.
+Resume at **DF5e.3e.4**.
 
 1. Use exact Case C `a=0.05`, `k=400`, beta1 only, with the same `cs_f^2=0.1` diagnostic fluid used by `tests/test_de_felice_two_matter_action.py`.
-2. Evaluate `bd_state_coefficient_decomposition()` at nearby points on the exact Case-C trajectory.
-3. Convert derivative with respect to `a` to the cosmic-time derivative consistently with the g-sector lapse (`N=1`): `dot a = a H`.
-4. Form `h_ZZ^eff = h_ZZ - (dot C_ZZ + 3 H C_ZZ)`.
-5. Verify convergence as the background finite-difference step is reduced before interpreting any component.
-6. Then differentiate the six raw state pieces and `C_ZZ` analytically/numerically to localize the O(1e3) residual.
-7. Do not modify `de_felice_two_matter_action.py`, EH, matter or HR coefficients until one exact primary-equation mismatch is demonstrated.
-8. After the first hard finding, update both this file and `GATE2B_CHECKPOINT.md`.
+2. Start from `case_c_bd_effective_coefficient()` and `bd_state_coefficient_decomposition()`; do not rebuild the background or Eq. (72) transform independently.
+3. Differentiate each component of raw `h_ZZ` and the components entering `C_ZZ` with respect to `a`, convert with `dot a=calH`, and include the `3H` measure contribution.
+4. Track separately derivatives of `A`, `A_dot`, and derivatives of the old-basis reduced-Hessian entries. The aim is to identify which exact term accounts for the O(1e3) residual in `h_ZZ^eff`.
+5. Re-derive only that entry from the primary Eq. (44), Eq. (45) or Eq. (54), including the background k-essence drift `dot(phi_f)/phi_f = dot(n)/n - 3 n H_f c_sf^2`.
+6. Do not modify `de_felice_two_matter_action.py`, EH, matter or HR coefficients until one exact primary-equation mismatch is demonstrated.
+7. After the first hard finding, update both this file and `GATE2B_CHECKPOINT.md`.
