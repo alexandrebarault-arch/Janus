@@ -6,7 +6,7 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 ## Verdict
 
-**Gate 2B remains OPEN / NOT VALIDATED.** The De Felice/Hassan-Rosen two-matter reconstruction has the correct scalar degree count and matter kinetic invariants, but the helicity-0 invariant `NG3` is still wrong. Do not proceed to Candidate-C transfer integration.
+**Gate 2B remains OPEN / NOT VALIDATED.** The De Felice/Hassan-Rosen two-matter reconstruction has the correct scalar degree count and matter kinetic invariants. The former O(1e3) BD algebraic discrepancy is now explained: the Case-C time derivative of `C_ZZ` froze `P_f=0` despite finite diagnostic `c_sf^2`, omitting the k-essence pressure drift. The production reducer still uses frozen-coefficient BD canonicalization, so `NG3` is not yet green. Do not proceed to Candidate-C transfer integration.
 
 ## Closed hard facts
 
@@ -17,7 +17,7 @@ Purpose: single restart point after interruption. Update after every hard findin
 - Exact Case-C background is in `numerics/comelli_case_c.py`.
 - Case-C asymptotic acceptance remains `E''+(3/tau)E'-(2/3)k^2E=0`.
 - Independent De Felice principal action gives Case-C `c_s^2=-0.6665833419871022` at `a=0.05`.
-- The four De Felice background equations (both Friedmann and both acceleration equations) close on this Case-C point at ~`1e-16` relative. The action is not being evaluated on an off-shell background.
+- The four De Felice background equations (both Friedmann and both acceleration equations) close on this Case-C point at ~`1e-16` relative. The action is not being evaluated on an off-shell metric background.
 
 ### Historical Comelli closure — rejected
 
@@ -31,6 +31,7 @@ Purpose: single restart point after interruption. Update after every hard findin
 - `hr_scalar_quadratic_action_density_de_felice()` directly implements the O(delta^2) HR interaction of Eqs. (45)-(46).
 - Direct beta1 audits of the HR pure spatial/lapse Hessian and the `Gamma(H-h)^2` block pass.
 - The Eq. (72) coefficient used in the basis transform is correct: in g-flat gauge `q_f=Y2 + [1/(n H_f)](Z+k^2Y3/6)`, and `1/(nH_f)=a/H_omega`.
+- The f k-essence background drift is also correct and must be retained: `dot(phi_f)/phi_f = dot(n)/n - 3 n H_f c_sf^2`, directly from De Felice Eq. (18).
 
 ### DF4 — degree count / BD basis CLOSED
 
@@ -101,19 +102,30 @@ On early Case C `c->2`, this is exactly `a^2 xi k^2/12 = k^2/96000` at `a=0.05`,
 - The error is not a finite-difference artifact: using the exactly quadratic HR helper and varying the Hessian step over many decades leaves the residual stable.
 - Gauge-fixing g-flat before rather than after auxiliary elimination cannot alter this local f rate/auxiliary Schur at quadratic order; the relevant Hessian entries are evaluated at the background and do not depend on the removed g spatial perturbations.
 
-## BD time-dependent canonicalization — quantified
+## DF5e.3e — BD algebraic/state audit CLOSED
 
-The frozen `Y Zdot` integration-by-parts is incomplete in principle. Including the measure gives
-`h_ZZ^eff = h_ZZ - (dot C_ZZ + 3 H C_ZZ)`.
-At Case C `a=0.05,k=400`:
-- raw `h_ZZ ~ 1.609e6`;
-- `dot C_ZZ + 3H C_ZZ ~ 1.611e6`;
-- `h_ZZ^eff ~ -2.15e3`.
-This is a real large cancellation, but the resulting finite-k correction to the Y3 kinetic coefficient is only O(`5e-3`), far too small to remove `~1.65` at `k=400`.
+The raw Eq. (72) BD coefficient and `C_ZZ=H[Z,Zdot]` were decomposed independently. The apparent time-corrected result `h_ZZ^eff ~ -2.15e3` was traced to a derivative-path inconsistency, not to Eqs. (44), (45) or (54).
 
-To reproduce the exact Eq. (78) target at `k=400`, the effective algebraic BD coefficient would need to be about `+6.74175`, not `-2.15e3`.
+The audit differentiated `C_ZZ(a)` between exact Case-C points while setting `P_f=0` at every neighboring point and simultaneously keeping the diagnostic `c_sf^2=0.1`. For a barotropic k-essence field De Felice Eq. (10) gives `c_s^2=dP/d rho` along the background, and Eq. (18) gives
 
-A numerical clue (NOT YET A PROOF): this required value is very close to `A_DF/6 + m^2 xi J c^2/(c+1)`, where `A_DF` is De Felice Eq. (79). This points toward the **state/algebraic BD sector** rather than the already-audited rate/auxiliary coefficients.
+`dot P_f = c_sf^2 dot rho_f = -3 n H_f c_sf^2 (rho_f+P_f)`.
+
+At `a=0.05,k=400,c_sf^2=0.1`, an independent exact-quadratic scratch audit finds approximately:
+- pressure-frozen `h_ZZ^eff = -2153.48`;
+- `partial C_ZZ/partial P_f = 4.6882748e-8`;
+- `dot P_f = -4.60771344e10`;
+- missing `dot C_ZZ` contribution `= -2160.22`;
+- pressure-consistent `h_ZZ^eff = +6.7421`.
+
+The value of `h_ZZ^eff` required by the transformed kinetic Schur complement to reproduce Eq. (78) is about `+6.7417` at the same point. The Eq. (79) clue evaluates to
+
+`A_DF/6 + m^2 xi J c^2/(c+1) = 6.741811...`.
+
+Thus the entire O(1e3) discrepancy is accounted for by the omitted pressure-chain-rule contribution. A sound-speed scan confirms the diagnosis: pressure-frozen `h_ZZ^eff` acquires an artificial nearly linear `c_sf^2` term, while adding `dot P_f` leaves the corrected value O(1) and essentially sound-speed independent at the control point.
+
+**Do not remove the `-3 n H_f c_sf^2` term from `dot(phi_f)/phi_f`: it is required by Eq. (18). Do not tune any EH, matter or HR coefficient.**
+
+The remaining production defect is structural: `_canonicalize_linear_zdot_frozen()` intentionally drops `dot C_ZZ+3H C_ZZ`. With the corrected pressure-consistent derivative, that time-dependent canonicalization is precisely large enough to replace the bad `NG3~k^2` branch by the Eq. (78) branch.
 
 ## Active task list
 
@@ -129,14 +141,10 @@ A numerical clue (NOT YET A PROOF): this required value is very close to `A_DF/6
   - [x] DF5c — integrated Case-C speed regression: FAIL.
   - [x] DF5e.1 — rule out EH block, matter block, finite-difference cancellation, `K^{-1}` conditioning, intrinsic fluid sound and simple BD Schur as root causes.
   - [x] DF5e.2 — direct NG3 RED + first exact HR bug (missing volume shifts) found/fixed.
-  - [x] **DF5e.3a — rate/auxiliary Schur derived and spurious `a^2 xi k^2/[4(c+1)]` localized analytically.**
-  - [x] **DF5e.3b — Eq. (72) normalization, background equations, NG2, GR degeneracy and f-sector prefactors audited.**
-  - [ ] **DF5e.3e — audit the BD algebraic/state coefficient `h_ZZ^eff`. NEXT.**
-    - [ ] decompose transformed `h_ZZ` into `Sigma^2`, `2A Sigma q_f`, `A^2 q_f^2`, auxiliary-Schur and time-dependent canonicalization pieces;
-    - [ ] derive each piece from Eqs. (44), (45), (54) with the background field equation for `dot phi_f`;
-    - [ ] identify the exact term responsible for the ~`2.16e3` discrepancy between reconstructed `h_ZZ^eff` and the O(1) coefficient required by Eq. (78);
-    - [ ] compare the result to De Felice Eq. (79) quantities `A,B,C,D` and the clue `A/6 + m^2 xi J c^2/(c+1)` without fitting coefficients.
-  - [ ] DF5e.4 — make Eq. (78) NG3 green at several k values.
+  - [x] DF5e.3a — rate/auxiliary Schur derived and spurious `a^2 xi k^2/[4(c+1)]` localized analytically.
+  - [x] DF5e.3b — Eq. (72) normalization, background equations, NG2, GR degeneracy and f-sector prefactors audited.
+  - [x] **DF5e.3e — BD algebraic/state coefficient audited; O(1e3) residual traced to omitted `dot P_f` in the diagnostic derivative path.**
+  - [ ] **DF5e.4 — RED first: pressure-consistent time-dependent BD canonicalization; require Eq. (78) NG3 green at `k=100,200,400,800`. NEXT.**
   - [ ] DF5d — Candidate-C gravity regression only after Case C is green.
 - [ ] DF6 — recover B.5/equivalent reduced action on Case C.
 - [ ] T2 — Candidate-C validation at >=3 `(z,k)` points.
@@ -151,19 +159,22 @@ A numerical clue (NOT YET A PROOF): this required value is very close to `A_DF/6
 
 ## Current intentional RED
 
-- `test_case_c_finite_k_ng3_matches_de_felice_eq78` remains RED until the BD algebraic sector is corrected.
+- `test_case_c_finite_k_ng3_matches_de_felice_eq78` remains RED until the time-dependent BD canonicalization is implemented.
 - Case-C physical speed regression remains RED/untrusted.
 - `tests/test_comelli_native_scalar.py` remains intentionally RED.
+- The new pressure-trajectory regression required by DF5e.4 has not yet been committed or executed.
+
+## Verification status
+
+The DF5e.3e hard finding was reproduced in an independent scratch reconstruction using the exact quadratic HR interaction. No physical coefficient was changed. Repository tests have not been executed in the current environment because the container cannot clone GitHub and GitHub Actions are disabled. Do not label DF5e.4 green until a real repository worktree executes the RED/GREEN cycle.
 
 ## Immediate restart instruction
 
-**Resume at DF5e.3e — BD algebraic/state audit.**
+**Resume at DF5e.4 — pressure-consistent time-dependent BD canonicalization.**
 
-1. Use the corrected HR code (`8637753`) and current exact Case-C background at `a=0.05`.
-2. Start from the auxiliary-reduced 8x8 Hessian in old variables `(Sigma,S,q_g,q_f; rates)`.
-3. Under Eq. (72), with `Z=Sigma` and `q_f=Y2+A(Z+C Y3)`, decompose the coefficient of `Z^2` before and after time-dependent integration by parts.
-4. Separate the raw state contributions `Q_SigmaSigma`, `2A Q_Sigma,qf`, `A^2 Q_qf,qf`, plus the pieces induced by auxiliary Schur and by `dot C_ZZ+3H C_ZZ`.
-5. Re-derive those entries from Eq. (44), Eq. (54), Eq. (45), including the background drift `dot(phi_f)/phi_f = dot(n)/n - 3 n H_f c_sf^2`.
-6. Find an exact paper mismatch before changing any coefficient. The required physical finite-k value at `k=400` corresponds to `h_ZZ^eff ~ +6.74175`; current reconstruction gives roughly `-2.15e3` after the time-dependent correction.
-7. Update this checkpoint immediately after the first exact mismatch or after all state-sector entries are cleared.
-8. Move to Candidate C only after Case-C NG3 and physical speeds are green.
+1. Add a RED regression for the local k-essence pressure drift in the Case-C `C_ZZ` derivative: `dot P_f=-3 n H_f c_sf^2(rho_f+P_f)`.
+2. Correct the diagnostic derivative path first and verify `h_ZZ^eff` becomes O(1) and agrees with the Eq. (78)-required Schur value.
+3. Add a RED finite-k regression for the production reducer that replaces frozen `h_ZZ` by the time-corrected `h_ZZ^eff` while retaining the antisymmetric `Z-Ydot` couplings generated by integrating `Y Zdot` by parts.
+4. Implement the minimal general time-dependent canonicalization; do not tune Eq. (44), Eq. (45), Eq. (54), EH, matter, or HR coefficients.
+5. Require Eq. (78) `NG3` green at `k=100,200,400,800`, then re-run NG1/NG2, GR degeneracy and the three physical speed branches.
+6. Move to Candidate C only after Case C is green.
