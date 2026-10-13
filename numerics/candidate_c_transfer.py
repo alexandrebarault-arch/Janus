@@ -13,6 +13,7 @@ import math
 import numpy as np
 
 from numerics.flrw_two_matter import (
+    branch_log_derivatives,
     candidate_c,
     positive_real_roots,
     friedmann_g,
@@ -53,36 +54,7 @@ def _candidate_c_y(a: float) -> float:
 
 
 def _y_log_derivatives(a: float, y: float) -> tuple[float, float]:
-    """Return dy/dN and d2y/dN2 from the implicit Candidate-C quartic."""
-    p = candidate_c()
-    m2 = p.m2_over_H02
-    a2 = p.alpha**2
-
-    c4 = a2 * m2 * p.beta3 / 3.0
-    c3 = a2 * m2 * p.beta2 - m2 * p.beta4 / 3.0
-    c2 = a2 * m2 * p.beta1 - m2 * p.beta3
-    omega_m = p.omega_g_m0 * a**-3
-    omega_r = p.omega_g_r0 * a**-4
-
-    c1_N = a2 * (-3.0 * omega_m - 4.0 * omega_r)
-    c0_N = 3.0 * p.omega_f_m0 * p.y0**3 * a**-3
-    c1_NN = a2 * (9.0 * omega_m + 16.0 * omega_r)
-    c0_NN = -9.0 * p.omega_f_m0 * p.y0**3 * a**-3
-
-    # Only the y and constant quartic coefficients depend explicitly on N.
-    p_y = 4.0*c4*y**3 + 3.0*c3*y**2 + 2.0*c2*y + (
-        a2*(omega_m+omega_r) - m2*p.beta2
-    )
-    if abs(p_y) < 1e-14:
-        raise RuntimeError("Candidate-C branch derivative is singular")
-    p_N = c1_N*y + c0_N
-    y_N = -p_N/p_y
-
-    p_yy = 12.0*c4*y**2 + 6.0*c3*y + 2.0*c2
-    p_Ny = c1_N
-    p_NN = c1_NN*y + c0_NN
-    y_NN = -(p_NN + 2.0*p_Ny*y_N + p_yy*y_N**2)/p_y
-    return float(y_N), float(y_NN)
+    return branch_log_derivatives(a, y, candidate_c())
 
 
 def candidate_c_background_point(
