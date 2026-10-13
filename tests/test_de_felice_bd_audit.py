@@ -10,7 +10,7 @@ from numerics.de_felice_bd_audit import case_c_bd_effective_coefficient
 def test_case_c_bd_pressure_chain_rule_removes_spurious_order_1e3_residual():
     out = case_c_bd_effective_coefficient(
         a=0.05, k=400.0, f_cs2=0.1,
-        background_step_fraction=1.0e-4,
+        background_step_fraction=1.0e-3,
         finite_difference_step=2.0e-6,
     )
 
@@ -24,34 +24,35 @@ def test_case_c_bd_pressure_chain_rule_removes_spurious_order_1e3_residual():
     )
     # The pressure-frozen path leaves an O(1e3) residual.  Following the
     # local P(X) pressure tangent must reduce it to the O(1) physical branch.
-    assert abs(out["effective_hZZ"]) < 50.0
+    assert abs(out["effective_hZZ"]) < 20.0
 
 
 def test_case_c_bd_time_correction_converges_after_pressure_chain_rule():
     coarse = case_c_bd_effective_coefficient(
         a=0.05, k=400.0, f_cs2=0.1,
-        background_step_fraction=2.0e-4,
+        background_step_fraction=1.0e-3,
         finite_difference_step=2.0e-6,
     )
     fine = case_c_bd_effective_coefficient(
         a=0.05, k=400.0, f_cs2=0.1,
-        background_step_fraction=1.0e-4,
+        background_step_fraction=5.0e-4,
         finite_difference_step=2.0e-6,
     )
 
     assert coarse["raw_hZZ"] > 1.0e6
     assert fine["time_correction"] > 1.0e6
-    assert abs(fine["effective_hZZ"]) < 50.0
+    assert abs(coarse["effective_hZZ"]) < 20.0
+    assert abs(fine["effective_hZZ"]) < 20.0
     assert math.isclose(
         coarse["effective_hZZ"], fine["effective_hZZ"],
-        rel_tol=0.0, abs_tol=15.0,
+        rel_tol=0.0, abs_tol=5.0,
     )
 
 
 def test_case_c_bd_cosmic_time_conversion_uses_conformal_H_as_adot():
     out = case_c_bd_effective_coefficient(
         a=0.05, k=400.0, f_cs2=0.1,
-        background_step_fraction=1.0e-4,
+        background_step_fraction=1.0e-3,
         finite_difference_step=2.0e-6,
     )
     # ScalarBackground.H is conformal H = a H_cosmic, so for N=1:
