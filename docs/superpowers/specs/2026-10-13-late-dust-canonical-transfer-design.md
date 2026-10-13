@@ -6,25 +6,37 @@ Status: design specification; implementation has not started.
 
 ## 1. Purpose
 
-Build the first trustworthy time-domain scalar transfer solver for the validated Hassan-Rosen / De Felice reconstruction on Candidate C.
+Build the first trustworthy time-domain scalar transfer solver for the validated Hassan-Rosen / De Felice reconstruction near Candidate C.
 
 The first production target is deliberately narrower than the final Gate-2 system:
 
-- Candidate-C background;
+- a strictly on-shell dust+dust benchmark continuously neighboring Candidate C;
 - visible dust + twin dust;
-- late linear interval from the clean transition `m_eff/H ~= 1` at `z_i ~= 16.2455` to `z=0`;
+- the late linear interval from the benchmark's own `m_eff/H = 1` crossing to `z=0`;
 - the validated three physical scalar degrees of freedom;
 - density observables in both matter sectors;
 - continuous tracking of the GR-connected adiabatic mode;
 - measurement of spontaneously generated relative/isocurvature amplitude.
 
-This subsystem is a falsification test for the proposition that the late linear Candidate-C phase can create an order-unity relative mode from adiabatic initial data.
+This subsystem is a falsification test for the proposition that the clean late linear Candidate-C-like phase can create an order-unity relative mode from adiabatic initial data.
 
 It is not yet the final baryon+CDM+radiation+CMB transfer solver.
 
 ## 2. Scientific scope and controlled approximation
 
-At the start of the proposed late interval (`z ~= 16.25`), the visible radiation-to-matter background ratio is only about `0.52%`; it decreases thereafter.  Omitting radiation is therefore a controlled approximation for the first late-linear conversion test.
+On the full Candidate-C background, at the previously estimated clean transition (`z ~= 16.25`) the visible radiation-to-matter background ratio is only about `0.52%`; it decreases thereafter.
+
+Nevertheless, the solver must not retain the full Candidate-C metric background while simply deleting radiation from the perturbation action.  That would make the reduced action slightly off shell and would repeat the derivative-path inconsistency exposed by DF5e.5.
+
+The first solver therefore uses a neighboring **strict dust benchmark**:
+
+- keep the Candidate-C Hassan-Rosen interaction parameters, Planck-mass ratio and present matter-density normalizations fixed;
+- set the visible radiation density to zero in the benchmark model;
+- re-solve the algebraic healthy branch instead of forcing the original `y(a)`;
+- derive all branch derivatives and metric coefficients from this same dust-only background;
+- locate the benchmark's own `m_eff/H = 1` crossing and use that as the initial epoch.
+
+Before perturbation integration, quantify the difference between this dust benchmark and full Candidate C over the late interval in at least `H(a)`, `y(a)`, lapse ratio `c(a)`, `m_eff/H`, and the independent principal scalar `c_s^2`.
 
 The approximation is acceptable for answering:
 
@@ -60,7 +72,7 @@ The temporal part of De Felice Eq. (54) can be written as
 
 `L_temp = A/(2s) (qdot-Phi)^2 + 3 A psi (qdot-Phi) + A Phi^2/2`.
 
-Its momentum is
+Its local matter momentum is
 
 `p = A[(qdot-Phi)/s + 3 psi]`.
 
@@ -74,7 +86,7 @@ The Legendre transform has the regular dust limit
 
 Including the spatial term, the common-normalized dust matter sector is therefore first order in `(q,p)` and contains no artificial dust sound speed.
 
-For the f sector the full common-normalized momentum contains the usual background prefactor `n xi^3`; the physical density is reconstructed by dividing that prefactor and subtracting `3 rho_f psi_f`.
+For the f sector the canonical momentum in the common g-sector normalization contains the background prefactor `n xi^3`.  Observable reconstruction must distinguish this full canonical momentum from the local matter momentum `p` in the identity above.
 
 ### 4.2 Metric action
 
@@ -88,7 +100,7 @@ Do not finite-difference the nonlinear HR potential to recover a quadratic Hessi
 
 ### 4.3 Gauge and algebraic reduction
 
-Use the same g-flat gauge and background conventions as the validated DF5 reconstruction.
+Use the same g-flat gauge and conventions as the validated DF5 reconstruction.
 
 Metric lapses and shifts remain algebraic and are eliminated from the quadratic/first-order action, not from an independently transcribed Einstein-equation closure.
 
@@ -120,13 +132,18 @@ The independent Eq. (85) high-precision audit remains a regression oracle, not t
 
 ## 6. Background provider
 
-The solver uses the Candidate-C algebraic healthy branch from `flrw_two_matter.py` / `candidate_c_transfer.py`.
+Create a dedicated late-dust background provider rather than reusing the full-radiation Candidate-C point with missing matter action.
 
-For the dust+dust late benchmark, the visible background density supplied to the perturbation action is the visible matter component only.  Radiation is omitted from both perturbations and the dust action for this first test.
+The provider must:
 
-Background metric quantities, branch derivatives, `J`, `Gamma`, lapse ratio and interaction coefficients must remain those of the chosen Candidate-C benchmark and must be generated from one consistent on-shell provider.
+- start from the Candidate-C interaction and matter-normalization parameters;
+- set `omega_g_r0 = 0` for the benchmark;
+- solve the resulting algebraic healthy branch continuously;
+- compute `y_N`, `y_NN`, `c`, `c_N`, `H`, `H_N`, `f1`, `f2` and conformal-time derivatives from that same branch;
+- expose the benchmark's own `m_eff/H=1` crossing;
+- provide a comparison helper against the full Candidate-C background.
 
-No derivative may be taken by varying action coefficients along an off-shell neighboring family.
+No action coefficient or time derivative may be evaluated along an off-shell neighboring family.
 
 ## 7. Observable reconstruction
 
@@ -138,10 +155,11 @@ At each time step:
 2. reconstruct the algebraic BD variable `Z` from the pre-Schur canonical action;
 3. reconstruct the canonical momenta before the `Y_i Zdot` integration-by-parts boundary transformation;
 4. use the exact Eq. (72) basis map to identify the original matter momenta associated with `q_g` and `q_f`;
-5. reconstruct local matter density perturbations from
-   `p_matter = delta_rho + 3 (rho+P) psi`;
-6. for the f sector divide the common-normalization prefactor `n xi^3` before subtracting the curvature term;
-7. report `delta_g = delta_rho_g/rho_g` and `delta_f = delta_rho_f/rho_f`.
+5. convert the common-normalized momenta to the local matter momenta of the identity
+   `p = delta_rho + 3(rho+P)psi`;
+6. in particular divide the f-sector momentum by `n xi^3` before the local density reconstruction;
+7. use the exact basis-transform code, rather than hand-written sign conventions, to reconstruct `psi_f` and the remaining old-basis metric variables;
+8. report `delta_g = delta_rho_g/rho_g` and `delta_f = delta_rho_f/rho_f`.
 
 The momentum shift from the time-dependent integration by parts is explicit.  If the dropped boundary function is
 
@@ -157,7 +175,7 @@ This observable map receives its own finite-sound-speed regression before the ex
 
 The solver's primary mathematical product is the full six-dimensional fundamental matrix.  No 2x2 density transfer matrix is defined by silently choosing arbitrary initial velocities.
 
-For the first scientific test, initialize and track the GR-connected adiabatic growing mode at `z_i ~= 16.2455`:
+For the first scientific test, initialize and track the GR-connected adiabatic growing mode at the dust benchmark's own `m_eff/H=1` crossing:
 
 - no initial relative entropy between the two dust sectors;
 - common growing density perturbation normalized to unity;
@@ -165,15 +183,11 @@ For the first scientific test, initialize and track the GR-connected adiabatic g
 
 At each later time, track the same mode continuously by overlap with the previous normalized phase-space eigenvector / evolved solution.  Avoid re-sorting modes independently at every time.
 
-Define the diagnostic amplitudes
-
-`delta_common = (rho_g delta_g + rho_f_eff delta_f)/(rho_g + rho_f_eff)`
-
-and
+Define
 
 `delta_relative = delta_g - delta_f`.
 
-The exact weighting `rho_f_eff` used for the common source is taken from the same background normalization entering the two-sector action; it is not hard-coded from the equal-density Aoki reference system.
+Define `delta_common` using the source weights derived from the same reduced action/background normalization.  The weighting is exported by the background/reduction layer and tested; it is not hard-coded from the equal-density Aoki reference system.
 
 The key late-conversion observable is
 
@@ -216,9 +230,18 @@ Requirements:
 
 Implementation follows TDD and must pass these gates in order.
 
+### V0 — on-shell late-dust benchmark
+
+Construct the dust-only neighboring background and verify:
+
+- both background Friedmann equations / algebraic branch constraint close at numerical precision;
+- no lapse/branch singularity occurs over the late interval;
+- the dust benchmark's `m_eff/H=1` crossing is located directly;
+- deviations from full Candidate C in `H,y,c,m_eff/H,c_s^2` are quantified over the interval and remain small enough for the intended late-conversion falsification test.
+
 ### V1 — one-sector dust Legendre identity
 
-At finite `c_s^2`, compare the Hamilton/phase reconstruction against the existing P(X) action and verify the momentum identity
+At finite `c_s^2`, compare the Hamilton/phase reconstruction against the existing P(X) action and verify
 
 `p = delta_rho + 3(rho+P)psi`.
 
@@ -232,13 +255,9 @@ For known time-dependent `K,C,M`, verify the canonical first-order equations rep
 
 Linearize/freeze the new phase system locally and recover the already closed Case-C high-k branches, including gravitational `c_s^2 -> -0.666583341987...`.
 
-### V4 — Candidate-C local regression
+### V4 — Candidate-C dust-benchmark local regression
 
-At `a=0.5`, recover the dust+dust principal target
-
-`c_s^2 -> 0.692071477288...`
-
-and the two dust matter branches in the appropriate zero-sound-speed limit.
+At the established comparison point near `a=0.5`, recover the dust+dust principal target from the independent De Felice formula and the two dust matter branches in the zero-sound-speed limit.
 
 ### V5 — observable pullback
 
@@ -248,9 +267,9 @@ At finite regulator sound speed, compare density perturbations reconstructed fro
 
 In a controlled GR/decoupled limit, recover the standard pressureless growing and decaying modes and verify that an exactly adiabatic common mode does not spuriously generate a relative mode.
 
-### V7 — Candidate-C late integration
+### V7 — late dust integration
 
-Integrate from `z_i ~= 16.2455` to `z=0` on several representative Fourier scales covering the existing quasi-static table, at minimum `k = 0.01, 0.05, 0.1, 0.2 h/Mpc`.
+Integrate from the benchmark's own `m_eff/H=1` crossing to `z=0` on several representative Fourier scales covering the existing quasi-static table, at minimum `k = 0.01, 0.05, 0.1, 0.2 h/Mpc`.
 
 Report:
 
@@ -289,10 +308,11 @@ Those extensions are justified only after the late dust solver passes its own va
 
 The implementation should preserve small, auditable modules:
 
+- new late-dust background module: strictly on-shell dust-only neighboring branch plus comparison to full Candidate C;
 - new dust phase-action module: analytic regular dust matter sector and finite-`c_s^2` comparison bridge;
-- new reduced phase-system module: auxiliary/BD reduction and `K,C,M` / canonical RHS assembly;
-- new Candidate-C late-transfer module: background sampling, mode initialization/tracking, integration and observable output;
-- new tests split by the validation sequence V1-V7;
-- existing `de_felice_two_matter_exact_quadratic.py`, `bd_time_canonicalization.py`, `de_felice_action_principal.py`, and Candidate-C background helpers remain independent regression oracles rather than being duplicated.
+- new reduced phase-system module: auxiliary/BD reduction and canonical RHS assembly;
+- new late-transfer module: mode initialization/tracking, integration and observable output;
+- new tests split by V0-V7;
+- existing `de_felice_two_matter_exact_quadratic.py`, `bd_time_canonicalization.py`, `de_felice_action_principal.py`, `flrw_two_matter.py`, and Candidate-C background helpers remain independent regression oracles rather than being duplicated.
 
 No changes to EH, HR or previously audited P(X) coefficients are permitted merely to make the transfer result look desirable.
