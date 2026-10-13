@@ -75,7 +75,7 @@ def gr_matched_state_at(trajectory, N: float) -> GRMatchedLift:
     common_N = np.asarray(trajectory.common_map_N(x), dtype=float) + common @ generator
     relative_N = np.asarray(trajectory.relative_map_N(x), dtype=float) + relative @ generator
     y3 = np.array([0.0, 0.0, 1.0, 0.0, 0.0, 0.0], dtype=float)
-    y3dot = np.array([0.0, 0.0, 0.0, 0.0, 1.0], dtype=float)
+    y3dot = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 1.0], dtype=float)
     constraints = np.vstack([common, relative, relative_N, common_N, y3, y3dot])
     target = np.array([1.0, 0.0, 0.0, 1.0, 0.0, 0.0], dtype=float)
     raw_condition = float(np.linalg.cond(constraints))
