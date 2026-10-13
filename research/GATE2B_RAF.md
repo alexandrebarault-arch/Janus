@@ -1,76 +1,100 @@
 # Gate 2B — RAF / restart ledger
 
-Date: 2026-10-11
+Date: 2026-10-13
 Branch: `research/gate2b-nonhomothetic-transfer`
 
-This file is intentionally short. It complements `research/GATE2B_CHECKPOINT.md` and exists so an interrupted session can resume in under one minute.
+Read `research/GATE2B_CHECKPOINT.md` first.  This file is the short restart ledger.
 
-## Progress estimate
+## Current scientific position
 
-- Diagnostic of the current high-k failure: **~80% complete**.
-- Gate 2B as a whole: **~45% complete**.
-- RAF (remaining work) for Gate 2B: **~55%**.
+The former scalar-physics blocker is closed at audit level:
 
-These percentages are engineering estimates, not scientific confidence levels.
+- Case-C finite-k `NG3` recovered after pressure-consistent time-dependent BD canonicalization;
+- Case-C Eq. (85) principal speeds recovered, including `c_s,grav^2 -> -0.666583341987...`;
+- Candidate-C dust+dust benchmark recovered independently, `c_s,grav^2 -> 0.692071477288...`.
+
+The repaired De Felice action does **not** project out the helicity-0 gradient.
+
+Full-repository tests are still unavailable in the current environment.
 
 ## Current blocker
 
-The current JANUS 12x12 scalar closure is algebraically/Bianchi consistent but projects out the physical helicity-0 high-k gradient. It recovers the radiation speed exactly but gives a spurious gravity-like speed ~0.0159 instead of De Felice ~0.8319 at the Candidate-C comparison point.
+**Time-domain transfer architecture and exact dust variables.**
 
-A structural ambiguity in Comelli A.18 changes the scalar constraint rank:
+The raw P(X) second-order action is singular at `c_s^2=0`, so a long time-domain dust integration must not be performed by simply choosing an arbitrary finite sound speed.
 
-- derived gauge-invariant form `(B1-E')`: rank 6 at fixed `E'`;
-- printed form `(B1-E)`: rank 7 for generic non-homothetic `c != 1`.
+A key regular variable has now been identified.  For one P(X) fluid,
 
-Therefore do **not** assume `E'` is a freely prescribed state variable while deciding the correct descriptor structure.
+`dL_m/d qdot = (rho+P)[(delta phidot/phidot - Phi)/c_s^2 + 3 psi]`.
 
-## Exact current task
+Since
 
-**T1c.6c — build the full scalar descriptor/DAE polynomial system without prescribing `E'`.**
+`delta rho = (rho+P)(delta phidot/phidot-Phi)/c_s^2`,
 
-Required outputs:
+the canonical matter momentum is
 
-1. complete variable vector and derivative order bookkeeping;
-2. polynomial/descriptor matrix for both A.18 variants;
-3. generic rank and hidden algebraic-constraint count;
-4. finite generalized mode count / physical scalar DOF count;
-5. test on the dynamically on-shell Case-C early-time hierarchy;
-6. identify which formulation can reproduce Comelli Appendix B.5 without tuning coefficients.
+`pi_q = delta rho + 3(rho+P) psi`
 
-## Immediate next actions
+before sector volume factors.
 
-- [ ] T1c.6c.1 — construct descriptor from the undifferentiated published scalar equations plus gauge identities/slips; no differentiated constraints used merely to square the system.
-- [ ] T1c.6c.2 — apply correct Case-C amplitude weights (`E=tau^2 E_N`; induced metric/matter amplitudes with their asymptotic tau powers) before reading the principal rank.
-- [ ] T1c.6c.3 — compute row/column rank profile versus polynomial degree for both A.18 variants.
-- [ ] T1c.6c.4 — determine finite generalized modes and infinite/algebraic modes (constraint index / Kronecker structure as far as numerically/symbolically feasible).
-- [ ] T1c.6c.5 — compare physical scalar mode count against De Felice: one gravitational scalar plus matter acoustic modes.
-- [ ] T1c.6d — perform differential elimination with the validated descriptor and reproduce Comelli B.5; benchmark acceptance is `E'' + 3/tau E' - (2/3) k^2 E = 0` and high-k factor `3 q^2 - 2`.
-- [ ] T1c.7 — prove invariance under Bianchi-redundant row choices and settle A.18 bookkeeping.
-- [ ] T2 — on dust+dust Candidate C, recover independent De Felice scalar speed.
-- [ ] T3 — identify the precise structural error in the old 12x12 closure.
-- [ ] T4 — implement corrected `numerics/comelli_native_scalar.py`.
-- [ ] T5 — make `tests/test_comelli_native_scalar.py` green; add >=3 additional `(z,k)` speed regressions.
-- [ ] T6 — rerun all Gate-2B algebraic/constraint/Bianchi tests.
-- [ ] T7 — build time-domain transfer RHS and fundamental transfer matrix.
-- [ ] T8 — track the GR-connected adiabatic mode continuously.
-- [ ] T9 — compute `T_gg`, `T_gf`, `T_fg`, `T_ff` and relative-mode growth.
-- [ ] T10 — record Gate-2B pass/fail/inconclusive verdict with numerical tolerances and domain.
+In g-flat gauge, `psi_g=0`, so each visible-fluid canonical momentum is directly its density perturbation.  This is finite in the dust limit.
 
-## Already ruled out — do not redo unless new evidence appears
+For a reduced physical Hessian
 
-- k/time unit conversion;
-- visible dust+radiation mixture;
-- `d(g00)` vs `d(f00)` closure choice;
-- isolated background-derivative error;
-- De Felice target normalization;
-- simple A1/A2 transcription/sign typo;
-- omitted anisotropic `k^2` block after slip reduction;
-- A.18 prime/unprime as a simple drop-in fix to the existing closure;
-- isolated f-trace interaction-sign flip;
-- floating-point conditioning;
-- selected high-k minors as the dispersion relation;
-- frozen-a / off-shell Case-C backgrounds.
+`Hphys=[[M,C],[C.T,K]]`
 
-## Restart rule
+with common measure `a^3`, define
 
-Read `research/GATE2B_CHECKPOINT.md`, then this file. Resume at the first unchecked T1c.6c item. Do not integrate Candidate C transfer functions until Comelli B.5 and De Felice high-k speed are both reproduced independently.
+`pi = K Ydot + C.T Y`.
+
+Then the exact first-order equations are
+
+`Ydot = K^-1 (pi - C.T Y)`,
+
+`pidot = M Y + C Ydot - 3 H pi`.
+
+This formulation contains the full De Felice Eq. (84) but never evaluates `dot K` or `dot C`, avoiding the catastrophic cancellations encountered in the dispersion audit.
+
+## Recommended next implementation order
+
+1. **Two-dust late transfer first**, on the validated Candidate-C dust+dust action, starting at or below the clean late-linear threshold `m_eff/H=1` (`z ~= 16.25`).
+2. Use canonical momenta/density variables so the dust limit is explicit rather than a finite-pressure approximation.
+3. Compute the common/relative transfer from `z~16.25` to today and compare directly with the existing optimistic quasi-static reference (`~0.123` relative/common today).
+4. If the exact late-linear conversion is still far below unity, record that as a robust negative result; visible radiation cannot change an order-of-magnitude conclusion in this domain.
+5. Add the explicit visible-radiation scalar only when extending the transfer above the late regime or producing CMB/radiation-era observables.
+
+Radiation-to-matter background ratio in the visible sector is
+
+`rho_r/rho_m = (Omega_r0/Omega_m0)(1+z) = 3e-4(1+z)`.
+
+Thus it is about
+
+- `0.52%` at `z=16.25`;
+- `0.33%` at `z=10`;
+- `0.09%` at `z=2`;
+- `4.3%` at `z=142`.
+
+The two-dust solver is therefore a controlled late-regime falsification test, not a replacement for the eventual full radiation-era system.
+
+## Remaining work
+
+- [x] Case-C action/BD/NG3 reconstruction.
+- [x] Case-C Eq. (85) three-speed validation.
+- [x] Candidate-C dust+dust principal-speed validation.
+- [ ] Derive/promote the canonical-momentum dust-limit reduced equations.
+- [ ] Integrate Candidate-C dust+dust late transfer from `z~16.25` to 0.
+- [ ] Track GR-connected/common and relative modes.
+- [ ] Compute density/velocity transfer channels.
+- [ ] Add visible radiation as a separate scalar for earlier epochs / exact Gate-2 observables.
+- [ ] Full worktree regression suite.
+- [ ] Final Gate-2B verdict.
+
+## Do not redo
+
+Unless new evidence appears, do not return to:
+
+- Eq. (44)/(45)/(54) coefficient tuning;
+- Eq. (72) normalization;
+- the `dot(phi_f)/phi_f` sound-speed term;
+- the old frozen speed extractor as a physical FLRW acceptance equation;
+- the claim that the action intrinsically lost the helicity-0 gradient.
