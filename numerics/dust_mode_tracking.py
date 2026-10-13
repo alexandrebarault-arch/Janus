@@ -56,10 +56,23 @@ def _pair_projector(vectors: np.ndarray, inverse: np.ndarray, pair: tuple[int, i
 
 
 def _projector_overlap(Pa: np.ndarray, Pb: np.ndarray) -> float:
-    # Spectral projectors are the right object for non-normal generators.
-    # trace(Pa Pb)/rank is invariant under a fixed similarity transform and
-    # stays discriminating when right eigenspaces are almost parallel.
-    return float(abs(np.trace(Pa @ Pb)) / 2.0)
+    """Return a bounded similarity-invariant continuation score.
+
+    ``trace(Pa Pb)/rank`` is invariant but is not bounded for non-orthogonal
+    spectral projectors and can therefore prefer a wrong pair in a strongly
+    non-normal system.  The non-zero eigenvalues of ``Pa Pb`` are also
+    similarity invariant.  For identical invariant subspaces they are all 1;
+    use their maximum distance from 1 as a bounded continuation metric.
+    """
+    A = np.asarray(Pa, dtype=complex)
+    B = np.asarray(Pb, dtype=complex)
+    if A.shape != B.shape or A.ndim != 2 or A.shape[0] != A.shape[1]:
+        raise ValueError("spectral projectors must be matching square matrices")
+    rank = max(1, int(round(float(np.trace(A).real))))
+    eig = np.linalg.eigvals(A @ B)
+    active = eig[np.argsort(np.abs(eig))[-rank:]]
+    distance = float(np.max(np.abs(active - 1.0)))
+    return 1.0 / (1.0 + distance)
 
 
 def track_eigenpair_branch(
@@ -124,12 +137,82 @@ def track_eigenpair_branch(
             pair, prev_projector, vp, overlap = best
             out_pairs[i] = pair
             out_vals[i] = vp
-            scores[i] = min(1.0, overlap)
+            scores[i] = overlap
             prev_vals = vp
 
     walk(range(ai+1, npts), anchor_projector, out_vals[ai])
     walk(range(ai-1, -1, -1), anchor_projector, out_vals[ai])
     return TrackedEigenpairBranch(out_vals, scores, out_pairs)
+
+
+def track_eigenpair_branch_adaptive(
+    generator,
+    parameters,
+    *,
+    anchor_index: int = -1,
+    anchor_pair: tuple[int, int] | None = None,
+    state_scale=None,
+    min_score: float = 0.90,
+    max_refinements: int = 8,
+) -> tuple[np.ndarray, TrackedEigenpairBranch]:
+    """Track a pair while bisecting intervals with weak subspace continuity.
+
+    The generator callable is evaluated only at newly inserted midpoints.  An
+    endpoint anchor is required so its physical identity remains unchanged as
+    the grid is refined.
+    """
+    grid = np.asarray(parameters, dtype=float)
+    if grid.ndim != 1 or len(grid) < 2 or not np.all(np.isfinite(grid)):
+        raise ValueError("parameters must be a finite one-dimensional grid")
+    if not np.all(np.diff(grid) > 0.0):
+        raise ValueError("parameters must be strictly increasing")
+    score_min = float(min_score)
+    if not (0.0 < score_min < 1.0):
+        raise ValueError("min_score must lie in (0,1)")
+    ai0 = int(anchor_index)
+    if ai0 in (-1, len(grid)-1):
+        endpoint = -1
+    elif ai0 == 0:
+        endpoint = 0
+    else:
+        raise ValueError("adaptive tracking requires a first- or last-point anchor")
+    refinements = int(max_refinements)
+    if refinements < 0:
+        raise ValueError("max_refinements must be non-negative")
+
+    cache: dict[float, np.ndarray] = {}
+    def matrix(x: float) -> np.ndarray:
+        key = float(x)
+        if key not in cache:
+            value = np.asarray(generator(key), dtype=float)
+            if value.ndim != 2 or value.shape[0] != value.shape[1] or not np.all(np.isfinite(value)):
+                raise ValueError("generator must return a finite square matrix")
+            cache[key] = value
+        return cache[key]
+
+    for _ in range(refinements + 1):
+        matrices = np.asarray([matrix(x) for x in grid])
+        branch = track_eigenpair_branch(
+            matrices,
+            anchor_index=(-1 if endpoint == -1 else 0),
+            anchor_pair=anchor_pair,
+            state_scale=state_scale,
+        )
+        anchor = len(grid)-1 if endpoint == -1 else 0
+        bad: list[tuple[int, int]] = []
+        for i, score in enumerate(branch.overlap_scores):
+            if i == anchor:
+                continue
+            if float(score) < score_min:
+                bad.append((i, i+1) if endpoint == -1 else (i-1, i))
+        if not bad:
+            return grid, branch
+        midpoints = np.asarray([0.5*(grid[i] + grid[j]) for i, j in bad], dtype=float)
+        grid = np.unique(np.concatenate([grid, midpoints]))
+
+    raise np.linalg.LinAlgError(
+        "adaptive eigenpair tracking did not reach the requested continuity score"
+    )
 
 
 def pair_phase_speed_squared(eigenvalue_pair, *, a: float, k: float) -> float:
