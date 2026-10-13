@@ -109,6 +109,7 @@ def _case_c_audit_pieces(
     *,
     f_cs2: float,
     finite_difference_step: float,
+    f_pressure: float = 0.0,
 ) -> tuple[dict[str, float], ScalarBackground]:
     point = case_c_background_from_a(a, k=k)
     g = DFKessenceFluid(
@@ -118,7 +119,7 @@ def _case_c_audit_pieces(
     )
     f = DFKessenceFluid(
         rho=point.rho2,
-        pressure=0.0,
+        pressure=f_pressure,
         cs2=f_cs2,
     )
     pieces = bd_state_coefficient_decomposition(
@@ -139,6 +140,7 @@ def case_c_bd_effective_coefficient(
     f_cs2: float = 0.1,
     background_step_fraction: float = 1.0e-4,
     finite_difference_step: float = 2.0e-6,
+    pressure_probe_fraction: float = 1.0e-4,
 ) -> dict[str, float]:
     """Evaluate the time-corrected BD algebraic coefficient on exact Case C.
 
@@ -149,20 +151,34 @@ def case_c_bd_effective_coefficient(
         dot(C_ZZ) + 3 H_g C_ZZ.
 
     ``ScalarBackground.H`` is the conformal Hubble rate ``calH=a H_g``.
-    With g-lapse N=1, ``dot(a)=a H_g=calH``.  Therefore a central derivative
-    along the exact Case-C trajectory converts as
+    With g-lapse N=1, ``dot(a)=a H_g=calH``.
 
-        dot(C_ZZ) = (d C_ZZ / da) * calH.
+    The derivative of ``C_ZZ`` must follow the local P(X) background tangent.
+    Case C is dust in the f sector at the control point, but the finite-cs2
+    diagnostic fluid obeys ``dot(P_f)=cs_f^2 dot(rho_f)``.  We therefore split
+    the chain rule into a pressure-frozen background derivative and an
+    independently conditioned pressure derivative,
 
-    This helper is diagnostic only and does not alter the physical reducer.
+        dot(C_ZZ) = (partial C_ZZ/partial a)_P * dot(a)
+                    + (partial C_ZZ/partial P_f) * dot(P_f),
+
+    with ``dot(P_f)=-3 n H_f cs_f^2 (rho_f+P_f)`` at ``P_f=0``.
+
+    This helper remains diagnostic only and does not alter the physical
+    reducer.
     """
-    values = (a, k, f_cs2, background_step_fraction, finite_difference_step)
+    values = (
+        a, k, f_cs2, background_step_fraction,
+        finite_difference_step, pressure_probe_fraction,
+    )
     if not all(math.isfinite(v) for v in values):
         raise ValueError("all audit inputs must be finite")
     if a <= 0.0 or k <= 0.0 or f_cs2 <= 0.0:
         raise ValueError("a, k and f_cs2 must be positive")
     if background_step_fraction <= 0.0 or background_step_fraction >= 0.25:
         raise ValueError("background_step_fraction must lie in (0,0.25)")
+    if pressure_probe_fraction <= 0.0 or pressure_probe_fraction >= 0.1:
+        raise ValueError("pressure_probe_fraction must lie in (0,0.1)")
 
     da = a * background_step_fraction
     if a - da <= 0.0:
@@ -170,17 +186,41 @@ def case_c_bd_effective_coefficient(
 
     center, bg = _case_c_audit_pieces(
         a, k, f_cs2=f_cs2, finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
     )
     minus, _ = _case_c_audit_pieces(
-        a - da, k, f_cs2=f_cs2, finite_difference_step=finite_difference_step,
+        a - da, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
     )
     plus, _ = _case_c_audit_pieces(
-        a + da, k, f_cs2=f_cs2, finite_difference_step=finite_difference_step,
+        a + da, k, f_cs2=f_cs2,
+        finite_difference_step=finite_difference_step,
+        f_pressure=0.0,
     )
 
-    dC_da = (plus["C_ZZ"] - minus["C_ZZ"]) / (2.0 * da)
+    dC_da_frozen = (plus["C_ZZ"] - minus["C_ZZ"]) / (2.0 * da)
     a_dot = bg.H  # conformal H = a H_cosmic = da/dt for N=1.
-    dot_C = dC_da * a_dot
+    dot_C_background = dC_da_frozen * a_dot
+
+    point = case_c_background_from_a(a, k=k)
+    dP = point.rho2 * pressure_probe_fraction
+    pminus, _ = _case_c_audit_pieces(
+        a, k, f_cs2=f_cs2, finite_difference_step=finite_difference_step,
+        f_pressure=-dP,
+    )
+    pplus, _ = _case_c_audit_pieces(
+        a, k, f_cs2=f_cs2, finite_difference_step=finite_difference_step,
+        f_pressure=dP,
+    )
+    dC_dP = (pplus["C_ZZ"] - pminus["C_ZZ"]) / (2.0 * dP)
+
+    # n H_f = H_omega/a in the repository's g-cosmic convention.
+    nHf = bg.H_omega / bg.a
+    dot_P_f = -3.0 * nHf * f_cs2 * point.rho2
+    dot_C_pressure = dC_dP * dot_P_f
+    dot_C = dot_C_background + dot_C_pressure
+
     H_cosmic = bg.H / bg.a
     measure_term = 3.0 * H_cosmic * center["C_ZZ"]
     time_correction = dot_C + measure_term
@@ -191,10 +231,16 @@ def case_c_bd_effective_coefficient(
         "a": float(a),
         "k": float(k),
         "background_da": float(da),
-        "dC_da": float(dC_da),
+        # Backward-compatible name: this is the derivative at frozen P_f.
+        "dC_da": float(dC_da_frozen),
+        "dC_da_frozen_pressure": float(dC_da_frozen),
+        "partial_C_ZZ_partial_P_f": float(dC_dP),
         "a_dot": float(a_dot),
         "conformal_H": float(bg.H),
         "H_cosmic": float(H_cosmic),
+        "dot_P_f": float(dot_P_f),
+        "dot_C_ZZ_background": float(dot_C_background),
+        "dot_C_ZZ_pressure": float(dot_C_pressure),
         "dot_C_ZZ": float(dot_C),
         "measure_3H_C_ZZ": float(measure_term),
         "time_correction": float(time_correction),
