@@ -56,14 +56,7 @@ def _pair_projector(vectors: np.ndarray, inverse: np.ndarray, pair: tuple[int, i
 
 
 def _projector_overlap(Pa: np.ndarray, Pb: np.ndarray) -> float:
-    """Return a bounded similarity-invariant continuation score.
-
-    ``trace(Pa Pb)/rank`` is invariant but is not bounded for non-orthogonal
-    spectral projectors and can therefore prefer a wrong pair in a strongly
-    non-normal system.  The non-zero eigenvalues of ``Pa Pb`` are also
-    similarity invariant.  For identical invariant subspaces they are all 1;
-    use their maximum distance from 1 as a bounded continuation metric.
-    """
+    """Return a bounded similarity-invariant continuation score."""
     A = np.asarray(Pa, dtype=complex)
     B = np.asarray(Pb, dtype=complex)
     if A.shape != B.shape or A.ndim != 2 or A.shape[0] != A.shape[1]:
@@ -154,12 +147,16 @@ def track_eigenpair_branch_adaptive(
     state_scale=None,
     min_score: float = 0.90,
     max_refinements: int = 8,
+    allow_unresolved_cluster: bool = False,
 ) -> tuple[np.ndarray, TrackedEigenpairBranch]:
     """Track a pair while bisecting intervals with weak subspace continuity.
 
-    The generator callable is evaluated only at newly inserted midpoints.  An
-    endpoint anchor is required so its physical identity remains unchanged as
-    the grid is refined.
+    A genuine exceptional/quasi-degenerate cluster can keep every individual
+    two-dimensional spectral projector ill-conditioned no matter how much the
+    interval is refined.  With ``allow_unresolved_cluster=True`` the best
+    refined branch is returned and its low overlap score is deliberately kept
+    as a mode-mixing diagnostic instead of being mislabeled as numerical
+    failure.
     """
     grid = np.asarray(parameters, dtype=float)
     if grid.ndim != 1 or len(grid) < 2 or not np.all(np.isfinite(grid)):
@@ -190,7 +187,8 @@ def track_eigenpair_branch_adaptive(
             cache[key] = value
         return cache[key]
 
-    for _ in range(refinements + 1):
+    branch = None
+    for level in range(refinements + 1):
         matrices = np.asarray([matrix(x) for x in grid])
         branch = track_eigenpair_branch(
             matrices,
@@ -207,11 +205,15 @@ def track_eigenpair_branch_adaptive(
                 bad.append((i, i+1) if endpoint == -1 else (i-1, i))
         if not bad:
             return grid, branch
+        if level == refinements:
+            break
         midpoints = np.asarray([0.5*(grid[i] + grid[j]) for i, j in bad], dtype=float)
         grid = np.unique(np.concatenate([grid, midpoints]))
 
+    if allow_unresolved_cluster:
+        return grid, branch
     raise np.linalg.LinAlgError(
-        "adaptive eigenpair tracking did not reach the requested continuity score"
+        "adaptive eigenpair tracking reached a persistent quasi-degenerate cluster"
     )
 
 
