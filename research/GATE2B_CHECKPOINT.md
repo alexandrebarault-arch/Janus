@@ -34,7 +34,7 @@ Purpose: single restart point after interruption. Update after every hard findin
 
 - Eq. (72) basis `(Y1,Y2,Y3,Z_BD)` gives the correct null kinetic direction before BD removal.
 - `Z_BD` is algebraically eliminable; three scalar kinetic directions remain.
-- Restoring time-derivative/measure terms omitted by the frozen integration-by-parts does not repair the bad `N_G^(3)` scaling, so this is not the root cause.
+- Restoring time-derivative/measure terms omitted by frozen integration-by-parts does not repair the bad `N_G^(3)` scaling, so this is not the root cause.
 
 ### DF5 — kinetic invariant failure
 
@@ -47,33 +47,33 @@ Purpose: single restart point after interruption. Update after every hard findin
   - `k=400`: `0.0185421788`;
   - `k=800`: `0.018698`;
   - asymptotic Eq. (80): `0.0187507871`.
-- Old reconstructed value at `k=400` was about `4.166`, with reconstructed `NG3 ~ k^2` instead of approaching a constant.
+- Before the HR shift-volume fix the reconstructed value at `k=400` was about `4.166`, with `NG3 ~ k^2`.
 - The bad term is already present before BD Schur elimination. BD removal, intrinsic f-fluid sound speed, finite-difference noise and kinetic-matrix inversion are not the cause.
 
-## NEW hard finding — HR shift-volume bug
+## HR shift-volume bug — confirmed and fixed, but not sufficient
 
 De Felice Eq. (45) contains
+`-sqrt(-g) rhohat_g - sqrt(-f) rhohat_f + (1/2) N a^3 xi J Delta`.
+Thus the HR shift Hessian has volume `B_g^2`, volume `B_f^2`, and relative-shift pieces.
 
-`-sqrt(-g) rhohat_g - sqrt(-f) rhohat_f + (1/2) N a^3 xi J Delta`
+The historical helper omitted the first two. A direct Case-C Hessian comparison at `a=0.05,k=400` found approximately `Q_BgBg=+0.3334` historically versus `Q_BgBg=-2.6668` from the complete Eq. (45)-(46) interaction.
 
-at quadratic order. Therefore the HR auxiliary shift Hessian contains **three** pieces:
+- Commit `8637753`: add both missing volume-shift terms.
+- Commit `181deda`: test requires the complete Eq. (45)-(46) shift Hessian.
 
-1. `-sqrt(-g) rhohat_g` contributes a `B_g^2` term;
-2. `-sqrt(-f) rhohat_f` contributes a `B_f^2` term;
-3. `Delta` contributes the familiar relative-shift square `(B_g-ctilde B_f)^2/(ctilde+1)`.
+### Post-fix scratch regression
 
-The historical helper `hr_scalar_quadratic_potential_density_de_felice()` previously set `B_g=B_f=0` inside the exact determinant pieces and then added only item 3. Thus items 1 and 2 were missing from the action used in `de_felice_two_matter_action.py`.
+A scratch reconstruction using the same **uniform finite-difference step `h=2e-6`** as the repository RED test reproduces the old failure closely (`NG3~4.15` at `k=400`, versus repo history ~`4.166`), so it is a useful diagnostic replica.
 
-A direct Hessian comparison at Case C `a=0.05,k=400` found a large exact mismatch in the HR shift block. In particular, the historical helper gave approximately `Q_BgBg=+0.3334` for the HR contribution where the complete Eq. (45)-(46) expression gives approximately `Q_BgBg=-2.6668` (same local normalization), an error of about `3.0002` before the auxiliary Schur.
+With the shift-volume fix the same scratch gives approximately:
+- `k=100`: `NG3=0.10417`;
+- `k=200`: `NG3=0.41666`;
+- `k=400`: `NG3=1.66666`;
+- `k=800`: `NG3=6.66664`.
 
-This is the **first exact mismatched Hessian entry** found in DF5e.2.
+Therefore the first exact HR bug is dynamically active but **does not fix the root problem**: reconstructed `NG3` still scales as `k^2`, with a smaller coefficient. The exact repository test has not been executed through CI/actions; do not claim it green.
 
-### Implemented fix
-
-- Commit `8637753`: `hr_scalar_quadratic_potential_density_de_felice()` now adds both volume shift terms plus the relative-shift term.
-- Commit `181deda`: `tests/test_hr_scalar_potential.py` now requires the complete Eq. (45)-(46) shift Hessian, not only the rank-one relative-shift square.
-- The `B=0` diagonal convention test remains unchanged.
-- A scratch reconstruction shows this correction strongly changes the bad gravity kinetic invariant, proving the mismatch is dynamically active. Scratch normalization is not identical to the repository finite-difference path, so **do not declare NG3 green until the repository regression is rerun exactly**.
+This moves the root-cause search from isolated HR shift coefficients to the **high-k auxiliary Schur structure / variable normalization / sector prefactors**.
 
 ## Active task list
 
@@ -86,13 +86,17 @@ This is the **first exact mismatched Hessian entry** found in DF5e.2.
 - [x] DF4 Eq. (72) basis + BD algebraic degree removal.
 - [ ] **DF5 — recover the three physical high-k speeds. BLOCKED.**
   - [x] DF5a — physical mode extractor + synthetic validation.
-  - [x] DF5c — integrated Case-C speed regression: FAIL before latest fix.
+  - [x] DF5c — integrated Case-C speed regression: FAIL.
   - [x] DF5e.1 — rule out EH block, matter block, finite-difference cancellation, `K^{-1}` conditioning, BD Schur and intrinsic fluid sound as root causes.
-  - [x] **DF5e.2a — direct NG3 RED regression exists in `tests/test_de_felice_two_matter_action.py`.** Target at `a=0.05,k=400` is `0.0185421788`.
-  - [x] **DF5e.2b — first exact HR auxiliary mismatch found: missing volume `B_g^2/B_f^2` terms. Minimal fix committed.**
-  - [ ] **DF5e.2c — rerun the exact repository NG3 regression after commits `8637753` + `181deda`; record the new measured value and k-scaling. NEXT.**
-  - [ ] **DF5e.3 — if NG3 remains red, audit remaining HR auxiliary cross-Hessian entries term-by-term, especially `(Phi-ctilde varphi)(TrH-Trh)` and their coupling to `E_f/psi_f`; then derive the high-k auxiliary Schur analytically.**
-  - [ ] DF5e.4 — only after every exact mismatch is identified, make NG3 Eq. (78) green over several k values.
+  - [x] DF5e.2a — direct NG3 RED regression exists; target at `a=0.05,k=400` is `0.0185421788`.
+  - [x] DF5e.2b — first exact HR mismatch found and fixed: missing volume `B_g^2/B_f^2` terms.
+  - [x] **DF5e.2c — post-fix scratch rerun: NG3 still scales as `k^2`; fix insufficient.**
+  - [ ] **DF5e.3 — derive the high-k auxiliary Schur analytically. NEXT.**
+    - [ ] DF5e.3a — extract raw kinetic block `K0`, auxiliary Hessian `A`, and rate-auxiliary cross block `R` before BD transform, with `K_red = K0 - R A^{-1} R^T`.
+    - [ ] DF5e.3b — track leading powers of k for the Y3=S rate direction through Eq. (72); identify which cancellation leaves the spurious `O(k^2)` NG3.
+    - [ ] DF5e.3c — audit Eq. (72) normalization/signs and f-sector EH/matter prefactors against the primary definitions; do not change coefficients without an exact mismatch.
+    - [ ] DF5e.3d — compare remaining HR lapse/trace cross-Hessian entries only if Schur localization points there.
+  - [ ] DF5e.4 — make Eq. (78) NG3 green at several k values.
   - [ ] DF5d — Candidate-C gravity regression only after Case C is green.
 - [ ] DF6 — recover B.5/equivalent reduced action on Case C.
 - [ ] T2 — Candidate-C validation at >=3 `(z,k)` points.
@@ -107,18 +111,19 @@ This is the **first exact mismatched Hessian entry** found in DF5e.2.
 
 ## Current intentional RED
 
-- `test_case_c_finite_k_ng3_matches_de_felice_eq78` was RED before the latest HR shift-volume fix and must now be rerun.
-- Case-C physical speed regression remains untrusted until NG3 is green.
+- `test_case_c_finite_k_ng3_matches_de_felice_eq78` remains expected RED until DF5e.3 is closed.
+- Case-C physical speed regression remains RED/untrusted.
 - `tests/test_comelli_native_scalar.py` remains intentionally RED.
 
 ## Immediate restart instruction
 
-**Resume at DF5e.2c.**
+**Resume at DF5e.3a — high-k auxiliary Schur.**
 
-1. Run `test_case_c_finite_k_ng3_matches_de_felice_eq78` on the exact branch state containing commits `8637753` and `181deda`.
-2. Record measured NG3 at `a=0.05,k=400` versus target `0.0185421788`.
-3. Scan at least `k=(100,200,400,800)` to determine whether the reconstructed invariant now approaches a constant or still scales as a power of k.
-4. If still red, compare every remaining HR cross-Hessian entry from `hr_scalar_quadratic_action_density_de_felice()` against the helper used by the assembled action, especially lapse/trace entries involving `Phi_g`, `Phi_f`, `psi_f`, `E_f`.
-5. Do not change any physical coefficient without an exact Hessian mismatch.
-6. Update this checkpoint immediately after the NG3 rerun and after every further exact mismatch.
-7. Move to Candidate C only after Case-C NG3 and physical speeds are green.
+1. Use the corrected HR shift-volume code (`8637753`) and complete shift regression (`181deda`).
+2. At exact Case C `a=0.05`, build the full 12x12 quadratic Hessian and partition it before auxiliary elimination into dynamic/rate block and auxiliaries `(Phi_g,Phi_f,B_g,B_f)`.
+3. For the rate block, write the Schur correction explicitly: `K_red = K0 - R A^{-1} R^T`, where `R` is rate-to-auxiliary coupling.
+4. Transform the rate directions with Eq. (72) and isolate the Y3=S kinetic invariant before BD removal.
+5. Evaluate leading k powers at `k=(100,200,400,800)`; determine which exact entry prevents cancellation of the `O(k^2)` term.
+6. Audit Eq. (72) normalization/signs and f-sector prefactors against the primary paper before altering any coefficient.
+7. Update this checkpoint immediately after the first exact Schur mismatch/localization.
+8. Move to Candidate C only after Case-C NG3 and physical speeds are green.
