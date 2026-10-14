@@ -154,3 +154,91 @@ def test_homothetic_radial_source_combines_with_lapse_to_aoki_phi_polynomial():
         * (-mu + (beta3_aoki/3.0)*mu**3)
     )
     assert abs(measured - expected) <= 3.0e-8*max(1.0, abs(expected))
+
+
+def test_homothetic_f_lapse_source_reproduces_aoki_polynomial_after_coordinate_jacobian():
+    from numerics.nonhomothetic_hr_weak_spherical import static_anisotropic_standard_beta_potential
+
+    a = 0.83
+    K = 1.21
+    mu = 0.37
+    m2 = 1.7
+    Mg2 = 1.4
+    betas = (0.2, 0.9, -0.35, 0.18, -0.11)
+    b = a*K
+    h = 2.0e-6
+
+    def potential(Phi_f: float, u: float) -> float:
+        return static_anisotropic_standard_beta_potential(
+            a=a, b=b, c_background=1.0,
+            betas=betas, m2=m2, Mg2=Mg2,
+            Phi_g=0.0, Psi_g_radial=0.0, Psi_g_angular=0.0,
+            Phi_f=Phi_f, Psi_f_radial=0.0, Psi_f_angular=0.0,
+            mu=u,
+        )
+
+    def lapse_derivative(u: float) -> float:
+        return (potential(h, u) - potential(-h, u))/(2.0*h)
+
+    measured = lapse_derivative(mu)/(1.0 + mu)**3 - lapse_derivative(0.0)
+    _, beta1_raw, beta2_raw, beta3_raw, _ = betas
+    denominator = beta1_raw + 2.0*K*beta2_raw + K*K*beta3_raw
+    beta2_aoki = (K*beta2_raw + K*K*beta3_raw)/denominator
+    beta3_aoki = K*K*beta3_raw/denominator
+    expected = (
+        -m2*Mg2*a**4*3.0*K*denominator/(1.0 + mu)**3
+        * (
+            mu + (1.0 + beta2_aoki)*mu**2
+            + (1.0 + beta2_aoki + beta3_aoki)*mu**3/3.0
+        )
+    )
+    assert abs(measured - expected) <= 4.0e-8*max(1.0, abs(expected))
+
+
+def test_homothetic_f_radial_combination_reproduces_aoki_phi_polynomial():
+    from numerics.nonhomothetic_hr_weak_spherical import static_anisotropic_standard_beta_potential
+
+    a = 0.83
+    K = 1.21
+    mu = 0.37
+    m2 = 1.7
+    Mg2 = 1.4
+    betas = (0.2, 0.9, -0.35, 0.18, -0.11)
+    b = a*K
+    h = 2.0e-6
+
+    def potential(Phi_f: float, Psi_f_radial: float, u: float) -> float:
+        return static_anisotropic_standard_beta_potential(
+            a=a, b=b, c_background=1.0,
+            betas=betas, m2=m2, Mg2=Mg2,
+            Phi_g=0.0, Psi_g_radial=0.0, Psi_g_angular=0.0,
+            Phi_f=Phi_f, Psi_f_radial=Psi_f_radial, Psi_f_angular=0.0,
+            mu=u,
+        )
+
+    def lapse_derivative(u: float) -> float:
+        return (
+            potential(h, 0.0, u) - potential(-h, 0.0, u)
+        )/(2.0*h)/(1.0 + u)**3
+
+    def radial_derivative(u: float) -> float:
+        return (
+            potential(0.0, h, u) - potential(0.0, -h, u)
+        )/(2.0*h)/(1.0 + u)**3
+
+    lapse_source = lapse_derivative(mu) - lapse_derivative(0.0)
+    radial_source = radial_derivative(mu) - radial_derivative(0.0)
+
+    _, beta1_raw, beta2_raw, beta3_raw, _ = betas
+    denominator = beta1_raw + 2.0*K*beta2_raw + K*K*beta3_raw
+    beta2_aoki = (K*beta2_raw + K*K*beta3_raw)/denominator
+    beta3_aoki = K*K*beta3_raw/denominator
+    measured = lapse_source/3.0 + radial_source
+    expected = (
+        m2*Mg2*a**4*K*denominator/(1.0 + mu)**3
+        * (
+            mu + 2.0*mu**2
+            + (2.0 + 2.0*beta2_aoki - beta3_aoki)*mu**3/3.0
+        )
+    )
+    assert abs(measured - expected) <= 6.0e-8*max(1.0, abs(expected))
