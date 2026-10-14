@@ -73,3 +73,39 @@ def test_standard_beta_potential_background_matches_direct_eigenvalue_sum():
     ]
     expected = 2.3*1.7*a**4*sum(beta*e for beta, e in zip(betas, es))
     assert abs(got - expected) < 2.0e-12
+
+
+def test_homothetic_g_lapse_source_reproduces_aoki_mass_polynomial():
+    from numerics.nonhomothetic_hr_weak_spherical import standard_beta_potential_reduced_density
+
+    a = 0.83
+    K = 1.21
+    mu = 0.37
+    m2 = 1.7
+    Mg2 = 1.4
+    betas = (0.2, 0.9, -0.35, 0.18, -0.11)
+    b = a*K
+    h = 2.0e-6
+
+    def potential(Phi_g: float, u: float) -> float:
+        return standard_beta_potential_reduced_density(
+            a=a, b=b, c_background=1.0, r=1.0,
+            betas=betas, m2=m2, Mg2=Mg2,
+            Phi_g=Phi_g, Psi_g=0.0, Phi_f=0.0, Psi_f=0.0,
+            sigma_dot=0.0, sigma_prime=0.0,
+            mu=u, mu_dot=0.0, mu_prime=0.0,
+        )
+
+    def lapse_derivative(u: float) -> float:
+        return (potential(h, u) - potential(-h, u))/(2.0*h)
+
+    measured = lapse_derivative(mu) - lapse_derivative(0.0)
+    _, beta1_raw, beta2_raw, beta3_raw, _ = betas
+    denominator = beta1_raw + 2.0*K*beta2_raw + K*K*beta3_raw
+    beta2_aoki = (K*beta2_raw + K*K*beta3_raw)/denominator
+    beta3_aoki = K*K*beta3_raw/denominator
+    expected = (
+        m2*Mg2*a**4*3.0*K*denominator
+        * (mu + beta2_aoki*mu**2 + (beta3_aoki/3.0)*mu**3)
+    )
+    assert abs(measured - expected) <= 2.0e-8*max(1.0, abs(expected))
