@@ -14,54 +14,34 @@ class SphericalSquareRootInvariants:
     tr_ginv_f_block: float
 
 
-def spherical_square_root_invariants(
-    *, a: float, r: float, n: float, alpha: float,
-    T_t: float, T_r: float, R: float, R_t: float, R_r: float,
-) -> SphericalSquareRootInvariants:
+def spherical_square_root_invariants(*, a: float, r: float, n: float, alpha: float,
+                                     T_t: float, T_r: float, R: float, R_t: float, R_r: float) -> SphericalSquareRootInvariants:
     vals=(a,r,n,alpha,T_t,T_r,R,R_t,R_r)
     if not all(math.isfinite(float(v)) for v in vals):
         raise ValueError("all pullback inputs must be finite")
-    if a <= 0 or r <= 0 or n <= 0 or alpha <= 0:
-        raise ValueError("a,r,n,alpha must be positive")
-    if R <= 0:
-        raise ValueError("R must be positive")
-    ftt = -n*n*T_t*T_t + alpha*alpha*R_t*R_t
-    ftr = -n*n*T_t*T_r + alpha*alpha*R_t*R_r
-    frr = -n*n*T_r*T_r + alpha*alpha*R_r*R_r
-    A = np.array([[-ftt, -ftr], [ftr/(a*a), frr/(a*a)]], dtype=float)
+    if a <= 0 or r <= 0 or n <= 0 or alpha <= 0 or R <= 0:
+        raise ValueError("a,r,n,alpha,R must be positive")
+    ftt=-n*n*T_t*T_t+alpha*alpha*R_t*R_t
+    ftr=-n*n*T_t*T_r+alpha*alpha*R_t*R_r
+    frr=-n*n*T_r*T_r+alpha*alpha*R_r*R_r
+    A=np.array([[-ftt,-ftr],[ftr/(a*a),frr/(a*a)]],dtype=float)
     detA=float(np.linalg.det(A)); trA=float(np.trace(A))
     if detA <= 0:
         raise ValueError("spherical g^-1 f block must have positive determinant")
-    root_det=math.sqrt(detA)
-    rad=trA+2.0*root_det
+    root_det=math.sqrt(detA); rad=trA+2.0*root_det
     if rad <= 0:
         raise ValueError("principal square-root trace radicand must be positive")
-    trS=math.sqrt(rad)
-    detS=root_det
-    ell=alpha*R/(a*r)
-    e=np.array([
-        1.0,
-        trS+2.0*ell,
-        detS+2.0*ell*trS+ell*ell,
-        2.0*ell*detS+ell*ell*trS,
-        ell*ell*detS,
-    ],dtype=float)
-    return SphericalSquareRootInvariants(
-        tr_spherical_block=trS,
-        det_spherical_block=detS,
-        angular_eigenvalue=ell,
-        e=e,
-        det_ginv_f_block=detA,
-        tr_ginv_f_block=trA,
-    )
+    trS=math.sqrt(rad); detS=root_det; ell=alpha*R/(a*r)
+    e=np.array([1.0,trS+2*ell,detS+2*ell*trS+ell*ell,
+                2*ell*detS+ell*ell*trS,ell*ell*detS],dtype=float)
+    return SphericalSquareRootInvariants(trS,detS,ell,e,detA,trA)
 
 
 def spherical_interaction_density(*, betas, **kwargs) -> float:
     beta=tuple(float(x) for x in betas)
     if len(beta)!=5 or not all(math.isfinite(x) for x in beta):
         raise ValueError("betas must contain five finite coefficients")
-    inv=spherical_square_root_invariants(**kwargs)
-    return float(np.dot(np.asarray(beta,dtype=float),inv.e))
+    return float(np.dot(np.asarray(beta,dtype=float),spherical_square_root_invariants(**kwargs).e))
 
 
 def temporal_interaction_branch_factor(*, beta1: float, beta2: float, beta3: float, xi: float, mu: float) -> float:
@@ -71,7 +51,7 @@ def temporal_interaction_branch_factor(*, beta1: float, beta2: float, beta3: flo
     if xi <= 0.0 or mu <= -1.0:
         raise ValueError("xi must be positive and mu must exceed -1")
     q=1.0+mu
-    return float(beta1 + 2.0*beta2*xi*q + beta3*xi*xi*q*q)
+    return float(beta1+2.0*beta2*xi*q+beta3*xi*xi*q*q)
 
 
 def temporal_shift_coefficient(*, a: float, H_g: float, c: float, mu: float, mu_dot: float) -> float:
@@ -81,30 +61,38 @@ def temporal_shift_coefficient(*, a: float, H_g: float, c: float, mu: float, mu_
         raise ValueError("temporal-shift inputs must be finite")
     if a <= 0.0 or c <= 0.0 or mu <= -1.0:
         raise ValueError("a,c must be positive and mu must exceed -1")
-    return float(-(a*a/c)*(mu_dot + H_g*mu*(c + 1.0 + mu)))
+    return float(-(a*a/c)*(mu_dot+H_g*mu*(c+1.0+mu)))
 
 
-def homothetic_early_radial_polynomial_coefficients(
-    *, beta1: float, beta2: float, beta3: float, K: float, w: float,
-) -> np.ndarray:
-    """Return normalized [mu^2,mu,1] coefficients of the early radial branch.
-
-    Direct reduction of the exact spherical HR pullback on a homothetic FLRW
-    background. These are algebraically the polynomial coefficients whose two
-    roots are Aoki-Maeda-Namba Eq. (68), after excluding mu=-1.
-    """
+def homothetic_early_radial_polynomial_coefficients(*, beta1: float, beta2: float, beta3: float, K: float, w: float) -> np.ndarray:
+    """Normalized [mu^2,mu,1] coefficients whose roots are Aoki Eq. (68)."""
     vals=(beta1,beta2,beta3,K,w)
-    if not all(math.isfinite(float(v)) for v in vals):
-        raise ValueError("homothetic radial inputs must be finite")
-    if K <= 0.0:
-        raise ValueError("K must be positive")
-    D=beta1 + 2.0*K*beta2 + K*K*beta3
-    if abs(D) <= 1e-14*max(1.0,abs(beta1),abs(2*K*beta2),abs(K*K*beta3)):
+    if not all(math.isfinite(float(v)) for v in vals) or K <= 0.0:
+        raise ValueError("homothetic radial inputs must be finite and K positive")
+    D=beta1+2.0*K*beta2+K*K*beta3
+    if abs(D)<=1e-14*max(1.0,abs(beta1),abs(2*K*beta2),abs(K*K*beta3)):
         raise np.linalg.LinAlgError("homothetic interaction normalization is singular")
-    B2=(K*beta2 + K*K*beta3)/D
-    B3=K*K*beta3/D
-    return np.asarray([
-        -2.0*B2 + (1.0+3.0*w)*B3,
-        6.0*w*B2 - 2.0*B2 - 2.0,
-        3.0*(w-1.0),
-    ],dtype=float)
+    B2=(K*beta2+K*K*beta3)/D; B3=K*K*beta3/D
+    return np.asarray([-2.0*B2+(1.0+3.0*w)*B3,
+                       6.0*w*B2-2.0*B2-2.0,
+                       3.0*(w-1.0)],dtype=float)
+
+
+def nonhomothetic_adiabatic_radial_polynomial_coefficients(*, beta1: float, beta2: float, beta3: float,
+                                                            xi: float, c: float, Hdot_over_H2: float) -> np.ndarray:
+    """Raw [mu^2,mu,1] coefficients for non-homothetic adiabatic branches.
+
+    The full leading radial equation has a separate factor ``mu`` for the
+    linear branch.  These coefficients describe the two nonlinear branches
+    after the temporal Stückelberg constraint is imposed.
+    """
+    vals=(beta1,beta2,beta3,xi,c,Hdot_over_H2)
+    if not all(math.isfinite(float(v)) for v in vals):
+        raise ValueError("nonhomothetic radial inputs must be finite")
+    if xi <= 0.0 or c <= 0.0:
+        raise ValueError("xi and c must be positive")
+    e=Hdot_over_H2
+    A2=xi*(beta2+beta3*xi*(c+e+1.0))
+    A1=beta1+beta2*xi*(c+2.0*e+5.0)+beta3*xi*xi*(3.0*c+2.0*e+2.0)
+    A0=beta1*(e+3.0)+2.0*beta2*xi*(c+e+2.0)+beta3*xi*xi*(2.0*c+e+1.0)
+    return np.asarray([A2,A1,A0],dtype=float)
