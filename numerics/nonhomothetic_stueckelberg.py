@@ -25,11 +25,9 @@ def spherical_square_root_invariants(
         raise ValueError("a,r,n,alpha must be positive")
     if R <= 0:
         raise ValueError("R must be positive")
-    # f in g cosmic coordinates after T=T(t,r), R=R(t,r).
     ftt = -n*n*T_t*T_t + alpha*alpha*R_t*R_t
     ftr = -n*n*T_t*T_r + alpha*alpha*R_t*R_r
     frr = -n*n*T_r*T_r + alpha*alpha*R_r*R_r
-    # A = g^{-1} f, g_2=diag(-1,a^2).
     A = np.array([[-ftt, -ftr], [ftr/(a*a), frr/(a*a)]], dtype=float)
     detA=float(np.linalg.det(A)); trA=float(np.trace(A))
     if detA <= 0:
@@ -77,16 +75,36 @@ def temporal_interaction_branch_factor(*, beta1: float, beta2: float, beta3: flo
 
 
 def temporal_shift_coefficient(*, a: float, H_g: float, c: float, mu: float, mu_dot: float) -> float:
-    """Uniform-mode cosmic-time shift chi=(s/2)r^2 on the interaction branch.
-
-    Derived from the leading-r^2 temporal Stückelberg Euler equation on a
-    non-homothetic FLRW dynamical branch alpha=a*xi, n=xi*c,
-    d ln(alpha)/dt=c H_g.  The result reduces to Aoki-Maeda-Namba Eq. (64)
-    when c=1 after conversion from conformal to cosmic time.
-    """
+    """Uniform-mode cosmic-time shift chi=(s/2)r^2 on the interaction branch."""
     vals=(a,H_g,c,mu,mu_dot)
     if not all(math.isfinite(float(v)) for v in vals):
         raise ValueError("temporal-shift inputs must be finite")
     if a <= 0.0 or c <= 0.0 or mu <= -1.0:
         raise ValueError("a,c must be positive and mu must exceed -1")
     return float(-(a*a/c)*(mu_dot + H_g*mu*(c + 1.0 + mu)))
+
+
+def homothetic_early_radial_polynomial_coefficients(
+    *, beta1: float, beta2: float, beta3: float, K: float, w: float,
+) -> np.ndarray:
+    """Return normalized [mu^2,mu,1] coefficients of the early radial branch.
+
+    Direct reduction of the exact spherical HR pullback on a homothetic FLRW
+    background. These are algebraically the polynomial coefficients whose two
+    roots are Aoki-Maeda-Namba Eq. (68), after excluding mu=-1.
+    """
+    vals=(beta1,beta2,beta3,K,w)
+    if not all(math.isfinite(float(v)) for v in vals):
+        raise ValueError("homothetic radial inputs must be finite")
+    if K <= 0.0:
+        raise ValueError("K must be positive")
+    D=beta1 + 2.0*K*beta2 + K*K*beta3
+    if abs(D) <= 1e-14*max(1.0,abs(beta1),abs(2*K*beta2),abs(K*K*beta3)):
+        raise np.linalg.LinAlgError("homothetic interaction normalization is singular")
+    B2=(K*beta2 + K*K*beta3)/D
+    B3=K*K*beta3/D
+    return np.asarray([
+        -2.0*B2 + (1.0+3.0*w)*B3,
+        6.0*w*B2 - 2.0*B2 - 2.0,
+        3.0*(w-1.0),
+    ],dtype=float)
