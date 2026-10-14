@@ -15,11 +15,7 @@ def _elementary_from_diag(lams):
 
 def test_identity_pullback_recovers_flrw_square_root_spectrum():
     from numerics.nonhomothetic_stueckelberg import spherical_square_root_invariants
-    a = 0.73
-    xi = 0.41
-    alpha = a*xi
-    n = 0.37
-    r = 0.28
+    a = 0.73; xi = 0.41; alpha = a*xi; n = 0.37; r = 0.28
     out = spherical_square_root_invariants(
         a=a, r=r, n=n, alpha=alpha,
         T_t=1.0, T_r=0.0, R=r, R_t=0.0, R_r=1.0,
@@ -69,3 +65,20 @@ def test_nonhomothetic_temporal_shift_has_required_lapse_dependence():
     measured=temporal_shift_coefficient(a=a,H_g=H,c=c,mu=mu,mu_dot=mudot)
     expected=-(a*a/c)*(mudot+H*mu*(c+1.0+mu))
     assert math.isclose(measured,expected,rel_tol=2e-14,abs_tol=2e-14)
+
+
+def test_homothetic_early_radial_polynomial_matches_aoki_eq68():
+    from numerics.nonhomothetic_stueckelberg import homothetic_early_radial_polynomial_coefficients
+    b1,b2,b3,K,w=1.0,-1.7,0.8,0.63,0.0
+    measured=homothetic_early_radial_polynomial_coefficients(
+        beta1=b1,beta2=b2,beta3=b3,K=K,w=w,
+    )
+    D=b1+2*K*b2+K*K*b3
+    B2=(K*b2+K*K*b3)/D
+    B3=K*K*b3/D
+    expected=np.array([
+        -2*B2+(1+3*w)*B3,
+        6*w*B2-2*B2-2,
+        3*(w-1),
+    ])
+    assert np.allclose(measured,expected,rtol=3e-14,atol=3e-14)
