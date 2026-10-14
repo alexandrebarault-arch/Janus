@@ -114,3 +114,84 @@ def standard_beta_potential_reduced_density(
         m2*Mg2*sqrt_minus_g_reduced
         * np.dot(np.asarray(beta, dtype=float), inv.elementary_symmetric)
     )
+
+
+def static_anisotropic_standard_beta_potential(
+    *,
+    a: float,
+    b: float,
+    c_background: float,
+    betas,
+    m2: float,
+    Mg2: float,
+    Phi_g: float,
+    Psi_g_radial: float,
+    Psi_g_angular: float,
+    Phi_f: float,
+    Psi_f_radial: float,
+    Psi_f_angular: float,
+    mu: float,
+) -> float:
+    """Static control with radial/angular weak potentials varied independently.
+
+    This helper exists to validate individual spherical interaction-stress
+    components before imposing the isotropic Newtonian-gauge spatial potential.
+    ``mu`` is kept nonlinear and spatially constant for this local control.
+    """
+    beta = tuple(float(x) for x in betas)
+    if len(beta) != 5:
+        raise ValueError("betas must contain beta_0 through beta_4")
+    vals = (
+        a, b, c_background, Phi_g, Psi_g_radial, Psi_g_angular,
+        Phi_f, Psi_f_radial, Psi_f_angular, mu, m2, Mg2,
+    )
+    if (
+        not all(math.isfinite(float(x)) for x in vals)
+        or a <= 0.0 or b <= 0.0 or c_background <= 0.0 or mu <= -1.0
+    ):
+        raise ValueError("invalid static anisotropic inputs")
+    factors = (
+        1.0 + 2.0*Phi_g,
+        1.0 - 2.0*Psi_g_radial,
+        1.0 - 2.0*Psi_g_angular,
+        1.0 + 2.0*Phi_f,
+        1.0 - 2.0*Psi_f_radial,
+        1.0 - 2.0*Psi_f_angular,
+    )
+    if min(factors) <= 0.0:
+        raise ValueError("metric factors must stay positive")
+
+    lambda_t = (
+        (b/a)*c_background
+        * math.sqrt((1.0 + 2.0*Phi_f)/(1.0 + 2.0*Phi_g))
+    )
+    lambda_r = (
+        (b/a)*(1.0 + mu)
+        * math.sqrt((1.0 - 2.0*Psi_f_radial)/(1.0 - 2.0*Psi_g_radial))
+    )
+    lambda_a = (
+        (b/a)*(1.0 + mu)
+        * math.sqrt((1.0 - 2.0*Psi_f_angular)/(1.0 - 2.0*Psi_g_angular))
+    )
+
+    e0 = 1.0
+    e1 = lambda_t + lambda_r + 2.0*lambda_a
+    e2 = (
+        lambda_t*lambda_r + 2.0*lambda_t*lambda_a
+        + 2.0*lambda_r*lambda_a + lambda_a*lambda_a
+    )
+    e3 = (
+        2.0*lambda_t*lambda_r*lambda_a
+        + lambda_t*lambda_a*lambda_a
+        + lambda_r*lambda_a*lambda_a
+    )
+    e4 = lambda_t*lambda_r*lambda_a*lambda_a
+    sqrt_minus_g_reduced = a**4*math.sqrt(
+        (1.0 + 2.0*Phi_g)
+        * (1.0 - 2.0*Psi_g_radial)
+        * (1.0 - 2.0*Psi_g_angular)**2
+    )
+    return float(
+        m2*Mg2*sqrt_minus_g_reduced
+        * np.dot(np.asarray(beta, dtype=float), np.array([e0, e1, e2, e3, e4]))
+    )
