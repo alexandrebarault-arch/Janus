@@ -75,3 +75,15 @@ def test_y_tensor_sources_reproduce_aoki_eq98_to_101():
             +(mu+2*mu**2+(2+2*B2-B3)*mu**3/3)/q**3,
         ])
         assert np.allclose(measured,expected,rtol=3e-13,atol=3e-13)
+
+
+def test_nonhomothetic_weak_metric_sources_reduce_to_homothetic_case():
+    from numerics.nonhomothetic_stueckelberg import (
+        nonhomothetic_weak_metric_source_polynomials,
+        homothetic_weak_metric_source_polynomials,
+    )
+    args=dict(beta1=1.1,beta2=-0.73,beta3=0.29,xi=0.52,mu=-0.27)
+    measured=nonhomothetic_weak_metric_source_polynomials(c=1.0,**args)
+    expected=homothetic_weak_metric_source_polynomials(
+        beta1=args['beta1'],beta2=args['beta2'],beta3=args['beta3'],K=args['xi'],mu=args['mu'])
+    assert np.allclose(measured,expected,rtol=3e-14,atol=3e-14)
