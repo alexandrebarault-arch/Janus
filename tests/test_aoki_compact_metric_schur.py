@@ -17,6 +17,8 @@ def test_zero_interaction_mass_removes_pi_from_total_action():
     assert abs(out.total_hessian[0,0]) < 1e-12
     assert np.linalg.norm(out.total_hessian[0,1:]) < 1e-12
     assert abs(out.reduced_pi_hessian) < 1e-12
+    assert np.linalg.norm(out.total_gradient) < 1e-12
+    assert abs(out.reduced_pi_gradient) < 1e-12
 
 
 def test_small_mass_schur_tends_to_hr_only_pi_entry():
@@ -56,3 +58,36 @@ def test_reduced_compact_action_recovers_aoki_coefficients_at_small_mass_ratio()
     )
     assert np.isclose(out.kinetic_hessian_coefficient/(-mass2),target_hr,rtol=8e-3,atol=2e-3)
     assert np.isclose(out.sound_speed_squared,cs2,rtol=8e-3,atol=2e-3)
+
+
+def test_compact_static_regular_root_matches_full_aoki_finite_mass_control():
+    from numpy.polynomial import Polynomial as Poly
+    from numerics.aoki_compact_metric_schur import reduce_compact_metric_block
+    raw=(1.0,-4.2383993109,13.6801214252); K=1.0; w=0.0
+    D=raw[0]+2*raw[1]+raw[2]
+    B2=(raw[1]+raw[2])/D; B3=raw[2]/D
+    H=0.25; mass2=1e-3; mg2=mass2*D; mf2=mg2
+    u=Poly([0.0,1.0]); one=Poly([1.0])
+    g=mg2*(one+u)**2*(9+18*B2*u+(6*B2**2+4*B3)*u**2-B3**2*u**4)
+    f=mf2*(9+18*(1+B2)*u+(10+34*B2+4*B3+6*B2**2)*u**2
+        +(2+14*B2+8*B3+12*B2**2)*u**3
+        +(2*B2+2*B3+2*B2**2-B3**2+4*B2*B3)*u**4)
+    full=u*(g+f)-3*H**2*u*(one+u)**2*(3+2*(1+B2)*u+(2*B2-B3)*u**2)
+    roots=np.roots(np.trim_zeros(full.coef[::-1],trim='f'))
+    target=min((r.real for r in roots if abs(r.imag)<1e-9 and -0.9<r.real<-0.5),key=lambda z:abs(z+0.67))
+
+    kw=dict(betas=(0,*raw,0),K=K,w=w,conformal_H=H,time_radius=.4,radial_radius=.6,
+            interaction_mass2=mass2,planck_ratio=1.0,amplitude_step=.0015,quadrature_order=12)
+    def residual(mu):
+        return reduce_compact_metric_block(mu=mu,**kw).reduced_pi_gradient
+    lo,hi=-0.75,-0.60
+    flo,fhi=residual(lo),residual(hi)
+    assert flo*fhi < 0
+    for _ in range(26):
+        mid=0.5*(lo+hi); fm=residual(mid)
+        if flo*fm <= 0:
+            hi=mid; fhi=fm
+        else:
+            lo=mid; flo=fm
+    got=0.5*(lo+hi)
+    assert np.isclose(got,target,rtol=4e-3,atol=2e-3)
