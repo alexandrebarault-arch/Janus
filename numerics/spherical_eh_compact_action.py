@@ -122,3 +122,65 @@ def compact_eh_amplitude_derivatives(*, a0, conformal_H, w,
         [(fpp-fpm-fmp+fmm)/(4*h*h),(f0p-2*f00+f0m)/(h*h)],
     ],dtype=float)
     return CompactEHAmplitudeDerivatives(gradient=grad,hessian=H)
+
+
+def _compact_eh_action_taylor(phi_amp, psi_amp, *, a0, ap0, app0,
+                              time_radius, radial_radius, quadrature_order):
+    xt,wt=np.polynomial.legendre.leggauss(quadrature_order)
+    xr,wr=np.polynomial.legendre.leggauss(quadrature_order)
+    ts=time_radius*xt
+    rs=0.5*radial_radius*(xr+1.0)
+    tw=time_radius*wt
+    rw=0.5*radial_radius*wr
+    total=0.0
+    for i,t in enumerate(ts):
+        a=a0+ap0*t+0.5*app0*t*t
+        ap=ap0+app0*t
+        app=app0
+        if a <= 0.0:
+            raise ValueError("compact time support leaves the positive Taylor FLRW chart")
+        for j,r in enumerate(rs):
+            A,At,Att,F,Fr,Frr=_compact_profile(t,r,time_radius,radial_radius)
+            phi=phi_amp*A*F
+            psi=psi_amp*A*F
+            dens=eh_radial_density(
+                a=a,ap=ap,app=app,r=r,
+                phi=phi,phi_t=phi_amp*At*F,
+                phi_r=phi_amp*A*Fr,phi_rr=phi_amp*A*Frr,
+                psi=psi,psi_t=psi_amp*At*F,
+                psi_tt=psi_amp*Att*F,psi_r=psi_amp*A*Fr,
+            )
+            total += tw[i]*rw[j]*dens
+    return float(total)
+
+
+def compact_eh_amplitude_derivatives_taylor(*, a0, ap0, app0,
+                                             time_radius, radial_radius,
+                                             amplitude_step=2e-4,
+                                             quadrature_order=28):
+    vals=(a0,ap0,app0,time_radius,radial_radius,amplitude_step)
+    if not all(math.isfinite(float(v)) for v in vals):
+        raise ValueError("all compact-EH Taylor inputs must be finite")
+    if a0<=0 or time_radius<=0 or radial_radius<=0 or amplitude_step<=0:
+        raise ValueError("positive scales and step required")
+    if quadrature_order < 12:
+        raise ValueError("quadrature_order must be at least 12")
+    h=float(amplitude_step)
+    kw=dict(a0=a0,ap0=ap0,app0=app0,time_radius=time_radius,
+            radial_radius=radial_radius,quadrature_order=quadrature_order)
+    f00=_compact_eh_action_taylor(0.0,0.0,**kw)
+    fp0=_compact_eh_action_taylor(h,0.0,**kw)
+    fm0=_compact_eh_action_taylor(-h,0.0,**kw)
+    f0p=_compact_eh_action_taylor(0.0,h,**kw)
+    f0m=_compact_eh_action_taylor(0.0,-h,**kw)
+    fpp=_compact_eh_action_taylor(h,h,**kw)
+    fpm=_compact_eh_action_taylor(h,-h,**kw)
+    fmp=_compact_eh_action_taylor(-h,h,**kw)
+    fmm=_compact_eh_action_taylor(-h,-h,**kw)
+    grad=np.array([(fp0-fm0)/(2*h),(f0p-f0m)/(2*h)],dtype=float)
+    cross=(fpp-fpm-fmp+fmm)/(4*h*h)
+    H=np.array([
+        [(fp0-2*f00+fm0)/(h*h),cross],
+        [cross,(f0p-2*f00+f0m)/(h*h)],
+    ],dtype=float)
+    return CompactEHAmplitudeDerivatives(gradient=grad,hessian=H)
