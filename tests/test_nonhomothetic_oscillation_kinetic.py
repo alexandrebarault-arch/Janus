@@ -61,3 +61,28 @@ def test_uniform_kinetic_sign_is_stable_under_radius_and_step_changes():
             assert physical > 0.0
             vals.append(physical/radius**5)
     assert max(vals)/min(vals) < 1.01
+
+
+def test_general_velocity_hessian_reduces_to_homothetic_wrapper():
+    from numerics.nonhomothetic_oscillation_kinetic import (
+        uniform_velocity_hessian,
+        homothetic_uniform_velocity_hessian,
+    )
+    raw = (1.0, -4.2383993109, 13.6801214252)
+    K = 1.0
+    w = 0.0
+    mu = _root(raw, K)
+    e = -1.5*(1.0 + w)
+    M = mu*(2.0 + mu)
+    generic = uniform_velocity_hessian(
+        betas=(0.0, *raw, 0.0),
+        a=1.0, b=K, c=1.0, mu=mu, mu_dot=0.0,
+        sigma_prime_coefficient=-M,
+        sigma_dot_coefficient=-(1.0 + e)*M,
+        radius=0.02, step=1.0e-3,
+    )
+    wrapped = homothetic_uniform_velocity_hessian(
+        beta1=raw[0], beta2=raw[1], beta3=raw[2],
+        K=K, w=w, mu=mu, radius=0.02, step=1.0e-3,
+    )
+    assert np.allclose(generic, wrapped, rtol=0.0, atol=1.0e-18)
