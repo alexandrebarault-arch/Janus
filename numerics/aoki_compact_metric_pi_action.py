@@ -7,6 +7,7 @@ import numpy as np
 
 @dataclass(frozen=True)
 class CompactHRFiveFieldHessian:
+    gradient: np.ndarray
     hessian: np.ndarray
 
 
@@ -132,9 +133,11 @@ def compact_hr_five_field_hessian(*, betas,K,w,mu,conformal_H,
     zero=np.zeros(n)
     f0=_action(zero,**kwargs)
     H=np.zeros((n,n),dtype=float)
+    g=np.zeros(n,dtype=float)
     for i in range(n):
         ei=np.zeros(n); ei[i]=h
         fp=_action(ei,**kwargs); fm=_action(-ei,**kwargs)
+        g[i]=(fp-fm)/(2*h)
         H[i,i]=(fp-2*f0+fm)/(h*h)
         for j in range(i+1,n):
             ej=np.zeros(n); ej[j]=h
@@ -144,4 +147,4 @@ def compact_hr_five_field_hessian(*, betas,K,w,mu,conformal_H,
             fmm=_action(-ei-ej,**kwargs)
             hij=(fpp-fpm-fmp+fmm)/(4*h*h)
             H[i,j]=H[j,i]=hij
-    return CompactHRFiveFieldHessian(hessian=H)
+    return CompactHRFiveFieldHessian(gradient=g,hessian=H)
