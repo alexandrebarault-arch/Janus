@@ -60,3 +60,18 @@ def test_nonhomothetic_radial_polynomial_reduces_to_homothetic_aoki_form():
     raw=nonhomothetic_adiabatic_radial_polynomial_coefficients(beta1=b1,beta2=b2,beta3=b3,xi=K,c=1,Hdot_over_H2=-1.5*(1+w))
     normalized=homothetic_early_radial_polynomial_coefficients(beta1=b1,beta2=b2,beta3=b3,K=K,w=w)
     assert np.allclose(raw/raw[-1],normalized/normalized[-1],rtol=5e-14,atol=5e-14)
+
+
+def test_y_tensor_sources_reproduce_aoki_eq98_to_101():
+    from numerics.nonhomothetic_stueckelberg import homothetic_weak_metric_source_polynomials
+    for b1,b2,b3,K,mu in ((1.0,-1.7,0.8,0.63,-0.31),(0.9,-0.6,0.22,0.47,0.18)):
+        measured=homothetic_weak_metric_source_polynomials(beta1=b1,beta2=b2,beta3=b3,K=K,mu=mu)
+        D=b1*K+2*b2*K*K+b3*K**3
+        B2=(b2*K*K+b3*K**3)/D; B3=b3*K**3/D; q=1+mu
+        expected=np.array([
+            mu+B2*mu**2+B3*mu**3/3,
+            -(mu-B3*mu**3/3),
+            -(mu+(1+B2)*mu**2+(1+B2+B3)*mu**3/3)/q**3,
+            +(mu+2*mu**2+(2+2*B2-B3)*mu**3/3)/q**3,
+        ])
+        assert np.allclose(measured,expected,rtol=3e-13,atol=3e-13)
