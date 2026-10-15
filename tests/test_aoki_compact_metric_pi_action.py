@@ -11,6 +11,7 @@ def test_zero_interaction_has_zero_five_field_hessian():
     from numerics.aoki_compact_metric_pi_action import compact_hr_five_field_hessian
     out=compact_hr_five_field_hessian(**_kwargs((0,0,0,0,0)))
     assert np.linalg.norm(out.hessian) < 1e-12
+    assert np.linalg.norm(out.gradient) < 1e-12
 
 
 def test_compact_hr_five_field_hessian_is_symmetric_and_finite():
