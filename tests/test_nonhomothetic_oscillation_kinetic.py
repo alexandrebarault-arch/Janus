@@ -86,3 +86,17 @@ def test_general_velocity_hessian_reduces_to_homothetic_wrapper():
         K=K, w=w, mu=mu, radius=0.02, step=1.0e-3,
     )
     assert np.allclose(generic, wrapped, rtol=0.0, atol=1.0e-18)
+
+
+def test_homothetic_algebraic_fold_does_not_force_kinetic_zero():
+    from numerics.nonhomothetic_oscillation_kinetic import aoki_homothetic_kinetic_coefficient
+    # For w=0, B2=3 and B3=2/3 give a discriminant-zero nonlinear
+    # polynomial with the admissible double root mu=-3/4.  Yet K_S is finite.
+    # At K=1 one raw realization with D=1 is b1=-13/3,b2=7/3,b3=2/3.
+    ks, D = aoki_homothetic_kinetic_coefficient(
+        beta1=-13.0/3.0, beta2=7.0/3.0, beta3=2.0/3.0,
+        K=1.0, w=0.0, mu=-0.75,
+    )
+    assert math.isclose(D, 1.0, rel_tol=0.0, abs_tol=2.0e-15)
+    assert math.isclose(ks, 375.0/128.0, rel_tol=2.0e-14, abs_tol=2.0e-14)
+    assert ks > 0.0
