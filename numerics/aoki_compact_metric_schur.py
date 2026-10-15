@@ -122,3 +122,48 @@ def recover_reduced_pi_coefficients(*, betas,K,w,mu,interaction_mass2,planck_rat
         sound_speed_squared=float(-coeff[1]/coeff[0]),
         fit_residual=residual,
     )
+
+@dataclass(frozen=True)
+class CompactSixFieldSchurResult:
+    total_gradient: np.ndarray
+    total_hessian: np.ndarray
+    reduced_stueckelberg_gradient: np.ndarray
+    reduced_stueckelberg_hessian: np.ndarray
+    metric_condition_number: float
+
+
+def reduce_compact_six_field_metric_block(*, betas,K,w,mu,conformal_H,
+                                          time_radius,radial_radius,
+                                          interaction_mass2,planck_ratio=1.0,
+                                          amplitude_step=7e-4,quadrature_order=16):
+    from numerics.aoki_compact_sixfield_action import compact_hr_six_field_hessian
+    hr=compact_hr_six_field_hessian(
+        betas=betas,K=K,w=w,mu=mu,conformal_H=conformal_H,
+        time_radius=time_radius,radial_radius=radial_radius,
+        amplitude_step=amplitude_step,quadrature_order=quadrature_order,
+    )
+    eg=compact_eh_amplitude_derivatives(a0=1.0,conformal_H=conformal_H,w=w,
+        time_radius=time_radius,radial_radius=radial_radius,
+        amplitude_step=amplitude_step,quadrature_order=quadrature_order).hessian
+    ef=compact_eh_amplitude_derivatives(a0=K,conformal_H=conformal_H,w=w,
+        time_radius=time_radius,radial_radius=radial_radius,
+        amplitude_step=amplitude_step,quadrature_order=quadrature_order).hessian
+    total_gradient=-float(interaction_mass2)*hr.gradient
+    total=-float(interaction_mass2)*hr.hessian
+    total=np.asarray(total,float).copy()
+    total[2:4,2:4]+=0.5*eg
+    total[4:6,4:6]+=0.5*float(planck_ratio)*ef
+    Hmm=total[2:,2:]
+    Hsm=total[:2,2:]
+    gs=total_gradient[:2]; gm=total_gradient[2:]
+    if np.linalg.matrix_rank(Hmm)<4:
+        raise np.linalg.LinAlgError("six-field compact metric block is rank deficient")
+    inv_Hmm_Hms=np.linalg.solve(Hmm,total[2:,:2])
+    reduced_H=total[:2,:2]-Hsm@inv_Hmm_Hms
+    reduced_g=gs-Hsm@np.linalg.solve(Hmm,gm)
+    return CompactSixFieldSchurResult(
+        total_gradient=np.asarray(total_gradient,float),total_hessian=np.asarray(total,float),
+        reduced_stueckelberg_gradient=np.asarray(reduced_g,float),
+        reduced_stueckelberg_hessian=np.asarray(reduced_H,float),
+        metric_condition_number=float(np.linalg.cond(Hmm)),
+    )
