@@ -11,9 +11,11 @@ from numerics.spherical_eh_compact_action import compact_eh_amplitude_derivative
 @dataclass(frozen=True)
 class CompactMetricSchurResult:
     hr_hessian: np.ndarray
+    total_gradient: np.ndarray
     total_hessian: np.ndarray
     metric_condition_number: float
     metric_rank: int
+    reduced_pi_gradient: float
     reduced_pi_hessian: float
 
 
@@ -30,11 +32,12 @@ def reduce_compact_metric_block(*, betas,K,w,mu,conformal_H,
     if interaction_mass2<0 or planck_ratio<=0:
         raise ValueError("mass squared must be nonnegative and Planck ratio positive")
 
-    hr=compact_hr_five_field_hessian(
+    hr_out=compact_hr_five_field_hessian(
         betas=betas,K=K,w=w,mu=mu,conformal_H=conformal_H,
         time_radius=time_radius,radial_radius=radial_radius,
         amplitude_step=amplitude_step,quadrature_order=quadrature_order,
-    ).hessian
+    )
+    hr=hr_out.hessian
     eg=compact_eh_amplitude_derivatives(
         a0=1.0,conformal_H=conformal_H,w=w,
         time_radius=time_radius,radial_radius=radial_radius,
@@ -46,6 +49,7 @@ def reduce_compact_metric_block(*, betas,K,w,mu,conformal_H,
         amplitude_step=amplitude_step,quadrature_order=quadrature_order,
     ).hessian
 
+    total_gradient=-float(interaction_mass2)*np.asarray(hr_out.gradient,dtype=float)
     total=-float(interaction_mass2)*hr
     total=np.asarray(total,dtype=float).copy()
     total[1:3,1:3] += 0.5*eg
@@ -57,11 +61,12 @@ def reduce_compact_metric_block(*, betas,K,w,mu,conformal_H,
     if rank<4:
         raise np.linalg.LinAlgError("compact weak-metric block is rank deficient")
     coupling=total[0,1:]
+    reduced_gradient=float(total_gradient[0]-coupling@np.linalg.solve(mm,total_gradient[1:]))
     reduced=float(total[0,0]-coupling@np.linalg.solve(mm,coupling))
     return CompactMetricSchurResult(
-        hr_hessian=hr,total_hessian=total,
+        hr_hessian=hr,total_gradient=total_gradient,total_hessian=total,
         metric_condition_number=cond,metric_rank=rank,
-        reduced_pi_hessian=reduced,
+        reduced_pi_gradient=reduced_gradient,reduced_pi_hessian=reduced,
     )
 
 @dataclass(frozen=True)
