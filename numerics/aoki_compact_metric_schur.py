@@ -63,3 +63,57 @@ def reduce_compact_metric_block(*, betas,K,w,mu,conformal_H,
         metric_condition_number=cond,metric_rank=rank,
         reduced_pi_hessian=reduced,
     )
+
+@dataclass(frozen=True)
+class ReducedCompactPiCoefficients:
+    kinetic_hessian_coefficient: float
+    gradient_hessian_coefficient: float
+    sound_speed_squared: float
+    fit_residual: float
+
+
+def _profile_integrals(T,R,order):
+    xt,wt=np.polynomial.legendre.leggauss(order)
+    xr,wr=np.polynomial.legendre.leggauss(order)
+    t=T*xt; r=0.5*R*(xr+1.0)
+    tw=T*wt; rw=0.5*R*wr
+    x=t[:,None]/T
+    A=(1.0-x*x)**3
+    At=(-6.0*x*(1.0-x*x)**2)/T
+    rr=r[None,:]
+    F=rr*rr-3.0*rr**4/R**2+3.0*rr**6/R**4-rr**8/R**6
+    Fr=2.0*rr-12.0*rr**3/R**2+18.0*rr**5/R**4-8.0*rr**7/R**6
+    W=tw[:,None]*rw[None,:]
+    ik=float(np.sum(W*rr**2*(At*F)**2))
+    ig=float(np.sum(W*rr**2*(A*Fr)**2))
+    return ik,ig
+
+
+def recover_reduced_pi_coefficients(*, betas,K,w,mu,interaction_mass2,planck_ratio,
+                                    time_scales=(0.5,1.0,2.0),radius=1.0,
+                                    hubble_step=0.007,amplitude_step=2e-3,
+                                    quadrature_order=18):
+    rows=[]; rhs=[]
+    for T in time_scales:
+        common=dict(
+            betas=betas,K=K,w=w,mu=mu,time_radius=float(T),radial_radius=radius,
+            interaction_mass2=interaction_mass2,planck_ratio=planck_ratio,
+            amplitude_step=amplitude_step,quadrature_order=quadrature_order,
+        )
+        hp=reduce_compact_metric_block(conformal_H=+hubble_step,**common).reduced_pi_hessian
+        hm=reduce_compact_metric_block(conformal_H=-hubble_step,**common).reduced_pi_hessian
+        h0=reduce_compact_metric_block(conformal_H=0.0,**common).reduced_pi_hessian
+        h2=(hp+hm-2.0*h0)/(2.0*hubble_step*hubble_step)
+        ik,ig=_profile_integrals(float(T),radius,quadrature_order)
+        rows.append((ik,ig)); rhs.append(h2)
+    X=np.asarray(rows,dtype=float); y=np.asarray(rhs,dtype=float)
+    coeff,_,rank,_=np.linalg.lstsq(X,y,rcond=None)
+    if rank!=2 or abs(coeff[0])<1e-20:
+        raise np.linalg.LinAlgError("reduced compact pi fit is rank deficient")
+    residual=float(np.linalg.norm(X@coeff-y)/max(1.0,np.linalg.norm(y)))
+    return ReducedCompactPiCoefficients(
+        kinetic_hessian_coefficient=float(coeff[0]),
+        gradient_hessian_coefficient=float(coeff[1]),
+        sound_speed_squared=float(-coeff[1]/coeff[0]),
+        fit_residual=residual,
+    )
