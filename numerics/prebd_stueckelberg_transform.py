@@ -100,3 +100,19 @@ def direct_flat_reduced_transform(*, k: float, nHf: float, nHf_dot: float):
     M[8, 4] = 1.0
     M[9, 5] = 1.0
     return M
+
+
+def direct_flat_augmented_transform(*, k: float, nHf: float, nHf_dot: float):
+    """Map Stückelberg states/rates plus four metric auxiliaries to the old 14-vector.
+
+    Old flat-gauge augmented order is
+    ``(psi_f,E_f,q_g,q_f, rates[4], Phi_g,Phi_f,B_g,B_f,p_g,p_f)``.
+    New order is six states ``(Y1,Y2,L,T,p_g,p_f)``, their six rates, then
+    ``(Phi_g,Phi_f,B_g,B_f)``.  The metric auxiliaries are embedded unchanged.
+    """
+    reduced = direct_flat_reduced_transform(k=k, nHf=nHf, nHf_dot=nHf_dot)
+    P = np.zeros((14, 16), dtype=float)
+    P[:8, :12] = reduced[:8, :]
+    P[8:12, 12:16] = np.eye(4, dtype=float)
+    P[12:14, :12] = reduced[8:10, :]
+    return P
