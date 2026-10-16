@@ -103,16 +103,56 @@ def direct_flat_reduced_transform(*, k: float, nHf: float, nHf_dot: float):
 
 
 def direct_flat_augmented_transform(*, k: float, nHf: float, nHf_dot: float):
-    """Map Stückelberg states/rates plus four metric auxiliaries to the old 14-vector.
-
-    Old flat-gauge augmented order is
-    ``(psi_f,E_f,q_g,q_f, rates[4], Phi_g,Phi_f,B_g,B_f,p_g,p_f)``.
-    New order is six states ``(Y1,Y2,L,T,p_g,p_f)``, their six rates, then
-    ``(Phi_g,Phi_f,B_g,B_f)``.  The metric auxiliaries are embedded unchanged.
-    """
+    """Map Stückelberg states/rates plus four common metric auxiliaries to the old 14-vector."""
     reduced = direct_flat_reduced_transform(k=k, nHf=nHf, nHf_dot=nHf_dot)
     P = np.zeros((14, 16), dtype=float)
     P[:8, :12] = reduced[:8, :]
     P[8:12, 12:16] = np.eye(4, dtype=float)
     P[12:14, :12] = reduced[8:10, :]
+    return P
+
+
+def direct_native_augmented_transform(
+    *,
+    k: float,
+    nHf: float,
+    nHf_dot: float,
+    n_dot_over_n: float,
+    n_over_alpha: float,
+    alpha_over_n: float,
+):
+    """Map native Stückelberg variables/auxiliaries to old common flat variables.
+
+    The new state/rate order is the same six phase variables as above, but the
+    final four auxiliary columns are interpreted as **native**
+    ``(Phi_g,Phi_f,B_g,B_f)``.  For the f sector the common De Felice
+    auxiliaries are produced by the linear pullback with coordinate shifts
+    ``xi^0=-T`` and ``xi=-L``:
+
+    ``Phi_f_common = Phi_f_native - Tdot - (ndot/n) T``;
+
+    ``B_f_common = B_f_native + (n/alpha) T - (alpha/n) Ldot``.
+
+    In this representation the native matter perturbation is ``q_f_native=Y2``;
+    its common-chart De Felice value remains ``q_f_common=Y2-T``.  This is the
+    natural variable set for a finite-mu nonlinear HR pullback because the EH
+    and matter sectors stay in their own native FLRW charts.
+    """
+    vals = (k, nHf, nHf_dot, n_dot_over_n, n_over_alpha, alpha_over_n)
+    if not all(math.isfinite(float(v)) for v in vals):
+        raise ValueError("native bridge inputs must be finite")
+    if k < 0.0 or nHf <= 0.0 or n_over_alpha <= 0.0 or alpha_over_n <= 0.0:
+        raise ValueError("invalid native bridge scales")
+
+    P = direct_flat_augmented_transform(k=k, nHf=nHf, nHf_dot=nHf_dot)
+    # Replace the common f lapse/shift identity rows by their native pullback.
+    P[9, :] = 0.0
+    P[9, 13] = 1.0
+    P[9, 3] = -float(n_dot_over_n)
+    P[9, 9] = -1.0
+
+    P[11, :] = 0.0
+    P[11, 15] = 1.0
+    P[11, 3] = float(n_over_alpha)
+    P[11, 8] = -float(alpha_over_n)
     return P
