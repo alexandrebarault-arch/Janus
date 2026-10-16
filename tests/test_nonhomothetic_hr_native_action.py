@@ -99,3 +99,34 @@ def test_native_hr_density_matches_existing_weak_nonhomothetic_pullback():
         betas=betas, m2=m2, Mg2=Mg2,
     )
     assert math.isclose(actual/(r*r), expected, rel_tol=3e-13, abs_tol=3e-13)
+
+
+def test_native_hr_density_has_exact_nonhomothetic_static_spectrum():
+    from numerics.nonhomothetic_hr_native_action import native_hr_potential_density
+    a = 0.62
+    xi = 0.77
+    c = 0.43
+    mu = -0.36
+    r = 0.51
+    b = a*xi
+    betas = (0.1, 1.0, -0.8, 0.35, 0.2)
+    actual = native_hr_potential_density(
+        g_radial_native=a*a*np.diag([-1.0, 1.0]),
+        f_radial_native=b*b*np.diag([-1.0, 1.0]),
+        g_angular_native=a*a*r*r,
+        f_angular_native=b*b*(1.0 + mu)**2*r*r,
+        jacobian_g=np.eye(2),
+        jacobian_f=np.diag([c, 1.0 + mu]),
+        betas=betas, m2=0.9, Mg2=1.2,
+    )
+    temporal = xi*c
+    spatial = xi*(1.0 + mu)
+    e = (
+        1.0,
+        temporal + 3.0*spatial,
+        3.0*temporal*spatial + 3.0*spatial**2,
+        3.0*temporal*spatial**2 + spatial**3,
+        temporal*spatial**3,
+    )
+    expected = 0.9*1.2*a**4*r*r*sum(bn*en for bn, en in zip(betas, e))
+    assert math.isclose(actual, expected, rel_tol=3e-14, abs_tol=3e-14)
