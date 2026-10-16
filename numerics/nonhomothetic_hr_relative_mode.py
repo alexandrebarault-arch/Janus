@@ -87,6 +87,26 @@ def relative_hr_mode_correction_hessian(
         raise ValueError("amplitude_step must be positive and finite")
     nvar = 8
     eye = np.eye(nvar, dtype=float)
+    mu = float(background.get("mu", 0.0))
+    if mu <= -1.0:
+        raise ValueError("mu must exceed -1")
+    k_eff = max(abs(float(k)), 1.0)
+    # ``amplitude_step`` is a dimensionless perturbation fraction, not a raw
+    # step in every scalar coordinate.  L enters through k L and k^2 L, T
+    # through k T, and the shifts through their metric-normalized gradients.
+    # Scaling the polarization vectors prevents a high-k Hessian probe from
+    # leaving the real/positive pullback branch while preserving the Hessian
+    # in the original coordinates through the explicit scale divisions below.
+    scales = np.array([
+        h*float(r)/k_eff,
+        h/k_eff,
+        h/k_eff,
+        h,
+        h,
+        h,
+        h/max(abs(float(a)*float(k)), 1.0),
+        h/max(abs((float(alpha)/float(n))*float(k)/(1.0+mu)), 1.0),
+    ], dtype=float)
     kwargs = dict(
         a=float(a),n=float(n),alpha=float(alpha),r=float(r),k=float(k),
         betas=tuple(float(v) for v in betas),m2=float(m2),Mg2=float(Mg2),
@@ -96,20 +116,22 @@ def relative_hr_mode_correction_hessian(
     f0 = _relative_hr_mode_action(zero, **kwargs)
     H = np.zeros((nvar,nvar), dtype=float)
     for i in range(nvar):
-        ei = h*eye[i]
+        si = float(scales[i])
+        ei = si*eye[i]
         H[i,i] = (
             _relative_hr_mode_action(ei,**kwargs)
             - 2.0*f0
             + _relative_hr_mode_action(-ei,**kwargs)
-        )/(h*h)
+        )/(si*si)
         for j in range(i+1,nvar):
-            ej = h*eye[j]
+            sj = float(scales[j])
+            ej = sj*eye[j]
             value = (
                 _relative_hr_mode_action(ei+ej,**kwargs)
                 - _relative_hr_mode_action(ei-ej,**kwargs)
                 - _relative_hr_mode_action(-ei+ej,**kwargs)
                 + _relative_hr_mode_action(-ei-ej,**kwargs)
-            )/(4.0*h*h)
+            )/(4.0*si*sj)
             H[i,j] = H[j,i] = value
     return 0.5*(H+H.T)
 
