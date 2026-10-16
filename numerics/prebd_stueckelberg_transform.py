@@ -57,3 +57,46 @@ def prebd_bridge_matrices(*, k: float, nHf: float, nHf_dot: float):
     Rdot = np.zeros((6, 6), dtype=float)
     Rdot[3, 3] = -Bd
     return R, Rdot
+
+
+def direct_flat_reduced_transform(*, k: float, nHf: float, nHf_dot: float):
+    """Map Stückelberg phase variables directly to reduced flat-gauge dust variables.
+
+    Old reduced order is
+    ``(psi_f,E_f,q_g,q_f,psi_f_dot,E_f_dot,q_g_dot,q_f_dot,p_g,p_f)``.
+    New order is six states ``(Y1,Y2,L,T,p_g,p_f)`` followed by their six
+    rates.  The ``p_g_dot,p_f_dot`` columns are structural zeros.
+
+    The exact identities are
+
+    ``psi_f = k^2 L/3 - nHf T``, ``E_f=-2L``,
+    ``q_g=Y1`` and ``q_f=Y2-T``.
+    """
+    vals = (k, nHf, nHf_dot)
+    if not all(math.isfinite(float(v)) for v in vals):
+        raise ValueError("bridge inputs must be finite")
+    if k < 0.0 or nHf <= 0.0:
+        raise ValueError("require k>=0 and nHf>0")
+    k2 = float(k) * float(k)
+    B = float(nHf)
+    Bd = float(nHf_dot)
+    M = np.zeros((10, 12), dtype=float)
+
+    M[0, 2] = k2 / 3.0
+    M[0, 3] = -B
+    M[1, 2] = -2.0
+    M[2, 0] = 1.0
+    M[3, 1] = 1.0
+    M[3, 3] = -1.0
+
+    M[4, 3] = -Bd
+    M[4, 8] = k2 / 3.0
+    M[4, 9] = -B
+    M[5, 8] = -2.0
+    M[6, 6] = 1.0
+    M[7, 7] = 1.0
+    M[7, 9] = -1.0
+
+    M[8, 4] = 1.0
+    M[9, 5] = 1.0
+    return M
