@@ -43,3 +43,18 @@ def test_induced_f_auxiliaries_follow_native_background_lie_derivative():
     )
     assert math.isclose(out.Phi_f, -(-0.08+0.05*0.12), rel_tol=0.0, abs_tol=1e-15)
     assert math.isclose(out.B_f, (0.7/0.9)*0.12-(0.9/0.7)*0.03, rel_tol=0.0, abs_tol=1e-15)
+
+
+def test_principal_pi_map_contains_nonhomothetic_lapse_factor():
+    from numerics.nonhomothetic_linear_stueckelberg_bridge import principal_pi_map_coefficients
+    out = principal_pi_map_coefficients(a=0.5, c=0.9370846214971446)
+    assert math.isclose(out.eta_pi_t, -1.0/(0.9370846214971446*0.5**2), rel_tol=0.0, abs_tol=1e-15)
+    assert math.isclose(out.radial_pi_r, 1.0/0.5**2, rel_tol=0.0, abs_tol=1e-15)
+    assert math.isclose(out.cosmic_T_per_Ldot, -0.5**2/0.9370846214971446, rel_tol=0.0, abs_tol=1e-15)
+
+
+def test_principal_pi_map_reduces_to_aoki_when_c_is_one():
+    from numerics.nonhomothetic_linear_stueckelberg_bridge import principal_pi_map_coefficients
+    out = principal_pi_map_coefficients(a=0.7, c=1.0)
+    assert math.isclose(out.eta_pi_t, -1.0/0.7**2, rel_tol=0.0, abs_tol=1e-15)
+    assert math.isclose(out.radial_pi_r, 1.0/0.7**2, rel_tol=0.0, abs_tol=1e-15)
