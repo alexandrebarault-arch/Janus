@@ -19,6 +19,13 @@ class InducedFAuxiliaries:
     B_f: float
 
 
+@dataclass(frozen=True)
+class PrincipalPiMap:
+    eta_pi_t: float
+    radial_pi_r: float
+    cosmic_T_per_Ldot: float
+
+
 def _finite(*values: float) -> None:
     if not all(math.isfinite(float(v)) for v in values):
         raise ValueError("all inputs must be finite")
@@ -76,4 +83,27 @@ def induced_f_auxiliaries(
     return InducedFAuxiliaries(
         Phi_f=float(-(T_dot + n_dot_over_n*T)),
         B_f=float((n/alpha)*T - (alpha/n)*L_dot),
+    )
+
+
+def principal_pi_map_coefficients(*, a: float, c: float) -> PrincipalPiMap:
+    """Return the high-frequency non-homothetic pi-map coefficients.
+
+    This is a principal-symbol statement only.  The time-dependent constrained
+    reduction must supply all subleading background terms before a finite-H
+    propagation speed is read.  In g conformal coordinates the principal map is
+
+      delta_eta = -(c a^2)^-1 partial_eta pi,
+      delta_r   =  a^-2 partial_r pi.
+
+    Equivalently, in g cosmic time ``T/Ldot -> -a^2/c`` at high frequency.
+    """
+    _finite(a, c)
+    if a <= 0.0 or c <= 0.0:
+        raise ValueError("a and c must be positive")
+    inva2 = 1.0/(a*a)
+    return PrincipalPiMap(
+        eta_pi_t=float(-inva2/c),
+        radial_pi_r=float(inva2),
+        cosmic_T_per_Ldot=float(-a*a/c),
     )
