@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 def test_native_conformal_density_matches_cosmic_de_felice_dust_phase():
@@ -43,3 +44,55 @@ def test_native_dust_density_is_quadratic_and_zero_at_origin():
         Phi=0.02, q=0.04, q_t=-0.06, q_r=0.08, momentum=0.10, **kwargs,
     )
     assert math.isclose(two, 4.0*one, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_pulled_back_dust_reduces_to_native_for_identity_map():
+    from numerics.spherical_dust_phase_action import (
+        native_conformal_dust_phase_density,
+        pulled_back_conformal_dust_phase_density,
+    )
+    kwargs = dict(
+        scale_factor=0.9, conformal_H=0.7, native_r=0.4, rho=2.2,
+        Phi=-0.01, q=0.03, q_t_common=0.04, q_r_common=-0.05,
+        momentum=0.08,
+    )
+    actual = pulled_back_conformal_dust_phase_density(
+        jacobian=np.eye(2), **kwargs,
+    )
+    expected = native_conformal_dust_phase_density(
+        scale_factor=kwargs["scale_factor"],
+        conformal_H=kwargs["conformal_H"],
+        r=kwargs["native_r"], rho=kwargs["rho"], Phi=kwargs["Phi"],
+        q=kwargs["q"], q_t=kwargs["q_t_common"], q_r=kwargs["q_r_common"],
+        momentum=kwargs["momentum"],
+    )
+    assert math.isclose(actual, expected, rel_tol=2e-14, abs_tol=2e-14)
+
+
+def test_background_nonhomothetic_pullback_matches_f_sector_prefactor():
+    from numerics.spherical_dust_phase_action import pulled_back_conformal_dust_phase_density
+    a = 0.63
+    xi = 0.74
+    c = 0.58
+    b = a*xi
+    r = 0.37
+    H = 0.91
+    rho = 3.2
+    Phi = 0.014
+    q = -0.026
+    q_t = 0.033
+    q_r = 0.071
+    momentum = 0.12
+
+    actual = pulled_back_conformal_dust_phase_density(
+        scale_factor=b, conformal_H=H, native_r=r,
+        rho=rho, Phi=Phi, q=q,
+        q_t_common=q_t, q_r_common=q_r, momentum=momentum,
+        jacobian=np.diag([c, 1.0]),
+    )
+    expected = b**4*r*r*(
+        momentum*q_t + c*H*momentum*q
+        - c*momentum*Phi + 0.5*c*rho*Phi*Phi
+        - 0.5*c*rho*q_r*q_r
+    )
+    assert math.isclose(actual, expected, rel_tol=2e-14, abs_tol=2e-14)
