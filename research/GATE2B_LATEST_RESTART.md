@@ -2,14 +2,15 @@
 
 Date: 2026-10-16
 Branch: `research/gate2b-nonhomothetic-transfer`
-Status: **Gate 2B OPEN; homothetic six-field action is controlled; non-homothetic time-dependent linear oracle is the active hard block.**
+Status: **Gate 2B OPEN; finite-H linear Stueckelberg bridge is closed; finite-mu HR promotion in the pre-metric augmented action is the active hard block.**
 
 Read first after interruption:
 
-1. `research/NONHOMOTHETIC_LINEAR_BRIDGE_AUDIT.md`;
-2. `research/AOKI_COMPACT_METRIC_SCHUR_AUDIT.md`;
-3. `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`;
-4. `research/GATE2B_CHECKPOINT.md`.
+1. `research/NONHOMOTHETIC_PREBD_STUECKELBERG_AUDIT.md`;
+2. `research/NONHOMOTHETIC_LINEAR_BRIDGE_AUDIT.md`;
+3. `research/AOKI_COMPACT_METRIC_SCHUR_AUDIT.md`;
+4. `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`;
+5. `research/GATE2B_CHECKPOINT.md`.
 
 ## 1. Closed results — do not redo
 
@@ -21,12 +22,15 @@ Unless contradictory evidence appears, the following are closed at audit level:
 - Candidate-C dust+dust principal gravity branch;
 - exact-dust late six-dimensional scalar phase space;
 - proof that four late adiabatic density conditions leave two helicity-0 matching data free;
-- exact non-homothetic spherical Stückelberg temporal relation;
+- exact non-homothetic spherical Stueckelberg temporal relation;
 - finite weak-metric Candidate-C folds;
 - homogeneous kinetic-sign warning near fold 1;
 - compact-support homothetic Aoki `K_S,c_S^2` oracle;
 - compact weak Einstein-Hilbert + HR action with four metric potentials Schur-eliminated;
-- finite-mass homothetic static control.
+- finite-mass homothetic static control;
+- principal non-homothetic `pi` map;
+- finite-H pre-BD De Felice <-> Stueckelberg bridge;
+- augmented transform-before-metric-Schur equivalence on Candidate C.
 
 ## 2. Candidate-C fold warning retained
 
@@ -43,143 +47,168 @@ The near-coincidence is a strong warning, **not** yet a no-go theorem.
 
 ## 3. Homothetic six-field action oracle — GREEN
 
-The compact-support action retains
-
-`(pi, phi_g, psi_g, phi_f, psi_f)`
-
-or equivalently the six-field Stückelberg representation before the final scalar projection.
-
-After the four weak metric amplitudes are eliminated, the small-`m^2/H^2` control reproduces the Aoki nonlinear kinetic and gradient coefficients at about the `0.2%` level at the committed compact resolution.
-
-A finite-mass static root is also recovered at about the `0.22%` level.
+The compact-support action with weak metric variables reproduces Aoki's nonlinear kinetic and gradient coefficients at about the `0.2%` level at the committed compact resolution. A finite-mass static root is also recovered at about the `0.22%` level.
 
 Thus the homothetic action is no longer the blocker.
 
-## 4. New native non-homothetic background layer
+## 4. Principal non-homothetic map — GREEN as a high-frequency statement
 
-Added:
-
-- `numerics/nonhomothetic_compact_background.py`;
-- `tests/test_nonhomothetic_compact_background.py`.
-
-For the two natural conformal charts,
-
-`a'_g = a H`,
-`a''_g = a(H^2+H')`,
-
-and, with `b=a xi` and `d eta_f/d eta_g=c`,
-
-`db/d eta_f = b H`,
-`d2b/d eta_f2 = b(H^2+H'/c)`.
-
-Targeted reconstructed verification: `3 passed`.
-
-## 5. De Felice ↔ Stückelberg bridge — GREEN
-
-Added:
-
-- `numerics/nonhomothetic_linear_stueckelberg_bridge.py`;
-- `tests/test_nonhomothetic_linear_stueckelberg_bridge.py`.
-
-In g-flat gauge,
-
-`E_f = -2 L`,
-
-`psi_f + k^2 E_f/6 = - n H_f T`.
-
-Therefore
-
-`T = - [1/(n H_f)](psi_f+k^2 E_f/6)`.
-
-The bridge also pins the induced f lapse/shift and the pure-Stückelberg Eq. (72) matter variable.
-
-Fresh reconstructed verification after the principal-map extension: `5 passed`.
-
-## 6. Principal non-homothetic pi map — derived independently
-
-An independent reconstruction of the committed exact-dust Candidate-C local DAE was used to recover the gravity eigenvector and then `(T,L)` through the bridge above.
-
-The high-k ratio obeys
-
-`[(T/L)/(-lambda)] -> a^2/c`.
-
-Representative values at `k=3200`:
-
-- `a=0.3`: extracted real `0.1094746`, target `a^2/c=0.1094563`;
-- `a=0.5`: extracted real `0.2668165`, target `0.2667849`;
-- `a=0.7`: extracted real `0.5033082`, target `0.5032418`.
-
-Hence the principal map is
+The independently extracted high-k relation is
 
 `delta eta = -(1/(c a^2)) partial_eta pi`,
 
-`delta r = +(1/a^2) partial_r pi`.
+`delta r = +(1/a^2) partial_r pi`,
 
-It reduces to Aoki when `c -> 1`.
+or equivalently `T/Ldot -> -a^2/c` in g-cosmic time.
 
-**Important:** this is only the principal/high-frequency map.  Finite-H subleading terms must come from the time-dependent constrained reduction.
+This reduces to the Aoki map for `c -> 1`, but it is **not** a complete finite-H map.
 
-## 7. Failed non-homothetic shortcuts — do not repeat
+## 5. Finite-H pre-BD Stueckelberg representation — GREEN
 
-The following have now been explicitly rejected:
+Do not invent the missing finite-H one-field `pi` corrections.  Change variables before the BD/null coordinate is removed.
 
-- reusing the homothetic `c=1` pi map unchanged;
-- reading the Candidate-C speed from a frozen local WKB/Schur system;
-- subtracting a reference with `H=0` but unchanged matter/interactions — that reference is off-shell;
-- treating one-profile matter amplitudes as if they were ordinary static auxiliaries;
-- interpreting a raw local Stückelberg 2x2 symbol before the full constraint reduction.
+Pre-BD De Felice state order:
 
-The corrected principal `1/c` factor by itself does **not** recover the finite-H De Felice speed.  This is expected once the missing `Kdot,Cdot` structure is recognized.
+`(Y1,Y2,Y3,Z,p_g,p_f)`.
 
-## 8. Time-dependent quadratic reducer restored — GREEN
+Relative Stueckelberg state order:
 
-The generic reducer previously living only on `research/v2-flrw` has been ported to the active branch:
+`(Y1,Y2,L,T,p_g,p_f)`.
 
-- `numerics/time_dependent_quadratic_reduction.py`;
-- `tests/test_time_dependent_quadratic_reduction.py`.
+Exact bridge:
 
-It retains:
+`Y3 = -2 L`,
 
-- `Cdot` when eliminating a kinetic-null coordinate;
-- `Kdot` and `Cdot` in the Euler-Lagrange matrices;
-- the `Rdot` term in the De Felice Eq. (72) map.
+`Z = - n H_f T + k^2 L/3`.
 
-Fresh reconstructed verification: `4 passed`.
+On Candidate C,
 
-This is the same structural repair that was decisive in DF5e.5.
+`n H_f = H_omega/a`,
 
-## 9. Current active calculation
+`d(nH_f)/dt_g = (H_omega' - H_omega H)/a^2`.
 
-Construct the **local non-homothetic quadratic action before the final scalar reduction** on one strict on-shell Candidate-C dust trajectory,
+The kinetic-null `Zdot` direction maps exactly to `Tdot`.  Therefore `T` is the time-dependent algebraic/BD coordinate and `L` is the physical spatial helicity-0 coordinate.
 
-`L2 = 1/2 qdot^T K qdot + qdot^T C q + 1/2 q^T Q q`.
+Implementation:
 
-Then:
+- `numerics/prebd_stueckelberg_transform.py`;
+- `tests/test_prebd_stueckelberg_transform.py`;
+- `tests/test_prebd_stueckelberg_el_equivalence.py`.
 
-1. eliminate only genuine algebraic metric constraints;
-2. differentiate the resulting `K,C,Q` along the same on-shell background;
-3. perform the time-dependent null/BD reduction with `Cdot` retained;
-4. construct the full Euler-Lagrange matrices including `Kdot` and `Cdot`;
-5. take `mu -> 0` and require the gravity pair to converge to the independent Candidate-C target
+## 6. Finite-H Candidate-C linear oracle — GREEN at current numerical accuracy
 
-`c_s^2 ~= 0.692071477288` at `a=0.5`.
+The new Stueckelberg dust reducer is
 
-This oracle must be GREEN before any fold interpretation.
+- `numerics/candidate_c_linear_stueckelberg_action.py`;
+- `tests/test_candidate_c_linear_stueckelberg_action.py`.
 
-## 10. After the linear oracle
+At `a=0.5`, `k=0.2 h/Mpc`, the independent reconstructed values are approximately
 
-Only after the same native action passes the De Felice `mu -> 0` oracle:
+- Stueckelberg basis: `c_s^2 ~= 0.69092747`;
+- original De Felice basis: `c_s^2 ~= 0.69092766`.
 
-1. promote it to finite nonlinear `mu` on the early regular branch;
-2. evaluate the fully constrained kinetic and gradient operators toward `a_1`;
-3. test whether the homogeneous kinetic zero survives;
-4. integrate a fold-crossing trajectory only if the kinetic/constraint system remains regular;
-5. derive `(Y3,Y3_N)` from that trajectory;
-6. rerun the late exact-dust transfer;
-7. add visible radiation only after the dust path survives.
+The basis discrepancy is about `2e-7` and decreases under derivative-step refinement.  Both pass the existing finite-k/double-precision tolerance against the independent asymptotic target
 
-## 11. Verification limitation
+`c_s^2 = 0.692071477288...`.
 
-The latest small modules have targeted RED/GREEN verification in reconstructed workspaces.  The De Felice/Stückelberg convergence table is from an independent reconstruction of the committed exact-dust equations.  GitHub Actions remain disabled and the full repository has not been executed in one clean worktree.
+This closes the finite-H **coordinate/reduction bridge**; it does not yet constitute an independent finite-mu native action.
+
+## 7. Dust feedback is order-one — mandatory architecture ruling
+
+The helicity-0 mode is not a pure metric/Stueckelberg mode at finite H.
+
+At `a=0.5`, `k=0.2 h/Mpc`:
+
+- full Stueckelberg + two-dust system: `c_s^2 ~= 0.69093`;
+- artificially clamping both dust coordinate/rate pairs: `c_s^2 ~= 0.49432`.
+
+Difference: about `0.197`.
+
+Therefore the two dust phase pairs must remain dynamical through the constrained reduction.  They must **not** be Schur-eliminated as static auxiliaries.
+
+Regression:
+
+- `tests/test_candidate_c_stueckelberg_matter_feedback.py`.
+
+## 8. Pre-metric augmented insertion point — GREEN
+
+The exact flat-gauge dust Hessian before metric elimination has old order
+
+`(psi_f,E_f,q_g,q_f, rates[4], Phi_g,Phi_f,B_g,B_f,p_g,p_f)`.
+
+A 14x16 map now transforms it to
+
+- states `(Y1,Y2,L,T,p_g,p_f)`;
+- six corresponding rates (`p_gdot,p_fdot` are structural zeros);
+- four untouched metric auxiliaries `(Phi_g,Phi_f,B_g,B_f)`.
+
+Direct identities:
+
+`psi_f = k^2 L/3 - nH_f T`,
+
+`E_f = -2L`,
+
+`q_g = Y1`,
+
+`q_f = Y2 - T`.
+
+Transforming the augmented action first and then eliminating the metric auxiliaries reproduces the validated historical route to relative errors
+
+- `4.2e-13` at `(a,k)=(0.3,0.1 h/Mpc)`;
+- `5.3e-11` at `(0.5,0.2 h/Mpc)`;
+- `5.8e-13` at `(0.7,0.1 h/Mpc)`.
+
+The metric block remains rank 4.
+
+Regression:
+
+- `direct_flat_augmented_transform(...)` in `numerics/prebd_stueckelberg_transform.py`;
+- `tests/test_candidate_c_stueckelberg_augmented_action.py`.
+
+This is the insertion point for the finite nonlinear interaction.
+
+## 9. Failed shortcuts — do not repeat
+
+Do not:
+
+- reuse the homothetic `c=1` pi map unchanged;
+- read the Candidate-C speed from a frozen local WKB/Schur system;
+- subtract an off-shell `H=0` reference;
+- treat the dust amplitudes as static auxiliaries;
+- compare raw reduced Hessians across a time-dependent point transformation instead of full Euler-Lagrange equations;
+- interpret a fold itself as proof of a kinetic zero.
+
+## 10. Current active calculation
+
+Construct the **finite-mu Hassan-Rosen interaction Hessian/correction** in the validated augmented interface
+
+`(Y1,Y2,L,T,p_g,p_f, rates, Phi_g,Phi_f,B_g,B_f)`.
+
+The Einstein-Hilbert and dust phase sectors are already validated and must not be retuned.
+
+The finite-mu construction must pass two independent limits:
+
+1. `mu -> 0`: recover the augmented linear HR block and therefore the finite-H Candidate-C De Felice/Stueckelberg spectrum;
+2. homothetic early-time limit: recover the already GREEN compact Aoki nonlinear `K_S,c_S^2` oracle.
+
+Only after both limits are GREEN may the same action be evaluated on the regular Candidate-C nonlinear branch approaching
+
+`a_1 ~= 0.0301646`.
+
+## 11. After the finite-mu action passes both oracles
+
+1. eliminate the four metric auxiliaries;
+2. perform the time-dependent `Tdot` null/BD reduction;
+3. retain both dust phase pairs;
+4. compute the full kinetic and gradient operators toward fold 1;
+5. determine whether the homogeneous kinetic-sign zero survives;
+6. integrate a fold-crossing trajectory only if the constraint and kinetic systems remain regular;
+7. derive `(Y3,Y3_N)` from that trajectory;
+8. rerun the late exact-dust transfer;
+9. add visible radiation only if the dust path survives.
+
+## 12. Verification limitation
+
+The new algebraic/EL map tests were executed directly in a reconstructed local workspace.  The Candidate-C spectral and augmented pre-metric equivalence numbers were independently reproduced from the committed formulas.  GitHub Actions remain disabled and the full repository has not been executed in one clean worktree.
 
 `GATE_2B = OPEN`.
