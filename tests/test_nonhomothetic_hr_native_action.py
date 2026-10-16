@@ -67,6 +67,8 @@ def test_native_hr_density_matches_existing_weak_nonhomothetic_pullback():
     m2 = 0.37
     Mg2 = 1.6
 
+    # Historical helper is reduced by r^2 sin(theta); the generic native
+    # density below is reduced only by sin(theta), so compare actual/r^2.
     expected = standard_beta_potential_reduced_density(
         a=a, b=b, c_background=c, r=r,
         betas=betas, m2=m2, Mg2=Mg2,
@@ -96,4 +98,4 @@ def test_native_hr_density_matches_existing_weak_nonhomothetic_pullback():
         jacobian_g=np.eye(2), jacobian_f=Jf,
         betas=betas, m2=m2, Mg2=Mg2,
     )
-    assert math.isclose(actual, expected, rel_tol=3e-13, abs_tol=3e-13)
+    assert math.isclose(actual/(r*r), expected, rel_tol=3e-13, abs_tol=3e-13)
