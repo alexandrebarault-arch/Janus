@@ -416,3 +416,7 @@ New **interaction-only**, two-route Ward acceptance gate is now GREEN, documente
 ## Addendum 2026-10-18 — time-local HR plus canonical two-dust preconstraint gate
 
 The 22-variable compact spatial **partial** Hessian now includes both f/g dust canonical momentum-phase pairs and the existing sampled native HR interaction on the same radial basis. 10 new targeted tests passed, 37 total local reconstructed-workspace tests passed, exact new source blobs matched GitHub. It includes the corrected single 4*pi measure and the tilt-induced native f spatial-gradient time-rate square. Neither EH nor full metric/BD constraint reduction is included: **GATE_2B OPEN**. See research/HR_TWO_DUST_PRECONSTRAINT_AUDIT.md and root LATEST_RESTART.md.
+
+## Addendum 2026-10-18 — flat native EH/HR/two-dust interface
+
+Both native flat-spatial EH ADM lapse/shift Hessians integrated on the same non-homothetic f background chart and compact radius with HR plus two dust phase pairs. 10 new targeted tests passed; 47 tests in local reconstructed suite. Full scalar EH and chart variation NOT included; no constrained physical mode result. See root LATEST_RESTART.md and research/FLAT_EH_HR_TWO_DUST_BRIDGE_AUDIT.md. GATE_2B=OPEN.
