@@ -212,3 +212,18 @@ Only after both limits are GREEN may the same action be evaluated on the regular
 The new algebraic/EL map tests were executed directly in a reconstructed local workspace.  The Candidate-C spectral and augmented pre-metric equivalence numbers were independently reproduced from the committed formulas.  GitHub Actions remain disabled and the full repository has not been executed in one clean worktree.
 
 `GATE_2B = OPEN`.
+
+
+## 2026-10-17 incremental audit — finite-mu HR spherical spectral derivatives
+
+New files:
+- `numerics/finite_mu_hr_spectrum.py`
+- `tests/test_finite_mu_hr_spectrum.py`
+
+For the finite spherical interaction eigenvalues `(t,r,ell,ell)`, an independent closed polynomial evaluator now returns `U=sum beta_n e_n` plus the exact 3-vector first derivative and 3x3 Hessian. Tests cover direct four-eigenvalue symmetric-polynomial enumeration, independent centered-difference derivatives, Hessian symmetry, and the equal-radial/angular first-variation relation on both `mu=0` and `mu != 0` backgrounds.
+
+Verification in the reconstructed local test workspace: `python -m pytest -q tests/test_finite_mu_hr_spectrum.py` -> **3 passed**. This is a targeted test, not the full suite.
+
+**Scope warning:** these are eigenvalue-space algebraic derivatives, not yet derivatives of the full pullback `S=sqrt(g^-1 f)` with off-diagonal temporal/radial perturbations, and not a validated finite-mu dynamical action. They may be used only as an independent algebraic oracle for the forthcoming HR Hessian insertion.
+
+Immediate next RED: construct the exact finite-mu HR pre-metric Hessian in the native augmented variables, differentiate the full common-chart square root including the off-diagonal radial block, and demonstrate that its `mu -> 0` Hessian equals the previously validated augmented linear HR action before attempting a finite-mu fold diagnosis.
