@@ -104,3 +104,60 @@ then GREEN. The current reconstructed targeted command above gives **12 passed**
 Still missing: `delta T,delta R` columns; their time/spatial derivatives;
 Taylor response of `n(T+delta T)` and `alpha(T+delta T)`; and the native
 matter/EH/HR pre-Schur constrained action. No kinetic or fold verdict follows.
+
+## 2026-10-17 follow-up — independent Stueckelberg-Jacobian interaction Hessian
+
+New source: `numerics/hr_native_stueckelberg_jet.py`.
+New tests: `tests/test_hr_native_stueckelberg_jet.py`.
+
+A new **14x14 native HR interaction-only Hessian** extends the preceding
+metric-only jet by six independent local chart degrees of freedom, in order:
+
+`(deltaT,deltaT_t,deltaT_r,deltaR_t,deltaR_r,deltaR_over_r)`.
+
+These are *local jet coordinates*, not six extra physical propagating
+fields. They must be tied to consistent scalar profiles before Fourier or
+compact-support reduction. The f-native lapse and scale are evaluated at
+`T=t+sigma*r^2/2+deltaT` using the supplied first/second background rate
+jets. The radial native map is varied before computing `sqrt(g^-1 f)`; the
+angular `deltaR_over_r` enters separately from the radial Jacobian
+`deltaR_r` (correct for generic spherical scalar profiles).
+
+**New independent controls:**
+
+1. metric 8x8 principal block/gradient agrees with the previously tested
+   finite-mu native metric jet to about double precision;
+2. beta0 has no f/chart columns, beta4 has no g-metric columns;
+3. with zero background time derivatives, a constant `deltaT` has no
+   interaction effect, whereas `deltaT_t` remains an independent variable;
+4. at the regular linear center the first variation in `deltaT_t` equals
+   the native f lapse variation, and a uniform radial dilation acts as an
+   isotropic f spatial-trace first variation;
+5. **independent JAX x64 Hessians for all 14 coordinates**, at both
+   `mu=0,r=0` and nonzero `mu,r,sigma,mu_dot`, reproduce the exact second-
+   order Taylor-jet matrix to a `2e-11` absolute/relative test threshold.
+
+A real RED was witnessed using an explicit `NotImplementedError` stub,
+then the combined reconstructed local command gave:
+
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_native_stueckelberg_jet.py tests/test_hr_native_quadratic_jet.py`
+
+**19 passed** (JAX-dependent tests are optional when JAX is unavailable).
+
+**Crucial negative claim:** this does *not* produce the full finite-mu
+canonical kinetic/gradient action. In particular, f native perturbation
+field derivatives evaluated at shifted `T`, the scalar profile relation
+between the local jets, integration with correct spatial Fourier phases,
+full EH+dust terms, and the time-dependent metric/BD constraints are
+still missing. It would be invalid to treat the six local chart jets as
+independent physical modes or to Schur-eliminate dust momenta.
+
+**Next precise task:** construct a profile-to-jet map that takes
+`(L,T)` and their time/radial derivatives into the six chart jets
+(with background derivatives and correct parity) and insert the resulting
+interaction Hessian into the already validated pre-metric augmented
+`(Y1,Y2,L,T,p_g,p_f)` phase action. Then pass the separate De Felice and
+Aoki limits *after* constrained reduction, before inspecting Candidate-C
+fold 1.
+
+`GATE_2B = OPEN`.
