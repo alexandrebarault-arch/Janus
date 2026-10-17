@@ -272,3 +272,18 @@ full nonlinear/kinetic/gradient stability verdict follows.
 
 **Gate 2B remains OPEN.** This was a local targeted RED/GREEN; full-worktree
 regression has not yet run.
+
+## 14. 2026-10-17 — additional native background drift GREEN
+
+The finite-mu interaction helper now supports `n_dot,alpha_dot,n_ddot,alpha_ddot`
+and evaluates these **background** quantities at
+`T=t+sigma*r^2/2` by a second-order Taylor jet. The source and tests are
+committed. Two newly witnessed RED→GREEN tests check the shifted-time
+identity and preservation of the central `r=0` result. **12 targeted
+local tests passed** (not the repository-wide suite).
+
+**Immediate remaining input:** extend the interaction jet to the independent
+oscillatory `delta T,delta R` perturbations and their Jacobian/radial-angle
+components. The background shift is now included; the perturbative shift and
+its derivative couplings still are not. Then link the resulting columns to
+the validated native 16-dimensional augmented Hessian.
