@@ -385,3 +385,28 @@ The tests cover exact radial profile derivatives, regularity/parity, 16/26-point
 **Repository policy:** commit only on `research/gate2b-nonhomothetic-transfer`; leave `main` and `research/v2-flrw` intact. GitHub Actions are disabled; do not describe the local 6-test run as a full-branch regression.
 
 **Gate 2B: OPEN.**
+
+
+## 18. 2026-10-18 — NATIVE F-FIELD DISPLACED-CHART SAMPLING GREEN (LATEST)
+
+**New files committed:** `numerics/hr_native_field_sampling.py` and `tests/test_hr_native_field_sampling.py`.
+
+The native 14x14 interaction jet already varies the **f background** n(T),alpha(T) under deltaT, but it did not yet account for variation of the four independent **f-native perturbation fields** evaluated at displaced (T,R). The correct second-order chain rule has now been isolated without changing the original 14x14 Hessian:
+
+- `q_f(T+deltaT,R+deltaR)=q_f+q_{f,T}deltaT+q_{f,R}deltaR+O(3)`;
+- the native displacement obeys `deltaR=r deltaR_over_r`;
+- the eight new field-gradient slots have exactly `H[deltaT,q_{f,T}]=dL/dq_f` and `H[deltaR_over_r,q_{f,R}]=r dL/dq_f`.
+
+The local **22x22 interaction jet** preserves the original 14x14 principal block. The 8 new derivative slots are **not** independent physical scalar fields.
+
+**Fresh reconstructed targeted run:**
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_native_field_sampling.py tests/test_hr_compact_radial_interaction.py`
+=> **11 passed** (5 + 6). No full-worktree or GitHub Actions run.
+
+**CURRENT EXACT RED:** promote the 22x22 time/radius sampling jet into the coherent compact spherical action. Crucially distinguish the f-native gradient `partial_R` from common `partial_r`; at `R=(1+mu(t))r` the moving radial profile itself contributes to `partial_T q_f`. Do not integrate this 22x22 object by treating its 8 rate/gradient coordinates as independent dynamical amplitudes.
+
+After this projection: assemble full Einstein-Hilbert and two-dust canonical actions *before* metric Schur/BD reduction, then pass both mandatory mu->0 De Felice and homothetic Aoki oracles on one action. Test fold 1 only after that. The branch has **no** current physical kinetic/gradient or fold-crossing verdict.
+
+**Resume order:** section 18 -> `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md` (last addendum) -> the two new numerics modules/tests -> `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
+
+`GATE_2B = OPEN`. Main stays unchanged; work on `research/gate2b-nonhomothetic-transfer`.
