@@ -387,3 +387,19 @@ and whether Candidate C can cross the first fold.
 For exact next instructions read
 `research/GATE2B_LATEST_RESTART.md` section 16.
 **Gate 2B remains OPEN.**
+
+
+## Addendum — 2026-10-18 (latest Gate 2B work)
+
+**Scientific status remains OPEN.** The physical finite-mu constrained kinetic and gradient operators and a regular Candidate-C fold crossing have not been demonstrated.
+
+Two new independent *interaction-only* geometry/chain-rule controls have been added:
+
+- Compact regular radial action: `numerics/hr_compact_radial_interaction.py`, 12 amplitudes, correct spherical metric-shift/shear parity, explicit 4*pi*r² integral. Targeted 6 tests passed.
+- Native f metric perturbation displaced-chart sampling: `numerics/hr_native_field_sampling.py`, extends 14x14 native jet to 22x22 algebraic matrix including 8 f-field time/radius derivative slots. Targeted 5 tests passed.
+
+**Combined locally reconstructed regression: 11 passed**, not a full GitHub or repository suite. These new matrices are NOT the final physical Hessian after EH, two-dust phase terms, metric constraints and time-dependent BD null elimination. In particular, treating the derivative slots as independent physical modes would be an error.
+
+**The single authoritative restart record is `research/GATE2B_LATEST_RESTART.md`, section 18.** The detailed scientific caveats and next mathematical step are in `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md`.
+
+Branch policy remains unchanged: active work only on `research/gate2b-nonhomothetic-transfer`, with `main` retained as a stable baseline and `research/v2-flrw` archived intact.
