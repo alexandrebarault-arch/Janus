@@ -40,7 +40,7 @@ def test_metric_parity_and_regular_center():
     assert P0[12,9]==P0[13,9]==1
     for r in (.012,.071,.16):
         F,Fp,Fpp,tf=compact_scalar_profile(r,R)
-        B=P0.copy() if False else compact_native_profile_map(r=r,R=R,k=k)
+        B=compact_native_profile_map(r=r,R=R,k=k)
         assert B[1,1]==pytest.approx(Fp/k)
         assert B[3,3]==pytest.approx(-2*tf/k**2)
         assert B[11,11]==pytest.approx(r*F)
