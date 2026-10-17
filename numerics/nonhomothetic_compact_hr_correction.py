@@ -26,7 +26,7 @@ def _profile(t,r,T,R):
     return A*F, At*F, A*Fr, At*Fr, A*Frr, F
 
 
-def _compact_action(x,*,betas,a,n,alpha,n_dot_over_n,n_ddot_over_n,
+def _compact_action(x,*,betas,a,n,alpha,a_dot_over_a,a_ddot_over_a,n_dot_over_n,n_ddot_over_n,
                     alpha_dot_over_alpha,alpha_ddot_over_alpha,
                     mu,mu_dot,s,s_dot,time_radius,radial_radius,
                     quadrature_order,m2,Mg2):
@@ -47,7 +47,7 @@ def _compact_action(x,*,betas,a,n,alpha,n_dot_over_n,n_ddot_over_n,
             Pg=Pg0*chi; Bg_r=Bg0*chi_r
 
             # Evaluate the native f perturbation profile separately in the
-            # finite-mu and mu=0 pullbacks. Reusing the finite-mu sample in
+            # finite-mu and mu=0 pullbacks.  Reusing the finite-mu sample in
             # the reference action would not be a genuine action subtraction.
             tf=.5*s*r*r-Tfield
             Rf=(1.0+mu)*r-Lr
@@ -55,6 +55,8 @@ def _compact_action(x,*,betas,a,n,alpha,n_dot_over_n,n_ddot_over_n,
             finite=relative_native_hr_density(
                 betas=betas,m2=m2,Mg2=Mg2,
                 a=a,n=n,alpha=alpha,r=float(r),
+                a_dot_over_a=a_dot_over_a,a_ddot_over_a=a_ddot_over_a,
+                common_time_offset=float(t),
                 n_dot_over_n=n_dot_over_n,n_ddot_over_n=n_ddot_over_n,
                 alpha_dot_over_alpha=alpha_dot_over_alpha,
                 alpha_ddot_over_alpha=alpha_ddot_over_alpha,
@@ -69,6 +71,8 @@ def _compact_action(x,*,betas,a,n,alpha,n_dot_over_n,n_ddot_over_n,
             reference=relative_native_hr_density(
                 betas=betas,m2=m2,Mg2=Mg2,
                 a=a,n=n,alpha=alpha,r=float(r),
+                a_dot_over_a=a_dot_over_a,a_ddot_over_a=a_ddot_over_a,
+                common_time_offset=float(t),
                 n_dot_over_n=n_dot_over_n,n_ddot_over_n=n_ddot_over_n,
                 alpha_dot_over_alpha=alpha_dot_over_alpha,
                 alpha_ddot_over_alpha=alpha_ddot_over_alpha,
@@ -82,14 +86,15 @@ def _compact_action(x,*,betas,a,n,alpha,n_dot_over_n,n_ddot_over_n,
 
 
 def compact_relative_hr_correction_hessian(*,betas,a,n,alpha,
+        a_dot_over_a=0.0,a_ddot_over_a=0.0,
         n_dot_over_n=0.0,n_ddot_over_n=0.0,
         alpha_dot_over_alpha=0.0,alpha_ddot_over_alpha=0.0,
         mu=0.0,mu_dot=0.0,s=0.0,s_dot=0.0,
         time_radius,radial_radius,m2=1.0,Mg2=1.0,
         amplitude_step=5e-4,quadrature_order=18):
-    vals=(a,n,alpha,n_dot_over_n,n_ddot_over_n,alpha_dot_over_alpha,
-          alpha_ddot_over_alpha,mu,mu_dot,s,s_dot,time_radius,radial_radius,
-          m2,Mg2,amplitude_step)
+    vals=(a,n,alpha,a_dot_over_a,a_ddot_over_a,n_dot_over_n,n_ddot_over_n,
+          alpha_dot_over_alpha,alpha_ddot_over_alpha,mu,mu_dot,s,s_dot,
+          time_radius,radial_radius,m2,Mg2,amplitude_step)
     if not all(math.isfinite(float(v)) for v in vals):
         raise ValueError('compact correction inputs must be finite')
     if a<=0 or n<=0 or alpha<=0 or mu<=-1 or time_radius<=0 or radial_radius<=0 or amplitude_step<=0:
@@ -97,6 +102,7 @@ def compact_relative_hr_correction_hessian(*,betas,a,n,alpha,
     if quadrature_order < 12:
         raise ValueError('quadrature_order must be at least 12')
     kw=dict(betas=tuple(betas),a=float(a),n=float(n),alpha=float(alpha),
+        a_dot_over_a=float(a_dot_over_a),a_ddot_over_a=float(a_ddot_over_a),
         n_dot_over_n=float(n_dot_over_n),n_ddot_over_n=float(n_ddot_over_n),
         alpha_dot_over_alpha=float(alpha_dot_over_alpha),alpha_ddot_over_alpha=float(alpha_ddot_over_alpha),
         mu=float(mu),mu_dot=float(mu_dot),s=float(s),s_dot=float(s_dot),
