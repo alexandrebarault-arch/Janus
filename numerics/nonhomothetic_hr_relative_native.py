@@ -75,6 +75,9 @@ def relative_native_geometry(
     n: float,
     alpha: float,
     r: float,
+    a_dot_over_a: float = 0.0,
+    a_ddot_over_a: float = 0.0,
+    common_time_offset: float = 0.0,
     n_dot_over_n: float = 0.0,
     n_ddot_over_n: float = 0.0,
     alpha_dot_over_alpha: float = 0.0,
@@ -95,8 +98,8 @@ def relative_native_geometry(
     B_f_r: float = 0.0,
 ) -> RelativeNativeGeometry:
     vals = (
-        a,n,alpha,r,n_dot_over_n,n_ddot_over_n,
-        alpha_dot_over_alpha,alpha_ddot_over_alpha,
+        a,n,alpha,r,a_dot_over_a,a_ddot_over_a,common_time_offset,
+        n_dot_over_n,n_ddot_over_n,alpha_dot_over_alpha,alpha_ddot_over_alpha,
         mu,mu_dot,s,s_dot,T,T_dot,T_r,L_r,L_dot_r,L_rr,
         Phi_g,B_g_r,Phi_f,B_f_r,
     )
@@ -105,7 +108,16 @@ def relative_native_geometry(
     if a <= 0.0 or n <= 0.0 or alpha <= 0.0 or r <= 0.0 or mu <= -1.0:
         raise ValueError("require positive a,n,alpha,r and mu>-1")
 
-    f_time = 0.5 * s * r * r - T
+    t = float(common_time_offset)
+    a_common = a * (1.0 + a_dot_over_a*t + 0.5*a_ddot_over_a*t*t)
+    mu_common = mu + mu_dot*t
+    s_common = s + s_dot*t
+    if a_common <= 0.0 or mu_common <= -1.0:
+        raise ValueError("local Taylor jet left regular g/relative background")
+
+    # Background jets are anchored at the central common time.  The f native
+    # clock therefore samples the total offset t + delta t_f.
+    f_time = t + 0.5 * s_common * r * r - T
     n_f = n * (1.0 + n_dot_over_n*f_time + 0.5*n_ddot_over_n*f_time*f_time)
     alpha_f = alpha * (
         1.0 + alpha_dot_over_alpha*f_time
@@ -114,18 +126,18 @@ def relative_native_geometry(
     if n_f <= 0.0 or alpha_f <= 0.0:
         raise ValueError("local Taylor jet left positive f background")
 
-    f_radius = (1.0 + mu) * r - L_r
+    f_radius = (1.0 + mu_common) * r - L_r
     if f_radius <= 0.0:
         raise ValueError("relative radial map left positive branch")
 
     Jf = np.array([
-        [1.0 + 0.5*s_dot*r*r - T_dot, s*r - T_r],
-        [mu_dot*r - L_dot_r, 1.0 + mu - L_rr],
+        [1.0 + 0.5*s_dot*r*r - T_dot, s_common*r - T_r],
+        [mu_dot*r - L_dot_r, 1.0 + mu_common - L_rr],
     ], dtype=float)
 
     gn = np.array([
-        [-(1.0 + 2.0*Phi_g), a*B_g_r],
-        [a*B_g_r, a*a],
+        [-(1.0 + 2.0*Phi_g), a_common*B_g_r],
+        [a_common*B_g_r, a_common*a_common],
     ], dtype=float)
     fn = np.array([
         [-n_f*n_f*(1.0 + 2.0*Phi_f), n_f*alpha_f*B_f_r],
@@ -136,7 +148,7 @@ def relative_native_geometry(
         g_radial_native=gn,
         f_radial_native=fn,
         jacobian_f=Jf,
-        g_angular_native=a*a*r*r,
+        g_angular_native=a_common*a_common*r*r,
         f_angular_native=alpha_f*alpha_f*f_radius*f_radius,
         f_time=float(f_time),
         f_radius=float(f_radius),
