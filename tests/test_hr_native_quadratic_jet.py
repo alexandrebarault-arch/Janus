@@ -142,3 +142,28 @@ def test_finite_radius_parity_separates_linear_shift_mixing_from_quadratic_even_
     ob=np.linalg.norm(bb[np.ix_(no_shift,shifts)])
     assert 3.9 < eb/ea < 4.1
     assert 1.95 < ob/oa < 2.05
+
+
+def test_native_lapse_and_scale_are_evaluated_at_shifted_stueckelberg_time():
+    """At nonzero radius use native background Taylor jets n(T),alpha(T)."""
+    p=dict(N=1.,a=.8,n=1.16,alpha=.9,k=2.3,m2=.7,Mg2=1.3,
+           betas=(.2,1.,-.5,.24,.31),mu=-.42,r=.11,
+           sigma_r=-.72,sigma_dot=.19,mu_dot=.13)
+    n_dot=.34; a_dot=-.17; n_ddot=.25; a_ddot=-.08
+    out=native_hr_scalar_jet(**p,n_dot=n_dot,alpha_dot=a_dot,
+                             n_ddot=n_ddot,alpha_ddot=a_ddot)
+    dt=.5*p['sigma_r']*p['r']**2
+    nT=p['n']+n_dot*dt+.5*n_ddot*dt*dt
+    aT=p['alpha']+a_dot*dt+.5*a_ddot*dt*dt
+    oracle=native_hr_scalar_jet(**{**p,'n':nT,'alpha':aT})
+    np.testing.assert_allclose(out.hessian,oracle.hessian,rtol=1e-12,atol=1e-12)
+    assert np.linalg.norm(out.hessian-native_hr_scalar_jet(**p).hessian)>1e-5
+
+
+def test_native_background_time_drift_vanishes_at_regular_spherical_center():
+    p=dict(N=1.,a=.8,n=1.16,alpha=.9,k=2.3,m2=.7,Mg2=1.3,
+           betas=(.2,1.,-.5,.24,.31),mu=-.42,r=0.,
+           sigma_r=-.72,sigma_dot=.19,mu_dot=.13)
+    out=native_hr_scalar_jet(**p,n_dot=.31,alpha_dot=-.18,n_ddot=.09,alpha_ddot=.03)
+    ref=native_hr_scalar_jet(**p)
+    np.testing.assert_allclose(out.hessian,ref.hessian,rtol=0,atol=0)
