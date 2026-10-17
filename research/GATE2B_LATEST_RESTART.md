@@ -357,3 +357,31 @@ has been derived from this trial profile.
    coefficients on Candidate C through the first fold.
 
 `GATE_2B = OPEN`; repository-wide regression is still unavailable.
+
+
+## 17. 2026-10-18 — COMPACT REGULAR RADIAL HR INTEGRATION (CURRENT RESTART HEAD)
+
+**New committed code and tests:**
+
+- `numerics/hr_compact_radial_interaction.py`;
+- `tests/test_hr_compact_radial_interaction.py`;
+- `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md`.
+
+The preceding 14x14 native Hessian is now integrated over a finite spherical domain using an explicit C^3 compact scalar bump and Gauss-Legendre quadrature. The new 14x12 amplitude map makes native radial metric shifts odd and scalar traceless shears vanish at the center. It also consistently derives all six local chart jets from the same `(T,L,Tdot,Ldot)` amplitudes rather than treating them as independent physical fields.
+
+**Independent targeted local run** (reconstructed exact native HR module):
+
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_compact_radial_interaction.py`
+=> **6 passed**.
+
+The tests cover exact radial profile derivatives, regularity/parity, 16/26-point quadrature convergence, action bilinear identity, beta0/beta4 sector separation, and invalid input checks.
+
+**Scientific scope:** this is an **interaction-only spatial integration**, NOT a full time-domain constrained action or a finite-mu physical helicity-0 propagation operator. No new kinetic/gradient or fold crossing conclusion is supported. Do not diagonalize this 12x12 interaction Hessian to infer physical ghosts.
+
+**Next exact action (RED):** include native f-field *perturbation-rate* sampling when its chart time is displaced by deltaT; independently test those cross-Hessian terms. Then integrate the same regular compact profiles into the EH + two-dust phase sectors, assemble before metric Schur/BD reduction and require both finite-H mu->0 De Felice and nonlinear homothetic Aoki oracles GREEN **on the same action**. Only then test Candidate-C fold 1.
+
+**Resume order:** this section -> `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md` -> `numerics/hr_compact_radial_interaction.py` -> `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
+
+**Repository policy:** commit only on `research/gate2b-nonhomothetic-transfer`; leave `main` and `research/v2-flrw` intact. GitHub Actions are disabled; do not describe the local 6-test run as a full-branch regression.
+
+**Gate 2B: OPEN.**
