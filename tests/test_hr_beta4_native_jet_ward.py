@@ -37,3 +37,22 @@ def test_native_hr_beta4_shifted_spacetime_domain():
     np.testing.assert_allclose(jet.mixed_complete,0.,atol=2e-12)
     np.testing.assert_allclose(jet.mixed_frozen_sampling,
                                -oracle.mixed_without_field_sampling,atol=2e-12)
+
+
+def test_native_hr_beta4_trace_mode_weight_three():
+    jet=native_beta4_mixed_ward(order=24,native_field="trace")
+    oracle=beta4_ward_control(order=24)
+    np.testing.assert_allclose(jet.mixed_complete,0.,atol=2e-12)
+    np.testing.assert_allclose(jet.mixed_frozen_sampling,
+                               -3*oracle.mixed_without_field_sampling,atol=2e-12)
+
+def test_native_hr_beta4_shift_and_shear_no_linear_volume_source():
+    for field in ("shift","shear"):
+        jet=native_beta4_mixed_ward(order=18,native_field=field)
+        np.testing.assert_allclose(jet.mixed_complete,0.,atol=1e-12)
+        np.testing.assert_allclose(jet.mixed_frozen_sampling,0.,atol=1e-12)
+
+def test_native_hr_beta4_unknown_field_rejected():
+    import pytest
+    with pytest.raises(ValueError):
+        native_beta4_mixed_ward(native_field="fifth_gravity_field")
