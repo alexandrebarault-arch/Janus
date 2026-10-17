@@ -1,4 +1,5 @@
 """Time and native-radius displaced-field quadratic chain-rule gate."""
+from dataclasses import replace
 import numpy as np
 import pytest
 from numerics.hr_native_stueckelberg_jet import native_hr_stueckelberg_jet
@@ -73,3 +74,5 @@ def test_invalid_radius_and_wrong_source_dimensions():
     local=native_hr_stueckelberg_jet(r=0.,**P)
     with pytest.raises(ValueError): add_native_field_sampling(local,r=-1.)
     with pytest.raises(ValueError): add_native_field_sampling(local,r=float('nan'))
+    with pytest.raises(ValueError):
+        add_native_field_sampling(replace(local,hessian=np.zeros((13,13))),r=0.)
