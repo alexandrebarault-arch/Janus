@@ -412,3 +412,7 @@ New **interaction-only**, two-route Ward acceptance gate is now GREEN, documente
 **27 local targeted tests passed** on an exact-hash-verified copy of six relevant GitHub modules/tests. The full repository suite has NOT been run, and no physical kinetic/gradient/fold verdict follows. No cosmological validation of JANUS-R or external JHR manuscript is claimed.
 
 **Authoritative next checkpoint:** LATEST_RESTART.md at repository root. Full EH + TWO dust phase + HR action assembly remains the active RED step. Must pass both De Felice and Aoki physical limits on one constrained finite-mu action before evaluating the Candidate-C first fold.
+
+## Addendum 2026-10-18 — time-local HR plus canonical two-dust preconstraint gate
+
+The 22-variable compact spatial **partial** Hessian now includes both f/g dust canonical momentum-phase pairs and the existing sampled native HR interaction on the same radial basis. 10 new targeted tests passed, 37 total local reconstructed-workspace tests passed, exact new source blobs matched GitHub. It includes the corrected single 4*pi measure and the tilt-induced native f spatial-gradient time-rate square. Neither EH nor full metric/BD constraint reduction is included: **GATE_2B OPEN**. See research/HR_TWO_DUST_PRECONSTRAINT_AUDIT.md and root LATEST_RESTART.md.
