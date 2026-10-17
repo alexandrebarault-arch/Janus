@@ -41,3 +41,15 @@ def test_finite_mu_compact_hessian_is_stable_under_amplitude_step_refinement():
     a=compact_relative_hr_correction_hessian(mu=-0.55,mu_dot=0.03,s=-0.025,s_dot=0.004,amplitude_step=8e-4,**kw).hessian
     b=compact_relative_hr_correction_hessian(mu=-0.55,mu_dot=0.03,s=-0.025,s_dot=0.004,amplitude_step=4e-4,**kw).hessian
     assert np.linalg.norm(a-b,ord=np.inf) < 5e-7*max(1.0,np.linalg.norm(b,ord=np.inf))
+
+
+def test_compact_correction_accepts_evolving_g_background_jet_and_stays_zero_at_mu_zero():
+    from numerics.nonhomothetic_compact_hr_correction import compact_relative_hr_correction_hessian
+    kw=dict(BASE)
+    kw.update(a_dot_over_a=0.23,a_ddot_over_a=0.04)
+    zero=compact_relative_hr_correction_hessian(mu=0.0,mu_dot=0.0,s=0.0,s_dot=0.0,**kw)
+    assert np.linalg.norm(zero.hessian,ord=np.inf) < 1e-10
+    finite=compact_relative_hr_correction_hessian(mu=-0.55,mu_dot=0.03,s=-0.025,s_dot=0.004,**kw)
+    frozen=compact_relative_hr_correction_hessian(mu=-0.55,mu_dot=0.03,s=-0.025,s_dot=0.004,**BASE)
+    assert np.all(np.isfinite(finite.hessian))
+    assert np.linalg.norm(finite.hessian-frozen.hessian,ord=np.inf) > 1e-7
