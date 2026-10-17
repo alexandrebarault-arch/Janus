@@ -287,3 +287,37 @@ oscillatory `delta T,delta R` perturbations and their Jacobian/radial-angle
 components. The background shift is now included; the perturbative shift and
 its derivative couplings still are not. Then link the resulting columns to
 the validated native 16-dimensional augmented Hessian.
+
+## 15. 2026-10-17 — 14x14 native finite-mu HR/Stueckelberg interaction Hessian
+
+New files committed:
+- `numerics/hr_native_stueckelberg_jet.py`;
+- `tests/test_hr_native_stueckelberg_jet.py`.
+
+The **local interaction-only** quadratic expansion now includes eight native
+metric variables and six independent local chart-perturbation jets
+`(deltaT,deltaT_t,deltaT_r,deltaR_t,deltaR_r,deltaR_over_r)`.
+The f native background `n(T),alpha(T)` includes its supplied first and
+second time derivatives under the full local `deltaT` perturbation.
+
+Fresh reconstructed local verification together with the 8x8 module:
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_native_stueckelberg_jet.py tests/test_hr_native_quadratic_jet.py`
+**19 passed**. This includes independent JAX x64 14x14 Hessian controls at
+both `mu=0` and finite `mu,r`, beta0/beta4 separation, and the exact
+metric-only 8x8 principal block. See
+`research/NONHOMOTHETIC_HR_JET_AUDIT.md` for limitations.
+
+**Do not mistake the six chart jets for independent physical modes.** The
+new matrix must still be pulled back to coherent `delta T(t,r),delta R(t,r)`
+profiles, then assembled with the native EH+two-dust phase action and the
+correct spatial/time profile integration. Terms involving derivatives of
+native metric perturbations evaluated at shifted `T` are also not yet
+included. No finite-mu kinetic/gradient/fold verdict is available.
+
+**Next RAF:** implement/test a profile-to-jet map into the 14x14 HR Hessian,
+then the complete 16-dimensional pre-metric augmented `(Y1,Y2,L,T,p_g,p_f)`
+interaction (with full constraint/phase bookkeeping). Require both the
+Candidate-C linear De Felice oracle and the nonlinear homothetic Aoki
+`K_S,c_S^2` oracle after reduction before approaching fold 1.
+
+`GATE_2B = OPEN`.
