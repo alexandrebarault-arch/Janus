@@ -45,7 +45,7 @@ Local reconstructed command:
 
 `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_native_quadratic_jet.py`
 
-Result: **10 passed in ~5 seconds** (JAX-based controls skipped only if JAX is absent).
+Initial result: **10 passed in ~5 seconds**; expanded with two native time-drift regressions: **12 passed** (JAX-based controls skipped only if JAX is absent).
 
 The tests independently check:
 
@@ -61,7 +61,7 @@ A real feature RED was additionally witnessed by temporarily replacing the imple
 
 ## Significant limitation — do NOT overinterpret
 
-This is a **local frozen-background interaction jet**. For finite `r` the f lapse `n(T)` and scale `alpha(T)` have deliberately been held at their central time values. The actual on-shell `O(r^2)` action must also include their drift along the Stückelberg time shift.
+This is a **local frozen-background interaction jet**. The base implementation initially froze the native f lapse and scale. It now optionally takes `n_dot, alpha_dot, n_ddot, alpha_ddot` and evaluates the *background values* through the second-order Taylor jet at `T=t+sigma*r^2/2`; the old frozen case is obtained by zero rates. The actual on-shell action still requires the independent perturbations `delta T,delta R`, their field derivatives, and a coherent time/space integration.
 
 Furthermore:
 
@@ -75,7 +75,7 @@ Thus there is no finite-mu stability verdict from this computation.
 
 ## Next exact implementation step (RAF)
 
-1. Extend the interaction Hessian to **native Stückelberg map perturbations**, retaining Jacobian and angular-radius perturbations before any Fourier specialization: `delta T, delta R, delta T_t, delta T_r, delta R_t, delta R_r`. Include native background `n(T),alpha(T)` time derivatives to the required `O(r^2)` order.
+1. Extend the interaction Hessian to **native Stückelberg map perturbations**, retaining Jacobian and angular-radius perturbations before any Fourier specialization: `delta T, delta R, delta T_t, delta T_r, delta R_t, delta R_r`. Use the newly exposed native background rate jets, then include the **response to perturbations `delta T,delta R`**, including their Jacobian and induced native metric-field time derivatives, to the required `O(r^2)` order.
 2. Verify the `mu->0` limit **after** applying the existing `direct_native_augmented_transform`, so that the 16-dimensional pre-metric Hessian reproduces the known Candidate-C linear augmented interaction.
 3. Independently verify the homothetic nonlinear compact-support Aoki `K_S,c_S^2` limit after metric Schur, with correct space/time integration and constraints.
 4. Keep the two dust canonical phase pairs dynamical through the null-`Tdot` reduction.
@@ -84,3 +84,23 @@ Thus there is no finite-mu stability verdict from this computation.
 Do not use the finite-radius frozen-background Hessian itself to decide whether the fold can be crossed.
 
 `GATE_2B = OPEN`.
+
+## 2026-10-17 follow-up — native background time displacement
+
+A second RED→GREEN cycle added the optional physical background jets
+`n_dot, alpha_dot, n_ddot, alpha_ddot`. The finite-radius native values
+used in the exact metric pullback are now evaluated at
+
+`u=sigma*r^2/2`,
+`n(T)=n+n_dot*u+n_ddot*u^2/2`,
+`alpha(T)=alpha+alpha_dot*u+alpha_ddot*u^2/2`.
+
+This is exact for the specified Taylor polynomial; it is a controlled local
+background approximation, not yet the independently perturbed chart `T`.
+At `r=0`, `u=0` and the complete De Felice central regression is
+unmodified. Two new tests were witnessed RED on missing rate parameters and
+then GREEN. The current reconstructed targeted command above gives **12 passed**.
+
+Still missing: `delta T,delta R` columns; their time/spatial derivatives;
+Taylor response of `n(T+delta T)` and `alpha(T+delta T)`; and the native
+matter/EH/HR pre-Schur constrained action. No kinetic or fold verdict follows.
