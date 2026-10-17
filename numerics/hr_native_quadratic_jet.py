@@ -6,9 +6,10 @@ f-metric is pulled back from its native chart by
     T=t+sigma(t) r^2/2, R=(1+mu(t)) r,
 
 with local Jacobian (1+sigma_dot*r^2/2, sigma*r; mu_dot*r,1+mu).
-The native lapse/scale factor are held at their central time value. Thus the
-r=0 Hessian is exact while r>0 is an explicitly frozen-background chart
-control, NOT the full on-shell time-dependent O(r^2) action.
+The native lapse/scale factor are expanded through a supplied second-order
+background Taylor jet at T=t+sigma*r^2/2. With zero rate inputs they remain
+frozen. This does not yet include perturbations of T or R, nor all of the
+on-shell O(r^2) action.
 
 Variable order: (Phi_g,B_g,psi_g,E_g, Phi_f,B_f,psi_f,E_f).
 Neither EH nor matter action is included. No finite-mu propagation or fold
@@ -80,7 +81,9 @@ class _Jet:
 
 def native_hr_scalar_jet(*,N:float,a:float,n:float,alpha:float,k:float,
                          m2:float,Mg2:float,betas,mu:float=0.,r:float=0.,
-                         sigma_r:float=0.,sigma_dot:float=0.,mu_dot:float=0.) -> NativeHRScalarJet:
+                         sigma_r:float=0.,sigma_dot:float=0.,mu_dot:float=0.,
+                         n_dot:float=0.,alpha_dot:float=0.,
+                         n_ddot:float=0.,alpha_ddot:float=0.) -> NativeHRScalarJet:
     """Return exact potential, gradient and quadratic Hessian in native fields.
 
     Coordinates are local g-comoving cosmic time and radial position. The
@@ -89,11 +92,17 @@ def native_hr_scalar_jet(*,N:float,a:float,n:float,alpha:float,k:float,
     Native f fields are pulled through the finite-mu spherical chart.
     """
     beta=tuple(float(v) for v in betas)
-    values=(N,a,n,alpha,k,m2,Mg2,mu,r,sigma_r,sigma_dot,mu_dot,*beta)
+    values=(N,a,n,alpha,k,m2,Mg2,mu,r,sigma_r,sigma_dot,mu_dot,
+            n_dot,alpha_dot,n_ddot,alpha_ddot,*beta)
     if len(beta)!=5 or not all(math.isfinite(float(v)) for v in values):
         raise ValueError('inputs must be finite and betas have length five')
     if min(N,a,n,alpha,Mg2)<=0 or k<0 or m2<0 or mu<=-1 or r<0:
         raise ValueError('invalid lapse, scale, mass, radial Jacobian or radius')
+    time_offset=0.5*sigma_r*r*r
+    n=n+n_dot*time_offset+0.5*n_ddot*time_offset*time_offset
+    alpha=alpha+alpha_dot*time_offset+0.5*alpha_ddot*time_offset*time_offset
+    if n<=0 or alpha<=0:
+        raise ValueError("native background Taylor jet left positive lapse/scale branch")
     Tt=1+0.5*sigma_dot*r*r
     Tr=sigma_r*r
     Rt=mu_dot*r
