@@ -321,3 +321,39 @@ Candidate-C linear De Felice oracle and the nonlinear homothetic Aoki
 `K_S,c_S^2` oracle after reduction before approaching fold 1.
 
 `GATE_2B = OPEN`.
+
+## 16. 2026-10-17 — regular radial profile projection (new restart head)
+
+Added `numerics/hr_stueckelberg_profile_pullback.py` and corresponding tests.
+This is a **kinematic interface** from a smooth spherical trial profile
+`deltaT=T(t)F(r), deltaR=r L(t)F(r)` to the six chart jets in the newly
+validated finite-mu 14x14 native HR interaction Hessian.
+
+The new 14x12 map yields a local projected 12x12 interaction-only quadratic
+form in eight native metric coordinates and `(T,L,Tdot,Ldot)`. A regular
+`j0(kr)=sin(kr)/(kr)` profile is used only as a control of the map/center.
+The complete gradient and Hessian transform consistently.
+
+Fresh reconstructed local verification on three HR modules:
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_stueckelberg_profile_pullback.py tests/test_hr_native_stueckelberg_jet.py tests/test_hr_native_quadratic_jet.py`
+=> **24 passed** (JAX-dependent tests optional). The new profile cycle was
+witnessed RED with an unimplemented stub and GREEN after implementing it.
+
+**Important:** this is still not the Aoki physical eigenprofile or a complete
+on-shell six-field action. No new physical `K_S`, `c_S^2`, or fold verdict
+has been derived from this trial profile.
+
+**Immediate next action for autonomous continuation:**
+1. Build a coherent compact Fourier/spherical profile integral of the
+   finite-mu native interaction, with background time drift and the full
+   pullback of native perturbation-field rates;
+2. insert it *before* the four metric constraints in the validated
+   pre-BD `(Y1,Y2,L,T,p_g,p_f)` augmented action, with EH and both
+   dust phase pairs retained;
+3. require **both** previously validated independent oracles:
+   finite-H Candidate-C `mu->0` De Felice linear principal scalar, and
+   homothetic nonlinear Aoki `K_S,c_S^2`;
+4. only after both pass, evaluate the true reduced kinetic and gradient
+   coefficients on Candidate C through the first fold.
+
+`GATE_2B = OPEN`; repository-wide regression is still unavailable.
