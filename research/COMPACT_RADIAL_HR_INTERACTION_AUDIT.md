@@ -89,3 +89,35 @@ Therefore H_compact eigenvalues must **never** be interpreted as physical ghost 
 5. Only after both pass, approach Candidate-C first fold a≈0.0301646 and test the actual reduced kinetic and gradient operators before trying a crossing trajectory.
 
 Gate 2B remains **OPEN**. This progress must not be conflated with completing the theory.
+
+
+## Incremental 2026-10-18 — native f-field sampling-rate correction (separate algebraic gate)
+
+The missing displaced-time and displaced-radius sampling term is now isolated **locally**, without mixing it into the compact 12x12 action or modifying the validated original 14x14 jet.
+
+New:
+- `numerics/hr_native_field_sampling.py`;
+- `tests/test_hr_native_field_sampling.py`.
+
+For each of the four native f scalar metric perturbations `q_i=(Phi_f,B_f,psi_f,E_f)`, expand around the background chart position `(T0,R0)`:
+
+`q_i(T0+deltaT,R0+deltaR)=q_i(T0,R0)+q_{i,T} deltaT + q_{i,R} deltaR+O(3)`,
+
+where `deltaR=r*deltaR_over_r` and `q_{i,R}` is differentiated in the **f-native** radial coordinate, not the common-chart radius.
+
+If `g_i` is the already validated local interaction gradient with respect to `q_i`, this contributes exact quadratic couplings
+
+`H[deltaT,q_{i,T}]=g_i`,
+`H[deltaR_over_r,q_{i,R}]=r*g_i`.
+
+All other new blocks vanish at quadratic order. The resulting **22x22** matrix extends the 14x14 local interaction Hessian without changing its principal block. These eight field-derivative coordinates are auxiliary jet placeholders and are NOT eight additional propagating fields.
+
+Independent targeted reconstructed local command:
+
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_native_field_sampling.py tests/test_hr_compact_radial_interaction.py`
+
+=> **11 passed** (5 sampling + 6 compact). Tests establish block preservation, exact second-order Taylor chain rule, beta0 separation, central radial limit and input guards.
+
+**New remaining RED:** pull back these eight f-native derivatives to coherent compact spatial/time amplitudes, respecting the moving native radial coordinate `R=(1+mu(t))r` and its time derivative. This requires the chain rule for the time dependence of the profile itself, not merely `q_{i,T}=dot(amplitude)*F(r)`. Only after this projection should the sampling correction enter the 12/16-dimensional compact action; EH and both dust sectors remain to be assembled. The physical De Felice/Aoki oracles are still RED.
+
+Scientific gate unchanged: **Gate 2B OPEN**; no physical fold-crossing conclusion.
