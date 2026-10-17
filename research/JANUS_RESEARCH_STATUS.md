@@ -403,3 +403,12 @@ Two new independent *interaction-only* geometry/chain-rule controls have been ad
 **The single authoritative restart record is `research/GATE2B_LATEST_RESTART.md`, section 18.** The detailed scientific caveats and next mathematical step are in `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md`.
 
 Branch policy remains unchanged: active work only on `research/gate2b-nonhomothetic-transfer`, with `main` retained as a stable baseline and `research/v2-flrw` archived intact.
+
+
+## Addendum 2026-10-18 — full compact beta4 Ward checked on exact GitHub sources
+
+New **interaction-only**, two-route Ward acceptance gate is now GREEN, documented in research/BETA4_SPACETIME_WARD_AUDIT.md. The explicit full spacetime beta4 f-volume change-of-variables integral and the existing finite-mu 22x22 native HR interaction jet agree after compact time/radial integration, including perturbation-field transport. Removing sampling fails with nonzero mixed residuals, providing a discriminating negative control. Four f-native scalar directions were audited.
+
+**27 local targeted tests passed** on an exact-hash-verified copy of six relevant GitHub modules/tests. The full repository suite has NOT been run, and no physical kinetic/gradient/fold verdict follows. No cosmological validation of JANUS-R or external JHR manuscript is claimed.
+
+**Authoritative next checkpoint:** LATEST_RESTART.md at repository root. Full EH + TWO dust phase + HR action assembly remains the active RED step. Must pass both De Felice and Aoki physical limits on one constrained finite-mu action before evaluating the Candidate-C first fold.
