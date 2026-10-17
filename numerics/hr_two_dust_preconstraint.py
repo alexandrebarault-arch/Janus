@@ -102,7 +102,7 @@ def two_dust_phase_compact_hessian(*,radius,quadrature_order=24,
         shift_g=Fr*_e(1)
         Hg=_dust_kernel(
             rho=rho_g,lapse=n_g,scale=a_g,
-            measure=4.*math.pi*n_g*a_g**3*r*r,
+            measure=n_g*a_g**3*r*r,
             momentum=p_g,phase=phase_g,phase_rate=rate_g,
             phase_radial=rad_g,Phi=phi_g,shift=shift_g,
             log_phidot_rate=log_phidot_rate_g)
@@ -118,7 +118,7 @@ def two_dust_phase_compact_hessian(*,radius,quadrature_order=24,
         shift_f=Fr*_e(5)
         Hf=_dust_kernel(
             rho=rho_f,lapse=n_f,scale=a_f,
-            measure=4.*math.pi*D*n_f*a_f**3*native_r*native_r,
+            measure=D*n_f*a_f**3*native_r*native_r,
             momentum=p_f,phase=phase_f,phase_rate=rate_native,
             phase_radial=radial_native,Phi=phi_f,shift=shift_f,
             log_phidot_rate=log_phidot_rate_f)
