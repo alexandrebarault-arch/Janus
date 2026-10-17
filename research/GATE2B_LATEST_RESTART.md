@@ -227,3 +227,48 @@ Verification in the reconstructed local test workspace: `python -m pytest -q tes
 **Scope warning:** these are eigenvalue-space algebraic derivatives, not yet derivatives of the full pullback `S=sqrt(g^-1 f)` with off-diagonal temporal/radial perturbations, and not a validated finite-mu dynamical action. They may be used only as an independent algebraic oracle for the forthcoming HR Hessian insertion.
 
 Immediate next RED: construct the exact finite-mu HR pre-metric Hessian in the native augmented variables, differentiate the full common-chart square root including the off-diagonal radial block, and demonstrate that its `mu -> 0` Hessian equals the previously validated augmented linear HR action before attempting a finite-mu fold diagnosis.
+
+## 13. 2026-10-17 — exact finite-mu native HR metric quadratic jet
+
+**New tested deliverables:**
+
+- `numerics/hr_native_quadratic_jet.py`;
+- `tests/test_hr_native_quadratic_jet.py`;
+- `research/NONHOMOTHETIC_HR_JET_AUDIT.md`.
+
+A second-order Taylor-jet evaluator computes the exact native spherical HR
+interaction potential, gradient, and complete 8x8 **metric-only** quadratic
+Hessian at nonzero `mu` without perturbation-amplitude differencing.
+
+The strictly central `r=0` Hessian recovers the De Felice Eq. (45)-(46)
+quadratic HR interaction at `mu=0` (ALL lapse/shift/trace/shear variables).
+At finite `mu` the central interaction-only identity is reproduced with
+`alpha_eff=alpha*(1+mu)`. Independent JAX x64 Hessians also agree away
+from the center, along with beta0/beta4 sector decoupling.
+
+**Fresh reconstructed local verification:**
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_native_quadratic_jet.py`
+=> **10 passed** (JAX tests optional if not installed).
+
+**Important limitation:** at `r>0`, this helper holds native `n,alpha`
+at the center time and does **not** retain their shift-induced time drift;
+the oscillatory `delta T,delta R` columns of the Hessian are **not yet
+implemented**. Odd radial metric-shift terms start at `O(r)` and cannot
+be mistaken for already phase-averaged Fourier coefficients. No new
+full nonlinear/kinetic/gradient stability verdict follows.
+
+**Updated immediate RAF (supersedes section 10's first implementation substep):**
+
+1. Promote the new native HR jet to a full `delta T,delta R` +
+   native metric **pre-Schur** Hessian, including `n(T),alpha(T)` drift
+   and the `O(r^2)` background expansion; respect Fourier phases/parity.
+2. Compare at `mu->0` with the independently validated
+   `direct_native_augmented_transform` / De Felice Candidate-C
+   linear interaction block.
+3. Match the homothetic Aoki compact-support nonlinear
+   `K_S,c_S^2` oracle **after** four metric constraints.
+4. Then — and only then — calculate the finite-mu canonical/gradient
+   matrices near fold 1, retaining both dust phase pairs.
+
+**Gate 2B remains OPEN.** This was a local targeted RED/GREEN; full-worktree
+regression has not yet run.
