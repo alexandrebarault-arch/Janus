@@ -410,3 +410,14 @@ After this projection: assemble full Einstein-Hilbert and two-dust canonical act
 **Resume order:** section 18 -> `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md` (last addendum) -> the two new numerics modules/tests -> `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
 
 `GATE_2B = OPEN`. Main stays unchanged; work on `research/gate2b-nonhomothetic-transfer`.
+
+
+## 19. 2026-10-18 — beta4 full spacetime Ward verified (current head)
+
+Read the root LATEST_RESTART.md **first** and research/BETA4_SPACETIME_WARD_AUDIT.md for full derivation and numerical controls. New Python sources/tests: numerics/hr_beta4_spacetime_ward.py, numerics/hr_beta4_native_jet_ward.py, tests/test_hr_beta4_spacetime_ward.py, tests/test_hr_beta4_native_jet_ward.py.
+
+The finite-mu native interaction Hessian WITH f-field sampling obeys the beta4 f-volume Ward identity **after compact time and radial integration**, independently matched to a separate exact finite-amplitude coordinate transformation. The exact mixed terms cancel to order 1e-17 in the diagnostic; intentionally removing sampling leaves a nonzero residual. The f-native spatial trace contributes 3x the lapse coefficient; shift and traceless shear have zero linear native-volume source.
+
+**27 targeted tests passed in the reconstructed local workspace using GitHub-hash-identical versions of the six relevant existing/new modules/tests.** This is not a clean full worktree or an Actions pass. An indexing bug introduced during extension to four f-native scalar channels caused four temporary RED tests and was corrected; this was a test harness issue.
+
+**Physical scientific verdict unchanged: GATE_2B OPEN.** The beta4-only off-shell geometric Ward identity is NOT the final EH+HR+two-dust constrained action. Now implement that one complete action; pass finite-H mu->0 De Felice and homothetic nonlinear Aoki scalar oracles; only then consider fold 1. Keep main and v2-flrw untouched.
