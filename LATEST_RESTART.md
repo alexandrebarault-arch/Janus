@@ -1,3 +1,25 @@
+## CURRENT CHECKPOINT — 2026-10-18, compact spacetime beta4 Ward
+
+**Read FIRST:** research/BETA4_SPACETIME_WARD_AUDIT.md.
+
+Four new committed files:
+- numerics/hr_beta4_spacetime_ward.py
+- numerics/hr_beta4_native_jet_ward.py
+- tests/test_hr_beta4_spacetime_ward.py
+- tests/test_hr_beta4_native_jet_ward.py
+
+**GREEN only for the off-shell beta4 geometric identity** sqrt(-g)e4(sqrt(g^-1 f))=sqrt(-f) after full compact time/radial integration. Two independent routes agree: direct f-volume variation and the already committed 22x22 native HR jet with coherent native f-field time/radial sampling. If f-field sampling is deliberately omitted, mixed chart/field residuals are nonzero (~+7.13598e-3 and +6.0751e-4 in negative-sign HR jet conventions). Added the f spatial trace factor-3 control and zero linear shift/shear source.
+
+**Actual local targeted verification:** PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests -> 27 passed. The EXACT two existing native HR prerequisite files plus the four new source/test files were matched to live GitHub SHA with git hash-object before final rerun. This is NOT the repository-wide suite (GitHub clone DNS blocked; Actions disabled).
+
+**RED → GREEN incident documented:** while extending field controls the new test harness temporarily reused the field index as the chart-mode loop index, causing four failing tests. Corrected to mode_index; all 27 rerun passed. Do not interpret this diagnostic coding error as physical instability.
+
+**NEXT EXACT RED:** coherent **Einstein–Hilbert + Hassan–Rosen + TWO dust phase** compact spacetime action on an on-shell non-homothetic background. Check beta4 Ward throughout assembly, all boundary/tadpole terms, then four metric constraints and time-dependent BD-null reduction, preserving both dust canonical pairs. Require BOTH the finite-H mu->0 De Felice physical scalar and homothetic nonlinear Aoki K_S,c_S² oracles before any Candidate-C first-fold kinetic/gradient verdict.
+
+**Scientific verdict remains GATE_2B=OPEN; Janus-R not validated.** Preserve JHR external manuscript critical audit as a separate line. Work ONLY on research/gate2b-nonhomothetic-transfer, not main/v2-flrw.
+
+---
+
 # JANUS Gate 2B — point de reprise prioritaire
 
 Date: 2026-10-18
