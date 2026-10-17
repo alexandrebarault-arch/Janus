@@ -161,3 +161,55 @@ Aoki limits *after* constrained reduction, before inspecting Candidate-C
 fold 1.
 
 `GATE_2B = OPEN`.
+
+## 2026-10-17 follow-up — regular spherical profile pullback
+
+New committed files:
+- `numerics/hr_stueckelberg_profile_pullback.py`;
+- `tests/test_hr_stueckelberg_profile_pullback.py`.
+
+For an explicitly stated, smooth **control profile** (not an assumed
+physical eigenfunction),
+
+`deltaT(t,r)=T(t)*F(r)`,
+`deltaR(t,r)=r*L(t)*F(r)`,
+
+the six local Jacobian/angle jets are now derived from only four
+independent local amplitudes `(T,L,Tdot,Ldot)`:
+
+`deltaT=T F`,
+`deltaT_t=Tdot F`,
+`deltaT_r=T F_r`,
+`deltaR_t=r Ldot F`,
+`deltaR_r=L(F+r F_r)`,
+`deltaR_over_r=L F`.
+
+A 14x12 exact linear map pulls the 14-variable HR potential **gradient
+and Hessian** into a local 12-variable interaction block (8 native
+metric variables plus 4 coherent scalar amplitudes). The regular
+spherical test profile is `F=j0(kr)=sin(kr)/(kr)` with a controlled
+small-radius expansion; at `r=0` it preserves
+`deltaR_r=deltaR_over_r=L` and `deltaT_r=deltaR_t=0`.
+
+Five new regression tests cover the radial derivative, center, linear
+map, exact equality of quadratic forms under pullback, and domain
+guards. Fresh targeted reconstructed-workspace command:
+
+`PYTHONPATH=. OPENBLAS_NUM_THREADS=1 pytest -q tests/test_hr_stueckelberg_profile_pullback.py tests/test_hr_native_stueckelberg_jet.py tests/test_hr_native_quadratic_jet.py`
+
+**24 passed.** No clean full-repository suite was available.
+
+**Hard limitation:** j0 is a kinematic trial radial shape. It is not
+the physical Aoki pi mode, does not replace compact-support radial/time
+integration or the two gravitational and dust actions, and cannot by
+itself determine a dispersion relation. The pointwise 12x12 block
+must NOT be treated as the late 6D canonical transfer matrix.
+
+**Next exact RAF:** insert the native interaction *before metric Schur*
+in the complete dust+EH augmented action, ensuring correct
+space/time integration and f-metric perturbation rate pullbacks.
+Reproduce the Candidate-C mu->0 De Felice finite-H mode and the
+homothetic nonlinear Aoki kinetic/gradient coefficients with one
+coherent reducer. Then test Candidate C near the first fold.
+
+`GATE_2B = OPEN`.
