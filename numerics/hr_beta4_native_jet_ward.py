@@ -25,15 +25,22 @@ class NativeBeta4Ward:
     mixed_sampling_contribution: np.ndarray
     jacobian_min: float
     quadrature_order: int
+    native_field: str
 
 
-def native_beta4_mixed_ward(*,time_radius=.4,radial_radius=.6,order=32):
+def native_beta4_mixed_ward(*,time_radius=.4,radial_radius=.6,order=32,
+                            native_field="lapse"):
     """Calculate mixed (chart deformation, f-native lapse) derivatives.
 
     The action normalization is m^2 Mg^2 = 1, beta4=1, with the native
     HR interaction sign L_int = -sqrt(-g)*sum beta_n e_n. Thus compare
     with MINUS the positive beta4 volume Ward coefficients.
     """
+    native_fields={"lapse":4,"shift":5,"trace":6,"shear":7}
+    if native_field not in native_fields:
+        raise ValueError("unknown native f metric mode")
+    idx=native_fields[native_field]
+    deriv_idx=idx-4
     t,r,weights=_mesh(time_radius,radial_radius,order)
     complete=np.zeros(2)
     frozen=np.zeros(2)
@@ -63,9 +70,9 @@ def native_beta4_mixed_ward(*,time_radius=.4,radial_radius=.6,order=32):
             q_T=.45+.20*R*R
             q_R=(.60+.40*T)*R
             v=np.zeros(22)
-            v[4]=q;v[14]=q_T;v[18]=q_R
-            vf=v.copy();vf[14]=vf[18]=0
-            for idx,kind in enumerate(('time','radial')):
+            v[idx]=q;v[14+deriv_idx]=q_T;v[18+deriv_idx]=q_R
+            vf=v.copy();vf[14+deriv_idx]=vf[18+deriv_idx]=0
+            for mode_index,kind in enumerate(('time','radial')):
                 dT,dR,dTt,dTr,dRt,dRr=_shift_fields(
                     t[i:i+1,:1],r[:1,j:j+1],time_radius,radial_radius,kind
                 )
@@ -76,11 +83,12 @@ def native_beta4_mixed_ward(*,time_radius=.4,radial_radius=.6,order=32):
                 # Local jet density is per unit dOmega after r^2 factoring.
                 # weights from _mesh already contain 4*pi*dt*dr.
                 weight=float(weights[i,j])*ri*ri
-                complete[idx]+=weight*(v@sampled.hessian@disp)
-                frozen[idx]+=weight*(vf@sampled.hessian@disp)
-                sampling[idx]+=weight*((v-vf)@sampled.hessian@disp)
+                complete[mode_index]+=weight*(v@sampled.hessian@disp)
+                frozen[mode_index]+=weight*(vf@sampled.hessian@disp)
+                sampling[mode_index]+=weight*((v-vf)@sampled.hessian@disp)
     return NativeBeta4Ward(
         mixed_complete=complete,mixed_frozen_sampling=frozen,
         mixed_sampling_contribution=sampling,
         jacobian_min=jac_min,quadrature_order=order,
+        native_field=native_field,
     )
