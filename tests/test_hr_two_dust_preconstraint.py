@@ -107,3 +107,24 @@ def test_singular_chart_and_invalid_dust_rejected():
     with pytest.raises(ValueError): two_dust_phase_compact_hessian(**dict(P,mu=-1.))
     with pytest.raises(ValueError): two_dust_phase_compact_hessian(**dict(P,rho_f=-.1))
     with pytest.raises(ValueError): two_dust_phase_compact_hessian(**dict(P,sigma_dot=-2000.))
+
+def test_native_tilt_rate_square_matches_independent_integral():
+    H=two_dust_phase_compact_hessian(**P)
+    x,w=np.polynomial.legendre.leggauss(60)
+    R=P['radius'];rr=R*(x+1)/2
+    F=np.array([compact_scalar_profile(t,R)[0] for t in rr])
+    Rr=1+P['mu'];Tr=P['sigma']*rr
+    D=(1+.5*P['sigma_dot']*rr*rr)*Rr-Tr*(P['mu_dot']*rr)
+    expected=-4*math.pi*P['n_f']**3*P['a_f']*P['rho_f']*Rr**2
+    expected*=np.sum(R*w/2*rr**2*Tr**2*F**2/D)
+    assert H[21,21]==pytest.approx(expected,rel=2e-11)
+    assert expected<0
+
+def test_two_independent_canonical_momenta_survive_transport():
+    H=two_dust_phase_compact_hessian(**P)
+    # The independent matter momenta p_g and p_f remain coupled to
+    # independent common-time velocities Y_gdot and (Y_fdot-Tdot).
+    D=H[np.ix_([17,19],[20,21])]
+    assert np.linalg.matrix_rank(D,tol=1e-12)==2
+    np.testing.assert_allclose(D,np.diag(np.diag(D)),atol=1e-14)
+    assert H[19,10]==pytest.approx(-D[1,1],rel=1e-12)
