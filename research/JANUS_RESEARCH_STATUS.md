@@ -331,3 +331,30 @@ First GREEN target: recover Aoki `K_S` and `c_S^2` from the fully reduced homoth
 Second GREEN target: recover the Candidate-C De Felice linear principal scalar in the `mu -> 0` limit.
 
 Do not tune late matching variables and do not force an algebraic branch switch through the fold interval.
+
+## Addendum — 2026-10-17: native finite-mu HR interaction jet
+
+The active branch now includes `numerics/hr_native_quadratic_jet.py`,
+`tests/test_hr_native_quadratic_jet.py` and the detailed
+`research/NONHOMOTHETIC_HR_JET_AUDIT.md`.
+
+This independently tested exact second-order interaction-jet construction
+extends the **native metric portion** of the HR Hessian to finite nonlinear
+`mu`. Its central `mu=0` limit reproduces all eight De Felice Eq. (45)-(46)
+scalar potential directions (including lapse, shift, trace and shear); a
+separate JAX Hessian confirms finite-mu/nonzero-radius coefficients. Targeted
+verification was **10 passed** in a reconstructed workspace.
+
+This is **not yet** the full finite-mu cosmological scalar action: the
+oscillatory Stückelberg map variables, `n(T),alpha(T)` background drift,
+space/time profile integration and the EH/dust constrained reduction remain
+open. The pointwise `r>0` interaction Hessian contains radial-parity/phase
+terms which cannot be used directly as a Fourier transfer matrix.
+
+**Current RAF:** promote the native HR interaction Hessian to the entire
+pre-metric `(Y1,Y2,L,T,p_g,p_f)` augmented action at finite `mu`, retaining
+its time-dependent on-shell and compact-support structure. Pass the
+`mu->0` Candidate-C De Felice limit and homothetic Aoki nonlinear
+`K_S,c_S^2` limits before evaluating the first fold.
+
+**Gate 2B: OPEN; no unique late transfer or validated fold-crossing verdict.**
