@@ -110,3 +110,17 @@ def test_bad_chart_and_domains_rejected():
     with pytest.raises(ValueError):sampled_compact_native_map(**dict(kw,sigma_r=40.,mu_dot=40.))
     with pytest.raises(ValueError):integrate_sampled_compact_hr_interaction(radius=0,**P)
     with pytest.raises(ValueError):integrate_sampled_compact_hr_interaction(radius=.3,quadrature_order=7,**P)
+
+
+def test_beta4_is_independent_of_g_metric_amplitudes():
+    z=integrate_sampled_compact_hr_interaction(radius=.21,quadrature_order=14,
+        **dict(P,betas=(0.,0.,0.,0.,1.)))
+    np.testing.assert_allclose(z.gradient[:4],0.,atol=1e-12)
+    np.testing.assert_allclose(z.hessian[:4,:],0.,atol=1e-12)
+
+def test_pure_hr_sampling_has_no_quadratic_f_rate_block():
+    z=integrate_sampled_compact_hr_interaction(radius=.23,quadrature_order=16,**P)
+    # Sampling only makes (q_dot)*chart-displacement couplings in HR.
+    # A physical tensor/scalar kinetic matrix needs EH and dust constraints.
+    np.testing.assert_allclose(z.hessian[12:16,12:16],0.,atol=1e-13)
+    assert np.linalg.norm(z.hessian[12:16,8:12])>1e-7
