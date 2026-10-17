@@ -358,3 +358,32 @@ its time-dependent on-shell and compact-support structure. Pass the
 `K_S,c_S^2` limits before evaluating the first fold.
 
 **Gate 2B: OPEN; no unique late transfer or validated fold-crossing verdict.**
+
+## Addendum — 2026-10-17 (suite): 14x14 HR Stueckelberg + profil regulier
+
+The earlier 8x8 metric-only finite-mu HR interaction jet is now extended
+to a **14x14 interaction-only Hessian** with six independent local chart
+derivative/angular jets. A regular spherical trial profile imposes the
+actual kinematic constraints between these six local jets and four
+amplitudes `(T,L,Tdot,Ldot)` through a 14x12 pullback. This produces
+a local 12x12 interaction-only block before the metric constraints.
+
+Files:
+- `numerics/hr_native_stueckelberg_jet.py`;
+- `numerics/hr_stueckelberg_profile_pullback.py`;
+- their corresponding tests;
+- `research/NONHOMOTHETIC_HR_JET_AUDIT.md`.
+
+**Targeted reconstructed verification: 24 passed**, including independent
+JAX x64 Hessian controls and central De Felice quadratic interaction tests.
+These are not full-worktree test results.
+
+**Still unresolved:** the coherent on-shell, space/time integrated nonlinear
+action with native perturbation-field drift, EH gravity and two dust phase
+pairs; its four metric constraints and time-dependent BD reduction; both
+physical Aoki/De Felice acceptance oracles *on one fully assembled action*;
+and whether Candidate C can cross the first fold.
+
+For exact next instructions read
+`research/GATE2B_LATEST_RESTART.md` section 16.
+**Gate 2B remains OPEN.**
