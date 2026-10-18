@@ -420,3 +420,7 @@ The 22-variable compact spatial **partial** Hessian now includes both f/g dust c
 ## Addendum 2026-10-18 — flat native EH/HR/two-dust interface
 
 Both native flat-spatial EH ADM lapse/shift Hessians integrated on the same non-homothetic f background chart and compact radius with HR plus two dust phase pairs. 10 new targeted tests passed; 47 tests in local reconstructed suite. Full scalar EH and chart variation NOT included; no constrained physical mode result. See root LATEST_RESTART.md and research/FLAT_EH_HR_TWO_DUST_BRIDGE_AUDIT.md. GATE_2B=OPEN.
+
+## Addendum 2026-10-18 — full native scalar ADM EH on untilted chart
+
+Native spherical Einstein–Hilbert quadratic action now includes lapse, shift, spatial trace/shear and their rates for BOTH sectors, in restricted T=t and constant radial ratio 1+mu. 11 direct EH tests and 2 mock-only HR/two-dust wrapper tests pass in a fresh focused workspace (13 total). A cross-HR metric audit corrected the f E and E_dot m² amplitude transformation. No full real combined action run or physical reduction/oracles yet. GATE_2B_OPEN. Details research/FULL_NATIVE_SCALAR_EH_UNTILTED_AUDIT.md and root LATEST_RESTART.md.
