@@ -535,3 +535,19 @@ All five action integrals obey the finite **diagonal** compact chart Ward identi
 
 **NEXT EXACT RED:** on-shell Candidate-C bimetric+dust background/tadpoles; translate new covariant matter clock/multiplier to exact common-time two-dust canonical phase pairs, form same time-supported physical scalar quadratic action, impose metric auxiliaries/BD-null canonical reduction, pass SAME-ACTION De Felice finite-H mu→0 and nonlinear Aoki KS,cS² oracles (both roots) before Candidate-C first fold. No ghost/fold/CMB validation claimed.
 
+
+## 28. 2026-10-18 — genuine Candidate-C dust-only HOMOGENEOUS on-shell Routhian and temporal tadpoles (LATEST)
+
+**FIRST READ:** root `LATEST_RESTART.md` (step 28) and `research/MINISUPERSPACE_ONSHELL_STEP28_AUDIT.md`. Code `numerics/hr_minisuperspace_onshell.py`; tests `tests/test_hr_minisuperspace_onshell.py`; `scripts/verify_gate2b_step28.py` (17 independent new tests).
+
+The prior unified FIVE-sector Step27 compact spacetime trial action was OFF SHELL. Step28 derives the exact homogeneous FRW positive-EH g+f, full all-beta HR, TWO fixed-charge dust Routhian on ONE physical homogeneous set of scale factors/lapses. Crucial point: the covariant dust on-shell Lagrangian vanishes, but its PARTIAL lapse derivative does not; eliminating the dust clock before variation destroys Friedmann dust sources. Correct canonical Routh reduction yields independent -Ng Cg -Nf Cf and retains two matter canonical momenta.
+
+Both lapse Friedmann constraints, both independent scale Euler equations, the dynamical Bianchi relation and both dust conservation laws satisfy strict on-shell tests on the **radiation-free Candidate-C dust variant only**, using implicit y_N,y_NN from the exact quartic. Re-solve present y0 after radiation removal: 0.5568825591873054; E(1)=0.9999551638376833. At a=1,.8,.4,.2,.09,.05,.03 max 5-component homogeneous residual ~5.4e-13. Independent finite differences of original ONE Routhian reproduce four Euler residuals.
+
+**More important:** integrate the action in actual g cosmic time along a numerically solved Candidate-C homogeneous trajectory, with independent compact variations of (a,b,Ng,Nf). Four action-level temporal tadpoles vanish: at 26 points / width .025 / step 1e-6, approximately (-1.804e-10,+1.388e-11,0,-6.94e-12). Varying Nf by 2% or f conserved dust charge deliberately breaks f lapse constraint; wrong early dust on-shell substitution is an independent negative regression. A preliminary overlarge finite-difference h produced O(h²) error (10^-7/10^-8), corrected by numerical refinement, not a physical equation change.
+
+**Earlier relative Stückelberg mu folds** at a~.0301646 and .0491246 occur in a separate nonlinear scalar equation. The background y(a) remains regular there but gives NO evidence of a physical helicity-0 fold crossing.
+
+**Actually executed new tests:** 17/17 PASS in NEW standalone /mnt/data/janus28 (NOT the earlier 75 tests). Step28 JSON runner passed 17, origin `standalone_focused_workspace`, `full_repository_regression=false`, physical DeFelice and Aoki `NOT_RUN`, `GATE_2B OPEN`. Four new source/test/runner/audit files exactly match the executed local bytes and GitHub blobs. Earlier 75-step suite **not rerun here**, so DO NOT claim 92 combined tests in one run. No complete Git checkout or GitHub Actions run.
+
+**NEXT EXACT RED:** insert this on-shell dust-only Candidate-C branch into the ACTUAL Step27 full nonhomothetic common-space-time action with correctly transformed f time/radius chart, dust phase clock variation and boundary terms; cancel all first variations; construct one dynamical quadratic scalar action, reduce metric auxiliary and time-dependent BD constraints retaining both dust pairs, reproduce SAME-ACTION De Felice mu→0 finite-H and homothetic nonlinear Aoki K_S,c_S², THEN approach fold. `GATE_2B=OPEN`, `JANUS_R_NOT_VALIDATED`.
