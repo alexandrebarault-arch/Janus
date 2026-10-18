@@ -1,3 +1,23 @@
+# JANUS — RESTART POINT / CURRENT HEAD: STEP 25 (2026-10-18)
+
+**READ FIRST:** research/EH_CHART_QUADRATIC_STEP25_AUDIT.md.
+**Reproduction:** python scripts/verify_gate2b_step25.py gate2b-step25-report.json.
+**Code:** numerics/hr_eh_full_scalar_quadratic_chart.py, tests/test_hr_eh_full_scalar_quadratic_chart.py.
+
+## 25. f-Einstein–Hilbert exact spacetime 6×6 chart Hessian: isolated gauge-null directions GREEN (LATEST)
+
+New analytic/geometric result: differentiate the **exact nonlinear full native-scalar Einstein–Hilbert ADM+GHY action** on a compact time/radial common domain with respect to six independent amplitudes (deltaT,deltaR,Phi_f,U_f,psi_f,E_f). The chart variations are compact and vanish at outer boundaries. With all native metric field values AND native derivative jets sampled at their moved (T,R) positions, the resulting 6×6 Hessian has both chart rows/columns zero within ~8.7e-13 finite-difference residual while the native 4×4 metric block is substantial (Frobenius norm ~11.089). The metric block itself stays invariant under a finite compact chart deformation to ~4.63e-12.
+
+Reason: first chart variation of D rho(X) is the total divergence div[rho Cof(J) xi] by the Piola identity; it vanishes on the fixed spacetime boundary. Thus the isolated f-EH sector has no independent chart kinetic terms in this native parametrization. This is a **boundary/Noether acceptance control**, NOT the BD constraint or complete coupled physical action. Freezing metric field sampling breaks the null block decisively (up to ~0.312 mixed residual). A separate HR beta1–beta3 compact radial Hessian retains NONZERO relative chart response (chart Hessian Frobenius norm ~0.22018; metric/chart cross ~0.51215), which turns off when m²=0. Its profile/integration differs: the numbers are NOT physical comparable magnitudes.
+
+**Actual executed local focused tests:** PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests => **41 passed** (32 step24 controls + 9 new step25). The new step25 manifest runner independently reports 41 passed / exit_code 0 / origin non_git_workspace_reconstruction / full_repository_regression false / DeFelice and Aoki NOT_RUN / Gate2B OPEN. Three new source/test/runner blobs EXACTLY match live GitHub; historical HR/dust prerequisites remain local algorithmic reconstructions rather than a clean Git checkout. DO NOT claim full repo or external reproduction.
+
+**CURRENT EXACT RED:** one shared time-dependent, on-shell full EH+HR+TWO-dust action with consistent native/common f metric derivative transport and compact boundary treatment. Demand both background dust conservations and all tadpoles zero; derive true metric auxiliary constraints then time-dependent BD-null reduction preserving both dust canonical momenta. From that SAME constrained action pass (a) finite-H mu->0 De Felice scalar and (b) nonlinear homothetic Aoki K_S, c_S² oracles. Only then test Candidate-C fold 1 a≈0.0301646. Do NOT diagonalize off-shell 6×6, 24×24 or 22×22 as physical kinetic matrices.
+
+**Scientific status: isolated full-scalar f-EH chart quadratic GREEN; Gate 2B OPEN; JANUS-R NOT VALIDATED.** Preserve external JHR opposite-sign EH criticism as a separate audit. Commit ONLY on branch research/gate2b-nonhomothetic-transfer, leave main and v2-flrw untouched.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE, ETAPE 24 (2026-10-18)
 
 **READ FIRST:** `research/FULL_SCALAR_EH_CHART_WARD_STEP24_AUDIT.md`.
