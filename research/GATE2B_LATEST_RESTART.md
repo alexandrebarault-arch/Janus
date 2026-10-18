@@ -482,3 +482,17 @@ New files `numerics/hr_eh_spacetime_ward.py`, `tests/test_hr_eh_spacetime_ward.p
 **Actually executed:** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests` => **24 passed** in focused local `/mnt/data/janus-next`: 11 direct EH, 2 mock-backed structure, 4 real provider, 7 new Ward. Existing HR/dust providers were reauthored from GitHub source, preserving algorithms but NOT byte-identical file blobs; new Ward files/test and real-provider tests are exact GitHub hashes. Do not advertise full checkout, full regression, or physical acceptance.
 
 **Next strict RED:** full f scalar EH chart time/radius perturbations, spatial trace/shear, native sampling and compact time integration; full EH Ward; on-shell Candidate-C with two dust phases and tadpoles; metric and BD time-dependent null reduction; both De Felice/Aoki physical oracles on SAME action, then fold. Main/v2-flrw untouched. `GATE_2B=OPEN`.
+
+## 24. 2026-10-18 — full f-native spherical scalar EH chart Ward (LATEST)
+
+**Authoritative restart:** root `LATEST_RESTART.md` (step 24), `research/FULL_SCALAR_EH_CHART_WARD_STEP24_AUDIT.md`. New `numerics/hr_eh_full_scalar_chart_ward.py`, `tests/test_hr_eh_full_scalar_chart_ward.py`, `scripts/verify_gate2b_step24.py`.
+
+An independent exact **nonlinear native spherical ADM+GHY density** now includes all four f-native metric scalar perturbation fields Phi, U, psi, E, with their native spatial first/second and temporal derivatives, positive native Planck sign and regular center. Its spacetime integral is pulled back through an inclined, nonhomothetic (T,R)(t,r) chart including full Jacobian and compact time/radius chart variations. Eight mixed Ward derivatives vanish at <=3.25e-12; freezing native field sampling intentionally breaks all eight channels (minimum residual ~1.10e-5). The simultaneous four-field finite chart deformation changes the integrated native action by ~1.73e-18.
+
+**Independent physical-formula regression:** a six-field finite-difference Hessian of the new nonlinear ADM density agrees with the previously implemented analytic native scalar EH six-field Hessian, and the flat-lapse/shift special case agrees with the independent old ADM primitive. This reduces self-reference risk; the chart integral remains a kinematic identity, not the constrained physics.
+
+**Actual local tests:** 32 passed in reconstructed /mnt/data/janus-next; 8 new, 24 previous focused tests. The Step24 runner also returned exit 0 / 32 passed, emitted source digests and explicitly marked NON_GIT_WORKSPACE_RECONSTRUCTION, full_repository_regression=false, Gate2B=OPEN, both physical oracles NOT_RUN. The three new file Git blob hashes matched GitHub exactly. Existing HR/dust prerequisites reconstructed preserving algorithms, not byte-identical/full clone; Actions disabled and git clone DNS blocked.
+
+**NEXT RED:** full EH chart variation *quadratic action with deltaT/deltaR* in common/native shared compact time basis, with both f metric spatial modes and derivatives, then on-shell Candidate-C background with BOTH dust conservation/tadpole cancellation, four metric auxiliaries and time-dependent BD-null reduction, same-action finite-H mu->0 De Felice and nonlinear Aoki K_S,c_S², only then first fold a≈0.0301646. No physical stability/CMB validation from Ward identity.
+
+**GATE_2B=OPEN; JANUS-R NOT VALIDATED.** Keep main/v2-flrw unchanged.
