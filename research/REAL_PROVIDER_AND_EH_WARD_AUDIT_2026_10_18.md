@@ -126,3 +126,9 @@ This is **NOT** a repository-wide passing suite and **NOT** a full clean Git che
 5. Only then test the first fold near a≈0.0301646 for continuous healthy scalar kinetic and gradient evolution. If an obstruction is found, record an explicit negative Gate-2B verdict instead of fitting arbitrary matching data.
 
 **Scientific verdict:** UNTILTED 24x24 PARTIAL ACTION REAL-ALGORITHM TEST GREEN; f-EH FLRW Lapse WARD GREEN; FULL NONHOMOTHETIC PHYSICAL ACTION OPEN; JANUS-R NOT VALIDATED.
+
+## One-command verification report (added after audit)
+
+`scripts/verify_gate2b_step23.py` runs the four relevant focused pytest files and produces a JSON provenance manifest with SHA-256 digests, test status/count, Python version and whether it is a real Git checkout. On the reconstructed workspace, the script actually returned exit code 0, **24 passed**, with `workspace_origin=non_git_workspace_reconstruction` and null Git HEAD. Its source hash matches GitHub blob `17c7a7693dfd2ed7f0191d8d22b65345da8f952e` exactly. Researchers should run the same command on a clean Git clone, submit the resulting JSON and separately run a full-repository regression. A passing local reconstructed report is not an independent reproduction.
+
+Command: `python scripts/verify_gate2b_step23.py gate2b-step23-report.json`.
