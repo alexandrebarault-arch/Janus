@@ -465,3 +465,8 @@ Actual **fresh focused workspace**: 13/13 passed, comprising 11 direct native EH
 **Exact next RED:** run complete 24-slot composed EH+real HR+real dust on one verified workspace, then extend the full native EH tensor to sigma != 0, mu_dot != 0 with coherent background+perturbation chart transport, boundary terms and diffeo Ward; impose on-shell Candidate-C and both dust background evolutions; then metric/BD constraints and the De Felice/Aoki independent physical limits before fold 1.
 
 Scientific status: FULL_NATIVE_SCALAR_EH_UNTILTED_GREEN, GATE2B_OPEN, JANUS_R_COSMOLOGY_NOT_VALIDATED.
+
+### Pending real HR+two-dust native EH provider test
+
+**NEXT UNEXECUTED FULL-PROVIDER TEST:** tests/test_hr_full_scalar_eh_two_dust_real.py has now been committed. It imports the REAL hr_two_dust_preconstraint module and the new native scalar EH assembly and checks 24x24 block addition, both canonical dust momentum-rate entries, the two new g trace/shear rate channels and positive f Planck scaling. Its exact GitHub blob SHA is 3ecbf81ea429d5475e902cde2b24fd7441204126. This test has been syntax-compiled locally, but NOT executed because the full prerequisite GitHub worktree cannot be cloned in this environment; do not count it among the 13 passed tests. **Immediate resume action: reconstruct/fetch all real provider modules, RUN this test, fix any actual failure, and record full evidence before extending the chart.**
+
