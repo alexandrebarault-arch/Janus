@@ -451,3 +451,17 @@ A restricted 22-amplitude EH+HR+two-dust partial Hessian now includes BOTH posit
 
 **Gate 2B OPEN. Main/v2-flrw untouched.**
 
+
+## 22. 2026-10-18 — full native scalar ADM EH on untilted constant-mu chart (LATEST)
+
+**Immediate first read:** root LATEST_RESTART.md then research/FULL_NATIVE_SCALAR_EH_UNTILTED_AUDIT.md.
+
+New files: numerics/hr_full_scalar_eh_homothetic.py, tests/test_hr_full_scalar_eh_homothetic.py, numerics/hr_full_scalar_eh_two_dust_untilted.py and tests/test_hr_full_scalar_eh_two_dust_untilted.py. The exact six-amplitude native spherical ADM Hessian now includes both spatial scalar trace and traceless shear, intrinsic 3-curvature and all native extrinsic curvature derivatives. Both native sectors integrated in a common compact spatial chart T=t, Rf=(1+mu)r, mu constant. The result adds TWO g-native trace/shear rate slots to the previous 22-field HR+two-dust partial action; f rate slots reused.
+
+**CRITICAL cross-action RED corrected:** f-native E potential and E_dot MUST rescale with (1+mu)^2 under native radial coordinate rescaling, while f shift rescales with (1+mu). Initial f-EH internal coordinate invariance by itself failed to catch the mismatch; an explicit native HR physical metric-shear matching test found it. Both columns were corrected and the radial/angular matching test is now GREEN.
+
+Actual **fresh focused workspace**: 13/13 passed, comprising 11 direct native EH geometry tests and 2 MOCK-backed wrapper/strict-domain tests. Do NOT report the real full EH+HR+dust integration as exercised in this new workspace; no clean full-branch test exists. Prior 47 targeted results belong to the previous reconstructed workspace and were not rerun this session. All four new source/test git blob hashes verified exactly against live GitHub. See audit for hashes.
+
+**Exact next RED:** run complete 24-slot composed EH+real HR+real dust on one verified workspace, then extend the full native EH tensor to sigma != 0, mu_dot != 0 with coherent background+perturbation chart transport, boundary terms and diffeo Ward; impose on-shell Candidate-C and both dust background evolutions; then metric/BD constraints and the De Felice/Aoki independent physical limits before fold 1.
+
+Scientific status: FULL_NATIVE_SCALAR_EH_UNTILTED_GREEN, GATE2B_OPEN, JANUS_R_COSMOLOGY_NOT_VALIDATED.
