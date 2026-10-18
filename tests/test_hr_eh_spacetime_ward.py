@@ -56,3 +56,21 @@ def test_eh_ward_guards():
     with pytest.raises(ValueError):eh_flat_native_spacetime_action(eps_time=float('nan'))
     with pytest.raises(ValueError):eh_flat_native_spacetime_action(eps_radial=5)
     with pytest.raises(ValueError):eh_flat_native_spacetime_action(lapse_amp=-1)
+
+
+def test_native_eh_ward_density_is_repository_adm_primitive():
+    from numerics.spherical_flat_adm_eh import flat_spherical_adm_eh_density
+    from numerics.hr_eh_spacetime_ward import _native
+    # Compare exact nonlinear native ADM lapse perturbation at multiple native
+    # coordinates, with native alpha(T), alpha_T(T), and n(T).
+    for T,R,v in ((.11,.24,.025),(-.18,.33,-.04),(.27,.42,.08)):
+        a=1+.15*T+.035*T*T
+        adot=.15+.07*T
+        n=1+.08*T+.02*T*T
+        q=1+.3*T+.2*R*R+.1*T*R*R
+        native=flat_spherical_adm_eh_density(
+            scale_factor=a,scale_rate=adot,background_lapse=n,
+            r=R,Phi=v*q,shift=0.,shift_r=0.)
+        strength=3*a*adot*adot/n
+        exact=-strength*R*R/np.sqrt(1+2*v*q)
+        assert .5*native==pytest.approx(exact,abs=1e-15)
