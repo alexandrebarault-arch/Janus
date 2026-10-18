@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE, ETAPE 27 (2026-10-18)
+
+**FIRST READ:** `research/UNIFIED_FIVE_SECTOR_SPACETIME_STEP27_AUDIT.md`.
+**One-command reproducibility:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step27.py gate2b-step27-report.json`.
+
+## 27. Real common nonlinear spacetime EH_g + EH_f + HR + 2 covariant dusts (LATEST)
+
+**SIGNIFICANT new structural gate:** there is NOW ONE **off-shell common native-field-space** 2D spacetime integral with five real action densities: positive EH_g and EH_f ADM+GHY, all-beta HR, and two irrotational pressureless covariant dust actions. Same nonhomothetic T(t,r),R(t,r) chart and Jacobians, same exact g/f spherical metric perturbations for ALL terms, same radial/time integration, no double angular factor. Native dust backgrounds separately satisfy rho_g a^3=const, rho_f alpha^3=const, theta_gdot=N_g, theta_f,T=n_f; full coupled gravity background remains OFF SHELL.
+
+The **five independently integrated sector actions** each remain invariant under simultaneous compact DIAGONAL coordinate changes. Under a relative f-native chart displacement EH_g, EH_f, dust_g and dust_f are individually invariant, while **only the HR interaction responds**. The new HR action matches the older independent exact Step26 HR spacetime action at multiple finite chart displacements with factor hr_mass2=0.7. Both native EH lapse/shift specializations reproduce the older independent exact flat spherical ADM density; all native metric components agree with the HR input. At 48-point quadrature baseline 5 pieces are approximately (-0.1013110024,-0.0509346122,-0.8289092689,-0.0044339941,+0.0023538524); total -0.9832350252 (arbitrary dimensionless control). For relative f shift (+.035,-.023), HR alone changes by -1.00718622362e-5; rest remain unchanged to numerical precision.
+
+**Separate exact native dust canonical/Legendre control:** covariant irrotational action -rho sqrt(-g)(g^-1 dtheta dtheta+1)/2 yields p_theta=gamma rho(theta_T-N^R theta_R)/N, Hamiltonian H=N[p²/(2gamma rho)+gamma rho(1+theta_R²/gamma_RR)/2]+N^R p theta_R; on stationary rho it reduces to N p sqrt(1+theta_R²/gamma_RR)+N^R p theta_R. Both native matter momentum/velocity derivatives are positive and rank TWO. This preserves independent pairs in this **native local canonical identity**, NOT an already established common-time canonical reduction on a Candidate-C trajectory.
+
+**ACTUALLY TESTED:** 18 new targeted tests (13 unified sectors, 5 native Legendre) + 57 prior = **75 tests passed**, `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests`. Step27 provenance runner returned exit_code 0/75 passed, workspace_origin **non_git_workspace_reconstruction**, full_repository_regression=false, DeFelice/Aoki NOT_RUN, GATE_2B=OPEN. The six new source/test/runner/audit files have been transferred from the ACTUAL local files and each GitHub blob SHA was compared exactly to local `git hash-object`. **Historical HR/dust prerequisites in this local environment are still algorithm-preserving but not all byte-exact GitHub checkout files.** No full repo/CI or independent review claimed.
+
+**IMMEDIATE SCIENTIFIC RED:** (1) make the now-shared off-shell full action a truly **ON-SHELL Candidate-C** solution satisfying BOTH metric Friedmann equations, HR background and two independent dust conservation and cancel all tadpoles; (2) derive the coherent common-time *quadratic* field/rate Hessian and exact covariant→canonical dust phase pair equivalence, including f chart derivative sampling and compact time boundary terms; (3) eliminate four metric auxiliaries plus time-dependent BD-null variable without dropping either dust pair; (4) pass finite-H mu→0 De Felice and nonlinear homothetic Aoki K_S, c_S² on the SAME reduced physical action. Only THEN assess Candidate-C first fold a≈0.0301646. Never infer physical kinetic signs/ghost freedom from off-shell test Hessians. No JANUS cosmological validity claim.
+
+**VERDICT: FIVE_SECTOR_OFFSHELL_ACTION_GREEN_AS_REGRESSION; GATE_2B=OPEN; JANUS_R_NOT_VALIDATED.** Work only on `research/gate2b-nonhomothetic-transfer`, NOT main/v2-flrw. Preserve separate external JHR tensor ghost criticism.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE: ETAPE 26 (2026-10-18)
 
 **READ FIRST:** `research/COUPLED_DIAGONAL_NOETHER_STEP26_AUDIT.md`. The full nonlinear potential, its four-chart Hessian, and reproducible tests are:
