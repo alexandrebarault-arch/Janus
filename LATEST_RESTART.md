@@ -1,3 +1,21 @@
+# JANUS — CURRENT RESUME HEAD, 2026-10-18 (STEP 23)
+
+**FIRST READ:** research/REAL_PROVIDER_AND_EH_WARD_AUDIT_2026_10_18.md. Code/tests: numerics/hr_eh_spacetime_ward.py; tests/test_hr_eh_spacetime_ward.py; tests/test_hr_full_scalar_eh_two_dust_real.py.
+
+## 23. Real native EH+HR+two-dust integration + independent f EH chart Ward (LATEST)
+
+Previous section 22.1 left the real-provider 24-slot combined action as an UNEXECUTED test. **That test has NOW EXECUTED GREEN**, with the actual HR native Hessian algorithms and both real dust canonical blocks (not a MOCK). Two added real-provider regressions pass: 18/30-point combined radial Hessian/gradient quadrature convergence and m²=0 pure EH+two-dust limit. Independent canonical pairs p_g/Y_gdot and p_f/Y_fdot remain rank 2. The diagnostic gradient is NOT zero (off-shell background), so do not interpret matrix eigenvalues as physical stability.
+
+**Independent NEW f Einstein–Hilbert FLRW spacetime diffeomorphism/Ward control is GREEN:** full ADM native lapse density times complete 2D chart determinant, with time/radial compact displacements and moving native perturbation sampling, integrates to zero mixed variation (~1e-18). If native lapse perturbation sampling is deliberately frozen, nonzero residuals remain (-3.22107248e-4, -2.77619145e-5). Direct finite-displacement action and the repo's native ADM primitive confirm the result. This is a **FLRW lapse-only** control, not the full scalar EH Ward. The two new Ward files were byte SHA-verified against GitHub; direct ADM primitive likewise.
+
+**ACTUAL focused local test run:** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests` => **24 passed** (11 direct EH, 2 mock-assisted structure, 4 real-provider integration, 7 f EH Ward). Existing HR/dust prerequisites had to be manually reconstructed from GitHub tool source: **same algorithms but NOT byte-identical to GitHub blobs** (docstrings/formatting were compacted); therefore this is NOT a clean checkout or full branch regression. Actions disabled; DNS blocks clone. Do not combine this 24 count with previous separate-session counts.
+
+**NEW IMMEDIATE RED:** extend the full 6-variable f-native spherical scalar EH (including shift, spatial trace/shear, their derivatives and f-chart perturbation jets) through inclined T(t,r), R(t,r), with full compact TIME integration and EH diffeo Ward. Then same-action on-shell Candidate-C background, both dust conservation laws, metric auxiliary/BD-null reduction retaining canonical pairs, and TWO physical oracles (finite-H mu->0 De Felice plus homothetic nonlinear Aoki K_S,c_S²) before first fold a≈0.0301646. No kinetic/fold/CMB validation.
+
+**Status: REAL-ALGORITHM UNTILTED PARTIAL ACTION GREEN; EH FLRW LAPSE WARD GREEN; GATE_2B=OPEN; JANUS-R NOT VALIDATED.** Continue ONLY branch research/gate2b-nonhomothetic-transfer; leave main/v2-flrw unchanged. Keep external JHR critical manuscript audit separate.
+
+---
+
 ## 22.1 — Real provider action integration pending (2026-10-18)
 
 **NEXT UNEXECUTED FULL-PROVIDER TEST:** tests/test_hr_full_scalar_eh_two_dust_real.py has now been committed. It imports the REAL hr_two_dust_preconstraint module and the new native scalar EH assembly and checks 24x24 block addition, both canonical dust momentum-rate entries, the two new g trace/shear rate channels and positive f Planck scaling. Its exact GitHub blob SHA is 3ecbf81ea429d5475e902cde2b24fd7441204126. This test has been syntax-compiled locally, but NOT executed because the full prerequisite GitHub worktree cannot be cloned in this environment; do not count it among the 13 passed tests. **Immediate resume action: reconstruct/fetch all real provider modules, RUN this test, fix any actual failure, and record full evidence before extending the chart.**
