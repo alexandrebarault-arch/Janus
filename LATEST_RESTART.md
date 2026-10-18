@@ -1,3 +1,17 @@
+## 23.1 — One-command test/provenance runner (2026-10-18; latest addition)
+
+File `scripts/verify_gate2b_step23.py` was committed and exact SHA verified (Git blob `17c7a7693dfd2ed7f0191d8d22b65345da8f952e`). In a complete Git clone on the active research branch, run:
+
+```bash
+python scripts/verify_gate2b_step23.py gate2b-step23-report.json
+```
+
+It launches the four precisely scoped pytest files, records test exit code/count, Python version, SHA-256 of relevant sources/tests, git commit/worktree origin where available, and explicitly declares `GATE_2B=OPEN`, `full_repository_regression=false`, `DeFelice/Aoki NOT_RUN`. **ACTUAL local reconstructed run:** `tests_passed_count=24`, `tests_exit_code=0`, `workspace_origin=non_git_workspace_reconstruction`, `git_head=null`. No clean Git clone has been run yet; passing on a future clean clone remains a separate acceptance gate. Research audit: `research/REAL_PROVIDER_AND_EH_WARD_AUDIT_2026_10_18.md`.
+
+**Resume next RED unchanged:** full f-native trace/shear+shift EH chart variation and complete spacetime Ward with time tilt, then on-shell background/two-dust/metric/BD constraints and same-action De Felice+Aoki acceptance before first Candidate-C fold. No final JANUS-R physical validation.
+
+---
+
 # JANUS — CURRENT RESUME HEAD, 2026-10-18 (STEP 23)
 
 **FIRST READ:** research/REAL_PROVIDER_AND_EH_WARD_AUDIT_2026_10_18.md. Code/tests: numerics/hr_eh_spacetime_ward.py; tests/test_hr_eh_spacetime_ward.py; tests/test_hr_full_scalar_eh_two_dust_real.py.
