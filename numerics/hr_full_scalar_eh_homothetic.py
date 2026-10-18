@@ -120,7 +120,8 @@ def integrate_untilted_native_scalar_eh(*,radius,k,N,a,a_rate,n,alpha,alpha_rate
     Returns 24x24 Hessian on HR/two-dust 22 slots + psi_gdot,E_gdot.
     No chart perturbation variation has been made; temporal support is
     still frozen. f native radius=(1+mu)r, k_native=k/(1+mu).
-    f B amplitude rescales by (1+mu) to preserve common physical U_f=BF_r.
+    f B amplitude rescales by m and E/E_dot by m**2 so the native
+    f metric matches the existing HR common-chart shift/shear profiles.
     """
     scalars=(radius,k,N,a,a_rate,n,alpha,alpha_rate,mu,planck_ratio)
     if not all(math.isfinite(float(v)) for v in scalars) or min(radius,k,N,a,n,alpha,planck_ratio)<=0 or mu<=-1:
@@ -134,6 +135,11 @@ def integrate_untilted_native_scalar_eh(*,radius,k,N,a,a_rate,n,alpha,alpha_rate
     for j,idx in enumerate((0,1,2,3,22,23)):Mg[j,idx]=1
     for j,idx in enumerate((4,5,6,7,14,15)):Mf[j,idx]=1
     Mf[1,5]=m
+    # f E is a scalar spatial Hessian potential: E_native=m**2 E_common.
+    # This keeps physical f radial/angular metric perturbations identical
+    # to the existing HR common-chart shear projection at finite mu.
+    Mf[3,7]=m*m
+    Mf[5,15]=m*m
     for x,w in zip(nodes,weights):
         r=.5*radius*(x+1)
         G=scalar_native_adm_jet(scale=a,scale_rate=a_rate,lapse=N,
