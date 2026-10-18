@@ -1,3 +1,43 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 30 (2026-10-18)
+
+**READ FIRST:** `research/INVERSE_CHART_COMPENSATION_STEP30_AUDIT.md`.
+**Code/tests:** `numerics/hr_compensated_native_chart.py`, `tests/test_hr_compensated_native_chart.py`.
+**Reproduce:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step30.py gate2b-step30-report.json`.
+
+## 30. EXACT native f metric+dust inverse-chart compensation established — PURE GAUGE BASELINE, NOT NEW PHYSICAL SOLUTION
+
+Step29 proved that naïvely inserting the homogeneous on-shell Candidate-C two-dust solution into `T=t+sigma(t)r²/2, R=lambda(t)r` fails the visible g lapse equation unless the native f geometry is adjusted. Simply setting `b_native=b_hom/lambda` repairs only the central scale ratio and fails at finite radius for tilted/evolving charts.
+
+**NEW exact inverse-chart construction:** start from the real *on-shell radiation-free homogeneous two-dust Candidate-C* metric `f_common=diag(-Nf(t)²,b(t)²)`, angular `b(t)²r²`, physical comoving f dust `theta_fdot=Nf, rho_f=Cf/b³`. On a regular nonhomothetic background chart `X=(T,R)`, `J=dX/d(t,r)`, obtain
+
+```
+f_native=J^{-T} f_common J^{-1}
+f_native_ang=b(t)² r²
+(theta_native,T,theta_native,R)=(Nf,0) J^{-1}
+rho_native=Cf/b(t(T,R))³
+native dust current density^A=Cf r² J^A_t / det(J).
+```
+
+**Critical physical restriction:** the fully transported f-native metric generically has nonzero `f_TR`, radial/angular non-FLRW components, radial-dependent dust clock and a NONZERO native radial dust flux. This is a PURE passive reparametrization of the SAME homogeneous physical f metric, NOT a new nonlinear nonhomothetic physical solution. It cannot produce the independent helicity-0 canonical matching data or demonstrate crossing the mu fold at a≈0.0301646. Imposing the old f-native diagonal/FLRW ansatz after the coordinate change is NOT an equivalent metric.
+
+**Numerical witness:** at a=.4, t=0, r=.2, lambda=.78, sigma=.08, lambda_dot=.04, sigma_dot=.025, the exact transported native f off-diagonal component is +0.00480694489921799. All 2×2 common f metric components and angular area are recovered to ~1e-16 via `J^T f_native J`. The native dust normalization is -1 and its density current divergence is ~5.4e-12 (finite differences). The exact HR potential matches the homogeneous all-beta expression at multiple t/r, and a NONZERO off-shell native dust Lagrangian agrees with its common counterpart only after multiplying by the full Jacobian determinant.
+
+**Physical necessary g lapse test, also integrated across COMPACT TIME+RADIUS:** on this compensated, homogeneous-on-shell baseline the direct visible lapse residual at r=.2 is ~2.66e-10 and compact time/radial first action variation is +1.30104260698e-13 (finite-difference cancellation). The deliberately truncated scale-only diagonal native ansatz gives +0.0003116455094 and +3.50278833716e-8 respectively. The tested compact action includes g positive EH ADM+GHY, canonical g dust charge and exact all-beta HR with fully transported f geometry. This is ONE necessary Euler direction, NOT full coupled five-sector tadpoles.
+
+**ACTUALLY EXECUTED in NEW standalone `/mnt/data/janus30`: 18/18 targeted tests PASS.** Runner JSON exit 0 / 18 passed, `workspace_origin=standalone_focused_workspace`, `full_repository_regression=false`, `previous_step29_tests_rerun=false`, `DeFelice/Aoki NOT_RUN`, `GATE_2B OPEN`. All FOUR new source/test/runner/audit GitHub files have been byte-verified against the actual local git hash:
+- numerics/hr_compensated_native_chart.py = `14bf842c9bcfe792a1891c7a8d758c76f37f30c9`
+- tests/test_hr_compensated_native_chart.py = `b81966e9395a8fc7728773fd4b0745e704a9c13f`
+- scripts/verify_gate2b_step30.py = `1036166d4bfe57ad9bf6e6c67ca157d5267c1c5b`
+- research/INVERSE_CHART_COMPENSATION_STEP30_AUDIT.md = `e897229ea831f162252db2845c630b2dd4a42b47`
+
+Previous Step29 21, Step28 17 and Step27 75 tests were run in OTHER workspaces and **not rerun together**; NEVER claim 131 tests passed in one run. Full clean repo clone still DNS-blocked and GitHub Actions disabled.
+
+**NEXT EXACT RED:** starting FROM THIS EXACT compensated on-shell baseline, introduce a *physically independent* f native metric/Stückelberg relative deformation (e.g. independent shift, trace/shear, time/radial profiles AND both matter phases), not merely `J^{-T}f J^{-1}`. Calculate ALL g/f Einstein, HR relative chart, and both dust Euler/tadpoles on one shared time/radial action. Demand their cancellation for a genuinely nonhomothetic on-shell branch; only then derive physical constrained scalar action, reduce four metric auxiliaries and time-dependent BD-null with two canonical dust pairs, and pass the independently required SAME-ACTION De Felice finite-H mu→0 and Aoki nonlinear homothetic `K_S,c_S²` physical controls before testing the first relative-mu fold and any observational transfer.
+
+**Verdict:** `COORDINATE_COMPENSATION_BASELINE_GREEN`; `GENUINE_NONHOMOTHETIC_ONSHELL_BRANCH_OPEN`; `GATE_2B=OPEN`; `JANUS_R_NOT_VALIDATED`. Work ONLY on research/gate2b-nonhomothetic-transfer. main and research/v2-flrw untouched. Keep external opposite-EH-sign JHR tensor critique separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 29 (2026-10-18)
 
 **FIRST READ:** `research/NONHOMOTHETIC_ONSHELL_INSERTION_STEP29_AUDIT.md`.
