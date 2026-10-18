@@ -1,3 +1,28 @@
+# JANUS — restart checkpoint HEAD (2026-10-18, step 22)
+
+**FIRST READ** research/FULL_NATIVE_SCALAR_EH_UNTILTED_AUDIT.md, then numerics/hr_full_scalar_eh_homothetic.py and tests/test_hr_full_scalar_eh_homothetic.py.
+
+## 22. FULL NATIVE SCALAR EH WITH TWO SECTORS ON AN UNTILTED CHART — LATEST
+
+NEW GitHub files:
+- numerics/hr_full_scalar_eh_homothetic.py
+- tests/test_hr_full_scalar_eh_homothetic.py
+- numerics/hr_full_scalar_eh_two_dust_untilted.py
+- tests/test_hr_full_scalar_eh_two_dust_untilted.py
+- research/FULL_NATIVE_SCALAR_EH_UNTILTED_AUDIT.md
+
+The native Einstein–Hilbert ADM spatial scalar action now retains BOTH trace and traceless shear of each metric, including their independent temporal rates, intrinsic spherical 3-curvature and extrinsic curvature, in addition to native lapse/radial shift. An exact 6-variable analytic quadratic Taylor jet was checked against an independently written nonlinear spherical ADM density and previous flat-spatial EH limit. The two-metric 24-slot compact spatial projection is valid only on an UNTILTED chart T=t, R_f=(1+mu)r, mu constant.
+
+**Important RED-to-GREEN issue:** f spatial shear potential requires E_f,native=(1+mu)^2 E_f,common and the same scaling for E_f,dot, while f radial shift B_f,native=(1+mu)B_f,common. A cross-HR/EH physical metric shear matching test exposed the missing m² scaling; code corrected. Radial-coordinate rescaling then passes after consistent field redefinition.
+
+**Actual local test evidence:** 13/13 tests PASS in newly created /mnt/data/janus-next. Eleven directly test EH; two use a **MOCK** of the existing HR+two-dust provider to check wrapper structure. The actual combined full 24-slot action has NOT been numerically exercised with the real HR/dust provider in this fresh workspace. Previous 47 targeted test results are historical from a separate session, not re-run; never claim 60 new tests passed. All four newly tested source/test files have exact GitHub blob SHA matching the local bytes (in audit).
+
+**Next immediate RED:** get the actual full 24-slot combined native EH+HR+two-dust provider to run on a single verified workspace, THEN extend EH to nonhomothetic sigma/mu_dot chart with f-native second derivative and chart variation/compact time support. Verify full f EH diffeomorphism Ward. Tie to on-shell Candidate-C, then constraints/BD reduction retaining both dust phase pairs, and reproduce both De Felice and Aoki physical limits before fold.
+
+Scientific result is strictly NATIVE_FULL_SCALAR_EH_UNTILTED_GREEN, GATE_2B_OPEN; full JANUS cosmology is NOT validated. Keep main and research/v2-flrw untouched, work ONLY on research/gate2b-nonhomothetic-transfer.
+
+---
+
 # JANUS — authoritative restart head
 
 ## 21. 2026-10-18 — native-flat Einstein-Hilbert interface (CURRENT)
