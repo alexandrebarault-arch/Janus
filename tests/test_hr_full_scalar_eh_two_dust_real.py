@@ -51,3 +51,26 @@ def test_real_full_scalar_eh_hr_dust_planck_ratio_changes_only_eh_f():
     np.testing.assert_allclose(two.hr_hessian,one.hr_hessian,atol=0,rtol=0)
     np.testing.assert_allclose(two.dust_hessian,one.dust_hessian,atol=0,rtol=0)
     assert np.linalg.norm(two.eh_hessian-one.eh_hessian)>1e-8
+
+
+def test_real_full_scalar_eh_hr_dust_quadrature_converges():
+    kw=dict(radius=.23,rho_g=.9,rho_f=.6,g_scale_rate=.04,
+            planck_ratio=1.2,log_phidot_rate_g=.12,
+            log_phidot_rate_f=-.17)
+    lo=assemble_untilted_scalar_eh_hr_two_dust(quadrature_order=18,**kw,**HP)
+    hi=assemble_untilted_scalar_eh_hr_two_dust(quadrature_order=30,**kw,**HP)
+    np.testing.assert_allclose(lo.hessian,hi.hessian,rtol=2e-9,atol=7e-10)
+    np.testing.assert_allclose(lo.gradient,hi.gradient,rtol=2e-9,atol=8e-11)
+    assert np.all(np.isfinite(hi.hessian))
+    assert np.linalg.matrix_rank(hi.hessian[np.ix_([17,19],[20,21])])==2
+
+
+def test_real_zero_hr_interaction_still_keeps_two_native_eh_and_dust():
+    kw=dict(radius=.23,quadrature_order=18,rho_g=.9,rho_f=.6,
+            g_scale_rate=.04,planck_ratio=1.2)
+    zero=assemble_untilted_scalar_eh_hr_two_dust(**kw,**dict(HP,m2=0.))
+    assert np.max(np.abs(zero.hr_hessian))<1e-15
+    assert np.linalg.norm(zero.eh_hessian)>1
+    assert np.linalg.norm(zero.dust_hessian)>1e-6
+    assert zero.hessian[17,20]>0
+    assert zero.hessian[19,21]>0
