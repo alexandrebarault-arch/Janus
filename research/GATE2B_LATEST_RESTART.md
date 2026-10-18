@@ -496,3 +496,17 @@ An independent exact **nonlinear native spherical ADM+GHY density** now includes
 **NEXT RED:** full EH chart variation *quadratic action with deltaT/deltaR* in common/native shared compact time basis, with both f metric spatial modes and derivatives, then on-shell Candidate-C background with BOTH dust conservation/tadpole cancellation, four metric auxiliaries and time-dependent BD-null reduction, same-action finite-H mu->0 De Felice and nonlinear Aoki K_S,c_S², only then first fold a≈0.0301646. No physical stability/CMB validation from Ward identity.
 
 **GATE_2B=OPEN; JANUS-R NOT VALIDATED.** Keep main/v2-flrw unchanged.
+
+## 25. 2026-10-18 — isolated full f Einstein–Hilbert spacetime CHART QUADRATIC (LATEST)
+
+**Read first:** root LATEST_RESTART.md; research/EH_CHART_QUADRATIC_STEP25_AUDIT.md. Files numerics/hr_eh_full_scalar_quadratic_chart.py, tests/test_hr_eh_full_scalar_quadratic_chart.py, scripts/verify_gate2b_step25.py.
+
+The exact nonlinear native spherical ADM+GHY Einstein–Hilbert action was differentiated to second order after time/radial compact integration on six independent amplitudes: (deltaT,deltaR,Phi_f,U_f,psi_f,E_f). With all four f native fields AND their derivative jets sampled at moved (T,R), the 2×6 chart Hessian rows vanish to max ~8.7e-13, while the native metric 4×4 block has Frobenius norm ~11.09 and is invariant under finite chart changes to ~4.63e-12. The proof uses the Piola total-divergence identity: this is an isolated f-EH coordinate-change/boundary gate, NOT physical constraint reduction. Frozen-native-sampling negative control produces mixed chart/field residual up to ~0.312.
+
+Crucially a separately computed beta1–beta3 HR interaction-only compact radial test has a nonzero relative chart block (~0.22018 Frobenius norm) and metric/chart cross (~0.51215). Its trial basis and spatial-only integration differ; numerical magnitudes are NOT physically comparable. This confirms that pure f-EH diffeomorphism redundancy must not be conflated with HR relative chart dynamics.
+
+**Actual local focused run** in /mnt/data/janus-next: 41 pytest tests passed, including nine new; step25 runner produced exit 0 / 41 passed / NON_GIT_WORKSPACE_RECONSTRUCTION / full_repository_regression false / DeFelice+Aoki NOT_RUN. Three new source/test/runner files EXACT git SHA match; previous HR/dust prerequisites are manually reconstructed algorithms, not a complete clone.
+
+**NEXT STRICT RED:** one common time-supported and on-shell EH+HR+two-dust action with all field derivative transports and boundary terms; dust conservation/tadpoles; four metric auxiliaries and time-dependent BD-null reduction retaining both dust phase pairs; same-action De Felice finite-H mu→0 and Aoki nonlinear homothetic K_S,c_S²; only then Candidate-C fold near a≈0.0301646.
+
+**GATE_2B OPEN; JANUS-R NOT VALIDATED; main and v2-flrw untouched.**
