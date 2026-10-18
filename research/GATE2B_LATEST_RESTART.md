@@ -470,3 +470,15 @@ Scientific status: FULL_NATIVE_SCALAR_EH_UNTILTED_GREEN, GATE2B_OPEN, JANUS_R_CO
 
 **NEXT UNEXECUTED FULL-PROVIDER TEST:** tests/test_hr_full_scalar_eh_two_dust_real.py has now been committed. It imports the REAL hr_two_dust_preconstraint module and the new native scalar EH assembly and checks 24x24 block addition, both canonical dust momentum-rate entries, the two new g trace/shear rate channels and positive f Planck scaling. Its exact GitHub blob SHA is 3ecbf81ea429d5475e902cde2b24fd7441204126. This test has been syntax-compiled locally, but NOT executed because the full prerequisite GitHub worktree cannot be cloned in this environment; do not count it among the 13 passed tests. **Immediate resume action: reconstruct/fetch all real provider modules, RUN this test, fix any actual failure, and record full evidence before extending the chart.**
 
+
+## 23. 2026-10-18 — REAL EH+HR+TWO-DUST PROVIDER RUN AND f-EH FLRW WARD (LATEST)
+
+**Authoritative restart:** root `LATEST_RESTART.md` (step 23); full audit `research/REAL_PROVIDER_AND_EH_WARD_AUDIT_2026_10_18.md`.
+
+The formerly pending tests in `tests/test_hr_full_scalar_eh_two_dust_real.py` have now been **EXECUTED**, and pass without mock providers, using the real HR Hessian algorithm and both dust canonical phase sectors. Two extra real-provider tests confirm quadrature convergence and the m²=0 EH+dust limit. The combined untilted 24x24 action retains rank-two dust canonical momentum-rate coupling. This is still time-local and **OFF SHELL**.
+
+New files `numerics/hr_eh_spacetime_ward.py`, `tests/test_hr_eh_spacetime_ward.py`: independent f-native FLRW lapse Einstein–Hilbert compact spacetime Ward gate. Background T=t+sigma(t)r²/2 and R=(1+mu(t))r, both with time dependence. Full native-lapse sampling in the compact chart gives mixed variation at ~1e-18; freezing sampling fails by ~3.22e-4 and ~2.78e-5. The native ADM action density also matches the existing repository `spherical_flat_adm_eh.py` primitive exactly. This is NOT the full spherical trace/shear EH Ward.
+
+**Actually executed:** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests` => **24 passed** in focused local `/mnt/data/janus-next`: 11 direct EH, 2 mock-backed structure, 4 real provider, 7 new Ward. Existing HR/dust providers were reauthored from GitHub source, preserving algorithms but NOT byte-identical file blobs; new Ward files/test and real-provider tests are exact GitHub hashes. Do not advertise full checkout, full regression, or physical acceptance.
+
+**Next strict RED:** full f scalar EH chart time/radius perturbations, spatial trace/shear, native sampling and compact time integration; full EH Ward; on-shell Candidate-C with two dust phases and tadpoles; metric and BD time-dependent null reduction; both De Felice/Aoki physical oracles on SAME action, then fold. Main/v2-flrw untouched. `GATE_2B=OPEN`.
