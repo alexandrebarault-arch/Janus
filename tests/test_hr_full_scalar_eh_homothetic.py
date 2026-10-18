@@ -138,7 +138,22 @@ def test_native_f_eh_exact_coordinate_rescaling_with_shift_amplitude_transform()
             N=1.,a=.92,a_rate=.09,n=1.13,alpha=.84,
             alpha_rate=.12,mu=m-1,planck_ratio=1.5,quadrature_order=28)
         H=out.hessian[np.ix_(fields,fields)]
-        transform=np.diag([1,1/m,1,1,1,1])
+        transform=np.diag([1,1/m,1,1/(m*m),1,1/(m*m)])
         physically_normalized=transform@H@transform
         if reference is None:reference=physically_normalized
         else:np.testing.assert_allclose(physically_normalized,reference,atol=3e-11,rtol=4e-11)
+
+
+def test_f_native_shear_projection_exactly_matches_existing_hr_basis():
+    # E is a Hessian potential (two radial derivatives): under R_f=m*r,
+    # E_f_native=m^2 E_f_common. Both metrics must use the same shear
+    # coefficient in physical g/f radial and angular components.
+    r=.18;R=.3;k=2.2;m=.76
+    _,_,_,Pc,_,_,_,_=_profiles(r,R,k)
+    _,_,_,Pn,_,_,_,_=_profiles(m*r,m*R,k/m)
+    eh_radial=(-2/3)*(k/m)**2*(m*m*Pn)
+    hr_radial=(-2/3)*k*k*Pc
+    eh_angular=(1/3)*(k/m)**2*(m*m*Pn)
+    hr_angular=(1/3)*k*k*Pc
+    assert eh_radial==pytest.approx(hr_radial,abs=1e-13)
+    assert eh_angular==pytest.approx(hr_angular,abs=1e-13)
