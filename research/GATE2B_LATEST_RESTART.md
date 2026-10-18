@@ -510,3 +510,15 @@ Crucially a separately computed beta1–beta3 HR interaction-only compact radial
 **NEXT STRICT RED:** one common time-supported and on-shell EH+HR+two-dust action with all field derivative transports and boundary terms; dust conservation/tadpoles; four metric auxiliaries and time-dependent BD-null reduction retaining both dust phase pairs; same-action De Felice finite-H mu→0 and Aoki nonlinear homothetic K_S,c_S²; only then Candidate-C fold near a≈0.0301646.
 
 **GATE_2B OPEN; JANUS-R NOT VALIDATED; main and v2-flrw untouched.**
+
+## 26. 2026-10-18 — full coupled beta0..beta4 diagonal/relative Hassan–Rosen Ward (LATEST)
+
+**Authoritative restart:** root `LATEST_RESTART.md` (step 26); `research/COUPLED_DIAGONAL_NOETHER_STEP26_AUDIT.md`; `scripts/verify_gate2b_step26.py`.
+
+NEW exact nonlinear spacetime-integrated bimetric Hassan–Rosen action with independent regular scalar perturbations Phi/U/psi/E of BOTH g and f, correct spherical angular areas and exact f nonhomothetic time/radial background chart. A common diagonal coordinate change of BOTH metrics leaves the entire all-beta interaction invariant to machine precision; a relative native f chart displacement creates nonzero beta1/2/3 variations, while beta0 g-volume and beta4 f-volume decouple. The new direct potential density matches the older independent exact native HR Stueckelberg jet at three radii (r=.23: -0.0823859285303577 each).
+
+Critical NEW negative test uncovered a common-native coordinate-variation mixup: delta(T,R) and delta(t,r) are connected by the background inverse/Jacobian, not interchangeable amplitude profiles. Corrected before committing tests. The new 4x4 independent g/f chart Hessian shows an **OFF-SHELL Noether caveat**: exact finite diagonal action invariance and diagonal directional quadratic zero do NOT imply H*v_diagonal=0 for an arbitrary off-shell Hessian when gauge generators depend nonlinearly on fields and tadpoles are nonzero. Direct finite difference truncation decreases O(step²). Do not invent an early BD eigenmode or physical ghost/stability verdict.
+
+**Actually tested locally:** 57 focused tests pass, 16 new, manifest runner exit 0 and marks NON_GIT_WORKSPACE_RECONSTRUCTION, full_repository_regression=false, DeFelice/Aoki NOT_RUN. All five newly committed program/test/runner Git blobs match the executed source byte for byte; older local HR/dust prerequisites are algorithmic reconstructions rather than a full repository checkout. Clean clone still DNS-blocked, Actions disabled; no external validation.
+
+**NEXT RED:** same-profile time-dependent EH_g+EH_f+HR+TWO dust canonical phase-pair action; impose Candidate-C ON-SHELL and separate dust conservation/tadpoles, then actual auxiliary/BD time-dependent constraint elimination retaining BOTH dust pairs; pass finite-H mu->0 De Felice and nonlinear homothetic Aoki K_S,c_S² on the SAME action before fold 1. `GATE_2B=OPEN`, JANUS-R cosmology not validated.
