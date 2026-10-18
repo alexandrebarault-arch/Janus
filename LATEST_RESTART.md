@@ -1,3 +1,25 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE, ETAPE 24 (2026-10-18)
+
+**READ FIRST:** `research/FULL_SCALAR_EH_CHART_WARD_STEP24_AUDIT.md`.
+**New direct executable research:** `numerics/hr_eh_full_scalar_chart_ward.py`, `tests/test_hr_eh_full_scalar_chart_ward.py`.
+**Reproduce with:** `python scripts/verify_gate2b_step24.py gate2b-step24-report.json`.
+
+## 24. Full native EH scalar kinematic chart Ward GREEN; physical Gate 2B OPEN (LATEST)
+
+The native f Einstein–Hilbert ADM+boundary density is now calculated **nonlinearly with all four independent spherical scalar channels**: lapse Phi, radial shift U, scalar spatial trace psi and traceless shear E, including the necessary native first/second radial derivatives and time rates. It is pulled into a moving/tilted common chart with the exact time+radius Jacobian. For compact interior chart variations, the full finite-action change is zero and the eight mixed Ward derivatives (4 fields x 2 chart modes) vanish to max ~3.25e-12 under finite differences. All eight controls where field sampling is intentionally frozen instead fail by nonzero amounts (min ~1.10e-5; max ~0.312). A simultaneously excited four-field finite-chart action differs by only ~1.73e-18.
+
+**Crucial independent cross-check:** the NEW native ADM nonlinear density, finite-differentiated on the same native compact scalar field/rate profiles, reproduces the prior **independently implemented exact 6-variable EH quadratic Hessian** from `hr_full_scalar_eh_homothetic.py`, including shift/trace/shear kinetic terms. It separately recovers the old repository's spatially flat native ADM EH primitive.
+
+**Actually executed local suite:** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests` => **32 passed** (previous 24 focused + 8 new). New step24 manifest script ran and reported exit 0 / 32 passed / non_git_workspace_reconstruction / Git HEAD null / full_repository_regression=false / DeFelice and Aoki NOT_RUN / Gate2B OPEN. The THREE new source/test/runner files are now byte-identical to live GitHub (see SHA in audit). The existing HR/dust prerequisites are still manual algorithm-preserving reconstructions, NOT a clean complete Git worktree. Do not conflate the 32 focused tests with a full independent regression.
+
+**Scope caution:** the result is a **kinematic change-of-variable identity of the f-native ADM+GHY scalar density**. It does NOT implement the complete EH **chart-perturbation quadratic Hessian** in the same native HR+two-dust action, nor prove the full diffeomorphism constraint algebra. The background remains OFF SHELL. No physical kinetic/gradient/fold conclusion can be drawn.
+
+**NEXT EXACT RED:** derive full f-native scalar EH chart variation with `deltaT,deltaR` and all native metric modes on the SAME time-supported compact basis, including boundary terms and native derivative transport, then assemble true EH+HR+two dust action with on-shell Candidate-C background/tadpoles, eliminate four metric auxiliaries and time-dependent BD-null direction, KEEP both dust phase pairs, and pass both independent physical De Felice `mu->0` finite-H and homothetic Aoki `K_S,c_S²` oracles before testing fold 1 at a~0.0301646. If the action cannot pass, report a negative Gate-2B result, not tuned late matching.
+
+**Research branch ONLY:** `research/gate2b-nonhomothetic-transfer`; leave `main` and `research/v2-flrw` untouched. **GATE_2B=OPEN**, JANUS-R NOT VALIDATED; external opposite-EH-sign JHR critical manuscript audit remains separate.
+
+---
+
 ## 23.1 — One-command test/provenance runner (2026-10-18; latest addition)
 
 File `scripts/verify_gate2b_step23.py` was committed and exact SHA verified (Git blob `17c7a7693dfd2ed7f0191d8d22b65345da8f952e`). In a complete Git clone on the active research branch, run:
