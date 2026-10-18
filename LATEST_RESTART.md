@@ -1,3 +1,32 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE: ETAPE 26 (2026-10-18)
+
+**READ FIRST:** `research/COUPLED_DIAGONAL_NOETHER_STEP26_AUDIT.md`. The full nonlinear potential, its four-chart Hessian, and reproducible tests are:
+- `numerics/hr_coupled_diagonal_ward.py`
+- `numerics/hr_coupled_chart_hessian.py`
+- `tests/test_hr_coupled_diagonal_ward.py`
+- `tests/test_hr_coupled_chart_hessian.py`
+- `scripts/verify_gate2b_step26.py`.
+
+**Single command:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step26.py gate2b-step26-report.json`.
+
+## 26. All-five-beta full bimetric diagonal Ward GREEN — OFF-SHELL Hessian caution (LATEST)
+
+**Novel coupled result:** on a genuinely time-dependent nonhomothetic f chart (T=t+sigma(t)r²/2, R_f=[1+mu(t)]r), the exact nonlinear HR potential for ALL five beta0..beta4 coefficients, with full g/f spherical 2x2 metric blocks + angular radii, is integrated over compact time and radial support. Four scalar lapse/shift/trace/shear perturbations per sector are sampled at correctly displaced coordinates. The finite **DIAGONAL** diffeomorphism acting on both metrics preserves the full interaction action to machine precision. A relative f-only native chart displacement gives NONZERO beta1,beta2,beta3 action variations, while beta0 and beta4 remain separately invariant (g volume/f volume controls). This is a true coupled-action Ward test, beyond the earlier f-only EH chart checks.
+
+**Cross-oracle:** the new directly evaluated 2x2 principal-square-root HR density equals `r² * native_hr_stueckelberg_jet(...).value` from the prior independent exact native HR jet at t=0, r=.12,.23,.39. At r=.23 both are -0.0823859285303577. Fully independent g/f coordinate pullbacks agree in diagonal mode.
+
+**Critical observed RED-to-GREEN:** an initial test equated an f-native displacement delta(T,R) to an f displacement delta(t,r) with the same amplitudes; that is WRONG when the background Jacobian is nontrivial. They obey deltaX_f^A=J0^A_mu delta x_f^mu to FIRST order and have different finite expressions. The corrected tests distinguish both charts. A separate positive-orientation check has replaced a placeholder diagnostic. All changed file bytes verified.
+
+**Off-shell Noether/gauge caution:** finite diagonal coordinate paths preserve the action exactly, so their directional first and quadratic second derivatives vanish. But the independent 4x4 g/f chart Hessian H on the arbitrary off-shell background does **NOT** necessarily satisfy H v_diag=0, since the nonlinearly field-dependent Ward generator obeys S_,ij R^j = -S_,j partial_i R^j and the tadpoles S_,j are nonzero. Numerically `||H v_T||~3.0e-4`, `||H v_R||~1.73e-3`, even though direct finite diagonal action changes are ~0. The finite-difference directional `v^T H v` error decays as O(h²), verified. **NEVER infer BD or physical gauge-null eigenvectors from OFF-SHELL raw Hessian.**
+
+**Actual local evidence:** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests` => **57 passed** in `/mnt/data/janus-next`. 16 new tests and the 41 prior focused. `scripts/verify_gate2b_step26.py` returned exit 0/57 passed, provenance `non_git_workspace_reconstruction`, `full_repository_regression=false`, `DeFelice/Aoki=NOT_RUN`, `GATE_2B=OPEN`. All FIVE new source/test/runner files byte-identical to live GitHub blob SHA (see audit). Earlier HR/dust prerequisites are still algorithm-preserving local reconstructions, **NOT a clean Git clone** (DNS access blocked); no full repository suite or independent verification.
+
+**IMMEDIATE NEXT RED:** assemble one shared **time-dependent EH_g+EH_f+HR+TWO dust phase** action using the SAME native/common profiles, chart Jacobians, angular density and time-supported boundary terms. Impose one ON-SHELL Candidate-C trajectory and both dust conservations, verify all first-order tadpoles vanish, THEN derive four true metric auxiliary constraints and time-dependent BD-null canonical reduction with both phase pairs preserved. Reproduce finite-H mu->0 De Felice physical scalar plus nonlinear homothetic Aoki K_S,c_S² from the SAME action, THEN test fold 1 a≈0.0301646. If failing, issue negative physical gate; do not invent observational viability.
+
+**Scientific verdict: coupled all-beta diagonal Ward GREEN; GATE_2B OPEN; JANUS-R NOT VALIDATED.** Work ONLY on branch `research/gate2b-nonhomothetic-transfer`; leave main and research/v2-flrw untouched. Separate external JHR opposite-sign EH ghost prepublication audit unchanged.
+
+---
+
 # JANUS — RESTART POINT / CURRENT HEAD: STEP 25 (2026-10-18)
 
 **READ FIRST:** research/EH_CHART_QUADRATIC_STEP25_AUDIT.md.
