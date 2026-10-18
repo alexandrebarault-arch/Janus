@@ -1,3 +1,38 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 28 (2026-10-18)
+
+**READ FIRST:** `research/MINISUPERSPACE_ONSHELL_STEP28_AUDIT.md`.
+
+**Sources + 17 new tests:** `numerics/hr_minisuperspace_onshell.py`, `tests/test_hr_minisuperspace_onshell.py`.
+
+**Repeatable step28 runner:** `python scripts/verify_gate2b_step28.py gate2b-step28-report.json`.
+
+## 28. Candidate-C TWO-DUST homogeneous on-shell background and compact action tadpoles GREEN — full nonhomothetic Gate 2B OPEN
+
+The previous Step27 has ONE full nonlinear **OFF-SHELL** spacetime integral for EH_g (+), EH_f (+), all-beta HR and two separately coupled irrotational dust sectors on shared native metric coordinates, but its polynomial backgrounds do NOT satisfy the two metric Friedmann equations. Step28 establishes an **independent exact on-shell HOMOGENEOUS** five-sector minisuperspace Routhian and validates its first variations:
+
+```
+L = -3 Mg² a a_dot²/Ng -3 Mf² b b_dot²/Nf
+    -m² Mg² a³[Ng (β0+3β1 y+3β2 y²+β3 y³)
+              +Nf (β1+3β2 y+3β3 y²+β4 y³)]
+    -Ng Cg-Nf Cf,    y=b/a.
+```
+
+**Critical matter issue (NEW regression):** the homogeneous covariant dust Lagrangian evaluates to zero on its normalized clock, but its *partial lapse variation* does NOT vanish: ∂L_dust/∂N|theta_dot,rho = -C. Early on-shell substitution before variation would erase both dust Friedmann sources. The fixed-charge Routhian terms -Ng Cg -Nf Cf are derived by canonical Legendre/Routh reduction and preserve both independent matter phase momenta. All four scale/lapse Euler residuals are analytically derived from this ONE action and separately tested by numerical partial differences.
+
+**Candidate C scope STRICT:** radiation is REMOVED intentionally (Ω_g,r0=0) to match existing `candidate_c_dust_background.py` stress test, NOT the complete radiation-era model. Re-solve present y0 after this removal: y0=0.5568825591873054; E(1)=0.9999551638376833, not exactly 1. On its regular dynamical homogeneous branch with Ng=1 and Nf=y+y_N, the two Friedmann constraints, two acceleration Euler equations, Bianchi relation and both conserved dust constants pass to max ~5.4e-13 over representative points a=1,.8,.4,.2,.09,.05,.03. Independent implicit polynomial derivatives supply y_N,y_NN; no tuned acceleration input.
+
+**NEW real time-domain tadpole test:** solve da/dt=aE(a) in both time directions, sample on-shell a,b,Ng,Nf on Gauss–Legendre temporal points, independently perturb each with compact F(t)=(1-t²/T²)^4 and the correct derivative Fdot for scale factors. The first variation of the **integrated homogeneous Routhian** vanishes in all four directions. At time half-window .025, 26 quadrature points and finite amplitude 1e-6: (-1.8041e-10,+1.3878e-11,0,-6.9389e-12) in order (a,b,Ng,Nf). Refinement tests 18/26/32 and different time supports pass. A test with too-large initial variation steps 1e-5/2e-5 showed O(h²) truncation (1e-8/1e-7); reduced step to 1e-6, not edited physical equations.
+
+**Negative controls:** increasing Nf by 2% at a=.4 causes f lapse residual -2.90764390585e-4 and Bianchi failure; increasing Cf by 1% induces exactly -0.01 Cf shift of f lapse constraint. Generic polynomial off-shell sample has nonzero lapse and scale Euler residuals. A smooth homogeneous y(a) on either side of the previously found local nonlinear **relative-μ** folds at a~.0301646/.0491246 is NOT a proof of Stückelberg fold crossing.
+
+**ACTUAL testing now:** 17 new focused tests PASS (Python 3.13.5, standalone `/mnt/data/janus28`). Runner exit 0 / 17 passed / `standalone_focused_workspace` / `full_repository_regression=false` / `DeFelice/Aoki NOT_RUN` / `GATE_2B OPEN`. **Do not claim 75+17=92 executed together**: 75 prior tests belong to earlier separate reconstructed workspace; no clean full Git clone or CI run. FOUR new source/test/runner/audit files are EXACT byte-matched GitHub blobs (SHA in audit). Branch only `research/gate2b-nonhomothetic-transfer`; main/v2-flrw unchanged.
+
+**NEXT EXACT RED — priority:** substitute the actual on-shell Candidate-C TWO-DUST background into the full Step27 **nonhomothetic common spacetime five-sector action**, including native chart T(t,r),R(t,r) and all lapse/scale derivative transport. Demand first variations/tadpoles of actual shared action vanish, without imposing dust clock constraints before varying. Then construct shared **time-dependent scalar quadratic action**, keep BOTH canonical dust phase pairs, eliminate metric auxiliaries and time-dependent BD-null constraint. From the SAME physical action reproduce finite-H μ→0 De Felice and homothetic nonlinear Aoki K_S,c_S² before attempting relative-μ fold 1 and later cosmological predictions.
+
+**Verdict:** `CANDIDATE_C_DUST_ONLY_HOMOGENEOUS_ON_SHELL_GREEN`; `STEP27_NONHOMOTHETIC_ON_SHELL_STILL_RED`; `GATE_2B=OPEN`; `JANUS_R_NOT_VALIDATED`. External JHR negative f EH sign tensor-ghost objection remains separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE, ETAPE 27 (2026-10-18)
 
 **FIRST READ:** `research/UNIFIED_FIVE_SECTOR_SPACETIME_STEP27_AUDIT.md`.
