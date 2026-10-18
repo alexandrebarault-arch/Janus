@@ -1,3 +1,33 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 29 (2026-10-18)
+
+**FIRST READ:** `research/NONHOMOTHETIC_ONSHELL_INSERTION_STEP29_AUDIT.md`.
+**Reproduce immediately:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step29.py gate2b-step29-report.json`.
+**New verified code/tests:** `numerics/hr_nonhomothetic_center_obstruction.py`, `tests/test_hr_nonhomothetic_center_obstruction.py`.
+
+## 29. Naïve on-shell Candidate-C -> finite-μ nonhomothetic insertion: EXPLICIT RED (LATEST)
+
+**Actual scientific result: a falsified SUBSTITUTION, NOT a general no-go for JANUS.** Step28 proved the TWO-DUST, NO-RADIATION homogeneous Candidate-C background solves its homogeneous positive-EH+HR+two-dust Routhian. Step27's common full 5-sector spacetime action still uses arbitrary OFF-SHELL g/f polynomials. Step29 checks the proposed direct substitution of Step28 into the nonhomothetic f chart `T=t+σ(t)r²/2`, `R_f=λ(t)r`, `λ=1+μ>0`, leaving the previously on-shell native f scale `b(T)` unchanged. At the center the square-root spatial eigenvalues are `λ b/a`, NOT `b/a`, so the g lapse potential is `V_g(λy)` rather than `V_g(y)`. Hence the exact necessary center lapse residual is
+
+```
+R_g(λ) = 3 Mg² a adot²/Ng² - Cg - m² Mg² a³ V_g(λ y),
+R_g(1)=0  on homogeneous Candidate-C dust-only branch,
+R_g(λ)-R_g(1)=-m² Mg² a³ [V_g(λy)-V_g(y)],
+V_g(z)=β0+3β1 z+3β2 z²+β3 z³,
+d R_g/dλ |_{λ=1}=-3m² Mg² a³ y J_g(y).
+```
+
+**Quantitative decisive benchmark:** at `a=.4`, `y=.578770722803`, `Ng=1`, `Nf=.518526433828`, `λ=.78` (μ=-.22), previously on-shell `R_g(1)≈0` becomes **`R_g(.78)=+0.160780603695`** in the normalized action. The analytically independent exact 2x2 principal-root spherical Hassan–Rosen density, directly finite-differentiated with respect to the g lapse at radius 10^-4, recovers the same residual. The independently compact-radial g-EH+canonical-dust+HR first action variation for support radius .035 is **+3.20003248e-6**, matching the exact bump integral. No need to interpret raw off-shell Hessian eigenvalues. At a=.03 and λ=.231117 (relative μ fold location used only as reference), the same naïve source is +.03919434, NOT proof of physical fold failure.
+
+**Critical NON-NO-GO counterexample:** setting `b_native=b_homogeneous/λ` for CONSTANT λ restores `λb_native/a=y` and cancels this CENTER g lapse obstruction. But at finite r, `σ≠0` introduces common-slice component anisotropy `f_rr-f_theta_theta/r²=-n(T)²σ²r²` and the direct g lapse source remains nonzero in the chosen off-shell f time/scale jets even after center compensation; q.g. at a=.4, λ=.78, r=.2, σ=.08 yields roughly -0.0017545. This is a slicing component identity, NOT invariant physical anisotropic stress and NOT a theorem that the fully corrected nonhomothetic system has no solution. Native f matter phase/charge and all metric radial/time derivatives must be re-solved.
+
+**Actually executed new test evidence:** 21/21 PASS, `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_nonhomothetic_center_obstruction.py` in isolated `/mnt/data/janus29`. Includes independent recomputation of radiation-free Candidate-C quartic roots and f lapse `Nf=y+y_N` for FOUR epochs; independent direct spherical HR matrix-square-root differentiation at FIVE parameter points, compact g lapse action variation, analytic J slope, radius/step convergence, β4 decoupling, m²=0, compensated central scaling and residual finite radius. `scripts/verify_gate2b_step29.py` generates exact SHA-256 source manifests, diagnostic witness, `workspace_origin=standalone_focused_workspace`, `full_repository_regression=false`, `DeFelice/Aoki NOT_RUN`, `GATE_2B=OPEN`. All FOUR new source/test/script/audit Git blobs have been matched BYTE FOR BYTE against locally executed files. Prior Step27 75 tests and Step28 17 tests belong to OTHER workspaces and were NOT rerun together; do NOT claim 113 combined tests. Direct Git clone DNS fails; no CI/independent replication claimed.
+
+**NEXT EXACT RED:** construct a chart-**COMPENSATED** f-native background `b_native(T)` and both dust phase/charge transformations consistent with the nonhomothetic common geometry and native dust conservation. Then evaluate ALL g and f lapse, radial/time/scale, scalar and Stückelberg Euler residuals from the SAME Step27 five-sector action on one common compact spacetime support, not only the center. Reject trial backgrounds with nonzero tadpoles. Only if a genuine full on-shell nonhomothetic solution is found, derive time-dependent EH+HR+two-dust physical scalar quadratic action, reduce metric auxiliaries/time-dependent BD-null with BOTH matter canonical pairs, pass BOTH De Felice finite-H μ→0 and Aoki homothetic K_S,c_S² oracles, THEN assess the first relative μ fold at a≈0.0301646. No ghost/gradient/fold/CMB viability conclusion yet.
+
+**Verdict:** `NAIVE_HOMOGENEOUS_INSERTION_FAIL`; `CORRECTED_FULL_NONHOMOTHETIC_BACKGROUND_OPEN`; `GATE_2B=OPEN`; `JANUS_R_NOT_VALIDATED`. Preserve exact branch `research/gate2b-nonhomothetic-transfer`; do not touch main or research/v2-flrw; keep external JHR negative-f-EH ghost critique separate.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 28 (2026-10-18)
 
 **READ FIRST:** `research/MINISUPERSPACE_ONSHELL_STEP28_AUDIT.md`.
