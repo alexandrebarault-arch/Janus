@@ -40,6 +40,8 @@ def coupled_hr_independent_chart_action(*,chart=(0.,0.,0.,0.),
     u=t+egT*b;v=r+egR*c
     g00=1+egT*bt;g01=egT*br
     g10=egR*ct;g11=1+egR*cr
+    if np.min(g00*g11-g01*g10)<=0 or np.min(v)<=0:
+        raise ValueError('nonregular common g chart')
     gm=_pull(_native_metric(u,v,'g',g_fields),g00,g01,g10,g11)
     # f-native time/radius background map is composed with its own
     # independently varied common chart (u_f,v_f).
