@@ -1,0 +1,28 @@
+JANUS — STEP 34 checkpoint, 2026-10-20
+BRANCH: research/gate2b-nonhomothetic-transfer
+READ FIRST: research/ORIGINAL_NONIBP_FINITE_VARIATION_STEP34_AUDIT.md
+CODE: numerics/hr_original_discrete_pb.py
+TESTS: tests/test_hr_original_discrete_pb.py
+RUNNER: scripts/verify_gate2b_step34.py
+ACTUAL REPORT: research/reports/gate2b-step34-report.json
+REPRODUCE: OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step34.py research/reports/gate2b-step34-report.json
+
+NEW: independently discretized ORIGINAL NON-IBP spherical EH+HR+two-dust action,
+12 canonical complex-step variations, 6-pair mixed Poisson bracket, positive
+curved moving-dust primary families. Compact smearings N,M and N*exp(t),M*exp(-t)
+share the same NM. Their bracket difference shrinks by 4x on halving dr
+(n=201,401,801: -3.64987e-5, -8.96436e-6, -2.22929e-6).
+SECOND independent curved family also converges ~4x. Flat limit matches
+Step33f independent closed formula to 8.65e-11 at n=401. Off-primary pSg
+perturbation yields NONZERO ~+7.37e-4 same-product difference at n=801.
+Seven new focused pytest tests PASS, runner exit0 in reconstructed non-Git workspace;
+full repository regression/CI NOT RUN. NO on-shell evolution, BD time
+preservation, De Felice/Aoki physical oracles or cosmological validation.
+
+NEXT FALSIFIABLE: solve primary+actual local secondary C_local=0 with BOTH
+dust densities positive, then calculate full Dirac secondary preservation,
+Poisson rank and lapse-fixing including both dust pairs, K/J degeneracies.
+Require on-shell nonhomothetic solution and BOTH De Felice/Aoki physical
+same-action oracles before Candidate-C first mu fold a~.0301646.
+External opposite-EH-sign JHR manuscript audit remains SEPARATE.
+VERDICT: GATE_2B=OPEN; JANUS-R NOT VALIDATED. Keep main and v2-flrw intact.
