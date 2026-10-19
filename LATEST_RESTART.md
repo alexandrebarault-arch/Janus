@@ -1,3 +1,51 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33e (2026-10-19)
+
+**FIRST READ:** `research/SPHERICAL_MIXED_HAMILTONIAN_POISSON_STEP33E_AUDIT.md`.
+**NEW module:** `numerics/hr_spherical_mixed_hamiltonian_bracket.py`.
+**NEW 31 tests:** `tests/test_hr_spherical_mixed_hamiltonian_bracket.py`.
+**REPRODUCE:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33e.py gate2b-step33e-report.json`.
+
+## Step33e — MIXED radially smeared spherical Poisson {H_g[N],H_f[M]} COMPUTED on off-shell family; full BD SECONDARY STILL OPEN
+
+**Real mathematical advance over Step33d:** both positive-EH spherical ADM gravitational constraints (including exact intrinsic spatial curvature and radial pL derivatives), the full all-beta Hassan–Rosen potential and BOTH independently canonical dust phase/momentum pairs now enter the explicitly computed *radially smeared mixed* functional Poisson bracket of the two lapse constraints. The exact lapse-linear relative shift is algebraically eliminated on its REGULAR K!=0 branch with z*=u/sqrt(1+u²), u=Dg/K. Both derivatives z*'(r) and z*''(r) are included. Each primary H_g,H_f is separately stationary under z at z* (∂_z H_g=F_z/Lg, ∂_z H_f=F_z/Lf), allowing an exact envelope-theorem functional differentiation — no treating z as a physical canonical pair.
+
+**Crucial radial integrations by parts:** the 3-curvature contribution integrated against a compact N becomes `-M²[N L+N S_r²/L+2N_r S S_r/L]`. The g momentum-gradient term in H_g transforms `-N z pL_g'→(Nz)'pL_g`; in H_f transforms `-M z Lg pL_g'/Lf→(M z Lg/Lf)'pL_g`. Symbolic partial functional jets are differentiated via SymPy; radial total derivatives are computed using complex-step on analytic nonhomogeneous radial profiles. Independent direct variations of the ORIGINAL curvature-containing, pL'-containing action verify **all 12 canonical field gradients of BOTH Hamiltonians** for eliminated z*, plus eight additional canonical gradient controls at externally fixed z.
+
+**Actual OFF-SHELL arbitrary nonhomogeneous regression on r in [.1,.9], positive Mg²=1.7 Mf²=.63 m²=.91, five beta values (.2,1.3,-.35,.4,-.17), 48-point Gauss quadrature:**
+```
+{H_g[N],H_f[M]}                  = +1.2437914369616798e-06
+Six pair contributions in order:
+(Lg,pLg)                        = +1.9582294901110296e-05
+(Sg,pSg)                        = -1.8544242941402666e-05
+(theta_g,p_g)                   = +2.372118038057092e-08
+(Lf,pLf)                        = -3.4075573609340606e-08
+(Sf,pSf)                        = +2.1609387048281924e-07
+(theta_f,p_f)                   = 0 [structural to THIS mixed bracket, NOT elimination of f dust]
+shift equation |F_z| max         = 4.163336342344337e-17
+when z is EXTERNAL fixed          = +4.993895796055337e-07 [NOT identical]
+with radial smearings N ↔ M      = +1.2077059811667116e-06 [radial test derivatives matter]
+when m²=0 and fixed z=0          = 0 [independently decoupled sectors]
+```
+**DO NOT CONFUSE with a physical observable or an ON-SHELL secondary constraint**: test data deliberately violate primary constraints. Both matter pairs remain in the full canonical action, although f dust's direct contribution to this specific mixed bracket is zero because H_g and z* are independent of (theta_f,p_f). A nonzero off-shell bracket alone cannot infer the local BD secondary or propagating ghost count.
+
+**ACTUAL meaningful RED→GREEN bug:** the first symbolic implementation wrongly unpacked the interleaved canonical vector and swapped Sg with pLg and Sf with pLf, producing a FALSE bracket ~0.00636. Independent comparison against the ORIGINAL non-IBP Einstein–Hilbert+HR+dust primary smearing caught this error; corrected exact result is 1.2437914e-06. The full error and correction are documented in the audit and protected by new tests. A full expansion of all symbolic functional Euler expressions previously exceeded compute timeout; retained exact partial symbolic derivatives combined with controlled analytic-profile complex-step radial total derivatives.
+
+**ACTUALLY EXECUTED:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests` => **31 NEW tests PASS in NEW standalone /mnt/data/janus33e**, ~12s. `scripts/verify_gate2b_step33e.py` independently ran the 31 tests (exit0, ~10.5s), produced `gate2b-step33e-report.json` and explicit provenance/physical NOT_DERIVED. Prior Step33d 95 tests and Step32e 93 tests were **NOT rerun here**; NEVER claim 126 combined tests in a single run, no clean Git clone/CI/independent peer review. All FOUR new source/test/runner/audit Git blob hashes MATCH the real local source bytes:
+- numerics/hr_spherical_mixed_hamiltonian_bracket.py `6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81`
+- tests/test_hr_spherical_mixed_hamiltonian_bracket.py `ed3525383bc61b6b1cc838f29139df9663add918`
+- scripts/verify_gate2b_step33e.py `4946e1afd06d3d750f93f635ce0ce446c562811c`
+- research/SPHERICAL_MIXED_HAMILTONIAN_POISSON_STEP33E_AUDIT.md `85e1d346c19ef5ca4f9649968d3514b51f08816a`
+
+**NEXT STRICT RED, exact ordered continuation:**
+1. **LOCAL DISTRIBUTION + PRIMARY CONSTRAINT SURFACE:** express the mixed bracket as local smearing coefficients of N M, N'M, N M' plus contributions proportional to Ddiag and F_z; choose radial canonical test data satisfying BOTH H_g=0,H_f=0 and Ddiag=0, rather than off-shell arbitrary polynomials. Determine whether a further independent secondary condition is forced or lapses are simply fixed.
+2. Compute full Dirac time preservation, secondary Poisson rank and lapse-fixing with BOTH g and f canonical dust pairs; establish or falsify the genuine SPHERICAL local HR BD primary-secondary pair. Never directly extrapolate the homogeneous chi result of Step33b.
+3. Compare to fully time-integrable same-action Step32e compact perturbations and gauge closure; independently obtain a truly NONHOMOTHETIC on-shell two-matter bimetric background beyond passive chart compensation.
+4. SAME reduced physical action must reproduce BOTH finite-H mu→0 De Felice scalar and nonlinear homothetic Aoki K_S,c_S² stable+unstable benchmarks prior to Candidate-C relative mu fold at a≈0.0301646; no physical ghost/speed/fold/CMB claim yet.
+
+**Verdict:** `STEP33E_RADIAL_MIXED_HH_POISSON_OFFSHELL_GREEN`; `LOCAL_BD_SECONDARY_OPEN`; `GENUINE_NONHOMOTHETIC_ONSHELL_OPEN`; **`GATE_2B_OPEN`; JANUS-R NOT VALIDATED**. Work ONLY in `research/gate2b-nonhomothetic-transfer`; main and research/v2-flrw untouched; external wrong-sign-f-EH JHR audit separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33d (2026-10-19)
 
 **READ FIRST** `research/SPHERICAL_RADIAL_DIAGONAL_WARD_STEP33D_AUDIT.md`.
