@@ -1,3 +1,57 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33f (2026-10-19)
+
+**READ FIRST:** `research/SPHERICAL_LOCAL_PRIMARY_SURFACE_STEP33F_AUDIT.md`.
+**NEW CODE:** `numerics/hr_spherical_local_mixed_kernel.py`, `numerics/hr_spherical_radial_primary_surface.py`.
+**NEW TESTS:** `tests/test_hr_spherical_local_primary_kernel.py`.
+**REPRODUCE NOW:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33f.py gate2b-step33f-report.json`.
+
+## 33f. Mixed H_g/H_f radial differential kernel + explicit positive-two-dust radial PRIMARY surface GREEN — GENERAL BD SECONDARY STILL OPEN (LATEST)
+
+**Real advance over 33e:** Step33e gave a true radially smeared `{H_g[N],H_f[M]}` but only on an arbitrary OFF-SHELL radial benchmark. Step33f (1) reconstructs all N,N',N'' × M,M',M'' LOCAL bilinear bracket coefficients `K_ij(r)` directly from all 12 exact canonical functional Euler derivatives in six metric/dust pairs, and (2) evaluates them on an explicit radial family where BOTH Hamiltonian primaries H_g,H_f and the diagonal momentum primary Ddiag vanish pointwise with BOTH independently positive dust momenta. This is a **restricted but genuinely radially inhomogeneous canonical PRIMARY-CONSTRAINT surface**; it is NOT a time-evolved Einstein solution or full general HR BD secondary proof.
+
+**Off-shell local operator:**
+```
+{H_g[N],H_f[M]}=integral dr sum_{i,j=0}^2 K_ij(r) N^(i)(r) M^(j)(r).
+K(r=.43) = [[+0.756718835596,-0.028692400055,0],
+            [-0.214603323052,+0.264894709296,0],
+            [+0.264894709296,0,0]].
+```
+Numerical operator identities `K20=K11`, `K02=K12=K22=K21=0` hold on regular off-shell root and fixed-z samples. The NONZERO derivative terms must NOT be removed before spatial IBP. Independent 40-point radial integration of this local kernel reproduces the original Step33e mixed functional Poisson value `1.2437914369613e-6` with the original arbitrary offshell compact N,M. Local jets are generated using unit-smearing profiles `1,(r-r0),(r-r0)^2/2`; all six canonical Poisson pairs retained.
+
+**NEW primary-satisfying radial two-dust witness:** spatial slices `Lg=a, Sg=a r, Lf=b, Sf=b r` are flat; choose INDEPENDENT nonconstant polynomial momenta `pL_g=r² Pg(r), pS_g=(pL_g)'`, `pL_f=r² Pf(r), pS_f=(pL_f)'`; comoving matter phases `theta'_g=theta'_f=0`. Then Dg=Df=Ddiag=0 EXACTLY, z*=0, and solve Hg=Hf=0 pointwise for TWO distinct positive matter momentum profiles:
+```
+p_g=r²[(3Pg²/4+r Pg Pg'/2)/(Mg² a)-m² Mg² a³ V_g(y)],
+p_f=r²[(3Pf²/4+r Pf Pf'/2)/(Mf² b)-m² Mg² a³ V_f(y)],
+y=b/a, V_g=β0+3β1 y+3β2 y²+β3 y³,
+V_f=β1+3β2 y+3β3 y²+β4 y³.
+```
+**The full original unintegrated spherical EH+HR+dust primary constraints are independently evaluated; no primary residual is suppressed in code.** This family includes radially varying grav momentum AND two dust densities, so it is NOT merely a homogeneous canonical phase point; the 3-geometries nevertheless remain spatially flat and the dust clocks comoving.
+
+**NEW restricted necessary secondary witness:** the full local mixed bracket on this explicit constraint surface has ONLY K00 nonzero, with the verified closed form:
+```
+K00(r)=[m² Mg² a² J(y)/2] r² [3X(r)+r X'(r)],
+X=Pg/(Mg² a)-Pf/(Mf² b),
+J(y)=β1+2β2 y+β3 y².
+```
+At `a=.4,r=.43,y=.5787707228025044`, all 5 checked primary residuals `(Hg,Hf,Ddiag,Dg,Df)=(+2.08e-17,-3.47e-18,0,0,0)`, `p_g=.189515033378>0,p_f=.022872502691>0`. The full independent local Poisson coefficient is **-0.11307718948650103**, versus analytical candidate **-0.11307718948650095**; all K-derivative slots are zero. Integrated against original compact N,M, bracket = **-7.916775842392439e-7** versus original full functional bracket **-7.916775842392432e-7**. Dropping radial X' incorrectly yields `-0.08394271077`. Synchronized `Pf=(Mf² b/(Mg² a))Pg` sets X=0, K00=0 while keeping both dust densities positive and distinct. When Pg and Pf are constants, `3X=chi` and the exact previously verified homogeneous Step33b `(m² Mg² a²/2)J chi` bracket is recovered after dividing by r². Benchmarks cover a=1,.4,.2,.05,.03, multiple radial points and different polynomial momenta, plus 7 homogeneous chi=0 Candidate epochs. **Necessary condition on THIS subclass only, no universal local BD theorem.**
+
+**ACTUALLY EXECUTED:** 52 focused tests PASS together in **/mnt/data/janus33e** = original 31 Step33e tests (both original source/test exact SHA matches preexisting live GitHub) + **21 new Step33f pytest cases**. `scripts/verify_gate2b_step33f.py` independently exits 0/52 and writes `gate2b-step33f-report.json` with reproducibility digests and flags: `full_repository_regression=false`, `general_local_BD_secondary=NOT_DERIVED`, `Dirac_secondary_preservation_and_lapse_fixing=NOT_DERIVED`, DeFelice/Aoki NOT_RUN, GATE2B OPEN. Earlier Step33d 95 and Step32e 93 tests NOT rerun here; no Git checkout full suite/CI/peer replication. A minor initial Python generator-parentheses syntax mistake in the new test witness was caught and corrected before all tests passed. Five newly published files EXACT GitHub blob SHA matched local tested files:
+- `numerics/hr_spherical_local_mixed_kernel.py` `122351f41dd85d6d2a91ca1345cec54a2ad1fad3`
+- `numerics/hr_spherical_radial_primary_surface.py` `a6dc81ff47c335cf9f41a46e760e910ebd451a43`
+- `tests/test_hr_spherical_local_primary_kernel.py` `473caf36c7a17f3a998dbb3c4118815004b99786`
+- `scripts/verify_gate2b_step33f.py` `c258c6bd2cbd45b9af8222fab75f112ee4971a2e`
+- `research/SPHERICAL_LOCAL_PRIMARY_SURFACE_STEP33F_AUDIT.md` `5560023dc2789a5996f546e1799abad1a28f4b37`
+
+**NEXT EXACT HARD RED:**
+1. Generalize the PRIMARY-SURFACE analysis beyond spatially FLAT g/f slices and comoving dust phases. Include genuinely curved/relative radial profiles, Dg/Df nonzero but Ddiag=0, radial matter phase gradients and exact relative shift z*. Analyze local differential smearing coefficients only AFTER imposing the true full local Hamiltonian and momentum primary constraints.
+2. On this genuine general primary surface, derive and preserve any local HR BD SECONDARY using the complete Dirac Poisson/rank/lapse-fixing algorithm; handle regular and degenerate J(y)=0 or K(r)=0 branches honestly. Do not extrapolate `3X+rX'` beyond this witness subfamily.
+3. Integrate with the Step32e full time-supported, fully time-integrable action; find a genuine physically NONHOMOTHETIC ON-SHELL two-metric/two-dust solution, not the Step30 pure coordinate transformation; pass independent same-constrained-action De Felice finite-H mu→0 and nonlinear Aoki KS,cS² stable/unstable controls before relative μ fold1 a≈.0301646.
+4. Publish NEGATIVE conclusion if a physics acceptance criterion fails; no physical ghost/speed/CMB claim from these algebraic tests.
+
+**VERDICT:** `STEP33F_LOCAL_MIXED_KERNEL_GREEN`, `RESTRICTED_RADIAL_PRIMARY_SURFACE_GREEN`, `GENERAL_BD_SECONDARY_AND_PRESERVATION_OPEN`; **`GATE_2B=OPEN`, JANUS-R NOT VALIDATED**. Continue ONLY on branch `research/gate2b-nonhomothetic-transfer`, preserve `main` and `research/v2-flrw`, external wrong-sign-f-EH JHR audit separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33e (2026-10-19)
 
 **FIRST READ:** `research/SPHERICAL_MIXED_HAMILTONIAN_POISSON_STEP33E_AUDIT.md`.
