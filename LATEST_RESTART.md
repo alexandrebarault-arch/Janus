@@ -1,3 +1,37 @@
+# JANUS — REPRISE PRIORITAIRE, ÉTAPE 32d (2026-10-19)
+
+**FIRST READ:** `research/INTEGRABLE_FOUR_METRIC_TIME_BASIS_STEP32D_AUDIT.md`.
+**New source/test:** `numerics/hr_integrable_metric_time_basis.py`, `tests/test_hr_integrable_metric_time_basis.py`.
+**One-command focused reproduction:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step32d.py gate2b-step32d-report.json`.
+
+## 32d. REAL compact parent trace/shear fields and their TRUE time derivatives — all 16 legal on-shell tadpoles GREEN; ADM/BD physics still OPEN
+
+**ROOT ISSUE FROM STEP32c HAS BEEN CORRECTED.** The Step32b scalar EH metric time-rate jets `delta psi_dot=b*T(t)*F(r)` and `delta E_dot=b*T(t)*r²F(r)` were disconnected from the derivatives of their actual compact parent spatial-metric profiles `a*T(t)F(r)`, which are `a*T'(t)F(r)`. Their nonzero raw integrated first action variations were NOT physical tadpoles and their 18-jet restricted 14×14 Schur was merely finite-basis algebra (NOT the physical kinetic/BD reduction).
+
+**NEW Step32d action:** choose an independent smooth compact parent profile `G(t)=t*T(t)`, `G'(t)=T(t)+t*T'(t)`, where `T(t)=(1-(t/Tmax)^2)^4` vanishes with derivatives at the time boundaries. For both g and f use `psi_s=[psi0*T+psi1*G]F(r)` and `E_s=[E0*T+E1*G]r²F(r)`, and their EXACT time/radial derivatives. Recompute the nonlinear spherical EH_g/f **intrinsic 3-curvature and extrinsic rates**, the full all-beta HR interaction, and BOTH common-time canonical dust Hamiltonians on the SAME metric tensors. At zero extra four amplitudes the complete earlier Step32a 14-slot action is recovered exactly. Independently at two finite nonzero scalar metric points, `EH_new=EH_step31(psi_eff=psi0+t psi1,E_eff=E0+t E1)+exact_Step32b_ADM_rate_delta(psi_rate=psi1,E_rate=E1)`, including unchanged independent angular/spatial metric geometry.
+
+**ACTUAL decisive on-shell result:** with the radiation-free PHYSICALLY HOMOGENEOUS on-shell Candidate-C background, ALL SIXTEEN legal compact field first variations vanish, max `1.3964523981613295e-11` (20×20 quadrature, finite amplitude step 2e-5). For FOUR new compact parent fields, first variations are `(-1.3010426069826053e-13,+4.336808689942017e-14,0,-4.336808689942017e-14)`. The old DISCONNECTED g trace rate jet first variation was `-3.058752883790261e-4`, compared to new integrable parent `-1.3010e-13`. This is genuine repaired time-integrability, NOT artificial constraint cancellation.
+
+**Important dust subtlety from real RED-to-GREEN tests:** at a comoving canonical dust configuration with phase radial derivative=0 and positive FIXED momentum, `H_dust=N p` has no direct spatial-metric dependence. Thus a pure independent f trace perturbation changes the f Einstein–Hilbert 3-curvature and HR potential, but does NOT change its f dust action piece in that particular canonical configuration. The initially oversized numerical thresholds for tiny f EH/HR integrated responses were also corrected without modifying physics formulas. The two independent matter canonical p--theta_rate coefficients remain `+9.450339095e-05`, `+1.303392697e-05`, rank TWO.
+
+**ACTUALLY EXECUTED together:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests` -> **81 PASS in ONE focused workspace** `/mnt/data/janus32`: 29 Step31 +20 Step32a +11 Step32b +11 Step32c +10 Step32d. `scripts/verify_gate2b_step32d.py` separately returned exit0/81 and recorded 16 legal tadpoles, dual canonical rank2, and all physical oracles NOT_RUN. New FOUR file Git blobs match local executed file bytes EXACTLY:
+- `numerics/hr_integrable_metric_time_basis.py` `d6d8200ef583c25c232dd79b0e5aba1a206d41e5`
+- `tests/test_hr_integrable_metric_time_basis.py` `f080670b594d0d084640d637ad2482e66bc5b9ea`
+- `scripts/verify_gate2b_step32d.py` `02c86de9e348b4f7e0502c0ad180905ea903052d`
+- `research/INTEGRABLE_FOUR_METRIC_TIME_BASIS_STEP32D_AUDIT.md` `63938f4cad110c18af899ca20e4b6e360cc5d01b`
+
+**Still LIMITED:** two old dust `theta_rate` slots (6,13) remain disconnected LOCAL jets with nonzero raw first derivatives. Therefore the full 18-slot basis is NOT YET completely time-integrable. Nor is it complete under arbitrary local diagonal diffeomorphisms. The Step32c restricted 4x4 Schur must NOT be re-used unchanged as a physical ADM/BD or ghost/gradient analysis after this corrected field basis. The background is ON SHELL only for the dust-only PHYSICALLY HOMOGENEOUS Candidate-C, not a new nonhomothetic physical solution; Step30 compensations are coordinate relabellings. No true lapse/shift canonical constraints, HR BD-null, physical De Felice/Aoki scalar acceptance, relative mu fold or CMB likelihood yet.
+
+**NEXT EXACT RED:**
+1. Replace the TWO disconnected canonical dust phase-rate local jets with globally integrable compact parent phase perturbations (while preserving independent positive p_g,p_f variables). Demand all EIGHTEEN legal compact field first variations vanish after full time-supported integration and true dust phase IBP.
+2. From the SAME action with genuine field/rate integrability derive full ADM lapse/shift and HR BD-null canonical constraints, keeping BOTH matter phase-space pairs; recover physical principal kinetic/gradient symbols only after constraint reduction and on-shell diagonal Ward.
+3. Separately solve/certify truly NONHOMOTHETIC on-shell g/f Einstein+HR+two-dust background, NOT the passive compensated homogeneous background.
+4. Test De Felice finite-H mu→0 and homothetic nonlinear Aoki KS,cS² stable/unstable on the SAME physical reduced action, THEN fold1 at a≈0.0301646 if both pass. Report precise negative gate if obstructed.
+
+**Verdict:** `STEP32D_INTEGRABLE_METRIC_FIELDS_GREEN`; `TWO_DUST_PAIRS_GREEN`; `DUST_PHASE_TIME_INTEGRABILITY_RED`; `TRUE_ADM_BD_REDUCTION_OPEN`; `GENUINE_NONHOMOTHETIC_ONSHELL_OPEN`; **`GATE_2B_OPEN` / JANUS-R NOT VALIDATED.** Branch ONLY `research/gate2b-nonhomothetic-transfer`, main and v2-flrw untouched. External JHR opposite-f-EH-sign audit separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE, ÉTAPE 32c (2026-10-19)
 
 **FIRST READ:** `research/RESTRICTED_FOUR_AUXILIARY_SCHUR_STEP32C_AUDIT.md`.
