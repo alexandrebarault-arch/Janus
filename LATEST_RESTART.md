@@ -1,3 +1,40 @@
+# JANUS — REPRISE PRIORITAIRE, ÉTAPE 33c (2026-10-19)
+
+**FIRST READ:** `research/SPHERICAL_DUST_SMEARED_POISSON_STEP33C_AUDIT.md`.
+**New exact matter radial bracket:** `numerics/hr_spherical_dust_smeared_bracket.py`.
+**New tests:** `tests/test_hr_spherical_dust_smeared_bracket.py`.
+**Reproduce:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33c.py gate2b-step33c-report.json`.
+
+## 33c — TWO-dust RADIAL FUNCTIONAL constraint Poisson bracket GREEN; full spherical HR/BD secondary still OPEN
+
+**ACTUAL MATHEMATICAL ADVANCE beyond 33b homogeneous Poisson:** at arbitrary regular nonhomogeneous radial dust field `theta(r)`, positive canonical p(r) and metric radial length L(r)>0, each irrotational dust has EXACT canonical constraints
+`C_d(r)=p sqrt[1+(theta'/L)²]`, `D_d(r)=p theta'`. For smooth compact smeared lapses N,M the FUNCTIONAL radial Poisson bracket closes exactly on the dust momentum constraint:
+```
+{H_d[N],H_d[M]} = D_d[(N M'-M N')/L²]
+                = int dr p theta'/L² (N M'-M N').
+```
+Direct functional variations `δH[N]/δtheta=-(N p theta'/(L² h))'`, `δH[N]/δp=N h` were used, with h=sqrt(1+theta'²/L²), plus compact-support radial IBP. The g and f dust canonical phase-space pairs remain separate and their **cross-dust** Poisson brackets vanish identically. This bracket is generically NONZERO if theta' !=0; the homogeneous reduction 33b suppresses it. An intentionally nonrelativistic truncated dust h=1+theta'²/(2L²) FAILS closure by symbolic residual theta'³/(2L⁴); negative numerical control passes.
+
+**Independent numerical check:** from the **discretized nonlinear dust Hamiltonian** H[N]=sum_j N_j P_j sqrt[1+(Dtheta)_j²/L_j²] with true nodal canonical P_j=w_j p_j, separately finite-differentiate EVERY nodal theta and P coordinate and compute the discrete PB. Its result converges under n=33→65→129 to the INDEPENDENT continuum momentum-bracket integral. Example seed_shift=.3 target n129 -0.0004726532006 versus nodal PB -0.0004726019329; the truncated relativistic Hamiltonian gives -0.0005758332733. Antisymmetry, homogeneous theta'=0, two disjoint dust species, invalid metric, boundary and step controls pass.
+
+**ACTUALLY TESTED together IN ONE focused non-git /mnt/data/janus33c:** 69 PASS = 21 Step33a +36 Step33b +**12 NEW Step33c**. Step33c JSON runner exit0/69 PASSED, confirms original 33a/b Python/test Git blob SHA exact, flags full repo regression false, radial HR BD constraint NOT_DERIVED, De Felice/Aoki NOT_RUN and GATE_2B OPEN. Historical Step32e 93 NOT rerun, no claim 162 combined. All FOUR new files exact-byte matched local executed Git hashes:
+- `numerics/hr_spherical_dust_smeared_bracket.py`: `d64ba7f790e63e21c626bb93763d971bb50b8fc2`
+- `tests/test_hr_spherical_dust_smeared_bracket.py`: `3a986c01c1ef1cd25d9ad2f9314719fe82233772`
+- `scripts/verify_gate2b_step33c.py`: `4222c527c56b4e98adfab2ee4083cd28e3135de7`
+- `research/SPHERICAL_DUST_SMEARED_POISSON_STEP33C_AUDIT.md`: `b3cccbdb4c28d20841722492c9bbc1ffeaeb7a99`
+
+**HARD LIMITATION:** Dust-only functional bracket ≠ full coupled spherical field-theory ADM/HR primary/secondary bracket. Still missing EH radial curvature/momenta in cross brackets, all-beta HR radial/Stueckelberg relative shift z and its constraint, boundary terms, local diagonal Noether and BD secondary temporal preservation. Do NOT infer no BD ghost, kinetic stability, De Felice/Aoki scalar speed or Candidate-C fold from this. Existing on-shell Candidate-C controls are homogeneous and WITHOUT RADIATION, genuine physical nonhomothetic solution not yet found.
+
+**NEXT EXACT RED:**
+1. Extend this smearing/functional derivative engine to the **COMPLETE spheriсal coupled** positive-EH_g/f + all-beta HR + two-dust Hamiltonian (Step33a), including radial derivatives, z stationarity, constraints and boundary terms. Verify full smeared `{C_g[N],C_f[M]}`, diagonal momentum constraint and potential local HR BD secondary against independent finite differences.
+2. Determine local secondary time preservation, appropriate lapse-fixing and constraint rank; preserve both canonical dust phase-space pairs. Compare action-level to Step32e integrable 18-field spacetime action without illicit finite-basis Schur.
+3. Separately seek full genuinely NONHOMOTHETIC on-shell two-metric+two-dust Candidate-C or scientifically document failure, then SAME reduced-action De Felice finite-H mu→0 and nonlinear homothetic Aoki K_S,c_S² stable+unstable limits, then first relative mu-fold at a~0.0301646. No observational claims until physical gates.
+4. Keep checkpoint and scientific audits updated after every correction; commit only research/gate2b-nonhomothetic-transfer, main/v2-flrw untouched.
+
+**STATUS `STEP33C_RADIAL_DUST_FUNCTIONAL_POISSON_GREEN`; `FULL_SPHERICAL_BD_SECONDARY_OPEN`; `GATE_2B=OPEN`; JANUS-R NOT VALIDATED.** Distinguish external JHR 2026 negative f Einstein–Hilbert-sign manuscript from positive-EH JANUS-R audited here.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33b (2026-10-19)
 
 **FIRST READ** `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md`.
