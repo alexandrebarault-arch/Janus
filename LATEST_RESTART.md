@@ -1,3 +1,32 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 32 (2026-10-19)
+
+**READ FIRST:** `research/COMMON_TIME_TWO_DUST_CANONICAL_STEP32_AUDIT.md`.
+**New module:** `numerics/hr_two_dust_common_time_canonical.py`.
+**New tests:** `tests/test_hr_two_dust_common_time_canonical.py`.
+**Reproduce in one command:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step32.py gate2b-step32-report.json`.
+
+## 32. Exact two-dust COMMON-TIME phase-space Legendre bridge GREEN — full metric-velocity, BD and physical oracles STILL OPEN
+
+**Advance over Step31:** The previous complete positive EH_g + positive EH_f + all-beta HR + TWO *covariant* irrotational dust spherical scalar action was tested at 12 compact first variations on the **radiation-free, HOMOGENEOUS on-shell Candidate-C** trajectory. Step32 now performs an **EXACT local ADM Legendre transform** of BOTH dusts on the SAME Step31 nonlinearly perturbed spherical metric tensors, BEFORE eliminating the dust density multiplier. This preserves the two dust momenta and two dust phase variables in a single common-time, five-sector **first-order canonical** spacetime action. It additionally evaluates the full **14×14 compact preconstraint Hessian** and compares its two phase-velocity/momentum columns with a separate analytic 4π radial/time integral.
+
+For each metric, `N=sqrt(-g_tt+g_tr²/g_rr)`, `N^r=g_tr/g_rr`, `sqrt(gamma)=sqrt(g_rr)*g_angular`. The original dust scalar density is `sqrtgamma*rho/(2N)*[(theta_dot-N^r theta_r)^2-N²(1+theta_r²/g_rr)]`. Exact Legendre gives `p=sqrtgamma*rho*(theta_dot-N^r theta_r)/N`, `H_rho=N[p²/(2sqrtgamma*rho)+sqrtgamma*rho(1+theta_r²/g_rr)/2]+N^r p theta_r`. ONLY AFTER THIS, stationary multiplier `rho*=p/[sqrtgamma sqrt(1+theta_r²/g_rr)]` yields **`L_dust,red=p theta_dot-N p sqrt(1+theta_r²/g_rr)-N^r p theta_r`**. Exact equality of off-shell covariant and Legendre dust densities is tested in BOTH sectors for nonzero perturbations, not by the trivial zero-on-clock value.
+
+**Important auxiliary fact:** at fixed spatial fields and p, the dust Hamiltonian is affine in true ADM lapse and shift. This DOES NOT solve full coupled EH+HR constraint algebra or BD null reduction. In the 14-amplitude trial jet the seven slots per sector are `(Phi,U,psi,E,theta,p,theta_rate)`, and the two independent *local* phase-rate jets are NOT independently admissible compact theta field variations. Their linear derivatives are NONZERO and are correctly excluded from the on-shell field-tadpole test.
+
+**Reproducible diagnostics:** full preconstraint Hessian H has `H[p_g,theta_rate_g]=+9.450339095258206e-05`, `H[p_f,theta_rate_f]=+1.3033926965066306e-05`, cross-pair zero, 2×2 symplectic block rank 2. The two independent phase-rate rows are zero elsewhere; momentum-momentum and rate-rate dust blocks vanish in this stationary-rho reduced canonical representation. Twelve valid compact metric/phase/momentum field first variations remain zero to max `3.729655473350135e-12`; HR cross-metric coefficient `H[Phi_g,psi_f]≈-0.0001842360821` remains nonzero (and is zero with m²=0, while the background lapse tadpoles then fail).
+
+**ACTUAL TEST:** **49 PASS in ONE local focused workspace /mnt/data/janus32** = 29 original exact Step31 tests (the Step31 original module and test have exact GitHub blob hash matching local bytes) + **20 NEW Step32 tests**. Both the direct pytest suite and independent `scripts/verify_gate2b_step32.py` runner returned exit code 0 / 49 passed, manifest marks incomplete full-repo checkout, BD/De Felice/Aoki `NOT_RUN`, `GATE_2B=OPEN`. This is a real combined 29+20 test result, UNLIKE prior separate step test counts. All FOUR new files exactly match tested local Git blobs:
+- numerics/hr_two_dust_common_time_canonical.py `6b6c8a8e8f5373005ff51cf169b0360fc9caec37`
+- tests/test_hr_two_dust_common_time_canonical.py `020c87f1b3a805f23c66cf20516ba82fb7f1796d`
+- scripts/verify_gate2b_step32.py `c2887ec07ac6aec1ca3a27716dbcb038713b4c76`
+- research/COMMON_TIME_TWO_DUST_CANONICAL_STEP32_AUDIT.md `dd3a8ebddde6716b2817de69ec26cdf991e31467`
+
+**CURRENT EXACT RED:** (1) extend the Step31 EH+HR+two dust action to retain INDEPENDENT metric spatial trace and shear TIME-RATE jets `psi_dot_g,E_dot_g,psi_dot_f,E_dot_f`; then form a coherent common-time quadratic field/rate operator and ADM lapse/shift auxiliary constraints. Do not read physical kinetic/ghost signs from the current UNREDUCED 14×14 Hessian. (2) Canonically eliminate the time-dependent HR BD-null direction while preserving BOTH independent dust (theta,p) symplectic pairs. (3) Independently solve a genuinely NONHOMOTHETIC on-shell Candidate-C two-dust background beyond the passive compensated chart; full 5-sector Einstein and matter tadpoles required. (4) Reproduce De Felice finite-H μ→0 scalar and nonlinear homothetic Aoki K_S,c_S² (stable+unstable) on the SAME reduced action before first relative μ-fold `a≈0.0301646` or any CMB prediction.
+
+**Verdict:** `COMMON_TIME_TWO_DUST_CANONICAL_GREEN`, `METRIC_BD_REDUCTION_OPEN`, `GENUINE_NONHOMOTHETIC_ON_SHELL_OPEN`, `GATE_2B=OPEN`; JANUS-R NOT VALIDATED. Work ONLY on `research/gate2b-nonhomothetic-transfer`, leave main/v2-flrw untouched; external 2026 JHR negative-f-EH-sign audit separate.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 31 (2026-10-19)
 
 **FIRST READ:** `research/FULL_ONSHELL_TWELVE_FIELD_TADPOLES_STEP31_AUDIT.md`.
