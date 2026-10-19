@@ -1,0 +1,86 @@
+{
+  "Aoki_homothetic_KS_cs2_oracle": "NOT_RUN",
+  "DeFelice_finite_H_oracle": "NOT_RUN",
+  "Dirac_lapse_fixing": "NOT_DERIVED",
+  "Dirac_secondary_time_preservation": "NOT_DERIVED",
+  "JANUS_R_cosmological_validation": false,
+  "all_passed": true,
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "curved_noncomoving_primary_witness": {
+    "Dg_max": 0.0050574523913585025,
+    "curvature_f_max": 11.260632786140778,
+    "curvature_g_max": 4.495143147693436,
+    "dust_f_min": 0.0017697835888737712,
+    "dust_g_min": 0.011037068826724814,
+    "max_abs_z": 0.0352,
+    "phase_f_max": 0.003199335896388572,
+    "phase_g_max": 0.0043227019184701445,
+    "primary_max": 2.7755575615628914e-16
+  },
+  "date": "2026-10-19",
+  "full_repository_regression": false,
+  "gate2b": "OPEN",
+  "general_local_BD_secondary": "NOT_DERIVED",
+  "genuine_nonhomothetic_evolving_on_shell_background": "NOT_FOUND",
+  "note": "Run primary and bracket groups in SEPARATE top-level invocations. Hosted symbolic cache accumulation made an all-in-one verification time out. No full joint 25-test run and no sum with Step33f 52.",
+  "old_step33f_52_tests_rerun": false,
+  "python": "3.13.5",
+  "runs": [
+    {
+      "exit_code": 0,
+      "output": "ed_adm_constraint_densities_match_zeros[0.11] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.17] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.28] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.43] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.66] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.83] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_unsimplified_adm_constraint_densities_match_zeros[0.89] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_original_hassan_rosen_radial_principal_root_vs_affine_lapses PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_true_curvature_against_direct_finite_difference_of_spatial_geometry PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_continuity_from_flat_comoving_to_curved_tilted[0.0-0.0-0.0-0.0-0.0] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_continuity_from_flat_comoving_to_curved_tilted[0.006--0.009-0.006--0.007-0.02] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_continuity_from_flat_comoving_to_curved_tilted[-0.013-0.014--0.015-0.012--0.035] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_continuity_from_flat_comoving_to_curved_tilted[0.018--0.014-0.012-0.008-0.05] PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_nonzero_momentum_and_matter_gradients_are_required_for_cancellation PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_two_phase_clocks_independent_and_regular_at_center PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_three_dimensions_spatial_curvature_nonzero_and_different PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_relative_shift_root_and_two_radial_momentum_densities PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_positive_dust_density_is_not_baked_into_algebraic_solver PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_failure_guards PASSED\ntests/test_hr_curved_moving_dust_primary.py::test_flat_zero_gradient_limit_original_step33f_dust_formula PASSED\n\n============================== 21 passed in 1.63s ==============================\n",
+      "passed": 21,
+      "seconds": 3.85,
+      "test": "tests/test_hr_curved_moving_dust_primary.py"
+    },
+    {
+      "exit_code": 0,
+      "output": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python\ncachedir: .pytest_cache\nrootdir: /mnt/data/janus33g\ncollecting ... collected 1 item\n\ntests/test_hr_curved_flat_reference.py::test_exact_flat_comoving_limit_matches_prior_closed_step33f_secondary PASSED\n\n============================== 1 passed in 0.71s ===============================\n",
+      "passed": 1,
+      "seconds": 2.63,
+      "test": "tests/test_hr_curved_flat_reference.py"
+    }
+  ],
+  "sources": [
+    {
+      "bytes": 6832,
+      "git_blob": "4266227a3a09bad229cb1da583b9a77706ef1838",
+      "path": "numerics/hr_curved_moving_dust_primary.py",
+      "sha256": "71f0d2ee1ce435a39213aeb9ca4ae076a87be30c1a9adfa3c8f3f60759085847"
+    },
+    {
+      "bytes": 4280,
+      "git_blob": "45ccd73177cc1588efaf1d53e3dd0179d41ec30b",
+      "path": "numerics/hr_curved_primary_mixed_kernel.py",
+      "sha256": "4842009a31f94ce2dc38eba289f2a99f64d6ef4fc1c69f5f16fb02fb81d9d6f2"
+    },
+    {
+      "bytes": 8169,
+      "git_blob": "738693cbd2d72ed67d43d47815edbc56bddc5480",
+      "path": "tests/test_hr_curved_moving_dust_primary.py",
+      "sha256": "defb3c01ca9006e593f08190933415c139bdbe14f16e5d936a24c977b44664aa"
+    },
+    {
+      "bytes": 2799,
+      "git_blob": "35a6674dc0d7e5355d1eb24f5755b1e1fa6b35f4",
+      "path": "tests/test_hr_curved_primary_mixed_kernel.py",
+      "sha256": "6d953940424de732098703b0bbca510e0ad6f0f19333ef72c4a355f9629d789d"
+    },
+    {
+      "bytes": 1007,
+      "git_blob": "5d039ce9412081c8f37c96c4149508db2bec0a4b",
+      "path": "tests/test_hr_curved_flat_reference.py",
+      "sha256": "167e708fcd62ab814d51bfd07ddf9d5c4eb8ea94bfa5b3f0a1eea99d36d9b4e1"
+    },
+    {
+      "bytes": 4011,
+      "git_blob": "7c7c66881c74496a9fa5e881ed4021a8a5ccf334",
+      "path": "scripts/verify_gate2b_step33g.py",
+      "sha256": "5d8a486d5d1a0c9e0b033d4235562a7c03c3fd2c0c7b3a65567589ee17532ec4"
+    }
+  ],
+  "step": "33g",
+  "test_group": "primary",
+  "tests_total_across_separate_processes": 22,
+  "workspace_origin": "new_standalone_non_git_workspace"
+}
