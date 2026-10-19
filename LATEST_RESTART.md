@@ -1,3 +1,35 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33b (2026-10-19)
+
+**FIRST READ** `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md`.
+**Executable:** `numerics/hr_homogeneous_poisson_secondary.py`.
+**Tests:** `tests/test_hr_homogeneous_poisson_secondary.py`.
+**Reproduce:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33b.py gate2b-step33b-report.json`.
+
+## Step33b — exact HOMOGENEOUS Poisson secondary and two-dust lapse fixing GREEN, local radial BD still OPEN
+
+**MAJOR VERIFIED ADVANCE:** from Step33a exact two-metric spherical ADM primary Hamiltonian, impose HOMOGENEITY only AFTER reduction to eight minisuperspace canonical coordinates `(a,b,theta_g,theta_f,p_a,p_b,p_g,p_f)` keeping TWO independently conserved dust momenta. Positive-EH g/f and exact all-beta HR produce primary constraints `Hg=-pa²/(12Mg²a)+m²Mg² a³ V(b/a)+pg`, `Hf=-pb²/(12Mf²b)+m²Mg² a³ W(b/a)+pf`. The exact Poisson bracket factorizes:
+```
+{Hg,Hf}=(m² Mg² a² / 2) J(b/a) chi,
+J(y)=beta1+2 beta2 y+beta3 y²,
+chi=pa/(Mg² a)-pb/(Mf² b).
+```
+The scalar `chi=0` is a HOMOGENEOUS secondary condition only on the regular dynamical branch m²*J !=0. On the branch J=0 or m²=0, dividing by the factor is ILLEGAL; negative tests prevent spurious secondary inference. Its time preservation `Ng{chi,Hg}+Nf{chi,Hf}=0` fixes the lapse ratio when the second bracket is nondegenerate. The exact formula recovers Candidate-C dust-only `Nf/Ng=y+y_N` independently at a=1,.8,.4,.2,.09,.05,.03. Two dust momenta retain independent canonical brackets; a three-constraint HOMOGENEOUS Dirac matrix has rank2 on these examples, with diagonal-lapse null combination. Full true spherical 4D primary/secondary and local radial derivatives NOT DERIVED.
+
+**Independent tests:** Symbolic exact SymPy eight-variable PB + two separate numerical finite-difference PB controls + literal homogeneous embedding into REAL spherical ADM Step33a density (including essential radial momentum derivative) + seven Candidate-C epochs + J=0/m²=0 degeneracy + independent dust clocks + homogeneous Dirac rank. **57 tests PASS IN ONE focused non-Git workspace `/mnt/data/janus33b` =21 exact Step33a +36 new Step33b**; test runner reports exit0. Prior Step32e 93 tests NOT rerun; DO NOT claim 150 jointly executed. No full clean clone/GitHub Actions or external peer reproduction.
+
+**Live GitHub files already committed on this research branch** (verified):
+- `numerics/hr_homogeneous_poisson_secondary.py` blob `43e03d01da57ddc23acb75db0ae660c001ea8e38`.
+- `tests/test_hr_homogeneous_poisson_secondary.py` blob `0c09ae4ae470a7e8b96dabac4909b1dfa7b8510d`.
+- `scripts/verify_gate2b_step33b.py` blob `83a32704a819e9a94785be0c0de6b87a663a8b15`.
+- `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md` blob `85f120309697b9a47796825034e7415bb07f7d9b`.
+The two executable/test source blobs match local tested code exactly. The GitHub runner/audit were committed independently of the local runner text; do NOT claim their SHA matches the locally generated alternatives without a byte comparison. Stage33b user report produced locally as `/mnt/data/janus33b/gate2b-step33b-report.json`.
+
+**NEXT CRITICAL RED:** compute actual SPATIALLY SMEARED radial functional Poisson brackets of the exact spherical ADM constraints including radial gradients and BOTH dust clocks/charges; determine local HR BD secondary and its time preservation with lapse/shift equations. The homogeneous secondary `chi` is NECESSARY controlled benchmark, NOT the answer in local field theory. Compare constraints with full time-integrable Step32e action, find genuinely nonhomothetic on-shell Candidate-C beyond pure-chart compensation, then independently pass De Felice finite-H mu→0 and Aoki nonlinear homothetic K_S,c_S² stable+unstable physical oracle from SAME fully reduced action BEFORE a≈0.0301646 fold.
+
+**Verdict: `HOMOGENEOUS_SECONDARY_AND_LAPSE_FIXING_GREEN`; `LOCAL_SPHERICAL_BD_SECONDARY_OPEN`; `GATE_2B=OPEN`; `JANUS_R_NOT_VALIDATED`.** Leave `main` and `research/v2-flrw` untouched. Distinguish external opposite-f-EH-sign JHR manuscript from our positive-sign JANUS-R.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE : ÉTAPE 33b (2026-10-19)
 
 **READ FIRST:** `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md`.
