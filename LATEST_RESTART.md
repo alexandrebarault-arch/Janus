@@ -1,3 +1,33 @@
+# JANUS — REPRISE PRIORITAIRE, ÉTAPE 32c (2026-10-19)
+
+**FIRST READ:** `research/RESTRICTED_FOUR_AUXILIARY_SCHUR_STEP32C_AUDIT.md`.
+**New code/tests:** `numerics/hr_metric_auxiliary_restricted.py`, `tests/test_hr_metric_auxiliary_restricted.py`.
+**Run ONE focused combined verification:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step32c.py gate2b-step32c-report.json`.
+
+## 32c. Restricted 4-lapse/shift Galerkin Schur GREEN — TRUE PHYSICAL METRIC + BD CONSTRAINTS OPEN
+
+Starting from the EXACT same positive EH_g, positive EH_f, all-beta HR and TWO reduced canonical dust common-time spherical action on the **radiation-free HOMOGENEOUS on-shell Candidate-C** branch, Step32c differentiates ALL 18 Step32b compact amplitude/rate jets to construct one symmetric full 18×18 PRECONSTRAINT Hessian. Four restricted metric coordinate amplitudes `(Phi_g,U_g,Phi_f,U_f)` at indices `(0,1,7,8)` define the 4×4 matrix `A`. It has rank 4, condition `545.9152166038742`, eigenvalues `(-2.80991e-4,-9.52783e-7,+5.14715e-7,+5.18734e-5)` on the tested off-shell*trial* directions (*the background itself is homogeneous on shell*). Its **ALGEBRAIC FINITE-BASIS** stationarization is `x_aux=-A^{-1}B y` and `S_14=C-B^T A^{-1}B`. Numeric and independent inverse constructions agree, multiple direct substitutions give `Q18=Q14` to ~1e-17, and the 4 restricted trial auxiliary equations vanish. A separate central difference of the ORIGINAL FULL NONLINEAR action along one Schur-compensated matter trial direction agrees with the predicted quadratic curvature to better than .7%; quadrature and Hessian step refinements pass. Two dust p-theta_rate canonical coefficients remain independently `+9.45033909345e-05`, `+1.30339269771e-05`, cross zero and rank 2. The original four independent EH metric rate block matches analytic Step32b coefficients to about 5e-15.
+
+**CRITICAL NO-PHYSICS CLAIM:** This algebraic Schur is **NOT** the four true Hamiltonian ADM field constraints, is **NOT** a physical 14-mode kinetic/gradient matrix, and is **NOT** BD-null elimination. True ADM lapses/shifts are multiplier fields before arbitrary radial/time Galerkin truncation, and `Phi` is a component perturbation rather than the canonical lapse. Most decisively, Step32b's independent metric rate jets `b T(t)F(r)` are NOT the derivative `a T'(t)F(r)` of their compact parent spatial fields; at t=0, T'=0 but T=1. Consequently this 18-jet trial space is NOT closed under physical time derivatives or diagonal diffeomorphism generators. No ghost, scalar speed or fold conclusion can be drawn from the restricted Schur signs/rank.
+
+**ACTUALLY EXECUTED:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests` → **71 PASSED in ONE focused local workspace** `/mnt/data/janus32`: 29 Step31 + 20 Step32a + 11 Step32b + **11 new Step32c**. The Step32c runner independently reports exit code 0, 71 passed, restricted aux rank 4, cond ~545.9152, 2 dust symplectic rank 2, `full_repository_regression=false`, `true_canonical_ADM_constraints_reduced=false`, `time_dependent_BD_null_reduced=false`, DeFelice/Aoki NOT_RUN, Gate2B OPEN. All FOUR newly published source/test/runner/audit files match local Git blobs EXACTLY:
+- `numerics/hr_metric_auxiliary_restricted.py` `de568fa5b64f0195eaad5d60acbaf13996c912f6`
+- `tests/test_hr_metric_auxiliary_restricted.py` `e3424451efe8ee4628ba0f6554bc3ca419bd3f83`
+- `scripts/verify_gate2b_step32c.py` `6c91b81c42f32616c97f15b13b016f414ea09fc5`
+- `research/RESTRICTED_FOUR_AUXILIARY_SCHUR_STEP32C_AUDIT.md` `670df71ee09ec47010c39cfeca13fa91dca9b656`
+
+**NOT a full clean Git checkout / full repo CI / independent replication.** Historical Step27–30 tests NOT rerun in this environment. A first invocation of the full Step32c JSON runner was interrupted by environment timeout; a SECOND completed run gave 71/71 PASS and wrote `/mnt/data/janus32/gate2b-step32c-report.json`. Never claim first invocation completed.
+
+**NEXT HARD RED, exact order:**
+1. Replace independent nonintegrable metric rate jets with compact time-supported `psi(t,r),E(t,r)` and their ACTUAL derivatives, preserving native EH 3-curvature, correct integration by parts and diagonal on-shell Ward checks. Rerun the Step31/32 tests and both dust canonical pair controls.
+2. Derive TRUE field-theory ADM lapse/shift auxiliary constraints and the HR time-dependent BD-null canonical reduction WITHOUT eliminating either dust phase pair; no finite restricted Schur substitution.
+3. Independently solve/assess a genuinely NONHOMOTHETIC physical g/f Einstein+HR+two-dust background. Step30 compensated chart is merely a diffeomorphic homogeneous solution.
+4. On the SAME full constrained action pass finite-H `mu→0` De Felice scalar and nonlinear homothetic Aoki `K_S,c_S²` stable+unstable, THEN test first Candidate-C relative `mu` fold a≈0.0301646. Reject model if real physical gate fails; no predicted observational likelihood yet.
+
+**Verdict:** `RESTRICTED_SCHUR_ALGEBRA_GREEN`; `PHYSICAL_ADM_AND_BD_REDUCTION_OPEN`; `NONHOMOTHETIC_ONSHELL_OPEN`; **`GATE_2B_OPEN`; JANUS-R NOT VALIDATED.** Work ONLY on `research/gate2b-nonhomothetic-transfer`, leave main/v2-flrw untouched; external JHR negative f-EH-sign tensor ghost critique remains separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE ÉTAPE 32b (2026-10-19)
 
 **READ FIRST:** `research/FOUR_METRIC_RATE_JETS_STEP32B_AUDIT.md` (full derivation, RED->GREEN regression, independent controls, exact next gates). Read `research/COMMON_TIME_TWO_DUST_CANONICAL_STEP32_AUDIT.md` for exact two-dust Legendre bridge.
