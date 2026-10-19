@@ -1,3 +1,34 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 31 (2026-10-19)
+
+**FIRST READ:** `research/FULL_ONSHELL_TWELVE_FIELD_TADPOLES_STEP31_AUDIT.md`.
+**NEW SOURCE:** `numerics/hr_full_onshell_tadpole.py`.
+**NEW TESTS:** `tests/test_hr_full_onshell_tadpole.py`.
+**ONE COMMAND:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step31.py gate2b-step31-report.json`.
+
+## 31. ONE full nonlinear common-chart spherical scalar + TWO dust action on HOMOGENEOUS ON-SHELL Candidate C — 12 first variations GREEN; physical nonhomothetic Gate2B OPEN
+
+After Step30 exact passive-chart compensation, a NEW standalone code now computes **ONE spacetime-integrated** action with five contributions (EH_g positive, EH_f positive, all-beta Hassan–Rosen, covariant dust_g, covariant dust_f) over the SAME metric/field basis, at the **actual on-shell radiation-free homogeneous dust-only Candidate-C** trajectory obtained by integrating a_dot=aH. Earlier step27's five-sector common action was OFF SHELL and step30 checked only the g lapse tadpole; this step checks TWELVE directions of independent fields on the homogeneous on-shell branch.
+
+**All 12 independent compact time+radius first variations vanish** for `(Phi_g,U_g,psi_g,E_g,theta_g,rho_g,Phi_f,U_f,psi_f,E_f,theta_f,rho_f)`. This time includes *all spatial 3-curvature, ADM extrinsic rates, native metric trace/shear and both covariant dust phase/multiplier terms*. At time halfwidth .027, radial support .32 and quadrature 24, centered amplitude step 2e-5, max abs first variation is `1.4051260155412136e-11`; tested quadrature/step/domain refinements. Contributions are genuinely individually nonzero and cancel: dS/dPhi_g approx EH_g +3.64871135e-4, HR -6.44695537e-5, dust_g -3.00401582e-4; dS/dPhi_f approx EH_f +1.29610824e-6, HR +2.01858490e-5, dust_f -2.14819573e-5. Both matter phase and density directions cancel only after the original covariant dust action has been varied (NO prematurely imposing theta_dot=N in L).
+
+**Independent physical trial deformation beyond Step30 pure-chart map:** varying only f spatial trace psi_f changes its physical common-chart 3-curvature and relative angular eigenvalue while keeping g fixed, and yields a NONZERO quadratic action. Mixed relative Hessian H[Phi_g,psi_f] ≈ -0.0001842360131; removing the HR interaction makes this cross-metric block vanish and immediately breaks both g/f background lapse tadpoles. Other controls independently check beta4 is f-volume-only, both native local dust Legendre phase pairs, exact tilted native f tensor pullback even with nonzero independent f perturbation. **These are UNREDUCED trial-field Hessian coefficients, NOT physical scalar speeds, canonical kinetic eigenvalues or physical ghost criteria.**
+
+**Actually executed NEW standalone:** `PYTHONPATH=/mnt/data/janus31 OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus31/tests/test_hr_full_onshell_tadpole.py` → **29 passed**. `scripts/verify_gate2b_step31.py` reproduced 29/29 with exit 0, `workspace_origin=standalone_focused_workspace`, `full_repo_test_suite=false`, `historical_test_suites_rerun=false`, De Felice/Aoki NOT_RUN, BD reduction NO, `GATE_2B_OPEN`. FOUR newly committed files are **exact-byte SHA identical** to local tested ones:
+- numerics/hr_full_onshell_tadpole.py `e05d8f54cf4eff76a92c278ffdd971612d1ec56b`
+- tests/test_hr_full_onshell_tadpole.py `68fb2302ae57c350db087ea3caf5898ca31661af`
+- scripts/verify_gate2b_step31.py `6ae34372ccc5a034fc5ef6bf27339ebca9a446bf`
+- research/FULL_ONSHELL_TWELVE_FIELD_TADPOLES_STEP31_AUDIT.md `b8abf50a91cdf6a75e2a4a19e6b6d2ec404b9119`
+
+Historical steps 30 (18), 29 (21), 28 (17), 27 (75) were in SEPARATE workspaces and **NOT rerun here**: do not claim cumulative passing counts. Git clone still DNS blocked; GitHub Actions disabled. No fresh full repository verification.
+
+**CRITICAL LIMITATION:** the homogeneous on-shell background in common chart is merely the *same physical* compensated configuration identified in Step30. An independent finite-amplitude f field variation is a valid mathematical test direction, NOT a newly solved genuinely NONHOMOTHETIC background. No full time-dependent canonical/metric/BD constraint elimination, no De Felice/Aoki independent physical oracles, no relative-mu fold crossing or cosmological likelihood yet.
+
+**NEXT EXACT RED:** from this *single* full spherical EH_g+EH_f+HR+two-dust action derive a consistent common-time quadratic **field and rate** operator, identify all lapse/shift metric auxiliary directions and exact diagonal Noether constraints ON SHELL, and canonically reduce both dust phase/momentum pairs and the time-dependent BD-null direction. In parallel, solve full radial/time Einstein+HR+matter first variations for a **genuinely nonhomothetic** background beyond Step30 pure-chart compensation; test its tadpoles. Only from the SAME full reduced physical action attempt De Felice finite-H mu→0 and Aoki nonlinear homothetic KS,cS² stable/unstable, then first Candidate-C relative μ-fold a≈0.0301646. If impossible, publish specific failed gate; no fabricated validation.
+
+**Verdict:** `COMMON_HOMOGENEOUS_ONSHELL_12_FIELD_ACTION_GREEN`, `GENUINE_NONHOMOTHETIC_BACKGROUND_OPEN`, `GATE_2B_OPEN`, `JANUS_R_NOT_VALIDATED`. Work ONLY in research/gate2b-nonhomothetic-transfer; leave main and research/v2-flrw untouched; external 2026 JHR opposite-f-EH-sign ghost audit separate.
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE, ÉTAPE 30 (2026-10-18)
 
 **READ FIRST:** `research/INVERSE_CHART_COMPENSATION_STEP30_AUDIT.md`.
