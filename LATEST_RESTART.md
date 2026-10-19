@@ -1,3 +1,43 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 32e (2026-10-19)
+
+**FIRST READ:** `research/INTEGRABLE_DUAL_DUST_PHASE_STEP32E_AUDIT.md`.
+**NEW EXECUTABLE:** `numerics/hr_integrable_two_dust_phase.py`.
+**NEW 12 TESTS:** `tests/test_hr_integrable_two_dust_phase.py`.
+**ONE-COMMAND REPRODUCTION:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step32e.py gate2b-step32e-report.json`.
+
+## 32e — ALL 18 same-action compact parent fields and BOTH dust phase clocks now TIME-INTEGRABLE (LATEST)
+
+**Actual RED→GREEN:** the prior Step32d complete positive Einstein–Hilbert g/f + full Hassan–Rosen beta0..4 + BOTH canonical irrotational pressureless dust action, on the physically HOMOGENEOUS radiation-free on-shell Candidate-C background, already had four true compact metric time-rate *parent* fields. But the TWO dust theta_rate jets at indices (6,13) were artificial independent rates and their nonzero first derivatives (+3.0040158156e-4, +4.1431447509e-5) were NOT legal tadpoles. Step32e now **reinterprets precisely those two slots as true compact parent fields** `theta_i(t,r)=theta_background_i(t)+[eta_i*T(t)+xi_i*G(t)]*F(r)`, with `G(t)=t*T(t)`, `G'(t)=T(t)+t*T'(t)`, and `T=[1-(t/time_radius)^2]^4`, while BOTH independent canonical positive momenta are `p_i=C_i r²[1+pi_i T(t)F(r)]`. Both theta_t AND theta_r derive from this ONE parent field in each sector, including nontrivial native/common lapse/shift.
+
+**One exact five-sector common action:** no metric, EH radial/spatial intrinsic 3-curvature, extrinsic kinetic, HR interaction, measure or background source has been changed. Only the formerly nonintegrable canonical dust phase time/radial sampling was corrected. At zero new phase-parent amplitudes, the entire Step32d action (including all other 16 nonzero fields) is identical EXACTLY. Positive dust density multipliers are eliminated ONLY after the covariant dust Legendre transform; full reduced first-order density remains `p theta_t -N p sqrt(1+theta_r²/g_rr)-N^r p theta_r`. All 18 LEGITIMATE compact field first variations vanish on the on-shell homogeneous benchmark, max abs **1.3964523981613295e-11** at 20×20 quadrature and h=2e-5. The two newly integrable phase-parent first variations are **[0.,0.]**, versus disconnected old spurious numbers quoted above.
+
+**True compact IBP/gauge-no-boundary control:** `integral p*delta_theta_dot = -integral delta_theta*p_dot` in both sectors. For a nonzero g phase/momentum trial, lhs=+3.5438771600125422e-6, rhs=+3.5438771600122983e-6; difference 2.439454888e-19. Canonical **projected** 2×2 p-amplitude vs NEW theta_extra parent coefficients are EXACTLY HALF the old rate-only projected coefficients since `integral T(t)*G'(t)dt = 1/2 integral T(t)^2 dt` by compact IBP:
+```
+H[p_g,theta_g_extra] = +4.725169547261010e-5
+H[p_f,theta_f_extra] = +6.516963494914475e-6
+off-diagonal cross-dust block = 0
+rank = 2, max difference from independent analytic projection = 5.779e-15.
+```
+**These are projected symplectic phase-space pair controls, NOT the number, kinetic signs or speed of physical propagating modes.** The 18-compacted Galerkin basis is STILL NOT closed under the full local bimetric diagonal diffeomorphism group, and its formerly computed Step32c restricted 4×4 Schur is STILL NOT an ADM field constraint or BD reduction.
+
+**ACTUAL single-workspace evidence:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests` -> **93 passed in 27.21s** in `/mnt/data/janus32` (29 Step31 + 20 Step32a + 11 Step32b + 11 Step32c + 10 Step32d + **12 NEW Step32e**). `scripts/verify_gate2b_step32e.py` separately returned exit 0 / **93 passed in 24.82s**, saved `/mnt/data/janus32/gate2b-step32e-report.json` with all exact source SHA-256/Git blobs, `workspace_origin=focused_non_git_workspace`, `full_repository_regression=false`, `true ADM=NOT_DERIVED`, `HR BD=NOT_DERIVED`, `DeFelice/Aoki=NOT_RUN`, `GATE_2B=OPEN`. It explicitly checks five original published source SHA against local source bytes before running. All FOUR new Step32e source/test/runner/audit files byte-identically match GitHub blobs:
+- `numerics/hr_integrable_two_dust_phase.py` `fb6aaaadb1d5a99c0a119fbd05a706874fbfaa1a`
+- `tests/test_hr_integrable_two_dust_phase.py` `daa84468756cdcc11bb62641350f89682a93cdf4`
+- `scripts/verify_gate2b_step32e.py` `dc7041d790350c642a81e4519eb626018a1acf5e`
+- `research/INTEGRABLE_DUAL_DUST_PHASE_STEP32E_AUDIT.md` `22590defae469b705f137d1402b3451bf6006a88`.
+
+**HONEST SCOPE:** new 18-field compact time-integrable trial action is ON SHELL for the dust-only PHYSICALLY HOMOGENEOUS Candidate-C solution. NO physically genuinely NONHOMOTHETIC on-shell branch has been constructed; Step30's compensated f chart is ONLY a passive reparametrization. No full clean Git clone/full repo test/CI/peer review, and old Step27–30 separate suite tests not rerun. No actual field-theory lapse/shift gauge generator closure, no HR BD primary+secondary time-dependent constraint, no De Felice finite-H mu→0 physical speed, no Aoki nonlinear homothetic `K_S,c_S²`, no fold crossing and no CMB likelihood demonstrated.
+
+**NEXT HARD RED — EXACT ORDER:**
+1. From THIS Step32e integrable field/phase-space five-sector action, promote metric lapse and radial shift to genuine **ADM** local multiplier fields (not `Phi` as a restricted metric-component amplitude); formulate their local field-theory first-order auxiliary equations and on-shell diagonal Noether identities on a gauge-complete scalar ansatz. The finite-radial Step32c Schur must NOT be treated as the answer.
+2. Extract & canonically reduce the HR **time-dependent BD-null primary/secondary constraints** while keeping BOTH independent dust `(theta,p)` pairs, deriving actual reduced physical scalar principal kinetic/gradient operators.
+3. Separately solve or exclude a **genuinely nonhomothetic on-shell** g/f+two-dust background beyond passive chart compensation with all local Einstein/HR/Stückelberg/matter tadpoles.
+4. On the SAME physical constrained action, pass De Felice finite-H `mu→0` physical scalar and Aoki nonlinear homothetic `K_S,c_S²` stable+unstable oracles, then test first relative-mu fold a≈0.0301646. Publish a negative verdict if physics gate fails, not a fitted matching claim.
+
+**Verdict:** `STEP32E_ALL_18_TIME_INTEGRABLE=GREEN`; `TWO_DUST_CANONICAL_PAIRS=GREEN`; `TRUE_ADM_AND_BD_REDUCTION_OPEN`; `GENUINE_NONHOMOTHETIC_ON_SHELL_OPEN`; **`GATE_2B=OPEN` and JANUS-R NOT VALIDATED.** Work ONLY on branch `research/gate2b-nonhomothetic-transfer`; leave `main` and `research/v2-flrw` untouched. External JHR 2026 wrong-sign EH tensor-ghost audit remains SEPARATE.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE, ÉTAPE 32d (2026-10-19)
 
 **FIRST READ:** `research/INTEGRABLE_FOUR_METRIC_TIME_BASIS_STEP32D_AUDIT.md`.
