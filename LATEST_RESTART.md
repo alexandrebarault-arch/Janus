@@ -1,3 +1,48 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE : ÉTAPE 33b (2026-10-19)
+
+**READ FIRST:** `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md`.
+**New code/test:** `numerics/hr_homogeneous_poisson_secondary.py`, `tests/test_hr_homogeneous_poisson_secondary.py`.
+**Reproduce EXACTLY:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33b.py gate2b-step33b-report.json`.
+
+## 33b — Canonical two-dust HOMOGENEOUS primary Poisson and secondary conservation GREEN; true LOCAL radial BD SECONDARY still OPEN
+
+**Scientifically new:** from Step33a's EXACT positive Einstein–Hilbert g/f spherical ADM+GHY and all-beta HR lapse-affine Hamiltonian with TWO canonical dust pairs, derive the separate spatially-flat **homogeneous** constraints `H_g,H_f` with 8-dimensional canonical variables `(a,b,theta_g,theta_f,pa,pb,pg,pf)`. The phases are cyclic and both dust momenta separately conserved (NO dust merger, NO early dust elimination). On generic off-shell samples, the Poisson bracket is not zero. Exact symbolic and numeric independent Poisson derivations agree on
+
+```
+{H_g,H_f} = (m² Mg²/2) a² J(y) χ,
+y=b/a, J(y)=β1+2β2 y+β3 y²,
+χ=pa/(Mg² a)-pb/(Mf² b).
+```
+
+On the **REGULAR homogeneous dynamical branch** `m² J(y) !=0`, primary preservation imposes `χ=0` as **HOMOGENEOUS secondary**. This is NOT the field-theoretic inhomogeneous Hassan–Rosen BD secondary. Branch `J=0` (algebraic) and `m²=0` are guarded: they do NOT imply `χ=0` from this bracket.
+
+**Explicit secondary time preservation:** `Bg={χ,Hg}`, `Bf={χ,Hf}` are derived exactly including both HR potentials, both GR kinetic terms and both dust charges. On homogeneous primary+secondary surface with `Bf !=0`, `Nf/Ng = -Bg/Bf`. Independent 8-variable centered Poisson checks and symbolic SymPy test pass. On the no-radiation dust-only Candidate-C branch, this lapse ratio agrees with the independently recomputed `Nf=y+d y/dln a` Bianchi relation:
+```
+a=1    y=.556882559187308   Nf/Ng=.551545778648274
+a=.4   y=.578770722802504   Nf/Ng=.518526433827902
+a=.09  y=.939977525126337   Nf/Ng=.416922093339096
+a=.03  y=1.979545244854517  Nf/Ng=.461831564933199.
+```
+Representative homogeneous constraint/secondary residuals ~1e-13 or smaller. Explicitly refuse to claim physical lapse fixing OFF the constraint surface.
+
+**Dirac constraint matrix in the HOMOGENEOUS 3-constraint model** (Hg,Hf,χ) is antisymmetric with elements `{χ,Hg}=Bg`, `{χ,Hf}=Bf`: on the regular on-shell branch it has rank TWO and null vector `(1,Nf/Ng,0)`. This counts only the homogeneous mini gauge and second-class structure; it does **NOT** establish a BD ghost degree-of-freedom count for 3+1 gravity.
+
+**Independent embedding into Step33a TRUE radial spherical ADM:** `L=a,S=a r,pL=(pa/3)r²,pS=(2pa/3)r,pLr=(2pa/3)r` (same for f), with dust p density `pg r²,pf r²`, reproduces `H_{g,f}^{spherical}/r² = H_{g,f}^{mini}` and `Ddiag=0` for radii .12,.31,.47 on Candidate-C and generic offshell. Deleting the radial momentum derivative `pLr` breaks Ddiag; this guards normalization and radial gradient but is NOT a computation of the functional field-theory Poisson bracket.
+
+**ACTUAL REPRODUCTION:** **57 TESTS PASS in ONE local standalone workspace** `/mnt/data/janus33b`: 21 original exact-byte prior Step33a tests PLUS 36 newly parametrized Step33b tests. Both targeted pytest and `scripts/verify_gate2b_step33b.py` returned exit code 0, 57 passed. Runner JSON in `/mnt/data/janus33b/gate2b-step33b-report.json` records source SHA, `workspace_origin=focused_non_git_workspace`, `full_repository_regression=false`, `spatially_dependent_spherical_BD_secondary=NOT_DERIVED`, De Felice/Aoki NOT_RUN, true nonhomothetic background NOT_FOUND, `Gate2B=OPEN`. FOUR NEW files byte-exact Git blob match live GitHub:
+- `numerics/hr_homogeneous_poisson_secondary.py`: `43e03d01da57ddc23acb75db0ae660c001ea8e38`
+- `tests/test_hr_homogeneous_poisson_secondary.py`: `0c09ae4ae470a7e8b96dabac4909b1dfa7b8510d`
+- `scripts/verify_gate2b_step33b.py`: `83a32704a819e9a94785be0c0de6b87a663a8b15`
+- `research/HOMOGENEOUS_POISSON_SECONDARY_STEP33B_AUDIT.md`: `85f120309697b9a47796825034e7415bb07f7d9b`
+
+Historical Step32e suite 93 tests was NOT rerun here; 57+93 is NOT a jointly executed count. Direct full repo clone/CI and independent peer reproduction not performed. No physical propagation/ghost/tensor/CMB interpretation from this homogeneous rank.
+
+**NEXT EXACT HARD RED — STEP 33c:** compute FUNCTIONAL Poisson brackets of the **unreduced spherical radial** field-theory constraints `C_g(r),C_f(r),D(r)` from Step33a with compact smearings. Retain ALL spatial derivatives of `L,S,pL,pS`, curvature, HR relative shift solution `z(r)`, both independent dust phase and momentum fields, and boundary terms. Derive (or falsify) LOCAL HR BD secondary and its lapse-dependent time preservation; test closure with spatial diffeo generator. Do NOT transplant the homogeneous `χ` as the answer. Next also reconcile exact Step32e time-integrable action/Noether on shell and genuinely physical NONHOMOTHETIC two-metric/dust trajectory; pass same-action De Felice finite-H μ→0 & Aoki nonlinear homothetic KS,cS² stable/unstable oracles before Candidate-C first mu fold near `a≈0.0301646`.
+
+**VERDICT:** `HOMOGENEOUS_SECONDARY=GREEN`; `TWO_DUST_CANONICAL_PAIRS=GREEN`; `TRUE_RADIAL_HR_BD_SECONDARY=OPEN`; `GENUINE_NONHOMOTHETIC_ONSHELL=OPEN`; **`GATE_2B=OPEN`; JANUS-R NOT VALIDATED.** Work ONLY on research/gate2b-nonhomothetic-transfer; leave main and research/v2-flrw unchanged. External JHR negative f Einstein–Hilbert sign critique separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE, ÉTAPE 33a (2026-10-19)
 
 **FIRST READ:** `research/SPHERICAL_ADM_HR_PRIMARY_STEP33A_AUDIT.md`.
