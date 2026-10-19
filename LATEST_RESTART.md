@@ -1,3 +1,38 @@
+# JANUS — REPRISE PRIORITAIRE ÉTAPE 32b (2026-10-19)
+
+**READ FIRST:** `research/FOUR_METRIC_RATE_JETS_STEP32B_AUDIT.md` (full derivation, RED->GREEN regression, independent controls, exact next gates). Read `research/COMMON_TIME_TWO_DUST_CANONICAL_STEP32_AUDIT.md` for exact two-dust Legendre bridge.
+
+**Executable files:**
+- `numerics/hr_full_onshell_tadpole.py` — original exact Step31 on-shell HOMOGENEOUS positive EH+HR+2 covariant dust action.
+- `numerics/hr_two_dust_common_time_canonical.py` — Step32a common-time 2-dust Legendre first-order canonical action, 14 amplitude compact jet.
+- `numerics/hr_common_time_metric_rates.py` — **NEW Step32b exact independent 4 metric trace/shear time-rate jets** added to same five-sector common-time 2-dust canonical action (18 amplitude compact interface).
+- `tests/test_hr_full_onshell_tadpole.py`, `tests/test_hr_two_dust_common_time_canonical.py`, `tests/test_hr_common_time_metric_rates.py`.
+- `scripts/verify_gate2b_step32b.py`.
+
+**One-command rerun:** `OPENBLAS_NUM_THREADS=1 python scripts/verify_gate2b_step32b.py gate2b-step32b-report.json`.
+
+## 32b. Common-time 2-dust exact canonical pairs + four independent EH scalar metric rates — PRECONSTRAINT GREEN
+
+Step32a derived from the same positive EH_g/f + all-beta HR + two dust common-time on-shell HOMOGENEOUS action an exact dust phase-space Legendre transformation, with rho multiplier eliminated ONLY after partial Legendre. It preserved both independent (theta_g,p_g),(theta_f,p_f) pairs, exhibiting a rank TWO compact symplectic p--theta_rate block (diagonals +9.450339095e-05,+1.303392697e-05, cross zero) and all 12 legitimate compact field tadpoles |grad|<3.73e-12. Its 14×14 Hessian is UNREDUCED, and phase_rate local jets have nonzero first derivatives because they are not independent compact theta field variations.
+
+**NEW Step32b:** add **FOUR independent local spatial scalar EH metric time-rate jets** `psi_rate_g,E_rate_g,psi_rate_f,E_rate_f`, extending the SAME first-order canonical action to 18 amplitude slots. Reuse EXACT Step31 spherical ADM metric/positive EH g/f, same all-beta HR, same two phase-space dust actions and compact time/radial integration. At fixed metric spatial fields, ADM lapse and shift, rate perturbations change extrinsic eigenvalues by `δK_r=δQ_rdot/(2Qr N)`, `δK_t=δQ_tdot/(2Qt N)`. The exact nonlinear EH change is `(M²/2)N sqrt(gamma)[-4(Kr δKt+δKr Kt+δKr δKt)-4 Kt δKt-2 δKt²]`. Independently recomputed finite-amplitude nonlinear ADM kinetic density agrees exactly with this correction.
+
+**Unreduced 4×4 metric-rate Hessian on homogeneous Candidate-C benchmark:** isotropic trace/shear closed-form controls, diagonal approximately `(-4.03436606e-05,+3.04798291e-09,-1.78523029e-07,+1.34875005e-11)`, cross metric/trace-shear entries zero, absolute finite-difference vs analytic error max **9.382496509350257e-16** at step .03. Both trace diagonals are negative and both shear diagonals positive as expected for UNREDUCED ADM gravity; these are NOT physical ghost signs or physical kinetic eigenvalues. Prior two-dust symplectic block remains independent rank 2. Exciting any single new rate changes ONLY its own EH sector, not HR or dust. With all 4 rate jets zero the complete old 14-amplitude action is recovered EXACTLY.
+
+**Actual local evidence:** **60 tests passed IN ONE focused workspace** `/mnt/data/janus32` = 29 exact-byte Step31 tests + 20 Step32a tests + 11 Step32b tests. Both direct pytest and `scripts/verify_gate2b_step32b.py` report exit 0/60 passing, analytic rate deviation <1e-15, both matter canonical pairs preserved. All SIX newly created step32a/32b source/test/runner files and both audits have GitHub blob SHA exactly matching locally executed bytes (Step32b hashes in audit). Previous Steps27–30 separate test suites NOT rerun; this is NOT full Git checkout/CI or independent validation. Git clone blocked in prior contexts.
+
+**CRITICAL scientific limitation:** the four extra metric time-rate directions (and both extra dust phase-rate jets) are **local jet probes**, NOT independently admissible globally compact field variations. Their raw first derivatives can be nonzero even on an on-shell background and are NOT tadpoles. The 18-amplitude compact action does **NOT** solve true ADM metric lapse/radial shift constraints, DOES NOT identify the time-dependent HR Boulware–Deser null direction, and DOES NOT supply the fully constrained physical scalar kinetic/gradient operators. The background is ON SHELL only for the radiation-free HOMOGENEOUS dust Candidate-C, NOT a truly nonhomothetic physical solution; Step30 passive compensation is pure coordinates.
+
+**EXACT NEXT RED (DO NOT SKIP):**
+1. Join metric field/velocity jets with valid time-supported profile integrability and time IBP; impose 4 ADM g/f lapse and radial shift auxiliary equations and diagonal Ward (on-shell) in SAME 5-sector action.
+2. Compute and canonicalize the time-dependent HR BD-null constraint, retaining BOTH positive canonical dust phase/momentum pairs; derive actual *constrained physical* scalar principal matrices.
+3. Independently seek/certify a genuinely NONHOMOTHETIC on-shell Candidate-C Einstein+HR+two-dust background, beyond passive f chart. Full g/f Einstein, Stückelberg/HR, both matter Euler tadpoles required.
+4. Require same-action physical controls finite-H μ→0 De Felice and nonlinear homothetic Aoki K_S,c_S² (stable and unstable), THEN first Candidate-C relative μ fold a≈0.0301646, then optional observations. If not possible, publish precise negative verdict.
+
+**VERDICT:** `STEP32B_METRIC_RATE_PRECONSTRAINT_GREEN`; `TWO_DUST_CANONICAL_GREEN`; `METRIC_AND_BD_CONSTRAINT_REDUCTION_OPEN`; `GENUINE_NONHOMOTHETIC_ONSHELL_OPEN`; **`GATE_2B=OPEN`; JANUS-R NOT VALIDATED.** Active branch ONLY `research/gate2b-nonhomothetic-transfer`, main/v2-flrw unchanged. External opposite-f-EH-sign JHR ghost objection remains a separate audit.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 32 (2026-10-19)
 
 **READ FIRST:** `research/COMMON_TIME_TWO_DUST_CANONICAL_STEP32_AUDIT.md`.
