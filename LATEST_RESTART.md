@@ -1,3 +1,50 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33g (2026-10-19)
+
+**FIRST READ:** `research/CURVED_MOVING_DUST_PRIMARY_AND_MIXED_PB_STEP33G_AUDIT.md`.
+**Code:** `numerics/hr_curved_moving_dust_primary.py` and `numerics/hr_curved_primary_mixed_kernel.py`.
+**Tests:** `tests/test_hr_curved_moving_dust_primary.py`, `tests/test_hr_curved_flat_reference.py`, `tests/test_hr_curved_primary_mixed_kernel.py`.
+**Reproduction (TWO DISTINCT CALLS, do not run one giant pytest in this constrained environment):**
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33g.py primary gate2b-step33g-primary-report.json
+# 22 PASS: 21 exact primary + one independent flat Poisson limit
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33g.py bracket gate2b-step33g-bracket-report.json
+# 3 PASS: nonlinear local curved/moving two-dust mixed Poisson/IBP controls
+```
+BOTH actual report JSONs ARE ALSO COMMITTED:
+`research/reports/gate2b-step33g-primary-report.json`,
+`research/reports/gate2b-step33g-bracket-report.json`.
+
+## 33g. Curved noncomoving two-dust spherical PRIMARY surface + necessary mixed bracket IBP identity GREEN; GENERAL BD secondary NOT DERIVED
+
+**Breakthrough relative to Step33f's FLAT spatial/comoving-dust restricted primary witness:** independent curved spherical g/f spatial three-geometries `L_i=a_i(1+c_i r²)², S_i=a_i r(1+c_i r²)²`, nonzero REGULAR dust phase gradients `theta_i'=k_i r L_i`, nonzero relative shift `z=z1 r` and independent radial gravitational momenta can all satisfy the complete two true spherical ADM lapse primaries `H_g=H_f=0`, the diagonal momentum primary `D_g+D_f=0`, and the lapse-independent algebraic shift EOM `F_z=0`, **pointwise**, with BOTH independent strictly POSITIVE canonical dust densities. Define `K=m²Mg² Lg Lf(beta1 Sg²+2beta2 Sg Sf+beta3 Sf²)`, `D*=K z/sqrt(1-z²)`; impose `Dg=D*, Df=-D*` and solve the TWO separately linear lapse equations for pg,pf after substituting `pSg=(D*+Lg pLg'-pg theta_g')/Sg'`, `pSf=(-D*+Lf pLf'-pf theta_f')/Sf'`. Original unsimplified EH, two dust Hamiltonian square roots and full exact 2×2 principal HR metric root independently checked.
+
+**Numerical witness** at `a=.4, y=b/a=.5787707228025044`, `c_g=.015,c_f=-.012,k_g=.012,k_f=-.016,z1=.04` and nonconstant independent gravitational momenta:
+- maximum `|Hg,Hf,Ddiag,Fz|` on 11 sample radii `r=.12... .88`: `2.7755575615628914e-16`.
+- `min pg=0.011037068826724814, min pf=0.0017697835888737712 >0`; nonzero curvature (g |R3|max~4.495, f |R3|max~11.261), two dust phase gradients, relative radial momentum and z (max |z|=.0352).
+- an EXCESSIVE curvature trial made f dust momentum negative; rejected with explicit positive-density guard (do NOT mask by abs or clipping). These are PRIMARY-CONSTRAINED INITIAL DATA, **NOT time-evolved new nonhomothetic Einstein solution**.
+
+**Full mixed functional bracket on these *curved, noncomoving PRIMARY data*** from symbolic exact 12-variable canonical Euler partials and complex-step radial total derivatives (SIX canonical pairs):
+```text
+r=.43:
+K00=+0.41113496513668346, K01=-0.008944371578075146,
+K10=+0.11498513679744424, K11=K20=+0.026099594544177672,
+K02=K12=K21=K22=0.
+{Hg[N],Hf[M]}=∫dr sum_{i,j≤2} Kij(r) N^(i) M^(j).
+```
+Unlike flat Step33f, **derivative-of-smearing terms are individually nonzero even ON the primary surface**. But on this constrained curved witness, `K20=K11` and `K01-K10+(K20)'≈0` (direct numerical radial derivative controlled), so for compact lapse smearings the residual derivative coefficients cancel AFTER correct IBP; the candidate local secondary density is `C_local=K00-(K01)'`, approximately `+0.47` at r=.43, NOT naïvely K00. The flat/comoving zero-gradient limit independently recovers the PREVIOUS Step33f closed secondary `(m² Mg²a²/2)J(y)r²(3X+rX')`, which reduces self-comparison risk. The **nonzero** candidate on this initial datum is a secondary consistency obstruction, not an already imposed secondary.
+
+**Actually executed:** 21 primary tests and 1 flat-limit reference **jointly in the 'primary' group** (22 pass/exit0), PLUS 3 mixed curved-symbolic tests in separately executed 'bracket' group (3 pass/exit0). **25 independently verified tests ACROSS TWO DIFFERENT TOP-LEVEL RUNS, NOT a single completed 25-test suite**. Several original one-process executions TIMED OUT as SymPy cache/cost accumulated; isolated subprocess and group separation made each check reproducible. All **NINE new files** (2 code, 3 tests, runner, audit, TWO report JSONs) matched the exact local Git blobs live on GitHub. Earlier Step33f 52 tests not rerun here. `full_repository_regression=false` and no GitHub Actions/clean clone/peer review. Original GATE_2B remains OPEN.
+
+**NEXT EXACT HARD RED:**
+1. Independently finite-vary the ORIGINAL NON-IBP EH+HR+two-dust smeared action on this curved/noncomoving constrained family (not only the analytic partial/complex-step kernel). Test `K01-K10+K20'=0` at more general curved primary data and separate the diagonal D and Fz contributions.
+2. Solve the local `C_local=0` secondary TOGETHER with the three true primaries while keeping BOTH dust pairs strictly positive; perform full Dirac time preservation, Poisson rank and **lapse-fixing**, handle degenerate J=0/K=0 branches. Only THEN can local spherical BD removal be declared, if successful.
+3. Connect this full local ADM result to Step32e's complete time-integrable same-action perturbations and seek a genuinely PHYSICALLY NONHOMOTHETIC on-shell two-dust Einstein-HR trajectory (not passive f chart compensation). Reproduce BOTH physical same-reduced-action De Felice finite-H μ→0 and homothetic nonlinear Aoki KS,cS² stable/unstable oracles before Candidate-C relative μ fold a≈.0301646.
+4. If a physical oracle or Dirac closure fails, report the explicit negative scientific conclusion; no cosmological viability or observational claims from these initial data.
+
+**Verdict:** `STEP33G_CURVED_MOVING_DUST_PRIMARY_GREEN`, `STEP33G_RESTRICTED_LOCAL_MIXED_IBP_GREEN`, `GENERAL_LOCAL_BD_DIRAC_PRESERVATION_OPEN`; **`GATE_2B=OPEN`; JANUS-R NOT VALIDATED**. Work only in branch `research/gate2b-nonhomothetic-transfer`. Leave `main` and `research/v2-flrw` intact; external opposite-sign-EH JHR tensor-ghost audit separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33f (2026-10-19)
 
 **READ FIRST:** `research/SPHERICAL_LOCAL_PRIMARY_SURFACE_STEP33F_AUDIT.md`.
