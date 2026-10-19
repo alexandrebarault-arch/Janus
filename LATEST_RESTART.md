@@ -1,3 +1,53 @@
+# JANUS — REPRISE PRIORITAIRE, ÉTAPE 33a (2026-10-19)
+
+**FIRST READ:** `research/SPHERICAL_ADM_HR_PRIMARY_STEP33A_AUDIT.md`.
+**New module:** `numerics/hr_spherical_adm_primary.py`.
+**21 new tests:** `tests/test_hr_spherical_adm_primary.py`.
+**Repeat:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33a.py gate2b-step33a-report.json`.
+
+## 33a. TRUE SPHERICAL ADM+HR Lapse-Affine Primary Interface GREEN — BD SECONDARY STILL OPEN
+
+**New essential structural development beyond Step32e and the Step32c restricted Galerkin Schur:** formulate both positive Einstein–Hilbert metrics in spherical ADM variables
+`ds_i²=-N_i²dt²+L_i²(dr+V_i dt)²+S_i²dOmega²`. The FULL nonlinear spherical EH ADM+GHY Legendre transformation produces exact momenta `pL_i=-2Mi² S_i² Kt_i`, `pS_i=-2Mi² L_i S_i(Kr_i+Kt_i)`, with gravitational constraints
+`C_EH= L pL²/(4M²S²)-pL pS/(2M²S)-(M²/2) L S² R3`;
+`D_EH=pS S'-L pL'` after explicit compact radial integration by parts. This is **field-density** Hamiltonian algebra, not a finite radial mode Schur. Both independently canonical dust pairs enter as `C_dust=p sqrt(1+theta_r²/L²)`, `D_dust=p theta_r` with p_g,p_f>0.
+
+**Five-beta exact HR spherical principal-square-root:** the original potential at fixed old shifts `Vg,Vf` is NOT generically linear in lapses. Introduce relative shift
+`Vf=V`, `Vg=V+(Ng/Lg+Nf/Lf) z`, `|z|<1`. Then **the exact total canonical density** is
+`H=Ng[Cg+z Dg/Lg+Wg(z)]+Nf[Cf+z Dg/Lf+Wf(z)]+V(Dg+Df)`,
+where `Cg,f=C_EH,g,f+C_dust,g,f`; `Dg,f=D_EH,g,f+D_dust,g,f`;
+`Wg=m²Mg² Sg²[Lg A0+Lf A_tau sqrt(1-z²)]`,
+`Wf=m²Mg² Sg²[Lf As+Lg A_tau sqrt(1-z²)]`,
+`ell=Sf/Sg`,
+`A0=β0+2β1 ell+β2 ell²`,
+`As=β2+2β3 ell+β4 ell²`,
+`A_tau=β1+2β2 ell+β3 ell²`.
+**This is EXACTLY affine in the TWO true ADM lapses Ng,Nf and common radial shift V at fixed z**. The relative shift equation factorizes:
+`dH/dz=(Ng/Lg+Nf/Lf) [Dg-K z/sqrt(1-z²)]`,
+`K=m² Mg² Sg² Lg Lf A_tau`.
+When K!=0, z is solved algebraically **without lapse dependence**:
+`z=sign(K) Dg/sqrt(Dg²+K²)`. Test control K!=0 yields z≈-0.8408245009767221 with residual≈1.11e-16. No guessed root at K=0.
+
+**TESTED:** 21/21 PASS in a NEW standalone `/mnt/data/janus33` with only new Step33a source/tests. Independent oracle computes exact HR potential via a separate matrix-inverse/determinant 2x2 principal root and all β0..4, compares to new closed form. Independently finite-differentiated original nonlinear EH Lagrangian reproduces canonical momenta. Radial integration by parts and lapse-affine gradient identities pass. **Genuine RED→GREEN:** an early test incorrectly assumed p_g cannot enter the f lapse coefficient; the shift redefinition explicitly introduces `z Dg/Lf`, a legitimate cross-sector coupling without mixing either dust phase pair. A numerical centered finite-difference tolerance was relaxed slightly; exact affine algebra remains fixed. The local JSON runner exit 0, 21 passed; `full_repository_regression=false`, `historical_step32e_93_tests_rerun=false`, full 4D gauge NOT_DERIVED, HR BD SECONDARY NOT_DERIVED, DeFelice/Aoki NOT_RUN, NONHOMOTHETIC on-shell NOT_FOUND; GATE2B OPEN. **Do not claim 93+21=114 jointly executed.** Git clone/CI not run.
+
+**All FOUR new source/test/runner/audit bytes MATCH GitHub blob SHA EXACTLY**:
+- `numerics/hr_spherical_adm_primary.py` `c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41`
+- `tests/test_hr_spherical_adm_primary.py` `f71b687e9a9027dd0ce6b41553bcad68ba2b1133`
+- `scripts/verify_gate2b_step33a.py` `e6b1aedd35183b2ce61ab08152ce6c5472d27858`
+- `research/SPHERICAL_ADM_HR_PRIMARY_STEP33A_AUDIT.md` `e48b686b328bb7a4f7be322c1b33d55bfd570418`
+
+**LIMITS, avoid overstating:** Spherical ADM lapse-affinity and lapse-independent z equation are **necessary primary constraint-structure** controls, NOT proof that a BD secondary closes and eliminates its mode, nor a proof of complete 4D helicity-0 dynamics. This arbitrary sample does not solve Cg=Cf=Ddiag=0. The earlier Step32e action is on shell only for PHYSICALLY HOMOGENEOUS dust-only Candidate-C, and passive compensated Step30 chart is not a new solution.
+
+**IMMEDIATE NEXT RED:**
+1. Explicit Poisson brackets/time preservation of the lapse-linear spherical HR constraints, derive (or falsify) BD secondary and lapse-fixing consistently with both conserved canonical dust pairs. Test boundary/noether and rank; do not infer from finite Hessian.
+2. Connect this unprojected spherical ADM Legendre/relative shift to the Step32e exact common-time positive EH_g/f+HR+two-dust action, preserving time-dependent gauge closure and all spatial derivative terms.
+3. Independently find or rule out a genuinely NONHOMOTHETIC physical on-shell g/f+two-dust background, not the Step30 passive compensator.
+4. SAME-CONSTRAINED-ACTION De Felice finite-H μ→0 scalar and nonlinear homothetic Aoki KS,cS² (stable/unstable) oracles, then first Candidate-C relative μ-fold≈0.0301646. If failed publish precise negative gate.
+
+**Verdict:** `SPHERICAL_ADM_HR_LAPSE_AFFINITY_GREEN`, `HR_BD_SECONDARY_OPEN`, `NONHOMOTHETIC_ON_SHELL_OPEN`, **`GATE_2B_OPEN`; JANUS-R NOT VALIDATED**. Work ONLY on research/gate2b-nonhomothetic-transfer. Protect main/v2-flrw; separate external JHR opposite-f-EH-sign tensor ghost criticism.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 32e (2026-10-19)
 
 **FIRST READ:** `research/INTEGRABLE_DUAL_DUST_PHASE_STEP32E_AUDIT.md`.
