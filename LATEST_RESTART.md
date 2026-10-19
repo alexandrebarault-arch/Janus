@@ -1,3 +1,34 @@
+# JANUS — REPRISE PRIORITAIRE : 33c-SPATIAL, CONTRÔLE COMPLÉMENTAIRE (2026-10-19)
+
+**READ FIRST:** `research/HAMILTONIAN_SPATIAL_DIFF_STEP33C_AUDIT.md`.
+**Exact new source:** `numerics/hr_spherical_radial_diffeo_ward.py`.
+**23 new tests:** `tests/test_hr_spherical_radial_diffeo_ward.py`.
+**Dedicated reproducibility:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33c_spatial.py gate2b-step33c-spatial-report.json`.
+
+## Latest supplemental result — full diagonal *radial momentum* functional bracket closes with both dust pairs (NOT the mixed HR Hamiltonian bracket)
+
+This checkpoint is **COMPLEMENTARY**, not a replacement, to the existing independent Step33c dust-sector smeared Hamiltonian bracket in `research/SPHERICAL_DUST_SMEARED_POISSON_STEP33C_AUDIT.md`. Both are on the SAME protected research branch. Do not overwrite that work or its runner `scripts/verify_gate2b_step33c.py`. Their local test numbers come from separate reconstructions unless explicitly rerun together.
+
+**Scientific proof:** use true spherical ADM data `L_i(r),S_i(r),pL_i(r),pS_i(r)` for BOTH metrics and independent canonical dust pairs `theta_i(r),p_i(r)`. The diagonal radial generator is
+```
+D[eta]=∫dr eta Σ_i[pS_i S'_i-L_i pL'_i+p_i theta'_i].
+```
+With eta zero at radial boundaries, directly integrate by parts to derive the 12 exact functional derivatives (for each g/f sector) `δD/δL=-eta pL'`, `δD/δpL=(eta L)'`, `δD/δS=-(eta pS)'`, `δD/δpS=eta S'`, `δD/δtheta=-(eta p)'`, `δD/δp=eta theta'`. Their Poisson bracket numerically satisfies **`{D[eta],D[xi]}=D[eta xi'-xi eta']`** with sample `+2.3726108629148702e-05` vs separate direct integral `+2.372610862915291e-05`, residual -4.21e-18. All 12 functional gradients are independently verified against direct varied smeared action.
+
+**Full nonlinear radial density Ward:** keep BOTH positive EH ADM 3-curvatures and momenta, all-beta HR potential, independent g/f canonical dust H and momentum contributions, the relative shift z(r), its algebraic equation and root. Under diagonal radial coordinate variations `delta H_g=(eta H_g)'`, `delta H_f=(eta H_f)'`, `delta D=eta D'+2eta' D`. Two EH 3-curvatures and solved z root transform as scalars; the relative shift equation has density weight2. The tested metric Hamiltonian residuals are <2e-10 and D residuals <1e-11 across five radii. 3-curvature near center suffers explicit 1/r² cancellation: residual ~1e-7 at r=.14, retained as numerical-conditioning limitation rather than silently accepted as exact zero.
+
+**Actual tests and provenance:** **80 PASS in ONE focused local `/mnt/data/janus33b`** = 21 previous Step33a (byte-exact) + 36 previous Step33b (byte-exact) + 23 new 33c-spatial. Direct pytest and `scripts/verify_gate2b_step33c_spatial.py` report exit0/80; script verifies prior Step33a/33b Git blob hashes, emits source SHA-256, marks `focused_non_git_workspace`, `full_repository_regression=false`, mixed local Hamiltonian bracket NOT_DERIVED, HR BD secondary NOT_DERIVED, De Felice/Aoki NOT_RUN, true nonhomothetic background NOT_FOUND and GATE2B OPEN. All four new files exactly match local executed Git blobs:
+- `numerics/hr_spherical_radial_diffeo_ward.py`: `89e7f6eab35d28317f2f7a4330601736525487e5`
+- `tests/test_hr_spherical_radial_diffeo_ward.py`: `62282904a78af356121fb2fc1dc8046d7f92e0d7`
+- `scripts/verify_gate2b_step33c_spatial.py`: `39167ce8fd02fe3e83cf6059c072ca108ff84900`
+- `research/HAMILTONIAN_SPATIAL_DIFF_STEP33C_AUDIT.md`: `a06dee160a35bcd905a32c865eb9a743cd0bf428`.
+
+**Critical missing physical gate:** The above closes `D-D` and covariance of complete `H_g,H_f` under D; separate Step33c dust audit closes its own matter Hamiltonian bracket. **Neither computes `{H_g[N],H_f[M]}` and the full nonlinear functional HR Boulware–Deser secondary constraint.** Next form that functional bracket with all curvature derivatives, `pL'`, two dust pairs and relative shift z on compact smearings; then time-preserve the secondary and derive full constrained kinetic/gradient operators on an actual nonhomothetic on-shell background. Require same action physical De Felice finite-H mu→0 and Aoki homothetic KS,cS² stable/unstable oracles before first relative mu fold a≈0.0301646.
+
+**Verdict:** `RADIAL_DIAGONAL_D_D_FUNCTIONAL_CLOSURE_GREEN`, `TWO_DUST_PAIRS_GREEN`, `MIXED_HAMILTONIAN_FUNCTIONAL_BRACKET_RED_OPEN`, `LOCAL_HR_BD_SECONDARY_OPEN`, `GATE_2B_OPEN`; JANUS-R not yet validated. This step is a structural spatial gauge test, not a physical ghost/speed proof. Active branch ONLY research/gate2b-nonhomothetic-transfer; main/v2-flrw untouched.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE, ÉTAPE 33c (2026-10-19)
 
 **FIRST READ:** `research/SPHERICAL_DUST_SMEARED_POISSON_STEP33C_AUDIT.md`.
