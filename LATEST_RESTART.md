@@ -1,3 +1,45 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33d (2026-10-19)
+
+**READ FIRST** `research/SPHERICAL_RADIAL_DIAGONAL_WARD_STEP33D_AUDIT.md`.
+**NEW** `numerics/hr_spherical_diagonal_primary_ward.py`; `tests/test_hr_spherical_diagonal_primary_ward.py`.
+**FOCUSED ONE-COMMAND REPRODUCTION** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33d.py gate2b-step33d-report.json`.
+**ALSO READ** `research/SPHERICAL_DUST_SMEARED_POISSON_STEP33C_AUDIT.md`, `numerics/hr_spherical_radial_diffeo_ward.py` (these Step33c files were already committed unchanged).
+
+## Step 33d — local diagonal SPATIAL gauge algebra and both spherical primary H Ward GREEN; mixed H_g/H_f and local BD SECONDARY OPEN
+
+**New work beyond Step33b homogeneous PB:** radial canonical field functions with TWO independent full metric pairs `(Lg,pLg),(Sg,pSg)`, `(Lf,pLf),(Sf,pSf)`, and TWO irrotational dust canonical pairs `(theta_g,p_g),(theta_f,p_f)`, all retained in the exact spherical ADM gravitational+all-beta HR+two-dust primary constraint functions `H_g(r),H_f(r),Ddiag(r)`. The relative-shift scalar z and its exact algebraic root are transported correctly.
+
+**Step33c (previously on GitHub):** independently finite-differentiate the discretized exact square-root dust Hamiltonians in EVERY nodal phase/momentum component and independently evaluate the radial continuum identity `{H_d[N],H_d[M]}=D_d[(N M'-M N')/L²]` in EACH dust sector. The two species have zero cross Poisson bracket. The relativistic square root is essential: a prematurely quadratic `sqrt(1+u²/L²)` approximation fails local algebra. 12 new Step33c dust tests; no full EH/HR mixed PB yet.
+
+**Step33c spatial Ward (also previously on GitHub):** full spherical diagonal radial momentum density `Ddiag=Σ_i[pS_i S_i'-L_i pL_i'+p_i theta_i']`. Independently differentiated all TWELVE functional gradients of its smearing `D[eta]`, retaining all SIX canonical pairs. The exact canonical radial bracket closes:
+```
+{D[eta],D[xi]} = D[eta xi' - xi eta'],
+canonical-gradient numerical witness    +2.1205209587301715e-05
+directly integrated RHS                 +2.1205209587301945e-05
+difference                              -2.30392961653e-19.
+```
+At nonhomogeneous radial test profiles, BOTH full HR+EH+dust primary lapse coefficients H_g,H_f transform as radial densities of weight1, Ddiag and the z equation as weight2, relative shift root z* as a scalar, and the two 3-curvatures as scalars. Differencing near the origin has known 1/r² cancellation conditioning; tolerances controlled. 23 Step33c spatial tests.
+
+**NEW Step33d discriminating check:** directly integrate BOTH entire `H_g[N],H_f[N]` for a compact radial lapse test N; independently vary all canonical fields under a common radial diffeomorphism, compare to the exact integration-by-parts Ward `delta_eta H_i[N] = -∫dr eta N' H_i` across 3 quadrature orders. TWO additional negative tests deliberately (a) transform f dust p_f as scalar instead of radial density, and (b) transform relative z as density instead of scalar; BOTH produce Ward failures. 3 NEW Step33d tests. This is **NOT an evaluation of `{H_g[N],H_f[M]}`**.
+
+**ACTUAL EXECUTED TOGETHER:** in fresh focused `/mnt/data/janus33c`, `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests` → **95 PASSED**; the Step33d JSON runner independently returned exit0 / 95 passed (21 Step33a + 36 Step33b + 12 Step33c dust + 23 Step33c spatial + 3 Step33d). Step33a/b and Step33c spatial source/test exact GitHub blob bytes matched local; the four NEW Step33d files exact local-vs-live SHA:
+- `numerics/hr_spherical_diagonal_primary_ward.py` `4a8a14a7294f810265f309eb5575d73f4528b988`
+- `tests/test_hr_spherical_diagonal_primary_ward.py` `2d0a546fe3136d550d034a668c631d3e3ae93ce9`
+- `scripts/verify_gate2b_step33d.py` `0207bef57cd68e17ad3ca9061ad1456d71a8529d`
+- `research/SPHERICAL_RADIAL_DIAGONAL_WARD_STEP33D_AUDIT.md` `d38f2eb68ff0e2e0e01e92ded47ebec5b20b86cc`
+
+**HONEST scope:** a focused reconstructed project, **NOT a complete clean Git checkout or full repo suite/CI**, old 93 Step32e tests NOT rerun in this workspace. The homogeneous Step33b secondary is NOT a proof of inhomogeneous bimetric BD secondary. A radial `D-D` closure and `D-H` Ward are NECESSARY BUT INSUFFICIENT. NO gauge-complete 4D HR BD primary/secondary constraint reduction, physical kinetic/gradient signs, genuinely NONHOMOTHETIC on-shell Candidate-C branch, finite-H De Felice/Aoki same-action validation, relative-mu fold crossing, or CMB likelihood established.
+
+**NEXT HARD RED — PRIORITY FOR NEXT RUN:**
+1. From `numerics/hr_spherical_adm_primary.py`, derive the **SPATIALLY SMEARED MIXED FUNCTIONAL POISSON BRACKET** `{H_g[N],H_f[M]}`, including radial metric spatial-curvature derivative terms/IBP, both independent matter momenta, the lapse-independent z equation and the boundary contributions. Avoid substituting the homogeneous chi blindly.
+2. Compute the time preservation of any resulting local constraint, full Dirac rank and lapse fixing with both dust canonical pairs; prove or disprove the local HR BD secondary instead of inferring its existence from background or trial Hessian.
+3. Match to exact time-integrable Step32e two-dust field action, solve independently a genuinely nonhomothetic on-shell Candidate-C background beyond passive diffeomorphic compensation, and pass De Felice finite-H mu->0 + Aoki homothetic nonlinear `K_S,c_S²` stable/unstable oracles from SAME physical reduced action.
+4. Only then test the first relative mu fold at a≈0.0301646 and discuss viability/observables. Report negative result honestly if unavoidable.
+
+**Scientific status:** `STEP33D_SPATIAL_DIFFEO_BRACKET_GREEN`; `STEP33D_HAMILTONIAN_SPATIAL_WARD_GREEN`; `FULL_MIXED_HH_AND_BD_SECONDARY_OPEN`; `GATE_2B=OPEN`; `JANUS_R_NOT_VALIDATED`. Continue ONLY on branch `research/gate2b-nonhomothetic-transfer`, leave main and v2-flrw untouched. The external JHR negative-f-EH-sign audit remains separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 33c-SPATIAL, CONTRÔLE COMPLÉMENTAIRE (2026-10-19)
 
 **READ FIRST:** `research/HAMILTONIAN_SPATIAL_DIFF_STEP33C_AUDIT.md`.
