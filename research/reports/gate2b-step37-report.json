@@ -1,0 +1,107 @@
+{
+  "step": "37",
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "status": "CURVED_NONCOMOVING_POSITIVE_TWO_DUST_APPROX_LOCAL_SECONDARY_NUMERIC_GREEN",
+  "scope": "spherical ADM curved nonproportional slices, both moving canonical dust phases and positive momenta, regular parities, 0.04<=r<=0.85 numerical data",
+  "parameter_point": {
+    "a": 0.4,
+    "y": 0.5787707228025044,
+    "homotopy_scale": 0.1,
+    "curv_g": 0.0015,
+    "curv_f": -0.0012,
+    "z_slope": 0.004,
+    "theta_g": 0.0012,
+    "theta_f": -0.0016,
+    "grav_g": 0,
+    "grav_f": 0
+  },
+  "method": "Fit C_local/r^2 as quartic polynomial in r^2 and apply the exact flat-response inverse with mandatory (n+2)/2 momentum-generator conversion; 5 iterations. K00 and radial derivative K01 obtained from all six canonical pairs via Euler functional derivatives with complex-step radial variation",
+  "fit_radius": [
+    0.05,
+    0.85
+  ],
+  "validation_radii": [
+    0.04,
+    0.11,
+    0.21,
+    0.31,
+    0.41,
+    0.51,
+    0.61,
+    0.71,
+    0.83
+  ],
+  "iteration_max_abs_C": [
+    0.8017435530406634,
+    0.01594465734105626,
+    0.00031478588163862814,
+    0.000006285254331932222,
+    2.1529844023565614e-7,
+    9.584459519790256e-8
+  ],
+  "final_gates": {
+    "max_abs_C_div_r2": 0.000004358338825252104,
+    "max_abs_primaries": 2.220446049250313e-16,
+    "min_dust_pg": 0.001416980809682611,
+    "min_dust_pf": 0.0001987878380369213,
+    "min_abs_shift_K": 0.00037415037625316086,
+    "max_abs_z": 0.00332
+  },
+  "independent_nonibp_discrete_bracket": [
+    {
+      "n": 81,
+      "before": 0.009385071811900278,
+      "after": -0.0000023602199738792518,
+      "max_discrete_primary": 2.4320884813022747e-7
+    },
+    {
+      "n": 161,
+      "before": 0.00938684650740633,
+      "after": -5.85584939372108e-7,
+      "max_discrete_primary": 6.092789009426447e-8
+    },
+    {
+      "n": 321,
+      "before": 0.009387289760635464,
+      "after": -1.4234681844360608e-7,
+      "max_discrete_primary": 1.5252091839501603e-8
+    },
+    {
+      "n": 641,
+      "before": 0.00938740054756279,
+      "after": -3.156366751300155e-8,
+      "max_discrete_primary": 3.888719568578836e-9
+    }
+  ],
+  "new_targeted_pytest": {
+    "passed": 10,
+    "failed": 0,
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step37_curved_solver.py",
+    "environment": "reconstructed /mnt/data/janus-step37 with compatibility adapters implementing Step33g primary and Euler formulas; NOT exact upstream GitHub providers",
+    "new_exact_git_blob_shas": {
+      "numerics/hr_step37_curved_solver.py": "ce627177d7fa97bad21a7689b292ee24a63930cc",
+      "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+      "tests/test_hr_step37_curved_solver.py": "e787e7089a0095c57df26ea9da79d067aa572112"
+    }
+  },
+  "reproduce_on_full_checkout": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step37.py /tmp/gate2b-step37-repro.json",
+  "limitations": {
+    "exact_continuum_C_zero": "NOT_SHOWN",
+    "full_original_provider_targeted_reproduction": "PENDING",
+    "full_repo_suite": "NOT_RUN",
+    "github_ci": "DISABLED",
+    "curve_positivity_continuous_interval": "NOT_CERTIFIED_ONLY_RADIAL_SAMPLES",
+    "center_regular_solution": "PARITY_ANSATZ_ONLY",
+    "secondary_time_preservation": "NOT_DERIVED",
+    "Poisson_Dirac_rank": "NOT_DERIVED",
+    "lapse_fixing": "NOT_DERIVED",
+    "nonhomothetic_time_evolution": "NOT_DERIVED",
+    "de_felice_aoki_same_action": "NOT_RUN",
+    "fold": "NOT_TESTED"
+  },
+  "final_verdict": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
