@@ -115,3 +115,22 @@ def test_reject_invalid_and_non_regular_sampling():
     with pytest.raises(ValueError):local_candidate(w,.03,.01)
     with pytest.raises(ValueError):solve_even_center(scale=-.1)
     with pytest.raises(ValueError):solve_even_center(degree=0)
+
+
+def test_curved_corrected_derivative_ward_refines_by_four(solution):
+    w=curved(delta=solution['history'][-1]['f_delta'])
+    for r in (.11,.43,.83):
+        _,ward_coarse=local_candidate(w,r,.004)
+        _,ward_fine=local_candidate(w,r,.002)
+        assert 3.8<abs(ward_coarse/ward_fine)<4.2
+        assert abs(ward_fine)<1e-8
+
+
+def test_curved_spatial_J_remains_nonzero_on_checked_slice(solution):
+    w=curved(delta=solution['history'][-1]['f_delta'])
+    radii=np.linspace(.04,.85,51)
+    Sg,Sf=w.eval(radii,('Sg','Sf'))
+    ylocal=Sf/Sg
+    J=BETA[1]+2*BETA[2]*ylocal+BETA[3]*ylocal**2
+    assert np.min(J)>.6
+    assert np.max(abs(ylocal-.5787707228025044))>1e-4
