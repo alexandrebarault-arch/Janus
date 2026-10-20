@@ -1,6 +1,6 @@
 # Janus Research
 
-> **Active Gate 2B research checkpoint (20 Oct 2026):** Start with [00_CURRENT_RESTART.md](00_CURRENT_RESTART.md), then [Step 35 audit](research/RESTRICTED_REGULAR_CENTER_SECONDARY_STEP35_AUDIT.md). The historical overview below is not the current scientific verdict. Gate 2B remains OPEN; no full JANUS-R validation, no complete repository suite. Work only on branch `research/gate2b-nonhomothetic-transfer`.
+> **Active Gate 2B research checkpoint (20 Oct 2026):** Start with [00_CURRENT_RESTART.md](00_CURRENT_RESTART.md), then [Step 36 continuous J gate](research/CONTINUOUS_J_GATE_STEP36_AUDIT.md) and [Step 35 restricted secondary](research/RESTRICTED_REGULAR_CENTER_SECONDARY_STEP35_AUDIT.md). The historical overview below is not the current scientific verdict. Gate 2B remains OPEN; no full JANUS-R validation, no complete repository suite. Work only on branch `research/gate2b-nonhomothetic-transfer`.
 
 Independent technical audit and continuation of Jean-Pierre Petit's Janus cosmology.
 
