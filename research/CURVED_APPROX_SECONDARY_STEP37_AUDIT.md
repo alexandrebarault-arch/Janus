@@ -53,7 +53,7 @@ Nine distinct *out-of-fit* validation radii (.04,.11,.21,.31,.41,.51,.61,.71,.83
 | 4 | 0.0000002152984402 |
 | 5 | 0.00000009584459520 |
 
-Thus max |C| drops by > 8 million-fold on THESE discrete validation sites. At final iteration max |C/r²|≈4.36e-6. This quantity also exposes the finite-radius/origin issue: the unnormalized C is automatically small near r=0. Both dust canonical momenta are strictly positive at the nine validation sites: min pg≈0.00141698 and min pf≈0.000198788. On those sites, max |Hg,Hf,Ddiag,Fz|≈2.22e-16, min |K|≈0.00037415, max |z|≈0.00332. Fifty-one additional radial points were checked for positive dust momenta/regular finite K and near-zero primaries. **Do not call this interval-wide certified positivity or an exact C(r)=0 theorem.**
+Thus max |C| drops by > 8 million-fold on THESE discrete validation sites. At final iteration max |C/r²|≈4.36e-6. This quantity also exposes the finite-radius/origin issue: the unnormalized C is automatically small near r=0. Both dust canonical momenta are strictly positive at the nine validation sites: min pg≈0.00141698 and min pf≈0.000198788. On those sites, max |Hg,Hf,Ddiag,Fz|≈2.22e-16, min |K|≈0.00037415, max |z|≈0.00332. Fifty-one additional radial points were checked (including sampled local J(Sf/Sg)>0.6); an additional test finds the corrected local smear-derivative Ward residual decreases approximately fourfold as radial h is halved. Fifty-one sampled points were checked for positive dust momenta/regular finite K and near-zero primaries. **Do not call this interval-wide certified positivity or an exact C(r)=0 theorem.**
 
 The convergence stalls near an O(1e-7) absolute C level and derivative h refinement changes the O(1e-8) residual. One must not claim machine-exact secondary closure; further spectral order/interval numerical conditioning is needed.
 
@@ -76,12 +76,12 @@ The corrected mixed bracket shrinks approximately as the finite-difference grid 
 
 - Committed solver: \`numerics/hr_step37_curved_solver.py\`, exact Git blob \`ce627177d7fa97bad21a7689b292ee24a63930cc\`.
 - Committed independent oracle: \`numerics/hr_step37_original_nonibp_oracle.py\`, exact Git blob \`005449ade6e3582e3b9a5c3374a881a77e73e3f6\`.
-- Committed test module: \`tests/test_hr_step37_curved_solver.py\`, exact Git blob \`e787e7089a0095c57df26ea9da79d067aa572112\`.
+- Committed test module: \`tests/test_hr_step37_curved_solver.py\`, exact Git blob \`01b37200c8c547ff4572dad40a7dd21879160f86\`.
 - One backward-compatible extension to \`numerics/hr_curved_moving_dust_primary.py\`: optional polynomial \`f_delta\`, default empty so historical calls remain unchanged. The preexisting \`hr_curved_primary_mixed_kernel.py\` is not modified.
-- \`10/10\` actual **targeted tests PASS** in reconstructed \`/mnt/data/janus-step37\`, approximately 8 seconds, using **compatibility wrappers** for the two previous Step33g providers; wrappers calculate the same background and Euler expressions and reproduce the historical K_ij numbers, BUT their blob bytes are NOT identical to the actual committed original Step33g provider files. This provenance limitation is material. NEW solver, oracle, and test Git blobs match the executed local bytes.
+- \`12/12\` actual **targeted tests PASS** in reconstructed \`/mnt/data/janus-step37\`, approximately 8 seconds, using **compatibility wrappers** for the two previous Step33g providers; wrappers calculate the same background and Euler expressions and reproduce the historical K_ij numbers, BUT their blob bytes are NOT identical to the actual committed original Step33g provider files. This provenance limitation is material. NEW solver, oracle, and test Git blobs match the executed local bytes.
 - \`scripts/verify_gate2b_step37.py\` is a committed full checkout acceptance runner; its numerical acceptance passed in reconstructed local worktree but a clean FULL GitHub branch checkout with the actual Step33g providers has **NOT** been rerun. No whole repository suite, enabled GitHub Actions, or independent external replication.
 
-Do not aggregate Step33f/g/h/35/36 test counts with these 10 and pretend one giant test suite ran.
+Do not aggregate Step33f/g/h/35/36 test counts with these 12 and pretend one giant test suite ran.
 
 ## 7. EXACT NEXT RED for Step38
 
