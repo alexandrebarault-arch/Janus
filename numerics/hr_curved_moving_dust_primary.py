@@ -45,7 +45,7 @@ class CurvedPrimary:
 
 def build_primary(*,a=.4,y=Y04,curv_g=.015,curv_f=-.012,
                   z_slope=.04,theta_g=.012,theta_f=-.016,
-                  grav_g=.04,grav_f=-.035):
+                  grav_g=.04,grav_f=-.035,f_delta=()):
     """Construct *exactly* satisfying six canonical spherical constraints.
 
     - L_i=A_i u_i(r)^2, S_i=A_i r u_i(r)^2;
@@ -58,10 +58,10 @@ def build_primary(*,a=.4,y=Y04,curv_g=.015,curv_f=-.012,
     Separate dust positive-density checks are performed in assert_regular.
     Does not constrain the full secondary or determine a lapse ratio.
     """
-    v=(a,y,curv_g,curv_f,z_slope,theta_g,theta_f,grav_g,grav_f)
+    v=(a,y,curv_g,curv_f,z_slope,theta_g,theta_f,grav_g,grav_f,*f_delta)
     if not all(math.isfinite(float(x)) for x in v) or a<=0 or y<=0:
         raise ValueError('finite positive background data required')
-    if max(abs(curv_g),abs(curv_f),abs(z_slope),abs(theta_g),abs(theta_f),abs(grav_g),abs(grav_f))>.19:
+    if max(abs(curv_g),abs(curv_f),abs(z_slope),abs(theta_g),abs(theta_f),abs(grav_g),abs(grav_f),*(abs(float(v)) for v in f_delta))>.19:
         raise ValueError('witness restricted to regular chart and dust neighborhood')
     b=a*y
     b0,b1,b2,b3,b4=BETA
@@ -83,7 +83,7 @@ def build_primary(*,a=.4,y=Y04,curv_g=.015,curv_f=-.012,
     # Gravitational momenta are independently selected, not tied by a gauge ansatz.
     # pL_i' = 2r [u_i+2r u_i'] P_i makes the flat limit pL_i=r² P_i.
     Pg=sp.Float(pa/3)*(1+sp.Float(grav_g)*R)
-    Pf=sp.Float(pb/3)*(1+sp.Float(grav_f)*R)
+    Pf=sp.Float(pb/3)*(1+sp.Float(grav_f)*R)+sum(sp.Float(v)*R**i for i,v in enumerate(f_delta))
     pLg=sp.integrate(2*R*(ug+2*R*sp.diff(ug,R))*Pg,R)
     pLf=sp.integrate(2*R*(uf+2*R*sp.diff(uf,R))*Pf,R)
     # Curvatures evaluated directly from the original spherical spatial ADM metric.
@@ -130,7 +130,7 @@ def build_primary(*,a=.4,y=Y04,curv_g=.015,curv_f=-.012,
     }
     return CurvedPrimary(residuals,dict(a=a,b=b,y=y,curv_g=curv_g,curv_f=curv_f,
                                        z_slope=z_slope,theta_g=theta_g,theta_f=theta_f,
-                                       grav_g=grav_g,grav_f=grav_f))
+                                       grav_g=grav_g,grav_f=grav_f,f_delta=tuple(float(v) for v in f_delta)))
 
 
 def assert_regular(witness, radii=np.linspace(.12,.88,11),tol=3.e-10):
