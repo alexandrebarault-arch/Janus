@@ -1,0 +1,38 @@
+{
+  "step": "35",
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_regular_secondary_flat.py",
+  "executed_in": "isolated /mnt/data/janus-step35 reconstructed workspace",
+  "pytest": {
+    "passed": 11,
+    "failed": 0,
+    "elapsed_seconds_approx": 0.32
+  },
+  "verified_git_blobs": {
+    "numerics/hr_regular_secondary_flat.py": "d30281a11d854084270a4f536e24e2dc857d58fc",
+    "tests/test_hr_regular_secondary_flat.py": "6425b1c36c8d7e4401bfffe6dabf4f9b31f58cc6"
+  },
+  "y04": 0.5787707228025044,
+  "J04": 0.6763833272458433,
+  "positivity_minima_at_eps_0_08": {
+    "pg_over_r2": 0.8999999999999997,
+    "pf_over_r2": 0.12412818381196225
+  },
+  "sample_J_min": 0.5218731130046104,
+  "prior_step34_reproducible_from_active_tree": false,
+  "full_repo_tests": false,
+  "github_actions": false,
+  "independent_review": false,
+  "physical_gates": {
+    "regular_center_restricted_secondary": "ANALYTIC_AND_TESTED",
+    "curved_noncomoving_secondary": "OPEN",
+    "full_dirac_preservation": "OPEN",
+    "lapse_fixing": "OPEN",
+    "on_shell_nonhomothetic": "OPEN",
+    "de_felice_aoki_same_action": "NOT_RUN",
+    "first_fold": "NOT_TESTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
