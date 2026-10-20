@@ -79,8 +79,8 @@ def exact_box_certificate(cmax=CURV_SAFE,rmax=R,amin=A0,amax=A0,
 def failure_at_antialigned(c):
     """Worst geometry: cg=+c, cf=-c at radius R; returns exact J."""
     c=F(c)
-    if not 0<=c and c*R*R<1:
-        raise ValueError('invalid c')
+    if c<0:
+        raise ValueError('negative curvature amplitude')
     if c*R*R>=1:raise ValueError('singular conformal factor')
     return j_eta(eta(c,-c,R*R))
 
