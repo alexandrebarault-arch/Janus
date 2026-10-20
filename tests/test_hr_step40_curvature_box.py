@@ -44,6 +44,7 @@ def test_negative_counterexample_for_excessive_curvature():
     assert failure_at_antialigned(F('.08'))<0
     assert j_eta(Y0)>0
     with pytest.raises(ValueError): exact_box_certificate(cmax=F('.08'))
+    with pytest.raises(ValueError): failure_at_antialigned(F(-1))
 
 
 def test_sharp_algebraic_curvature_threshold_exists_and_unique():
