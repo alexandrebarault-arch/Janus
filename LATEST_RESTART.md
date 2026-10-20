@@ -1,3 +1,49 @@
+# JANUS — REPRISE PRIORITAIRE : ÉTAPE 33h (2026-10-20)
+
+**FIRST READ:** `research/INDEPENDENT_NONIBP_SPECTRAL_POISSON_STEP33H_AUDIT.md`.
+**Source tested:** `numerics/hr_independent_collocation_bracket.py`.
+**Tests:** `tests/test_hr_independent_collocation_bracket.py` (**21 NEW pass**).
+**Reproduce:** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step33h.py gate2b-step33h-report.json`.
+**ACTUAL JSON also committed:** `research/reports/gate2b-step33h-report.json` (contains source hashes, six canonical pair contributions and gate RED statuses).
+
+## 33h. INDEPENDENT ORIGINAL NON-IBP ADM functional mixed Poisson numerical oracle GREEN — BD secondary NOT YET SATISFIED
+
+**Independent from Step33g symbolic calculus:** A self-contained NUMPY-only radial Gauss–Legendre collocation Hamiltonian with the ORIGINAL unintegrated spherical positive EH_g/f 3-curvature (including S''), original momentum derivatives pL', five-beta HR principal-shift square root, TWO separate non-comoving dust clock gradients and positive canonical momenta. The exact regular algebraic relative shift z*(Dg,K) is recomputed on EVERY nodal finite canonical variation. For all SIX canonical pairs, calculate original smeared H_g[N],H_f[M] and canonical nodal Poisson `sum_i (dHg/dq_i*dHf/dp_i-dHg/dp_i*dHf/dq_i)/w_i`. No SymPy, no reuse of prior IBP Euler functional derivatives or Step33g Poisson kernel. This is an **INDEPENDENT discretized oracle**, NOT complete continuum Dirac algebra proof.
+
+**Same curved/noncomoving primary-satisfying initial data as Step33g, independently reconstructed:** at a=.4,y=.5787707228025044, curv_g=.015,curv_f=-.012,theta_gr=.012 r Lg, theta_fr=-.016 r Lf, z=.04r, distinct radial metric momenta. Both g/f spatial R3 match independent exact `R3=-48 c/(a²(1+c r²)^5)`; all four local original primary residuals Hg,Hf,Ddiag,Fz <5e-16; BOTH canonical dust momenta are positive and independent.
+
+**Numerical checks (original non-IBP action):**
+```
+Gauss n=16: {Hg[N],Hf[M]}=+4.212933507603840e-6, primaries|max=2.78e-16
+Gauss n=26: {Hg[N],Hf[M]}=+4.212933550737745e-6, primaries|max=2.91e-16
+Gauss n=40: {Hg[N],Hf[M]}=+4.212933647514904e-6, primaries|max=4.72e-16
+6 canonical pairs at n=16:
+(Lg,pLg) +1.127292718e-6, (Sg,pSg) -8.370535436e-6,
+(theta_g,pg) +2.261751065e-7, (Lf,pLf) +6.886332017e-6,
+(Sf,pSf) +4.343669102e-6, (theta_f,pf) 0 [DIRECT mixed only; f pair STILL PRESENT].
+```
+The bracket is NONZERO though all THREE local lapse/momentum primaries and shift Fz vanish. **This is a candidate secondary OBSTRUCTION on these initial data, not a dynamical ghost diagnostic.**
+
+**NEW two independent lapse smearing probes:** at n=32, for truly primary constrained curved data, `{Hg[N],Hf[M]}-{Hg[M],Hf[N]}` ≈+1.09e-14; implies numerical disappearance of smear-derivative antisymmetric obstruction, agreeing with Step33g's DIFFERENT symbolic/IBP method. A deliberate OFF-PRIMARY shift pg+=.02*r² gives `|Hg|>.01` and restores asymmetry ≈+9.90e-11. With both compact lapse smearings radially localized around r=.43, bracket divided by `int N²dr` is +.48120 at 80 nodes/width=.03, +.47371 at 128 nodes/width=.015, approaching Step33g's independently computed local necessary coefficient ≈+.47. Extremely narrow/lower-resolution spectral gradients become poorly conditioned, so this is a numerically verified CONTROL, not a rigorous distributional theorem. Scan of independent grav_f slope parameter from -.18 to +.18 retains positive dust and nonzero same-sign bracket; **does NOT mean all primary+secondary-satisfying data are impossible**.
+
+**Real tests:** 21/21 PASS in NEW `/mnt/data/janus33h`; `scripts/verify_gate2b_step33h.py` separately exit 0 /21 PASS in 1.92s, manifest and witness JSON generated. An initial overly tight Ricci scalar spectral convergence threshold (relative error 1.17e-9) failed; numerical threshold revised to 3e-9 after independent analytic formula check, equations unchanged. All FIVE new source/test/script/audit/report GitHub files exactly SHA match local bytes:
+- `numerics/hr_independent_collocation_bracket.py` `b9847f9a99378d2f68c2ec5dacf2ececf18836af`
+- `tests/test_hr_independent_collocation_bracket.py` `500ec977e2aa4cd75a323b192265094d6f076610`
+- `scripts/verify_gate2b_step33h.py` `0b768b9346876c6e0839b34cb8afad7652469019`
+- `research/INDEPENDENT_NONIBP_SPECTRAL_POISSON_STEP33H_AUDIT.md` `ccc72b67a6e4de91f3eb5006296bb9b4731360c0`
+- `research/reports/gate2b-step33h-report.json` `6d36a72acb65a890fd2d7d90632491e890718660`.
+
+**IMPORTANT provenance limitation:** Step33g's prior 22+3 tests and Step33f's 52 tests were NOT rerun in this NEW workspace. No clean full Git checkout, full CI or external peer replication. This is a new independent 21-test run; do not sum historic passing counts and claim a joint run. The status flags in the committed JSON show `gate2b=OPEN`, `full_Dirac_secondary_time_preservation=NOT_DERIVED`, `lapse_fixing=NOT_DERIVED`, `DeFelice/Aoki=NOT_RUN`.
+
+**NEXT EXACT RED (priority):**
+1. **SOLVE THE LOCAL SECONDARY TOGETHER WITH THE PRIMARY CONSTRAINTS** on a curved/noncomoving two-dust family: build a sufficiently flexible radial gravitational momentum and/or metric profile, numerically solve C_local(r)=0 on a radial interval, require exact positive independent dust canonical momenta, regular K and all local Hg=Hf=Ddiag=Fz=0. Merely tuning an integrated smear bracket or the single grav_f parameter is insufficient; local C(r)=0 must hold.
+2. Derive the **time preservation** of this secondary from the full spherical Dirac Hamiltonian with all six canonical pairs, establish field-theory Dirac rank/secondary lapse fixing and handle K=0/J=0 separately. Confirm the secondary via BOTH symbolic-IBP and independent original non-IBP methods.
+3. Match true local ADM reduction with Step32e fully time-integrable common two-dust perturbation action and find genuine physically NONHOMOTHETIC ON-SHELL Candidate-C branch beyond Step30 passive compensated chart. Demand SAME reduced action De Felice finite-H μ→0 physical scalar and Aoki nonlinear homothetic KS,cS² stable and unstable oracles prior to first relative μ fold at a≈.0301646. Report a negative verdict if required; do not invent ghost/gradient/observational validation.
+
+**Scientific verdict:** `STEP33H_ORIGINAL_ACTION_INDEPENDENT_POISSON_GREEN`; `LOCAL_PRIMARY_CURVED_DUST_GREEN`; `LOCAL_BD_SECONDARY_AND_DIRAC_LAPSE_FIXING_OPEN`; **`GATE_2B=OPEN`; JANUS-R NOT VALIDATED.** Continue only branch `research/gate2b-nonhomothetic-transfer`; preserve `main` and `research/v2-flrw`; keep external wrong-sign-f-EH JHR critique separate.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33g (2026-10-19)
 
 **FIRST READ:** `research/CURVED_MOVING_DUST_PRIMARY_AND_MIXED_PB_STEP33G_AUDIT.md`.
