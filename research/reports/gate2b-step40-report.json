@@ -1,0 +1,112 @@
+{
+  "step": "40",
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "scope": "Two distinct exact-rational CONTINUUM certificates on prescribed conformal spherical spatial metric family, not full Dirac secondary",
+  "exact_source_blobs": {
+    "numerics/hr_step40_curvature_box.py": "8c574210fc72969d9fb03257b5a930174c6db5c3",
+    "tests/test_hr_step40_curvature_box.py": "670b3e07ecafc4c81fa6a20086bc2efe2ea03bbd",
+    "numerics/hr_step40_twodust_interval.py": "30b20707a9d9d94c9620f37d3ce0c72cd904943d",
+    "tests/test_hr_step40_twodust_interval.py": "2b1d05e7069f88ba555205c6e1117fc3ea82fe5e"
+  },
+  "targeted_execution": {
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step40_curvature_box.py tests/test_hr_step40_twodust_interval.py",
+    "executed_workdir": "isolated /mnt/data/janus-step40",
+    "passed": 35,
+    "failed": 0,
+    "duration_seconds_approx": 1.8,
+    "all_four_local_blobs_identical_to_committed_github": true,
+    "whole_repo_test": false,
+    "original_Step33g_39_reexecuted": false,
+    "CI": false
+  },
+  "uniform_curvature_box": {
+    "spherical_r_interval": [
+      0,
+      0.85
+    ],
+    "independent_curvatures_each_abs_leq": 0.015,
+    "reference": {
+      "a": 0.4,
+      "y": 0.5787707228025044,
+      "J_lower_rational_exact_test": true,
+      "J_lower_floating": 0.5039461792087735,
+      "K_over_r2_lower_floating": 0.15968997603142235
+    },
+    "neighborhood": {
+      "a": [
+        0.395,
+        0.405
+      ],
+      "y": [
+        0.5787,
+        0.5789
+      ],
+      "J_lower_floating": 0.5034934036212138,
+      "K_over_r2_lower_floating": 0.15169896908005312
+    },
+    "sharp_negative_control": {
+      "cg_positive_cf_negative_curvature_amplitude": 0.07854905913576156,
+      "at_r": 0.85,
+      "J_crosses_zero": true,
+      "negative_J_at_curvature_0_08": -0.007962268546657781
+    },
+    "proof": "For any independently bounded curvatures, bound ug,uf in [1-cR²,1+cR²]; bound eta=y(uf/ug)^2 and prove J'(eta)>0 over box; derive K/r²=m² Mg² a^4 y ug^6 uf² J and strict rational lower bound. Isolated J=0 geometry outside certified box is NOT a primary+secondary physical solution."
+  },
+  "two_dust_primary_interval_certificate": {
+    "metric_parameters": {
+      "a": 0.4,
+      "y": 0.5787707228025044,
+      "cg": 0.0015,
+      "cf": -0.0012,
+      "zslope": 0.004,
+      "kg": 0.0012,
+      "kf": -0.0016
+    },
+    "r_interval": [
+      0,
+      0.85
+    ],
+    "s_interval": [
+      0,
+      0.7225
+    ],
+    "ncells": 256,
+    "algorithm": "Bound numerator and dust denominator algebraic functions of s=r² with exact Fraction interval operators; bound square roots outward via integer isqrt rational grid enclosure; demonstrate strictly positive minima on EVERY rational subinterval. Independent tests reconstruct original (non-simplified) canonical pL/pS, curvature, shift and dust Hamiltonian in floating point with 1e-12 compatibility tolerance.",
+    "baseline_exact_strict_certified": {
+      "pg_over_r2_greater_than": 0.885,
+      "pf_over_r2_greater_than": 0.114,
+      "unrounded_numerical_safe_lower": {
+        "pg": 0.8854472033872441,
+        "pf": 0.11409299816866748
+      }
+    },
+    "even_f_momentum_correction_ball": {
+      "generator": "Qf=Pf+sum_{k=0}^4 delta_{2k} r^{2k}, odd coefficients exactly zero",
+      "each_abs_delta_no_greater_than": 0.005,
+      "strict_interval_positive_bounds": {
+        "pg_over_r2_greater_than": 0.885,
+        "pf_over_r2_greater_than": 0.039
+      },
+      "unrounded_numerical_safe_lower": {
+        "pg": 0.8854472033872441,
+        "pf": 0.03930997556977505
+      }
+    },
+    "negative_control": "Correction coefficient uncertainty enlarged to 0.007 fails the chosen interval certificate; this is NOT a proof that actual dust becomes negative.",
+    "r0_note": "actual canonical dust p_i(r) ~r² times strictly positive normalized density, so p_i(0)=0 as required by spherical measure; no assertion p_i(0)>0"
+  },
+  "remaining_red": {
+    "step39_secondary_corrected_delta_inside_ball": "NOT CHECKED - must record and verify each solved coefficient from step39 high-order solver on actual source",
+    "pointwise_curved_secondary_exact_zero": "OPEN",
+    "full_curved_secondary_time_preservation": "OPEN",
+    "lapse_fixing_six_canonical_pairs": "OPEN",
+    "entire_phase_space_dirac_rank": "OPEN",
+    "nonhomothetic_on_shell": "OPEN",
+    "same_action_de_felice_aoki": "NOT_RUN",
+    "fold_crossing": "NOT_TESTED",
+    "JANUS_R": "NOT_VALIDATED",
+    "GATE_2B": "OPEN"
+  },
+  "next_step": "Step41 bridge actual Step39 five-point corrected generator coefficients to Step40 positivity ball; independently verify in a coherent exact provider worktree; derive exact/spectral K01 derivative or certified continuum C_local and full Dirac time preservation/lapse fixing."
+}
