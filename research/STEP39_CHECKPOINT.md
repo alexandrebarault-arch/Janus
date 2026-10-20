@@ -1,3 +1,11 @@
+# STEP39 — FINAL STATUS / authoritative links
+
+**Step39 is now completed as a targeted numerical audit.** The contents below were the *intermediate* checkpoint; for the finalized record read **[00_CURRENT_RESTART.md](../00_CURRENT_RESTART.md)**, **[STEP39_DUAL_SMEAR_AND_HIGHORDER_AUDIT.md](STEP39_DUAL_SMEAR_AND_HIGHORDER_AUDIT.md)** and **[gate2b-step39-report.json](reports/gate2b-step39-report.json)**. New independent source `numerics/hr_step39_cross_oracle.py`, five-point source `numerics/hr_step39_highorder_secondary.py`, and both targeted test modules are committed. Historical files left unchanged. **32+5 targeted tests PASSED separately, but single-worker combined execution TIMED OUT and full repository not tested.** 
+
+**Next Step40 red:** mathematically controlled continuous secondary C_local=0 and time preservation Dirac/lapse fixing, followed only then by physics oracles. Gate2B OPEN, JANUS-R NOT VALIDATED.
+
+---
+
 # JANUS — Step39 live checkpoint — 20 October 2026
 
 Research branch: `research/gate2b-nonhomothetic-transfer`. Preserve main and research/v2-flrw. This file is an interruption-safe **verified intermediate checkpoint**; the authoritative `00_CURRENT_RESTART.md` will be advanced after new code/report commit.
