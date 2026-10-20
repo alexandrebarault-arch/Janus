@@ -71,14 +71,14 @@ def test_independent_original_unsimplified_hamiltonian_matches_interval(r):
 
 def test_continuous_baseline_two_dust_certificate_without_sampling():
     c=interval_two_dust_certificate(ncells=256)
-    assert F(c['strict_pg_over_r2_lower'])>F('.88')
-    assert F(c['strict_pf_over_r2_lower'])>F('.11')
+    assert F(c['strict_pg_over_r2_lower'])>F('.885')
+    assert F(c['strict_pf_over_r2_lower'])>F('.114')
     assert c['GATE_2B']=='OPEN'
 
 
 def test_uniform_even_momentum_perturbation_ball_still_positive():
     c=interval_two_dust_certificate(ncells=256,f_delta_per_coefficient_bound=F('.005'))
-    assert F(c['strict_pg_over_r2_lower'])>F('.88')
+    assert F(c['strict_pg_over_r2_lower'])>F('.885')
     assert F(c['strict_pf_over_r2_lower'])>F('.039')
     assert c['f_delta_per_coefficient_bound']=='1/200'
 
