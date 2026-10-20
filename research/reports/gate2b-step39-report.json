@@ -1,0 +1,147 @@
+{
+  "step": 39,
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "scientific_verdict": "CURVED_TWO_DUST_SECONDARY_NEAR_ZERO_BUT_NOT_EXACT; GATE_2B_OPEN; JANUS_R_NOT_VALIDATED",
+  "verified_git_blobs": {
+    "numerics/hr_curved_moving_dust_primary.py": "ee801e324ae0282f764e29c2b39ff34b1efb73f1",
+    "numerics/hr_curved_primary_mixed_kernel.py": "45ccd73177cc1588efaf1d53e3dd0179d41ec30b",
+    "numerics/hr_step37_curved_solver.py": "ce627177d7fa97bad21a7689b292ee24a63930cc",
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "tests/test_hr_step37_curved_solver.py": "01b37200c8c547ff4572dad40a7dd21879160f86",
+    "numerics/hr_step38_continuum_gate.py": "1e4874050d2a8e478cc2414580c737f69cee6309",
+    "tests/test_hr_step38_continuum_gate.py": "cd9a7625c7a62beec0cc952b91d3b929ec1fce96",
+    "numerics/hr_step39_cross_oracle.py": "5b66a1fd416cfa0eaaaef7e43601b6a497b8e8c0",
+    "tests/test_hr_step39_cross_oracle.py": "262adbf265b1cf5c28416501cf94a7e4e9f631c8"
+  },
+  "actual_joint_tests": {
+    "command": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step37_curved_solver.py tests/test_hr_step38_continuum_gate.py tests/test_hr_step39_cross_oracle.py",
+    "passed": 32,
+    "failed": 0,
+    "elapsed_seconds": 30.04,
+    "executed_in": "isolated reconstructed /mnt/data/janus-step39; all 9 cited GitHub provider/source/test bytes Git SHA IDENTICAL",
+    "full_repo_suite": false,
+    "github_actions": false
+  },
+  "reproduce": {
+    "targeted_tests": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step37_curved_solver.py tests/test_hr_step38_continuum_gate.py tests/test_hr_step39_cross_oracle.py",
+    "numerical_manifest": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m numerics.hr_step39_cross_oracle",
+    "highres": "Use numerics.hr_step39_cross_oracle.original_nonibp_extended(w, 'A' or 'B', n=1281 or 2561); O(n^2) runtime. Historical original_pb n cap remains unchanged."
+  },
+  "fixed_step37_profile": {
+    "description": "h=.001 degree4 iterations5; exact curved primary constraints on sampled radii, two positive dusts",
+    "gauss_96_full_jet_IBP": {
+      "A": 5.361702202615105e-9,
+      "B": 3.3387069021340765e-9
+    },
+    "gauss_48_96_192_stable_order_1e_minus16": true,
+    "nodal_original_nonibp_BA": {
+      "A": [
+        {
+          "n": 641,
+          "bracket": -3.15636675685127e-8
+        },
+        {
+          "n": 1281,
+          "bracket": -3.8695355253359764e-9
+        },
+        {
+          "n": 2561,
+          "bracket": 3.053897773552805e-9
+        }
+      ],
+      "B": [
+        {
+          "n": 321,
+          "bracket": -2.333106762508752e-7
+        },
+        {
+          "n": 641,
+          "bracket": -5.582329845599254e-8
+        },
+        {
+          "n": 1281,
+          "bracket": -1.1451773446191638e-8
+        }
+      ]
+    },
+    "richardson_intercepts": {
+      "A_6grid_level2": 5.3617000111355e-9,
+      "B_from_3grids_approx": 3.3387e-9
+    },
+    "original_uncorrected_reference": {
+      "A": 0.009387437474191377,
+      "B": 0.016721074146539398
+    },
+    "highres_discrete_primary_roundoff": {
+      "n641": 3.888719568578836e-9,
+      "n1281": 1.2962762807600114e-9,
+      "n2561": 2.0938000777626087e-9
+    },
+    "interpretation": "For a FROZEN Step37 approximate secondary profile, the nonzero integrated mixed bracket is replicated by two separate discretizations and TWO smear pairs. It is NOT evidence that no exactly secondary-constrained profile exists."
+  },
+  "h_scan_degree4_6iterations": [
+    {
+      "h": 0.001,
+      "maxC": 9.348882273191306e-8,
+      "maxCoverR2": 0.000004358319482035026,
+      "IBPA": 5.361162482021614e-9,
+      "IBPB": 3.3375114400629437e-9,
+      "minpg": 0.001416980809682611,
+      "minpf": 0.00019878783803685705,
+      "max_primary": 2.220446049250313e-16
+    },
+    {
+      "h": 0.0005,
+      "maxC": 2.3409839705612612e-8,
+      "maxCoverR2": 0.0000010895830634502732,
+      "IBPA": 1.3403497488236925e-9,
+      "IBPB": 8.344766817651475e-10,
+      "minpg": 0.001416980809682611,
+      "minpf": 0.00019878784316824228,
+      "max_primary": 2.220446049250313e-16
+    },
+    {
+      "h": 0.00025,
+      "maxC": 5.890044812995043e-9,
+      "maxCoverR2": 2.7239861464506935e-7,
+      "IBPA": 3.3514669696526635e-10,
+      "IBPB": 2.0871820241041289e-10,
+      "minpg": 0.001416980809682611,
+      "minpf": 0.00019878784445108842,
+      "max_primary": 2.220446049250313e-16
+    },
+    {
+      "h": 0.000125,
+      "maxC": 1.5101311867660172e-9,
+      "maxCoverR2": 6.81026908916585e-8,
+      "IBPA": 8.384581198461324e-11,
+      "IBPB": 5.2278421468396566e-11,
+      "minpg": 0.001416980809682611,
+      "minpf": 0.0001987878447718,
+      "max_primary": 2.220446049250313e-16
+    },
+    {
+      "h": 0.0000625,
+      "maxC": 4.1506698078563886e-10,
+      "maxCoverR2": 1.7028870446991057e-8,
+      "IBPA": 2.101951052701432e-11,
+      "IBPB": 1.316706896100023e-11,
+      "minpg": 0.001416980809682611,
+      "minpf": 0.00019878784485197754,
+      "max_primary": 2.220446049250313e-16
+    }
+  ],
+  "h_scan_interpretation": "Approximately 4x smaller integrated Poisson bracket when h is halved: prior residual substantially stencil-limited. This is not a proof pointwise C=0; h small eventually triggers roundoff instability and polynomial truncation remains.",
+  "caveats": {
+    "center_4d_regularity": "NOT_CERTIFIED",
+    "two_dust_continuum_positivity": "NOT_CERTIFIED; positive only sampled",
+    "local_secondary_exact": "NOT_PROVED",
+    "dirac_time_preservation": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "full_action_physical_oracles": "NOT_RUN",
+    "full_git_repo_tests": "NOT_RUN",
+    "physical_JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step": "Step40 analytic differentiation of K01 to remove finite-h floor, nonlinear radial solver with certified entire-interval C=0/two-dust positivity, full six-pair Dirac time-preservation/lapse fixing. Keep independent JHR external paper critique separate."
+}
