@@ -1,0 +1,106 @@
+{
+  "Aoki_oracle": "NOT_RUN",
+  "DeFelice_oracle": "NOT_RUN",
+  "JANUS_R_validated": false,
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "date": "2026-10-20",
+  "execution": "independent nodal Gauss-Legendre finite-difference Poisson gradients",
+  "full_Dirac_secondary_time_preservation": "NOT_DERIVED",
+  "full_repository_regression": false,
+  "gate2b": "OPEN",
+  "genuinely_nonhomothetic_time_evolved_Candidate_C": "NOT_DERIVED",
+  "lapse_fixing": "NOT_DERIVED",
+  "localized_coefficients": [
+    {
+      "bracket_over_norm": 0.48120344603077514,
+      "n": 80,
+      "width": 0.03
+    },
+    {
+      "bracket_over_norm": 0.4737114484229671,
+      "n": 128,
+      "width": 0.015
+    }
+  ],
+  "new_tests_passed": 21,
+  "off_primary_smear_swap_difference": 9.896670917755639e-11,
+  "previous_step33g_reference_git_blobs": {
+    "numerics/hr_curved_moving_dust_primary.py": "4266227a3a09bad229cb1da583b9a77706ef1838",
+    "numerics/hr_curved_primary_mixed_kernel.py": "45ccd73177cc1588efaf1d53e3dd0179d41ec30b"
+  },
+  "primary_plus_secondary_surface_solving": "NOT_DERIVED",
+  "primary_smear_swap_difference": 1.0898372285737031e-14,
+  "prior_step33g_22_plus_3_tests_rerun": false,
+  "sources": [
+    {
+      "bytes": 5789,
+      "git_blob": "b9847f9a99378d2f68c2ec5dacf2ececf18836af",
+      "path": "numerics/hr_independent_collocation_bracket.py",
+      "sha256": "8d29d7210748298d72007fb35921211c87498fceabc3f6b06f9717e20337854d"
+    },
+    {
+      "bytes": 4602,
+      "git_blob": "500ec977e2aa4cd75a323b192265094d6f076610",
+      "path": "tests/test_hr_independent_collocation_bracket.py",
+      "sha256": "61bc711c64875303da2853d0b63ff89fed4cc41f18e2f633729fe8e1846dfc95"
+    },
+    {
+      "bytes": 3828,
+      "git_blob": "0b768b9346876c6e0839b34cb8afad7652469019",
+      "path": "scripts/verify_gate2b_step33h.py",
+      "sha256": "191aba8b997d5620d09df02ce3145f1ec315a5e81063523b371350cc052be863"
+    }
+  ],
+  "spatial_resolution_controls": [
+    {
+      "bracket": 4.21293350760384e-06,
+      "n": 16,
+      "pf_min": 0.0013407357863404073,
+      "pg_min": 0.008311968777146959,
+      "primary_residual": 2.7755575615628914e-16,
+      "six_pair_contributions": [
+        1.127292718454901e-06,
+        -8.370535436026279e-06,
+        2.2617510652371903e-07,
+        6.886332016609021e-06,
+        4.343669102042478e-06,
+        0.0
+      ]
+    },
+    {
+      "bracket": 4.212933550737745e-06,
+      "n": 26,
+      "pf_min": 0.001275602867203464,
+      "pg_min": 0.007900925823364453,
+      "primary_residual": 2.914335439641036e-16,
+      "six_pair_contributions": [
+        1.1272927583878665e-06,
+        -8.37053543099429e-06,
+        2.261751046996566e-07,
+        6.886332016568153e-06,
+        4.3436691020763596e-06,
+        0.0
+      ]
+    },
+    {
+      "bracket": 4.212933647514904e-06,
+      "n": 40,
+      "pf_min": 0.0012523659323747502,
+      "pg_min": 0.007754451333753941,
+      "primary_residual": 4.718447854656915e-16,
+      "six_pair_contributions": [
+        1.1272928478482643e-06,
+        -8.370535419535686e-06,
+        2.261751004673944e-07,
+        6.886332016584517e-06,
+        4.343669102150416e-06,
+        0.0
+      ]
+    }
+  ],
+  "status": "PASS",
+  "step": "33h",
+  "test_exit": 0,
+  "test_result": ".....................                                                    [100%]\n21 passed in 1.87s\n",
+  "test_run_seconds": 4.14
+}
