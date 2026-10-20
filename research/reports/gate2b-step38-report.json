@@ -1,0 +1,76 @@
+{
+  "step": "38",
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "deliverables": {
+    "source": "numerics/hr_step38_continuum_gate.py",
+    "source_sha": "1e4874050d2a8e478cc2414580c737f69cee6309",
+    "tests": "tests/test_hr_step38_continuum_gate.py",
+    "tests_sha": "cd9a7625c7a62beec0cc952b91d3b929ec1fce96"
+  },
+  "execution": {
+    "actual_test_command": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step38_continuum_gate.py",
+    "passed": 11,
+    "failed": 0,
+    "wall_seconds_approx": 0.08,
+    "working_directory": "/mnt/data/janus-step38, isolated reconstructed source/test, local reduced Step37 report fixture with the exact 4 GitHub-published records",
+    "full_github_worktree": false,
+    "step37_real_provider_modules_executed": false
+  },
+  "spatial_certificate": {
+    "scope": "Step37 a=0.4,y=0.5787707228025044, cg=.0015,cf=-.0012, fixed metrics Lg=a(1+cg r²)²,Lf=b(1+cf r²)², 0<=r<=.85",
+    "proof": "eta=Y*((1+cf r²)/(1+cg r²))² monotonically decreasing; J'(eta)>0 on certified eta interval; K/r²=m²Mg² Lg³ Lf J(eta) lower bounded by m²Mg² a³ b (1+cf R²)² J(eta_R)>0 by exact rational inequalities",
+    "eta_interval_continuous": true,
+    "J_lower_exact_fraction": "see continuous_sign_certificate output",
+    "J_lower_approx": 0.6598708967925059,
+    "K_over_r2_lower_approx": 0.22774976204166372,
+    "origin": "K(0)=0 due to spherical r² factor, not demonstration of physical ADM Dirac regularity",
+    "matter_positivity_certified": false,
+    "spacetime_regularity_certified": false
+  },
+  "richardson_from_existing_step37_report": {
+    "original_nodes": [
+      81,
+      161,
+      321,
+      641
+    ],
+    "after_brackets": [
+      -0.0000023602199738792518,
+      -5.85584939372108e-7,
+      -1.4234681844360608e-7,
+      -3.156366751300155e-8
+    ],
+    "after_two_level_first_estimates": [
+      5.960072130273267e-9,
+      5.39922186589456e-9,
+      5.364049463866627e-9
+    ],
+    "after_two_level_second_estimates": [
+      5.361831848269313e-9,
+      5.361704637064764e-9
+    ],
+    "after_last_estimate": 5.361704637064764e-9,
+    "uncorrected_last_estimate": 0.00938743747419368,
+    "comparison": "finite n=641 negative sample versus positive extrapolated continuum intercept; no conclusion of exact vanishing",
+    "observed_scaling": "differences converge approximately 4x for half h, consistent with O(h²) error",
+    "rigorous_extrapolation_error_bound": false,
+    "new_hamiltonian_runs": false
+  },
+  "next_critical_actions": [
+    "Reconstruct clean byte-exact Step33g provider workspace, rerun Step37 test and acceptance runner; no enabled GitHub Actions",
+    "Perform independent radial C_local convergence in h, even basis degree and support, and certify dust positivity over full interval",
+    "Compute actual time preservation Dirac bracket and lapse fixing with all six canonical pairs on an exact or controlled secondary solution",
+    "Only then on-shell nonhomothetic De Felice and Aoki same-action physical tests, then fold"
+  ],
+  "gates": {
+    "step38_radial_J_K": "CONTINUOUS_EXACT_RATIONAL_SIGN_CERTIFICATE",
+    "step38_PB_extrapolation": "NUMERICAL_DIAGNOSTIC_NOT_ZERO_PROOF",
+    "curved_secondary_C_exact": "OPEN",
+    "secondary_time_preservation": "OPEN",
+    "lapse_fixing": "OPEN",
+    "physical_oracles": "NOT_RUN",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
