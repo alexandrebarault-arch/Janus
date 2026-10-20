@@ -61,7 +61,6 @@
     }
   ],
   "precision_note": "Exact rational brackets are strict; displayed binary floating endpoints can round to identical values",
-  "other_steps_rerun": false,
   "full_repo_tests": false,
   "github_actions": false,
   "peer_replication": false,
@@ -87,5 +86,6 @@
       "numerics/candidate_c_continuous_j_certificate.py": "375e6c3197fb9d82f19b35c66331bab2675cd506",
       "tests/test_candidate_c_continuous_j_certificate.py": "5b2634d0ac8a99915617ba27785b728f03a1ec00"
     }
-  }
+  },
+  "prior_steps_33_and_34_not_rerun": true
 }
