@@ -12,7 +12,9 @@
     "numerics/hr_step38_continuum_gate.py": "1e4874050d2a8e478cc2414580c737f69cee6309",
     "tests/test_hr_step38_continuum_gate.py": "cd9a7625c7a62beec0cc952b91d3b929ec1fce96",
     "numerics/hr_step39_cross_oracle.py": "5b66a1fd416cfa0eaaaef7e43601b6a497b8e8c0",
-    "tests/test_hr_step39_cross_oracle.py": "262adbf265b1cf5c28416501cf94a7e4e9f631c8"
+    "tests/test_hr_step39_cross_oracle.py": "262adbf265b1cf5c28416501cf94a7e4e9f631c8",
+    "numerics/hr_step39_highorder_secondary.py": "0da008cc7d5810235ad1bd73549ef1ac1957f656",
+    "tests/test_hr_step39_highorder_secondary.py": "acea5b8426dc96ea90a2d0764e5be9d6725c1fd9"
   },
   "actual_joint_tests": {
     "command": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step37_curved_solver.py tests/test_hr_step38_continuum_gate.py tests/test_hr_step39_cross_oracle.py",
@@ -143,5 +145,68 @@
     "full_git_repo_tests": "NOT_RUN",
     "physical_JANUS_R": "NOT_VALIDATED"
   },
-  "next_step": "Step40 analytic differentiation of K01 to remove finite-h floor, nonlinear radial solver with certified entire-interval C=0/two-dust positivity, full six-pair Dirac time-preservation/lapse fixing. Keep independent JHR external paper critique separate."
+  "next_step": "Step40 isolate derivative analytic/spectral floor and entire-interval rigorous positivity/C(r)=0; full six-pair secondary preservation and lapse ratio. Do not claim BD absence or physical JANUS-R validation.",
+  "fourth_order_five_point": {
+    "method": "Symmetric 5-point O(h^4) radial derivative of K01 and K20 instead of Step37 3-point O(h^2), preserving byte-identical Step37 original solver. Degree4 even f-momentum polynomial, 6 corrections, 9 held-out radial validation sites.",
+    "cases": [
+      {
+        "h": 0.004,
+        "max_local_C": 5.2805867317706756e-11,
+        "max_C_div_r2": 1.2689616576218223e-10,
+        "IBP_A": 2.278738562942599e-13,
+        "IBP_B": 2.2278288985832344e-13
+      },
+      {
+        "h": 0.002,
+        "max_local_C": 5.0336033952103065e-11,
+        "max_C_div_r2": 7.306725787792578e-11,
+        "IBP_A": 8.782717054955843e-14,
+        "IBP_B": 1.3683024535541888e-13
+      },
+      {
+        "h": 0.001,
+        "max_local_C": 5.0185595262819405e-11,
+        "max_C_div_r2": 7.284888265759821e-11,
+        "IBP_A": 7.911118062876338e-14,
+        "IBP_B": 1.3162936854562068e-13
+      },
+      {
+        "h": 0.0005,
+        "max_local_C": 5.016803986124252e-11,
+        "max_C_div_r2": 7.282339942116784e-11,
+        "IBP_A": 7.840702260501354e-14,
+        "IBP_B": 1.3120752845607527e-13
+      }
+    ],
+    "control": "Step33g historical r=.43 coefficient with 5-point method is 0.471663864165... vs 3-point h=.005 approx 0.471665550745...; old number had O(h²) offset, fifth-order test correctly corrected its own reference",
+    "interpretation": "Marked improvement but plateau in max local C ~5e-11 could be polynomial truncation, floating-point cancellation or remaining physical residual; near-machine 1e-13 integrated PB does NOT imply C(r)=0 identically.",
+    "exact_continuum_C_zero": false,
+    "time_preservation_computed": false
+  },
+  "test_reproduction_summary": {
+    "group1": {
+      "tests": 32,
+      "failed": 0,
+      "elapsed_seconds": 29.43,
+      "modules": [
+        "tests/test_hr_step37_curved_solver.py",
+        "tests/test_hr_step38_continuum_gate.py",
+        "tests/test_hr_step39_cross_oracle.py"
+      ],
+      "original_provider_blobs_exact": true
+    },
+    "group2": {
+      "tests": 5,
+      "failed": 0,
+      "elapsed_seconds": 10.5,
+      "modules": [
+        "tests/test_hr_step39_highorder_secondary.py"
+      ],
+      "original_provider_blobs_exact": true
+    },
+    "aggregate_targeted_separate_worker_passes": 37,
+    "one_single_pytest_worker_completed": false,
+    "single_worker_observation": "An attempted one-process joint 37-test run stalled/timed out after printing ~34 dots. Do not call it a successful combined 37-test run. Separate test module groups passed.",
+    "runner_observation": "Attempted a master subprocess runner; first group passed then parent call timed out during second worker; the second worker passes separately when run directly."
+  }
 }
