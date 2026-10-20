@@ -1,0 +1,78 @@
+{
+  "step": "36",
+  "date": "2026-10-20",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "reproduce": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_candidate_c_continuous_j_certificate.py",
+  "local_workspace": "/mnt/data/janus-step36 (isolated reconstructed, not full GitHub worktree)",
+  "pytest": {
+    "passed": 19,
+    "failed": 0,
+    "elapsed_seconds_approx": 0.15
+  },
+  "matched_git_blob_shas": {
+    "numerics/candidate_c_continuous_j_certificate.py": "375e6c3197fb9d82f19b35c66331bab2675cd506",
+    "tests/test_candidate_c_continuous_j_certificate.py": "5b2634d0ac8a99915617ba27785b728f03a1ec00"
+  },
+  "certificate": {
+    "a_range": [
+      "0.025",
+      "1"
+    ],
+    "y_open_interval": [
+      "0.556",
+      "2.3"
+    ],
+    "strict_J_lower_bound": "1/2",
+    "t_y_lower": 0.5075110623448098,
+    "t_y_upper": 66192.04495699315,
+    "t_requested_max": 64000,
+    "proof": "Fraction exact Q>0,Q'>0,Q''>0,D>0 and monotonic t(y); J'>0 and J(0.556)>1/2"
+  },
+  "reference_points": [
+    {
+      "a": 1,
+      "y": 0.5568825591873056,
+      "J": 0.521873113004595
+    },
+    {
+      "a": 0.4,
+      "y": 0.5787707228025017,
+      "J": 0.676383327245824
+    },
+    {
+      "a": 0.09,
+      "y": 0.9399775251263363,
+      "J": 5.119177085781536
+    },
+    {
+      "a": 0.0301646,
+      "y": 1.971261154528869,
+      "J": 37.449196983058634
+    },
+    {
+      "a": 0.03,
+      "y": 1.9795452448545103,
+      "J": 37.82670888284864
+    },
+    {
+      "a": 0.025,
+      "y": 2.279890828005346,
+      "J": 52.78175765430383
+    }
+  ],
+  "precision_note": "Exact rational brackets are strict; displayed binary floating endpoints can round to identical values",
+  "other_steps_rerun": false,
+  "full_repo_tests": false,
+  "github_actions": false,
+  "peer_replication": false,
+  "gates": {
+    "continuous_dust_quartic_nonzero_J": "PASS_WITHIN_CALIBRATED_MODEL",
+    "curved_noncomoving_local_secondary": "OPEN",
+    "full_dirac": "OPEN",
+    "lapse_fixing": "OPEN",
+    "physical_de_felice_aoki": "NOT_RUN",
+    "fold_crossing": "NOT_TESTED",
+    "JANUS_R": "NOT_VALIDATED",
+    "GATE_2B": "OPEN"
+  }
+}
