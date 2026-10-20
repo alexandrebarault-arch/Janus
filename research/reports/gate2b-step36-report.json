@@ -74,5 +74,18 @@
     "fold_crossing": "NOT_TESTED",
     "JANUS_R": "NOT_VALIDATED",
     "GATE_2B": "OPEN"
+  },
+  "joint_step35_step36_reexecution": {
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_regular_secondary_flat.py tests/test_candidate_c_continuous_j_certificate.py",
+    "execution_environment": "/mnt/data/janus-step36, reconstructed two-module workspace; NOT full repo",
+    "passed": 30,
+    "failed": 0,
+    "elapsed_seconds_approx": 0.35,
+    "git_blobs": {
+      "numerics/hr_regular_secondary_flat.py": "d30281a11d854084270a4f536e24e2dc857d58fc",
+      "tests/test_hr_regular_secondary_flat.py": "6425b1c36c8d7e4401bfffe6dabf4f9b31f58cc6",
+      "numerics/candidate_c_continuous_j_certificate.py": "375e6c3197fb9d82f19b35c66331bab2675cd506",
+      "tests/test_candidate_c_continuous_j_certificate.py": "5b2634d0ac8a99915617ba27785b728f03a1ec00"
+    }
   }
 }
