@@ -1,3 +1,13 @@
+# JANUS — CURRENT RESTART 2026-10-20 STEP35 (read before historical journal)
+
+**AUTHORITATIVE POINTER:** [00_CURRENT_RESTART.md](00_CURRENT_RESTART.md) and [research/RESTRICTED_REGULAR_CENTER_SECONDARY_STEP35_AUDIT.md](research/RESTRICTED_REGULAR_CENTER_SECONDARY_STEP35_AUDIT.md).
+
+**Latest actually executed:** 11 new Step35 isolated pytest checks passed; two code/test Git blob hashes verified. The previously established Step33f restricted flat/comoving mixed Poisson secondary is proportional to (r³X)' ; on a regular center its vanishing NECESSARILY gives X=0, with two independent positive dust charges. This is a restricted center-rigidity lemma, NOT general full-Dirac BD proof. Step34 checkpoint contains references to absent test/runner/audit/report artifacts; historical Step34 test counts not independently reproduced.
+
+**HARD NEXT RED:** solve PRIMARY+LOCAL SECONDARY=0 on a curved noncomoving two-dust radial interval; calculate full Dirac time preservation and lapse fixing; require SAME-ACTION De Felice/Aoki limits before first Candidate-C fold. **GATE_2B=OPEN; JANUS-R NOT VALIDATED.** Main and research/v2-flrw unchanged.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : ÉTAPE 33h (2026-10-20)
 
 **FIRST READ:** `research/INDEPENDENT_NONIBP_SPECTRAL_POISSON_STEP33H_AUDIT.md`.
