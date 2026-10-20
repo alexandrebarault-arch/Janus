@@ -70,7 +70,7 @@ The coefficients are for dust-only Candidate-C; no radiation, no nonlinear evolv
 
 - Independently emitted manifest: `research/reports/gate2b-step36-manifest.json`.
 - The two exact GitHub blob SHAs MATCH the locally executed file hashes.
-- No joint Step35+36 run has been claimed; no complete repository tests, GitHub CI, on-shell evolution or peer reproduction.
+- **New combined run:** the exact Step35 source/test pair and the exact new Step36 source/test pair were placed into ONE reconstructed `/mnt/data/janus-step36` workspace and run with `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_regular_secondary_flat.py tests/test_candidate_c_continuous_j_certificate.py`: **30 passed in 0.35 s**, all FOUR executed files matched their GitHub blob SHA. This is still NOT the full repository, GitHub CI, on-shell evolution or peer reproduction.
 
 ## Critical next work (do not skip)
 
