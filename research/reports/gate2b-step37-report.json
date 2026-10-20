@@ -75,15 +75,19 @@
     }
   ],
   "new_targeted_pytest": {
-    "passed": 10,
+    "passed": 12,
     "failed": 0,
     "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step37_curved_solver.py",
     "environment": "reconstructed /mnt/data/janus-step37 with compatibility adapters implementing Step33g primary and Euler formulas; NOT exact upstream GitHub providers",
     "new_exact_git_blob_shas": {
       "numerics/hr_step37_curved_solver.py": "ce627177d7fa97bad21a7689b292ee24a63930cc",
       "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
-      "tests/test_hr_step37_curved_solver.py": "e787e7089a0095c57df26ea9da79d067aa572112"
-    }
+      "tests/test_hr_step37_curved_solver.py": "01b37200c8c547ff4572dad40a7dd21879160f86"
+    },
+    "added_gates": [
+      "curved corrected local smear-derivative Ward stencil h² convergence",
+      "spatial J(Sf/Sg) sampled lower bound >0.6 across 51 radii"
+    ]
   },
   "reproduce_on_full_checkout": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step37.py /tmp/gate2b-step37-repro.json",
   "limitations": {
