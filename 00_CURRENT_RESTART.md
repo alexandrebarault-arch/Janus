@@ -1,3 +1,38 @@
+# JANUS — REPRISE PRIORITAIRE : STEP42 COMPLETE — 2026-10-21
+
+**BRANCH ACTIVE UNIQUE:** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw`.
+
+**LIRE EN PREMIER:** `research/STEP42_CENTER_PARITY_AND_SHARP_POSITIVE_DUST_AUDIT.md`.
+**RAPPORT:** `research/reports/gate2b-step42-report.json`.
+**SOURCE:** `numerics/hr_step42_center_regular_interval.py` — Git blob `e6f2b5da131d142c0d443e7077cb826125450b05`.
+**TESTS:** `tests/test_hr_step42_center_regular_interval.py` — Git blob `5b63eaeb5135dd524f7ec1c5bd744541c95be6d7`.
+
+REPRO SUR UN VRAI CHECKOUT DE LA BRANCHE:
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step42_center_regular_interval.py
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step42_center_regular_interval
+```
+
+## CE QUI A ETE REELLEMENT EXECUTE
+
+- `17/17` nouveaux tests ciblés passés dans `/mnt/data/janus-step42` en ~2.08 s. Les NOUVEAUX fichiers source/test effectivement exécutés ont des Git blob SHAs strictement identiques aux fichiers déposés et reconsultés sur GitHub.
+- Le test utilise un **MINI RAPPORT STEP41 LOCAL** contenant les NEUF vrais coefficients archivés et leur SHA256, pas le fichier original complet téléchargé. Le VRAI `research/reports/gate2b-step41-report.json` a été interrogé via le connecteur GitHub et les neuf coefficients, le SHA256, le chemin `status.GATE_2B` et le blob `16c8de6ee66725622c40ba2f327c8aafa99a5cb7` sont vérifiés. Pas de nouveau run avec les fournisseurs originaux Step33g/39/40 ou test de l'intégralité du dépôt. Git clone par shell bloqué par DNS, GitHub Actions toujours désactivés.
+- Erreur de sérialisation corrigée par NORMALISATION EXACTEMENT CONFORME à Step41: le vrai rapport contient certains zéros JSON `0`, et le SHA `bff542954a2ddba0505223d0d08075e3714dcebed23cd3c9012bd67c91d28b2d` a été calculé en convertissant les coefficients en `float`, où leurs zéros deviennent `0.0`. Un contrôle naïf du JSON aurait échoué à tort.
+- SUR TOUT LE CONTINUUM `0 <= r <= 0.85`, pour la configuration canonique Step41 CORRIGEE, bornes exactes via 256 intervalles rationnels `s=r²`: `p_g/r² > 0.8854`, `p_f/r² > 0.1114` (borne fixe largement plus serrée que l'ancienne boîte de corrections `>0.039`), `J(S_f/S_g)>0.659`, `K/r²>0.229`, avec coefficients poussière, dérivées `S'_i` et racine de déplacement strictement positives.
+- NOUVEAU CONTROLE CENTRE: expansions algébriques `p_{L_i}=r² a_i(r²)`, `p_{S_i}=r b_i(r²)`, `p_i=r² d_i(r²)` avec `d_i>0`, `D_g=r³ e(r²)`, `K=r² k(r²)` avec `k>0`. Toutes les fonctions normalisées sont analytiques pour `s∈[0,0.85²]` car les dénominateurs et radicaux nécessaires sont contrôlés. Métriques spatiales conformes lisses en coordonnées cartésiennes, horloges poussière scalaires paires, vecteur déplacement radial linéaire; **PAS** encore une extension générale des densités tensorielles canoniques ni un espace-temps 4D évolué.
+- Contrôle indépendant avec les ADM sphériques originaux non simplifiés et les deux poussières à 6 rayons non nuls, plus limites au centre et subdivision 64/128/256. C'est de l'évidence ciblée, pas la suite entière ni revue externe.
+
+## PROCHAIN VRAI VERROU : STEP43
+
+1. Reconstituer enfin la CHAINE COMPLETE DE DEPENDANCES EXACTEMENT IDENTIQUES AUX BLOBS GITHUB et relancer Step41+42 et les anciennes suites ciblées dans un checkout cohérent. Enregistrer SHA et résultats, ne pas substituer des reconstructions sans les étiqueter.
+2. Dériver analytiquement (ou prouver par intervalles) `(K01)'(r)` du crochet Poisson mixte pour les SIX couples canoniques et donc `C_local(r)=K00-(K01)'` sans plancher de différences finies. Résoudre `C_local(r)=0` IDENTIQUEMENT sur un intervalle courbe non comobile à deux poussières strictement positives, ou réfuter honnêtement.
+3. Seulement sur des données satisfaisant les contraintes secondaires EXACTES: calculer `{C_local,H_total}`, matrice de Dirac, lapses fixés, secteurs K/J exceptionnels et r=0 régulier.
+4. Puis évoluer véritablement les deux métriques non homothétiques sur les équations du même lagrangien, recouper De Felice et Aoki et examiner le premier pli du Candidate-C. Signes f-EH inversés du JHR externe = piste CRITIQUE SEPAREE.
+
+**ETAT FINAL:** Step42 centre et sources positifs PASS restreint, secondaire courbe exacte = OPEN; Dirac préservation/lapses = OPEN; `GATE_2B=OPEN`; `JANUS-R NOT VALIDATED`.
+
+---
+
 # JANUS — AUTHORITATIVE RESTART — STEP41 COMPLETE — 2026-10-21
 
 **ACTIVE BRANCH ONLY:** `research/gate2b-nonhomothetic-transfer`. Do not modify `main` or `research/v2-flrw`.
