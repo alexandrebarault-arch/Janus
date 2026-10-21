@@ -1,0 +1,238 @@
+{
+  "step": 44,
+  "date": "2026-10-21",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "experiment": "Authentic seven-GitHub-provider original six-canonical-pair spherical ADM+HR+two-dust Poisson Ward, unintegrated nodal oracle, 2 independent lapse smearings",
+  "provider_source_git_blobs": {
+    "numerics/hr_curved_moving_dust_primary.py": "ee801e324ae0282f764e29c2b39ff34b1efb73f1",
+    "numerics/hr_curved_primary_mixed_kernel.py": "45ccd73177cc1588efaf1d53e3dd0179d41ec30b",
+    "numerics/hr_step37_curved_solver.py": "ce627177d7fa97bad21a7689b292ee24a63930cc",
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "numerics/hr_step39_cross_oracle.py": "5b66a1fd416cfa0eaaaef7e43601b6a497b8e8c0",
+    "numerics/hr_step39_highorder_secondary.py": "0da008cc7d5810235ad1bd73549ef1ac1957f656",
+    "numerics/hr_step43_physical_ward_gate.py": "386febaa9b805cf423efd6feb7a8027a2069301b"
+  },
+  "full_original_source_pins_verified_before_numerical_run": true,
+  "profiles": {
+    "corrected_f_delta": [
+      -0.000021921905214999423,
+      0,
+      0.0015479757723131573,
+      0,
+      -0.000020933708880890434,
+      0,
+      -1.757101536020765e-7,
+      0,
+      -2.9380881416697167e-9
+    ],
+    "degree": 4,
+    "iterations": 6,
+    "radial_derivative_h": 0.001,
+    "max_original_9_heldout_C": 5.0185595262819405e-11
+  },
+  "physical_points": [
+    {
+      "r": 0.11,
+      "C": 1.737081615701963e-14,
+      "W": -4.163336342344337e-17,
+      "D": 0,
+      "high": 0
+    },
+    {
+      "r": 0.21,
+      "C": -1.3422271107066397e-13,
+      "W": -3.8163916471489756e-17,
+      "D": 2.168404344971009e-19,
+      "high": 0
+    },
+    {
+      "r": 0.31,
+      "C": -2.90504165861849e-13,
+      "W": 1.231653667943533e-16,
+      "D": 0,
+      "high": 0
+    },
+    {
+      "r": 0.43,
+      "C": 5.155884399976607e-13,
+      "W": -5.811323644522304e-16,
+      "D": -4.336808689942018e-19,
+      "high": 0
+    },
+    {
+      "r": 0.61,
+      "C": -3.2361960333737727e-13,
+      "W": 1.0512424264419451e-15,
+      "D": 0,
+      "high": 0
+    },
+    {
+      "r": 0.71,
+      "C": 1.834418034141194e-12,
+      "W": -1.0200174038743626e-15,
+      "D": 0,
+      "high": 0
+    },
+    {
+      "r": 0.83,
+      "C": 5.0185595262819405e-11,
+      "W": 1.0373646386341306e-15,
+      "D": 0,
+      "high": 0
+    }
+  ],
+  "physical_summary": {
+    "max_abs_W": 1.0512424264419451e-15,
+    "max_abs_D": 4.336808689942018e-19,
+    "max_abs_excluded_high_jets": 0,
+    "max_abs_C_sample": 5.0185595262819405e-11
+  },
+  "independent_pairs": {
+    "A": {
+      "n": [
+        161,
+        321,
+        641,
+        1281
+      ],
+      "bracket": [
+        -5.909465625175692e-7,
+        -1.477084414225338e-7,
+        -3.69252904641737e-8,
+        -9.231157505062981e-9
+      ],
+      "R2": [
+        3.7598942478e-11,
+        2.4265219463333333e-12,
+        2.2014797392533334e-13
+      ],
+      "R4": [
+        8.169391088888889e-14,
+        7.30563757648e-14
+      ],
+      "gauss48": {
+        "full": 7.913770365260479e-14,
+        "C_only": 7.930804929346914e-14,
+        "difference": -1.703456408643471e-16,
+        "max_W": 2.8449465006019636e-15,
+        "max_D": 1.734723475976807e-18,
+        "max_excluded": 0
+      },
+      "gauss96": {
+        "full": 7.911118062876338e-14,
+        "C_only": 7.922028770458334e-14,
+        "difference": -1.0910707581996061e-16,
+        "max_W": 2.8484159475539172e-15,
+        "max_D": 8.673617379884035e-19,
+        "max_excluded": 0
+      }
+    },
+    "B": {
+      "n": [
+        161,
+        321,
+        641,
+        1281
+      ],
+      "bracket": [
+        -9.466190735718527e-7,
+        -2.3664925166699824e-7,
+        -5.916187453824939e-8,
+        -1.4790348140669707e-8
+      ],
+      "R2": [
+        7.355634619913334e-12,
+        5.845046668933333e-13,
+        1.6065852352066666e-13
+      ],
+      "R4": [
+        1.3309600335866666e-13,
+        1.324021139624889e-13
+      ],
+      "gauss48": {
+        "full": 1.3164723517088146e-13,
+        "C_only": 1.317326181790549e-13,
+        "difference": -8.538300817343919e-17,
+        "max_W": 3.3688329903469594e-15,
+        "max_D": 1.734723475976807e-18,
+        "max_excluded": 0
+      },
+      "gauss96": {
+        "full": 1.3162936854562068e-13,
+        "C_only": 1.317761622358501e-13,
+        "difference": -1.4679369022940656e-16,
+        "max_W": 3.507610868425104e-15,
+        "max_D": 1.734723475976807e-18,
+        "max_excluded": 0
+      }
+    }
+  },
+  "original_discrete_primary_max_by_grid": {
+    "161": 6.092789009426447e-8,
+    "321": 1.5252091839501603e-8,
+    "641": 3.888719568578836e-9,
+    "1281": 1.2962762807600114e-9
+  },
+  "off_secondary_primary_families": [
+    {
+      "case": "same_curved_metric_no_f_correction",
+      "max_abs_C": 0.4286432361840241,
+      "max_abs_W": 1.0200174038743626e-15,
+      "max_abs_D": 4.336808689942018e-19,
+      "high_jets_zero": true
+    },
+    {
+      "case": "different_curvature_momentum_gradient_and_moving_dust",
+      "max_abs_C": 0.5819868015092623,
+      "max_abs_W": 1.3808398868775384e-15,
+      "max_abs_D": 4.336808689942018e-19,
+      "high_jets_zero": true
+    },
+    {
+      "case": "flat_spatial_noncomoving",
+      "max_abs_C": 0.5215030263987035,
+      "max_abs_W": 1.0547118733938987e-15,
+      "max_abs_D": 4.336808689942018e-19,
+      "high_jets_zero": true
+    }
+  ],
+  "new_script": {
+    "path": "scripts/verify_gate2b_step44.py",
+    "git_blob": "2d088b7734abfb2487da43bd5330d465f114a1ae",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step44.py --full --output research/reports/gate2b-step44-physical-verification.json",
+    "full_mode_executed": true
+  },
+  "new_tests": {
+    "path": "tests/test_hr_step44_original_physical_ward.py",
+    "git_blob": "bb06f2f56911b9f5f8932184b650a90e21b73bdd",
+    "individual": "10 passed in 11.97s",
+    "with_step43": "33 passed in 13.17s",
+    "combined_modules": [
+      "tests/test_hr_step43_ward_operator.py",
+      "tests/test_hr_step43_physical_ward_gate.py",
+      "tests/test_hr_step44_original_physical_ward.py"
+    ],
+    "providers_byte_identical": true,
+    "whole_repo_suite": false,
+    "CI": false
+  },
+  "raw_full_output_in_local_run": {
+    "path": "research/reports/gate2b-step44-physical-verification.json",
+    "sha256": "7ae03597e0ba95e9775d434274aa75ecb8264ba72a58157849687e09d2b05ab9",
+    "git_blob": "d1e79c4bdeb9a15e6749b1b6857c3617dd7272ec",
+    "uploaded_full_output": false,
+    "reproduce_with_committed_runner": true
+  },
+  "interpretation": "Finite-grid numeric near-Ward and near-secondary corroborated by independent original NON-IBP canonical Hamiltonians at four resolutions. R4 Richardson is an extrapolation ASSUMING an even-power convergence model and NOT rigorous. Original nodal bracket values at N1281 remain negative and dominated by discrete O(dr²) error. Numerical near-W=0 does not prove physical Ward identities symbolically, and near-C does not prove exact C(r)=0 on continuum.",
+  "red_gates": {
+    "analytical_full_six_pair_W_D_and_high_jet_identities": "OPEN",
+    "exact_secondary_all_r": "OPEN",
+    "secondary_time_preservation": "NOT_COMPUTED",
+    "full_Dirac_rank": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "healthy_cosmological_perturbations": "NOT_CHECKED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step45": "Derive analytic local Kij/W/D high-jet identities from original action; remove K01 finite-h derivative and solve C(r)=0 as exact continuum constraint; only then full {C,Htotal} time preservation and lapse fixing, with actual six canonical pairs and boundary terms."
+}
