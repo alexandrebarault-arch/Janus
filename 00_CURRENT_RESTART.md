@@ -1,3 +1,46 @@
+# JANUS — AUTHORITATIVE RESTART — STEP41 COMPLETE — 2026-10-21
+
+**ACTIVE BRANCH ONLY:** `research/gate2b-nonhomothetic-transfer`. Do not modify `main` or `research/v2-flrw`.
+
+**FIRST READ:** `research/STEP41_ACTUAL_PROFILE_CONTINUOUS_POSITIVE_TWODUST_AUDIT.md`.
+**CODE:** `numerics/hr_step41_profile_bridge.py`.
+**TESTS:** `tests/test_hr_step41_profile_bridge.py`.
+**MACHINE REPORT:** `research/reports/gate2b-step41-report.json`.
+**PREVIOUS THEOREM:** `research/STEP40_CURVATURE_BOX_AND_TWODUST_INTERVAL_AUDIT.md`.
+**PREVIOUS PHYSICAL INITIAL DATA:** `research/STEP39_DUAL_SMEAR_AND_HIGHORDER_AUDIT.md`.
+
+Targeted run:
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step41_profile_bridge.py
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step41_profile_bridge
+```
+
+## DURABLE RESULT — CLOSED PREVIOUS STEP40→STEP39 BRIDGE
+
+- On Step39 curved/noncomoving two-dust PRIMARY+numerically approximate-secondary profile `solve_five_point(scale=.1,degree=4,iterations=6,h=.001)`, the FULL computed f-momentum generator coefficients are:
+```python
+f_delta = (-2.1921905214999423e-05, 0.0, 0.0015479757723131573, 0.0,
+           -2.0933708880890434e-05, 0.0, -1.757101536020765e-07, 0.0,
+           -2.9380881416697167e-09)
+```
+- Canonical JSON coefficient SHA-256: `bff542954a2ddba0505223d0d08075e3714dcebed23cd3c9012bd67c91d28b2d`.
+- **MAX |even f_delta|=0.0015479757723131573**, ALL odd = exactly 0, exact binary64 rational margin to the Step40 independent coefficient cap `1/200` is `397991296652400363/115292150460684697600` ≈0.0034520242276868426. This is strictly positive, hence the already PROVEN exact 256-cell Step40 interval certificate COVERS THE SPECIFIC Step39 corrected canonical initial data.
+- Therefore for every r ∈[0,.85], **strict normalized continuum dust positivity**: `p_g/r²>0.885`, `p_f/r²>0.039`. For r>0 radial canonical p_i>0; at the spherical center p_i(0)=0 due to r². Fixed Step39 metric also satisfies Step40's exact uniform J(Sf/Sg)>.5039 and K/r²>.1596 (coordinate K(0)=0).
+- Extra actual 73-point numerical check r=.03...85 (NOT itself a proof): max |C_local|=6.551957240641393e-11, max |C_local/r²|=9.068452928223382e-11, four primaries max 3.885780586188048e-16, sampled min pg/r²=.8856073159, pf/r²=.111864833.
+- **11 new tests PASSED (~4.84 s)** on isolated reconstructed `/mnt/data/janus_step41/repo`. Both NEW source/test byte-matched GitHub blobs `26f4d5d24069dac469bf449da4c5997db6a15253`, `34fd411dad5bfa87ec30245cff949102a1328731`. CRITICAL: historical Step33g/39 source mathematical equations and Step40 exact interval arithmetic were independently reconstructed in this execution, NOT byte-identical to actual historical GitHub providers. A full authentic clean-provider Step41 rerun is still needed. Previous Step39/Step40 source-authenticated runs stand separately, not rerun today; no complete repo suite or GitHub Actions.
+- Test boundary issue intentionally caught: Python binary64 `float(.005)` lies slightly ABOVE exact 1/200; strict Fraction membership rejects it, tests use `math.nextafter(.005,0.)` as passing just-inside control. Actual coefficient safety margin >0.00345, so not a borderline conclusion.
+
+## NEW PRIORITY STEP42 (TRUE SCIENTIFIC RED)
+
+1. Re-run new bridge **against byte-exact historical actual GitHub Step33g/37/39/40 providers in ONE worktree**, log hashes and actual tests.
+2. Compute analytic / independently validated spectral `K01'(r)` and rigorously construct/verify `C_local(r)=0` as a **CONTINUUM** noncomoving curved condition (or establish an obstruction), preserving both positive dusts and genuine spherical regularity. Last best numerical local result ~1e-11 is NOT zero.
+3. Compute full six-canonical-pair functional Dirac **TIME PRESERVATION of the secondary** and determine actual lapse fixing, Poisson rank, K/J exceptional branches. Generic Hassan–Rosen ghost-free lore alone is insufficient.
+4. Only if above succeeds: genuinely nonhomothetic ON-SHELL evolution and both same-reduced-action De Felice finite-H mu→0 and Aoki nonlinear KS,cS² physical controls before Candidate-C first fold, then any observational tests.
+
+**VERDICT: STEP41 specific corrected two-dust continuum positivity=PROVED CONDITIONAL ON FIXED INITIAL-DATA FAMILY; CURVED EXACT BD SECONDARY OPEN; FULL DIRAC OPEN; GATE_2B OPEN; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — AUTHORITATIVE RESTART — STEP40 COMPLETED — 2026-10-20
 
 **ACTIVE RESEARCH BRANCH:** `research/gate2b-nonhomothetic-transfer` ONLY; `main` and `research/v2-flrw` remain untouched.
