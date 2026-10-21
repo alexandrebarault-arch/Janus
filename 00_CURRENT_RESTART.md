@@ -1,3 +1,63 @@
+# JANUS — AUTHORITATIVE RESTART: STEP44 COMPLETE — 2026-10-21
+
+**ONLY ACTIVE BRANCH:** `research/gate2b-nonhomothetic-transfer`. **DO NOT MODIFY** `main`, `research/v2-flrw`. **DO NOT REENABLE** GitHub workflows/Actions.
+
+**READ FIRST:** `research/STEP44_ACTUAL_PHYSICAL_WARD_AND_ORIGINAL_NONIBP_AUDIT.md`.
+**MACHINE SUMMARY:** `research/reports/gate2b-step44-report.json`.
+**NEW SOURCE:** `scripts/verify_gate2b_step44.py` Git blob `2d088b7734abfb2487da43bd5330d465f114a1ae`.
+**NEW TEST:** `tests/test_hr_step44_original_physical_ward.py` Git blob `bb06f2f56911b9f5f8932184b650a90e21b73bdd`.
+**PREVIOUS:** `research/STEP43_EXACT_WARD_ADJOINT_AND_PHYSICAL_GATE_AUDIT.md`.
+
+## DURABLE KEY BREAKTHROUGH: ACTUAL PHYSICAL SOURCE RUN, NOT JUST A MOCK!
+
+This session DIRECTLY EXECUTED `scripts/verify_gate2b_step43.py --physical` and a SECOND, genuinely independent ORIGINAL UNINTEGRATED spherical ADM-HR+two-dust canonical Poisson oracle at 161/321/641/1281 radial grid points for both independent compact lapse smearings A,B. This resolves the previous Step43 **"physical runner unexecuted"** red. The corrected Step39 witness has degree4 even f-momentum, 6 iterations, radial derivative h=.001.
+
+Exactly SEVEN original Step33g/37/39/43 provider modules were reconstructed together as FILES BYTES IDENTICAL TO GITHUB and locally `git hash-object` verified. The NEW Step44 source + test are also Git-blob-identical to the local files actually executed. Full original source blob hashes are pinned in `scripts/verify_gate2b_step44.py`, and verification FAILS CLOSED before physics calculations if any source changes. This was a coherent targeted source worktree at `/mnt/data/janus-step44`, NOT a complete repository checkout; local shell GitHub clone DNS still unavailable.
+
+Run on a fresh branch checkout:
+
+```bash
+# Run complete physical 7-provider verification and save regenerable FULL raw output:
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step44.py --full --output research/reports/gate2b-step44-physical-verification.json
+
+# Confirm physical single test and original step43 regression jointly:
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step43_ward_operator.py tests/test_hr_step43_physical_ward_gate.py tests/test_hr_step44_original_physical_ward.py
+# ACTUALLY EXECUTED: 33 PASSED, in 13.17 seconds. Step44 alone 10 PASSED twice, in 11.97 and 12.42 s.
+```
+
+### ACTUAL PHYSICAL OBSERVATIONS
+
+- Seven physical radii r=.11,.21,.31,.43,.61,.71,.83: `max |W=K01-K10+K20'| = 1.0512424264419451e-15`, `max |D=K20-K11|=4.336808689942018e-19`, `K02=K12=K21=K22=0` **NUMERICALLY** at these points. `max |C=K00-K01'|=5.0185595262819405e-11`. This is NOT an exact pointwise C=0.
+- Genuine independent `original_nonibp_extended` computes all six Poisson pairs from original 12-node-variable UNINTEGRATED Hamiltonians and re-solves relative shift. Original brackets:
+
+```text
+grid N       161              321             641              1281
+Pair A    -5.9094656e-7    -1.4770844e-7   -3.6925290e-8   -9.2311575e-9
+Pair B    -9.4661907e-7    -2.3664925e-7   -5.9161875e-8   -1.4790348e-8
+```
+
+- ASSUMING even spatial-error powers, highest-grid 2-level Richardson R4 estimates **A +7.30563757648e-14**, **B +1.324021139624889e-13**, vs independently integrated full nine-jet Gaussian 96-point brackets **A +7.911118062876338e-14**, **B +1.3162936854562068e-13**. Discrepancies A -6.054804863963382e-15 and B +7.727454168682165e-16. **This is empirical extrapolation, NOT a rigorous mathematical limit or error bound.** Raw original finite grids are NEGATIVE and have discrete primary errors ~1e-9 even at N1281; small extrapolated values must not be mistaken for exact zeros.
+- Physical full-jet minus C-only Gaussian 96-point integral ~-1.09e-16 (pair A), ~-1.47e-16 (pair B). This directly checks Step43 C/W/D reduction on genuine ORIGINAL physical Kij at finite numerical precision.
+- Three additional physically primary-satisfying but NON-secondary-fitted families, with max sampled |C|=.4286, .5820, .5215, still have max sampled |W| <=1.4e-15 and |D|~1e-19, high jets zero at tested radii. Strong indication W/D near-cancellation is structural, NOT just due to fitting C. Still no symbolic proof.
+- New `research/reports/gate2b-step44-report.json` COMMITTED contains all essential site/pair/grid quantitative values. The generated 14.5k full raw JSON `gate2b-step44-physical-verification.json` was **ACTUALLY generated locally**, SHA256 `7ae03597e0ba95e9775d434274aa75ecb8264ba72a58157849687e09d2b05ab9`, but **not uploaded as a standalone Github file**: regenerate with checked-in `--full` command. Do not claim uploaded!
+
+## ACTUAL TESTS / SCIENTIFIC SCOPE
+
+- 10/10 NEW real-provider regression tests PASSED with all seven provider source blobs EXACT. Combined with 16 Step43 exact SymPy tests and 7 physical-instrument fabricated-negative-control tests, **33/33 PASSED IN ONE pytest PROCESS**. This is not a complete project suite; user-disabled GitHub CI remains inactive.
+- **STEP44 PHYSICAL WARD STATUS: NUMERICALLY WELL SUPPORTED**, NOT ANALYTICALLY PROVED. **FULL CURVED SECONDARY C(r)=0 ON CONTINUUM: OPEN**. **TIME PRESERVATION {C,H_total}: NOT COMPUTED**. **LAPSE FIXING AND FULL DIRAC RANK: NOT COMPUTED**. **GATE_2B OPEN; JANUS-R NOT VALIDATED**.
+- Step40/41/42 exact rational restricted two-dust positivity and spherical centre parity remain as previous, conditional on the fixed canonical initial-data family; they DO NOT show nonhomothetic on-shell time evolution or the physical absence of Boulware–Deser ghosts.
+
+## NEXT RED: STEP45 — NOT OPTIONAL
+
+1. Derive **SYMBOLIC / EXACT physical** W=0, D=0 and high-smearing cancellations directly from original six-pair HR+two-dust spherical canonical action (or exhibit obstruction); investigate whether equality is on entire phase space or only on the primary/relative-shift surface, and specify boundary terms.
+2. Derive `K01'(r)` WITHOUT a finite h floor or implement a rigorous interval/spectral derivative. Establish exactly constrained `C_local(r)=0` for all r over a nontrivial curved, noncomoving two-positive-dust radial family, or honestly falsify.
+3. On exact primary+secondary data calculate full `{C_local,H_total}` preservation, six-pair Dirac rank and physical lapse fixing including J/K exceptional charts and regular spherical center.
+4. ONLY THEN physical nonhomothetic on-shell evolution and same-action De Felice/Aoki stability and first fold. Keep external opposite-sign-f-EH JHR audit distinct.
+
+**VERDICT: Step44 genuine original-source physical two-oracle/3x3-Ward NUMERICAL AUDIT achieved; exact continuum secondary and full Dirac dynamics still OPEN.**
+
+---
+
 # JANUS — AUTHORITATIVE RESTART — STEP43 COMPLETED — 2026-10-21
 
 **ACTIVE BRANCH ONLY:** `research/gate2b-nonhomothetic-transfer`; preserve `main` and `research/v2-flrw`.
