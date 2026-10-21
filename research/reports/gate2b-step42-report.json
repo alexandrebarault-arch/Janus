@@ -1,0 +1,73 @@
+{
+  "step": 42,
+  "date": "2026-10-21",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "verdict": "CENTER_PARITY_AND_CONTINUOUS_TWO_DUST_POSITIVITY_RESTRICTED_PASS__DIRAC_OPEN",
+  "step41_input": {
+    "source": "research/reports/gate2b-step41-report.json",
+    "github_blob": "16c8de6ee66725622c40ba2f327c8aafa99a5cb7",
+    "coefficient_sha256": "bff542954a2ddba0505223d0d08075e3714dcebed23cd3c9012bd67c91d28b2d"
+  },
+  "domain": "0<=r<=0.85; s=r^2 in [0,289/400]; 256 rational cells",
+  "proof": "Exact Fraction interval enclosure with outward rational square roots and strict positive lower-bound tests on each closed subinterval. Quantities are analytic functions of s on this restricted chart. Decimal figures displayed are rounded representations of exact rational bounds; use the Python source to reproduce the full exact fractions.",
+  "positive_lower_float": {
+    "pg_over_r2": 0.8854472033872441,
+    "pf_over_r2": 0.11143465955236385,
+    "K_over_r2": 0.2292030392210633,
+    "J": 0.6597964329188049,
+    "shift_root": 0.9999942199832957,
+    "dust_beta_g": 0.9991761584714313,
+    "dust_beta_f": 1,
+    "Sprime_g": 0.4,
+    "Sprime_f": 0.230304853112166
+  },
+  "proved_strict_thresholds": {
+    "pg_over_r2": 0.8854,
+    "pf_over_r2": 0.1114,
+    "K_over_r2": 0.229,
+    "J": 0.659
+  },
+  "finite_bounds_float": {
+    "pLg_over_r2": [
+      -0.765579646891573,
+      -0.7635110092508839
+    ],
+    "pLf_over_r2": [
+      -0.005252426977005028,
+      -0.004687058256792395
+    ],
+    "pSg_over_r": [
+      -1.5278463815139032,
+      -1.5269766316768536
+    ],
+    "pSf_over_r": [
+      -0.01104020715538895,
+      -0.010495304256663576
+    ],
+    "Dg_over_r3": [
+      0.0009168174354042066,
+      0.0009355441395907514
+    ]
+  },
+  "parity": "pLi = r^2 analytic_i(r^2), pSi=r analytic_i(r^2), dust pi=r^2 positive_analytic_i(r^2), Dg=r^3 analytic(r^2); coordinate K=r^2 positive_analytic(r^2); curved 3-metrics conformally Cartesian-smooth; radial vector shift linear in Cartesian coordinates",
+  "sources": {
+    "numerics/hr_step42_center_regular_interval.py": "e6f2b5da131d142c0d443e7077cb826125450b05",
+    "tests/test_hr_step42_center_regular_interval.py": "5b63eaeb5135dd524f7ec1c5bd744541c95be6d7"
+  },
+  "tests": {
+    "passed": 17,
+    "failed": 0,
+    "seconds": 2.08,
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step42_center_regular_interval.py",
+    "actual_git_source_test_byte_match": true,
+    "environment": "Isolated reconstructed /mnt/data/janus-step42; Step41 numerical report fixture minimized, with exact checked coefficients and SHA; verified original Step41 GitHub report schema and values separately",
+    "independent": "Six nonzero-radius unsimplified original Hamiltonian/curvature/dust/shift controls, centre limit, 64/128/256-cell monotone refinement, tamper guards",
+    "whole_repo_suite_run": false,
+    "actual_step33g_39_pipeline_rerun": false,
+    "ci_enabled": false
+  },
+  "limits": "Not exact C_local=0, not full Dirac preservation/rank/lapse fixing, not time-evolved 4D metric regularity or general HR/JANUS-R theorem.",
+  "next": "Step43 byte-exact provider ensemble reproduction; analytic or validated spectral full curved K01 radial derivative and continuum exact C_local; full six-pair Dirac preservation and lapse fixing.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
