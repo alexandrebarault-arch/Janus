@@ -1,3 +1,73 @@
+# JANUS — AUTHORITATIVE RESTART — STEP43 COMPLETED — 2026-10-21
+
+**ACTIVE BRANCH ONLY:** `research/gate2b-nonhomothetic-transfer`; preserve `main` and `research/v2-flrw`.
+**READ FIRST:** `research/STEP43_EXACT_WARD_ADJOINT_AND_PHYSICAL_GATE_AUDIT.md`.
+**JSON REPORT:** `research/reports/gate2b-step43-report.json`.
+**NEW EXACT MATH SOURCE:** `numerics/hr_step43_ward_operator.py`.
+**NEW NUMERICAL REAL-PROVIDER HOOK:** `numerics/hr_step43_physical_ward_gate.py`.
+**NEW RUNNER:** `scripts/verify_gate2b_step43.py`.
+**NEW TESTS:** `tests/test_hr_step43_ward_operator.py`, `tests/test_hr_step43_physical_ward_gate.py`.
+**PREVIOUS:** `research/STEP42_CENTER_PARITY_AND_SHARP_POSITIVE_DUST_AUDIT.md`.
+
+## CHECKED GITHUB BEFORE WORK
+
+Before Step43, branch HEAD `9da1a11b192150b4b55b0eb233423cdcb3769af0` was verified LIVE through the connected GitHub API. `main` remained `aead63f4098f0d15a849e579105af034b6317b30` and `research/v2-flrw` `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`; don't edit them.
+
+## ACTUAL EXECUTED TESTS AND PROVENANCE
+
+In isolated `/mnt/data/janus-step43` (NOT a full Git clone):
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step42_center_regular_interval.py tests/test_hr_step43_ward_operator.py tests/test_hr_step43_physical_ward_gate.py
+# 40 passed in 3.53 seconds: historical Step42 17, Step43 formal 16, new physical-instrument MOCK controls 7
+
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step43.py --selftest
+# PASSED, polynomial manufactured reference only, not physical JANUS.
+```
+
+NEW scripts and tests actually EXECUTED in the container and byte-for-byte matched to GitHub Git blobs (verified by GitHub fetch and container git hash):
+- `numerics/hr_step43_ward_operator.py`: `fd91411ad6cec88d88f0889ccf99a5f070ccbb54`
+- `tests/test_hr_step43_ward_operator.py`: `04825a5034421fc1e12dd51ba361d81cfbd5b753`
+- `numerics/hr_step43_physical_ward_gate.py`: `386febaa9b805cf423efd6feb7a8027a2069301b`
+- `tests/test_hr_step43_physical_ward_gate.py`: `c9eea74b6b14eef81d0816d960b10f9744e0b8b9`
+- `scripts/verify_gate2b_step43.py`: `98ae82adaad17e8be9240ceed51ddfe2e141a476`
+
+Original historical Step42 source and tests were byte-authentic GitHub blobs and re-ran successfully; local Step41 report used COMPLETE GitHub schema and exact nine published coefficients + SHA, but was manually reserialized and its blob SHA does NOT equal actual Step41 GitHub report blob. It is a semantically faithful numerical reference, NOT a byte-equal complete checkout. Real Step33g/37/39 providers were NOT executed this session. No GitHub Actions and no full-repo tests. Previous source-authenticated Step39 numerical 32+5 passes remain historical, not reexecuted.
+
+## SCIENTIFIC RESULT — EXACT FORMAL WARD/ADJOINT, NOT HR PHYSICS YET
+
+Full 3x3 smearing-jet functional bracket `B[N,M]=int sum_ij N^(i) Kij M^(j) dr`, i,j=0..2. Exact formal adjoint: `A_p=sum_ij (-1)^i binom(i,p-j) derivative^(i+j-p) Kij` for 0<=p<=4, with valid indices only, requiring appropriate compact support/boundary terms.
+
+In restricted five-coefficient support `{K00,K01,K10,K11,K20}`, define
+```text
+C=K00-(K01)'            (prior Step37/39 numerical near-secondary)
+W=K01-K10+(K20)'        (derivative Ward obstruction)
+D=K20-K11               (second-jet obstruction)
+```
+Then EXACTLY for compact smears `B[N,M]=int N [C*M + (W*M)' + (D*M')'] dr`. Therefore `C=0` alone **does not imply** vanishing bracket. EXACT checks of `W=D=0` and high-jet exclusions `K02=K12=K21=K22=0` (or full adjoint cancellations `A_p-δ_p0 C=0`) are required before interpreting C as the sole secondary coefficient.
+
+16 SymPy tests include EXACT rational polynomial smeared integrals and separate counterexamples where C=0 but W, D, or K22 gives nonzero original bracket; compact boundary controls protect against IBP errors. A manufactured Ward-closed example gives both original and C-only bracket EXACT rational `10753/21358810497024000`. These are **NOT JANUS-specific proofs**.
+
+A separate new instrument computes `C,W,D`, checks the four excluded jets using **all nine** coefficients of the actual `hr_step37_curved_solver.kernel_fast` if available, and compares actual full mixed compact-smear bracket to `int N M C` for two independent Step39 lapse pairs. 7 INJECTED POLYNOMIAL test cases and `--selftest` pass. The real physical mode exists but **WAS NOT RUN**:
+
+```bash
+# NEXT FIRST NON-OPTIONAL ACTION ON BYTE-IDENTICAL ORIGINAL GITHUB WORKTREE:
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/verify_gate2b_step43.py --physical --output /tmp/gate2b-step43-physical.json
+```
+
+Do NOT call the synthetic `--selftest` a JANUS physical confirmation, or infer exact Ward from numerical five-point differences.
+
+## STEP44 EXACT NEXT RED GATES
+
+1. ASSEMBLE a coherent byte-authentic original Step33g/37/39 GitHub dependency worktree and RUN the above `--physical` mode. Print and commit actual seven-radii Kij/C/W/D/high jets and BOTH compact lapse-pair Gauss full-vs-C comparisons, scan h and quadrature. The normal shell cannot DNS-clone Github; do not fabricate a result.
+2. Determine on the PHYSICAL original all-six-pair kernel whether high jets, `D=0`, `W=0` are exact identities or identify obstruction. Derive `(K01)'` analytically/certified, construct or refute exact continuous C=0 preserving both positive dust densities and center chart.
+3. ONLY on exactly primary+secondary constrained data compute full canonical Dirac **time preservation**, rank, lapse fixing including exceptional K/J sectors and boundary.
+4. Only after that genuine nonhomothetic on-shell evolution, same-action De Felice/Aoki controls, Candidate-C fold and observational validity. Keep independently audited sign-reversed-f-EH JHR manuscript separate.
+
+**FINAL: STEP43 EXACT FORMAL WARD CRITERION PASSES AND FALSE-ZERO COUNTEREXAMPLES PROVED. PHYSICAL JANUS WARD/SECONDARY NOT VERIFIED. GATE_2B OPEN; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP42 COMPLETE — 2026-10-21
 
 **BRANCH ACTIVE UNIQUE:** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw`.
