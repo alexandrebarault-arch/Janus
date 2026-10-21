@@ -1,0 +1,70 @@
+{
+  "step": 43,
+  "date": "2026-10-21",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "status": "EXACT_MIXED_LAPSE_JET_ADJOINT_FORMULA_AND_WARD_COUNTEREXAMPLES_PASS__PHYSICAL_KERNEL_GATE_PENDING",
+  "verified_github_before_step43": {
+    "research_branch_head": "9da1a11b192150b4b55b0eb233423cdcb3769af0",
+    "main_head": "aead63f4098f0d15a849e579105af034b6317b30",
+    "v2_flrw_head": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "mathematical_scope": {
+    "starting_point": "Full original ADM six-canonical-pair mixed Hamiltonian Poisson kernel B[N,M]=integral sum_(i,j=0..2) N^(i) Kij(r) M^(j) dr",
+    "formal_adjoint": "A_p=sum_(i,j with j<=p<=i+j) (-1)^i binomial(i,p-j) d^(i+j-p)Kij/dr^(i+j-p); bracket=integral N sum_(p=0..4) A_p M^(p) modulo boundary",
+    "restricted_sparse_class": "Only K00,K01,K10,K11,K20 nonzero. Define C=K00-d K01/dr, W=K01-K10+d K20/dr, D=K20-K11. Then B=integral N[C M + d(W M)/dr + d(D dM/dr)/dr] for compact smears.",
+    "sufficient_reduction_conditions": "K02=K12=K21=K22=0, W=0, D=0 exactly, then B=integral N C M; more generally require all five full-adjoint residual coefficients A_p - delta_p0*C=0. Particular sparsity sufficient, not universally necessary.",
+    "false_positive_proved_by_exact_rationals": [
+      "Manufactured K with C=0,W=-r,D=0 gives nonzero smeared original bracket",
+      "Manufactured K with C=0,W=0,D=-1 yields nonzero original bracket",
+      "Manufactured K with C=0,W=D=0 but K22=1/7 yields nonzero fourth M derivative coefficient",
+      "Non-compact N boundary can cause original and adjoint integrals to differ"
+    ],
+    "exact_manufactured_positive_control": "Example B[N,M] and integral N C M both equal rational 10753/21358810497024000 (compact polynomial smears), not a physical HR witness",
+    "physics_unproven": "Actual curved HR all-six-pair Kij satisfy exact Ward/structural conditions and local secondary C=0; current earlier numerical derivative-Ward checks O(h^4) not proof"
+  },
+  "instrument": {
+    "physical_ward_sample": "Computes C,W,D and all four excluded K02,K12,K21,K22 at an interior radius from entire 3x3 kernel_fast, with five-point derivative, no fixed threshold implying proof",
+    "full_jet_gauss_vs_C": "Gauss-integrates full sum N^(i) Kij M^(j) and separate N M C for physical two-smearing pairs, reports their difference and sampled Ward/D/high-jet maxima",
+    "tests": "Injected exact manufactured 3x3 polynomial kernels and deliberate W/D/high-jet failures; ACTUAL Step33g/37/39 provider path is coded but NOT YET EXECUTED",
+    "runner": "scripts/verify_gate2b_step43.py --selftest (DONE), --physical (NOT DONE)"
+  },
+  "sources_and_execution": {
+    "numerics/hr_step43_ward_operator.py": "fd91411ad6cec88d88f0889ccf99a5f070ccbb54",
+    "tests/test_hr_step43_ward_operator.py": "04825a5034421fc1e12dd51ba361d81cfbd5b753",
+    "numerics/hr_step43_physical_ward_gate.py": "386febaa9b805cf423efd6feb7a8027a2069301b",
+    "tests/test_hr_step43_physical_ward_gate.py": "c9eea74b6b14eef81d0816d960b10f9744e0b8b9",
+    "scripts/verify_gate2b_step43.py": "98ae82adaad17e8be9240ceed51ddfe2e141a476",
+    "all_new_source_and_tests_git_blobs_match_actual_executed_bytes": true,
+    "targeted_test_groups": {
+      "step42": 17,
+      "step43_exact_ward_operator": 16,
+      "step43_numeric_instrument": 7
+    },
+    "joint_test_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step42_center_regular_interval.py tests/test_hr_step43_ward_operator.py tests/test_hr_step43_physical_ward_gate.py",
+    "joint_executed_in": "/mnt/data/janus-step43",
+    "joint_tests_passed": 40,
+    "failed": 0,
+    "wall_seconds": 3.53,
+    "historical_step42_exact_source_and_test_sha_verified": true,
+    "historical_step41_report": "Full actual step41 JSON SCHEMA and exact values/sha256 manually copied and tested, not byte-identical original Github blob; Git blob of used copy fcb887e89f8723e5ddbbbceb2755420586a3dda8 versus real 16c8de6ee66725622c40ba2f327c8aafa99a5cb7",
+    "runner_selftest": "PASS; W about 3.33e-16; full-minus-C bracket about -9.9e-25 for manufactured kernel",
+    "runner_physical": "NOT RUN, byte-authentic full Step33g/37/39 worktree unavailable in container; web access DNS failure; GitHub Actions disabled",
+    "whole_project_suite": false,
+    "complete_original_provider_step41_step42_retest": false
+  },
+  "safety_limits": [
+    "No exact continuum C(r)=0 derived",
+    "No physical Ward theorem proved",
+    "No field-theoretic Dirac time preservation or lapse fixing",
+    "No time-evolved nonhomothetic on-shell solution",
+    "No same-action De Felice/Aoki physical ghost/stability oracle",
+    "JANUS-R not validated"
+  ],
+  "priority_next_steps": [
+    "FIRST: Obtain a coherent byte-identical local copy of genuine Step33g/37/39 kernel and witness, execute scripts/verify_gate2b_step43.py --physical, log all actual Kij and bracket comparisons for pairs A/B. Test derivative h and Gauss n convergence; never mark numerical near-zero exact.",
+    "SECOND: Derive symbolic/full-jet proof for physical Ward and Kij sparsity (or identify nonzero obstruction); then exact continuous C(r)=0 with both positive dust and regular center.",
+    "THIRD: Compute true {C,Htotal}, six-pair functional Dirac rank, lapse fixing, degenerate J/K sectors; only then model viability."
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
