@@ -16,8 +16,8 @@
 - Ancien `main` SHA `aead63f4098f0d15a849e579105af034b6317b30` était déjà ancêtre de la branche active.
 - Ancien `research/v2-flrw` SHA `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` avait 203 commits divergents.
 - Commit de préservation `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7` à DEUX PARENTS, ajouté sur la branche active, avec Git TREE EXACTEMENT IDENTIQUE `e5da02813be6b378398520d9d129209fc5caf5c2` : aucun fichier ancien V2 importé/écrasé.
-- Contrôle GitHub après opération : `behind=0` pour `main` ET `research/v2-flrw` par rapport à la branche active. Leurs commits sont préservés dans l'ascendance ; PR historique brouillon [#1](https://github.com/alexandrebarault-arch/Janus/pull/1) reste à clôturer, SANS fusionner ses sources.
-- **PENDING INTERVENTION UI GITHUB** : (1) changer branche par défaut `main` → `research/gate2b-nonhomothetic-transfer`, (2) fermer PR brouillon #1, (3) supprimer refs `research/v2-flrw` et `main`, (4) vérifier que GitHub affiche réellement **une seule branche**. Changer le défaut AVANT de supprimer `main`. NE PAS réactiver Actions/workflows.
+- Contrôle GitHub après opération : `behind=0` pour `main` ET `research/v2-flrw` par rapport à la branche active. Leurs commits sont préservés dans l'ascendance ; PR historique brouillon [#1](https://github.com/alexandrebarault-arch/Janus/pull/1) **FERMÉE le 22 octobre sans fusion** via le connecteur ; ancien code V2 NON fusionné.
+- **PENDING INTERVENTION UI GITHUB** : (1) changer branche par défaut `main` → `research/gate2b-nonhomothetic-transfer`, (2) PR brouillon #1 déjà FERMÉE sans fusion, (3) supprimer refs `research/v2-flrw` et `main`, (4) vérifier que GitHub affiche réellement **une seule branche**. Changer le défaut AVANT de supprimer `main`. NE PAS réactiver Actions/workflows.
 
 ## AVANCÉE SCIENTIFIQUE STEP50 — TROIS SOLVEURS INDÉPENDANTS, PAS TROIS THÉORIES
 
