@@ -1,3 +1,61 @@
+# JANUS — REPRISE PRIORITAIRE : STEP51 TERMINÉ — 2026-10-22
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. **NE PAS RÉACTIVER GitHub Actions/workflows.** Ancien `main` et V2 ne doivent plus recevoir de commits scientifiques.
+
+**DOCUMENT PRINCIPAL :** `research/STEP51_AUTHENTIC_CENTER_U1_AND_BRANCH_ADMIN_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step51-report.json`.
+**NOUVEAU CALCULATEUR :** `numerics/hr_step51_highprecision_center_coefficient.py` SHA Git blob `97fe8f78a5daa91a8c74b14382470857c9ce29e2`.
+**NOUVEAUX TESTS :** `tests/test_hr_step51_highprecision_center.py` SHA `da85a6e4da8c7202da6d1d5e81fd1aeb8a964e3e`.
+**SOURCE HISTORIQUE STEP45 :** `numerics/hr_step45_exact_physical_ward.py` SHA `66aa43841dccfe4a5d586a49be9c10af3a67a10e`.
+**SOURCE HISTORIQUE STEP46 :** `numerics/hr_step46_exact_secondary_ode.py` SHA `bac025c28dbe1561c0c36c56dbfda46dc326f804`.
+**BRANCHES/PR :** `research/BRANCH_CONSOLIDATION_2026-10-22.md`.
+
+## LE POINT DEMANDÉ : UNE SEULE BRANCHE — HISTORIQUES PRÉSERVÉS, DEUX RÉFÉRENCES ENCORE À SUPPRIMER
+
+- Avant : `main` HEAD `aead63f4`, `research/v2-flrw` HEAD `dfa497cc` avec 203 commits divergents, actif `research/gate2b-nonhomothetic-transfer`. Le commit `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7` a fusionné leur ASCENDANCE (deux parents) en laissant l'arbre de fichiers actifs **STRICTEMENT IDENTIQUE**. Vérification GitHub : `behind=0` pour les deux anciennes pointes par rapport à l'actif. AUCUN commit perdu, AUCUN fichier ancien V2 écrasant les nouveaux.
+- La **pull request brouillon historique #1 est FERMÉE sans fusion** via le connecteur, état GitHub `closed/merged=false`.
+- **TOUJOURS 3 BRANCHES NOMMÉES SUR GITHUB** : défaut actuel `main`, plus `research/gate2b-nonhomothetic-transfer`, plus `research/v2-flrw`. Ne PAS déclarer avoir réellement réduit à une branche.
+- **L'OUTIL GITHUB DISPONIBLE NE PERMET PAS** changer `default_branch` ou supprimer une ref. **OPÉRATION RESTANTE POUR LE PROPRIÉTAIRE VIA UI** : dans repo Settings > General > Default branch, choisir `research/gate2b-nonhomothetic-transfer` ; puis dans Branches supprimer `research/v2-flrw`, ensuite `main`, APRES avoir changé la branche par défaut ; contrôler que liste = 1. Ancienne PR n'a plus besoin d'être traitée.
+- Ne pas tenter une destruction artificielle du contenu des anciennes branches : cela ne supprimerait pas les refs et risquerait de corrompre l'historique.
+
+## PROGRÈS SCIENTIFIQUE STEP51 — VRAIES SOURCES GITHUB, U1 PLUS PRÉCIS
+
+Cette session a reconstitué en local les VRAIS fichiers historiques STEP45 et STEP46 octet par octet (empreintes ci-dessus, confirmées par `git hash-object`). Le nouveau programme refuse une modification de leur SHA. Dans le modèle sphérique Hamiltonien positif-EH HR à DEUX poussières et calibration décimale rationnelle, avec les g primaires reconstruites et `pLf=r² U0`, il calcule le second membre exact de la contrainte secondaire `pLf'=-C0/C1` à précision `mpmath` **100–120 chiffres**, pour extraire numériquement
+
+```text
+s = r², pLf=r² U(s)
+G(s,U0) = pLf'(sqrt(s), pLf=s U0)/sqrt(s)
+U1 = partial_s G(0,U0)/5   [FORMULE EXACTE si G analytique dans la charte]
+U1 ≈ 0.0007897451667202464909325108904961683602148118202349246798
+U1 de Step49 en double : 0.0007897451669079507
+écart ancien - nouveau ≈ +1.877042090674891095e-13.
+```
+
+Quatre paires de rayons décroissants `(10^-7,10^-8)` jusqu'à `(10^-10,10^-11)` et extrapolation principale `O(r²)` donnent les mêmes 35 premiers chiffres environ ; stabilité vérifiée à 80 et 120 chiffres. **N'EST PAS UN ENCADREMENT RIGOUREUX DE U1**, car le reste d'extrapolation en rayon n'est pas mathématiquement borné.
+
+## TESTS RÉELLEMENT EXÉCUTÉS — PAS ENTIÈRE SUITE
+
+```bash
+cd /mnt/data/janus-step51
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step51_highprecision_center.py
+# ACTUELLEMENT : 7 PASSED en 1.85 s ; fichiers NEW et vrais providers45/46 byte-exacts.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step51_highprecision_center_coefficient
+```
+
+Deux nouveaux blobs GitHub vérifiés égal aux OCTETS exécutés; sources Step45/46 strictement égales à GitHub. Les historiques complémentaires `hr_step45_secondary_point_certificate.py`, Step47/Step48 sont toujours à reconstituer ensemble pour débloquer les DEUX tests Step48 authentiques encore en attente. Aucun contrôle sur la vraie évolution Dirac, aucune borne global ODE, aucun CI/workflow.
+
+## NEXT — STEP52
+
+1. Dériver **EXACTEMENT** `U1=∂_s G(0,U0)/5` comme expression algébrique, ou une borne rationnelle certifiée par jets/Taylor, sans extrapolation non contrôlée.
+2. Reconstituer la CHAÎNE AUTHENTIQUE COMPLÈTE Step45/46/47/48 et relancer les 2 tests Step48 longtemps désélectionnés, en plus des nouveaux tests ; ne pas appeler ce résultat complet avant exécution.
+3. Construire une continuation par EDO à intervalles ou barrière analytique jusqu'à `.85`, certifier en continu `pg/r²>0,pf/r²>0,J>0,K/r²>0` pour les nouvelles données initiales régulières au centre.
+4. Ensuite le VERROU MAJEUR : calculer `{C,Htot}` temps avec TOUS six couples canoniques et bords, rang Dirac et fixation des lapses. Ni Ward ni intégration radiale ne démontrent absence du fantôme BD.
+5. Quand le propriétaire a exécuté changement défaut et deux suppressions des refs, vérifier sur GitHub qu'il ne reste vraiment qu'UNE branche ; ne pas modifier `main` tant qu'elle existe.
+
+**STATUT : HISTORIQUES GIT CONSOLIDÉS ET PR BROUILLON FERMÉE ; MAIS 3 REFS GITHUB ENCORE EXISTANTES. STEP51 U1 120 CHIFFRES TRÈS STABLE NUMÉRIQUEMENT AVEC SOURCES 45/46 ORIGINALES ; GATE2B OPEN, JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP50 TERMINÉ — 2026-10-22
 
 **BRANCHE SCIENTIFIQUE ACTIVE UNIQUE POUR TOUTES LES ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`.
