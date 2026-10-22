@@ -1,3 +1,61 @@
+# JANUS — REPRISE PRIORITAIRE : STEP50 TERMINÉ — 2026-10-22
+
+**BRANCHE SCIENTIFIQUE ACTIVE UNIQUE POUR TOUTES LES ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`.
+
+**ATTENTION : LE DÉPÔT GITHUB A ENCORE TROIS NOMS DE BRANCHES !** Le travail de préservation est effectif, mais leur suppression et le changement de défaut doivent se faire dans l'interface GitHub (le connecteur ne possède pas les actions d'administration). NE PAS AFFIRMER QU'IL NE RESTE QU'UNE BRANCHE AVANT LE CONTRÔLE DISTANT.
+
+**LIRE EN PREMIER :** `research/STEP50_BRANCH_CONSOLIDATION_AND_SOLVER_CROSSCHECK_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step50-report.json`.
+**CONSOLIDATION GIT DÉTAILLÉE :** `research/BRANCH_CONSOLIDATION_2026-10-22.md`.
+**NOUVEAU PROGRAMME :** `numerics/hr_step50_solver_crosscheck.py`, Git blob `608222f9071c217d477951c8ed1ae81f5507b095`.
+**NOUVEAUX TESTS :** `tests/test_hr_step50_solver_crosscheck.py`, Git blob `c96c44c24a5b2a9293d127a77e99dadd6c629125`.
+**ANCIEN CONTRÔLE CENTRE :** `research/STEP49_ANALYTIC_CENTER_AND_OUTWARD_SHOOTING_AUDIT.md`.
+
+## CONSOLIDATION SANS PERTE D'HISTORIQUE EFFECTIVEMENT FAITE
+
+- Ancien `main` SHA `aead63f4098f0d15a849e579105af034b6317b30` était déjà ancêtre de la branche active.
+- Ancien `research/v2-flrw` SHA `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` avait 203 commits divergents.
+- Commit de préservation `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7` à DEUX PARENTS, ajouté sur la branche active, avec Git TREE EXACTEMENT IDENTIQUE `e5da02813be6b378398520d9d129209fc5caf5c2` : aucun fichier ancien V2 importé/écrasé.
+- Contrôle GitHub après opération : `behind=0` pour `main` ET `research/v2-flrw` par rapport à la branche active. Leurs commits sont préservés dans l'ascendance ; PR historique brouillon [#1](https://github.com/alexandrebarault-arch/Janus/pull/1) reste à clôturer, SANS fusionner ses sources.
+- **PENDING INTERVENTION UI GITHUB** : (1) changer branche par défaut `main` → `research/gate2b-nonhomothetic-transfer`, (2) fermer PR brouillon #1, (3) supprimer refs `research/v2-flrw` et `main`, (4) vérifier que GitHub affiche réellement **une seule branche**. Changer le défaut AVANT de supprimer `main`. NE PAS réactiver Actions/workflows.
+
+## AVANCÉE SCIENTIFIQUE STEP50 — TROIS SOLVEURS INDÉPENDANTS, PAS TROIS THÉORIES
+
+Les programmes RK45, DOP853 et Radau intègrent depuis `eps=.00625` vers `r=.85` la même équation d'EDO analytique `pLf'=-C0/C1` déduite des primaires f aux étapes 45/46, avec l'initialisation régulière de Step49 `pLf(eps)=U0 eps² + U1_est eps⁴`. `U1_est≈0.0007897451669079507` est NUMÉRIQUE NON CERTIFIÉ. Pour `rtol=2e-11`, `atol=1e-17`, pas max `.012` et **2049 rayons** sur `[.01,.85]` :
+
+```text
+méthode    RHS       pLf(.85)                 min_pf/r² (2049 échantillons)
+RK45       824       -0.003386429356487892   0.11186483299522024
+DOP853     1376      -0.0033864293564879015  0.11186483299522028
+Radau      2647      -0.0033864293564881253  0.11186483299522033
+```
+
+Max écart pLf sur la TRAJECTOIRE ÉCHANTILLONNÉE par rapport RK45 : DOP853 `4.020178287489351e-14`, Radau `4.0734668242670136e-14`. Les deux poussières positives SUR CES POINTS ; g normalisée min `0.8856008128827202`. `C` par substitution algébrique max `3.8e-14` est faible **PAR CONSTRUCTION**, pas un contrôle indépendant de l'action originale non intégrée (déjà mené séparément au Step48).
+
+**AUCUNE borne d'erreur CONTINUE/INTERVALLE**, ni positivité continue sur [0,.85], ni préservation temporelle du Dirac n'ont été établies en Step50.
+
+## TESTS ET PROVENANCE HONNÊTES
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step49_regular_center_shoot.py tests/test_hr_step49_analytic_center.py tests/test_hr_step50_solver_crosscheck.py
+# EFFECTIVEMENT EXÉCUTÉ : 29 PASSED en 6.09 s ; 21 anciens Step49 et 8 nouveaux Step50.
+
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step50_solver_crosscheck
+```
+
+Les DEUX nouveaux fichiers source/test sont Git blob BYTE-IDENTICAL aux fichiers réellement testés ; les sources antérieures Step45/46/47 dans l'environnement local `/mnt/data/janus-step50` sont encore des adaptateurs mathématiques NON OCTET-IDENTIQUES à GitHub. Les deux tests originaux Step48 nécessitant 5 providers authentiques n'ont donc PAS été vérifiés ; pas de suite entière ni de CI. Le JSON local complet a SHA256 `a0c76ddc29560df063ba3b83e63e57a3ef4d9becc912d4f37775cc08ed039a45` et les valeurs essentielles sont enregistrées dans `research/reports/gate2b-step50-report.json`.
+
+## PRIORITÉS STEP51 POUR REPRISE APRÈS INTERRUPTION
+
+1. **OPÉRATION GITHUB ADMINISTRATIVE restante** — changer le défaut et supprimer les 2 refs via UI, sans perte d'historique grâce au commit `4f7a3a1`. Ne jamais déclarer suppression réalisée sans preuve depuis GitHub.
+2. **REGRESSION HISTORIQUE AUTHENTIQUE** — reconstituer les véritables fichiers Step45/46/47 byte-identiques et lancer les deux tests Step48 désélectionnés puis les tests Step49/50 sans adapters.
+3. **CERTIFICAT MATHÉMATIQUE GLOBAL** — dériver U1 exact ou rationnellement borné, puis prouver continuité/existence/signes des deux poussières pour la SOLUTION NON POLYNOMIALE RÉGULIÈRE jusqu'à .85 avec une EDO validée par intervalles, en conservant J>0,K/r²>0.
+4. **DIRAC TEMPOREL** — calculer réellement `{C,Htot}` pour les SIX couples canoniques, rang, fixation des lapses, bords, chartes exceptionnelles. Ward exact et ODE radiale ne prouvent PAS l'absence BD. Vraie cosmologie on-shell et De Felice/Aoki après seulement.
+
+**VERDICT : historique scientifique désormais préservé dans une seule ascendance active, MAIS TROIS REFS GITHUB ENCORE VISIBLES ; contrôle numérique Step50 PASS ; GLOBAL/Dirac Gate 2B OPEN ; JANUS-R NON VALIDÉ.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP49 TERMINÉ — 2026-10-22
 
 **BRANCHE AUTORISÉE EXCLUSIVE :** `research/gate2b-nonhomothetic-transfer`. NE modifier NI `main` NI `research/v2-flrw`. NE PAS réactiver GitHub Actions/workflows.
