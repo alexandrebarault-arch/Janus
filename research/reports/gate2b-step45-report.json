@@ -1,0 +1,105 @@
+{
+  "step": 45,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "previous_checkpoint": "research/STEP45_CHECKPOINT.txt e960f77468ad71c3e4872677d18578fa4b47615d (unpublished old symbolic work)",
+  "result": "TWO DISTINCT EXACT RESULTS: original physical six-pair Ward off-shell identity; frozen rationalized Step41 approximate secondary provably NONZERO at six rational radii",
+  "symmetry": {
+    "action": "Original positive-EH spherical ADM HR with two independent canonical moving dusts and five beta potential parameters, local external relative shift z during first Euler variation",
+    "full_six_pair_exact": "K02=K12=K21=K22=0 identically; K11=K20=2 Mg2 Sg Sg_prime z/(Lg Lf); W=K01-K10+derivative(K20)=z Hg/Lf. Holds before imposing Hg=0, at nonzero Lg,Lf.",
+    "shift_stationarity": "Derivative of unintegrated Hg at fixed canonical fields dHg/dz=Fz/Lg; dHf/dz=Fz/Lf. Thus first-variation elimination of z is stationary on Fz=0.",
+    "exact_C": "Full symbolic K00-(K01) total radial derivative simplified exactly with no q'' or z''; C nonzero off shell and still requires exact solution",
+    "boundary": "Compact support for smearing integration by parts, or properly controlled boundary traces",
+    "real_physics_limit": "No time-preservation {C,Htotal}, Dirac rank or lapse fixing computed"
+  },
+  "rationalized_frozen_profile": {
+    "fixed_generator_f_delta": [
+      -0.000021921905214999423,
+      0,
+      0.0015479757723131573,
+      0,
+      -0.000020933708880890434,
+      0,
+      -1.757101536020765e-7,
+      0,
+      -2.9380881416697167e-9
+    ],
+    "source_coeff_sha256": "bff542954a2ddba0505223d0d08075e3714dcebed23cd3c9012bd67c91d28b2d",
+    "pointwise_proof": "Arithmetic in exact Fractions, each source benchmark decimal treated as exact terminating rational; archived Step41 finite-double corrections mapped using Fraction.from_float; all square roots outward enclosed by integer isqrt at 10^-70, no numerical derivative of K01. Six rational radii evaluated.",
+    "strict_decimal_brackets_x1e_minus24": [
+      {
+        "radius": "0.11",
+        "lower_integer": 16499669319,
+        "upper_integer": 16499669320,
+        "sign": "positive",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      },
+      {
+        "radius": "0.21",
+        "lower_integer": -135186547021,
+        "upper_integer": -135186547020,
+        "sign": "negative",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      },
+      {
+        "radius": "0.43",
+        "lower_integer": 517920728199,
+        "upper_integer": 517920728200,
+        "sign": "positive",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      },
+      {
+        "radius": "0.71",
+        "lower_integer": 1847883724347,
+        "upper_integer": 1847883724348,
+        "sign": "positive",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      },
+      {
+        "radius": "0.83",
+        "lower_integer": 50211307927321,
+        "upper_integer": 50211307927322,
+        "sign": "positive",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      },
+      {
+        "radius": "0.85",
+        "lower_integer": 65545288523431,
+        "upper_integer": 65545288523432,
+        "sign": "positive",
+        "interpretation": "lower_integer*1e-24 <= C <= upper_integer*1e-24"
+      }
+    ],
+    "endpoint_conclusion": "C(17/20) lies strictly between 6.5545288523431e-11 and 6.5545288523432e-11 (rational decimal bounds) for THIS rationalized frozen model; hence that profile does not exactly satisfy secondary",
+    "crucial_scope": "The rigorous interval theorem interprets physical calibration decimal inputs as exact rational numbers; source historical Step33g code performs some intermediate Python float operations and sp.Float conversions. Therefore theorem is NOT automatically an interval-certified statement for every last bit of the original binary64 execution, although the independent original finite-h numerical values agree to ~1e-14. Do not silently conflate rationalized calibration with actual float instruction sequence.",
+    "not_conclusion": "Does NOT rule out another exactly C=0 profile nor exact Hamiltonian secondary existence."
+  },
+  "code_and_test_git_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "tests/test_hr_step45_exact_physical_ward.py": "64c32464df011e87c11e7ca7ff0d9d101bb167aa",
+    "numerics/hr_step45_secondary_point_certificate.py": "6ab94dacb0c6429bdce8d71311161a6b76ecc0e6",
+    "tests/test_hr_step45_secondary_point_certificate.py": "d2c04e5961cfb31867ea40b8d003c8e35ced9eb8"
+  },
+  "test_result": {
+    "command": "PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step45_exact_physical_ward.py tests/test_hr_step45_secondary_point_certificate.py",
+    "executed": "24 passed in 1.30 s",
+    "isolated_worktree": "/mnt/data/janus-step45; these four actual local source/test Git blob hashes byte-exact match uploaded GitHub blobs",
+    "historical_provider_full_regression": false,
+    "github_CI": false
+  },
+  "physical_gate_status": {
+    "six_pair_Ward": "ANALYTICALLY_PROVED_FOR_SPHERICAL_REDUCED_ACTION_AND_SHIFT_TREATED_EXTERNAL_ON_FIRST_VARIATION",
+    "frozen_approximate_C": "RIGOROUSLY_NONZERO_IN_RATIONALIZED_PROFILE",
+    "existence_of_exact_continuum_C": "OPEN",
+    "secondary_time_preservation": "NOT_COMPUTED",
+    "Dirac_matrix_rank": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step46": [
+    "Develop certified actual binary64 source-calibration uncertainty bounds or reconstruct sources using true exact arithmetic, avoiding false extrapolation from decimal benchmark semantics",
+    "Solve the analytic C(r)=0 as an exact differential/algebraic initial-data condition on a curved, noncomoving, two-positive-dust radial interval, or prove obstruction, controlling center and boundaries",
+    "Only then compute full six-canonical-pair secondary time preservation {C,Htotal}, lapse fixing and Dirac rank; same-action perturbative oracles later."
+  ]
+}
