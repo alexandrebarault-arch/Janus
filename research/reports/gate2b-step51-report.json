@@ -1,0 +1,77 @@
+{
+  "step": 51,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "focus": "Exact GitHub original provider provenance of Step45/46 and higher precision noncertified regular-center U1 correction; GitHub one-branch housekeeping",
+  "scientific_status": {
+    "source_action": "Original reduced positive-EH spherical six-canonical-pair HR plus moving two dust primary/secondary",
+    "formula": "s=r², P=pLf=r²U(s), G(s,U)=pLf'(sqrt(s))/sqrt(s); if G is analytic then U1=∂_s G(0,U0)/5; U0=Mf² b(Pg/(Mg²a)-2 z1)",
+    "evaluation": "mpmath 80–120 decimal digits on benchmark constants interpreted as exact printed terminating decimals, rederiving pg,pSg algebraically from g lapse and radial primaries, f momentum derivative from original Step46 analytic C=-C0/C1; two one-sided radii 10^-k and 10^-(k+1) and r² Richardson cancellation. This is NOT interval-certified.",
+    "benchmark_u1_highprecision": "0.0007897451667202464909325108904961683602148118202349246798",
+    "previous_step49_double": "0.0007897451669079507",
+    "previous_minus_new": "1.877042090674891095038316398e-13",
+    "convergent_estimators": {
+      "k7_8": "0.0007897451667202464909325108904961684260716575981051536817",
+      "k8_9": "0.000789745166720246490932510890496168360221397504746861443",
+      "k9_10": "0.0007897451667202464909325108904961683602148124787375256134",
+      "k10_11": "0.0007897451667202464909325108904961683602148118202349246798"
+    },
+    "limitations": [
+      "Finite high-precision evaluations and Richardson limits do not give a mathematically certified derivative coefficient nor enclosure",
+      "This only corrects near-center initial polynomial coefficient; global IVP center→r=.85 and continuous positive two dusts still NOT certified",
+      "Does not compute time preservation of secondary, full Dirac constraint rank/lapse fixing, perturbation stability or evolution"
+    ]
+  },
+  "executed": {
+    "workspace": "/mnt/data/janus-step51",
+    "authentic_byte_pinned_original_files": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804"
+    },
+    "new_files_byte_exact": {
+      "numerics/hr_step51_highprecision_center_coefficient.py": "97fe8f78a5daa91a8c74b14382470857c9ce29e2",
+      "tests/test_hr_step51_highprecision_center.py": "da85a6e4da8c7202da6d1d5e81fd1aeb8a964e3e"
+    },
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step51_highprecision_center.py",
+    "result": "7 passed in 1.85 s",
+    "first_run_failure": "1 strict IEEE double rounding comparison was repaired to use Decimal on the exact high-precision result string; rerun 7/7 PASS.",
+    "raw_local_json": "/mnt/data/janus-step51/research/reports/step51-local-raw.json",
+    "raw_sha256": "5a9bcd471ed31fcc8c1ef6e05e0efc58aab8b7b450318652c263c5c08326cd3e",
+    "raw_uploaded_github": false,
+    "other_history_beyond_step46": "Original Step45 secondary-primary calculator, Step47 and Step48 sources have NOT yet been gathered bit-identical in this local worktree; two full-provider Step48 tests remain PENDING",
+    "whole_repository_suite": false,
+    "github_actions": false
+  },
+  "github_branches": {
+    "verified_preservation_commit": "4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7",
+    "preserved_v2_tip": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "preserved_main_tip": "aead63f4098f0d15a849e579105af034b6317b30",
+    "all_historical_heads_ancestors_of_active": true,
+    "old_PR1": {
+      "state": "closed",
+      "merged": false,
+      "url": "https://github.com/alexandrebarault-arch/Janus/pull/1"
+    },
+    "github_default_branch": "main",
+    "github_named_branches": [
+      "main",
+      "research/gate2b-nonhomothetic-transfer",
+      "research/v2-flrw"
+    ],
+    "branch_default_change_done": false,
+    "branch_ref_deletions_done": false,
+    "admin_tool_limitation": "Available GitHub connector API lacks change-repository-default-branch and delete-ref functions; requires owner use GitHub UI. Not executed, no claim of one remaining branch.",
+    "user_UI_remaining": "In repository Settings > General > Default branch select research/gate2b-nonhomothetic-transfer; then GitHub Branches delete research/v2-flrw and main. Verify only active branch remains. Original commits already ancestry-preserved."
+  },
+  "next_step52": [
+    "Derive interval-rational certificate for U1 or an explicit symbolic algebraic expression by truncated Taylor-series arithmetic, rather than continuing small-r extrapolation.",
+    "Rebuild exact full historical Step45/46/47/48 source files and run the 2 pending Step48 original-provider tests unfiltered.",
+    "Validate center-regular radial ODE on [0,.85] by rigorous enclosure and certify both dusts positive continuously, as well as J/K denominators.",
+    "Compute true six-canonical-pair Dirac secondary TIME-PRESERVATION, lapse fixing and full constraint rank; maintain Gate2B OPEN until this is resolved."
+  ],
+  "hard_gate": {
+    "Gate2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED",
+    "Dirac": "NOT_COMPUTED"
+  }
+}
