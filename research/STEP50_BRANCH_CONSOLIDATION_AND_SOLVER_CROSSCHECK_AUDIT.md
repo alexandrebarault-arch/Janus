@@ -18,7 +18,7 @@ GitHub confirme **behind=0** pour chacune des deux anciennes pointes (`main` et 
 **IMPORTANT :** Les trois noms de branches existent **toujours** sur GitHub, puisque le connecteur utilisé dans cette conversation ne propose ni modification de la branche par défaut ni suppression de branche. Ces actions doivent être réalisées dans les paramètres GitHub :
 
 1. Configurer `research/gate2b-nonhomothetic-transfer` comme **branche par défaut** dans les paramètres du dépôt ;
-2. Fermer l'ancienne [PR brouillon #1](https://github.com/alexandrebarault-arch/Janus/pull/1) (base `main`, tête `research/v2-flrw`) sans fusionner ses sources ;
+2. **DÉJÀ EFFECTUÉ :** l'ancienne [PR brouillon #1](https://github.com/alexandrebarault-arch/Janus/pull/1) a été FERMÉE sans fusionner ses sources (anciennement base `main`, tête `research/v2-flrw`) ;
 3. Supprimer les refs `research/v2-flrw` et `main` via la page Branches, **après** modification de la branche par défaut ;
 4. Vérifier qu'il ne reste qu'une seule branche.
 
@@ -71,7 +71,7 @@ Le JSON détaillé local `/mnt/data/janus-step50/step50-solver-crosscheck-local.
 
 ## 4. Reprise sans interruption : étape 51
 
-1. **Consolidation GitHub UI** : effectuer le changement de branche par défaut et la suppression des refs après vérification du commit de préservation, puis constater une seule branche effective.
+1. **Consolidation GitHub UI** : PR brouillon #1 DÉJÀ FERMÉE sans fusion. Effectuer le changement de branche par défaut et la suppression des deux refs après vérification du commit de préservation, puis constater une seule branche effective.
 2. **Authentification des calculs historiques** : réunir dans le même environnement toutes les sources GitHub exactes des étapes 45–49 et relancer intégralement les tests de Step48 non exécutés, sans adaptateurs.
 3. **Certificat de continuation globale** : dériver un coefficient (U_1) exact ou à intervalle rigoureux, puis employer intégration d'EDO validée par intervalles ou borne spectrale a posteriori pour contrôler la continuation régulière sur (rin[0,0{,}85]), les deux densités de poussières et les dénominateurs du système.
 4. **Véritable verrou théorique** : calculer la conservation temporelle de la contrainte secondaire avec tous les six couples canoniques, le rang de Dirac, la fixation des lapses et les secteurs exceptionnels (J/K). Ne pas affirmer que le fantôme de Boulware–Deser est éliminé sur la base des seuls calculs radiaux.
