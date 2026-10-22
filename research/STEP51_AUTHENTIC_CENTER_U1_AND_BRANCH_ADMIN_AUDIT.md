@@ -83,3 +83,34 @@ Le JSON brut a été effectivement écrit en local : `/mnt/data/janus-step51/res
 5. L'évolution cosmologique réellement non homothétique et les tests de stabilité De Felice/Aoki ne viennent qu'après ces preuves.
 
 **Verdict final : branche JANUS active intègre tous les commits historiques et ancienne PR est fermée ; deux suppressions/admin GitHub restent à effectuer ; coefficient (U_1) mieux déterminé NUMÉRIQUEMENT avec sources Step45/46 authentifiées ; Gate 2B OUVERT, JANUS-R NON VALIDÉ.**
+
+## 5. Extension validée dans la même session : l'ancienne barrière de cinq sources Step48 est franchie
+
+Après le premier rapport de 7 tests, une seconde reconstitution octet pour octet a été effectuée et contrôlée avec `git hash-object`. **CINQ sources physiques historiques EXIGÉES par le vérificateur Step48** ont maintenant leurs vrais blobs GitHub :
+
+```text
+hr_step37_original_nonibp_oracle.py       005449ade6e3582e3b9a5c3374a881a77e73e3f6
+hr_step45_exact_physical_ward.py         66aa43841dccfe4a5d586a49be9c10af3a67a10e
+hr_step45_secondary_point_certificate.py 6ab94dacb0c6429bdce8d71311161a6b76ecc0e6
+hr_step46_exact_secondary_ode.py         bac025c28dbe1561c0c36c56dbfda46dc326f804
+hr_step47_interior_ivp.py                c558a827939f2e1fffbfc0290f2b3cc88cb69ef9
+```
+
+Le sixième fichier `numerics/hr_step48_original_ivp_oracle.py` lui-même est également une copie GitHub stricte, blob `dc5101d4b0d1d5b8d0834aacff4a3ad3715a28db`. **Le mode `check_git=True` passe réellement**, et son calcul indépendant NON INTÉGRÉ PAR PARTIES a été exécuté sur `N=161,321,641` et deux lapses A/B, avec reconstitution numérique du profil Step47, les 12 champs canoniques et les SIX couples du crochet :
+
+| N | Crochet A | Crochet B |
+|---:|---:|---:|
+| 161 | −5.909466451194632e−7 | −9.466192080859973e−7 |
+| 321 | −1.4770852485167414e−7 | −2.3664938826562995e−7 |
+| 641 | −3.6925374684076886e−8 | −5.916200850443823e−8 |
+
+Ce sont des **valeurs finies non nulles** avec biais de grille `O(dr²)`; elles ne sont pas une preuve de contrainte continuum nulle. Elles sont cohérentes avec la vérification de Step48. Les cinq vrais fichiers physiques et l'oracle lui-même sont SHA bit-identiques; cette session utilise néanmoins encore **DEUX adaptations d'import seulement**, de `hr_curved_moving_dust_primary.py` (constantes) et `hr_curved_primary_mixed_kernel.py` (ordre Q), qui ne sont PAS les sources GitHub historiques complètes. L'authentification de ces deux imports et de toute la suite originelle reste ouverte. Les deux anciens tests du fichier historique Step48 n'ont PAS été relancés tels quels ; leurs fonctionnalités historiquement désélectionnées ont été retestées dans une NOUVELLE suite ciblée.
+
+Nouveau test réellement exécuté puis enregistré identique aux octets exécutés : `tests/test_hr_step51_original_chain.py`, Git blob `2687e7279ddda3c1b0bc8ea2ba340cab0ce3499d`. Commande :
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step51_highprecision_center.py tests/test_hr_step51_original_chain.py
+# ACTUELLEMENT EXÉCUTÉ : 13 PASSED en 14.54s (7+6).
+```
+
+**Statut de la régression :** original Step48 vérificateur de CINQ blobs + crochet d'action original DEUX lapses sur 3 grilles exécutés favorablement. Ce n'est PAS une régression intégrale du dépôt ou la preuve de préservation Dirac. Le verrou réel global reste `{C,Htot}`, l'EDO certifiée, centre à bord, et la positivité continue des deux poussières.
