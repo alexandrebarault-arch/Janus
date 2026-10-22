@@ -46,3 +46,8 @@ Continuer à mettre à jour **`00_CURRENT_RESTART.md`** et le rapport de l'étap
 - Vérification GitHub après le nouveau parentage : `main...active` = `ahead 1035, behind 0` ; `research/v2-flrw...active` = `ahead 714, behind 0`. Ces deux anciennes pointes sont désormais ancêtres de la branche conservée.
 - **Les 3 refs existent ENCORE sur GitHub** et la branche par défaut reste `main` tant que l'administration du dépôt ne change pas ces réglages. La suppression et la désignation de la branche par défaut ne sont pas réalisées par le connecteur.
 - Ancienne PR brouillon `#1` toujours ouverte à la date du contrôle, base `main`, tête `research/v2-flrw`. Prévoir de la fermer SANS fusion de contenu avant suppression des deux refs.
+
+### Mise à jour administrative effectivement exécutée
+
+- **PR brouillon #1 FERMÉE LE 22 OCTOBRE 2026, SANS FUSION** via l'action GitHub connectée. État lu après action : `closed`, `merged=false`, ancien head `research/v2-flrw`, ancienne base `main`. Son historique de commits reste accessible depuis le commit de préservation `4f7a3a1`.
+- **Toujours à faire par le propriétaire dans l'interface GitHub :** désigner `research/gate2b-nonhomothetic-transfer` comme branche par défaut, puis supprimer `research/v2-flrw` et `main`. Ne pas supprimer le défaut actuel `main` avant son changement. Le connecteur ne possède pas ces deux actions d'administration.
