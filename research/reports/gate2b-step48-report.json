@@ -1,0 +1,170 @@
+{
+  "step": 48,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "summary": "Original non-IBP six-canonical-pair physical mixed Poisson bracket independently evaluated on new numerical Step47 IVP at 4 radial grids and TWO lapse smearings; exact symbolic spherical-center compatibility and leading 1/r sensitivity mode derived.",
+  "head_at_start": "eac09bfce945f51d3db6f1902b05afba818eed23",
+  "git_blobs": {
+    "numerics/hr_step48_original_ivp_oracle.py": "dc5101d4b0d1d5b8d0834aacff4a3ad3715a28db",
+    "numerics/hr_step48_center_compatibility.py": "aa181529d33fcfa7d1e61a4525cade3e1b0ca4c7",
+    "tests/test_hr_step48_center_and_original_ivp.py": "e1f2946eabb4e47335940c7ce010cfd7dbe2b505",
+    "historical_hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6"
+  },
+  "original_poisson_crosscheck": {
+    "original_action": "hr_step37_original_nonibp_oracle.hamiltonians, EXACT GitHub source byte hash 005449ade6e3582e3b9a5c3374a881a77e73e3f6; independently reconstructed canonical q(r) from Step47 ODE, including analytically integrated dust clocks so nodal derivatives match specified phase gradients; original K,z re-solved from perturbed canonical variables per node and every six canonical pair contracted",
+    "independent_implementation_check": "Separate reimplementation of the same historical unintegrated Hamiltonians produced exactly identical NumPy arrays for real and complex perturbed canonical q on 161-node sample (max array differences exactly zero). Historical original module has exact GitHub blob; OTHER historical Step45/46/47 modules locally reconstructed mathematically, not original GitHub bytes.",
+    "IVP": {
+      "r_interval": [
+        0.05,
+        0.85
+      ],
+      "r0": 0.05,
+      "r_end": 0.85,
+      "nfev": 338,
+      "pLf_endpoint": -0.003386429356487718,
+      "sample_min_pf_div_r2": 0.11186483299522014
+    },
+    "radial_grid_brackets": {
+      "A": [
+        {
+          "n": 161,
+          "bracket": -5.909466422134762e-7,
+          "max_discrete_primaries": 6.08235583843264e-8
+        },
+        {
+          "n": 321,
+          "bracket": -1.477085211689104e-7,
+          "max_discrete_primaries": 1.5225620222936165e-8
+        },
+        {
+          "n": 641,
+          "bracket": -3.6925373066772505e-8,
+          "max_discrete_primaries": 3.871466827676251e-9
+        },
+        {
+          "n": 1281,
+          "bracket": -9.231239094041176e-9,
+          "max_discrete_primaries": 1.2405618060595813e-9
+        }
+      ],
+      "B": [
+        {
+          "n": 161,
+          "bracket": -9.466192093555981e-7,
+          "max_discrete_primaries": 6.08235583843264e-8
+        },
+        {
+          "n": 321,
+          "bracket": -2.3664938491891468e-7,
+          "max_discrete_primaries": 1.5225620222936165e-8
+        },
+        {
+          "n": 641,
+          "bracket": -5.916200890277411e-8,
+          "max_discrete_primaries": 3.871466827676251e-9
+        },
+        {
+          "n": 1281,
+          "bracket": -1.4790486907055242e-8,
+          "max_discrete_primaries": 1.2405618060595813e-9
+        }
+      ]
+    },
+    "richardson_even_spatial_error_assumption": {
+      "A": {
+        "R2": [
+          3.75191792782e-11,
+          2.34296727346e-12,
+          1.38896869267e-13
+        ],
+        "R4": [
+          -2.113526856e-15,
+          -8.0411576792e-15
+        ]
+      },
+      "B": {
+        "R2": [
+          7.22322664646e-12,
+          4.4976927274666666e-13,
+          2.0424851047333333e-14
+        ],
+        "R4": [
+          -1.7945521675555555e-15,
+          -8.19811039928889e-15
+        ]
+      }
+    },
+    "interpretation": "Significant independent original-action numeric agreement with IVP's imposed analytic C≈0; R4 estimates near -8e-15 rather than frozen Step44 ~+1e-13. All four finite original brackets are still nonzero negative. Extrapolation assumes even spatial error powers and is neither rigorous nor a claim exact zero. Original finite-grid primary residual decreases O(h²) but remains ~1e-9 on N1281.",
+    "full_run_json_local": "/mnt/data/janus-step48/research/reports/step48-local-nonibp-full.json",
+    "full_run_json_sha256": "dfc18acda78163dff61021f51429a06d6d2db4854d19655fb5dd939ab472b9a1",
+    "full_json_github_uploaded": false,
+    "reproduce_from_full_checkout": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step48_original_ivp_oracle (default refuses changing any of 5 original provider blobs)"
+  },
+  "center_symbolic": {
+    "source": "Original Step45 exact six-pair C(q,q',z,z') without numerical derivative",
+    "regular_data": "Lg=a+O(r²),Lf=b+O(r²), Sg=a r+O(r³),Sf=b r+O(r³), pLg=Pg r²+O(r⁴),pSg=2Pg r+O(r³),pLf=Uf r²+O(r⁴),pSf=Vf r+O(r³), z=z1 r+O(r³); two dust momenta O(r²)",
+    "lead_C_over_r2": "-m2*(a^2 beta1+2 a b beta2+b^2 beta3)*(6 Mf2 Mg2 z1 a b-3 Mf2 Pg b+Mg2 a (Uf+Vf))/(2 Mf2 a b)",
+    "radial_f_primary_gives": "Vf=2 Uf at regular center",
+    "necessary_regularity": "Uf(0)=Mf2*b*(Pg/(Mg2*a)-2*z1)",
+    "first_order_near_center": "For regular scaling pLf=r² U, C=0 implies pLf'/r=3*Uf(0)-U+O(r²); equivalently pLf'+pLf/r=3*Uf(0)*r+O(r³)",
+    "formal_linearized_solution": "pLf(r)=Uf(0)*r²+Csing/r at leading regular-singular order; regular branch requires Csing=0.",
+    "numeric_benchmark": {
+      "necessary_Uf0": -0.005252426896760733,
+      "old_frozen_Uf0": -0.005252426896763941,
+      "old_minus_necessary": -3.2083710688191047e-15
+    },
+    "backward_sensitivity": {
+      "initial_radius": 0.05,
+      "delta_pLf_initial": 1e-12,
+      "target_radii": [
+        0.04,
+        0.02,
+        0.01,
+        0.005,
+        0.002
+      ],
+      "observed_amplification": [
+        1.2499972845,
+        2.4999873146,
+        4.9999709922,
+        9.9999401334,
+        24.9998492046
+      ],
+      "linear_prediction": [
+        1.25,
+        2.5,
+        5,
+        10,
+        25
+      ],
+      "interpretation": "Strong numerical evidence of inverse-radius ill-conditioning, not proof of actual singularity of a genuinely center-tuned exact solution"
+    }
+  },
+  "test_provenance": {
+    "new_test_count": 12,
+    "actually_run_and_passed": 10,
+    "deselected_due_to_historical_sources_not_full_original_checkout": 2,
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=/mnt/data/janus-step48 python -m pytest -q /mnt/data/janus-step48/tests/test_hr_step48_center_and_original_ivp.py -k 'not test_original_provider_source_pins_match_real_checkout and not test_interrupted_run_manifest_keeps_Dirac_red'",
+    "elapsed_seconds": 5.27,
+    "new_three_files_byte_identical_to_tested_github_blobs": true,
+    "historical_original_nonibp_module_git_blob_identical": true,
+    "other_historical_Step45_47_modules": "faithful local mathematical reproductions/compatibility adapters, not byte-identical original GH files",
+    "whole_repo_suite": false,
+    "github_ci": false
+  },
+  "red_gates": {
+    "exact_global_IVP_error_bound": "OPEN",
+    "continuous_positive_dust_for_new_IVP": "OPEN",
+    "regular_r0_center": "OPEN; requires singular mode cancellation and certified shooting/Frobenius extension",
+    "full_six_pair_Dirac_secondary_time_preservation": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "J_K_exceptional": "OPEN",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step49": [
+    "Reconstitute ALL true Step45/46/47 providers byte-for-byte and run both deselected exact-GitHub-provider tests; include N1281 dual smear",
+    "Develop regular-center shooting (or center-parameter initial value) in regularized U(s)=pLf/r² with rigorous local Frobenius and matched IVP; certify two dust densities positive continuously along the actual new nonpolynomial solution, including center",
+    "Only with exactly constrained valid data compute {C,Htot} preserving secondary for full six canonical pairs, determine actual lapse fixing and Dirac rank"
+  ]
+}
