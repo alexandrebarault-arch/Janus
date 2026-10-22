@@ -1,0 +1,91 @@
+{
+  "step": 54,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "RIGOROUS CONTINUUM CONDITIONAL TWO-DUST POSITIVITY TUBE FOR THE EXACT U0,U1,U2 CENTER TAYLOR SURROGATE",
+  "claim": "At every r in [0,0.85], for prescribed curved spherical g-metric and g-dust background and all differentiable radial f-momenta P(r) with U=P/r² and V=P'/r satisfying |U-Ustar(r²)|<=0.01 and |V-Vstar(r²)|<=0.01, BOTH original lapse-primary dust momenta normalized by r², J, K/r², both dust denominators, Sf' and sqrt(1-z²) are strictly positive. Ustar=U0+U1*s+U2*s², Vstar=2U0+4U1*s+6U2*s². This is a CONDITIONAL POSITIVITY implication, not a proof that the exact regular-center ODE solution lies in the tube.",
+  "mathematical_construction": {
+    "s_interval": [
+      "0",
+      "0.7225"
+    ],
+    "uniform_cells": 256,
+    "integer_lattice": "S=10^30, every exact-decimal rational input rounded outward to integer multiples 1/S, each +,-,*,/,sqrt rounded outward via floor/ceil and integer isqrt; no binary64 enters sign proofs.",
+    "enclosed_coefficients": "U0 from exact printed benchmark H² and integer-square-root interval; U1 and U2 from already proved strict rational bounds of Steps52/53; exact rational calibration masses, beta potential, curvature, radial profiles and dust slopes",
+    "normalizations": "T=beta1*Lg²+2beta2*Lg*Lf+beta3*Lf², At=r²*T, Dg=r³*Dhat, pLg=r²*Gmom, pLf=r²*U, pLf'=r*V. Both original physical lapse-primary dust equations divided algebraically by r², removing spherical r=0 artificial singularities.",
+    "safe_scope": "All eight lower margins are proven by exact integer inequalities on a union of rational interval cells; the display decimals are NOT the proofs.",
+    "global_ODE_tube_membership": "NOT_PROVED"
+  },
+  "certificates": {
+    "tube_delta_0p01": {
+      "minimum_normalized_g_dust_exact": "885449518212857928681650684127/1000000000000000000000000000000",
+      "minimum_normalized_f_dust_exact": "3975264472969728977824962611/62500000000000000000000000000",
+      "minimum_J_exact": "41238803182898789792808800157/62500000000000000000000000000",
+      "minimum_K_over_r2_exact": "114607699435882633639640746711/500000000000000000000000000000",
+      "minimum_g_dust_denominator_exact": "39967046338857250724426915953/40000000000000000000000000000",
+      "minimum_f_dust_denominator_exact": "199774878963432060741537666411/200000000000000000000000000000",
+      "minimum_Sf_prime_exact": "287881066390207517784924829/1250000000000000000000000000",
+      "minimum_relative_shift_sqrt_exact": "999994219983295703449026418611/1000000000000000000000000000000",
+      "safe_simple_display_bounds": [
+        "pg/r²>0.8854",
+        "pf/r²>0.063",
+        "J>0.659",
+        "K/r²>0.229",
+        "both dust denominators>0.998",
+        "Sf'>0.230",
+        "sqrt(1-z²)>0.9999"
+      ]
+    },
+    "tube_delta_0p0001": {
+      "minimum_normalized_f_dust_exact": "111166641249328918002798036107/1000000000000000000000000000000",
+      "minimum_other_margins": "Identical g/J/K/Sf'/shift bounds as delta0.01; f_dust_denominator>=1 exactly on this interval enclosure",
+      "safe_display_bound": "pf/r²>0.1111"
+    }
+  },
+  "provenance": {
+    "original_byte_exact_files": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804"
+    },
+    "new_source": "numerics/hr_step54_interval_tube.py",
+    "new_source_git_blob": "c2db1e6a4888194fc6f79aaee866efdad479dbfb",
+    "new_tests": "tests/test_hr_step54_interval_tube.py",
+    "new_tests_git_blob": "d1dc7407ae1781aa742cab09cff0fc5a24bce66e",
+    "new_files_exact_match_executed_local_bytes": true,
+    "test_run": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step54_interval_tube.py",
+    "tests_passed": 9,
+    "tests_failed": 0,
+    "run_time_seconds": 2.03,
+    "test_checks": "Exact original source git blobs and tamper refusal; integer outward enclosure of rational +/-*/div/sqrt including negative reciprocal; full interval cell coverage; 256-cell tube positivity; subdivision tightening; false certification refusal; original authentic Step46 SymPy f-primary compared independently against 75-digit mpmath values at four radii; scope and guards.",
+    "local_directory": "/mnt/data/janus-step54",
+    "full_research_branch_checkout": false,
+    "complete_project_tests": false,
+    "github_actions_workflows_enabled": false,
+    "local_json_artifacts": [
+      {
+        "file": "research/reports/gate2b-step54-tube_001.json",
+        "SHA256": "708fad17c8e88520a0eb0122a49c60caaa22daeb09be543a0e513ef08dc2c378"
+      },
+      {
+        "file": "research/reports/gate2b-step54-tube_0001.json",
+        "SHA256": "c60f48da3569ec40e7e8a1c024af061eb35e2e8d5234f5dce130fc9b36b24212"
+      }
+    ],
+    "local_json_standalone_uploaded": false
+  },
+  "hard_red": {
+    "tube_membership_by_true_exact_secondary_ode": "OPEN",
+    "mathematically_validated_full_ODE_continuation": "OPEN",
+    "regular_full_4D_evolution": "OPEN",
+    "six_canonical_pair_secondary_time_preservation": "NOT_COMPUTED",
+    "Dirac_rank_lapse_fixing": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step55": [
+    "Derive explicit normalized f-ODE G(s,U) and its interval slope bounds. Establish a rigorous center-to-r=.85 invariant tube (barrier/sub-super solution or validated interval Picard/Taylor). Once proven, Step54 conditional positivity becomes unconditional for the exact regular ODE solution.",
+    "Use original Step45/46 actions and independent original Step37 non-IBP checks for reconstructed ODE path; do not confuse exact derivative substitution with full Poisson oracle.",
+    "Compute true six-pair temporal {C,Htotal}, Dirac constraint rank and lapse fixing, including exceptional J/K and boundary terms; separate from spatial Ward.",
+    "Follow repository 00_CURRENT_RESTART.md and keep one science-writing branch; administrative deletion of old refs still pending owner UI."
+  ]
+}
