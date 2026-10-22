@@ -1,3 +1,58 @@
+# JANUS — REPRISE PRIORITAIRE : STEP46 TERMINÉ — 2026-10-22
+
+**BRANCHE ACTIVE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne PAS toucher `main`, `research/v2-flrw` ; ne PAS réactiver Github Actions/workflows.
+
+**LIRE EN PREMIER :** `research/STEP46_EXACT_AFFINE_SECONDARY_ODE_AUDIT.md`.
+**RAPPORT :** `research/reports/gate2b-step46-report.json`.
+**CODE :** `numerics/hr_step46_exact_secondary_ode.py`, Git blob `bac025c28dbe1561c0c36c56dbfda46dc326f804`.
+**TESTS :** `tests/test_hr_step46_exact_secondary_ode.py`, Git blob `f09e5205d5915d546cf83875ffcafe44232411e2`.
+**SOURCE MATHÉMATIQUE REQUISE :** `numerics/hr_step45_exact_physical_ward.py` Git blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, avec audit `research/STEP45_EXACT_PHYSICAL_WARD_AND_ANALYTIC_SECONDARY_AUDIT.md`.
+
+## RÉSULTAT DURABLE STEP46 : ODE EXACTE DE LA SECONDAIRE LOCALE
+
+Sur les DEUX contraintes primaires f (Hamiltonienne et impulsion radiale) de l'action ADM sphérique Hassan–Rosen + deux poussières canoniques, choisir `P(r)=pLf(r)` et `V=P'(r)` ; éliminer les deux inconnues de poussière `pf,pSf`. Substituer dans la formule de `C=K00-(K01)'` dérivée exactement au Step45. Alors, **IDENTITÉ SYMBOLIQUE** :
+
+```text
+C(r;P,V) = C0(r;P) + C1(r;P)*V
+C1 = -(m2*Mg2*At*sqrt(1-z²)/(2*Mf2*Sf)) * (Lf*beta_f)/(Sf_prime*dust_coef_f)
+At = beta1*Sg² + 2 beta2*Sg Sf + beta3 Sf² = Sg² J(Sf/Sg)
+beta_f = sqrt(1+(theta_f_prime/Lf)²)
+dust_coef_f = beta_f + [P/(2 Mf2 Sf Sf_prime)]*theta_f_prime
+pLf_prime = -C0/C1  => C=0 IDENTIQUEMENT.
+```
+
+Le coefficient C1 est STRICTEMENT NÉGATIF sur un intervalle intérieur `r>0` où les marges `At,Lf,Sf,Sf',beta_f,dust_coef_f>0` et `|z|<1` établies en étapes 40–42 persistent. Cela permet une formulation en problème de Cauchy LOCAL pour le moment radial f, sous prescription régulière des autres données. **AUCUNE SOLUTION GLOBALE SUR [0,.85] n'a encore été construite**. Une solution de l'EDO avec centre régulier et DEUX poussières positives est un VERROU OUVERT. La conservation temporelle et la fixation des lapses restent ENTIÈREMENT OUVERTES.
+
+**Important :** cet outil n'est PAS un solveur de l'évolution cosmologique à deux métriques. Il ne donne pas encore une contrainte BD complète ni un comptage des degrés de liberté. Ne pas appeler cela « solution exacte JANUS-R ».
+
+## TESTS RÉELLEMENT PASSÉS ET REPRISE
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step45_exact_physical_ward.py tests/test_hr_step45_secondary_point_certificate.py tests/test_hr_step46_exact_secondary_ode.py
+# EFFECTIVEMENT EXÉCUTÉ : 32 PASSED en 2.04 s dans /mnt/data/janus-step45,
+# comprenant 24 contrôles Step45 + 8 nouvelles identités Step46, SANS adaptations.
+PYTHONPATH=. python -m numerics.hr_step46_exact_secondary_ode
+```
+
+Les SIX nouveaux fichiers source/test Step45–46 sont IDENTIQUES octet pour octet à leur version Github et exécutés en local. Tests ciblés sur équations hamiltoniennes symboliques / fractions exactes, **pas** suite entière, **pas** original Step33g→44 réexécuté intégralement cette session, **pas** CI.
+
+## RAPPEL STEP45 CONFIRMÉ
+
+- EXACT WARD: `K02=K12=K21=K22=0`, `K11=K20=2Mg2 Sg Sg' z/(Lg Lf)`, `W=K01-K10+(K20)'=z Hg/Lf`, donc `W=0` exactement sur `Hg=0`; shift `dHg/dz=Fz/Lg`, `dHf/dz=Fz/Lf` sur source originale. Hypothèses compact support, réduction sphérique et domaine régulier.
+- `C(q,q',z,z')` calculé sans différence finie, sans aucune dérivée seconde des 12 champs ou de z.
+- Pour le PROFIL POLYNOMIAL STEP41 FIGÉ et constantes décimales traitées comme fractions exactes, un encadrement rationnel exact prouve `6.5545288523431e-11 < C(r=.85) < 6.5545288523432e-11`. Ce PROFIL PARTICULIER n'est pas une solution exacte C=0 dans le modèle rationalisé ; cela ne réfute PAS l'existence d'autres solutions exactes. ATTENTION : source historique Step33g a des opérations flottantes ; ne pas confondre l'étalonnage rationnel avec toutes les instructions binary64.
+
+## PROCHAIN VERROU STEP47
+
+1. **INTÉGRER** l'EDO exacte `pLf'=-C0/C1` à partir d'un rayon intérieur r0>0, avec données de Step41 comme amorce, par une méthode contrôlée ; tester indépendamment `Hg,Hf,D_g+D_f,Fz,C` contre les Hamiltoniens originaux NON-IBP à des rayons hors ajustement.
+2. Explorer prolongement sur `r∈(.0,.85]`, sphéricité régulière `pLf=r²*P_f(r²)`, conditions au centre, décroissance des marges de poussière `pg,pf>0`, non-dégénérescence `J, K/r²>0`, éventuelle obstruction ou preuve de continuation.
+3. Une fois des données exactes ou certifiées : **PRÉSERVATION TEMPORELLE** `{C,Htotal}` avec tous SIX couples canoniques, fixation des lapses, matrice Dirac et branches exceptionnelles; ne jamais inférer ghost-free de Ward seul.
+4. Après cela seulement : vraie évolution non homothétique on-shell, contrôles physiques De Felice/Aoki de même action, pli et observations. Manuscrit externe JHR avec mauvais signe f-EH = piste critique séparée.
+
+**VERDICT : STEP45 IDENTITÉS WARD EXACTES ; STEP46 REFORMULATION EXACTE C=0 EN EDO LOCALE ; SOLUTION GLOBALE À DEUX POUSSIÈRES, DIRAC TEMPOREL ET LAPSES = OUVERTS ; GATE_2B=OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP45 TERMINÉ — 2026-10-22
 
 **BRANCHE ACTIVE UNIQUE :** `research/gate2b-nonhomothetic-transfer` ; ne pas modifier `main`, `research/v2-flrw`, ni réactiver GitHub Actions/workflows.
