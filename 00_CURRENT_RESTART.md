@@ -1,3 +1,73 @@
+# JANUS — REPRISE PRIORITAIRE : STEP48 TERMINÉ — 2026-10-22
+
+**SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw` ; GitHub Actions/workflows désactivés par l'utilisateur.
+
+**LIRE D'ABORD :** `research/STEP48_ORIGINAL_POISSON_AND_CENTER_FROBENIUS_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step48-report.json`.
+**CALCULATEUR POISSON ORIGINAL SUR IVP :** `numerics/hr_step48_original_ivp_oracle.py` blob `dc5101d4b0d1d5b8d0834aacff4a3ad3715a28db`.
+**CONDITION DU CENTRE :** `numerics/hr_step48_center_compatibility.py` blob `aa181529d33fcfa7d1e61a4525cade3e1b0ca4c7`.
+**TESTS :** `tests/test_hr_step48_center_and_original_ivp.py` blob `e1f2946eabb4e47335940c7ce010cfd7dbe2b505`.
+**ORACLE HISTORIQUE :** `numerics/hr_step37_original_nonibp_oracle.py` blob ORIGINAL EXACT GITHUB `005449ade6e3582e3b9a5c3374a881a77e73e3f6`.
+**ÉQUATION ORIGINE :** `numerics/hr_step45_exact_physical_ward.py`, `numerics/hr_step46_exact_secondary_ode.py`, `numerics/hr_step47_interior_ivp.py`.
+
+## AVANCÉE SCIENTIFIQUE RÉELLE : CONTRÔLE POISSON INDÉPENDANT
+
+Sur l'IVP NUMÉRIQUE de Step47 (r=.05→.85, données courbes non comobiles, DEUX poussières positives aux points contrôlés), reconstruction des 12 champs canoniques sur grille, y compris les horloges poussière `theta_i(r)=k_i*a_i*(r²/2+c_i*r⁴/2+c_i²*r⁶/6)`. Le vrai calculateur historique ORIGINAL NON-IBP `hamiltonians(q,r)` a été reconstruit OCTET POUR OCTET depuis GitHub (SHA ci-dessus), et ses sorties réelles et complexes ont été comparées à une autre implémentation indépendante des mêmes densités — matrices NumPy IDENTIQUES.
+
+Dérivées fonctionnelles du Poisson de TOUTES les 12 variables par complex-step nodal, six couples contractés. Deux choix de lapses compacts indépendants A et B, 4 grilles :
+
+```text
+n      crochet A             crochet B
+161    -5.909466422135e-7    -9.466192093556e-7
+321    -1.477085211689e-7    -2.366493849189e-7
+641    -3.692537306677e-8    -5.916200890277e-8
+1281   -9.231239094041e-9    -1.479048690706e-8
+```
+
+Richardson R4 sur les trois grilles les plus fines, en ASSUMANT développement en puissances paires de h (NON démontré) : **A -8.0411576792e-15**, **B -8.19811039928889e-15**. **C'EST UN CONTRÔLE NUMÉRIQUE INDÉPENDANT FAVORABLE** à la contrainte imposée via l'ODE analytique, pas une preuve du crochet continu exactement nul. Les crochets originaux de grilles finies restent NON NULS négatifs; primaires discrètes max ~1.24e-9 à n1281. Source dans rapport machine et module régénérable.
+
+Full JSON local effectivement généré `/mnt/data/janus-step48/research/reports/step48-local-nonibp-full.json`, SHA256 `dfc18acda78163dff61021f51429a06d6d2db4854d19655fb5dd939ab472b9a1` ; **PAS ENCORE UPLOADÉ** comme fichier GitHub séparé ; les données essentielles et les codes de reproduction sont PUBLIÉS.
+
+## NOUVEAU VERROU CENTRE — CONDITION EXACTE ET MODE SINGULIER
+
+En développant le **C PHYSIQUE EXACT de Step45** sur donnée sphérique régulière `Lg=a+O(r²), Lf=b+O(r²), pLg=Pg*r²+O(r⁴), pLf=Uf*r²+O(r⁴), pSg=2Pg*r+O(r³), pSf=Vf*r+O(r³), z=z1*r+O(r³)`, on obtient la relation exacte, avec `A*=a² beta1+2ab beta2+b² beta3` :
+
+```text
+lim C(r)/r² = -(m² A*)/(2 Mf² a b) *
+      [6 Mf² Mg² z1 a b - 3 Mf² Pg b + Mg² a (Uf+Vf)].
+```
+
+La primaire radiale f impose `Vf=2Uf` au centre régulier. Par conséquent, pour `A*>0`, condition NÉCESSAIRE exacte :
+```text
+Uf(0) = Mf²*b*( Pg/(Mg²*a) - 2*z1 )
+```
+= environ `-0.005252426896760733` pour le benchmark. L'ancien coefficient numérique figé donne `-0.005252426896763941`, écart ~`-3.20837e-15`. **Proximité ne signifie PAS égalité exacte.**
+
+L'équation linéarisée au centre donne `pLf'+pLf/r=3*Uf(0)*r+O(r³)`, d'où solution formelle `pLf=Uf(0)r²+Csing/r`. Une solution régulière doit éliminer `Csing/r` : l'IVP arrière n'est donc pas une preuve de régularité au centre. Essai de sensibilité : modifier `pLf(.05)` de `+1e-12` entraîne amplification mesurée ≈1.2499973 (r=.04), 2.4999873 (.02), 4.9999710 (.01), 9.9999401 (.005), 24.9998492 (.002), vs loi prédite `.05/r`. Ce mode est un développement FORMEL/LINÉARISÉ, non un théorème de singularité de la solution non linéaire.
+
+## PROVENANCE ET TESTS — NE PAS SURVENDRE
+
+NOUVEAUX trois fichiers exécutés localement ET byte-identiques à GitHub (blob SHA ci-dessus). Fichier oracle historique original également byte-identique. Les AUTRES dépendances historiques Step45–47, dans ce runtime local, sont des reproductions mathématiques/compatibilité et PAS les fichiers originaux bit-identiques. Ainsi, sur 12 tests du nouveau module :
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step48_center_and_original_ivp.py \
+   -k 'not test_original_provider_source_pins_match_real_checkout and not test_interrupted_run_manifest_keeps_Dirac_red'
+# ACTUELLEMENT 10 PASSED, 2 DESELECTED en 5.27 s.
+```
+
+Les 2 NON EXÉCUTÉS exigent les CINQ dépendances historiques authentiques dans UN checkout commun. Le module `numerics/hr_step48_original_ivp_oracle.py` vérifie les cinq Git blob SHAs **FAIL-CLOSED** en mode par défaut ; cette vérification a été contournée uniquement pour l'expérience locale, signalée `check_git=False` dans le JSON local, et NE DOIT PAS ÊTRE APPELÉE vérification complète GitHub. PAS de tests de tout dépôt ni de CI Actions.
+
+## SUITE PRIORITAIRE STEP49
+
+1. Obtenir dans UN environnement les CINQ vraies sources historiques SHA exactes, relancer `pytest -q tests/test_hr_step48_center_and_original_ivp.py` **sans filtre**, puis `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m numerics.hr_step48_original_ivp_oracle`. Enregistrer les résultats et tout échec. Ne pas débloquer CI.
+2. Résoudre le problème **À DEUX BORDS** : paramétrer `pLf=r² U(r²)`, imposer `U(0)=Uf0` déduit exactement ci-dessus, annuler le mode (1/r), construire une solution régulière par séries/Frobenius ou tir analytique/numérique certifié. Vérifier poussières positives CONTINÛMENT le long de la vraie solution IVP, J>0,K/r²>0.
+3. Calculer ensuite sur données exactement primaires+secondaires le VRAI Dirac temps `{C,Htotal}` avec six couples canoniques, rang, lapse fixing, secteurs exceptionnels J/K, bords; le contrôle Poisson spatial N,M ne remplace pas cela.
+4. Puis seulement évolution non homothétique on-shell, De Felice/Aoki même action, pli Candidate-C et observations. Ne pas fusionner avec manuscrit JHR externe de signe f-EH inversé.
+
+**VERDICT : STEP48 DEUX ORACLES POISSON CONCORDENT NUMÉRIQUEMENT SUR IVP; COMPATIBILITÉ AU CENTRE NÉCESSAIRE ANALYTIQUE DÉMONTRÉE ; CENTRE RÉGULIER GLOBAL NON DÉMONTRÉ ; PRÉSERVATION DIRAC / LAPSUS NON DÉRIVÉS ; GATE_2B=OPEN ; JANUS-R NON VALIDÉ.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP47 TERMINÉ — 2026-10-22
 
 **BRANCHE AUTORISÉE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer` ; `main` et `research/v2-flrw` inchangées, Actions/workflows désactivés.
