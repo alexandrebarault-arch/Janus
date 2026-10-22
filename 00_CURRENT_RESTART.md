@@ -1,3 +1,48 @@
+# JANUS — REPRISE PRIORITAIRE : STEP47 TERMINÉ — 2026-10-22
+
+**BRANCHE AUTORISÉE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer` ; `main` et `research/v2-flrw` inchangées, Actions/workflows désactivés.
+
+**LIRE EN PREMIER :** `research/STEP47_INTERIOR_SECONDARY_ODE_INTEGRATION_AUDIT.md`.
+**RAPPORT :** `research/reports/gate2b-step47-report.json`.
+**SOLVEUR INTÉRIEUR :** `numerics/hr_step47_interior_ivp.py` Git blob `c558a827939f2e1fffbfc0290f2b3cc88cb69ef9`.
+**TESTS :** `tests/test_hr_step47_interior_ivp.py` Git blob `1e64b528bf87142f2d1059ac736b2d4ee7a79de5`.
+**ÉQUATION EXACTE :** `numerics/hr_step46_exact_secondary_ode.py` + `numerics/hr_step45_exact_physical_ward.py`.
+
+## RÉSULTAT SCIENTIFIQUE — PREMIÈRE INTÉGRATION NUMÉRIQUE DE L'EDO SECONDAIRE EXACTE
+
+Les étapes45–46 ont démontré les identités physiques de Ward dans la réduction sphérique et dérivé EXACTEMENT `C=K00-(K01)'` sans différences finies, puis `pLf'=-C0/C1` par élimination des deux contraintes primaires f. Étape47 : INTÉGRATION numérique de cette EDO sur `r∈[.05,.85]` avec données g/métriques/poussières prescrites, poussières f recalculées de leurs primaires à chaque point, métriques courbes, phases de poussières non comobiles et déplacement relatif non nul.
+
+- RK adaptatif `scipy.solve_ivp` : `rtol=1e-10,atol=1e-14,max_step=.02`, 338 RHS, `pLf(.05)=-1.3126131492021531e-05`, `pLf(.85)=-.0033864293564877215`.
+- 33 points hors collocation : `min(pg/r²)=.8856203218885325`, `min(pf/r²)=.11186483299522221`, toutes DEUX poussières POSITIVES AUX POINTS TESTÉS.
+- Contre-calcul primaire à partir des densités ADM sphériques ORIGINALES reconstruites : max `|Hg|≈1.11e-15`, `|Hf|≈1.39e-17`, `|Ddiag|≈1.37e-16`, `|Fz|≈1.37e-16`; résidu `|C|` de substitution analytique max `1.58e-14` (petit **PAR CONSTRUCTION**, donc pas un contrôle Poisson original indépendant).
+- Trois tolérances donnent extrémités `-.0033864293564835235`, `-.0033864293564877215`, `-.0033864293564879007`; différences successives `4.20e-15`, `1.79e-16`. C'est une CONVERGENCE NUMÉRIQUE, PAS une erreur globale certifiée.
+- À AUCUN MOMENT le r=0 centre n'est franchi, ni la positivité de la poussière continue du nouvel IVP démontrée. Les bornes Step40–42 du profil POLYNOMIAL figé ne sont PAS transférables sans preuve au nouveau profil non polynomial.
+
+## EXACTE REPRODUCTION — TESTS EFFECTIVEMENT EXÉCUTÉS
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step45_exact_physical_ward.py tests/test_hr_step45_secondary_point_certificate.py tests/test_hr_step46_exact_secondary_ode.py tests/test_hr_step47_interior_ivp.py
+# ACTUELLEMENT EXÉCUTÉ : 39 PASSED ~3.94 s, 12+12+8+7. Tous nouveaux fichiers exécutés byte-identical SHA GitHub.
+
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step47_interior_ivp
+
+# Si les 33 points complets sont nécessaires :
+PYTHONPATH=. python -c "import json;from numerics.hr_step47_interior_ivp import integrate_interior;print(json.dumps(integrate_interior(),indent=2))"
+```
+
+Le JSON 33 points détaillé a été généré dans `/mnt/data/janus-step45/research/reports/gate2b-step47-interior-run.json` mais PAS uploadé en tant que tel sur Github. Le rapport condensé et code de régénération sont PUBLIÉS. CI/workflows désactivés. Suite complète GitHub d'avant Step45 NON réexécutée cette session.
+
+## PROCHAIN STEP48 — VERROU RÉEL
+
+1. Refaire le CROCHET POISSON INDEPENDANT **NON INTÉGRÉ PAR PARTIES** du modèle original sur le NOUVEL IVP nonpolynomial par interpolation/sampling, vérifier convergence 161/321/641/1281 à DEUX fonctions de lapses, sans substituer son algèbre C par construction.
+2. **CERTIFIER** en continu par intervalles l'IVP radial (error enclosure et poussières positives) et analyser le point singulier/centre `r=0`. Chercher existence/unicité régulière ou obstruction. Contrôler J/K et conditions de bord.
+3. Après une vraie donnée exactement contrainte vérifiée, dériver/calculer `{C,Htotal}` pour tous SIX couples canoniques, lapseratio et rang Dirac incluant branches exceptionnelles. Ne pas conclure BD à partir de Ward/ODE seuls.
+4. Puis seulement vraie évolution cosmologique on-shell, critères De Felice/Aoki de même action, Candidate-C, observations.
+
+**ÉTAT : Step45 WARD EXACT, Step46 ODE SECONDAIRE EXACTE, Step47 IVP INTÉRIEUR NUMÉRIQUE TRÈS BON (PAS CERTIFIÉ GLOBAL), GATE_2B=OPEN, JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP46 TERMINÉ — 2026-10-22
 
 **BRANCHE ACTIVE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne PAS toucher `main`, `research/v2-flrw` ; ne PAS réactiver Github Actions/workflows.
