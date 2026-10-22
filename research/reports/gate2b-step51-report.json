@@ -40,7 +40,33 @@
     "raw_uploaded_github": false,
     "other_history_beyond_step46": "Original Step45 secondary-primary calculator, Step47 and Step48 sources have NOT yet been gathered bit-identical in this local worktree; two full-provider Step48 tests remain PENDING",
     "whole_repository_suite": false,
-    "github_actions": false
+    "github_actions": false,
+    "original_step48_five_pinned_source_files": {
+      "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step45_secondary_point_certificate.py": "6ab94dacb0c6429bdce8d71311161a6b76ecc0e6",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step47_interior_ivp.py": "c558a827939f2e1fffbfc0290f2b3cc88cb69ef9"
+    },
+    "step48_runner_original": "numerics/hr_step48_original_ivp_oracle.py git blob dc5101d4b0d1d5b8d0834aacff4a3ad3715a28db; execution with check_git=True passed",
+    "new_additional_test": "tests/test_hr_step51_original_chain.py",
+    "new_additional_test_blob": "2687e7279ddda3c1b0bc8ea2ba340cab0ce3499d",
+    "step51_total_targeted_passes": 13,
+    "step51_total_runtime": "13 passed in 14.54 s",
+    "step48_independent_original_grid_brackets": {
+      "A_161": -5.909466451194632e-7,
+      "A_321": -1.4770852485167414e-7,
+      "A_641": -3.6925374684076886e-8,
+      "B_161": -9.466192080859973e-7,
+      "B_321": -2.3664938826562995e-7,
+      "B_641": -5.916200850443823e-8
+    },
+    "remaining_import_adapters": [
+      "numerics/hr_curved_moving_dust_primary.py: import-only constants/R/Q dependency reconstructed, GitHub exact blob NOT present locally in this execution",
+      "numerics/hr_curved_primary_mixed_kernel.py: import-only canonical Q tuple, GitHub exact blob NOT present locally in this execution"
+    ],
+    "authentic_coverage": "Five pinned original Step48 provider source blobs, plus original Step48 runner, now executed with fail-closed SHA check. This removes the five-pin obstruction; two upstream import-only adapters remain so do not describe whole dependency closure as original.",
+    "original_step48_two_previous_deselected_tests": "Their two capabilities (five original Git hash pin check, and original Poisson 3-grid dual-lapse report) were executed and tested in a NEW Step51 test module. The historical Step48 test file itself was NOT re-run unfiltered, and the center compatibility module was not reloaded in this worktree."
   },
   "github_branches": {
     "verified_preservation_commit": "4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7",
@@ -65,7 +91,7 @@
   },
   "next_step52": [
     "Derive interval-rational certificate for U1 or an explicit symbolic algebraic expression by truncated Taylor-series arithmetic, rather than continuing small-r extrapolation.",
-    "Rebuild exact full historical Step45/46/47/48 source files and run the 2 pending Step48 original-provider tests unfiltered.",
+    "Replace the two upstream Step33g/curved-kernel import-only adapters with actual GitHub source bytes, re-run full unfiltered historical Step48 test suite, and include all original cases. Five pinned Step48 provider files and original three-grid dual-lapse oracle are already verified, but not whole dependency closure.",
     "Validate center-regular radial ODE on [0,.85] by rigorous enclosure and certify both dusts positive continuously, as well as J/K denominators.",
     "Compute true six-canonical-pair Dirac secondary TIME-PRESERVATION, lapse fixing and full constraint rank; maintain Gate2B OPEN until this is resolved."
   ],
