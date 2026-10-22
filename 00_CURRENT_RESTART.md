@@ -1,3 +1,66 @@
+# JANUS — REPRISE PRIORITAIRE : STEP54 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE POUR LES ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. Ne PAS réactiver GitHub Actions/workflows. Ne PAS modifier le `main` historique ni `research/v2-flrw`. **GATE 2B OUVERT ; JANUS-R NON VALIDÉ.**
+
+**À LIRE ABSOLUMENT EN PREMIER :** `research/STEP54_CONDITIONAL_CONTINUUM_TWODUST_INTERVAL_TUBE_AUDIT.md`.
+**RAPPORT MACHINE / FRACTIONS EXACTES :** `research/reports/gate2b-step54-report.json`.
+**CODE D'INTERVALLES :** `numerics/hr_step54_interval_tube.py`, Git blob `c2db1e6a4888194fc6f79aaee866efdad479dbfb`.
+**9 TESTS :** `tests/test_hr_step54_interval_tube.py`, Git blob `d1dc7407ae1781aa742cab09cff0fc5a24bce66e`.
+**FOURNISSEURS ORIGINAUX OCTET-IDENTIQUES GITHUB :** `numerics/hr_step45_exact_physical_ward.py` blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et `numerics/hr_step46_exact_secondary_ode.py` blob `bac025c28dbe1561c0c36c56dbfda46dc326f804`. Ces deux copies originales ont été effectivement vérifiées par le programme de Step54 en local.
+**PRÉCÉDENT CENTRE :** `research/STEP53_EXACT_CENTER_U2_AND_SHOOTING_AUDIT.md` et `research/reports/gate2b-step53-report.json` (U0,U1,U2 exacts dans corps quadratique rationnel du benchmark).
+
+## AVANCÉE STEP54 : POSITIVITÉ *CONTINUE* POUR UNE CLASSE CONDITIONNELLE DE PROFILS
+
+Nouvelle preuve de **signes continus sur TOUT `r∈[0,.85]`** grâce à 256 cellules d'intervalles exacts en `s=r²∈[0,.7225]`, chacune couvrant tous les réels de sa cellule (AUCUN échantillonnage flottant pour les signes). Arithmétique par entiers à grille `1e-30`, arrondis sortants sur TOUS `+,-,*,/,sqrt`, `math.isqrt`, bornes RATIONNELLES certifiées pour U1/U2 des étapes52/53. Le centre r=0 est compris par normalisation analytique.
+
+Pour le benchmark sphérique prescrit, posons `P(r)=pLf(r)`, `U=P/r²`, `V=P'/r`, `Ustar(s)=U0+U1*s+U2*s²` et `Vstar(s)=2U0+4U1*s+6U2*s²`.
+
+**THÉORÈME DE SIGNES CONDITIONNEL :**
+```text
+SI POUR TOUT r in [0,.85], (par prolongement régulier en r=0) :
+   |U(r²)-Ustar(r²)| <= 0.01
+   |V(r²)-Vstar(r²)| <= 0.01
+ALORS SUR TOUT CE CONTINUUM :
+   pg/r² > 0.8854
+   pf/r² > 0.063
+   J > 0.659
+   K/r² > 0.229
+   both dust lapse coefficients >0.998
+   Sf' >0.230
+   sqrt(1-z²)>0.9999
+```
+
+Les fractions inférieures EXACTES sont sauvegardées in extenso dans rapport machine. Tube plus fin `delta=0.0001` permet `pf/r²>0.1111`. Source de poussière f vérifiée indépendamment en mpmath 75 chiffres sur quatre rayons contre l'expression symbolique ORIGINALE `hr_step46_exact_secondary_ode.py:p_f`.
+
+**TRÈS IMPORTANT : NOUS N'AVONS PAS PROUVÉ QUE LA SOLUTION RADIALE EXACTE DE `pLf'=-C0/C1` APPARTIENT À CE TUBE.** Donc encore AUCUNE preuve d'existence globale exacte ou de positivité positive de la vraie trajectoire, malgré la preuve continue CONDITIONNELLE. Le prochain verrou est désormais **UNE INÉGALITÉ DE PROXIMITÉ SUR LA SOLUTION ET SA DÉRIVÉE NORMALISÉE**, pas un nouveau simple tableau d'échantillons.
+
+## TESTS RÉELLEMENT PASSÉS ET REPRODUCTION
+
+```bash
+# Depuis checkout contenant scripts Github authentiques
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step54_interval_tube.py
+# EFFECTIVEMENT EXÉCUTÉ EN LOCAL /mnt/data/janus-step54 : 9 PASSED en 2.03s.
+
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -c 'import json;from numerics.hr_step54_interval_tube import certify;print(json.dumps(certify(256,"0.01"),indent=2))'
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step54_interval_tube
+```
+
+Les deux nouveaux blobs GitHub CODE/TEST = EXACTEMENT OCTETS EXÉCUTÉS. Deux vrais sources physiques historiques Step45/46 aussi byte-identical aux blobs GitHub. Ne pas affirmer une exécution complète des historiques Step33g→53 : tests ciblés 9, pas suite entière, pas CI. Une première version a échoué sur une garde de `profiles(s<0)` : bug CORRIGÉ puis les neuf tests RÉUSSIS.
+
+JSON des 256 cellules locales : `/mnt/data/janus-step54/research/reports/gate2b-step54-tube_001.json`, SHA256 `708fad17c8e88520a0eb0122a49c60caaa22daeb09be543a0e513ef08dc2c378` ; `gate2b-step54-tube_0001.json`, SHA256 `c60f48da3569ec40e7e8a1c024af061eb35e2e8d5234f5dce130fc9b36b24212`. Les traces n'ont PAS été uploadées séparément mais leurs minima rationnels, le code régénérateur et toutes données essentielles figurent dans `research/reports/gate2b-step54-report.json`.
+
+## NEXT STEP55 : DERNIER VERROU RADIAL FORMALISÉ
+
+1. **CERTIFIER L'APPARTENANCE DE LA VRAIE SOLUTION AU TUBE** : à partir de `2s U_s=G(s,U)-2U`, `G(0,U)=3U0-U`, et des U1/U2 algébriques exacts, construire des bornes d'EDO a posteriori à intervalles (barrières haute/basse, contraction Picard ou Chebyshev). Prouver `|U-Ustar|<=0.01` ET `|V-Vstar|<=0.01` de s=0 à .7225. La preuve de signes Step54 s'appliquera alors AUTOMATIQUEMENT à la véritable solution. Chercher des seuils plus fins si utile.
+2. Après cela relancer un oracle Poisson NON-IBP original pour la trajectoire enveloppée ; ne pas compter le résidu C par construction comme contrôle indépendant.
+3. **TOUJOURS MAJEUR :** calculer le vrai crochet de PRÉSERVATION TEMPORELLE `{C,H_total}` de l'action originale avec SIX couples canoniques, bords, fixation des lapses, rang de Dirac, chartes J/K exceptionnelles. Rien de cela n'est établi par Step54.
+4. Enfin éventuelle évolution cosmologique non homothétique on shell et stabilité même action ; manuscrit externe JHR de signe f-EH opposé reste voie d'audit distincte.
+5. **ADMIN GITHUB** : les anciens commits main/V2 sont déjà ancêtres de la branche active par `4f7a3a1`, la PR brouillon historique #1 est fermée sans fusion. GitHub affiche encore TROIS branches avec défaut `main`. Le connecteur ne sait toujours PAS modifier le défaut ni supprimer refs. Propriétaire via Settings > Default branch choisir active, puis supprimer V2/main dans Branches. Ne pas prétendre suppression faite avant vérification.
+
+**STATUT FINAL : PROPOSITION DE POSITIVITÉ RIGOUREUSE SUR TOUT LE CONTINUUM SOUS HYPOTHÈSE DE TUBE, HYPOTHÈSE NON ENCORE PROUVÉE POUR LA VRAIE EDO ; CONSERVATION TEMPORELLE DIRAC NON CALCULÉE ; GATE_2B=OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP53 TERMINÉ — 2026-10-22
 
 **LIRE CETTE SECTION EN PREMIER.** Branche scientifique ACTIVE UNIQUEMENT : `research/gate2b-nonhomothetic-transfer`. Ne PAS réactiver GitHub Actions/workflows ni modifier `main`/V2. **Gate 2B OUVERT, JANUS-R NON VALIDÉ.**
