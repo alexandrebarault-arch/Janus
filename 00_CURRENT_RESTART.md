@@ -1,3 +1,65 @@
+# JANUS — REPRISE PRIORITAIRE : STEP52 TERMINÉ — 2026-10-22
+
+**BRANCHE SCIENTIFIQUE AUTORISÉE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne pas écrire dans `main`, `research/v2-flrw`, ne pas réactiver Actions/workflows. **NE PAS AFFIRMER JANUS-R VALIDÉ**.
+
+**LIRE D'ABORD :** `research/STEP52_EXACT_CENTER_U1_RATIONAL_TAYLOR_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step52-report.json` contient les fractions EXACTES A,B,H² et les bornes.
+**NOUVEAU CODE :** `numerics/hr_step52_exact_center_taylor.py`, Git blob `b7da7e5272e08819fc89053fdf15852fcf4cc536`.
+**NOUVEAUX TESTS :** `tests/test_hr_step52_exact_center_taylor.py`, Git blob `cf9416641583de47ab0d60f4527bca7ce60d2806`.
+**DÉPENDANCES PINNÉES EXACTES :** `numerics/hr_step45_exact_physical_ward.py` SHA `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, `numerics/hr_step46_exact_secondary_ode.py` SHA `bac025c28dbe1561c0c36c56dbfda46dc326f804`.
+**PRÉCÉDENT :** `research/STEP51_AUTHENTIC_CENTER_U1_AND_BRANCH_ADMIN_AUDIT.md`.
+
+## AVANCÉE PRINCIPALE : COEFFICIENT U1 EXACTEMENT ALGÉBRIQUE ET BORNÉ
+
+Au lieu de l'estimation non rigoureuse de Step51, calcul par jets de LAURENT avec coefficients `A+B*sqrt(H²)` dans le corps quadratique rationnel de la calibration sphérique Step41, à partir du SECOND MEMBRE PHYSIQUE de l'EDO `pLf'=-C0/C1` dérivée du vrai noyau de Poisson sphérique à six couples canoniques.
+
+```text
+pLf(r) = r² (U0 + U1*r² + ...)
+U0 = Mf²*b*(Pg/(Mg²*a)-2*z1)
+G(s,U) = pLf'(sqrt(s), pLf=s*U)/sqrt(s) ; G(0,U)=3U0-U
+U1 = (partial_s G)(0,U0)/5
+U1 = A + B*sqrt(H²)   ;   A,B,H² EXACTEMENT RATIONNELS
+0.0007897451667202464909325108904961683602148118201690
+   < U1 <
+0.0007897451667202464909325108904961683602148118201692
+```
+
+Le programme calcule les deux fractions A,B exactement avec `Fraction` (et H²). Radicaux et dénominateurs développés en jets formels avec propagation conservatrice de la première puissance inconnue. Les TRONCATURES 14,20,26 donnent EXACTEMENT les mêmes A,B ; les termes omis ne peuvent atteindre les puissances r^0..r³ (leurs ordres d'inconnu : r^9,r^15,r^21). La racine positive sqrt(H²) est encadrée par `isqrt` sur grille 10^-90, puis A+B sqrt(H²) par EXACTES fractions. Largeur réelle de l'encadrement ≈8.30667e-96, donc <1e-80. AUCUNE extrapolation numérique utilisée pour la preuve de cette valeur centrale.
+
+**Limite** : le certificat vaut pour les paramètres de l'étalonnage imprimé traités comme fractions décimales exactes, et pour l'action sphérique primaire-réduite. Pas une borne sur les arrondis binary64 du logiciel historique, ni une solution radiale complète.
+
+## TESTS ET PROVENANCE — RÉELLEMENT EXÉCUTÉS
+
+```bash
+cd /mnt/data/janus-step52
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step52_exact_center_taylor.py
+# ACTUELLEMENT EXÉCUTÉ : 8 PASSED in 11.01s
+
+JANUS_JET_ORDER=14 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step52_exact_center_taylor
+JANUS_JET_ORDER=20 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step52_exact_center_taylor
+JANUS_JET_ORDER=26 OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step52_exact_center_taylor
+```
+
+Les deux nouveaux fichiers code/tests ont des Git blobs EXACTEMENT IDENTIQUES aux octets locaux exécutés ; les deux fournisseurs historiques Step45/46 sont eux aussi bit-identiques GitHub. Contrôles : SHA fail-closed, corps quadratique, coefficients centraux/termes absents, reste jet >r³, même A,B à 3 ordres, bornes fractions strictes et oracle haute précision Step51 indépendant. C'est une suite ciblée, pas le dépôt entier.
+
+Le JSON brut local réellement généré `/mnt/data/janus-step52/research/reports/step52-u1-jet-20.json` a SHA256 `069191a6e92c7474677c3b5a004de0affba94c1ede63f1debfe253d09d3fca6f` mais n'a PAS été uploadé séparément ; les fractions exactes A,B,H² et les bornes sont enregistrées dans le rapport GitHub `research/reports/gate2b-step52-report.json`.
+
+## BRANCHES — RÉDUCTION NOMINALE ENCORE NON RÉALISÉE
+
+Commits des 3 branches déjà préservés sans changement de tree dans l'ascendance active grâce au commit `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7`. PR brouillon historique #1 **FERMÉE SANS FUSION**. Mais GitHub a TOUJOURS `default=main`, trois refs `main`, `research/v2-flrw`, `research/gate2b-nonhomothetic-transfer`. Le connecteur n'offre pas modifier branche par défaut ni supprimer des refs. Propriétaire : changer Default branch à `research/gate2b-nonhomothetic-transfer` dans Settings, PUIS supprimer V2 et main dans Branches, puis vérifier liste réelle. Ne pas mentir sur cette opération.
+
+## NEXT STEP53 : PRIORITÉ SCIENTIFIQUE
+
+1. Utiliser CE VRAI U1 (exact) dans le tir régulier depuis r≈0 ; développer éventuellement U2 avec jets à reste contrôlé. Évaluer les différences de raccordement sans les présenter comme borne d'erreur globale.
+2. Réunir en un SEUL checkout tous les imports upstream historiques Step33g/37/45/46/47/48 strictement byte-identiques ; relancer sans filtre la suite Step48 puis tests Step49/51/52. Deux imports antérieurs encore adaptateurs sont à remplacer.
+3. Construire un vrai certificat continu de prolongement régulier U(s) sur [0,.85], densités poussières `pg/r²,pf/r²>0`, chartes J,K/r², et bornes de résidu/EDO.
+4. Calculer la VRAIE préservation temporelle `{C,Htot}` des six couples canoniques avec bords, rang de Dirac et fixation des lapses. Ne pas déduire ghost-free du calcul du coefficient central.
+5. Veiller à tenir `00_CURRENT_RESTART.md` et GitHub à jour à chaque interruption.
+
+**VERDICT : U1 ANALYTIQUE EXACT POUR BENCHMARK RATIONNEL = CERTIFIÉ ; SOLUTION RADIALE GLOBALE ET DIRAC TEMPOREL NON ÉTABLIS ; GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # CORRECTION D'AUTORISATIONS GITHUB — VÉRIFIÉ 2026-10-22
 
 **Fait établi :** le compte GitHub authentifié `alexandrebarault-arch` possède `permission=admin` sur `alexandrebarault-arch/Janus` (outil GitHub `get_repo_collaborator_permission`). Les affirmations antérieures laissant entendre que l'UTILISATEUR n'avait pas les droits sont ERRONÉES. Il possède bien l'administration du dépôt.
