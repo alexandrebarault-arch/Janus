@@ -1,3 +1,72 @@
+# JANUS — REPRISE PRIORITAIRE : STEP49 TERMINÉ — 2026-10-22
+
+**BRANCHE AUTORISÉE EXCLUSIVE :** `research/gate2b-nonhomothetic-transfer`. NE modifier NI `main` NI `research/v2-flrw`. NE PAS réactiver GitHub Actions/workflows.
+
+**LIRE D'ABORD :** `research/STEP49_ANALYTIC_CENTER_AND_OUTWARD_SHOOTING_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step49-report.json`.
+**CODE CENTRE ANALYTIQUE :** `numerics/hr_step49_analytic_center.py`, Git blob `d570948912885d45a625fa2db31c6a5435b6a654`.
+**TESTS CENTRE ANALYTIQUE :** `tests/test_hr_step49_analytic_center.py`, blob `8f14de90a296f53f372dde4a29fc63149473644b`.
+**CODE TIR FROBENIUS :** `numerics/hr_step49_regular_center_shoot.py`, blob `ef1316505f03ee030b29b91e0edfaa5e480132cc`.
+**TESTS TIR :** `tests/test_hr_step49_regular_center_shoot.py`, blob `2db400a4b41541983dd49a5fab2d4d0777789aa4`.
+**PRÉCÉDENT STEP48 :** `research/STEP48_ORIGINAL_POISSON_AND_CENTER_FROBENIUS_AUDIT.md`.
+
+## NOUVEAU THÉORÈME CENTRE LOCAL, CONDITIONNEL AUX DONNÉES ANALYTIQUES
+
+À partir du VRAI (C=K00-(K01)') du Hamiltonien sphérique ADM-HR positif et DEUX poussières canoniques (Step45), après élimination des deux primaires f (Step46), posons `s=r²`, `pLf(r)=r² U(s)`, `W=pLf'/r`. Une substitution PARITAIRE générale dans l'expression physique donne EXACTEMENT `C/r²` PAIR et analytique en r au centre dans la charte régulière avec autres fonctions canoniques analytiques paires en s, racines et dénominateurs non nuls.
+
+La dérivée implicite CENTRALE exacte est `d(C/r²)/dW = -m² Mg² (a² beta1+2ab beta2+b² beta3)/(2 Mf² b)`, non nulle si `Astar>0`. Ainsi `W=G(s,U)` analytique locale, avec `G(0,U)=3U0-U`, où
+
+```text
+U0=Mf²*b*(Pg/(Mg²*a)-2*z1) ;
+2*s*U_s=G(s,U)-2U ;
+s*U_s=-(3/2)*(U-U0) + (s/2)*R(s,U) ; R analytique.
+```
+
+Une équation intégrale de Volterra contractive pour petit s assure l'UNIQUE solution ANALYTIQUE LOCALE régulière dans cette famille de DONNÉES INITIALES prescrites analytiques ; le mode `U-U0=C*s^(-3/2)`, donc `pLf=C/r`, est écarté. Ce résultat n'est PAS une preuve de l'existence globale sur `r∈[0,.85]` ni de la préservation temporelle par les lapses.
+
+Une vérification RATIONNELLE EXACTE indépendante des formules de poussières au centre avec racine `H=sqrt(H²)` encadrée par `isqrt` donne `pg/r²|0=1107/1250=0.8856` et `pf/r²|0>0.1242` (approx `0.1242700002620524`), `J(y)>0.65`. Les sources restent strictement positives dans un CERTAIN voisinage du centre, par analyticity/continuité. Taille de ce voisinage NON bornée ici.
+
+## INTÉGRATIONS VERS L'EXTÉRIEUR ET DONNÉES EFFECTIVEMENT TESTÉES
+
+`U(s)=U0+U1*s+...`, `U1=(∂_s G)(0,U0)/5` exactement en formalisme; `U1≈0.0007897451669079507` ESTIMÉ numériquement par Richardson, PAS dérivé avec borne d'erreur rationnelle. Tir numérique `solve_ivp` à partir de rayon `eps>0`, données `pLf(eps)=U0 eps²` ou `U0 eps²+U1 eps⁴`, jusqu'à `.85`; référence `eps=.001`, `pLf(.85)=-.003386429356487895`, proche de Step47.
+
+```text
+eps      |endpoint order0 - reference|     |endpoint order1 - reference|
+.05       2.9086971547e-10                 9.2725306600e-15
+.025      9.0899401721e-12                 7.0689981646e-17
+.0125     2.8406357128e-13                 1.7347234760e-18
+.00625    8.8783147500e-15                 4.3368086899e-18
+```
+
+L'erreur de coupure d'ordre0 chute ≈32 par division du rayon par deux : signature numérique attendue `O(eps^5)`; ordre1 cohérent au départ avec amélioration `O(eps^7)`, puis plancher flottant. **CE NE SONT PAS DES BORNES CERTIFIÉES SUR L'EDO CONTINUE.**
+
+129 rayons [.05,.85] : `min(pg/r²)≈.8856203219`, `min(pf/r²)≈.1118648330`, `max|C_algebraically_substituted|≈1.74e-14`. Ce sont des ÉCHANTILLONS POSITIFS, PAS un certificat continu le long du nouvel IVP.
+
+## TESTS ET PROVENANCE RÉELS
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step49_regular_center_shoot.py tests/test_hr_step49_analytic_center.py
+# EFFECTIVEMENT EXÉCUTÉ : 21 PASSED en 4.41 s, depuis /mnt/data/janus-step49.
+
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step49_regular_center_shoot
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step49_analytic_center
+```
+
+Les QUATRE nouvelles sources/tests sont OCTET POUR OCTET IDENTIQUES aux blobs GitHub vérifiés. MAIS les dépendances HISTORIQUES Step45/46/47 du runtime local ont été reconstruites fidèlement par des adaptations mathématiques et NE SONT PAS les fichiers historiques GitHub strictement byte-identiques. Donc une régression authentique de toutes les dépendances est ENCORE BLOQUÉE ; les DEUX tests Step48 désélectionnés n'ont PAS été réexécutés. Ni suite entière du dépôt ni CI. Ne PAS dissimuler cette provenance.
+
+JSON détaillés locaux générés : `/mnt/data/janus-step49/step49-local.json` SHA256 `45f59ca454ad1c9733d17049c72c175d94f54c663058ea47f79743ca8d9bc13a` ; `/mnt/data/janus-step49/step49-center-theorem.json` SHA256 `c197212b6c38e49a6f9d45694d3798dae5672f4c10d0acf0814981d6615c4be7`. Leurs résultats essentiels sont sauvegardés dans rapport GitHub; ces deux fichiers locaux JSON détaillés n'ont PAS été ajoutés au repo.
+
+## PROCHAIN STEP50 — VERROUS OUVERTS
+
+1. Recréer EN UN SEUL CHECKOUT les véritables Step45/46/47 bytes GitHub, lancer Step48 complet SANS DEUX tests désélectionnés + 21 tests Step49. Empreintes sources obligatoires.
+2. Établir par ODE à intervalles, Chebyshev/résidus vérifiés ou bornes rigoureuses la CONTINUATION GLOBALE de la branche analytique régulière `U(s)` jusque `.85`, les erreurs numériques, la positivité CONTINUE des deux poussières et toutes marges de chartes J/K/coefficients de poussière. Prochaine extension utile: dériver `U1` SYMBOLIQUEMENT, pas Richardson.
+3. Seulement sur données exactement contraintes, calculer la PRÉSERVATION TEMPORELLE `{C,Htotal}` pour les SIX couples canoniques, fixation des lapses et rang Dirac, bords et J/K exceptionnels. Ne pas déclarer absence BD avant cela.
+4. Puis véritables cosmologies non homothétiques ON-SHELL, De Felice/Aoki même action, pli Candidate-C et observations. Critique du manuscrit JHR f-EH signe inversé = autre piste.
+
+**STATUT : CENTRE ANALYTIQUE LOCAL CONDITIONNEL DÉMONTRÉ ; POUISSIÈRES POSITIVES STRICTES AU CENTRE CERTIFIÉES ; TIR NUMÉRIQUE VERS .85 TRÈS CONVERGENT ; CONTINUATION GLOBALE ET DIRAC TEMPOREL OUVERTS ; GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP48 TERMINÉ — 2026-10-22
 
 **SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw` ; GitHub Actions/workflows désactivés par l'utilisateur.
