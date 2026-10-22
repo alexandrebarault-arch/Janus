@@ -91,7 +91,6 @@ def test_interrupted_run_manifest_keeps_Dirac_red():
     assert r['two_lapse_pairs']['B']['richardson_exploratory']['R4']
 
 
-
 def test_formal_center_singular_mode_is_one_over_r():
     s=center_relation()
     U=s['variables'][4]
