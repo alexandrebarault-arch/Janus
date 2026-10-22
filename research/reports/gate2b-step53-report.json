@@ -1,0 +1,97 @@
+{
+  "step": 53,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "result": "Second regular-center coefficient U2 in pLf=r²(U0+U1*r²+U2*r⁴+O(r⁶)) EXACTLY algebraic on specified rationalized spherical original-action primary-reduced benchmark; numeric outward initial-value correction experimentally improves shooting.",
+  "exact": {
+    "U2_formula": "U2=A2+B2 sqrt(H2), A2,B2,H2 exactly rational, positive sqrt branch",
+    "H2": "1111887094969374384953162712427069073394495655204338071814597909773/195312500000000000000000000000000000000000000000000000000000000000",
+    "A2": "-14997892859379488055457427165050181775143525323443531233673102081521422386327260215632832122037985810940893056131981416416789281043718577217861935014493087270554329421787667582713339204073/1491262036204853161397313216447633759700792407771126687799189954793726633211303525924682617187500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "B2": "-148860594297263950720399888334271708494082450765858400863201279047168312667610491558699083975512155777831635281920753879792061590225885832534763026131925551299602867810851854568989/21303743374355045162818760234966196567154177253873238397131285068481809045875764656066894531250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "display_U2": "-0.000010073853486743828175736890952863935933883641943763773429699704274",
+    "U1_exact_matched_step52_A_B": true,
+    "frozen_calibration_all_inputs_exact_decimal_rationals": true,
+    "formal_method": "evaluate actual Step46 physical pLf' RHS twice using Laurent jets in Q(H); first at P=U0*r² yields coefficient r³/5=U1; then at P=r²(U0+U1*r²), coefficient r³==4U1 exactly, coefficient r⁵/7=U2. Remainders carried conservatively; positive sqrt(H²) bounded by integer-isqrt at 10^-100 and exact fraction propagation.",
+    "formal_orders": [
+      12,
+      14,
+      18,
+      22
+    ],
+    "unknown_coefficient_first_possible_r_power": [
+      7,
+      9,
+      13,
+      17
+    ],
+    "unknown_power_all_above_target_5": true,
+    "A2_B2_identical_as_exact_fractions_at_all_four_orders": true,
+    "certified_sign": "U2 STRICTLY NEGATIVE, exact Fraction interval with width <1e-100 (not merely a floating sign)",
+    "strict_display_bounds": [
+      "-0.00001007385348674382817573689095286393593388364194376377344",
+      "-0.00001007385348674382817573689095286393593388364194376377342"
+    ]
+  },
+  "numeric_shooting": {
+    "algorithm": "Same Step46 symbolic primary-reduced ODE pLf'=-C0/C1 on prescribed original curved noncomoving two-dust spherical background, integrated with SciPy DOP853 (rtol 2e-12,atol 1e-18,max step 0.012) from cutoff radius to .85",
+    "reference_eps": 0.001,
+    "reference_initial_terms": "U0*r²+U1*r⁴+U2*r⁶",
+    "reference_endpoint_pLf": -0.0033864293564879076,
+    "cutoffs": [
+      {
+        "eps": 0.05,
+        "error_vs_reference_with_U0_U1": 9.270795936489051e-15,
+        "error_with_U0_U1_U2": 4.336808689942018e-19
+      },
+      {
+        "eps": 0.025,
+        "error_with_U0_U1": 8.109832250191573e-17,
+        "error_with_U0_U1_U2": 3.0357660829594124e-18
+      },
+      {
+        "eps": 0.0125,
+        "error_with_U0_U1": 1.0842021724855044e-17,
+        "error_with_U0_U1_U2": 8.239936510889834e-18
+      },
+      {
+        "eps": 0.00625,
+        "error_with_U0_U1": 2.168404344971009e-18,
+        "error_with_U0_U1_U2": 9.974659986866641e-18
+      }
+    ],
+    "interpretation": "Strong improvement at first cutoff r=.05; differences from a numerically integrated reference, not rigorous absolute error. At small cutoffs results saturate/flip due to floating roundoff and solver tolerances. By construction secondary C small is not independent Poisson evidence."
+  },
+  "provenance": {
+    "new_git_blobs": {
+      "numerics/hr_step53_exact_center_u2.py": "ee4515190e5b1733fb94641e6344e4ee96cdef6c",
+      "numerics/hr_step53_outward_compare.py": "7a445614167a4cb7304aec7d19f38295d32a8890",
+      "tests/test_hr_step53_exact_center_u2.py": "4e1848157c6ec95c7a0d6e73c0921573605f7117"
+    },
+    "local_code_byte_matches_new_github_files": true,
+    "local_workspace": "/mnt/data/janus-step53",
+    "actual_test_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step53_exact_center_u2.py",
+    "actual_result": "9 PASSED in 12.62s",
+    "original_historical_step45_46_local": "Faithful independent RECONSTRUCTION of same formulas from existing GitHub source files, NOT byte-identical original historical Git blobs in this isolated runtime. New Step53 code on GitHub imports the ORIGINAL repository Step46, which imports original Step45; direct full-original-provider Step53 rerun remains PENDING. Prior Steps45–52 pinned-source checks stand separately.",
+    "full_repository_tests": false,
+    "GitHub_Actions_disabled": true,
+    "raw_local_exact_json": "/mnt/data/janus-step53/research/reports/step53-u2-raw.json",
+    "raw_local_shoot_json": "/mnt/data/janus-step53/research/reports/step53-shoot-raw.json",
+    "raw_local_sha256_exact": "44244e855f6f0cd8b7fdbe53c145fdab6e9c7aa872e61a6dd72232177ffd445c",
+    "raw_local_sha256_shoot": "d7d7b1c68e28b36859322b7efc19ddbce01b5279717829d729013fa368e6b573",
+    "raw_local_json_standalone_upload": false
+  },
+  "outstanding": {
+    "complete_original_source_run_for_step53": "PENDING",
+    "rigorous_global_continuation_to_r085": "NOT_PROVED",
+    "both_dust_positive_continuously_on_original_nonpolynomial_solution": "NOT_CERTIFIED",
+    "full_Dirac_secondary_time_preservation": "NOT_COMPUTED",
+    "lapse_fixing_and_constraint_rank": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step54": [
+    "Reconstruct all full original Step45/46 and original upstream provider bytes in one checkout and execute new Step53 tests there, preserving distinction between tested reconstructed vs complete original source provenance.",
+    "Develop validated interval ODE continuation from regular r=0 U(s) through r=.85 including both dust momenta and J/K chart determinants; use exact U0 U1 U2 as radius startup.",
+    "Derive and run the true time preservation of secondary {C,Htot} including all 6 canonical pairs, shift derivative/elimination and lapse-rank boundary terms; don't mistake spatial Ward/secondary IVP for Dirac completion."
+  ]
+}
