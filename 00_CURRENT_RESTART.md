@@ -1,3 +1,17 @@
+# CORRECTION D'AUTORISATIONS GITHUB — VÉRIFIÉ 2026-10-22
+
+**Fait établi :** le compte GitHub authentifié `alexandrebarault-arch` possède `permission=admin` sur `alexandrebarault-arch/Janus` (outil GitHub `get_repo_collaborator_permission`). Les affirmations antérieures laissant entendre que l'UTILISATEUR n'avait pas les droits sont ERRONÉES. Il possède bien l'administration du dépôt.
+
+**Limite DISTINCTE :** la connexion disponible dans CETTE conversation est une installation GitHub App aux permissions restreintes et aux fonctions explicitement limitées : elle peut créer/mettre à jour fichiers, commits et pointer une ref vers un commit, **mais NE FOURNIT NI modification de `default_branch` NI `DELETE git/refs/heads/...`**. La fonction de lecture générique GitHub `fetch` n'autorise que `GET` et sa documentation indique que les installations d'app n'ont pas l'accès `administration`. Le terminal local possède `git` mais ne dispose ni de `gh`, ni de credential GitHub configuré, ni de résolution DNS valide vers `api.github.com`. Ne pas confondre cette impossibilité *du connecteur* avec un manque de droits du compte.
+
+**État distant vérifié :** branche par défaut = `main`; 3 refs toujours présentes (`main`, `research/gate2b-nonhomothetic-transfer`, `research/v2-flrw`). Les anciennes pointes sont préservées dans l'ascendance active via commit `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7`, sans changement d'arbre scientifique. PR historique #1 fermée non fusionnée. **Suppression NON FAITE** et aucune promesse d'avoir ramené effectivement le dépôt à une branche.
+
+**Action admin restante quand un vrai client GitHub avec autorisation d'administration est disponible :** PATCH default_branch vers `research/gate2b-nonhomothetic-transfer`, puis DELETE ref `heads/research/v2-flrw` et DELETE ref `heads/main`; vérifier qu'une seule ref reste. Ne pas tenter de simuler la suppression en effaçant les fichiers ou en forçant `update_ref` vers un autre SHA. Via interface GitHub : Settings > General > Default branch, puis page Branches pour suppression.
+
+**Reprise scientifique :** inchangée, étape 52 selon le bloc d'étape 51 ci-dessous. Gate2B OPEN, JANUS-R NOT VALIDATED.
+
+---
+
 # JANUS — REPRISE STEP51 : ADDENDUM SOURCE-AUTHENTIC (2026-10-22)
 
 **REPRENDRE ICI AVANT LE TEXTE PRÉCÉDENT.** Dernier audit : `research/STEP51_AUTHENTIC_CENTER_U1_AND_BRANCH_ADMIN_AUDIT.md` section 5. Rapport : `research/reports/gate2b-step51-report.json`.
