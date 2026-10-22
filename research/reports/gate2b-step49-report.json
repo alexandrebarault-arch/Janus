@@ -1,0 +1,103 @@
+{
+  "step": 49,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Exact spherical-center parity and conditional local analytic regular solution of primary-reduced C=0; outward Frobenius shooting numerically matches Step47 IVP",
+  "source_blobs": {
+    "numerics/hr_step49_regular_center_shoot.py": "ef1316505f03ee030b29b91e0edfaa5e480132cc",
+    "tests/test_hr_step49_regular_center_shoot.py": "2db400a4b41541983dd49a5fab2d4d0777789aa4",
+    "numerics/hr_step49_analytic_center.py": "d570948912885d45a625fa2db31c6a5435b6a654",
+    "tests/test_hr_step49_analytic_center.py": "8f14de90a296f53f372dde4a29fc63149473644b"
+  },
+  "exact_theorem": {
+    "source": "Step45 original six-pair spherical C and Step46 original f-lapse/f-momentum primary elimination; Step48 exact center compatibility",
+    "symbolic_checks": [
+      "With S_i=r L_i, pLi=r² U_i(s), pSi=r V_i(s), dust p_i=r² rho_i(s), z=r z1(s), all regular parity inputs, C/r² is exactly even under r→-r",
+      "After original primary leading conditions Sg'(0)=a,Sf'(0)=b,pSg/r=2Pg,pLg'/r=2Pg, the complete center C/r² is affine in W=pLf'/r with nonzero ∂Cbar/∂W=-m² Mg² Astar/(2 Mf² b)",
+      "W=G(s,U), G(0,U)=3U0-U for arbitrary nearby U, U0=Mf² b*(Pg/(Mg² a)-2 z1)",
+      "s U_s=-(3/2)(U-U0)+(s/2)R(s,U), R analytic locally under explicitly named source-analyticity and regular-denominator assumptions",
+      "Bounded analytic local solution exists uniquely by Volterra contraction on sufficiently small s≥0, with kernel w(s)=[1/(2s^(3/2))]∫_0^s t^(3/2)R(t,U0+w(t)) dt. Homogeneous U~C s^(-3/2) (=P/r singular) excluded."
+    ],
+    "nondegenerate_chart": "a>0,b>0,Mf²>0,Mg²>0,m²>0,J(y)>0, Sf_prime>0, sqrt roots and dust coefficients positive; compact smearing or controlled boundary",
+    "center_dust_exact_rational": {
+      "pg_div_r2": "1107/1250",
+      "pf_div_r2_strictly_greater_than": "0.1242",
+      "pf_div_r2_display_approx": 0.1242700002620524,
+      "pg_div_r2_display": 0.8856,
+      "J_center_display": 0.6763833272458436,
+      "J_center_gt": 0.65
+    },
+    "scope": "Conditional mathematical local C=0 constrained initial-data branch for analytic prescribed metric/g fields and dust phases, NOT an analytically constructed global radial solution or any time-evolving 4D solution"
+  },
+  "numeric_center_shoot": {
+    "normalization": "P=pLf=r² U(s); U0 exactly determined by Step48 Frobenius center condition",
+    "U0_display": -0.005252426896760733,
+    "U1_formula": "U1=∂_s G(0,U0)/5, if analytic",
+    "U1_numerical_richardson_not_exact": 0.0007897451669079507,
+    "method": "Use pLf(eps)=U0 eps² (+ U1 eps⁴ for order1), integrate exact symbolic Step46 RHS with SciPy solve_ivp from eps>0 to .85; 2e-12 relative, 1e-18 absolute, maximum step .012. Reference eps=.001 order1, NOT rigorous error enclosure.",
+    "reference_pLf_at_r085": -0.003386429356487895,
+    "cutoff_cases": [
+      {
+        "eps": 0.05,
+        "order0_abs_endpoint_error_vs_reference": 2.9086971546632423e-10,
+        "order1_abs_endpoint_error_vs_reference": 9.272530659965028e-15
+      },
+      {
+        "eps": 0.025,
+        "order0_abs_endpoint_error_vs_reference": 9.089940172096744e-12,
+        "order1_abs_endpoint_error_vs_reference": 7.068998164605489e-17
+      },
+      {
+        "eps": 0.0125,
+        "order0_abs_endpoint_error_vs_reference": 2.8406357127641613e-13,
+        "order1_abs_endpoint_error_vs_reference": 1.734723475976807e-18
+      },
+      {
+        "eps": 0.00625,
+        "order0_abs_endpoint_error_vs_reference": 8.878314750049299e-15,
+        "order1_abs_endpoint_error_vs_reference": 4.336808689942018e-18
+      }
+    ],
+    "observed": "Without U1, endpoint cutoff error falls ~32 when eps halves (empirical eps^5); with U1, error initially decreases ~128 (eps^7) then stalls at double rounding. This strongly supports regular-center construction, not a global numerical error theorem.",
+    "dust_sample_points": 129,
+    "sample_min_pg_div_r2": 0.8856203218885321,
+    "sample_min_pf_div_r2": 0.11186483299522024,
+    "max_abs_analytic_C_substitution_at_129_points": 1.741560611094304e-14
+  },
+  "execution_provenance": {
+    "local_workspace": "/mnt/data/janus-step49",
+    "tests_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step49_regular_center_shoot.py tests/test_hr_step49_analytic_center.py",
+    "passed": 21,
+    "failed": 0,
+    "duration_seconds": 4.41,
+    "all_four_new_source_and_tests_byte_identical_github": true,
+    "historical_dependency_caveat": "The underlying original Step45/46/47 math was faithfully reconstructed in the local runtime with mathematical adapters for some historical provider files, not byte-identical GitHub copies. Real Step45/46/47 full original-source regression remains PENDING (Step48's two deselected real-provider tests also still pending).",
+    "whole_repo_suite": false,
+    "github_actions_enabled": false,
+    "raw_local_files": [
+      "/mnt/data/janus-step49/step49-local.json",
+      "/mnt/data/janus-step49/step49-center-theorem.json"
+    ],
+    "raw_local_sha256": [
+      "45f59ca454ad1c9733d17049c72c175d94f54c663058ea47f79743ca8d9bc13a",
+      "c197212b6c38e49a6f9d45694d3798dae5672f4c10d0acf0814981d6615c4be7"
+    ],
+    "raw_local_github_uploaded": false
+  },
+  "red_gates": {
+    "exact_real_analytic_local_C_primary_branch": "CONDITIONAL_LOCAL_THEOREM_ON_ANALYTIC_PRESCRIBED_BACKGROUND",
+    "global_center_to_r085_exact_solution": "NOT_PROVED",
+    "new_IVP_uniform_positive_two_dust": "NOT_CERTIFIED; center exact and 129 interior samples only",
+    "full_source_authentic_regression": "PENDING",
+    "true_secondary_time_preservation": "NOT_COMPUTED",
+    "Dirac_rank_and_lapse_fixing": "NOT_COMPUTED",
+    "nonhomothetic_on_shell_time_evolution": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step50": [
+    "Recover Step45/46/47 authentic source byte-for-byte into a coherent checkout, rerun full Step48 tests without two deselections plus 21 Step49 tests; do not call adapters historical regression.",
+    "Develop analytic/interval validated continuation for regular U(s) through s=(.85)^2. Prefer rigorous Chebyshev/interval integration with positive dust and C1 denominator bounds.",
+    "Only then compute all-six-pair {C,Htotal} time preservation, actual Dirac rank and lapse fixing, analyze J/K degeneracy and boundary; defer physical cosmological validation until gates pass."
+  ]
+}
