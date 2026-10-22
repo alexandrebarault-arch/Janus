@@ -89,3 +89,31 @@ def test_interrupted_run_manifest_keeps_Dirac_red():
     assert 'secondary time preservation' in r['NOT_PROVED']
     assert r['two_lapse_pairs']['A']['richardson_exploratory']['R4']
     assert r['two_lapse_pairs']['B']['richardson_exploratory']['R4']
+
+
+
+def test_formal_center_singular_mode_is_one_over_r():
+    s=center_relation()
+    U=s['variables'][4]
+    r=s['variables'][0]
+    assert sp.simplify(s['nearcenter_dP_over_r']-(3*s['necessary_Uf_0']-U))==0
+    P=s['formal_regular_singular_solution']
+    assert sp.simplify(sp.diff(P,r)+P/r-3*s['necessary_Uf_0']*r)==0
+
+
+def test_backward_center_ivp_amplifies_initial_error_like_inverse_radius():
+    from scipy.integrate import solve_ivp
+    from numerics.hr_step47_interior_ivp import source_data,compiled_rhs
+    from numerics.hr_step45_secondary_point_certificate import frozen_primary_at
+    _,rhs,_=compiled_rhs()
+    p=frozen_primary_at(.05)['pLf'];p0=float((p.lo+p.hi)/2)
+    def fn(r,y):
+        values,_=source_data(r,float(y[0]))
+        return [float(rhs(*values))]
+    results=[solve_ivp(fn,(.05,.002),[p0+shift],rtol=2e-12,
+                       atol=1e-18,max_step=.0005,dense_output=True)
+             for shift in (0.,1e-12)]
+    assert all(s.success for s in results)
+    for r in (.04,.02,.01,.005,.002):
+        actual=float(results[1].sol(r)[0]-results[0].sol(r)[0])/1e-12
+        assert abs(actual-(.05/r))<.001
