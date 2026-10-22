@@ -1,0 +1,48 @@
+{
+  "step": 46,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "description": "Exact symbolic local implicit-function reduction of the original six-canonical-pair secondary to a regular first-order f-momentum ODE on two-primary dust shell",
+  "source_git_blob": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+  "tests_git_blob": "f09e5205d5915d546cf83875ffcafe44232411e2",
+  "depends_on": "numerics/hr_step45_exact_physical_ward.py 66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+  "method": "For prescribed curved metric/matter phase/shift and g-sector primary data, eliminate f-dust lapse momentum p_f and f radial canonical momentum pS_f using original H_f=0 and D_f=-D_g. Substitute into analytic physical C=K00-(K01)' from exact Step45; C is exactly affine in V=pLf'(r).",
+  "exact_formulas": {
+    "primary_f_pf": "pf= -( Lf*pLf^2/(4Mf2*Sf^2) - [pLf/(2Mf2 Sf Sf_prime)]*(-Dg+Lf*V) - Mf2*Lf*Sf^2*R3f/2 + z*Dg/Lf + Wf )/(sqrt(1+(theta_f_prime/Lf)^2)+[pLf/(2Mf2 Sf Sf_prime)]*theta_f_prime)",
+    "primary_f_pSf": "pSf=(-Dg+Lf*V-pf*theta_f_prime)/Sf_prime",
+    "secondary_partial_pSf": "dC/dpSf=-(m2*Mg2*At*sqrt(1-z^2))/(2*Mf2*Sf), At=beta1*Sg^2+2beta2*Sg Sf+beta3 Sf^2",
+    "affine_V_coefficient": "C1=dC/dV=-(m2*Mg2*At*sqrt(1-z^2)/(2*Mf2*Sf))*Lf*beta_f/(Sf_prime*dust_coef_f)",
+    "definitions": "beta_f=sqrt(1+(theta_f_prime/Lf)^2), dust_coef_f=beta_f+[pLf/(2Mf2 Sf Sf_prime)]*theta_f_prime",
+    "first_order_equation": "V=pLf'(r)=-C0/C1 where C0 is C(r) after primary elimination evaluated at V=0"
+  },
+  "strict_identity_tests": [
+    "Full C derivative wrt pSf equals explicit At interaction coefficient",
+    "Primary-eliminated C is AFFINE in V; second V derivative exactly zero",
+    "Affine coefficient equals exact factorized expression",
+    "Affine coefficient independent of V",
+    "Symbolic substitution V=-C0/C1 gives C identically zero"
+  ],
+  "regularity_conditions": "For r>0 in the certified Step40/42 spatial chart: Lg,Lf,Sf,Sf_prime,At= Sg^2 J(eta), Mg2,Mf2,m2 positive; |z|<1, beta_f>0 and dust_coef_f>0; hence C1<0 and locally smooth. ODE is standard local initial-value equation; a local solution follows with suitable regular prescribed fields/data (not global).",
+  "tests": {
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step45_exact_physical_ward.py tests/test_hr_step45_secondary_point_certificate.py tests/test_hr_step46_exact_secondary_ode.py",
+    "total_32_passed": "32 passed in 2.04 s",
+    "new_tests_8": true,
+    "all_6_new_step45_46_source_test_blob_hashes_match_executed_local_files": true,
+    "full_repo_suite": false,
+    "original_step33g_complete_execution_this_turn": false,
+    "github_actions": false
+  },
+  "remaining_red": {
+    "ODE_solved_numerically_or_rigorously_over_whole_interval": "NO",
+    "spherical_center_limit": "NOT_ESTABLISHED",
+    "dust_positivity_along_new_ODE_solution": "NOT_CERTIFIED",
+    "global_C_zero": "NOT_PROVED",
+    "Dirac_secondary_time_preservation": "NOT_COMPUTED",
+    "Dirac_rank": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step47": "Start IVP at r0>0 from frozen Step41 pLf(r0), integrate exact analytic ODE, independently verify original unsmeared primaries and C at off-fit radii and seek rigorous interval positivity; analyze regular singular center r=0 and boundary conditions. Then time-preservation of exact secondary with all 6 canonical pairs.",
+  "notes": "The symbolic local ODE reduction is not yet a full dynamical solution; other prescribed fields and g-primary must remain consistent, and first variation holds with external z on Fz=0."
+}
