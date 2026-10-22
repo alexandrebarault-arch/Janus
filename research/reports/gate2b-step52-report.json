@@ -1,0 +1,79 @@
+{
+  "step": 52,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Exact rational quadratic-field Laurent-jet certificate for U1 on original positive-EH spherical HR + two dust benchmark",
+  "science": {
+    "scope": "RATIONALIZED printed calibration benchmark on prescribed original spherical primary data; original Step45 physical six-pair C and Step46 exact f primary-eliminated pLf' radial equation. Does NOT prove global spherical solution or Dirac lapse fixing.",
+    "formula": "pLf(r)=r²[U0+U1 r²+...], U0=Mf² b[Pg/(Mg² a)-2 z1], G(s,U)=pLf'(sqrt(s),pLf=sU)/sqrt(s), G(0,U)=3U0-U, U1=partial_s G(0,U0)/5",
+    "exact_field": "Q(sqrt(H2)), H2=exact positive rational Friedmann background; every beta, mass, metric curvature, z slope, dust phase coefficient input is an exact printed decimal Fraction; positive square-root branch",
+    "H2_rational": "1111887094969374384953162712427069073394495655204338071814597909773/195312500000000000000000000000000000000000000000000000000000000000",
+    "U1_exact": "A+B*sqrt(H2)",
+    "A_rational": "6208001291053702394129476735256316334533396863490262227811494820469332490792832990397189264359888632547935265740403706964896568431135042477171/8063117590497060413339167053752066292665863037109375000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "B_rational": "137170281832716484398889218959696760026478530363669648507605220557178319557911/16513264825337979726518614126084231767379687500000000000000000000000000000000000000",
+    "certified_strict_decimal_lower": "0.0007897451667202464909325108904961683602148118201690",
+    "certified_strict_decimal_upper": "0.0007897451667202464909325108904961683602148118201692",
+    "certified_sqrt_interval": "Positive sqrt(H2) lower=floor(sqrt(H2)*10^90)/10^90 by integer isqrt; upper=lower+10^-90, exact integer inequalities lower²<=H2<=upper². Propagate linearly through A+B sqrt(H2) using Fraction signs. Width of actual rational enclosure about 8.306672440827219e-96, strictly <10^-80.",
+    "decimal_80_digits": "0.00078974516672024649093251089049616836021481182016906783400708421624694098990260924",
+    "algebraic_method": "A finite Laurent-jet evaluator operates on Q(H) pairs with exact Fraction arithmetic, Newton coefficient recurrence for inverse and square roots with unit-positive leading coefficient; conservative unknown-tail power propagates through sums, products, inverse, sqrt; exact r¹ coefficient 2U0, r³ coefficient 5U1, r0/r2/r4 absent; at jet truncation 14,20,26 all exact A,B match, final unknown tail starts from r^9,r^15,r^21 respectively, beyond target r³.",
+    "previous_highprecision_step51": "0.0007897451667202464909325108904961683602148118202349246798 from nonrigorous small-r extrapolation; difference is around 6.59e-50, consistent with r^4 finite-radius extrapolation bias",
+    "limitation": "This exact algebraic benchmark certificate does NOT certify original historical binary64 intermediate semantics, global ODE existence to .85, continuum dust positivity or time preservation of secondary."
+  },
+  "provenance": {
+    "original_byte_pinned_sources": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804"
+    },
+    "new_python": "numerics/hr_step52_exact_center_taylor.py",
+    "new_python_git_blob": "b7da7e5272e08819fc89053fdf15852fcf4cc536",
+    "new_test": "tests/test_hr_step52_exact_center_taylor.py",
+    "new_test_git_blob": "cf9416641583de47ab0d60f4527bca7ce60d2806",
+    "executed_test_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step52_exact_center_taylor.py",
+    "executed_result": "8 passed in 11.01s",
+    "executed_workspace": "/mnt/data/janus-step52",
+    "all_new_source_test_git_blobs_match_actual_executed_files": true,
+    "symbolic_rhs_source_genuine": true,
+    "independent_step51_mp_calibration_crosscheck": true,
+    "formal_orders": [
+      14,
+      20,
+      26
+    ],
+    "actual_remainder_unknown_from_r": [
+      9,
+      15,
+      21
+    ],
+    "full_project_tests": false,
+    "GitHub_Actions_disabled": true,
+    "raw_certificate_local_path": "/mnt/data/janus-step52/research/reports/step52-u1-jet-20.json",
+    "raw_certificate_sha256": "069191a6e92c7474677c3b5a004de0affba94c1ede63f1debfe253d09d3fca6f",
+    "raw_certificate_standalone_gh_uploaded": false,
+    "exact_A_B_H2_stored_in_this_report": true
+  },
+  "branch_status": {
+    "active": "research/gate2b-nonhomothetic-transfer",
+    "history_parent_preserved": "4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7",
+    "historical_draft_PR1": "closed unmerged",
+    "named_refs_remaining": [
+      "main",
+      "research/gate2b-nonhomothetic-transfer",
+      "research/v2-flrw"
+    ],
+    "default_branch": "main",
+    "user_admin_UI_outstanding": "Set research/gate2b-nonhomothetic-transfer default; delete v2 then main; connected app lacks admin change/default/deletion",
+    "no_workflow_enablement": true
+  },
+  "next_step53": [
+    "Use exact U1 algebraic initial coefficient instead of Step49 numerical Richardson estimate in cutoff shooting, quantify sensitivity and optional exact higher U2 jet term with rigorous tail tracking.",
+    "Fully authenticate two upstream original Step33g imports and run original Step48 full test suite without adapter.",
+    "Rigorous interval validated continuation of center-regular U(s) to r=.85 with continuous two-dust positivity and chart margins.",
+    "Full six canonical pair {C,H_total} secondary time preservation, Dirac rank and lapse fixing, including exceptional branches and boundaries."
+  ],
+  "hard_verdict": {
+    "Gate2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED",
+    "full_Dirac_secondary_time_preservation": "NOT_COMPUTED",
+    "global_continuum_positive_dust": "NOT_PROVED"
+  }
+}
