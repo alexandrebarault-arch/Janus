@@ -73,11 +73,14 @@
     "repo_default_branch": "main — NOT CHANGED; requires GitHub admin action",
     "refs_count_now": 3,
     "old_branch_refs_deleted": false,
-    "open_draft_pr_1": "https://github.com/alexandrebarault-arch/Janus/pull/1 — remains open pending UI housekeeping; don't merge old V2 source contents",
-    "connector_capability": "No update default-branch nor delete-branch action; cannot claim single GitHub ref"
+    "open_draft_pr_1": "CLOSED UNMERGED on 2026-10-22 via GitHub connector; old head V2 and base main preserved in commit ancestry.",
+    "connector_capability": "No update default-branch nor delete-branch action; cannot claim single GitHub ref",
+    "legacy_PR_state": "closed",
+    "legacy_PR_merged": false,
+    "still_required": "GitHub owner UI: switch default from main to research/gate2b-nonhomothetic-transfer, then delete research/v2-flrw and main; branch count remains 3 until performed."
   },
   "hard_next": [
-    "User GitHub UI: set default branch to research/gate2b-nonhomothetic-transfer, close obsolete draft PR#1, delete research/v2-flrw and main; verify branch count=1. Historical commits already reachable via active merge history.",
+    "User GitHub UI: set default branch to research/gate2b-nonhomothetic-transfer, delete research/v2-flrw and main; verify branch count=1. Historical draft PR#1 already CLOSED UNMERGED. Historical commits already reachable via active merge history.",
     "Full bit-authentic Step45/46/47 provider worktree and two previously deselected Step48 source-pin regression tests.",
     "Rigorous interval ODE continuation from regular center to r=.85, both dusts positive continuously, boundaries/charts controlled.",
     "Compute full six-canonical-pair Dirac secondary TIME PRESERVATION, lapse fixing, rank, including center K/r² and J=0 exceptional sectors."
