@@ -29,7 +29,7 @@ def numerical_fields(r,P):
     H=math.sqrt(.9/(3*a**3)+M2*(b0+3*b1*y+3*b2*y*y+b3*y**3)/3)
     Pg=-2*a*a*H;plg=Pg*s*(1+2.5*CG*s);plgr=2*r*(1+5*CG*s)*Pg
     tg=KG*r*Lg;tf=KF*r*Lf;z=.004*r;root=math.sqrt(1-z*z)
-    At=b1*Sg*Sg+2*b2*Sg*Sf+b3*Sf*Sf;b0,b1,b2,b3,b4=BETA
+    At=b1*Sg*Sg+2*b2*Sg*Sf+b3*Sf*Sf
     A0=b0*Sg*Sg+2*b1*Sg*Sf+b2*Sf*Sf
     Af=b2*Sg*Sg+2*b3*Sg*Sf+b4*Sf*Sf
     Dg=M2*MG2*Lg*Lf*At*z/root
