@@ -1,3 +1,34 @@
+# JANUS — REPRISE STEP51 : ADDENDUM SOURCE-AUTHENTIC (2026-10-22)
+
+**REPRENDRE ICI AVANT LE TEXTE PRÉCÉDENT.** Dernier audit : `research/STEP51_AUTHENTIC_CENTER_U1_AND_BRANCH_ADMIN_AUDIT.md` section 5. Rapport : `research/reports/gate2b-step51-report.json`.
+
+## NOUVELLE AVANCÉE DEPUIS LE PREMIER CHECKPOINT STEP51
+
+La chaîne Step48 à CINQ providers historiques strictement byte-identiques est effectivement reconstituée et vérifiée `check_git=True` : `hr_step37_original_nonibp_oracle.py` `005449ade6`, `hr_step45_exact_physical_ward.py` `66aa43841`, `hr_step45_secondary_point_certificate.py` `6ab94dacb`, `hr_step46_exact_secondary_ode.py` `bac025c28`, `hr_step47_interior_ivp.py` `c558a827`. Le programme Step48 original `hr_step48_original_ivp_oracle.py` `dc5101d4` est LUI AUSSI identique octet pour octet. L'ancienne obstruction de vérification des 5 hash est donc levée.
+
+Crochet Poisson ORIGINAL NON-IBP à 12 champs / 6 couples sur nouvel IVP et DEUX lapses : `N=161 A=-5.909466451194632e-7 B=-9.466192080859973e-7` ; `N=321 A=-1.4770852485167414e-7 B=-2.3664938826562995e-7` ; `N=641 A=-3.6925374684076886e-8 B=-5.916200850443823e-8`. Ces crochets FINIS ne sont PAS nuls exactement, mais diminuent comme ~h². Cette session utilise encore 2 **adaptateurs d'IMPORT SEULEMENT** dans les sources upstream `hr_curved_moving_dust_primary.py` (constantes/R) et `hr_curved_primary_mixed_kernel.py` (ordre Q) ; **pas de régression totale intégralement authentifiée**. Les anciens tests du fichier Step48 complet ne sont pas relancés, mais leurs deux fonctionnalités en attente ont été exercées par des tests NEW.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :**
+```bash
+cd /mnt/data/janus-step51
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step51_highprecision_center.py tests/test_hr_step51_original_chain.py
+# 13 PASSED, 14.54s (7 Step51 centre haute précision + 6 véritable chaîne Step48)
+```
+NOUVEAU TEST GITHUB : `tests/test_hr_step51_original_chain.py` Git blob `2687e7279ddda3c1b0bc8ea2ba340cab0ce3499d`, identique à l'exécuté.
+
+## BRANCHES — DEMANDE UTILISATEUR ENCORE PARTIELLEMENT ADMINISTRATIVE
+
+Préservation des commits des 3 branches dans une SEULE ascendance active : commit `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7` arbre inchangé. PR historique #1 FERMÉE et NON fusionnée. **MAIS default=main, 3 refs demeurent** : `main`, `research/v2-flrw`, `research/gate2b-nonhomothetic-transfer`. Connector GitHub ne fournit pas la modification de branche par défaut ni la suppression de refs. Pour terminer : utilisateur via GitHub Settings > General > Default branch sélectionner `research/gate2b-nonhomothetic-transfer`, puis Branches supprimer `research/v2-flrw` et `main`. Vérifier réel affichage une seule branche. Ne PAS prétendre suppression faite.
+
+## NEXT STEP52
+
+1. Reconstituer les DEUX sources upstream `hr_curved_moving_dust_primary.py` et `hr_curved_primary_mixed_kernel.py` exactement ; relancer la suite complète Step48 originelle sans filtre et tests Step49/51.
+2. U1 actuellement NUMÉRIQUE 120 chiffres `0.00078974516672024649093251089049616836021481...`, original Step45/46 strict byte-identical ; DERIVER / CERTIFIER U1 algébriquement par jets Taylor et intervalle.
+3. Certifier l'EDO régulière du centre jusque r=.85 et densités poussières positives EN CONTINU ; les échantillons restent insuffisants.
+4. VRAIE PRÉSERVATION TEMPORELLE de C, rang de Dirac, fixation des lapses et chartes exceptions J/K sont TOUJOURS NON ÉTABLIS. **Gate2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP51 TERMINÉ — 2026-10-22
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. **NE PAS RÉACTIVER GitHub Actions/workflows.** Ancien `main` et V2 ne doivent plus recevoir de commits scientifiques.
