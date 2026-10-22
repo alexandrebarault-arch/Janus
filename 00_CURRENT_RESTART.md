@@ -1,3 +1,75 @@
+# JANUS — REPRISE PRIORITAIRE : STEP53 TERMINÉ — 2026-10-22
+
+**LIRE CETTE SECTION EN PREMIER.** Branche scientifique ACTIVE UNIQUEMENT : `research/gate2b-nonhomothetic-transfer`. Ne PAS réactiver GitHub Actions/workflows ni modifier `main`/V2. **Gate 2B OUVERT, JANUS-R NON VALIDÉ.**
+
+**AUDIT SCIENTIFIQUE :** `research/STEP53_EXACT_CENTER_U2_AND_SHOOTING_AUDIT.md`.
+**RAPPORT MACHINE AVEC FRACTIONS EXACTES :** `research/reports/gate2b-step53-report.json`.
+**CODE U2 :** `numerics/hr_step53_exact_center_u2.py`, Git blob `ee4515190e5b1733fb94641e6344e4ee96cdef6c`.
+**CODE TIR DOP853 :** `numerics/hr_step53_outward_compare.py`, Git blob `7a445614167a4cb7304aec7d19f38295d32a8890`.
+**TESTS :** `tests/test_hr_step53_exact_center_u2.py`, Git blob `4e1848157c6ec95c7a0d6e73c0921573605f7117`.
+**BASE :** Step52 `research/STEP52_EXACT_CENTER_U1_RATIONAL_TAYLOR_AUDIT.md`, vraies équations physiques de Step45/46.
+
+## NOUVELLE AVANCÉE ANALYTIQUE DÉMONTRÉE : SECOND COEFFICIENT CENTRAL U2
+
+Pour la même famille de données canoniques sphériques primaires-réduites et les paramètres du benchmark traités comme rationnels décimaux EXACTS,
+
+```text
+pLf(r)=r² [U0+U1 r²+U2 r⁴+O(r⁶)],
+s=r², G(s,U)=pLf'(sqrt(s),pLf=sU)/sqrt(s), G(0,U)=3U0-U
+5U1 = partial_s G(0,U0)
+7U2 = (1/2)partial_ss G(0,U0) + partial_sU G(0,U0)*U1
+     + (1/2)partial_UU G(0,U0)*U1².
+U2=A2+B2*sqrt(H²), H²,A2,B2 EXACTEMENT RATIONNELS,
+U2≈-0.000010073853486743828175736890952863935933883641943763773429699704274
+```
+
+**EXACT U2 EST CERTIFIÉ NÉGATIF** dans le modèle rationnel : `rational_interval(...,digits=100)` sur la racine positive `sqrt(H²)` utilise `isqrt` et des fractions exactes, donne largeur < `1e-100`. Le rapport machine conserve IN EXTENSO les trois fractions A2, B2, H² ; aucune perte de précision dans le dépôt.
+
+Le programme évalue deux fois le SECOND MEMBRE de `C=0` construit depuis les VRAIES FORMULES sphériques Step45/46 : au premier passage `pLf=r²U0` il retrouve exactement les fractions de U1 du Step52 ; au second `pLf=r²(U0+U1r²)`, le terme r³ est EXACTEMENT `4U1`, r⁵ est `7U2`. Jets de Laurent quadratiques `Q(sqrt(H²))` avec inverses/racines par récurrences EXACTES et propagation conservative des premières puissances inconnues. Les ordres tronqués **12,14,18,22 donnent A2 et B2 IDENTIQUES bit-à-bit**, et les premiers termes inconnus ne peuvent entrer qu'en r^7,r^9,r^13,r^17 > r⁵. Ce certificat est LOCAL, il n'établit aucune existence globale.
+
+## CONTRÔLE NUMÉRIQUE DU GAIN SUR LE TIR DEPUIS LE CENTRE
+
+Même équation physique `pLf'=-C0/C1` évaluée sur les données de fond courbes/DEUX poussières/non-comobiles du benchmark ; solveur `scipy solve_ivp DOP853`, `rtol=2e-12`, `atol=1e-18`, pas max `.012`. Référence interne depuis `eps=.001` avec les trois coefficients : `pLf(.85)=-.0033864293564879076`.
+
+```text
+eps     |fin avec U0+U1 - référence|    |fin avec U0+U1+U2 - référence|
+.05          9.270795936489051e-15             4.336808689942018e-19
+.025         8.109832250191573e-17             3.0357660829594124e-18
+.0125        1.0842021724855044e-17            8.239936510889834e-18
+.00625       2.168404344971009e-18            9.974659986866641e-18
+```
+
+**Ces écarts sont des COMPARAISONS à une référence NUMÉRIQUE, PAS bornes d'erreur certifiées.** Les chiffres se saturent au plancher binaire pour les petits rayons. Les poussières positives sur tout le CONTINUUM et une solution exacte prolongée jusqu'à .85 restent NON démontrées. Le C calculé de l'EDO est petit PAR CONSTRUCTION, distinct des contrôles du Poisson original Step48.
+
+## TESTS EFFECTIVEMENT EXÉCUTÉS ET PROVENANCE
+
+```bash
+cd /mnt/data/janus-step53
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step53_exact_center_u2.py
+# 9 PASSED IN 12.62s.
+
+for j in 12 14 18 22; do
+  JANUS_JET_ORDER=$j OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step53_exact_center_u2
+done
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step53_outward_compare
+```
+
+**Les TROIS nouveaux fichiers sont BYTE-IDENTICAL aux fichiers locaux qui ont été réellement exécutés**, blobs GitSHA ci-dessus. Les sources historiques Step45/46 du PETIT ENVIRONNEMENT LOCAL ont été reconstituées fidèlement par leurs équations, **MAIS ne sont PAS octet pour octet les fichiers originaux GitHub dans ce tour**. Le dépôt GitHub importe les véritables sources historiques et la réexécution intégrale U2 avec les octets originaux reste **PENDING**. Il serait FAUX de compter cette session comme full original-provider regression. La suite complète et CI non exécutées ; Actions désactivées.
+
+JSON détaillés générés localement, NON uploadés séparément : `research/reports/step53-u2-raw.json` SHA256 `44244e855f6f0cd8b7fdbe53c145fdab6e9c7aa872e61a6dd72232177ffd445c`, `research/reports/step53-shoot-raw.json` SHA256 `d7d7b1c68e28b36859322b7efc19ddbce01b5279717829d729013fa368e6b573`. A2/B2/H² et tous les chiffres principaux sont dans rapport GitHub.
+
+## STEP54 — VERROUS À TRAITER APRÈS INTERRUPTION
+
+1. **REPRODUCTIBILITÉ** : constituer un checkout original entier Step33g→53 sans adaptateurs et re-exécuter le module U2 + tests ainsi que les deux contrôles historiques Step48 complets.
+2. **RIGUEUR GLOBALE** : à partir du vrai U0,U1,U2, construire une continuation EDO VALIDÉE par intervalles depuis r=0 jusqu'à r=.85, avec preuve de `pg/r²,pf/r²,J,K/r²>0` sur TOUT L'INTERVALLE du nouveau profil et bords sphériques réguliers. Pas seulement des échantillons ni des écarts entre solveurs.
+3. **THÉORIE DYNAMIQUE** : dériver/calculer `{C,H_total}` temporel avec TOUS les 6 couples canoniques, régler fixation lapses/rapport lapses, matrice de Dirac, J/K exceptionnels et bords. C'est le verrou physique fondamental ; Ward et EDO spatiale seuls n'éliminent PAS un fantôme.
+4. Ensuite seulement évolution non homothétique on-shell, stabilité même action De Felice/Aoki et confrontations empiriques.
+5. **ADMIN GITHUB** : histoire `main`+V2 déjà préservée dans l'ascendance active par `4f7a3a1`, ancienne PR#1 fermée sans fusion. Mais GitHub affiche encore TROIS refs ; défaut `main`. Aucune fonction disponible pour supprimer ces refs/changer défaut ; propriétaire doit via UI changer défaut vers active, PUIS supprimer V2 et main. Ne pas prétendre 1 branche avant vérification réelle.
+
+**VERDICT : U2 EXACT ALGÉBRIQUE CERTIFIÉ LOCAL SUR BENCHMARK RATIONNEL, TIR AMÉLIORÉ ; GATE_2B OPEN, JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP52 TERMINÉ — 2026-10-22
 
 **BRANCHE SCIENTIFIQUE AUTORISÉE UNIQUEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne pas écrire dans `main`, `research/v2-flrw`, ne pas réactiver Actions/workflows. **NE PAS AFFIRMER JANUS-R VALIDÉ**.
