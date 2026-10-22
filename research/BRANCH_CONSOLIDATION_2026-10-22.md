@@ -36,3 +36,13 @@ Après cette sauvegarde, il reste à effectuer **dans l'interface GitHub** les o
 Continuer à mettre à jour **`00_CURRENT_RESTART.md`** et le rapport de l'étape 50 sur **la branche active**. L'historique V2 est conservé uniquement comme mémoire de recherche. Les verrous Gate 2B (continuation globale certifiée, positivité continue du nouveau profil, conservation temporelle de la contrainte secondaire, fixation des lapses) restent ouverts.
 
 **GATE_2B=OPEN ; JANUS-R NOT VALIDATED.**
+
+## Résultat de la préservation de l'ascendance — VÉRIFIÉ LE 22 OCTOBRE
+
+- Commit de préservation sans changement de fichiers : `4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7`.
+- Premier parent : `9c629156c8e05d7149421404490b2d77650b45e3` (pointe de JANUS actif après cet inventaire).
+- Deuxième parent : `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` (ancienne pointe V2).
+- **Git tree IDENTIQUE** avant/après ce commit : `e5da02813be6b378398520d9d129209fc5caf5c2`. Les fichiers actifs Step49 ont été préservés tels quels ; aucun fichier scientifique V2 n'a remplacé un fichier actif.
+- Vérification GitHub après le nouveau parentage : `main...active` = `ahead 1035, behind 0` ; `research/v2-flrw...active` = `ahead 714, behind 0`. Ces deux anciennes pointes sont désormais ancêtres de la branche conservée.
+- **Les 3 refs existent ENCORE sur GitHub** et la branche par défaut reste `main` tant que l'administration du dépôt ne change pas ces réglages. La suppression et la désignation de la branche par défaut ne sont pas réalisées par le connecteur.
+- Ancienne PR brouillon `#1` toujours ouverte à la date du contrôle, base `main`, tête `research/v2-flrw`. Prévoir de la fermer SANS fusion de contenu avant suppression des deux refs.
