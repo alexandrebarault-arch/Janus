@@ -1,0 +1,92 @@
+{
+  "step": 50,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "scientific_result": "Three independent SciPy integrators (RK45, DOP853, Radau) numerically agree along the regular-center-started analytic-secondary radial ODE on 2049 sites; this is NOT a validated global exact ODE solution or continuous dust positivity proof.",
+  "start_eps": 0.00625,
+  "stop": 0.85,
+  "estimated_U1": 0.0007897451669079507,
+  "rtol": 2e-11,
+  "atol": 1e-17,
+  "max_step": 0.012,
+  "sample_count": 2049,
+  "runs": {
+    "RK45": {
+      "nfev": 824,
+      "endpoint_pLf": -0.003386429356487892,
+      "minimum_sampled_pg_div_r2": 0.8856008128827202,
+      "minimum_sampled_pf_div_r2": 0.11186483299522024,
+      "max_C_from_algebraic_ODE_substitution": 3.722541999366107e-14
+    },
+    "DOP853": {
+      "nfev": 1376,
+      "endpoint_pLf": -0.0033864293564879015,
+      "minimum_sampled_pg_div_r2": 0.8856008128827202,
+      "minimum_sampled_pf_div_r2": 0.11186483299522028,
+      "max_C_from_algebraic_ODE_substitution": 3.3747450525583e-14
+    },
+    "Radau": {
+      "nfev": 2647,
+      "endpoint_pLf": -0.0033864293564881253,
+      "minimum_sampled_pg_div_r2": 0.8856008128827202,
+      "minimum_sampled_pf_div_r2": 0.11186483299522033,
+      "max_C_from_algebraic_ODE_substitution": 3.2047640815815704e-14
+    }
+  },
+  "max_abs_pLf_vs_RK45_over_2049_samples": {
+    "RK45": 0,
+    "DOP853": 4.020178287489351e-14,
+    "Radau": 4.0734668242670136e-14
+  },
+  "numerical_scope": "The residual C is small BY CONSTRUCTION because pLf' is defined by the exact primary-eliminated algebraic C=0 relation. It is NOT an independent original non-IBP Poisson oracle test; Step48 did that separately. 2049 signs are samples only, with no interval ODE global error bounds.",
+  "execution": {
+    "new_source": "numerics/hr_step50_solver_crosscheck.py",
+    "new_source_blob": "608222f9071c217d477951c8ed1ae81f5507b095",
+    "new_test": "tests/test_hr_step50_solver_crosscheck.py",
+    "new_test_blob": "c96c44c24a5b2a9293d127a77e99dadd6c629125",
+    "new_targeted_test_count": 8,
+    "new_targeted_passed": 8,
+    "combined_test_modules": [
+      "tests/test_hr_step49_regular_center_shoot.py",
+      "tests/test_hr_step49_analytic_center.py",
+      "tests/test_hr_step50_solver_crosscheck.py"
+    ],
+    "combined_test_passed": 29,
+    "combined_elapsed_seconds": 6.09,
+    "source_test_byte_identical_to_uploaded_github": true,
+    "environment": "/mnt/data/janus-step50, inherited some faithfully reconstructed historical provider files rather than byte-identical GitHub Step45/46/47 originals. Therefore this is not an authentic historical full-provider regression.",
+    "original_step48_two_pin_tests": "PENDING",
+    "all_repo_regression": false,
+    "actions_workflows_enabled": false,
+    "local_raw_json_path": "/mnt/data/janus-step50/step50-solver-crosscheck-local.json",
+    "local_raw_json_sha256": "a0c76ddc29560df063ba3b83e63e57a3ef4d9becc912d4f37775cc08ed039a45",
+    "local_raw_json_uploaded_github": false
+  },
+  "branch_consolidation": {
+    "user_requested_single_branch": "research/gate2b-nonhomothetic-transfer",
+    "main_head_before_consolidation": "aead63f4098f0d15a849e579105af034b6317b30",
+    "old_v2_head": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "documentation": "research/BRANCH_CONSOLIDATION_2026-10-22.md",
+    "ancestry_preservation_commit": "4f7a3a112e392c9c8e6e9256b11ef3c4cbacc3c7",
+    "preserved_original_tree": "e5da02813be6b378398520d9d129209fc5caf5c2",
+    "verification": "main and research/v2-flrw heads both ancestors of active branch (behind=0 for each). Old v2 history merged as additional commit parent WITHOUT changing active file tree",
+    "repo_default_branch": "main — NOT CHANGED; requires GitHub admin action",
+    "refs_count_now": 3,
+    "old_branch_refs_deleted": false,
+    "open_draft_pr_1": "https://github.com/alexandrebarault-arch/Janus/pull/1 — remains open pending UI housekeeping; don't merge old V2 source contents",
+    "connector_capability": "No update default-branch nor delete-branch action; cannot claim single GitHub ref"
+  },
+  "hard_next": [
+    "User GitHub UI: set default branch to research/gate2b-nonhomothetic-transfer, close obsolete draft PR#1, delete research/v2-flrw and main; verify branch count=1. Historical commits already reachable via active merge history.",
+    "Full bit-authentic Step45/46/47 provider worktree and two previously deselected Step48 source-pin regression tests.",
+    "Rigorous interval ODE continuation from regular center to r=.85, both dusts positive continuously, boundaries/charts controlled.",
+    "Compute full six-canonical-pair Dirac secondary TIME PRESERVATION, lapse fixing, rank, including center K/r² and J=0 exceptional sectors."
+  ],
+  "status": {
+    "Gate2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED",
+    "global_exact_secondary": "OPEN",
+    "time_preservation": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED"
+  }
+}
