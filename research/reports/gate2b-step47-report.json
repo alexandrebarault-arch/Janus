@@ -1,0 +1,82 @@
+{
+  "step": 47,
+  "date": "2026-10-22",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "experiment": "Numerical IVP continuation of exact analytic C=0 affine pLf' equation from Step46 on a curved noncomoving two-dust spherical primary background; fixed original g-sector and metric/phase functions",
+  "domain": {
+    "r_min": 0.05,
+    "r_max": 0.85,
+    "regular_center_r0": "NOT_INCLUDED"
+  },
+  "initial": "pLf(.05) from published frozen Step41 approximate-secondary initial data, interpreted through Step45 rationalized benchmark",
+  "source_blobs": {
+    "numerics/hr_step47_interior_ivp.py": "c558a827939f2e1fffbfc0290f2b3cc88cb69ef9",
+    "tests/test_hr_step47_interior_ivp.py": "1e64b528bf87142f2d1059ac736b2d4ee7a79de5"
+  },
+  "method": "scipy solve_ivp adaptive Runge-Kutta; each RHS uses explicit symbolic exact -C0/C1 and algebraically solves original f lapse+radial primaries for pf,pSf; 33 off-collocation radii checked with separately reconstructed original gravitational and dust ADM Hamiltonian densities and diagonal momentum/shift primaries",
+  "main_run": {
+    "rtol": 1e-10,
+    "atol": 1e-14,
+    "max_step": 0.02,
+    "rhs_evaluations": 338,
+    "pLf_initial": -0.000013126131492021531,
+    "pLf_endpoint": -0.0033864293564877215,
+    "n_validation_radii": 33,
+    "minimum_pg_div_r2_sample": 0.8856203218885325,
+    "minimum_pf_div_r2_sample": 0.11186483299522221,
+    "max_sample_abs_analytic_secondary_substitution": 1.583868705525928e-14,
+    "max_sample_abs_Hg": 1.1102230246251565e-15,
+    "max_sample_abs_Hf": 1.3877787807814457e-17,
+    "max_sample_abs_Ddiag": 1.3677210405904638e-16,
+    "max_sample_abs_Fz": 1.3660947373317356e-16
+  },
+  "tolerance_refinement": [
+    {
+      "rtol": 1e-8,
+      "atol": 1e-12,
+      "maxstep": 0.04,
+      "nfev": 158,
+      "pLf_endpoint": -0.0033864293564835235
+    },
+    {
+      "rtol": 1e-10,
+      "atol": 1e-14,
+      "maxstep": 0.02,
+      "nfev": 338,
+      "pLf_endpoint": -0.0033864293564877215
+    },
+    {
+      "rtol": 1e-11,
+      "atol": 1e-15,
+      "maxstep": 0.01,
+      "nfev": 590,
+      "pLf_endpoint": -0.0033864293564879007
+    }
+  ],
+  "tolerance_differences": "first vs second endpoint 4.198030811863873e-15; second vs third 1.7911019889460533e-16; empirical floating convergence, NOT rigorous ODE a posteriori global error enclosure",
+  "local_full_json": {
+    "path": "/mnt/data/janus-step45/research/reports/gate2b-step47-interior-run.json",
+    "bytes": 16994,
+    "uploaded_github": false
+  },
+  "tests": {
+    "combined_step45_46_47_total_pass": 39,
+    "new_step47_pass": 7,
+    "wall_time_seconds": 3.94,
+    "all_new_code_test_blob_sha_exact_github_match": true,
+    "source_math": "Step45 symbolic reconstructed action and Step46 exact ODE; primary check independently implemented from original spherical ADM density, but NOT rerun true original step33g 7 module byte-exact oracle this turn",
+    "complete_repo_test": false,
+    "CI": false
+  },
+  "critical_limits": [
+    "The C residual is algebraic closure residual by construction and NOT independent original nodal functional bracket convergence",
+    "Numerically integrated polynomial-like data do not prove exact solution of ODE or exact C=0 globally",
+    "No rigorous uniform positivity bound along numerically integrated f solution: only 33 radial samples tested",
+    "No r=0 regularity extension, IVP starts at .05",
+    "No on-shell time evolution or {C,Htotal}, Dirac rank, lapse fixing",
+    "Underlying fixed g/metric/matter functions are prescribed, not a generated on-shell cosmological time evolution"
+  ],
+  "next_step": "Step48 independent original non-IBP Poisson oracle on interpolated numerical ODE solution, certified interval ODE continuation to center and full dust positivity, then six-pair Dirac time preservation/lapse fixing on exact secondary branch.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
