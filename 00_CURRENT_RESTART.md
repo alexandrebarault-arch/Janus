@@ -1,3 +1,61 @@
+# JANUS — REPRISE PRIORITAIRE : STEP45 TERMINÉ — 2026-10-22
+
+**BRANCHE ACTIVE UNIQUE :** `research/gate2b-nonhomothetic-transfer` ; ne pas modifier `main`, `research/v2-flrw`, ni réactiver GitHub Actions/workflows.
+
+**LIRE EN PREMIER :** `research/STEP45_EXACT_PHYSICAL_WARD_AND_ANALYTIC_SECONDARY_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step45-report.json`.
+**CODE SYMBOLE :** `numerics/hr_step45_exact_physical_ward.py` (Git blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`).
+**CERTIFICAT RATIONNEL :** `numerics/hr_step45_secondary_point_certificate.py` (Git blob `6ab94dacb0c6429bdce8d71311161a6b76ecc0e6`).
+**TESTS :** `tests/test_hr_step45_exact_physical_ward.py` (Git blob `64c32464df011e87c11e7ca7ff0d9d101bb167aa`) et `tests/test_hr_step45_secondary_point_certificate.py` (Git blob `d2c04e5961cfb31867ea40b8d003c8e35ced9eb8`).
+**HISTORIQUE :** Le commit initial Step45 `e960f774` ajoutait `research/STEP45_CHECKPOINT.txt` (identités annoncées SANS code); la présente session a indépendamment calculé les identités sur les Hamiltoniens originaux et publié les sources exactes et les contrôles rationnels.
+
+## RÉSULTAT SCIENTIFIQUE IMPORTANT — IDENTITÉS WARD EXACTES, PAS SEULEMENT NUMÉRIQUES
+
+Sur la DENSITÉ SPHÉRIQUE ADM+Hassan–Rosen à deux secteurs Einstein-Hilbert positifs et deux poussières canoniques en mouvement, le noyau Poisson mixte à SIX couples canoniques et à NEUF jets de lapses vérifie SYMBOLIQUEMENT :
+```text
+K02 = K12 = K21 = K22 = 0                   [IDENTIQUES HORS CONTRAINTES]
+K11 = K20 = 2*Mg2*Sg*Sg'*z/(Lg*Lf)          [IDENTIQUES HORS CONTRAINTES]
+W = K01-K10+(K20)' = z*Hg/Lf               [IDENTITÉ HORS CONTRAINTES]
+d(Hg)/dz = Fz/Lg, d(Hf)/dz = Fz/Lf          [STATIONNARITÉ ALGÉBRIQUE Fz=0]
+```
+Sur `Hg=0`, **W=0 EXACTEMENT**, avec hypothèses de compacité des fonctions de lapses et dénominateurs réguliers. La réduction formelle du crochet complet à `int N M C`, `C=K00-(K01)'`, est donc désormais **JUSTIFIÉE EXACTEMENT DANS CETTE RÉDUCTION SPHÉRIQUE**, plutôt que conjecturée via ≈1e-15. Ne jamais étendre sans preuve à tout secteur tensoriel 4D ou au Dirac temporel.
+
+## NOUVEAU CALCUL ANALYTIQUE DE C SANS DIFFÉRENCES FINIES
+
+Le nouveau module dérive TOUTES les gradients d'Euler `N,N',N''` et `M,M',M''` directement en SymPy, puis simplifie `C=K00-d(K01)/dr` EXACTEMENT. Toutes les dérivées secondes des 12 champs et `z''` s'annulent, laissant `C(q,q',z,z')` algébrique. Ce C est NON NUL HORS CONTRAINTES. Cela supprime le biais numérique Step37/39 dans la définition locale, mais **ne résout pas C=0**.
+
+## CONTRE-CONTRÔLE RIGOUREUX DU PROFIL NUMÉRIQUE FIGÉ STEP41
+
+Pour les 9 vrais coefficients de correction Step41 traités comme fractions binaires exactes `Fraction.from_float`, avec les constantes de calibration imprimées considérées comme **rationnels décimaux exacts**, la reconstruction des DEUX poussières et la valeur analytique de C sont calculées par arithmétique d'intervalles rationnels (racines encadrées par `isqrt` à 10^-70, aucune dérivée finie). À `r=17/20=0.85` :
+
+```text
+6.5545288523431e-11 < C_frozen(0.85) < 6.5545288523432e-11
+```
+
+Borne STRICTE: le profil collocation Step41 FIGÉ n'est donc pas exactement sur `C=0` dans cette interprétation rationnelle de l'étalonnage. Six rayons rationnels (.11,.21,.43,.71,.83,.85) ont tous une valeur strictement non nulle certifiée. **Cette conclusion ne réfute PAS la possibilité d'un autre profil solution exacte.** Les opérations intermédiaires de l'ancienne source originale Step33g sont parfois en binary64 et `sp.Float`; cette preuve rationnelle sur les entrées décimales ne doit PAS être vendue comme une borne machine-bit-identical de chaque opération du programme historique. L'ancienne valeur double à .85 est cohérente à ~1e-14 près.
+
+## TESTS EFFECTIVEMENT PASSÉS ET REPRODUCTION
+
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step45_exact_physical_ward.py tests/test_hr_step45_secondary_point_certificate.py
+# EXÉCUTÉ : 24 PASSED, 1.30s, /mnt/data/janus-step45
+PYTHONPATH=. python -m numerics.hr_step45_exact_physical_ward
+PYTHONPATH=. python -m numerics.hr_step45_secondary_point_certificate
+```
+
+Les QUATRE nouveaux fichiers source/test ont été exécutés en local, puis leurs blob SHA vérifiés identiques à GitHub. C'est une suite ciblée autonome à partir des densités originelles RECOPIÉES littéralement ; la suite COMPLÈTE du dépôt et les fournisseurs historiques Step33g→44 ne sont pas relancés en totalité cette session. Les anciens tests physiques Step44 (33 passes) demeurent archivés. Aucun CI ni GitHub Actions.
+
+## ÉTAPE46 — PRIORITÉ SCIENTIFIQUE RÉELLE
+
+1. Utiliser la formule **EXACTE** `C(q,q',z,z')` pour construire une véritable solution `C(r)=0` sur un INTERVALLE CONTINU courbe, non comobile, avec deux poussières positives, centre et bord réguliers. Voir si elle définit une EDO/équation algébrique pour le générateur libre `pLf`; démontrer existence/unicité ou obstruction, et ne pas confondre collocation polynomiale avec solution exacte.
+2. Tester indépendamment la correspondance avec le véritable Hamiltonien sous élimination de z, et la sémantique exacte rationnelle vs opérations sources binary64.
+3. Puis ET SEULEMENT PUIS calculer la préservation temporelle `{C,H_total}` avec tous les SIX couples canoniques, le rang Dirac et la fixation des lapses. Ne PAS conclure fantôme BD supprimé sans cela.
+4. Enfin étude réellement on-shell non homothétique, De Felice/Aoki de même action, pli Candidate-C, données observables.
+
+**STATUT : STEP45 WARD EXACT = DÉMONTRÉ SOUS HYPOTHÈSES SPHÉRIQUES ; C EXACT ANALYTIQUE = DISPONIBLE ; PROFIL STEP41 FIGÉ PAS EXACTEMENT CONTRAINT ; EXISTENCE C=0 SUR INTERVALLE + PRÉSERVATION DIRAC + LAPSES = OUVERTS ; GATE_2B=OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — AUTHORITATIVE RESTART: STEP44 COMPLETE — 2026-10-21
 
 **ONLY ACTIVE BRANCH:** `research/gate2b-nonhomothetic-transfer`. **DO NOT MODIFY** `main`, `research/v2-flrw`. **DO NOT REENABLE** GitHub workflows/Actions.
