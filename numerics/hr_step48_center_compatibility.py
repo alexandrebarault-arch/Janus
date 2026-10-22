@@ -41,10 +41,19 @@ def center_relation():
     if sp.cancel(constrained.subs(U,U0))!=0:
         raise AssertionError('regular centre U0 incompatible with C')
     slope=sp.factor(sp.diff(constrained,U))
+    V_rhs=sp.solve(first,V)[0]
+    if sp.simplify(V_rhs-(3*U0-U))!=0:
+        raise AssertionError('regular-singular V equation incorrect')
+    Csing=sp.Symbol('C_singular_mode')
+    P=U0*r**2+Csing/r
+    if sp.cancel(sp.diff(P,r)+P/r-3*U0*r)!=0:
+        raise AssertionError('near-centre 1/r mode invalid')
     if slope==0:
         raise AssertionError('no nondegenerate center condition')
     return {'C_over_r2_leading':first,'C_over_r2_after_f_primary':constrained,
             'necessary_Uf_0':U0,'C_center_U_coefficient':slope,
+            'nearcenter_dP_over_r':V_rhs,
+            'formal_regular_singular_solution':P,
             'shift_correction_to_baseline_Pf':-2*mf*b*Z,
             'variables':(r,a,b,Pg,U,V,G,k,Z),
             'parameters':(mg,mf,m2,b0,b1,b2,b3,b4)}
