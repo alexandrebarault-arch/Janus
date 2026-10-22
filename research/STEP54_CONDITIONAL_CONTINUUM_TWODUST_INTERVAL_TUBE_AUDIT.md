@@ -116,3 +116,14 @@ Les deux traces JSON complètes ont été produites **localement** dans `/mnt/da
 4. Continuer à sauvegarder les commits, tests, résultats et pointeur dans `00_CURRENT_RESTART.md`. Travailler uniquement sur `research/gate2b-nonhomothetic-transfer`. Les historiques des anciennes branches sont préservés (`4f7a3a1`) et l'ancienne PR V2 est fermée sans fusion, mais supprimer deux références GitHub et changer le défaut reste une opération administrative non prise en charge par le connecteur.
 
 **VERDICT : PREUVE RIGOUREUSE DE POSITIVITÉ SUR UN TUBE DU CONTINUUM `[0,0.85]`, **CONDITIONNELLE** À L'APPARTENANCE DE LA SOLUTION EXACTE ; APPARTENANCE ET PRÉSERVATION DIRAC TEMPORELLES TOUJOURS OUVERTES. GATE_2B OPEN, JANUS-R NOT VALIDATED.**
+
+
+## 6. Pré-investigation de la barrière différentielle — STRICTEMENT NON VALIDÉE
+
+Un **prototype local non publié comme certificat** a généré, à partir du véritable second membre symbolique Step46, une fonction normalisée (G(s,U)=p'_{L_f}/r) par substitution du fond, extraction de 95 sous-expressions communes et opérateurs d'intervalles à entiers. Sur l'intervalle intérieur (s\in[0.0025,0.7225]) (donc (r\in[0.05,0.85])), un découpage adaptatif exploratoire en 404 cellules a trouvé des signes favorables des deux champs de frontière
+[
+F_\pm(s)=G(s,U_*(s)\pm0.01)-2\big(U_*(s)\pm0.01\big)-2sU_*'(s).
+]
+Les affichages exploratoires étaient (\max F_+\approx-0.01064) et (\min F_-\approx+0.000110). **Ce n'est PAS un résultat certifié du dépôt** : le code de génération d'expression n'est pas encore testé indépendamment/pinné ni publié comme oracle, la preuve en (s=0) manque, et une tentative séparée d'encadrer simultanément (V=G(s,U)) sur tout le tube a dépassé le temps d'exécution. Ne pas déclarer cette propriété de barrière suffisante, ni conclure que (V) reste dans la tolérance du certificat Step54.
+
+**Reprise ciblée :** publier d'abord le calculateur normalisé (G) avec authenticité Step45/46, tester les limites au centre et l'équivalence avec `pLf_prime_rhs` sur sources indépendantes, vérifier la barrière et la dérivée dans une **même** arithmétique rigoureuse pour (s\in(0,0.7225]), puis seulement appliquer une comparaison/continuation à un profil exactement initialisé au centre. Aucun passage de cet appendice ne remplace les hypothèses conditionnelles de la proposition Step54.
