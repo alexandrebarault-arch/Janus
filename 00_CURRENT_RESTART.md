@@ -1,3 +1,64 @@
+# JANUS — REPRISE PRIORITAIRE : STEP56 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw`. Ne PAS réactiver GitHub Actions/workflows. **GATE_2B=OPEN, JANUS-R=NOT_VALIDATED**.
+
+**LIRE EN PREMIER :** `research/STEP56_SHIFT_RESPONSE_AND_TEMPORAL_DIRAC_JETS_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step56-report.json`.
+**NOUVEAU CODE :** `numerics/hr_step56_shift_response.py` SHA Git `71bc56d3433e146c5671351e6ea21468ee5149ca`.
+**14 TESTS :** `tests/test_hr_step56_shift_response.py` SHA `75efdc7b99af067f3f7c2b1bc4947cb5a7c9e48f`.
+**PROVENANCE FORMULES ORIGINALES :** GitHub `numerics/hr_step45_exact_physical_ward.py` SHA `66aa43841dccfe4a5d586a49be9c10af3a67a10e`; `numerics/hr_step46_exact_secondary_ode.py` SHA `bac025c28dbe1561c0c36c56dbfda46dc326f804`. Ces fichiers furent lus depuis GitHub pour construire ce **module algébrique autonome**, mais n'ont PAS été importés en octets originaux dans le test local Step56. Ne pas prétendre entière chaîne historiquement réexécutée.
+
+## NOUVELLE AVANCÉE MATHÉMATIQUE EXACTE — OPÉRATEUR DE DÉPLACEMENT RELATIF POUR LE DIRAC TEMPOREL
+
+Le Step55 a certifié le profil radial initial contraint et positif sur r∈[0,.85] dans les données prescrites, mais n'a PAS traité l'évolution en TEMPS. L'étape 56 repart de la VRAIE équation de stationnarité algébrique de l'action positive-EH sphérique à SIX couples canoniques :
+
+```text
+Dg = pSg*Sg' - Lg*pLg' + pg*theta_g'
+K  = m² Mg² Lg Lf (beta1*Sg²+2 beta2*Sg Sf+beta3*Sf²)
+Fz = Dg - K*z/sqrt(1-z²)=0
+sur la branche K>0 :
+z = Dg/sqrt(Dg²+K²)
+delta_z = (K² delta_Dg - Dg*K delta_K)/(Dg²+K²)^(3/2)
+dot_z   = (K² dot_Dg - Dg*K dot_K)/(Dg²+K²)^(3/2)
+```
+
+La variation `delta_Dg` comprend ABSOLUMENT `-Lg delta(pLg')`. Pour un test radial compact `eta(r)`, il en résulte le noyau Poisson fonctionnel DISTRIBUTIONNEL exact :
+
+```text
+Z_D = K²/(Dg²+K²)^(3/2)
+delta z(r)/delta pLg(x) = -Lg(r)*Z_D(r)*partial_r delta(r-x)
+delta/delta pLg(x) [ integral eta(r)*z(r) dr ]
+    = +partial_x[eta(x)*Lg(x)*Z_D(x)]
+```
+
+Pour des variations non compactes, garder EXPLICITEMENT le bord `-[eta Lg Z_D delta pLg]`. Cette dérivée de fonction test est une contribution importante au véritable crochet secondaire temporel et peut introduire dérivées des lapses. L'identité exacte `delta(z')=(delta z)'` a également été vérifiée avec les jets radiaux. Le Hamiltonien réduit satisfait l'enveloppe stationnaire `partial_z(N Hg+M Hf)=(N/Lg+M/Lf)Fz=0` sur Fz=0, MAIS la variation de `C_red` **DOIT** inclure ses dépendances implicites à `z,z',...` ; figer z dans les deux variations est incorrect. Un exemple symbolique à SIX couples indépendants prouve que cette omission donne un crochet différent, mais cet EXEMPLE n'est PAS le Dirac physique JANUS.
+
+**CENTRE NORMALISÉ :** `Dg=r³ d(s), K=r² k(s)>0, w=z/r=d/sqrt(k²+s d²)`. Sur le benchmark stationnaire `z=.004r`, `partial_d w=(1-s*.004²)^(3/2)/k` et `partial_k w=-.004*(1-s*.004²)/k`. La borne certifiée Step55 `k>0.229` donne les nouvelles marges rationnelles EXACTES `0<partial_d w<1000/229<4.367` et `|partial_k w|<4/229<.0175` sur s∈[0,.7225]. Ceci est une sensibilité de shift, PAS une preuve dynamique 4D.
+
+## EXÉCUTION RÉELLE ET LIMITES
+
+```bash
+cd /mnt/data/janus-step56
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step56_shift_response.py
+# 14 PASSED in 2.00s.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step56_shift_response
+```
+
+Les DEUX nouveaux fichiers CODE/TEST sont Git blob BYTE-IDENTICAL aux octets exécutés (vérifiés DIRECTEMENT dans GitHub). Le test local est AUTONOME et ne contient PAS tout l'ancien dépôt : pas de full-suite/CI, pas de vrai `{C,Htotal}` calculé. JSON brut local `/mnt/data/janus-step56/research/reports/step56_shift_local.json` SHA256 `7541d626330d4cc8589bbc264ede472b8b81b1a92efdf054bf97fbcf29f3341e`, NOT uploaded as standalone GitHub file ; éléments essentiels et tests dans `research/reports/gate2b-step56-report.json`.
+
+## STEP57 — LE VÉRITABLE VERROU PHYSIQUE RESTE OUVERT
+
+1. Reconstituer l'ORIGINAL COMPLET `Hg,Hf,C_exact` à six couples depuis les vrais sources GitHub, avec `z[Dg,K]`, `z'` et jets, et calculer réellement `{C_red,H_total,red}` par équations canoniques et variations fonctionnelles. Utiliser les dérivées de shift, dérivées des fonctions test et bords démontrés ici. Ne pas doubler les termes de chaîne dans H grâce au théorème d'enveloppe.
+2. Résoudre/simplifier l'OPÉRATEUR SUR LES LAPSUS et déterminer le rang de Dirac, la conservation secondaire, la fixation du rapport des lapses, les branches exceptionnelles K/J, tous sur le profil initial positif Step55. Ne pas supposer d'avance une élimination du fantôme BD.
+3. Vérifier le résultat avec un oracle Poisson indépendant sur l'action d'origine non intégrée par parties, et la régularité tensorielle du centre.
+4. Continuer à PREPENDRE ce fichier GitHub après chaque étape. Actions toujours désactivées.
+
+**STATUT SCIENTIFIQUE : opérateur de réponse du déplacement relatif établi EXACTEMENT ; VRAI CROCHET TEMPORAL ET RANG DIRAC NON CALCULÉS. GATE 2B OPEN ; JANUS-R NOT VALIDATED.**
+
+**ADMIN GITHUB :** historiques des anciennes branches main/V2 préservés en ascendance active via commit `4f7a3a1`; PR V2 #1 fermée sans fusion ; mais GitHub garde TROIS références et le défaut `main`. Le connecteur ne possède toujours pas les actions de changement du défaut/suppression de ref ; propriétaire doit effectuer Settings > Default branch -> active, puis supprimer V2/main dans Branches. Ne jamais annoncer « une branche » avant contrôle.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP55 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE AUX ÉCRITURES : research/gate2b-nonhomothetic-transfer. NE PAS RÉACTIVER GITHUB ACTIONS. Gate 2B OPEN ; JANUS-R NOT VALIDATED.**
