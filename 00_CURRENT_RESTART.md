@@ -1,3 +1,83 @@
+# JANUS — REPRISE PRIORITAIRE : STEP64 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. NE PAS MODIFIER `main`, `research/v2-flrw`, GitHub Actions/workflows (désactivés). **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LECTURE PRIORITAIRE :** `research/STEP64_FULL_CENTER_PHYSICAL_PTHIRD_INTERVAL_AUDIT.md`.
+**RAPPORT MACHINE, BORNES EN FRACTIONS EXACTES :** `research/reports/gate2b-step64-center-full-third-report.json`.
+**CODE EXÉCUTÉ :** `numerics/hr_step64_center_third_jet.py` Git blob `07d80d70636952bcabf61bd8eb7da88cc8bc6c72`.
+**TESTS 12 NOUVEAUX :** `tests/test_hr_step64_center_third_jet.py` Git blob `1db2c2c9cb7bad57cf2ffbb895b198ec61432d28`.
+Les deux fichiers Step64 sont BYTE-IDENTICAL au code/test localement exécuté et ont été lus-vérifiés sur GitHub.
+**PRÉCÉDENT :** `research/STEP63_REAL_G_GEOMETRY_INTERVAL_AD_RADIAL_HIGH_JETS_AUDIT.md`. Son `numerics/hr_step62_original_interval_ad.py` Git `a93bcd10cd54eec3b478ab0e02ff24fe592e4b8c` et `tests/test_hr_step62_original_interval_ad.py` Git `ce270b88c8731e61ed71bf4949ba1686b7a5b69b` sont des ressources créées en parallèle de l'autre Step62, mais affectées à STEP63. L'**AUTRE** véritable `research/STEP62_AUTHENTIC_G_QUADRATIC_CURVATURE_CERTIFICATE.md` et `research/reports/gate2b-step62-report.json` sont PRÉSERVÉS sans changement : ce travail avait prouvé analytiquement `0<=G_UU<337/500` pour le benchmark. Ne PAS écraser le Step62 existant ou confondre les rapports.
+
+## NOUVELLE AVANCÉE EXACTE — PREMIÈRE CERTIFICATION GLOBALE DU VRAI P''' AU CENTRE
+
+Vraie EDO radiale Step55: `s=r², P=pLf=r²U(s), 2s U_s=G(s,U)-2U`, branche originale positive régulière analytique issue du Step49, `U(0)=U0`. La source originale authentique donne au centre `G(0,U)=3U0-U`. Les **QUATRE** fichiers originaux physiques importés/testés BYTES EXACTS :
+
+```text
+numerics/hr_step45_exact_physical_ward.py  66aa43841dccfe4a5d586a49be9c10af3a67a10e
+numerics/hr_step46_exact_secondary_ode.py bac025c28dbe1561c0c36c56dbfda46dc326f804
+numerics/hr_step55_normalized_secondary.py a54a6acf2f7ad2f64c500faecfa1406ecbf7b862
+numerics/hr_step55_global_barrier.py a6e7004120d0a166a3a8973c2fbe1487a8eb70fe
+```
+
+Step63 avait réellement REJOUÉ le certificat Step55 global 256-cellules et ses deux inégalités de barrières strictes, puis certifié par AD à géométrie complète et arrondi entier extérieur 10^-28 `P''` sur **TOUT** r∈[0,.85], mais `P'''` seulement sur 255 cellules intérieures, faute de borne directe du quotient `(G-2U)/s` au centre.
+
+**Solution STEP64 : facteur intégrant et enveloppe uniforme de U.** Poser `W=U-U0`, `A(s,U)=[G(s,U)-(3U0-U)]/s=∫_0^1 G_s(ts,U)dt`. De l'EDO EXACTE :
+
+```text
+2s W_s +3W = s A(s,U(s)).
+W(s)= s^(-3/2)/2 * integral_0^s t^(3/2) A(t,U(t)) dt.
+Si |A|<=B, alors |W/s|<=B/5, et |U_s|<=4B/5, s>0,
+avec prolongement régulier par continuité au centre.
+```
+
+IMPORTANT : pour borner `G_s(t,U(s))` à U(s) FIXE lors de l'intégration sur t≤s, utiliser une BOÎTE UNIFORME en U contenant **tous** les `Ustar(s)±1e-4` Step55 pour tout s∈[0,289/400]. Le seul tube mobile `Ustar(t)±delta` ne suffit pas ! Le nouveau code calcule donc le MAX ABS GLOBAL de G_s(t,U) dans les 256 cellules continues en t × boîte uniforme U, via `hr_step62_original_interval_ad.py` et le réel module historique `hr_step55_global_barrier.py`.
+
+```text
+B = 21885092944341379217378943/5000000000000000000000000000
+  ≈0.004377018588868276.
+|U_s|<=4B/5 ≈0.003501614871094621 sur TOUT [0,289/400].
+P'''(r)=2r[H_s+H_U U_s], H=G+2s G_s+(G-2U)G_U.
+```
+
+**CERTIFICAT NOUVEAU EN FRACTIONS EXACTES, `0<=r<=17/20=0.85`, sur TOUS les 256 intervalles incluant r=0 :**
+
+```text
+-157117705762868039310811/625000000000000000000000000
+ <= P'''(r) <=
+  128641166369078726897489771/5000000000000000000000000000
+
+Décimal strict volontairement élargi : -0.000252 < P'''(r) < 0.025729.
+La cellule centrale r=0 incluse : 0<=P'''<=
+16458628607489610074397529/10000000000000000000000000000.
+```
+
+La borne est **conditionnée à la branche physique RADIALE initiale exacte positive et analytiquement régulière de Step49/55** ; le calcul ne re-prouve PAS son existence au centre indépendamment. Il ne prouve pas d'évolution en temps 4D, ni rang de Dirac ni absence de fantôme BD.
+
+## EXÉCUTIONS, TESTS ET VRAIE PROVENANCE
+
+```bash
+cd /mnt/data/janus-step62
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step64_center_third_jet.py tests/test_hr_step62_original_interval_ad.py
+# VRAIMENT EXÉCUTÉ : 27 passed in 23.56s
+# =12 NOUVEAUX Step64 +15 vrais tests Step63 originaux.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step64_center_third_jet 256 > research/reports/gate2b-step64-center-full-Pthird.json
+# Local brut généré SHA256: 19bc8c6633714e99582e0f41a3e3a88782d0edccd479e537f7a3ee27554cc7f3
+```
+
+Les deux nouveaux fichiers + quatre historiques ont été Git-hash vérifiés exactement. Le brut de sortie a été généré LOCALLEMENT, NON uploadé comme artefact indépendant ; ses fractions et métadonnées sont sur GitHub dans `research/reports/gate2b-step64-center-full-third-report.json`. **27 nouveaux+anciens tests ciblés Step63–64 passés ensemble**, mais ne pas prétendre avoir rejoué les 17 tests de l'autre Step62, les Steps57–61 ou toute la suite du dépôt/CI. Actions OFF.
+
+## NEXT STEP65 — VÉRITABLE VERROU DIRAC TEMPOREL, TOUJOURS OPEN
+
+1. Reconstituer et SHA-verifier les vrais modules physiques `hr_step57_secondary_principal_symbol.py`, `hr_step58_temporal_operator.py`, `hr_step59_third_jet_gate.py`, `hr_step60_full_constraint_prolongation.py`, et profil original Step55 dans un worktree cohérent. Ces quatre modules temporels N'ONT PAS été importés/rejoués pendant Steps63–64.
+2. Évaluer les **4 vrais coefficients d'ordre inférieur des lapses** `A_N,B_N,A_M,B_M` sur les données radiales EXACTEMENT contraintes, en utilisant maintenant nos jets P'',P''' certifiés sur tout le rayon ; `z=Z(Dg,K),zr=Z1,zrr=Z2` à imposer **cohérents** (correction Step61), toutes contraintes et prolongations Step60. Puis, seulement ensuite, calcul du vrai rang, existence de lapses positifs, conditions de bord et exception K=0/J=0.
+3. Oracle physique original non-IBP TEMPOREL indépendant, six couples et deux poussières, pour valider une éventuelle conclusion de ghost-freedom ; comparer Step62 courbure exacte et Step63 dérivées totales sans mélanger les hypothèses.
+4. **Préfixer à nouveau `00_CURRENT_RESTART.md` avec état, Git SHA, tests, hypothèses et étapes. Ne jamais réécrire l'historique ni main/V2.**
+
+**BILAN : Étape64 certifie P''' sur TOUT [0,0.85], y compris centre, depuis la VRAIE équation originale Step55. Rang DIRAC/lapse fixing/JANUS-R encore OPEN.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP63 TERMINÉ — 2026-10-23
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. NE PAS MODIFIER `main` ni `research/v2-flrw`. Ne PAS réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
