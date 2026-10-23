@@ -58,7 +58,6 @@ def full_constraint_prolongation():
     root=sp.sqrt(1-z*z)
     ZD=root**3/K
     ZK=-z*(1-z*z)/K
-    C=p['C_exact']
     D1=Dt(D);K1=Dt(K)
     D2=Dt(D1);K2=Dt(K1)
     Z1=ZD*D1+ZK*K1
