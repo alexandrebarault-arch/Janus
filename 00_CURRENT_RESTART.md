@@ -1,3 +1,75 @@
+# JANUS — REPRISE PRIORITAIRE : STEP59 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne PAS modifier `main`, `research/v2-flrw` ni réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP59_THIRD_RADIAL_JETS_CONSTRAINT_PROLONGATION_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step59-report.json`.
+**NOUVEAU CODE EXÉCUTÉ :** `numerics/hr_step59_third_jet_gate.py`, Git SHA `ae26a79cbfa7bb50fbb398d7d6c18478adf7627e`.
+**17 NOUVEAUX TESTS :** `tests/test_hr_step59_third_jet_gate.py`, Git SHA `ee6dd8f99e963c60a78c3b4f5a52000273b929c4`.
+**SOURCES PHYSIQUES ORIGINALES BYTE-IDENTIQUES :** `numerics/hr_step45_exact_physical_ward.py` Git `66aa43841dccfe4a5d586a49be9c10af3a67a10e`; `numerics/hr_step57_secondary_principal_symbol.py` Git `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`; `numerics/hr_step58_temporal_operator.py` Git `802c23aebd41780d8c462f1aa1711707fe4ee88f`.
+**PRÉCÉDENT :** `research/STEP58_EXACT_PHYSICAL_TEMPORAL_OPERATOR_HIGH_LAPSE_CANCELLATION.md`.
+
+## NOUVELLE AVANCÉE EXACTE : JETS CANONIQUES TROISIÈMES ET CONTRAINTES DIFFÉRENTIÉES
+
+Le Step58 a démontré que sur Fz=Hg=0 les jets SECONDS de lapse disparaissent exactement et que l'opérateur temporel de la vraie secondaire réduite sur SIX couples a la forme
+```text
+dot C_red = A_N*N + B_N*N' + A_M*M + B_M*M' .
+```
+Step59 différentie EXACTEMENT les véritables coefficients `A_N,B_N,A_M,B_M` (original Step45 + total Dirac Step58) par rapport aux 12 jets de TROISIÈME dérivée canonique, après élimination Fz=0. TOUS les coefficients d'ordre 3 s'annulent sauf :
+
+```text
+d(B_N)/d(Sg''') = -2 Mg² Sg (1-z²)/(Lf Lg²)
+d(A_M)/d(pLg''') = +z(1-z²)/Lf²
+d(A_M)/d(Sg''')  = -pSg z(1-z²)/(Lg Lf²)
+d(A_M)/d(tg''')  = -pg  z(1-z²)/(Lg Lf²)
+A_N, B_M : aucune dépendance à des jets canoniques 3e ordre sur Fz=0.
+```
+
+**THÉORÈME DE PARTIE PRINCIPALE** : le vrai primaire Hg ne comporte qu'un seul jet canonique d'ordre 2 `dHg/dSg''=2Mg²Sg/Lg`, et la vraie secondaire réduite Step57 possède `dC_red/dpLg''=(1-z²)/Lf`, `dC_red/dSg''=-pSg(1-z²)/(LgLf)`, `dC_red/dtg''=-pg(1-z²)/(LgLf)`. Donc les parties principales d'ordre 3 sont EXACTEMENT
+
+```text
+(B_N)_(q''') = -(1-z²)/(Lg Lf) * (Hg')_(q''')
+(A_M)_(q''') = +z/Lf * (C_red')_(q''')
+                = -z(1-z²)/(Lg Lf²) * (Dg'')_(q''') .
+```
+
+Ceci identifie les bonnes contraintes RADIALEMENT PROLONGÉES à soustraire dans l'étape suivante. **IL NE S'AGIT PAS** d'une identité des COEFFICIENTS COMPLETS `B_N` ou `A_M` : leur partie de plus bas ordre reste à calculer. Il serait incorrect de fixer simplement les jets troisièmes à zéro ou de conclure au rang de Dirac par ce seul calcul.
+
+**Stationnarité du déplacement prolongée 2 FOIS** sur `K>0`, `R=sqrt(Dg²+K²)`, `z=Dg/R` :
+
+```text
+z'=(K² Dg' - Dg K K')/R³
+z''=(K² Dg'' + K K' Dg' - Dg (K')² - Dg K K'')/R³
+    -3 (K² Dg' - Dg K K') (Dg Dg' + K K')/R⁵
+Fz=Fz'=Fz''=0, exact on positive K root.
+```
+
+Au centre, si `Dg=r³ d(s),K=r² k(s)>0,s=r²`, alors `z=r*w(s)`, `z'=w+2s*w_s`, `z''=r(6w_s+4s*w_ss)`; z''=O(r) pour d,k réguliers C² en s. Cette parité n'est PAS une preuve 4D d'évolution régulière.
+
+## EXÉCUTION RÉELLE ET PROVENANCE
+
+Workspace local isolé `/mnt/data/janus-step58` avec sources 45/57/58 exactes GitHub. Nouveaux code+test byte-identiques à leurs octets réellement exécutés et vérifiés directement par les SHA GitHub.
+
+```bash
+cd /mnt/data/janus-step58
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step59_third_jet_gate.py
+# 44 PASSED en 5.12s : 12 historiques Step57, 15 Step58, 17 NOUVEAUX Step59.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step59_third_jet_gate
+```
+
+Manifeste brut `/mnt/data/janus-step58/research/reports/gate2b-step59-local-manifest.json`, SHA256 `c2bbd8c3829c2333f61f586170502b0dbd0b0a1b7e8e4d71e0d38be12fe70012`, généré localement mais PAS uploadé ; formules/versions/tests dans `research/reports/gate2b-step59-report.json`. Pas de full suite originale ni CI, Actions toujours OFF.
+
+## STEP60 — PROCHAINE ACTION INDISPENSABLE
+
+1. Construire les dérivées radiales COMPLETES `Hg'` et `C_red'` de l'ACTION PHYSIQUE avec `z,z',z''` cohérents; puis former **exactement** les résidus `B_N+(1-z²)/(LgLf)*Hg'` et `A_M-(z/Lf)*C_red'`. Prouver qu'ils ne contiennent plus AUCUN q''' (pas seulement égalité de coefficients principaux), sans ignorer les autres termes de plus bas ordre.
+2. Réduire les quatre coefficients complets `A_N,B_N,A_M,B_M` modulo `Fz,Fz',Fz'',Hg,Hg',Hf,Ddiag,C_red,C'_red` et les jets du profil global Step55 strictement positif. Déterminer le véritable opérateur des deux lapses et son rang, avec borne de stabilité/régularité au centre. Ne PAS déduire automatiquement la fixation des lapses.
+3. Comparer avec une VARIATION TEMPORALE INDÉPENDANTE de la véritable action non-IBP originale à six couples, et vérifier bords et K/J exceptionnels. **RANG DIRAC / FIXATION DES LAPSUS / ABSENCE DE FANTÔME BD TOUJOURS NON ÉTABLIS**.
+4. Préfixer de nouveau CE FICHIER sur la seule branche active ; conserver le contenu des étapes précédentes, main/V2 intacts et Actions désactivées.
+
+**VERDICT : Step59 parties principales d'ordre 3 exactes, contraintes prolongées identifiées, shift z,z',z'' certifié algébriquement ; aucun rang de Dirac complet ni dynamique 4D validée. Gate2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP58 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`; ni `main` ni `research/v2-flrw`. Ne pas réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
