@@ -1,0 +1,89 @@
+{
+  "step": 63,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Geometry-aware complete s/U second-order outward Taylor interval AD of ORIGINAL Step55 physical G, authentic 256-cell barrier rerun and rigorous P'' full/P''' interior bounds",
+  "relation_to_existing_step62": "Adds independent full geometry-aware interval derivative computation to existing Step62 exact quadratic-in-U symbolic curvature audit; does not overwrite original Step62 files, notes, report or checkpoint history.",
+  "provenance": {
+    "original_byte_pins": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+    },
+    "all_four_sources_git_hash_verified_locally": true,
+    "global_step55_256_cell_barrier_reexecuted": true,
+    "geometric_chain_rule_includes_s_dependence_of_all_benchmark_background_functions": true,
+    "step55_original_strict_barrier_max_Fplus": "-1480966474499367232302129/10000000000000000000000000000",
+    "step55_original_strict_barrier_min_Fminus": "295653233337826329055403/2000000000000000000000000000"
+  },
+  "coverage": "All s∈[0,289/400], U inside exact Step55 Ustar(s)±1/10000, 256 continuous cells, scale 10^28 integer outward rounding",
+  "rigorous_fractions": {
+    "G": [
+      "-125016956124581550963922377/10000000000000000000000000000",
+      "-1940305749832360766774427/312500000000000000000000000"
+    ],
+    "G_s": [
+      "18523934138473054215327827/5000000000000000000000000000",
+      "8168863493869413541730479/2000000000000000000000000000"
+    ],
+    "G_U": [
+      "-2505544668941123497720438919/2500000000000000000000000000",
+      "-2482092799488383772425301393/2500000000000000000000000000"
+    ],
+    "G_ss": [
+      "-803437892350944178302849/5000000000000000000000000000",
+      "-69183082946955726395637/500000000000000000000000000"
+    ],
+    "G_sU": [
+      "31877709564447465451703527/10000000000000000000000000000",
+      "7045052156027924963442307/1000000000000000000000000000"
+    ],
+    "G_UU": [
+      "-95871261172645922588799067/5000000000000000000000000000",
+      "1636369667280570314195113769/2500000000000000000000000000"
+    ],
+    "P_second": [
+      "-147070593809285406467582897/10000000000000000000000000000",
+      "6848082126269118243752609/10000000000000000000000000000"
+    ],
+    "P_third_over_r_INNER_255_cells": [
+      "-7737738921784720846585595959/5000000000000000000000000000",
+      "633953351742687100587242463/400000000000000000000000000"
+    ],
+    "P_third_INNER_255_cells": [
+      "-1162674128312075414290493467/10000000000000000000000000000",
+      "595362198245649137013643103/5000000000000000000000000000"
+    ]
+  },
+  "differential_identities": [
+    "P'=rG",
+    "P''=G+2s G_s+(G-2U)G_U",
+    "P'''=2r(H_s+H_U*(G-2U)/(2s)), s>0"
+  ],
+  "scope": {
+    "P_second_whole_radius": true,
+    "P_third_whole_radius": false,
+    "P_third_first_cell": "NOT CERTIFIED; fixed-width Step55 U barrier doesn't control (G-2U)/s as s→0; use center analytic ODE integral inequality for possible Step64",
+    "full_temporal_lapse_coefficients": "NOT CALCULATED",
+    "Dirac_rank": "NOT CALCULATED",
+    "lapse_fixing": "NOT CALCULATED",
+    "Gate2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "code": {
+    "path": "numerics/hr_step62_original_interval_ad.py",
+    "blob": "a93bcd10cd54eec3b478ab0e02ff24fe592e4b8c",
+    "tests": "tests/test_hr_step62_original_interval_ad.py",
+    "test_blob": "ce270b88c8731e61ed71bf4949ba1686b7a5b69b",
+    "test_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step62_original_interval_ad.py",
+    "test_result": "15 passed in 11.42s",
+    "independent_frozen_geometry_derivative_negative_control": true,
+    "polynomial_sqrt_rational_Taylor_independent_controls": true,
+    "raw_report_generated_local": "/mnt/data/janus-step62/research/reports/gate2b-step62-raw-intervals.json",
+    "raw_report_sha256": "4b5dbf232cea21cb92a59b095da2026eedbbdfdf379db180d6c3e3b080930e88",
+    "code_test_bytes_verified_matching_GitHub": true,
+    "whole_repo_suite": false,
+    "Actions_off": true
+  }
+}
