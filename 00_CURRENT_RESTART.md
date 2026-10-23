@@ -1,3 +1,76 @@
+# JANUS — REPRISE PRIORITAIRE : STEP62 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE À MODIFIER :** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main` ou `research/v2-flrw`. GitHub Actions/workflows doivent RESTER désactivés. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE IMMÉDIATEMENT :** `research/STEP62_AUTHENTIC_G_QUADRATIC_CURVATURE_CERTIFICATE.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step62-report.json`.
+**NOUVEAU CODE :** `numerics/hr_step62_physical_G_curvature.py`, vrai blob Git `d2040a4bde9672933eac9bbab91b792005227f40`.
+**17 NOUVEAUX TESTS :** `tests/test_hr_step62_physical_G_curvature.py`, vrai blob Git `b8e432ff4afe4a53b7d54150f174706a5b65460b`. Ces deux nouveaux fichiers sont **byte-identical GitHub vs versions localement exécutées**.
+**3 SOURCES PHYSIQUES HISTORIQUES RECONSTITUÉES, IMPORTÉES ET VERIFIÉES BYTE-IDENTICAL :** `numerics/hr_step45_exact_physical_ward.py` Git `66aa43841dccfe4a5d586a49be9c10af3a67a10e` ; `numerics/hr_step46_exact_secondary_ode.py` Git `bac025c28dbe1561c0c36c56dbfda46dc326f804` ; `numerics/hr_step55_normalized_secondary.py` Git `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`.
+**PRECEDENT :** `research/STEP61_NORMALIZED_RADIAL_ODE_JETS_AND_SHIFT_CONSISTENCY_AUDIT.md`, 15 tests standalone.
+
+## RÉSULTAT SCIENTIFIQUE PHYSIQUE INÉDIT STEP62 : VRAIE FONCTION G ET COURBURE CERTIFIÉE
+
+Contrairement à Step61, nous avons exécuté le VRAI `G(s,U)` calculé par `hr_step55_normalized_secondary.normalized_symbolic()` depuis l'action positive-EH HR originale à SIX couples et deux poussières (étapes 45,46,55). L'expression originale possède 1048 opérations SymPy. Résultat EXACT à partir de cette source originale, et NON d'un exemple artificiel :
+
+```text
+s=r², P=pLf=r²U(s), 2s U_s=G(s,U)-2U.
+degree_U(G)=2; d³G/dU³=0 identiquement; d²G/dU²(s=0)=0.
+l=Lf0, g=Lg0, t=tf0, mf=Mf2, h=sqrt(1-s*z1²).
+At=l² beta3+2*l*g beta2+g² beta1.
+T=(3*l² beta3+2*l*g beta2-g² beta1)*h+4*l*g beta2+4*g² beta1.
+G_UU= -s*t*T / [2*l*mf*sqrt(l²+s*t²)*h*At].
+G_U(0,U)=-Sfr0/Lf0 ; at benchmark center = -1.
+```
+
+La factorisation G_UU ci-dessus est vérifiée exactement par SymPy : résidu ZÉRO après comparaison avec la véritable expression de l'original Step55. Elle est indépendante de U. Changement de signe de la pente de la poussière f, à géométrie fixe, inverse le signe de cette courbure.
+
+**VRAI CERTIFICAT D'INTERVALLE RATIONNEL :** sur tout s∈[0,289/400]=[0,0.7225], pour la géométrie benchmark exacte de Step55 (Lg0=.4*(1+.0015s)² ; Lf0=.4*.5787707228025044*(1-.0012s)² ; tf0=-.0016 Lf0 ; z1=.004 ; Mf2=.10879548725² ; beta1=1,beta2=-4.2383993109,beta3=13.6801214252), les produits et divisions d'intervalles sont effectués EN FRACTIONS EXACTES, avec les racines délimitées rationnellement et vérifiées par carré. Preuve stricte `At>0`, `T>0` et dénominateur non nul, conduisant à :
+
+```text
+POUR TOUT 0<=s<=289/400, pour TOUT U:
+       0 <= G_UU(s,U) < 337/500 = 0.674
+et G_UU>0 pour s>0.
+(Borne Fraction calculée ≈ 0.6736978758144369, décimal informatif seulement.)
+```
+
+**RÉSULTAT IMMEDIAT D'ERREUR QUADRATIQUE** : sur l'EXACTE solution radiale positive Step55, ancien certificat `|U-Ustar|<=1/10000`. Puisque G est exactement quadratique :
+
+```text
+G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar)
+                  = G_UU(s)/2*(U-Ustar)^2 EXACTEMENT.
+|G_U(s,U)-G_U(s,Ustar)| < 337/5000000 = 6.74e-5.
+|G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar)|
+                                  < 337/100000000000 = 3.37e-9.
+```
+
+Ces bornes s'étendent à TOUT le benchmark radial certifié sans échantillonnage. Ce sont des **bornes sur les variations en U**, PAS sur les dérivées totales par s ; elles ne prouvent PAS encore P''/P''' global, ni les 4 coefficients de lapses du Step60 ou le rang de Dirac.
+
+**NUANCE DE PROVENANCE:** les TROIS modules originaux Step45/46/55 sont vraiment byte-authenticated et importés localement. La géométrie benchmark est une transcription littérale en `Fraction` du vrai fichier historique `hr_step55_global_barrier.py` consulté sur GitHub, mais ce QUATRIÈME fichier n'a PAS été importé ni byte-vérifié dans le nouveau workspace Step62. La prochaine étape doit corriger cette dernière limite avant les dérivées totales.
+
+## VRAIE EXÉCUTION, OCTETS ET TESTS
+
+```bash
+cd /mnt/data/janus-step62
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step62_physical_G_curvature.py
+# RÉELLEMENT EXÉCUTÉ FINAL : 17 PASSED en 2.57 secondes.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step62_physical_G_curvature
+```
+
+Les tests comprennent vrai G original et source-pin fail-closed, G_UUU=0, identité G_UU, centre et pente poussière f, certificat arithmétique d'intervalle sur tout s, tests négatifs pour arithmétique et signe, deux bornes du tube Taylor. Nouveau code + nouveaux tests byte-identical au HEAD GitHub vérifié. Le manifeste brut local existe `/mnt/data/janus-step62/research/reports/gate2b-step62-local-manifest.json`, SHA256 `2e99f43bda32edbbf47380d1806f913a99fca2203de21da8de63174bd0ccb814`, mais n'a PAS été téléversé comme artefact indépendant ; le rapport `research/reports/gate2b-step62-report.json` stocke toute la preuve et les fractions. Aucune CI ni anciens tests Steps57–61 réexécutés dans ce workspace ciblé ; ne pas prétendre 73/73 tests cumulés comme une exécution commune.
+
+## STEP63 — PROCHAIN VERROU PHYSIQUE
+
+1. Reconstituer et PINNER aussi `numerics/hr_step55_global_barrier.py` en octets EXACTS depuis GitHub. Employer son VRAI `geometry(s)` et le G original ici vérifié, pour les dérivées TOTALES en s des champs métriques/dust et de `G(s,U)`, pas simplement les dérivées PARTIELLES à géométrie fixée.
+2. Certifier sur la vraie solution positive du Step55, avec arithmétique d'intervalles, les grandeurs `G_s,G_U,G_ss,G_sU` et notamment les limites régulières au centre s=0 ; appliquer le bridge Step61 pour obtenir P'',P''' bornés.
+3. Importer ensuite l'opérateur six-pair temporel original Step60 et imposer `z=Z(Dg,K),zr=Z1,zrr=Z2` avec toutes primaires, secondaire et prolongations radiales sur le profil EXACT Step55, puis tenter le rang/multiplicateurs/rapport des lapses. NE PAS DÉDUIRE rang ni absence BD du seul certificat G_UU.
+4. Comparaison indépendante non-IBP du VRAI crochet temporel, bords et secteurs exceptionnels K=0/J=0.
+5. Préfixer cette même reprise après chaque progrès sans écraser l'historique, conserver main/V2 et Actions intacts.
+
+**VERDICT : propriété exacte du G physique originale démontrée + courbure G_UU uniformément bornée et reste Taylor global rigoureux sur Step55. PRÉSERVATION TEMPORELLE, RANG DIRAC, FIXATION DES LAPSES, ABSENCE DU FANTÔME BD, ÉVOLUTION 4D NON ÉTABLIS ; Gate2B OPEN, JANUS-R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP61 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE DE RECHERCHE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main` ni `research/v2-flrw`. Ne pas réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
