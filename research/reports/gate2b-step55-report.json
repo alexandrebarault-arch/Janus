@@ -1,0 +1,84 @@
+{
+  "step": 55,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Certified full-interval invariant differential barrier of EXACT regular spherical radial C=0 initial-data solution, closing the Step54 tube-membership gap on fixed prescribed background",
+  "theorem_scope": "Original positive-Einstein-Hilbert spherical Hassan–Rosen six canonical pairs and two moving dusts, primary-reduced secondary equation, fixed analytic g-sector/metric/two dust phase slopes and shift; exact printed benchmark parameters interpreted as rational. The theorem is ONLY for constrained radial initial data, NOT full temporal Dirac evolution or ghost freedom.",
+  "ODE": "s=r^2, P=pLf=r^2 U(s), V=P'/r=G(s,U), 2s U_s=G(s,U)-2U; G exactly obtained by symbolic radial cancellation from authentic Step45/46 physical six-pair C=0 primary-reduced pLf_prime_rhs",
+  "local_center_input": "Conditional unique bounded analytic regular center solution U(0)=U0 established at Step49; Step52 U1 and Step53 U2 exact quadratic-field coefficients and rational exterior enclosures; Ustar=U0+U1 s+U2 s^2; Vstar=2U0+4U1 s+6U2 s^2",
+  "normalized_cert": {
+    "s_interval": [
+      "0",
+      "0.7225"
+    ],
+    "r_interval": [
+      "0",
+      "0.85"
+    ],
+    "cells": 256,
+    "certified_U_barrier": "|U-Ustar|<=1/10000 for entire interval",
+    "certified_V_tube": "-0.00205 < V-Vstar < 0.00205 on the entire interval",
+    "strict_max_Fupper_exact": "-1480966474499367232302129/10000000000000000000000000000",
+    "strict_min_Flower_exact": "295653233337826329055403/2000000000000000000000000000",
+    "V_minus_Vstar_lower_exact": "-10209601928354599272595789/5000000000000000000000000000",
+    "V_minus_Vstar_upper_exact": "20404447710211286903383733/10000000000000000000000000000",
+    "V_actual_min_enclosure": "-124823860039988386961732869/10000000000000000000000000000",
+    "V_actual_max_enclosure": "-62225126601149941645513349/10000000000000000000000000000",
+    "lattice": "Every elementary interval addition, subtraction, multiplication, integer power, reciprocal and square root encloses all inputs via integer outward rounding at scale 10^28. Exact Fraction rational cell endpoints, no floating numerical samples for claims.",
+    "boundary_definition": "Fplus(s)=G(s,Ustar+delta)-2(Ustar+delta)-2s Ustar'(s); Fminus(s)=G(s,Ustar-delta)-2(Ustar-delta)-2s Ustar'(s). Strict Fplus<0 and Fminus>0 on all 256 continuous cells, including s=0 and s=.7225.",
+    "proof": "The Step49 analytic center branch starts with U(0)=Ustar(0)=U0, strictly between barriers. For s>0, first-contact scalar ODE comparison with Fplus<0 and Fminus>0 excludes barrier escape; the interval RHS is smooth and all physical denominators nonzero on the compact barrier chart, giving continuation up to smax. Simultaneous interval evaluation G(s,Ubarrier) proves |V-Vstar|<0.00205<0.01, satisfying both conditions of the independently proved Step54 continuum positivity theorem.",
+    "numerical_not_used_for_proof": true
+  },
+  "Step54_positive_conclusions_now_unconditional_for_exact_radial_branch": {
+    "verified_tube_applicable": true,
+    "g_dust_normalized_gt": "0.8854",
+    "f_dust_normalized_gt": "0.063",
+    "J_gt": "0.659",
+    "K_over_r2_gt": "0.229",
+    "both_dust_lapse_denom_gt": "0.998",
+    "Sfr_gt": "0.230",
+    "shift_sqrt_gt": "0.9999",
+    "source": "research/reports/gate2b-step54-report.json; Step54 proved signs for all profiles in U,V delta=.01, Step55 now proves actual exact regular-C branch belongs to this tube",
+    "caveat": "Only regularized spherical initial-data dust momentum signs and chart factors; does not certify global 4D tensor-density/spacetime regularity or time-evolved dust positivity."
+  },
+  "provenance": {
+    "exact_original_source_blobs": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804"
+    },
+    "new_exact_executed_github_files": {
+      "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+      "tests/test_hr_step55_global_barrier.py": "5dfb8036c66c9b2774847b0989be15ea41c65408"
+    },
+    "tests_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step55_global_barrier.py",
+    "tests_passed": 12,
+    "tests_failed": 0,
+    "seconds": 3.85,
+    "all_six_sources_and_tests_byte_identical_to_github": true,
+    "tests_covered": "original provider git blob SHA and fail-closed tampering; exact rational interval signs and sqrt including negative reciprocals; symbolic removal r singular; center G(0,U)=3U0-U; every rational s-cell covered; 256-cell barriers; derivative V tube; 512-cell refinement; intentionally wider U=.001 failing V tube; invalid input refusal; original unsimplified Step46 physical RHS interval arithmetic independently contains normalized RHS at .05,.35,.85; no temporal Dirac misstatement.",
+    "workspace": "/mnt/data/janus-step55",
+    "raw_result_local": "/mnt/data/janus-step55/research/reports/step55-global-barrier-local.json",
+    "raw_result_sha256": "4f22328452d36ee252f966fbe6a1fa476e7aaba8daee43ec9d555b11619f0cfd",
+    "raw_standalone_github_uploaded": false,
+    "prior_step54_tests": "9 passed separately Step54; not all previous historical tests rerun in this local worktree",
+    "whole_repo_test_run": false,
+    "actions_ci_disabled": true
+  },
+  "unclosed_major_gates": {
+    "full_temporal_six_pair_Dirac_time_preservation": "NOT_COMPUTED",
+    "lapse_ratio_fixing": "NOT_COMPUTED",
+    "constraint_rank_and_BD_ghost": "NOT_ESTABLISHED",
+    "full_4D_time_evolution": "NOT_COMPUTED",
+    "exceptional_J_zero_or_K_zero_branches": "OPEN",
+    "full_original_unintegrated_Poisson_on_this_exact_interval_profile": "NOT_REEXECUTED (earlier Step48 numerical non-IBP test is independent but not exact full continuum)",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step56": [
+    "Formalize and compute original temporal bracket {C,H_total} including all six canonical pairs, lapse shift algebraic elimination and boundary traces, determine lapse ratio and true constraint rank on now certified positive radial initial-data branch. Compare to original action non-IBP oracle.",
+    "Audit full 4D regularity at r=0, complete tensor ADM momentum parity and original metric equations; radial initial-data regularity is not spacetime regularity.",
+    "Re-run Step54 and Step55 in one full authentic repository checkout; keep original Step45/46 pinned and GitHub Actions off.",
+    "Consolidate repository branches only through admin UI once default branch changed; user already asked for one but connector cannot change default/delete refs. Older commits preserved by ancestry commit 4f7a3a1."
+  ]
+}
