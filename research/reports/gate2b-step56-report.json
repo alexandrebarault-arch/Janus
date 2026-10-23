@@ -1,0 +1,62 @@
+{
+  "step": 56,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Exact positive-K HR relative-shift Frechet/jet response required by six-pair temporal Dirac calculation",
+  "source": {
+    "Step45": "numerics/hr_step45_exact_physical_ward.py",
+    "Step45_SHA": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "Step46": "numerics/hr_step46_exact_secondary_ode.py",
+    "Step46_SHA": "bac025c28dbe1561c0c36c56dbfda46dc326f804"
+  },
+  "identities": {
+    "Dg": "pSg*Sgr-Lg*pLgr+pg*tgr",
+    "K": "m² Mg² Lg Lf (beta1*Sg²+2 beta2*Sg Sf+beta3*Sf²)",
+    "Fz": "Dg-Kz/sqrt(1-z²)=0",
+    "shift": "z=Dg/sqrt(Dg²+K²) when K>0",
+    "Frechet": "delta_z=(K² delta_Dg-Dg*K delta_K)/(Dg²+K²)^(3/2)",
+    "delta_Dg": "Sgr dpSg+pSg dSgr-pLgr dLg-Lg d(pLgr)+tgr dpg+pg d(tgr)",
+    "delta_K": "m²Mg²[Lf*At dLg+Lg*At dLf+2LgLf((beta1 Sg+beta2 Sf)dSg+(beta2 Sg+beta3 Sf)dSf)]",
+    "jet_commutation": "delta(z')=(delta z)' exactly",
+    "temporal_stationarity": "dot_z=(K² dot_Dg-Dg*K dot_K)/(Dg²+K²)^(3/2) exactly solves dot Fz=0",
+    "envelope": "partial_z(N Hg+M Hf)=(N/Lg+M/Lf)*Fz=0 on stationary shift; Hamiltonian envelope rule does NOT justify fixing z in secondary Cred variations",
+    "smeared_euler": "delta/delta pLg(x) integral eta(r)z(r)dr = +partial_x[eta(x) Lg(x) Z_D(x)] for compact smearing, Z_D=K²/(Dg²+K²)^(3/2)",
+    "boundary": "- [eta Lg Z_D delta pLg] must be controlled with non-compact smearing"
+  },
+  "center_chart": {
+    "scaling": "Dg=r³ d(s), K=r² k(s)>0, z=r*w(s), s=r², w=d/sqrt(k²+s d²)",
+    "on_stationary_benchmark": "d=k z1/sqrt(1-s z1²), z1=.004",
+    "response": "dw/dd=(1-s z1²)^(3/2)/k, dw/dk=-z1(1-s z1²)/k",
+    "exact_sensitivity": "0<dw/dd<1000/229<4.367; |dw/dk|<4/229<.0175 using prior Step55 k>0.229",
+    "degenerate_chart": "K=Dg=0 does not determine z; not covered"
+  },
+  "toy": "Separate six-pair finite-dimensional test shows nonzero difference between bracket using z(q,p) and bracket freezing z; not physical JANUS Dirac bracket.",
+  "execution": {
+    "source": "numerics/hr_step56_shift_response.py",
+    "source_blob": "71bc56d3433e146c5671351e6ea21468ee5149ca",
+    "tests": "tests/test_hr_step56_shift_response.py",
+    "tests_blob": "75efdc7b99af067f3f7c2b1bc4947cb5a7c9e48f",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step56_shift_response.py",
+    "result": "14 passed in 2.00s",
+    "workspace": "/mnt/data/janus-step56",
+    "byte_identical_new_files": true,
+    "original_source_provenance": "Standalone algebraic reproduction of formulas read from authentic GitHub Step45/46; historical original Python files NOT imported into local Step56 execution. NOT full historical original-provider regression.",
+    "raw_local_json": "/mnt/data/janus-step56/research/reports/step56_shift_local.json",
+    "raw_local_SHA256": "7541d626330d4cc8589bbc264ede472b8b81b1a92efdf054bf97fbcf29f3341e",
+    "whole_repo_tests": false,
+    "github_actions_enabled": false
+  },
+  "unresolved": {
+    "full_six_pair_temporal_bracket": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "Dirac_rank_BD_ghost": "NOT_ESTABLISHED",
+    "boundary_and_exceptional_charts": "NOT_RESOLVED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step57": [
+    "Load original Step45 H_g,H_f,C_exact byte-identical, include eliminated z[Dg,K], z' and higher jets in a symbolic or automatic differentiation six-pair temporal Poisson functional.",
+    "Use Step56 kernel to keep derivatives of smearing N,M and boundary traces, derive physical lapse multiplier operator and Dirac constraint rank on the Step55 positive radial branch.",
+    "Validate temporal secondary against independent original unintegrated functional Poisson oracle, test exceptional K/J chart and spherical center."
+  ]
+}
