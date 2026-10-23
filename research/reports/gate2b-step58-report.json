@@ -1,0 +1,89 @@
+{
+  "step": 58,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Full factored six-canonical-pair local temporal evolution of original reduced BD candidate C, and exact cancellation of both second lapse jets on primary Fz=Hg=0 surface.",
+  "source": {
+    "physical_step45": "numerics/hr_step45_exact_physical_ward.py",
+    "git_blob": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "physical_step57": "numerics/hr_step57_secondary_principal_symbol.py",
+    "git_blob_step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "source_step45_sha_authenticated_on_import": true,
+    "six_pairs": true,
+    "positive_EH_both_metrics": true,
+    "two_canonical_dusts": true
+  },
+  "derivation": {
+    "secondary": "C=C_original(q,q',z,z')=K00 - dK01/dr, all six-pair original Step45 exact physical Hamiltonian",
+    "stationarity": "Fz=Dg - K*z/sqrt(1-z²)=0, K>0, z=Dg/sqrt(Dg²+K²)",
+    "Frechet_shift": "delta z=ZD delta Dg+ZK delta K, with ZD=(1-z²)^(3/2)/K and ZK=-z*(1-z²)/K on shift shell",
+    "Hamiltonian_flows": "X_(q_i)=sum_j E_(H,j,p_i)*lapse^(j), X_(p_i)=-sum_j E_(H,j,q_i)*lapse^(j), for all six canonical pairs, original fixed-z first Euler variation and stationary H envelope",
+    "perturbation": "delta Dg=sum(D_q X+D_qprime Dx), delta K=sum(K_q X); delta z=ZD delta Dg+ZK delta K",
+    "local_temporal": "dot C_red = sum_i[C_qi X_i + C_qi_prime D X_i]+C_z delta z+C_zprime D(delta z), D=full radial total derivative of all canonical and shift jets, imposing Fz and derivative compatibility for physical evaluation",
+    "weak_equivalence": "For compact smearing eta, integral eta dot C_red is integration-by-parts adjoint of the functional six-pair bracket {int eta C_red,H[N,M]}; tested independently with exact polynomial compact smear and shifted gradient test",
+    "raw_lapse_orders": {
+      "N": [
+        0,
+        1,
+        2
+      ],
+      "M": [
+        0,
+        1,
+        2
+      ]
+    },
+    "higher_3_4_lapse_orders": "EXACTLY ABSENT from constructed original action vector field, without numerical truncation",
+    "raw_coefficient_opcounts": {
+      "N0": 7139,
+      "N1": 3121,
+      "N2": 283,
+      "M0": 6793,
+      "M1": 2354,
+      "M2": 206
+    },
+    "on_Fz_identity": {
+      "elimination": "pLg_prime=(pSg*Sg_prime+pg*tg_prime -K*z/sqrt(1-z²))/Lg",
+      "M_second": "0 IDENTICALLY ON Fz=0",
+      "N_second": "(z²-1)*Hg/(Lg*Lf) IDENTICALLY ON Fz=0",
+      "physical_primary_Fz_Hg_zero": "both lapse second radial derivatives vanish EXACTLY; Cdot reduces to A_N N+B_N Nprime +A_M M+B_M Mprime, coefficients stored in source as factorized SymPy expressions"
+    },
+    "caveats": [
+      "The 4 remaining lapse coefficient functions are constructed but not symbolically reduced on full Hg=Hf=C=Ddiag=Fz=0 radial shell",
+      "The time bracket includes all canonical pairs formally, but is not yet a proof of rank/lapse-fixing or absence of Boulware-Deser ghost",
+      "Stationarity envelope for H requires Fz=0; the C_red variations include implicit z,zprime and jet dependencies",
+      "Compact eta and lapse test support (or controlled boundary traces) required for weak-strong adjoint equivalence",
+      "No complete original non-integrated-by-parts independent ORACLE for this temporal bracket (only toy exact crosscheck)",
+      "No evaluation on exact Step55 global positive radial profile for temporal evolution",
+      "Exceptional K=0 and center 4D dynamics not analyzed"
+    ]
+  },
+  "execution": {
+    "local_workspace": "/mnt/data/janus-step58",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py tests/test_hr_step58_temporal_operator.py",
+    "result": "27 passed in 3.75s (12 Step57 authentic original source tests + 15 NEW Step58 tests)",
+    "new_code": "numerics/hr_step58_temporal_operator.py",
+    "new_code_blob": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "new_tests": "tests/test_hr_step58_temporal_operator.py",
+    "new_tests_blob": "0f9f91de0f607e811dc168e1ead0c3e9296574d0",
+    "both_new_files_byte_identical_to_executed_original": true,
+    "physical_step45_original_byte_identical": true,
+    "full_repo_test_suite": false,
+    "github_actions_enabled": false
+  },
+  "red_gates": {
+    "reduced_lapse_first_order_coefficients_on_exact_C_radial_background": "NOT_COMPUTED",
+    "Dirac_rank": "NOT_ESTABLISHED",
+    "physical_lapse_ratio_fixing": "NOT_ESTABLISHED",
+    "complete_independent_original_unintegrated_temporal_Poisson_oracle": "NOT_RUN",
+    "nonhomothetic_on_shell_4D_evolution": "NOT_ESTABLISHED",
+    "BD_ghost_absence": "NOT_ESTABLISHED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step59": [
+    "Eliminate z,zprime,zdoubleprime consistently using Dg,K and derivatives and impose the EXACT original Step55 radial solution, primary Hg,Hf,Ddiag,Fz and secondary C=0; simplify/evaluate all remaining A_N,B_N,A_M,B_M at the true constrained profile with rigorous stability/error controls.",
+    "Test whether the first-order multiplier operator exhibits a one-dimensional null/gauge direction and fixes a nontrivial relative lapse; find any rank obstructions or degenerate patches without inferring rank from highest jet cancellation.",
+    "Validate real six-pair temporal bracket with an independently derived non-IBP original-action Poisson functional, respecting smearing/center boundary; explore K/J exceptional charts separately."
+  ]
+}
