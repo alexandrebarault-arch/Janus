@@ -3,7 +3,7 @@ from fractions import Fraction
 import sympy as sp
 import pytest
 from numerics.hr_step56_shift_response import (
-  physics,jet_commutation,center_response,stationarity_time_preservation,six_pair_toy,manifest)
+  physics,jet_commutation,center_response,stationarity_time_preservation,smeared_momentum_kernel,six_pair_toy,manifest)
 
 @pytest.fixture(scope='module')
 def symbolic():return physics()
@@ -58,6 +58,20 @@ def test_stationarity_time_derivative_solves_shift_multiplier_identity():
  Dt,Kt,zt=sp.symbols('Dt Kt zt',real=True)
  assert sp.simplify(x['Fz_t_on_shift_shell'].subs(zt,x['z_t']))==0
  assert x['temporal_dirac_C_not_computed'] is True
+
+def test_smeared_momentum_Euler_derivative_produces_test_derivative():
+ x=smeared_momentum_kernel()
+ r=sp.symbols('r',real=True)
+ eta,Lg,zd=(sp.Function(name)(r) for name in ('eta','Lg','ZD'))
+ assert sp.simplify(x['Euler']-sp.diff(eta*Lg*zd,r))==0
+ assert x['nonzero_smearing_derivative'] is True
+
+def test_compact_smearing_boundary_contribution_not_dropped():
+ x=smeared_momentum_kernel()
+ r=sp.symbols('r',real=True)
+ eta,Lg,zd=(sp.Function(name)(r) for name in ('eta','Lg','ZD'))
+ assert sp.simplify(x['boundary_coefficient']+eta*Lg*zd)==0
+
 
 def test_center_normalization_finite_response():
  x=center_response()
