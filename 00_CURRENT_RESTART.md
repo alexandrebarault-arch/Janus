@@ -1,3 +1,64 @@
+# JANUS — REPRISE PRIORITAIRE : STEP60 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. Ne PAS modifier `main` ou `research/v2-flrw`, ne PAS réactiver Actions/workflows. **Gate2B OPEN, JANUS-R NOT_VALIDATED**.
+
+**LIRE D'ABORD :** `research/STEP60_FULL_CONSTRAINT_RADIAL_PROLONGATION_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step60-report.json`.
+**NOUVEAU MODULE PHYSIQUE EXACT :** `numerics/hr_step60_full_constraint_prolongation.py` Git blob `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`.
+**NOUVEAUX 12 TESTS :** `tests/test_hr_step60_full_constraint_prolongation.py` Git blob `1e9a0f227af3795297de882964b53337225db9ce`.
+**QUATRE DÉPENDANCES AUTHENTIFIÉES OCTET-PAR-OCTET :** original six-pair `numerics/hr_step45_exact_physical_ward.py` `66aa43841dccfe4a5d586a49be9c10af3a67a10e`; `hr_step57_secondary_principal_symbol.py` `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`; `hr_step58_temporal_operator.py` `802c23aebd41780d8c462f1aa1711707fe4ee88f`; `hr_step59_third_jet_gate.py` `ae26a79cbfa7bb50fbb398d7d6c18478adf7627e`. NOUVEAU code fail-closed si l'une de ces quatre sources diverge de sa vraie empreinte GitHub.
+
+## RÉSULTAT SCIENTIFIQUE EXACT, PLUS FORT QUE L'ÉTAPE 59
+
+On part du VRAI `C_exact(q,q',z,z')=K00-(K01)'` et des deux Hamiltoniens originaux `H_g,H_f`, six couples (deux poussières), EH positif. Étape58 : sur `Fz=Hg=0`, les jets `N''`,`M''` s'annulent IDENTIQUEMENT ; reste `dot C_red=A_N*N+B_N*N'+A_M*M+B_M*M'`.
+
+Étape59 : les *parties principales* q''' des coefficients B_N,A_M étaient reliées aux contraintes Hg',C'_red. Étape60 : on a enfin construit les **DÉRIVÉES RADIALES COMPLÈTES**, sans jeter les termes de bas ordre, avec `z''` correct :
+
+```text
+Fz=Dg-K*z/sqrt(1-z²)=0, K>0, z=Dg/sqrt(Dg²+K²).
+Z_D=(1-z²)^(3/2)/K ; Z_K=-z*(1-z²)/K.
+z'=Z_D*Dg' + Z_K*K'
+z''=Z_D*Dg''+Z_K*K''+(D_r Z_D)*Dg'+(D_r Z_K)*K'
+Hg'=D_r[Hg_original] (total).
+C'_red=D_r[C_original(q,q',z,z')], with z''=TRUE second prolonged root.
+R_N=B_N + (1-z²)/(Lg Lf)*Hg'
+R_M=A_M - (z/Lf)*C'_red
+```
+
+**THÉORÈME VÉRIFIÉ EXACTEMENT DANS SYMPY :** après élimination du véritable pLg' par Fz=0, **toutes les dérivées de R_N et R_M par rapport à chacun des DOUZE jets canoniques troisièmes sont IDENTIQUEMENT ZÉRO**. 4 dérivées q''' non triviales s'annulent : `∂R_N/∂Sg'''=0`, `∂R_M/∂pLg'''=∂R_M/∂Sg'''=∂R_M/∂tg'''=0`. Les autres q''' n'apparaissaient déjà pas. Les expressions sont AFFINES en ces jets ; cette propriété a été contrôlée avant d'extraire leurs représentants sans q'''.
+
+**NOUVELLES EXPRESSIONS RÉUTILISABLES PAR LA REPRISE :** `full_constraint_prolongation()['third_free_BN_on_Fz']` et `['third_free_AM_on_Fz']` contiennent LES VRAIS RÉSIDUS DE BAS ORDRE, conservés exactement, sans q'''. Ils ne sont PAS prouvés nuls, et n'ont pas été évalués sur la solution exacte Step55. Ne PAS perdre ces expressions ou remplacer les dérivées de contraintes par leurs seuls termes dominants.
+
+**DEUX CONTRÔLES NÉGATIFS EXACTS :** (a) mauvais signe de soustraction Hg' -> dérivée Sg''' = `-4 Mg² Sg(1-z²)/(Lf Lg²)` NON NULLE ; (b) figer z''=0 -> dérivée pLg''' = `z(1-z²)/Lf²` NON NULLE. Les tests échoueraient donc si l'on oubliait un terme critique du déplacement relatif ou la vraie contrainte.
+
+## PROVENANCE ET TESTS RÉELLEMENT EXÉCUTÉS
+
+Workspace isolé `/mnt/data/janus-step58`, avec les quatre originaux scientifiques pinés SHA Git, importés et exécutés ; ce n'est pas un clone complet du dépôt.
+
+```bash
+cd /mnt/data/janus-step58
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q \
+ tests/test_hr_step57_secondary_principal_symbol.py \
+ tests/test_hr_step58_temporal_operator.py \
+ tests/test_hr_step59_third_jet_gate.py \
+ tests/test_hr_step60_full_constraint_prolongation.py
+# RÉEL : 56 PASSED in 9.23 seconds = 12 Step57 + 15 Step58 + 17 Step59 + 12 nouveaux Step60.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step60_full_constraint_prolongation
+```
+
+NOUVEAU CODE SHA `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509` et NOUVEAU TEST SHA `1e9a0f227af3795297de882964b53337225db9ce` sont vérifiés BYTE-IDENTICAL sur GitHub et dans les octets exécutés. Tests négatifs et garde-fou sur les quatre sources inclus. Pas de CI, Actions OFF. Pas de preuve complète des lapses.
+
+## STEP61 — PREMIÈRE ACTION À REPRENDRE
+
+1. Réduire les vrais résidus inférieurs `R_N`,`R_M` plus `A_N,B_M` via les **contraintes complètes et leurs prolongations radiales**, notamment `Fz,Fz',Fz'',Hg,Hg',Hf,Ddiag,C_red,C'_red`, sans confondre ce quotient q''' avec l'annulation des expressions. Utiliser les représentations sans q''' du module Step60. Imposer `z'=Z_DDg'+Z_KK'`, puis `z''` de la même racine, avec l'équation de secondaire exacte.
+2. Sur la branche positive et régulière EXACTE de Step55 (pLf=r²U(s), U solution de l'EDO certifiée sur 0<=r<=.85), obtenir les jets cohérents par AD/ODE et mesurer/borner les 4 coefficients réduits. Attention aux normalisations r près du centre. Seulement alors étudier la matrice de multiplicateurs/lapses et son rang.
+3. Valider avec une seconde méthode indépendante NON IBP du véritable CROCHET TEMPOREL de Dirac à six couples (l'original Step44 testait seulement le crochet mixte des primaires). Régularité des bords, chartes K=0/J=0 hors de la charte actuelle.
+4. Préfixer une nouvelle section à `00_CURRENT_RESTART.md` après progrès, sans modifier l'historique. Conserver `main`/V2 et Actions inchangés.
+
+**BILAN : annulation des q''' du véritable Dirac temporel prouvée après soustraction des CONTRAINTES RADIALES COMPLÈTES. RANG DIRAC, FIXATION DES LAPSES, SANTÉ GHOST et ÉVOLUTION 4D TOUJOURS OPEN. GATE 2B OPEN ; JANUS-R NON VALIDÉ.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP59 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne PAS modifier `main`, `research/v2-flrw` ni réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
