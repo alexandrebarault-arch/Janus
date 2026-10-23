@@ -1,3 +1,85 @@
+# JANUS — REPRISE PRIORITAIRE : STEP57 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw` ; ne PAS réactiver GitHub Actions/workflows. **GATE_2B OPEN, JANUS-R NOT VALIDATED**.
+
+**LIRE D'ABORD :** `research/STEP57_SECONDARY_REDUCED_SECOND_JETS_AND_TEMPORAL_SYMBOL_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step57-report.json`.
+**NOUVEAU CODE :** `numerics/hr_step57_secondary_principal_symbol.py`, Git blob `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`.
+**12 TESTS :** `tests/test_hr_step57_secondary_principal_symbol.py`, Git blob `1c97b1764ef4180deec48da8c68e138ed59b254a`.
+**ORIGINAL PHYSIQUE IMPORTÉ BYTE-EXACT :** `numerics/hr_step45_exact_physical_ward.py`, Git blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` (vérification explicite à l'exécution). Précédent : `research/STEP56_SHIFT_RESPONSE_AND_TEMPORAL_DIRAC_JETS_AUDIT.md`.
+
+## AVANCÉE EXACTE — SECONDE DÉRIVÉE CANONIQUE APPARAÎT APRÈS ÉLIMINATION DE Z
+
+À partir du VRAI `C_exact=K00-(K01)'` Step45 à SIX couples (positif-EH HR+deux poussières), `C_exact(q,q',z,z')` dépend AFFINEMENT de z' (vérifié symboliquement) :
+
+```text
+Dg = pSg*Sg' - Lg*pLg' + pg*tg'
+K  = m² Mg² Lg Lf (beta1 Sg² + 2 beta2 Sg Sf + beta3 Sf²)
+Fz = Dg - K z/sqrt(1-z²) = 0
+dC_exact/dz' = -(K sqrt(1-z²) + Dg z)/(Lg Lf)
+             = -K/(Lg Lf sqrt(1-z²)) - z*Fz/(Lg Lf)
+on the chart K>0, R=sqrt(Dg²+K²), Fz=0:
+z=Dg/R ; dC_exact/dz'=-R/(Lg Lf).
+```
+
+Alors `C_red(q,q',q'')=C_exact(q,q',Z(Dg,K),dZ/dr)` possède EXACTEMENT les 3 dérivées secondes NON NULLES :
+
+```text
+d C_red / d pLg'' = + K²/(Lf R²)                = (1-z²)/Lf
+d C_red / d Sg''  = - pSg K²/(Lg Lf R²)
+d C_red / d tg''  = - pg  K²/(Lg Lf R²)
+all OTHER nine second canonical radial jets = 0.
+```
+
+La variation fonctionnelle de `int eta C_red` DOIT donc inclure eta'' ; ne JAMAIS figer z dans la variation de la contrainte secondaire. Formule exacte du pullback pour chaque champ u (`D=d/dr` total ; C-partials à z,z' externes AVANT substitution) :
+
+```text
+T = eta*C_z - D(eta*C_zprime)
+E_u(eta C_red) = eta*C_u - D(eta*C_uprime)
+                + Z_u*T - D(Z_uprime*T)
+```
+
+La formule COMPLETE abstraite pour ses coefficients eta,eta',eta'' est implémentée et comparée à l'Euler direct d'ordre 2 d'un exemple symbolique de deux champs, avec égalité EXACTE.
+
+## VÉRITABLE CONTRACTION HAMILTONIENNE SUR SIX COUPLES : PREMIER SYMBOLE DE DIRAC TEMPOREL
+
+En employant les six vrais couples et gradients d'Euler `eg,ef` de Step45, le coefficient dans `{int eta C_red,H[N,M]}` devant `eta''` multiplié par chaque jet de lapse est calculé EXACTEMENT. Sur Fz=0, K,Lg,Lf,R>0 :
+
+```text
+coefficient [eta'' * M]  = - K²/(Lg Lf² R)                   NONZERO
+coefficient [eta'' * N'] = - 2 Mg² Sg Sg' K²/(Lg² Lf R²)
+coefficient [eta'' * N''] = 0
+coefficient [eta'' * M']  = 0
+coefficient [eta'' * M''] = 0
+coefficient [eta'' * N]  = computed symbolic, not simplified.
+```
+
+**POINT SCIENTIFIQUE CRUCIAL :** ces termes appartiennent à l'INTÉGRANDE AVANT intégration par parties du paramètre-test eta. Les contributions de eta' et eta, non encore contractées complètement sur les 12 variables originales, peuvent annuler ou déplacer des termes de lapse. **NE PAS DÉDUIRE DE RANG DE DIRAC NI FIXATION DE LAPSES** de ce seul coefficient.
+
+## EXÉCUTION ET PROVENANCE
+
+Environnement isolé : `/mnt/data/janus-step57`, contenant le véritable fichier Step45 ORIGINAL Git blob identique `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, importé directement.
+
+```bash
+cd /mnt/data/janus-step57
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py
+# RÉELLEMENT EXÉCUTÉ : 12 passed in 1.62s.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step57_secondary_principal_symbol
+```
+
+NOUVEAU CODE ET NOUVEAUX TESTS byte-identiques aux octets réellement exécutés ET vérifiés sur GitHub : blobs ci-dessus. Un contrôle purement numérique du test contenait d'abord une erreur de facteur 2, CORRIGÉE avant son upload ; 12/12 passent sur la version publiée. Le manifeste local `/mnt/data/janus-step57/research/reports/gate2b-step57-local-manifest.json`, SHA256 `d69b2245e37eb5057dd96bebe325cc6f3869166d16d83a88b0607a6c66198af3`, n'a PAS été déposé séparément ; l'essentiel est sauvegardé dans le rapport machine GitHub. Pas de réexécution de tout l'historique du dépôt, ni CI/Actions.
+
+## STEP58 — LA SUITE EXACTE À EXÉCUTER APRÈS INTERRUPTION
+
+1. **CALCULER TOUTES LES VARIATIONS TEMPORELLES :** depuis `abstract_pullback_coefficients`, calculer les gradients physiques eta0 et eta1 pour CHAQUE champ de la vraie secondaire Step45 éliminant z(Dg,K), y compris dépendances z' et dérivées des jets jusqu'à l'ordre nécessaire. Les contracter au Hamiltonien total Step45, LES SIX COUPLES et les deux lapses N,M.
+2. **ADJOINT EXACT DES FONCTIONS TEST :** réunir eta0+eta1+eta2, intégrer par parties les dérivées de eta en retenant les BORDS. Identifier ensuite, et seulement ensuite, l'opérateur différentiel final en N,M sur la branche stationnaire positive.
+3. **DIRAC :** calculer rang, contraintes de préservation, fixation ou non du rapport des lapses sur vraies données radiales exactement contraintes Step55. Traiter séparément K=0/J=0. Vérifier par oracle Poisson de l'action non-IBP originale et ne PAS annoncer absence de fantôme BD sans fermeture temporelle.
+4. Toujours PRÉFIXER ce `00_CURRENT_RESTART.md` avec état, SHA, données réelles et limitations. Actions restent désactivées.
+
+**BILAN : Step57 symbole de Dirac temporel PARTIEL mais PHYSIQUE ET EXACT dérivé des vrais six couples ; {C,Htotal} COMPLET ET RANG NON CALCULÉS. Gate 2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP56 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw`. Ne PAS réactiver GitHub Actions/workflows. **GATE_2B=OPEN, JANUS-R=NOT_VALIDATED**.
