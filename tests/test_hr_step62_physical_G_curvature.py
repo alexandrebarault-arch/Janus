@@ -98,3 +98,20 @@ def test_physical_curvature_manifest_no_false_dirac_rank_claim():
     assert a['G_UUU_exact_zero'] is True
     assert a['physical_temporal_rank']=='NOT_COMPUTED'
     assert a['GATE_2B']=='OPEN' and a['JANUS_R']=='NOT_VALIDATED'
+
+
+def test_exact_physical_G_U_tube_linearization_sensitivity():
+    t=m.certified_tube_linearization()
+    assert t['Gu_difference_strict']==F(337,5_000_000)
+    assert t['curvature_upper_strict']==F(337,500)
+
+
+def test_exact_quadratic_Taylor_remainder_on_Step55_U_tube():
+    t=m.certified_tube_linearization()
+    assert t['Taylor_quadratic_remainder_strict']==F(337,100_000_000_000)
+    a=m.curvature_identity()
+    # Symbolic equality, not a heuristic Taylor truncation:
+    delta=sp.Symbol('delta')
+    g=a['G'];u=a['U']
+    remainder=sp.expand(g.subs(u,u+delta)-g-sp.diff(g,u)*delta)
+    assert sp.cancel(sp.together(remainder-sp.diff(g,u,2)*delta**2/2))==0
