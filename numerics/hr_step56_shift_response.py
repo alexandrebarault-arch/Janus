@@ -84,6 +84,22 @@ def stationarity_time_preservation():
              positive_K_chart=True,temporal_dirac_C_not_computed=True)
 
 
+def smeared_momentum_kernel():
+ """Exact Euler derivative induced by -Lg*Z_D*delta(pLg') with compact tests.
+
+ For W[eta]=integral eta(r) z(r) dr, the pLg contribution obeys
+ delta W=integral (-eta Lg Z_D) delta(pLg') dr, hence
+ delta W/delta pLg = +(eta Lg Z_D)' and boundary -[eta Lg Z_D delta pLg].
+ """
+ r=sp.symbols('r',real=True)
+ eta,Lg,zd,plgr=(sp.Function(n)(r) for n in ('eta','Lg','ZD','pLgr'))
+ density=-eta*Lg*zd*plgr
+ euler=-sp.diff(sp.diff(density,plgr),r)
+ expected=sp.diff(eta*Lg*zd,r)
+ assert sp.simplify(euler-expected)==0
+ return dict(Euler=euler,boundary_coefficient=-eta*Lg*zd,
+             nonzero_smearing_derivative=sp.diff(euler,sp.diff(eta,r))==Lg*zd)
+
 def six_pair_toy():
  q=sp.symbols('q0:6',real=True);p=sp.symbols('p0:6',real=True)
  D=p[0]+2*p[1];K=2+q[0]**2;Z=D/sp.sqrt(D*D+K*K)
@@ -99,7 +115,7 @@ def six_pair_toy():
  return dict(actual=actual,frozen=frozen,correction=correction)
 
 def manifest():
- x=physics();r=jet_commutation();c=center_response();t=six_pair_toy();shift_time=stationarity_time_preservation()
+ x=physics();r=jet_commutation();c=center_response();t=six_pair_toy();shift_time=stationarity_time_preservation();smear=smeared_momentum_kernel()
  return {
  'step':56,'sources':{'Step45':STEP45_SHA,'Step46':STEP46_SHA},
  'Dg':'pSg*Sgr-Lg*pLgr+pg*tgr',
@@ -109,6 +125,8 @@ def manifest():
  'delta_z':'[K² delta_Dg-Dg*K delta_K]/(Dg²+K²)^(3/2)',
  'delta_Dg':str(x['dD']), 'delta_K':str(x['dK']),
  'variation_commutes_with_spatial_derivative':r['commutator']==0,
+ 'smeared_pLg_frechet_kernel':'delta integral eta*z /delta pLg = +partial_r(eta*Lg*Z_D), for compact eta; boundary -[eta*Lg*Z_D*delta pLg]',
+ 'smeared_kernel_contains_lapse_test_derivative':smear['nonzero_smearing_derivative'],
  'shift_stationarity_t_dot':'dot_z = K²/(D²+K²)^(3/2)*dot_D - D*K/(D²+K²)^(3/2)*dot_K',
  'shift_stationarity_t_exactly_preserved':shift_time['positive_K_chart'],
  'envelope_stationarity':'delta Hred at Fz=0 uses fixed-z Hamiltonian variation, but delta Cred includes implicit delta z and delta zprime',
