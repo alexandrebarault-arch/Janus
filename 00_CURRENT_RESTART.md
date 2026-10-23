@@ -1,3 +1,72 @@
+# JANUS — REPRISE PRIORITAIRE : STEP55 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE SCIENTIFIQUE AUTORISÉE AUX ÉCRITURES : research/gate2b-nonhomothetic-transfer. NE PAS RÉACTIVER GITHUB ACTIONS. Gate 2B OPEN ; JANUS-R NOT VALIDATED.**
+
+**LIRE D'ABORD :** research/STEP55_GLOBAL_RADIAL_BARRIER_AND_POSITIVE_TWODUST_AUDIT.md
+**RAPPORT MACHINE EXACT :** research/reports/gate2b-step55-report.json.
+**NOUVEAU CODE NORMALISÉ :** numerics/hr_step55_normalized_secondary.py, Git blob a54a6acf2f7ad2f64c500faecfa1406ecbf7b862.
+**NOUVEAU CODE D'INTERVALLES :** numerics/hr_step55_global_barrier.py, Git blob a6e7004120d0a166a3a8973c2fbe1487a8eb70fe.
+**12 TESTS :** tests/test_hr_step55_global_barrier.py, Git blob 5dfb8036c66c9b2774847b0989be15ea41c65408.
+**ORIGINAL PHYSIQUE BYTE-IDENTIQUE :** numerics/hr_step45_exact_physical_ward.py Git 66aa43841dccfe4a5d586a49be9c10af3a67a10e ; numerics/hr_step46_exact_secondary_ode.py Git bac025c28dbe1561c0c36c56dbfda46dc326f804.
+**TOUR PRÉCÉDENT :** research/STEP54_CONDITIONAL_CONTINUUM_TWODUST_INTERVAL_TUBE_AUDIT.md, certificat rationnel conditionnel à |U-Ustar|,|V-Vstar|<=.01.
+
+## GRANDE AVANCÉE : TUBE STEP54 DÉSORMAIS PROUVÉ POUR LA VRAIE SOLUTION RADIALE CONTRAINTE
+
+Au centre sphérique la branche analytique locale unique satisfaisant C=0 était garantie conditionnellement par le théorème Step49. Étapes52/53 fournissent U1/U2 algébriques exacts pour paramètres rationnels décimaux. Step55 part de l'équation de la secondaire physique construite depuis les SIX couples canoniques originales Steps45/46 et élimine symboliquement les facteurs factices en r :
+
+    s=r², U(s)=pLf(r)/r², V(s)=pLf'(r)/r
+    Ustar(s)=U0+U1*s+U2*s²
+    Vstar(s)=2*U0+4*U1*s+6*U2*s²
+    V=G(s,U) ; 2s U_s = G(s,U)-2U ; G(0,U)=3U0-U
+
+**NOUVEAU THÉORÈME DE BARRIÈRES INVARIANTES CONTINUES.** Sur EXACTEMENT tout s∈[0,.7225], recouvert par 256 cellules rationnelles et arithmétique d'intervalles entière arrondie vers l'extérieur à l'échelle 10^-28, on démontre pour les murs Ustar±delta, delta=1/10000 :
+
+    Fplus(s)=G(s,Ustar+delta)-2(Ustar+delta)-2s Ustar'(s)
+           <= -1480966474499367232302129/10000000000000000000000000000 <0
+    Fminus(s)=G(s,Ustar-delta)-2(Ustar-delta)-2s Ustar'(s)
+           >= 295653233337826329055403/2000000000000000000000000000 >0.
+
+La solution analytique centrale commence strictement entre les murs, le théorème de premier-contact empêche toute sortie à s>0 et l'EDO lisse sur la charte compacte non dégénérée s'étend jusqu'à .7225. Donc **SUR LA VRAIE BRANCHE RADIALE EXACTE** :
+
+    |U-Ustar| <= .0001   sur r∈[0,.85].
+
+La dérivée V doit être bornée distinctement ; la même évaluation d'intervalles sur toutes les valeurs U du tube donne EXACTEMENT :
+
+    -10209601928354599272595789/5000000000000000000000000000
+       <= V-Vstar <=
+     20404447710211286903383733/10000000000000000000000000000.
+
+Donc **-0.00205<V-Vstar<0.00205<0.01** partout. Les deux hypothèses du CERTIFICAT CONTINU Step54 sont désormais démontrées pour la solution radiale RÉELLE, pas simplement une famille hypothétique.
+
+**CONSÉQUENCE (SUR DONNÉES SPHÉRIQUES RADIALES PRESCRITES SEULEMENT) :**
+    pg/r² > .8854 ; pf/r² > .063 ; J > .659 ; K/r² > .229,
+avec les deux dénominateurs de poussière, Sf', sqrt(1-z²) strictement positifs sur tout [0,.85], centre normalisé compris. **Le verrou radial d'existence/positivité de CES DONNÉES INITIALES est désormais clos sur le benchmark explicite.**
+
+**INTERDICTION ABSOLUE D'EN DÉDUIRE ABSENCE FANTÔME BD.** Il ne s'agit ni de véritable évolution en temps 4D, ni de rang de Dirac, ni de fixation des lapses, ni de preuve de régularité tensorielle complète au centre. Gate2B reste OPEN ; JANUS-R non validé.
+
+## PROVENANCE, COMMANDES, TESTS RÉELLEMENT EXÉCUTÉS
+
+    cd /mnt/data/janus-step55
+    OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step55_global_barrier.py
+    # 12 PASSED in 3.85 s, EFFECTIVEMENT EXECUTED.
+    OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step55_global_barrier
+
+Les 3 nouveaux fichiers CODE/TEST et les 2 véritables sources historique Steps45/46 sont **OCTET POUR OCTET IDENTIQUES** aux blobs GitHub ci-dessus et ont été relus de GitHub. Tests : SHA originals fail-closed, intervalle exact négatif/positif/radical, centres, couverture 256 cellules, barrières strictes, bornes V, raffinement 512, cas large delta_U=.001 REFUSÉ car V non certifié, RHS physique ORIGINAL NON-SIMPLIFIÉ évalué indépendamment à r=.05,.35,.85 contient les bornes normalisées, garde faux positif Dirac. Il n'y a PAS de suite historique GitHub TOTALE, ni CI/workflows, ni Dirac temporel.
+
+Résultat brut local /mnt/data/janus-step55/research/reports/step55-global-barrier-local.json SHA256 4f22328452d36ee252f966fbe6a1fa476e7aaba8daee43ec9d555b11619f0cfd ; PAS uploadé séparément. Résultats exacts sauvegardés dans rapport GitHub machine.
+
+## NEXT STEP56 — PRIORITÉ MAINTENANT DIRAC TEMPOREL, PLUS LE RADIAL
+
+1. Décomposer précisément l'action sphérique ORIGINAL non intégrée par parties pour calculer la **VRAIE PRÉSERVATION TEMPORELLE {C,Htot}**, six couples canoniques, deux lapses et déplacement relatif éliminé en respectant ses variations. Évaluer rang de Dirac et fixation des lapses pour la branche positive maintenant certifiée ; étudier J/K branches exceptionnelles/bords.
+2. Vérifier indépendamment le crochet Poisson complet original non-IBP sur le profil exact radial construit avec barrières, sans confondre le résidu algébrique C=0 par construction avec une vraie vérification fonctionnelle.
+3. Analyser la régularité sphérique CARTÉSIENNE/TENSORIELLE complète du centre et des évolutions 4D. Aucun résultat Step55 ne vaut absence de fantôme ni validité cosmologique.
+4. Continuer à committer code/tests/rapport et PREPENDRE ce point de reprise après chaque avancée. Ne réactiver aucune GitHub Action.
+5. ADMINISTRATIF : historique main/V2 déjà préservé dans branche active grâce au commit à double-parent 4f7a3a1, PR V2 #1 fermée non-fusionnée, mais Github a encore **3 branches NOMMÉES / défaut main**. Le connecteur ne donne pas changer défaut/supprimer des branches ; seul le propriétaire peut dans Github UI désigner active comme défaut puis supprimer V2/main. Ne jamais prétendre que l'unification des noms est faite.
+
+**VERDICT : Step55 solution C=0 radiale du benchmark analytique régulier étendue jusque .85 avec deux poussières positives SUR LE CONTINUUM ; mais FULL DIRAC/TEMPORAL GATE2B OPEN et JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP54 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE POUR LES ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. Ne PAS réactiver GitHub Actions/workflows. Ne PAS modifier le `main` historique ni `research/v2-flrw`. **GATE 2B OUVERT ; JANUS-R NON VALIDÉ.**
