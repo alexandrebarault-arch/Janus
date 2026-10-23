@@ -1,3 +1,88 @@
+# JANUS — REPRISE PRIORITAIRE : STEP65 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`; `main`, `research/v2-flrw` NON MODIFIÉS. GitHub Actions/workflows restent désactivés. **GATE_2B OPEN — JANUS-R NOT VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP65_MONOTONE_PHYSICAL_GUU_SHARPER_RATIONAL_BOUND_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step65-report.json`.
+**NOUVEAU CODE :** `numerics/hr_step65_monotone_physical_curvature.py`, Git blob `046a58e5c118ac269fc68d4020e1d192349dc28f`.
+**15 NOUVEAUX TESTS :** `tests/test_hr_step65_monotone_physical_curvature.py`, Git blob `e4d1d002f8d5176cda1057dc194e744a6518bd6d`.
+**ORIGINALS 45/46/55 AUTHENTIFIÉS dans vrai worktree :**
+`numerics/hr_step45_exact_physical_ward.py` `66aa43841dccfe4a5d586a49be9c10af3a67a10e`;
+`numerics/hr_step46_exact_secondary_ode.py` `bac025c28dbe1561c0c36c56dbfda46dc326f804`;
+`numerics/hr_step55_normalized_secondary.py` `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`.
+**SOURCE ANALYTIQUE Step62 REJOUÉE :** `numerics/hr_step62_physical_G_curvature.py` Git `d2040a4bde9672933eac9bbab91b792005227f40`.
+**PRÉCÉDENT :** `research/STEP64_FULL_CENTER_PHYSICAL_PTHIRD_INTERVAL_AUDIT.md` — sa preuve du vrai P''' global y compris centre est préservée. Ne PAS confondre avec d'autres étapes Step62/63 parallèles.
+
+## AVANCÉE RÉELLE ET EXACTE : STRICTION MONOTONE DE G_UU SUR LA VRAIE FONCTION G
+
+Sur la véritable équation secondaire sphérique positive-EH HR avec 2 poussières et 6 couples Step45/46/55, la fonction physique `G(s,U)` a degré 2 EXACTEMENT en U (`G_UUU=0`). Step62 avait obtenu `0<=G_UU<337/500=0.674` pour le benchmark sur `s=r²∈[0,289/400]`.
+
+Nouveau Step65 : avec les constantes RATIONNELLES EXACTES du benchmark radial Step55 (géométrie décrite dans `numerics/hr_step55_global_barrier.py` CONSULTÉ mais NON importé comme source authentique ici), montrer
+
+```text
+G_UU(s,U)=s*F(s);
+F= -kf*T/(2 Lf Mf2 sqrt(1-z1²*s) sqrt(1+kf²*s) At),
+At = beta3 Lf² + 2 beta2 Lf Lg + beta1 Lg²,
+T  = (3 beta3 Lf² + 2 beta2 Lf Lg - beta1 Lg²)*sqrt(1-z1²*s)
+     +4 beta2 Lf Lg +4 beta1 Lg².
+Lf=b(1+cf*s)²>0, Lg=a(1+cg*s)²>0, At>0, T>0, kf<0.
+F'/F=T'/T-Lf'/Lf-R1'/R1-R2'/R2-At'/At.
+```
+
+L'arithmétique d'intervalles **fractions exactes sur TOUT L'INTERVALLE CONTINU en UNE SEULE cellule** (pas des points numériques) prouve `F'/F>0` et surtout
+
+```text
+4/5 < G_sUU(s,U)=F(s)*(1+s F'/F) < 1
+sur tous s ∈ [0,289/400], tous U. G_UU(0)=0.
+ENCADREMENTS PLUS PRÉCIS (indicatifs décimaux, vraies fractions dans manifeste) :
+0.8239432487687015 < G_sUU < 0.9353760451877611.
+```
+
+**Théorème : G_UU est strictement croissant en s**, indépendamment de U. On calcule donc sa valeur MAX à UNE SEULE EXTRÉMITÉ `s=289/400`, avec encadrement des radicaux en fractions décimales 14 chiffres via `isqrt` entier et vérification des carrés :
+
+```text
+0.6338791317425377 < G_UU(289/400,U) < 0.6338791317425752.
+NOUVEAU CERTIFICAT UNIFORME EXACT:
+0 <= G_UU(s,U) < 317/500 = 0.634   SUR TOUT [0,289/400], tous U.
+(AMÉLIORATION de 337/500 du Step62.)
+```
+
+Le vrai tube Step55 `|U-Ustar|<=1/10000` implique par l'IDENTITÉ quadratique en U :
+
+```text
+|G_U(s,U)-G_U(s,Ustar)| < 317/5000000 = 0.0000634,
+|G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar)|
+    < 317/100000000000 = 3.17e-9.
+Ancien Step62 Taylor remainder: 3.37e-9.
+```
+
+C'est un progrès GÉOMÉTRIQUE et de conditionnement de l'EDO spatiale, PAS un calcul des lapses temporels ni du rang de Dirac. Une inversion du signe de la pente de la poussière f inverse le signe de G_UU : résultat BENCHMARK-dépendant, PAS universel pour HR.
+
+## TESTS RÉELLEMENT EXÉCUTÉS ET REPRISE AUTOMATIQUE
+
+```bash
+cd /mnt/data/janus-step62
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q \
+  tests/test_hr_step62_physical_G_curvature.py \
+  tests/test_hr_step65_monotone_physical_curvature.py
+# RÉEL : 32 PASSED en 2.88s ; 17 originaux Step62 + 15 nouveaux Step65.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step65_monotone_physical_curvature \
+ > research/reports/gate2b-step65-local-manifest.json
+```
+
+Code/test Step65 sont BYTE IDENTIQUES GitHub aux exécutés, Git blobs ci-dessus. Le manifeste local complet contient toutes les FRACTIONS EXACTES `/mnt/data/janus-step62/research/reports/gate2b-step65-local-manifest.json` SHA256 `a9969377a56936b960a987c8b3d8e6958d9ef64e2c528c486ed650e009e6b7d3`; il N'EST PAS uploadé comme fichier distinct, l'essentiel est consigné dans `research/reports/gate2b-step65-report.json`. Ce tour n'a PAS rejoué les tests Step63–64, Step57–61 ni full CI. Les Actions restent OFF.
+
+## NEXT STEP66 — VÉRITABLE VERROU TEMPOREL SIX COUPLES
+
+1. Reconstituer et Git-hash vérifier les **vrais modules Steps57,58,59,60** dans le même worktree que Steps45/46/55 et Steps63/64 ; les calculs Step65 ne les importaient PAS. Avec la vraie branche Step55 strictement positive, réinjecter les jets `P',P'',P'''` certifiés jusque r=0 par Step64.
+2. Imposer **la stationnarité complète du déplacement** `z=Z(D_g,K),zr=Z1,zrr=Z2` sans oublier la correction du défaut d'évaluation Step61 ; annuler les primaires Hg,Hf,Ddiag, la secondaire Cred et leurs dérivées spatiales cohérentes. Réduire les vrais 4 coefficients `A_N,B_N,A_M,B_M` de Step60 sur la donnée RADIALE exactement contrainte, pas sur un témoin manufacturé.
+3. Alors seulement étudier rang du système des lapses, existence de lapses positifs compatibles, centre/bords et chartes K=0/J=0 ; valider avec un ORIGINAL oracle temporel non-IBP à six couples. Sans ces calculs, ABSENCE de fantôme BD et évolution 4D NON ÉTABLIES.
+4. Préfixer encore `00_CURRENT_RESTART.md` à l'étape suivante ; conserver tout l'historique, main et V2 inchangés, Actions désactivées.
+
+**BILAN : Step65 vraie fonction physique G : monotonie radiale STRICTE prouvée, borne G_UU améliorée, Taylor sensible resserré et 32 tests ciblés PASS. GATE2B OPEN ; JANUS-R NOT VALIDATED ; DIRAC TEMPOREL RANK NOT COMPUTED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP64 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. NE PAS MODIFIER `main`, `research/v2-flrw`, GitHub Actions/workflows (désactivés). **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
