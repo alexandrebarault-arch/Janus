@@ -73,7 +73,6 @@ class I:
  def disp(self):return (self.lo/S,self.hi/S)
  def __repr__(self):return str(self.disp())
 
-
 A=I.c(F('.4'));Y=I.c(F('.5787707228025044'));B=A*Y
 MG=I.c(1);MF=I.c(F('.10879548725')**2);M2=I.c(F('23.3348939346'))
 B0,B1,B2,B3,B4=[I.c(F(x)) for x in ('0','1','-4.2383993109','13.6801214252','-38.5117901844')]
