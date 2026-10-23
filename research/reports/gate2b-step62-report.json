@@ -1,0 +1,97 @@
+{
+  "step": 62,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Original six-pair exact normalized physical secondary G(s,U) is quadratic U; certified uniform rational sign/curvature and Taylor sensitivity on exact Step55 radial tube",
+  "provenance": {
+    "genuine_original_three_files_imported_and_git_blob_verified": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862"
+    },
+    "G_origin": "Actual normalized_symbolic() from authentic Step55 with original Step45 exact six-pair physical C and Step46 reduced f-momentum ODE; positive-EH both metrics, two canonical moving dusts",
+    "benchmark_geometry": "Literal exact decimal-to-rational transcription of Step55 hr_step55_global_barrier.py benchmark geometry and parameter fields; that separate source was read on GitHub but NOT imported or hash-verified as a local file. Sign certificate is for these explicit rationals, not arbitrary cosmologies.",
+    "fails_closed_on_mutated_historical_source": true
+  },
+  "exact_symbolic": {
+    "degree_G_in_U": 2,
+    "G_UUU": "IDENTICALLY ZERO",
+    "G_UU_at_s_zero": "IDENTICALLY ZERO",
+    "G_U_at_s_zero": "-Sfr0/Lf0 (on benchmark at center = -1)",
+    "notation": "l=Lf0, g=Lg0, tf=tf0, mf=Mf2, root=sqrt(1-s*z1²), At=l² beta3+2lg beta2+g² beta1",
+    "T": "(3 l² beta3+2lg beta2-g² beta1)*root+4lg beta2+4g² beta1",
+    "G_UU": "-s*tf*T/[2*l*mf*sqrt(l²+s*tf²)*root*At], derived from authentic G and verified with SymPy exact numerator cancellation",
+    "G_UU_independent_U": true,
+    "on_benchmark_tf0": "tf0=-0.0016 Lf0<0"
+  },
+  "certified_rational_interval": {
+    "s": [
+      "0",
+      "289/400"
+    ],
+    "r": [
+      "0",
+      "17/20"
+    ],
+    "Lg_interval": [
+      "2/5",
+      "641387951689/1600000000000"
+    ],
+    "Lf_interval": [
+      "1444418923561876775155324829/6250000000000000000000000000",
+      "1446926807006261/6250000000000000"
+    ],
+    "sqrt_1_minus_s_z1_squared": [
+      "99999/100000",
+      "1"
+    ],
+    "sqrt_1_plus_s_kf_squared": [
+      "1",
+      "100001/100000"
+    ],
+    "At_strict_lower": "10154251061287232226735927116272111664471500279333236377294035683/97656250000000000000000000000000000000000000000000000000000000000",
+    "T_strict_lower": "3039369318117780491784755201352515986118327763049132913479078822792951/9765625000000000000000000000000000000000000000000000000000000000000000",
+    "At_lower_decimal_for_orientation_only": 0.10397953086758126,
+    "T_lower_decimal_for_orientation_only": 0.31123141817526073,
+    "G_UU_upper_exact": "8910957095676501900460432814592881195809420000000000000000000000000000000000000000000000000000000000000000000000/13226933638322667073600554744241161039289718541461513016294324228323999752212558197297217497640229817341591677933",
+    "G_UU_upper_decimal_for_orientation_only": 0.6736978758144369,
+    "proved_symbolic_inequality": "0 <= G_UU(s,U) < 337/500 =0.674 for ALL 0<=s<=289/400, independent of U; G_UU>0 for s>0",
+    "proof": "All interval endpoints are exact fractions. Exact monotone metric bounds, rational strict lower/upper envelopes on two square roots proved by squaring, product/division interval arithmetic, strict positivity of At and T, denominator excludes zero. No grid sampling or floating-point rounding in proof.",
+    "step55_tube_assumption": "User's original Step55 previously certified |U-Ustar|<=1/10000 on exactly this interval (full exact radial positive benchmark).",
+    "GU_tube_sensitivity_strict": "|G_U(s,U)-G_U(s,Ustar)| < 337/5000000 = 0.0000674",
+    "G_Taylor_remainder_strict": "|G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar)| < 337/100000000000 = 3.37e-9",
+    "Taylor_remainder_is_exact_quadratic": "G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar) = 1/2 G_UU(s) (U-Ustar)^2"
+  },
+  "execution": {
+    "targeted_isolated_workspace": "/mnt/data/janus-step62",
+    "source": "numerics/hr_step62_physical_G_curvature.py",
+    "git_blob_source": "d2040a4bde9672933eac9bbab91b792005227f40",
+    "tests": "tests/test_hr_step62_physical_G_curvature.py",
+    "git_blob_tests": "b8e432ff4afe4a53b7d54150f174706a5b65460b",
+    "github_bytes_equal_to_local_executed_bytes": true,
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step62_physical_G_curvature.py",
+    "outcome": "17 passed in 2.66 seconds",
+    "raw_local_manifest": "/mnt/data/janus-step62/research/reports/gate2b-step62-local-manifest.json",
+    "raw_local_manifest_sha256": "not_yet_measured_for_final_17_test_manifest",
+    "previous_Step57_to_61_suites_not_rerun_here": true,
+    "complete_repository_checkout": false,
+    "github_actions_disabled": true
+  },
+  "unresolved": {
+    "actual_G_s_G_U_G_ss_G_sU_derivative_global_interval_bounds": "NOT CERTIFIED IN THIS STEP (G_UU only)",
+    "Step55_true_branch_Psecond_Pthird_interval_proof": "NOT COMPLETED",
+    "true_physical_Step60_four_lapse_coefficients_on_Step55": "NOT EVALUATED",
+    "independent_original_nonIBP_temporal_Poisson_oracle": "NOT RUN",
+    "full_Dirac_secondary_preservation": "OPEN",
+    "lapse_fixing_and_constraint_rank": "NOT ESTABLISHED",
+    "true_4D_nonhomothetic_time_evolution": "NOT ESTABLISHED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step63": [
+    "Import literal original Step55 barrier geometry as byte-authenticated file, not just transcription; compute true total G_s, G_U, G_ss, G_sU including s-dependence of every primary constrained metric and dust variable.",
+    "Prove full interval derivative bounds on original Step55 tube, handle s=0 Fuchsian removable factors using center expansions, certify Psecond and Pthird for the exact continuum solution.",
+    "Use verified Step60 source and substitute z,zprime,zdoubleprime and the certified exact Step55 radial jets into all four surviving physical lapse coefficients; determine the genuine multiplier rank or a counterexample.",
+    "Build independent original six-pair unintegrated temporal Poisson oracle; explicitly retain boundary terms, positive K and exceptional charts."
+  ]
+}
