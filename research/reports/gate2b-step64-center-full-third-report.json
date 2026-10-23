@@ -1,0 +1,56 @@
+{
+  "step": 64,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Center-complete rigorous Step55 physical radial P triple-prime bound from original four-source geometry-aware interval AD and exact regular singular ODE integrating factor",
+  "four_original_git_blobs": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step46": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "step55": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "step55_global": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "exact_proof": "G(0,U)=3U0-U on the prior Step49/55 bounded analytic regular center branch. W=U-U0 obeys 2s W_s+3W=s A where A=integral_0^1 G_s(ts,U)dt. Uniform global U hull ensures G_s(t,U(s)) remains bounded for any t<=s, yielding |W/s|<=B/5, |U_s|<=4B/5. Then P'''=2r(H_s+H_U U_s), H=G+2sG_s+(G-2U)G_U, bounded on every one of the 256 original continuous cells including s=0 using original integer outward interval AD.",
+  "exact_fraction_results": {
+    "uniform_U": [
+      "-26788427556211997873016197/5000000000000000000000000000",
+      "-4581836013805356914447839/1000000000000000000000000000"
+    ],
+    "uniform_G_s": [
+      "34018406553098183878458481/10000000000000000000000000000",
+      "21885092944341379217378943/5000000000000000000000000000"
+    ],
+    "B": "21885092944341379217378943/5000000000000000000000000000",
+    "max_abs_U_s": "21885092944341379217378943/6250000000000000000000000000",
+    "max_abs_W_per_s": "21885092944341379217378943/25000000000000000000000000000",
+    "Pthird_entire_radius": [
+      "-157117705762868039310811/625000000000000000000000000",
+      "128641166369078726897489771/5000000000000000000000000000"
+    ],
+    "Pthird_first_cell": [
+      "0",
+      "16458628607489610074397529/10000000000000000000000000000"
+    ],
+    "interval_precision": "10^28 integer outward rounding",
+    "strict_readable": "-0.000252 < P'''(r) < 0.025729 for all 0<=r<=0.85"
+  },
+  "regression": {
+    "script": "numerics/hr_step64_center_third_jet.py",
+    "git_blob_script": "07d80d70636952bcabf61bd8eb7da88cc8bc6c72",
+    "tests": "tests/test_hr_step64_center_third_jet.py",
+    "git_blob_tests": "1db2c2c9cb7bad57cf2ffbb895b198ec61432d28",
+    "combined": "27 passed in 23.56s, including 12 new center controls and 15 original Step63 AD tests",
+    "original_files_byte_verified": true,
+    "code_tests_byte_identical_to_GitHub": true,
+    "raw_local_path": "/mnt/data/janus-step62/research/reports/gate2b-step64-center-full-Pthird.json",
+    "raw_sha256": "19bc8c6633714e99582e0f41a3e3a88782d0edccd479e537f7a3ee27554cc7f3",
+    "full_repo_suite": false
+  },
+  "remaining": {
+    "full_temporal_Dirac_bracket": "NOT_COMPUTED",
+    "lapse_rank": "NOT_COMPUTED",
+    "ghost_freedom": "NOT_PROVED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next": "Step65 recombine Step57-60 original six-pair temporal operator and exact Step55 radial data with certified P'',P''' and true shift z,zprime,zdoubleprime; analyze four lapse coefficients, rank, independent nonIBP temporal oracle and boundaries."
+}
