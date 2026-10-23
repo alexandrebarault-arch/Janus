@@ -132,12 +132,36 @@ def benchmark_rational_certificate():
                 caveat='Certified benchmark only; not yet bounds on G_s,G_U,G_ss,G_sU or temporal Dirac rank')
 
 
+def certified_tube_linearization():
+    """Exact quadratic Taylor control ON true Step55 |U-Ustar|<=1/10000.
+
+    G_UU is independent of U. On the Step55 physical benchmark and all
+    s in [0,289/400], 0<=G_UU<337/500, hence exactly
+       |G_U(s,U)-G_U(s,Ustar)| < 337/5000000,
+       |G(s,U)-G(s,Ustar)-G_U(s,Ustar)*(U-Ustar)|
+           < 337/100000000000.
+    Bounds involve no floating point, and do not assert control of G_s.
+    """
+    b=benchmark_rational_certificate()
+    upper=F(b['curvature'][1]);limit=F(337,500)
+    assert upper<limit
+    tube=F(1,10000)
+    deriv_limit=limit*tube
+    remainder_limit=limit*tube*tube/2
+    assert deriv_limit==F(337,5_000_000)
+    assert remainder_limit==F(337,100_000_000_000)
+    return dict(U_delta=tube,curvature_upper_strict=limit,
+                Gu_difference_strict=deriv_limit,
+                Taylor_quadratic_remainder_strict=remainder_limit,
+                scope='Step55 exact U tube around Ustar, same benchmark geometry; does NOT bound G_s')
+
+
 def manifest():
-    c=curvature_identity();b=benchmark_rational_certificate()
+    c=curvature_identity();b=benchmark_rational_certificate();t=certified_tube_linearization()
     return dict(step=62,original_source_git_blobs=PINNED,
                 imported_actual_physical_G=True,polynomial_degree_U=2,
                 G_UU_expression=str(c['guu']),G_UUU_exact_zero=True,
-                benchmark_interval=b,
+                benchmark_interval=b,certified_Taylor_tube={k:str(v) for k,v in t.items()},
                 physical_temporal_rank='NOT_COMPUTED',
                 GATE_2B='OPEN',JANUS_R='NOT_VALIDATED')
 
