@@ -1,0 +1,84 @@
+{
+  "step": 61,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Verified normalized radial Step55 ODE-to-temporal canonical P'',P''' jet lifting, center nonresonance, exact rational tube transfer and Step60 external zprime consistency defect",
+  "context": {
+    "physical_step55": "numerics/hr_step55_normalized_secondary.py",
+    "step55_git_blob": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "step60": "numerics/hr_step60_full_constraint_prolongation.py",
+    "step60_git_blob": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+    "REAL_DEPENDENCY_IMPORT_IN_STEP61": false,
+    "note": "Step61 standalone symbolic audit of the publicly documented exact Step55 normalized ODE, source hash references only; NOT an execution of the authentic Step55 G(s,U) compiler nor the physical six-pair Step60 temporal bracket on constrained radial data."
+  },
+  "true_ODE_as_published_step55": "s=r², P(r)=pLf(r)=r² U(s), V=P'(r)/r=G(s,U), 2s U_s=G(s,U)-2U, G(0,U)=3U0-U",
+  "exact_chain": {
+    "Pprime": "r G(s,U)",
+    "Psecond": "H=G+2s G_s+(G-2U) G_U",
+    "Pthird": "2r [H_s+H_U (G-2U)/(2s)], partials H_s,H_U at independent (s,U)",
+    "formal_center": "G(s,U)=3U0-U+s A(s,U); if a_(n-1)=[s^(n-1)] A(s,U(s)), coefficient U_n=a_(n-1)/(2n+3); nonresonance denominators 5,7,9,...",
+    "U1": "G_s(0,U0)/5",
+    "U2": "G_sU(0,U0)*U1/7 + G_ss(0,U0)/14",
+    "Psecond_at_center": "2U0",
+    "Pthird_at_center": "0",
+    "Pthird_over_r_at_center": "24U1",
+    "caveat": "The center Frobenius coefficient-extraction rule is exact, but Step61 does not compute the actual physical G derivatives or physical U1/U2 values; a separate manufactured analytic test validates identities."
+  },
+  "certified_rational_transfer_from_step55": {
+    "r_interval": [
+      "0",
+      "17/20"
+    ],
+    "s_interval": [
+      "0",
+      "289/400"
+    ],
+    "Step55_U_tube": "|U-Ustar|<=1/10000",
+    "Step55_V_tube": "|G(s,U)-Vstar|<41/20000",
+    "bound_on_P": "|P-Pstar|<=289/4000000 =0.00007225",
+    "bound_on_Pprime": "|Pprime-Pstarprime|<697/400000 =0.0017425",
+    "Psecond_bounds": "NOT DERIVABLE FROM U,V BOUNDS ALONE: MUST differentiate actual G(s,U) and certify G_s,G_U on exact Step55 solution tube",
+    "Pthird_bounds": "NOT DERIVABLE FROM U,V BOUNDS ALONE: MUST certify G_ss,G_sU,G_UU plus removable center ratios",
+    "negative_control": "An analytic perturbation of amplitude eps/n and frequency n with zero center value retains bounded function and first derivative but has second derivative of magnitude eps*n at a fixed interior s0; this is NOT a second physical solution of the same Step55 ODE. Only proves U,V tube by itself does not certify high jets."
+  },
+  "step60_consistency": {
+    "on_positive_K_Fz_zero": "ZD=(1-z²)^(3/2)/K, ZK=-z(1-z²)/K, Z1=ZD Dg'+ZK K'",
+    "unsubstituted_Z2_defect": "(zr-Z1)*[-3 z sqrt(1-z²) Dg' + (3z²-1) K']/K",
+    "exact_status": "Vanishing IDENTICALLY after setting the external symbolic zr=Z1; generally NONZERO if zr is left independent or frozen to zero",
+    "important_effect": "Step60 full third-jet cancellation itself remains valid because this defect contains lower jets; BEFORE physical lower-jet coefficient evaluation must substitute zr=Z1 consistently everywhere including Z2.",
+    "negative_control": "At positive K and nonzero Dg',K', z, setting zr=0 yields a nonzero defect."
+  },
+  "execution": {
+    "local_workspace": "/mnt/data/janus-step61",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step61_normalized_jet_lift.py",
+    "test_count": 15,
+    "result": "15 passed in 1.13s",
+    "new_code": "numerics/hr_step61_normalized_jet_lift.py",
+    "new_code_git_blob": "b345169d8806ce524527229c794ace71cf5d540e",
+    "new_tests": "tests/test_hr_step61_normalized_jet_lift.py",
+    "new_tests_git_blob": "08da0dba3aac34a5cd631a48ba6258d3ecfd01c2",
+    "code_and_tests_byte_identical_GitHub_vs_local_executed": true,
+    "local_manifest": "/mnt/data/janus-step61/research/reports/gate2b-step61-local-manifest.json",
+    "local_manifest_sha256": "6ae2f7f56ebb790f7be501ea72a528e216d5798fae6212ec7483d5584d88ef94",
+    "local_manifest_uploaded_to_repo_separately": false,
+    "full_step57_60_suite_rerun_in_this_environment": false,
+    "full_repository_suite_run": false,
+    "GitHub_Actions_off": true
+  },
+  "hard_red": {
+    "actual_original_physical_G_partial_derivatives": "NOT GENERATED OR CERTIFIED IN THIS STEP",
+    "full_physical_step60_temporal_operator_on_true_exact_step55_radial_solution": "NOT EVALUATED",
+    "all_four_lapse_coefficients_and_rank": "NOT DETERMINED",
+    "independent_original_nonIBP_temporal_oracle": "NOT RUN",
+    "Dirac_rank": "NOT COMPUTED",
+    "lapse_fixing": "NOT COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step62": [
+    "Reconstruct and byte-authenticate genuine original Step45/46/55/57/58/59/60 chain in one local worktree; import ACTUAL normalized_symbolic G(s,U) and its first and second partial derivatives.",
+    "Prove rigorous interval derivative enclosures on Step55 certified invariant tube (G_s,G_U,G_ss,G_sU,G_UU) and correct removable s=0 behavior. Apply P',P'',P''' lift to exact constrained radial data.",
+    "Carry out physical lapse-operator substitution: enforce original shift Fz=0, zr=Z1, zrr=Z2, primary and secondary constraints and their prolongations; reduce four lapse coefficients on full original positive two-dust Step55 branch.",
+    "Only then inspect actual lapse rank/ratio and compare independent original non-IBP six-pair temporal Poisson, exceptional K=0/J=0 charts and boundaries."
+  ]
+}
