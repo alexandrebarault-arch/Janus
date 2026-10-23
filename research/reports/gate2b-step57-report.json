@@ -1,0 +1,60 @@
+{
+  "step": 57,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "claim": "Exact original six-pair physical C gains three canonical second radial jets after eliminating z=z(Dg,K), with an explicitly nonzero eta'' M piece in temporal bracket integrand.",
+  "provenance": {
+    "original_step45": "numerics/hr_step45_exact_physical_ward.py",
+    "original_blob": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "six_canonical_pairs": true,
+    "original_source_authenticated_in_local_run": true
+  },
+  "exact_formulas": {
+    "Dg": "pSg*Sg_r-Lg*pLg_r+pg*tg_r",
+    "K": "m2 Mg2 Lg Lf (beta1 Sg²+2 beta2 Sg Sf+beta3 Sf²)",
+    "Fz": "Dg-K z/sqrt(1-z²)=0",
+    "R": "sqrt(Dg²+K²), K>0",
+    "C_zprime_off_shell": "-(K sqrt(1-z²)+Dg z)/(Lg Lf) = -K/(Lg Lf sqrt(1-z²))-z Fz/(Lg Lf)",
+    "C_zprime_on_Fz_zero": "-R/(Lg Lf)",
+    "C_reduced_second_derivatives": {
+      "pLg_rr": "K²/(Lf R²)",
+      "Sg_rr": "-pSg K²/(Lg Lf R²)",
+      "tg_rr": "-pg K²/(Lg Lf R²)",
+      "other_nine": "identically zero"
+    },
+    "smeared_chain_rule": "E_u(eta C_red)=eta C_u-D(eta C_u') +Z_u[eta C_z-D(eta C_z')] -D{Z_u'[eta C_z-D(eta C_z')]}; evaluate fixed-external-z C derivatives before applying elimination; D is full radial total derivative and boundary traces must be controlled",
+    "physical_eta2_contractions": {
+      "N": "explicit original six-pair expression retained, not simplified",
+      "N_prime": "-2 Mg2 Sg Sg_r K²/(Lg² Lf R²)",
+      "N_second": "0",
+      "M": "-K²/(Lg Lf² R), strictly nonzero if Lg,Lf,K>0",
+      "M_prime": "0",
+      "M_second": "0",
+      "warning": "These are individual eta'' terms BEFORE integration by parts. Other eta',eta terms can cancel or modify the lapse differential operator: NO lapse-fixing/rank conclusion yet."
+    }
+  },
+  "execution": {
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py",
+    "result": "12 passed in 1.62 seconds",
+    "local_workspace": "/mnt/data/janus-step57",
+    "new_code": "numerics/hr_step57_secondary_principal_symbol.py",
+    "new_code_blob": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "new_tests": "tests/test_hr_step57_secondary_principal_symbol.py",
+    "new_tests_blob": "1c97b1764ef4180deec48da8c68e138ed59b254a",
+    "original_code_git_sha_verified": true,
+    "new_bytes_identical_to_github": true,
+    "independent_exact_euler_jet_toy_crosscheck": true,
+    "raw_local_manifest_sha256": "d69b2245e37eb5057dd96bebe325cc6f3869166d16d83a88b0607a6c66198af3",
+    "full_historical_repo_suite_run": false,
+    "CI_run": false
+  },
+  "status": {
+    "full_physical_eta0_eta1_temporal_coefficients": "OPEN",
+    "complete_dirac_bracket": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "rank": "NOT_COMPUTED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step58": "Calculate eta0 and eta1 physical chain-rule Euler jets of C_red, contract all 12 canonical variable slots against true Step45 Hamiltonian Euler jets for both lapse families; integrate compact eta to derive complete lapse multiplier differential operator. Validate against independent unintegrated original-action Poisson, handle boundaries and K=0 chart separately."
+}
