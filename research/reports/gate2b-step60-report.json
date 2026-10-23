@@ -1,0 +1,58 @@
+{
+  "step": 60,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Exact full radial constraint quotient of physical temporal six-pair operator removes all third canonical jets on positive-K Fz=0 shell",
+  "physical_scope": "Spherical positive-EH HR with two canonical moving dusts, six canonical pairs, original Step45 exact physical Hamiltonians, original Step58 temporal coefficients",
+  "original_blobs": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "step59": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e"
+  },
+  "shift_stationarity": "Fz=Dg-Kz/sqrt(1-z²)=0, K>0. ZD=(1-z²)^(3/2)/K, ZK=-z(1-z²)/K. z'=ZD Dg'+ZK K'; z''=ZD Dg''+ZK K''+Dr(ZD) Dg'+Dr(ZK) K' (z' must be evaluated on shift shell).",
+  "full_subtractions": {
+    "RN": "B_N+(1-z²)/(Lg Lf)*Hg'",
+    "RM": "A_M-(z/Lf)*C_red'",
+    "definitions": "Hg' is total derivative of ORIGINAL physical Hg; C_red' is total derivative of physical C(q,q',z,z') with z'' replaced by entire stationary-shift second derivative.",
+    "EXACT_STATEMENT": "On Fz=0, BOTH expressions are affine in the 12 independent canonical q''' and have identically zero partial derivatives wrt ALL of them.",
+    "nontrivial_zero_residuals": [
+      "∂RN/∂Sg'''=0",
+      "∂RM/∂pLg'''=0",
+      "∂RM/∂Sg'''=0",
+      "∂RM/∂tg'''=0"
+    ],
+    "all_other_third_jets": "absent from original expressions",
+    "lower_jet_normal_forms": "third_free_BN_on_Fz and third_free_AM_on_Fz are built only after exact proof of affine vanishing",
+    "note": "The remainders RN and RM are NOT claimed identically zero; derivatives of primaries/secondary must vanish only on exactly constrained radial continuum."
+  },
+  "negative_controls": {
+    "wrong_primary_sign": "∂(B_N-alpha Hg')/∂Sg'''=-4 Mg² Sg(1-z²)/(Lf Lg²) ≠0",
+    "frozen_zsecond": "∂(A_M-beta Dr(C)|z''=0)/∂pLg'''=z(1-z²)/Lf² generically ≠0"
+  },
+  "execution": {
+    "local": "/mnt/data/janus-step58",
+    "code": "numerics/hr_step60_full_constraint_prolongation.py",
+    "code_git_blob": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+    "test": "tests/test_hr_step60_full_constraint_prolongation.py",
+    "test_git_blob": "1e9a0f227af3795297de882964b53337225db9ce",
+    "new_tests": "12 passed in 7.28s",
+    "joint_tests": "56 passed in 9.23s (Step57 12, Step58 15, Step59 17, Step60 12)",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step57_secondary_principal_symbol.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step59_third_jet_gate.py tests/test_hr_step60_full_constraint_prolongation.py",
+    "original_four_blobs_verified": true,
+    "new_code_and_test_byte_identical_to_github": true,
+    "whole_repo_suite": false,
+    "github_actions_run": false
+  },
+  "open": {
+    "full_lower_field_jet_normal_form": "NOT COMPLETED",
+    "physical_Step55_exact_radial_profile_multiplier_coefficients": "NOT EVALUATED",
+    "Dirac_rank": "NOT DETERMINED",
+    "lapse_fixing": "NOT DETERMINED",
+    "independent_original_nonIBP_temporal_oracle": "NOT RUN",
+    "ghost_freedom": "NOT PROVED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step61": "Use full RN/RM third-free normal forms and exact Step55 constrained profile to eliminate lower q''-jets, Hf,Ddiag,C and differentiated Fz/Hg; evaluate lapse differential-operator rank only after exact constraint reduction. Build an independent non-IBP physical temporal oracle and explicit boundary checks."
+}
