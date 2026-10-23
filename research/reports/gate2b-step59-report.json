@@ -1,0 +1,84 @@
+{
+  "step": 59,
+  "date": "2026-10-23",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Exact third canonical radial jet sensitivities of full real six-pair temporal operator are principal parts of differentiated primary Hg and reduced secondary Cred; complete positive-K shift two-jet prolongation.",
+  "physical_input": {
+    "original_step45": "numerics/hr_step45_exact_physical_ward.py",
+    "blob_step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "authentic_step57": "numerics/hr_step57_secondary_principal_symbol.py",
+    "blob_step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "authentic_step58": "numerics/hr_step58_temporal_operator.py",
+    "blob_step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "source_authenticated_on_import": true,
+    "six_canonical_pairs": true
+  },
+  "notation": {
+    "raw_temporal": "Cdot_red=A_N N + B_N Nprime + A_M M + B_M Mprime on Fz=Hg=0; Step58 proved Nsecond=Msecond=0 exactly on that primary shell",
+    "third_jet": "qrrr=third radial derivative of one of all 12 canonical fields; first impose Fz=0 via original pLg_prime relation",
+    "third_principal": "Retain ONLY coefficients of independent qrrr canonical jet variables in each lapse coefficient; do not claim equality of full lower-order expressions"
+  },
+  "exact_original_physical_coefficients_on_Fz": {
+    "A_N_N0": "NO third radial canonical jets",
+    "B_N_Nprime": {
+      "Sg_rrr": "-2 Mg2 Sg(1-z²)/(Lf Lg²)"
+    },
+    "A_M_M0": {
+      "pLg_rrr": "z(1-z²)/Lf²",
+      "Sg_rrr": "-pSg z(1-z²)/(Lg Lf²)",
+      "theta_g_rrr": "-pg z(1-z²)/(Lg Lf²)"
+    },
+    "B_M_Mprime": "NO third radial canonical jets"
+  },
+  "exact_constraint_derivative_principal_relation": {
+    "Hg_second_jet": "d Hg /d Sg_rr = 2 Mg2 Sg/Lg; all other second radial canonical jet coefficients vanish",
+    "Cred_second_jet": "d Cred/d pLg_rr=(1-z²)/Lf, d Cred/d Sg_rr=-pSg(1-z²)/(Lg Lf), d Cred/d theta_g_rr=-pg(1-z²)/(Lg Lf)",
+    "Nprime_third_principal": "-(1-z²)/(Lg Lf) * (d Hg/dr)_third_jet_principal",
+    "M_third_principal": "z/Lf * (d Cred/dr)_third_jet_principal",
+    "equivalent_Dg_second": "(A_M)_third = -z(1-z²)/(Lg Lf²) * (d² Dg/dr²)_third",
+    "proof_method": "Differentiate exact Step58 full six-pair lapse coefficients against all 12 independent third field jet symbols AFTER imposing Fz=0, identify only 1+3 nonzero derivatives, match EXACT algebraic formulas from Step45 Hg second jets and Step57 Cred second jets. Symbolic ZERO residuals verified with SymPy.",
+    "IMPORTANT": "These are equalities of highest-JET PRINCIPAL PARTS only. Vanishing Hg'=Cred'=0 along an exactly constrained radial solution does NOT by itself establish full equality of B_N or A_M to those derivative constraints, nor determine the lower-order remainders. Those remain Step60."
+  },
+  "exact_positive_K_shift_second_prolongation": {
+    "z": "D/R, R=sqrt(D²+K²), K>0",
+    "zprime": "(K² Dprime-D K Kprime)/R³",
+    "zsecond": "(K² Dsecond+K Kprime Dprime-D Kprime²-D K Ksecond)/R³ -3*(K² Dprime-D K Kprime)*(D Dprime+K Kprime)/R⁵",
+    "stationarity": "Fz and its first and second radial total derivatives vanish identically on positive-K root, without freezing zprime or zsecond",
+    "normalized_center": "Dg=r³ d(s), K=r² k(s), s=r², z=r*w(s), w=d/sqrt(k²+s*d²), zprime=w+2s w_s, zsecond=r*(6w_s+4s w_ss); valid for k>0 and d,k smooth C² in s",
+    "center_limit": "zsecond=O(r) if d,k twice smooth in s with k>0; conditional smooth radial chart, not whole 4D evolution theorem"
+  },
+  "execution": {
+    "workspace": "/mnt/data/janus-step58",
+    "new_script": "numerics/hr_step59_third_jet_gate.py",
+    "new_script_sha": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+    "new_tests": "tests/test_hr_step59_third_jet_gate.py",
+    "new_tests_sha": "ee6dd8f99e963c60a78c3b4f5a52000273b929c4",
+    "new_test_count": 17,
+    "previous_tests": {
+      "Step57": 12,
+      "Step58": 15
+    },
+    "joint_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step59_third_jet_gate.py",
+    "joint_result": "44 passed in 5.12s",
+    "new_files_byte_for_byte_match_GitHub_and_tested": true,
+    "local_manifest_sha256": "c2bbd8c3829c2333f61f586170502b0dbd0b0a1b7e8e4d71e0d38be12fe70012",
+    "full_repo_checkout": false,
+    "full_project_suite": false,
+    "github_actions_enabled": false
+  },
+  "remaining_verification": {
+    "exact_constraint_prolongation_full_lower_jet_quotient": "OPEN",
+    "evaluate_A_N_B_N_A_M_B_M_on_exact_Step55_radial_positive_solution": "NOT_COMPUTED",
+    "time_preservation_lapse_rank": "NOT_COMPUTED",
+    "physical_lapse_ratio_fixing": "NOT_COMPUTED",
+    "independent_original_nonIBP_temporal_oracle": "NOT_RUN",
+    "exceptional_K_or_J_charts": "NOT_COVERED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_step60": [
+    "Perform FULL jet normal form: subtract -(1-z²)/(Lg Lf)*Hg' from B_N and +(z/Lf)*Cred' from A_M before enforcing Hg'=Cred'=0; verify entire remainders are qrrr-free and impose radial prolongations of Fz,Hg,Hf,Ddiag,C consistently.",
+    "Use Step55 positive exact radial ODE solution with interval-certified jet enclosure; evaluate and analyze the remaining lapse coefficient operator A_N,B_N,A_M,B_M, including at center and the positive chart boundary.",
+    "Derive rank and admissible lapse directions only after all constraints and their radial derivatives, with original unintegrated canonical oracle and explicit boundaries."
+  ]
+}
