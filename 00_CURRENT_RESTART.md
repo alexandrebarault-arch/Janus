@@ -1,3 +1,86 @@
+# JANUS — REPRISE PRIORITAIRE : STEP61 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE DE RECHERCHE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main` ni `research/v2-flrw`. Ne pas réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP61_NORMALIZED_RADIAL_ODE_JETS_AND_SHIFT_CONSISTENCY_AUDIT.md`.
+**RAPPORT MACHINE ARCHIVÉ :** `research/reports/gate2b-step61-report.json`.
+**NOUVEAU CODE :** `numerics/hr_step61_normalized_jet_lift.py`, Git blob `b345169d8806ce524527229c794ace71cf5d540e`.
+**15 TESTS NOUVEAUX :** `tests/test_hr_step61_normalized_jet_lift.py`, Git blob `08da0dba3aac34a5cd631a48ba6258d3ecfd01c2`. Deux empreintes vérifiées sur GitHub identiques aux OCTETS VRAIMENT exécutés.
+**SOURCES HISTORIQUES SEULEMENT CONSULTÉES** pour cette étape autonome : Step55 `numerics/hr_step55_normalized_secondary.py` Git `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step60 `numerics/hr_step60_full_constraint_prolongation.py` Git `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`. Elles n'ont PAS été importées ni entièrement rejouées dans le workspace nouveau. Ne pas prétendre « full historical suite ».
+**PRÉCÉDENT :** `research/STEP60_FULL_CONSTRAINT_RADIAL_PROLONGATION_AUDIT.md`, avec 56 tests Step57–60 passés dans leur propre environnement de la session précédente.
+
+## NOUVELLES IDENTITÉS EXACTES STEP61 — JETS COHÉRENTS DE L'EDO CERTIFIÉE STEP55
+
+Les données exactes spatiales Step55 : `s=r², P=pLf=r²U(s)`; `V=P'/r=G(s,U)` ; `2s U_s=G(s,U)-2U`. Cette EDO normalisée est fondée sur la vraie secondaire physique originale dans Steps45/46/55, mais Step61 vérifie la règle de dérivation comme une ALGÈBRE AUTONOME et non encore en substituant la fonction G physique originale.
+
+```text
+P' = r G(s,U)
+H(s,U) = G + 2s*G_s + (G-2U)*G_U
+P'' = H(s,U)
+P''' = 2r[H_s + H_U*(G-2U)/(2s)], pour s>0.
+```
+
+Ces dérivées sont exactes SUR l'EDO. Les deux variables partielles de G sont `s` et `U` prises indépendamment avant restriction à la solution. Pour le vrai Dirac Step60, les jets d'ordre 2/3 de pLf DOIVENT respecter ces relations. Au centre `s=0`, n'évaluez PAS naïvement le `0/0` : employer la série régularisée.
+
+**Centre :** Step55 possède `G(0,U)=3U0-U`; écrire `G=3U0-U+s A(s,U)`. Alors pour `U(s)=U0+Σ_{n>=1} U_n s^n` :
+
+```text
+(2n+3)*U_n = coefficient de s^(n-1) dans A(s,U(s)),
+n >=1 ; denominators 5,7,9,... NONZERO.
+U1=G_s(0,U0)/5,
+U2=[G_sU(0,U0)*U1 + G_ss(0,U0)/2]/7.
+P''(0)=2 U0 ; P'''(0)=0 ; limit (P'''/r) =24 U1.
+```
+
+La règle générale est une RÉCURRENCE FORMELLE exacte, pas le calcul des vraies valeurs U_n du modèle sans la fonction G physique.
+
+**NOUVELLES BORNES RATIONNELLES IMMÉDIATES (et réellement dérivées du vrai certificat Step55) :**
+
+```text
+0<=r<=17/20 ; s<=289/400.
+Step55 : |U-Ustar|<=1/10000 ; |V-Vstar|<41/20000.
+Donc |P-Pstar|<=289/4000000 = 0.00007225.
+Et  |P'-Pstar'|<697/400000 = 0.0017425.
+Mais AUCUNE BORNE P''/P''' ne découle de ces deux seules inégalités ;
+il faut compiler les vraies dérivées G_s,G_U,G_ss,G_sU,G_UU
+avec leurs bornes d'intervalles sur le tube physique Step55.
+```
+
+**CONTRÔLE NOUVEAU DE COHÉRENCE STEP60 :** la vraie racine du shift requiert `zr=Z1` aussi DANS l'expression de `z''` construite avec `Dt(ZD)`, `Dt(ZK)`. Si `zr` reste un symbole libre, le défaut exact vaut :
+
+```text
+ZD=(1-z²)^(3/2)/K, ZK=-z(1-z²)/K,
+Z1=ZD*Dg' + ZK*K',
+Delta_Z2 = (zr-Z1)/K * [-3*z*sqrt(1-z²)*Dg' + (3*z²-1)*K'].
+```
+
+Ce défaut s'annule EXACTEMENT pour `zr=Z1`, mais est GÉNÉRIQUEMENT NON NUL si `zr=0` ou reste indépendant. **Les identités d'annulation des jets TROISIÈMES de Step60 ne sont pas réfutées** : le défaut porte sur les jets inférieurs, dont l'évaluation physique reste justement ouverte. Ne pas conclure au rang physique avant substitution de `z,z',z''` cohérente.
+
+## EXÉCUTION VÉRIFIÉE, TESTS ET PORTÉE RÉELLE
+
+```bash
+cd /mnt/data/janus-step61
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step61_normalized_jet_lift.py
+# RÉELLEMENT EXÉCUTÉ : 15 passed in 1.13 s.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step61_normalized_jet_lift
+```
+
+Les 15 tests incluent formules de chaîne jusqu'à P''', solution analytique manufacturée, dénominateurs sans résonance (10 premiers ordres formels), premières valeurs centrales, comportement pair, bornes de fractions exactes, CONTRE-EXEMPLE montrant qu'un tube (U,U_s) seul ne contrôle pas U_ss, et défaut exact de z'' pour z' indépendant, avec contrôle négatif z'=0. **Le contre-exemple manufacturé n'est PAS une autre solution de la même EDO JANUS.**
+
+Le manifeste brut existe LOCALLEMENT : `/mnt/data/janus-step61/research/reports/gate2b-step61-local-manifest.json` SHA256 `6ae2f7f56ebb790f7be501ea72a528e216d5798fae6212ec7483d5584d88ef94`. PAS téléversé séparément sur GitHub ; rapport machine `research/reports/gate2b-step61-report.json` et module complet y sont commités. Les 56 tests Step57–60 ne furent PAS réexécutés dans ce workspace partiel ; pas de full CI ni de full physical Step60 temporal rank.
+
+## STEP62 — LES ACTIONS CRITIQUES À REPRENDRE APRÈS INTERRUPTION
+
+1. Reconstituer le VRAI dépôt ou un environnement cohérent octet-authentique Steps45,46,55,57,58,59,60. Importer le véritable `G(s,U)` par `numerics.hr_step55_normalized_secondary.normalized_symbolic()`, y compris paramètres physiques rationnels exacts.
+2. Différentier G, calculer/valider des bornes d'intervalles `G_s,G_U,G_ss,G_sU,G_UU` sur le tube Step55, y compris normalisation `s=0`. Les formules Step61 donnent alors les jets P',P'',P''' certifiables sur l'EXACTE solution radiale.
+3. Réduire l'opérateur temporel Step60 en substituant **z=Z(Dg,K), zr=Z1, zrr=Z2**, puis toutes les primaires/secondaire et leurs dérivées spatiales compatibles et les jets de P physiques. Évaluer les quatre coefficients N,N',M,M' et traiter rang et conditions de bord. Séparer chartes K/J exceptionnelles.
+4. Valider contre le CROCHET TEMPOREL ORIGINAL NON IBP à six couples indépendant (non calculé jusqu'ici) ; ne pas déduire absence du fantôme BD sans clôture de Dirac.
+5. Après toute avancée, préfixer `00_CURRENT_RESTART.md` et vérifier les véritables HEADs ; laisser `main`, V2 et Actions intacts.
+
+**VERDICT : Step61 exact ODE-to-jet bridge + coherent stationary shift z'' audit, 15 standalone tests ; full physical temporal Dirac rank/lapse fixing OPEN ; Gate2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP60 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE AUTORISÉE AUX ÉCRITURES :** `research/gate2b-nonhomothetic-transfer`. Ne PAS modifier `main` ou `research/v2-flrw`, ne PAS réactiver Actions/workflows. **Gate2B OPEN, JANUS-R NOT_VALIDATED**.
