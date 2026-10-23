@@ -1,3 +1,64 @@
+# JANUS — REPRISE PRIORITAIRE : STEP58 TERMINÉ — 2026-10-23
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`; ni `main` ni `research/v2-flrw`. Ne pas réactiver GitHub Actions/workflows. **GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP58_EXACT_PHYSICAL_TEMPORAL_OPERATOR_HIGH_LAPSE_CANCELLATION.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step58-report.json`.
+**CODE :** `numerics/hr_step58_temporal_operator.py`, Git blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`.
+**15 TESTS NOUVEAUX :** `tests/test_hr_step58_temporal_operator.py`, Git blob `0f9f91de0f607e811dc168e1ead0c3e9296574d0`.
+**ORIGINAUX PHYSIQUES BYTE-AUTHENTIQUES :** `numerics/hr_step45_exact_physical_ward.py` Git `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, `numerics/hr_step57_secondary_principal_symbol.py` Git `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`.
+**PRÉCÉDENT :** `research/STEP57_SECONDARY_REDUCED_SECOND_JETS_AND_TEMPORAL_SYMBOL_AUDIT.md`.
+
+## AVANCÉE RÉELLE STEP58
+
+Pour la PREMIÈRE FOIS ici, l'évolution temporelle locale de la secondaire REDUITE de la véritable formulation positive-EH HR sphérique avec 2 poussières et SIX couples a été **assemblée exactement dans SymPy, sous forme de coefficients factorisés des jets des lapses**. `H_g,H_f,C` et les six gradients d'Euler de l'action originale Step45 sont importés en octets authentifiés GitHub. L'équation stationnaire positive `F_z=D_g-K z/sqrt(1-z²)=0` impose `z=D_g/sqrt(D_g²+K²)`. L'évolution est obtenue via les douze flux symplectiques originaux, y compris la dérivée de chaîne de `z,z'` :
+
+```text
+X_(q_i) = + Euler_(p_i) H[N,M]
+X_(p_i) = - Euler_(q_i) H[N,M]
+delta_H z = ((1-z²)^(3/2)/K)*delta_H Dg - z*(1-z²)/K*delta_H K
+dot C_red = sum_i(C_qi X_i + C_qiprime D_r X_i)
+          + C_z delta_H z + C_zprime D_r(delta_H z)
+```
+
+Cette écriture LOCALE est l'adjoint du crochet avec test compact eta : `integral eta dot C_red = {integral eta C_red, H_tot}` modulo bords contrôlés ; la construction garde toutes les dérivées implicites de z. En jet lapse symbolique, les SEULS ordres non nuls AVANT contraintes sont `N,N',N'',M,M',M''` ; pas de jets troisième/quatrième (constat de structure exacte, pas troncature).
+
+**THÉORÈME ANALYTIQUE NOUVEAU ET TESTÉ :** sur `F_z=0`, éliminer exactement le jet `pLg'` original :
+
+```text
+pLg'=(pSg*Sg' + pg*tg' - K*z/sqrt(1-z²))/Lg.
+coefficient [M''] | Fz=0 = 0  IDENTIQUEMENT
+coefficient [N''] | Fz=0 = (z²-1)*Hg/(Lg*Lf) IDENTIQUEMENT
+```
+
+Donc les DEUX dérivées secondes des lapses s'annulent EXACTEMENT lorsque **Fz=0 et Hg=0**. L'opérateur TEMPOREL restant est de premier ordre :
+```text
+dot C_red | Fz=Hg=0 = A_N*N + B_N*N' + A_M*M + B_M*M'
+```
+Les 4 coefficients résiduels sont CALCULÉS et disponibles comme expressions SymPy FACTORISÉES dans `physical_operator()['operator']`, mais ne sont pas simplifiés/évalués sur les données EXACTEMENT contraintes Step55. **NE PAS CONFONDRE** les annulations des seconds jets avec une fixation de lapses ni avec un rang de Dirac calculé.
+
+## TESTS RÉELLEMENT EXÉCUTÉS, OCTETS ET PORTÉE
+
+```bash
+cd /mnt/data/janus-step58
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step57_secondary_principal_symbol.py tests/test_hr_step58_temporal_operator.py
+# 27 PASSED in 3.75 s = 12 Step57 + 15 NOUVEAUX Step58
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step58_temporal_operator
+```
+
+LES DEUX NOUVEAUX fichiers ont été comparés à leur vrai Git SHA sur GitHub et sont byte-identical aux octets locaux exécutés. La vraie source Step45 importée a été vérifiée par SHA à l'exécution. Inclut un banc d'essai exact IBP intégré, avec 2 paires actives d'une théorie à 6 paires manufacturée, NE PAS LE QUALIFIER d'oracle JANUS original non-IBP. Ce n'est PAS une suite complète de tests historiques, ni CI ; les workflows restent désactivés.
+
+## NEXT STEP59 — HARD RED
+
+1. Substituer la véritable branche radiale contrainte positive **Step55** (`Fz=Hg=Hf=Ddiag=C=0`), les jets compatibles de `z`, dans les **quatre** coefficients physiques factorisés `A_N,B_N,A_M,B_M`. Simplifier exactement si possible, sinon par AD certifiée et arithmétique d'intervalles ; comparer centre et intérieur. Ne pas confondre les coefficients d'ordre 1 avec la fixation des lapses.
+2. Calculer la vraie matrice de Dirac/multiplicateurs, ses modes de jauge, le ratio relatif des lapses s'il existe et ses bords, en traitant `K=0/J=0` hors charte à part.
+3. Oracle indépendant non-IBP TEMPORAL depuis l'action ADM originale avec toutes les variables canoniques (l'oracle Step44 ne testait que les primaires mixtes, pas le présent crochet temporel). Préserver les contraintes et le centre; ne pas annoncer absence du fantôme BD ni une 4D nonhomothetic on-shell tant que non démontrés.
+4. PRÉFIXER à nouveau `00_CURRENT_RESTART.md` avec Git HEAD, fichiers, SHA, tests et limites, sans écraser l'historique ; branch main/V2 et Actions restent inchangées.
+
+**CONCLUSION : véritable opérateur temporel local à six couples formellement reconstruit, et annulation EXACTE des seconds jets lapses sur primaires ; RANG DIRAC / LAPSE FIXING / ON-SHELL EVOLUTION NON ÉTABLIS. GATE_2B OPEN ; JANUS-R NOT VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP57 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE SCIENTIFIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main` ni `research/v2-flrw` ; ne PAS réactiver GitHub Actions/workflows. **GATE_2B OPEN, JANUS-R NOT VALIDATED**.
