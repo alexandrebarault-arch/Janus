@@ -70,9 +70,9 @@
     "git_blob_tests": "b8e432ff4afe4a53b7d54150f174706a5b65460b",
     "github_bytes_equal_to_local_executed_bytes": true,
     "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step62_physical_G_curvature.py",
-    "outcome": "17 passed in 2.66 seconds",
+    "outcome": "17 passed in 2.57 seconds (final verified rerun)",
     "raw_local_manifest": "/mnt/data/janus-step62/research/reports/gate2b-step62-local-manifest.json",
-    "raw_local_manifest_sha256": "not_yet_measured_for_final_17_test_manifest",
+    "raw_local_manifest_sha256": "2e99f43bda32edbbf47380d1806f913a99fca2203de21da8de63174bd0ccb814",
     "previous_Step57_to_61_suites_not_rerun_here": true,
     "complete_repository_checkout": false,
     "github_actions_disabled": true
