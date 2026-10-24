@@ -28,7 +28,7 @@
     },
     "regular_center": "At s=0, w_d=1/k, w_k=-w/k, w_dd=0, w_dk=-1/k², w_kk=2w/k²; all finite if k>0",
     "normalized_variation": "delta(z/r)=t^(3/2)/k delta d -w t/k delta k ; delta z = r delta(z/r); avoids false singularity in unnormalized inverse ∂Fz/∂z~r²",
-    "Frechet_bound": "|delta(z/r)|<1000/229 (|delta d|+1/250 |delta k|) at every fixed benchmark radial point for first-order parity-preserving variations"
+    "Frechet_bound": "|delta(z/r)| <=1000/229 (|delta d|+1/250 |delta k|) for all linearized parity-preserving variations at every fixed benchmark radial point (including zero variations)"
   },
   "rigorous_rational_enclosures": {
     "t_min": "24999711/25000000",
@@ -50,11 +50,11 @@
   "regression": {
     "workspace": "/mnt/data/janus-step66",
     "code": "numerics/hr_step66_center_shift_implicit_condition.py",
-    "code_git_blob": "585c3a975d74107e01906a999a5598180a97b128",
+    "code_git_blob": "47231c568a7a08954dc3894c82552552da58fde5",
     "tests": "tests/test_hr_step66_center_shift_implicit_condition.py",
-    "tests_git_blob": "0ce9338920941148219d549d4be106dde6b225d0",
+    "tests_git_blob": "274837f216d3399540a3eb96e5836cb9d721add4",
     "run": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step66_center_shift_implicit_condition.py",
-    "result": "20 passed in 2.36s",
+    "result": "20 passed in 2.80s (final source/test versions including zero-variation negative control)",
     "two_files_byte_identical_to_executed_local": true,
     "local_full_manifest": "/mnt/data/janus-step66/research/reports/gate2b-step66-local-manifest.json",
     "local_manifest_sha256": "08ec605aea6ad09e9aa55b03c8ebcc832c970b80b702d47123d5885380b8bf19",
