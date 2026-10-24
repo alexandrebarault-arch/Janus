@@ -1,0 +1,59 @@
+{
+  "step": "68d",
+  "date": "2026-10-25",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Byte-authentic original six-pair shift Nprime/Mprime closed forms and exact second-lapse cancellation",
+  "source_original_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "provenance": "Three original modules locally reconstructed with identical actual Git blob hashes; imported and executed jointly. Existing full original Step58 second-lapse certificate also reproduced.",
+  "new_exact_on_shell": {
+    "conditions": "Fz=0, K>0, |z|<1, nonzero Lg,Lf; Hg additionally imposed ONLY for final N'' cancellation",
+    "delta_H_z_coefficient_of_Nprime": "(1-z^2)^(3/2)*Hg_on_Fz/K - (1-z^2)/Lg",
+    "delta_H_z_coefficient_of_Mprime": "(1-z^2)/Lf",
+    "C_zprime_on_Fz": "-K/(Lg Lf sqrt(1-z^2))",
+    "direct_Cdot_Ndoubleprime": "-K sqrt(1-z^2)/(Lg^2 Lf)",
+    "shift_Cdot_Ndoubleprime": "-(1-z^2) Hg_on_Fz/(Lg Lf)+K sqrt(1-z^2)/(Lg^2 Lf)",
+    "full_Cdot_Ndoubleprime": "-(1-z^2) Hg_on_Fz/(Lg Lf)",
+    "direct_Cdot_Mdoubleprime": "+K sqrt(1-z^2)/(Lg Lf^2)",
+    "shift_Cdot_Mdoubleprime": "-K sqrt(1-z^2)/(Lg Lf^2)",
+    "full_Cdot_Mdoubleprime": "0"
+  },
+  "center_bridge": {
+    "premises": "r→0+, Lg→a>0, Lf→b>0, z=r w, K=r² k0 with k0>0, Hg=r² h0 and finite h0",
+    "delta_z_Nprime_coefficient_limit": "h0/k0-1/a",
+    "delta_z_Mprime_coefficient_limit": "1/b",
+    "N2_component_from_Nprime_on_Hg0": "-2/a",
+    "M2_component_from_Mprime_on_Hg0": "+2/b",
+    "interpretation": "Only the Nprime/Mprime contribution to center delta_H zprime. Full center result derived independently in earlier Step68c; this alone is not the Cdot coefficient.",
+    "Step55_benchmark_center_k0_gt": "229/1000 (separate direct exact rational check on published constants; no rerun of Step55 G or invariant-barrier theorem)"
+  },
+  "negative_control": "Omitting Hamiltonian variation of z and zprime leaves nonzero direct Mdoubleprime term on K>0, falsely violating exact Cdot cancellation.",
+  "execution": {
+    "new_source": "numerics/hr_step68d_exact_shift_lapse_symbol.py",
+    "source_git_blob": "6af0322b0ba5c39ab014874455d4f380f6ea66fa",
+    "new_tests": "tests/test_hr_step68d_exact_shift_lapse_symbol.py",
+    "test_git_blob": "9f1b9bfef4c573fa8fa365a37bf83e4d6307684b",
+    "test_command": "cd /mnt/data/janus-step68d && OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68d_exact_shift_lapse_symbol.py",
+    "test_result": "16 passed in 11.01s",
+    "sha256_local_python_module_json_output": "866746017010c856db29e0f3c77ef40fabdff30070939913fd69955dd0d95625",
+    "code_and_tests_github_git_blobs_match_executed_local": true,
+    "Hg_shell_symbolic_srepr_sha256": "ab313e7f4a37a7dff6869ae54b51b365c0f5531173a87a455f4c25254fd78f08"
+  },
+  "not_claimed": {
+    "Step55_exact_radial_profile_inserted": false,
+    "Steps59_60_full_constraint_quotient_reexecuted": false,
+    "full_lapse_low_order_reduced": false,
+    "independent_nonIBP_6pair_oracle": false,
+    "global_Dirac_rank": false,
+    "lapse_positive_boundary_solution": false,
+    "BD_ghost_absence": false,
+    "full_4D_JANUS_validated": false
+  },
+  "next": "Step68e: byte-import original Step46/55 + Step59/60 alongside Step45/57/58; validate all original SHA hashes, evaluate four lower-order lapse coefficients against exact Step55 radial constraints and their prolongations, retain shift response, test nonIBP oracle and boundary conditions, compute Dirac rank; do not infer from high-jet cancellation.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "GitHub_Actions": "OFF"
+}
