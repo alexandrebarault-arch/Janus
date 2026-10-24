@@ -104,3 +104,11 @@ def test_exact_reduction_coefficients_on_fixed_background(v):
  # Explicit omission of the k_s term would yield an incorrect nonzero
  # residual: it must survive for arbitrary stationary k(s).
  assert sp.simplify(sp.diff(v['delta_w_s'],v['k1'])+(v['A']*v['ed']+v['B']*v['ek'])/v['k'])==0
+
+
+def test_k_derivatives_can_have_both_signs(v):
+ assert v['k1'].is_positive is None
+ assert v['k2'].is_positive is None
+ assert sp.simplify(v['delta_zprime'].subs({v['s']:sp.Rational(1,4),v['w']:W0,
+                    v['k']:sp.Rational(1,2),v['k1']:-sp.Rational(1,10),
+                    v['ed']:1,v['ek']:0,v['ed1']:0,v['ek1']:0})).is_finite
