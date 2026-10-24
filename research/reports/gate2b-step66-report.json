@@ -1,0 +1,82 @@
+{
+  "step": 66,
+  "date": "2026-10-24",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "headline": "Exact center-regular normalized original HR relative-shift implicit-function C2 conditioning on Step55 positive benchmark",
+  "scientific_scope": "Parity-preserving radial variations of genuine algebraic relative shift Fz=Dg-K z/sqrt(1-z²) from original Step45 spherical positive-EH six-pair two-dust ADM HR construction; conditions inherited from Step55 certified positive initial-data benchmark (not independent proof of those premises in Step66).",
+  "original_certified_inputs": {
+    "referenced_report": "research/reports/gate2b-step55-report.json",
+    "r": "0<=r<=17/20",
+    "s": "s=r², 0<=s<=289/400",
+    "normalized_K": "K=r² k(s), k(s)>229/1000 incl continuous normalized center",
+    "normalized_Dg": "Dg=r³d(s)",
+    "prescribed_shift": "z=r w(s), physical w(s)=1/250",
+    "crucial_provenance": "The original Step45/55 Python modules and Step55 interval implementation were inspected in GitHub, but NOT re-imported or rerun locally in Step66. Their published positive bounds are ASSUMED, and source hashes are not newly revalidated."
+  },
+  "exact_derivation": {
+    "normalized_stationarity": "Fz/r³=d-k w/sqrt(1-s w²) = Fhat(s,d,k,w) for r>0, continuously extends to r=0",
+    "positive_shift_root": "w(d,k;s)=d/sqrt(k²+s d²), k>0, t=1-s w²>0",
+    "Fhat_w": "-k/(1-s w²)^(3/2), so |Fhat_w|>229/1000 throughout radial chart including center",
+    "gradient": {
+      "dw/dd": "t^(3/2)/k",
+      "dw/dk": "-w t/k"
+    },
+    "hessian": {
+      "d²w/dd²": "-3s w t²/k²",
+      "d²w/dddk": "(3s w²-1)t^(3/2)/k²",
+      "d²w/dk²": "w(2-3s w²)t/k²"
+    },
+    "regular_center": "At s=0, w_d=1/k, w_k=-w/k, w_dd=0, w_dk=-1/k², w_kk=2w/k²; all finite if k>0",
+    "normalized_variation": "delta(z/r)=t^(3/2)/k delta d -w t/k delta k ; delta z = r delta(z/r); avoids false singularity in unnormalized inverse ∂Fz/∂z~r²",
+    "Frechet_bound": "|delta(z/r)|<1000/229 (|delta d|+1/250 |delta k|) at every fixed benchmark radial point for first-order parity-preserving variations"
+  },
+  "rigorous_rational_enclosures": {
+    "t_min": "24999711/25000000",
+    "first_derivative_dd": "|w_d|<=1000/229<22/5",
+    "first_derivative_dk": "|w_k|<=4/229<1/50",
+    "second_derivative_dd": "|w_dd|<=8670/52441<1/5",
+    "second_derivative_mixed": "|w_dk|<=1000000/52441<20",
+    "second_derivative_kk": "|w_kk|<=8000/52441<1/5",
+    "domain": "every s in [0,289/400], w=1/250, k>229/1000",
+    "method": "Exact SymPy identities combined with Fraction rational inequalities in one full continuum interval; no floating-point or sampling for the theorem."
+  },
+  "negative_controls": {
+    "k=0": "Fhat_w vanishes; no invertibility: EXCLUDED rather than crossing K=0 chart",
+    "wrong_s_range": "fail_closed_parameters throws ValueError",
+    "wrong_K_lower_or_shift": "fail_closed_parameters throws ValueError",
+    "unconditional_HR_claim": "explicitly rejected: fixed Step55 constrained initial-data benchmark only",
+    "full_time_Dirac_rank": "NOT CLAIMED"
+  },
+  "regression": {
+    "workspace": "/mnt/data/janus-step66",
+    "code": "numerics/hr_step66_center_shift_implicit_condition.py",
+    "code_git_blob": "585c3a975d74107e01906a999a5598180a97b128",
+    "tests": "tests/test_hr_step66_center_shift_implicit_condition.py",
+    "tests_git_blob": "0ce9338920941148219d549d4be106dde6b225d0",
+    "run": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step66_center_shift_implicit_condition.py",
+    "result": "20 passed in 2.36s",
+    "two_files_byte_identical_to_executed_local": true,
+    "local_full_manifest": "/mnt/data/janus-step66/research/reports/gate2b-step66-local-manifest.json",
+    "local_manifest_sha256": "08ec605aea6ad09e9aa55b03c8ebcc832c970b80b702d47123d5885380b8bf19",
+    "original_Step45_55_imported_in_this_run": false,
+    "full_repository_suite_run": false,
+    "CI_run": false
+  },
+  "open_gates": {
+    "coherent_reexecution_of_Step45_46_55_57_60_63_65": "NOT_PERFORMED",
+    "full_temporal_lapse_coefficients_on_exact_Step55_radial_profile": "NOT_EVALUATED",
+    "original_nonIBP_temporal_Poisson_oracle": "NOT_RUN",
+    "Dirac_rank": "NOT_COMPUTED",
+    "lapse_fixing": "NOT_COMPUTED",
+    "exceptional_K_zero_J_zero_charts": "NOT_ANALYZED",
+    "ghost_freedom": "NOT_PROVED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "step67": [
+    "Reconstitute one genuine GitHub-byte-verified worktree with Step45/46/55/57/58/59/60/63/64/65 and run the actual constrained temporal lapse operator, not a proxy.",
+    "Use uniformly conditioned center-normalized variables w=z/r, d=Dg/r³, k=K/r² and derivatives W_d,W_k,W_dd,W_dk,W_kk from Step66 to avoid invalid raw 1/r² inverse near r=0; keep regular parity.",
+    "Substitute actual physical Step55 G(s,U), certified Step64 P'',P''', stationarity z=Z,z'=Z1,z''=Z2, all six-pair constraints and their prolongations; reduce A_N,B_N,A_M,B_M.",
+    "Determine complete lapse rank with boundary and K/J exceptional charts, and independent original non-IBP temporal Poisson oracle. Keep Gate2B OPEN until proven."
+  ]
+}
