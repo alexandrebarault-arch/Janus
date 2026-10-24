@@ -3,9 +3,9 @@
 **ÉCRITURE AUTORISÉE UNIQUEMENT** sur `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main` ou `research/v2-flrw` ; GitHub Actions/workflows restent désactivés. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
 
 **LIRE D'ABORD** `research/STEP68A_CENTER_SHIFT_FUNCTIONAL_VARIATION_AUDIT.md`.
-**SOURCE LOCALE ET GITHUB IDENTIQUES** : `numerics/hr_step68a_normalized_shift_variations.py`, Git blob `ea4376a23d7c59b353986022ed23d6d3edf8a7ad`.
-**TESTS LOCAUX ET GITHUB IDENTIQUES** : `tests/test_hr_step68a_normalized_shift_variations.py`, Git blob `3484e6da8bcdd3d2671e0d79042c2b85d0a8d5bd`.
-**RAPPORT ARCHIVÉ** : `research/reports/gate2b-step68a-report.json`, Git blob `1a2a54665748ad61ab5b1182c398a9fc7778c6ba`.
+**SOURCE LOCALE ET GITHUB IDENTIQUES** : `numerics/hr_step68a_normalized_shift_variations.py`, Git blob `31840c495175d01d275661e3553436983e3dc43c`.
+**TESTS LOCAUX ET GITHUB IDENTIQUES** : `tests/test_hr_step68a_normalized_shift_variations.py`, Git blob `7c9ec9569bec35e98d78e540a9e7fe8096c120e6`.
+**RAPPORT ARCHIVÉ** : `research/reports/gate2b-step68a-report.json`, Git blob `41a7be90bff5324ebad01ef4d04f6f85bcd61982`.
 **PREPARATION Step68** : `research/reports/gate2b-step68-source-preflight.json` (15 hashes originaux consultés) reste inchangée.
 **PRÉCÉDENT IMPORTANT** : Step67b (vraie source physique historique 45/46/55 relancée, coefficient U3 certifié) est maintenu INTÉGRALEMENT ci-dessous.
 
@@ -30,7 +30,7 @@ delta z''=2r*(3delta w_s+2s delta w_ss)
 
 Ces égalités ont été vérifiées symboliquement, y compris l'identité de pullback de l'ancienne équation physique Step58 `delta z=Z_D delta D_g+Z_K delta K`. Au centre `delta z'(0)=[e_d(0)-w0 e_k(0)]/k(0)`, généralement NON NUL. Exemple négatif exact : `k=1/2,e_d=1,e_k=0,k_s=k_ss=e_d_s=...=0` => `delta z'(0)=2`, `lim_{r→0}delta z''/r=-9/31250`. Interdire de figer `delta z'` simplement parce que `z''` du FOND vaut zéro.
 
-**RÉELLEMENT EXÉCUTÉ** : `PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py` => **20 passed in 4.46s**. Deux égalités algébriques SymPy initialement comparées structurellement ont été réparées par `simplify(a-b)==0` AVANT l'exécution réussie. Source et tests uploadés, Git blobs relus identiques aux fichiers vraiment exécutés. Le manifeste brut local SHA256 est `92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa`.
+**RÉELLEMENT EXÉCUTÉ** : `PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py` => **21 passed in 6.01s**. Deux égalités algébriques SymPy initialement comparées structurellement ont été réparées par `simplify(a-b)==0` AVANT l'exécution réussie. Source et tests uploadés, Git blobs relus identiques aux fichiers vraiment exécutés. Une autre correction de rigueur a supprimé l'hypothèse non justifiée de positivité sur k_s,k_ss : deux symboles réels de signe libre, validés par un 21e test avec k_s négatif. Le manifeste brut local SHA256 est `92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa`.
 
 **PROVENANCE LIMITÉE** : le véritable Step58 a été LU sur GitHub, mais Steps45/55/57/58/59/60 n'ont PAS été exécutés ensemble dans le nouveau workspace. Les variations e_d,e_k ne proviennent PAS encore du Hamiltonien six-couples ; leurs parités doivent être vérifiées dans la vraie solution physique. Ceci est un théorème d'algèbre sur la charte benchmark, pas une preuve de rang Dirac / absence du fantôme BD / cosmologie.
 
