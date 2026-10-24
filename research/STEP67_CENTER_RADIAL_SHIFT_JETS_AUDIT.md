@@ -83,6 +83,17 @@ Commande de génération réellement exécutée :
 
 Vérifications : dérivées exactes, racine positive à échantillons rationnels, annulations symboliques de profils, contre-exemples négatifs et majorants Fraction exacts. Les tests antérieurs, la suite complète et GitHub Actions ne sont PAS relancés. Cette étape **ne** prouve **ni** la préservation temporelle **ni** l'absence du fantôme de Boulware–Deser.
 
+## Garde-fou critique : jet du profil ≠ variation hamiltonienne du jet
+
+Les égalités z'=1/250 et z''=0 s'appliquent au SEUL profil de fond Step55 avec w0 constant, et **ne signifient pas** que les variations des champs sont nulles. En particulier la secondaire physique Step57/58 dépend explicitement de z' : pour des variations canoniques admissibles de d et k à s fixé,
+
+    delta w = W_d*delta d + W_k*delta k,
+    delta z = r*delta w,
+    delta z' = delta w + 2s*(delta w)_s,
+    delta z'' = 2r*(3*(delta w)_s + 2s*(delta w)_ss).
+
+Ces expressions sont généralement non nulles et doivent être évaluées avec le VRAI champ hamiltonien et les douze variables canoniques du Step58. **Il serait faux de remplacer delta z, delta z' ou delta z'' par zéro dans le rang de Dirac uniquement parce que le profil de fond a z''=0.** Le module Step67 ne calcule ni (delta w)_s ni (delta w)_ss pour le champ Hamiltonien original ; cela reste dans le Step68.
+
 ## Priorité de reprise — Step68
 
 1. Reconstituer un worktree cohérent à partir des vrais fichiers GitHub byte-exact Steps45/46/55/57/58/59/60/63–65 et dépendances, puis rejouer leurs tests ciblés.
