@@ -1,3 +1,36 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68c TERMINÉE (2026-10-24)
+
+**BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` **intouchées**. GitHub Actions restent désactivés. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP68C_AUTHENTIC_STEP45_CENTER_SHIFT_LAPSE_JETS_AUDIT.md`.
+**SCRIPT PHYSIQUE TESTÉ :** `numerics/hr_step68c_authentic_center_hamiltonian.py`, Git SHA `8d91d69cd1712f09cbc2f6fe8217f73ee52bede5`.
+**29 TESTS PASSÉS :** `tests/test_hr_step68c_authentic_center_hamiltonian.py`, Git SHA `4d4cdab8e3a56691a5d60ced8bbc4f49efe85265`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step68c-authentic-center-report.json` (conserve expressions exactes de e_d/e_k et Hg0).
+**SOURCE ORIGINALE VRAIMENT IMPORTÉE :** `numerics/hr_step45_exact_physical_ward.py`, SHA octet-identique `66aa43841dccfe4a5d586a49be9c10af3a67a10e`. 9 identités Ward EXACTEMENT NULLES lors de cette exécution, six couples canoniques et poussières inclus. Ce tour est une réelle amélioration de provenance sur la transcription autonome Step68b.
+
+## Résultat nouveau : le vrai champ hamiltonien ne fige PAS les dérivées du shift
+
+Sur le centre analytique du benchmark Step55, `a=Lg(0), b=Lf(0), s=r², w=z/r=1/250`, avec `Sg=rLg,Sf=rLf,pLg=r²G,pSg=2rG,pLf=r²U,pSf=2rU` (la dernière relation exige la primaire f) et indépendamment `N=N0+N2r²+N4r⁴`, `M=M0+M2r²+M4r⁴` :
+
+- La stationnarité `Fz=0` fixe le jet `P3` de `pSg=2Gr+P3r³` par `Dg/r³=k0*w`, où `k0=Mg²*m²*a*b*(beta1*a²+2 beta2*a*b+beta3*b²)\neq0`.
+- Les SIX termes de `delta_H Dg`, incluant dust `delta pg` et `delta theta_g`, ont été calculés avec les vrais gradients d'Euler 12 variables Step45. Leur terme `r` s'annule EXACTEMENT séparément pour N et M ; leur coefficient `e_d(0)=lim deltaDg/r³` est calculé NON NUL en général. `e_k(0)=lim deltaK/r²` est calculé depuis la vraie interaction K. Les quatre expressions complètes sont dans le rapport machine.
+- La règle physique de l'étape 68a donne `delta_H z'(0)=[e_d(0)-w*e_k(0)]/k0`. Le coefficient de `N4` ou `M4` en ce point est exactement nul, MAIS ceux de `N2`, `M2` NE LE SONT PAS.
+- **CERTIFICAT EXACT :** `∂_(N2) delta_H z'(0) = 2*Hg0/k0 - 2/a`, `∂_(M2) delta_H z'(0)=2/b`. Sur la primaire `Hg0=lim Hg/r²=0`, ces deux coefficients valent **-2/a** et **+2/b**. Comme `N''(0)=2N2`, `M''(0)=2M2`, les sensibilités aux doubles dérivées des lapses de **delta z'** valent **-1/a**, **+1/b**. ATTENTION : ceci N'EST PAS le coefficient de N'' ou M'' du crochet complet Cdot ; les annulations de Step58 y subsistent.
+- Contrôle négatif : sans la primaire f `pSf/r=2U` les relations de parité f échouent par `M0(2U-V)/(2b Mf²)`. La variation du shift est donc contrôlée seulement sur ce secteur de contraintes.
+
+**VRAIMENT EXÉCUTÉ** `OPENBLAS_NUM_THREADS=1 PYTHONPATH=/mnt/data/janus-step68c pytest -q /mnt/data/janus-step68c/tests/test_hr_step68c_authentic_center_hamiltonian.py` => **29 passed in 8.79s**. Un test modifie les octets du noyau original et vérifie que la source drift est rejetée. Les Git SHA finaux du script et des tests sont identiques aux exécutables locaux. Manifeste brut local SHA256 `81aae685a21c00f02860d5fe5600f0af9bf51bbebea1b2899ba97fa9ae8e3e3f`.
+
+**CORRECTION ANCIENNE STEP68b :** `numerics/hr_step68b_center_hamiltonian_parity.py` avait encore `kf0*r*(b+b2*r²)` au lieu de `kf0*r*(b+bf2*r²)` dans `tf'`, malgré le renommage `bf2` précédent. CETTE ERREUR EST CORRIGÉE SUR GITHUB (commit `234e16b`). Ne pas présenter les anciens 23 tests Step68b comme rejoués APRÈS ce correctif : le nouveau contrôle authentique Step68c avec la bonne géométrie a 29 tests passés.
+
+## PROCHAINE HARD RED — STEP68d
+
+1. Reconstituer EN UN SEUL ENVIRONNEMENT les VRAIS modules original Step45/46/55/57/58/59/60 (également 63–65) plus tests avec Git hashes vérifiés, suivre manifeste préflight `research/reports/gate2b-step68-source-preflight.json`. Step45 VRAIMENT réexécuté ici ; Step55 et Step57–60 **pas** ensemble en ce tour.
+2. Substituer les nouveaux `e_d(0),e_k(0)` et jets prolongés dans le vrai Step58/60 de `Cdot=A_N N+B_N N'+A_M M+B_M M'`. Respecter TOUTES les contraintes originales `Hg,Hf,Ddiag,Fz,C,C',Hg'`, le profil SPATIAL EXACT Step55 et le Taylor certifié `U0..U3`.
+3. Produire l'oracle temporel indépendant NON-IBP six-couples, traiter bords et secteurs exceptionnels `K=0,J=0`. Calculer rang et existence de lapses compatibles. **Rien de tout cela n'est encore établi**.
+4. Continuer à préfixer ce fichier sans écraser l'historique. **Gate 2B OPEN, JANUS-R NOT_VALIDATED**.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68b TERMINEE (2026-10-24)
 
 **BRANCHE EXCLUSIVE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main` ni `research/v2-flrw`. GitHub Actions restent désactivées. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
