@@ -1,0 +1,59 @@
+{
+  "step": "68b",
+  "date": "2026-10-24",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Leading central Hamiltonian parity of original Step45 post-IBP density reconstruction",
+  "sources": {
+    "original_read_only": "numerics/hr_step45_exact_physical_ward.py",
+    "original_sha": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "original_byte_imported": false,
+    "model_status": "Independently reconstructed symbolic densities Ag,Bg,Af,Bf; not a byte-original reexecution"
+  },
+  "executed": {
+    "workdir": "/mnt/data/janus-step68a",
+    "command": "PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68b_center_hamiltonian_parity.py",
+    "result": "23 passed in 7.72s",
+    "local_manifest_sha256": "941dfb3828a48385b53b3a8ea000590c02c493f0c198a0633a10d7d24e4e1086",
+    "script": "numerics/hr_step68b_center_hamiltonian_parity.py",
+    "script_sha": "a8251a676558a9493559777fcc973381dfb45e60",
+    "tests": "tests/test_hr_step68b_center_hamiltonian_parity.py",
+    "tests_sha": "4ad09b4ac13df1af430fb74e8bebd2001c183ee2",
+    "github_blobs_verified_against_executed_local": true
+  },
+  "assumptions": [
+    "Sg=rLg and Sf=rLf with even analytic Lg,Lf near center",
+    "pLg=r²G+O(r⁴), pSg=2rG+O(r³) from regular g momentum/shift stationarity",
+    "pLf=r²U+O(r⁴), pSf=2rU+O(r³) from f radial momentum primary Step46",
+    "pg,pf=O(r²), dust phase gradients O(r), z=rw with w=1/250",
+    "Even lapse multipliers N=N0+N2r²+..., M=M0+M2r²+... with independent N0,N2,M0,M2",
+    "a,b,mg,mf nonzero; positivity requires separate Step55 premises"
+  ],
+  "identities": {
+    "g_metric": "lim ΔSg/r = lim ΔLg separately for N and M",
+    "f_metric": "lim ΔSf/r = lim ΔLf separately for N and M, after f momentum primary V=2U",
+    "g_momentum": "lim ΔpSg/r = 2 lim ΔpLg/r² separately for N and M",
+    "f_momentum": "lim ΔpSf/r = 2 lim ΔpLf/r² separately for N and M on V=2U",
+    "g_D": "lim ΔDg/r=0 separately for N and M, hence ΔDg=O(r³) with smooth odd parity",
+    "relative_shift_K": "ΔK=O(r²) because K=m²Mg²LgLf(β1Sg²+2β2SgSf+β3Sf²) and all metric variations have regular parities",
+    "N2_nonzero": "∂(ΔpLg/r²)/∂N2 = -4mg, ∂(ΔpSg/r)/∂N2 = -8mg",
+    "M2_nonzero": "∂(ΔpLf/r²)/∂M2 = -4mf, ∂(ΔpSf/r)/∂M2 = -8mf",
+    "no_center_lapse_ratio_required": "All relations hold for independent N0,N2,M0,M2; not a global rank or lapse fixing statement."
+  },
+  "negative_control": {
+    "off_f_primary_variable": "V = lim pSf/r, not yet constrained to 2U",
+    "f_metric_defect": "lim(ΔLf-ΔSf/r) = M0(2U-V)/(2b mf)",
+    "f_momentum_defect": "lim(ΔpSf/r-2 ΔpLf/r²) = M0 U(2U-V)/(2 b² mf)",
+    "conclusion": "The f radial momentum primary V=2U is indispensable to generic M-lapse center parity. Tests reject dropping it."
+  },
+  "limits": {
+    "original_Step45_57_60_reexecuted_together": false,
+    "original_nonIBP_temporal_oracle": false,
+    "interval_wide_Hamiltonian_parity": false,
+    "full_sixpair_Dirac_rank": false,
+    "lapse_fixing": false,
+    "ghost_freedom": false
+  },
+  "next": "Coherently import byte-original Step45/55/57/58/59/60 and test complete constraints; compute center O(r³) coefficients of ΔDg and ΔK/r² under the genuine X_H then reduce A_N,B_N,A_M,B_M using full Step55 physical background, keeping Hamiltonian Δz' and boundary terms.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
