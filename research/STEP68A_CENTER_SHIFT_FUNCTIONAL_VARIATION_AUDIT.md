@@ -77,20 +77,20 @@ Ce test démontre que le **gel des variations** à cause de `z''_fond=0` serait 
 
 ## 5. Programme, contrôle de provenance et tests
 
-- Source testée : `numerics/hr_step68a_normalized_shift_variations.py`, Git blob **`ea4376a23d7c59b353986022ed23d6d3edf8a7ad`**.
-- Tests ciblés : `tests/test_hr_step68a_normalized_shift_variations.py`, Git blob **`3484e6da8bcdd3d2671e0d79042c2b85d0a8d5bd`**.
+- Source testée : `numerics/hr_step68a_normalized_shift_variations.py`, Git blob **`31840c495175d01d275661e3553436983e3dc43c`**.
+- Tests ciblés : `tests/test_hr_step68a_normalized_shift_variations.py`, Git blob **`7c9ec9569bec35e98d78e540a9e7fe8096c120e6`**.
 - Rapport : `research/reports/gate2b-step68a-report.json` (rapport de résultats conservant les limites).
 - Manifeste brut généré localement : SHA256 **`92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa`**.
 
-Les DEUX Git blobs source/test ont été relus via connecteur et correspondent octet pour octet aux fichiers réellement exécutés. Environnement reconstruit pour ce tour : `/mnt/data/janus-step68a`. Exécution réellement accomplie :
+Les DEUX Git blobs définitifs source/test ont été relus via connecteur et correspondent octet pour octet aux fichiers réellement exécutés. Environnement reconstruit pour ce tour : `/mnt/data/janus-step68a`. Exécution réellement accomplie :
 
 ```bash
 PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 \
 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py
-# 20 passed in 4.46s
+# 21 passed in 6.01s
 ```
 
-Deux premiers contrôles ont échoué par comparaison directe de deux expressions SymPy mathématiquement égales ; l'égalité a été corrigée en `simplify(lhs-rhs)==0` et les 20 tests sont ensuite passés. Les équations physiques n'ont pas été modifiées pour obtenir ce passage.
+Deux premiers contrôles ont échoué par comparaison directe de deux expressions SymPy mathématiquement égales ; l'égalité a été corrigée en `simplify(lhs-rhs)==0` et les 20 tests sont ensuite passés. Les équations physiques n'ont pas été modifiées pour obtenir ce passage. Un contrôle supplémentaire a identifié puis corrigé une hypothèse de signe injustifiée dans le code symbolique initial : k_s et k_ss sont désormais **réels de signe libre**, et un 21e test avec k_s négatif protège ce point. La suite finale passe à **21 tests**.
 
 **Limitation cruciale :** le présent programme autonome reconstruit et teste les identités exactes de réponse, mais **n'importe pas** ni ne lance l'action physique originale Step45, le certificateur Step55, ou l'opérateur complet Steps57–60. Ce n'est ni un nouveau rang de Dirac, ni une preuve d'absence du fantôme BD, ni une validation cosmologique. Aucun workflow GitHub Actions n'a été réactivé.
 
