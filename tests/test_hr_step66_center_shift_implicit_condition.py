@@ -109,6 +109,8 @@ def test_parity_preserving_delta_z_has_explicit_radial_factor():
     assert sp.simplify(obj['delta_z']-r*obj['delta_w'])==0
     assert obj['delta_d'] in obj['delta_w'].free_symbols
     assert obj['delta_k'] in obj['delta_w'].free_symbols
+    # Weak <= is required for the zero perturbation (0 <= 0).
+    assert '|delta(z/r)| <=' in obj['bound']
 
 
 def test_normalized_center_shift_nonzero_hessian_not_artificial_zero():
