@@ -174,7 +174,6 @@ def manifest():
                 original_six_pair_time_dirac='NOT_EVALUATED',lapse_fixing='NOT_DETERMINED',
                 GATE_2B='OPEN',JANUS_R='NOT_VALIDATED')
 
-
 if __name__=='__main__':
     import json
     print(json.dumps(manifest(),indent=2))
