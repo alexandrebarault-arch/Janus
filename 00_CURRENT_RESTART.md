@@ -1,3 +1,36 @@
+# JANUS — REPRISE PRIORITAIRE STEP67 TERMINÉE (2026-10-24)
+
+**SEULE BRANCHE MODIFIABLE :** research/gate2b-nonhomothetic-transfer. Ne toucher ni main ni research/v2-flrw. GitHub Actions/workflows restent désactivés selon la demande utilisateur.
+
+**LIRE EN PREMIER :** research/STEP67_CENTER_RADIAL_SHIFT_JETS_AUDIT.md.
+**CODE :** numerics/hr_step67_radial_shift_jets.py, SHA blob 9368df2289756feb2e47a86917e5466c2a90ab75.
+**TESTS :** tests/test_hr_step67_radial_shift_jets.py, SHA blob 92dcdbc0cebbab2f5fccf98c5a62ff1c7d7da592.
+**RAPPORT :** research/reports/gate2b-step67-report.json, SHA blob 7dfdccf13f549b51e12b90d18ec584c5d2a9aa2c.
+**PREUVE LOCALE EXÉCUTÉE :** 20 nouveaux tests PASSED en 1.21s dans /mnt/data/janus-step67; fichiers exécutés et 3 blobs Git comparés byte-identical. Ni CI ni suite complète. Le script neuf n'importe PAS les originaux physiques Steps45/55 ; il assume leur benchmark publié.
+
+## Résultat nouveau, strictement sur le profil radial Step55 certifié
+
+Dans la charte normalisée s=r², Dg=r³d(s), K=r²k(s), z=rw(s), k>229/1000, w=1/250 et s<=289/400 :
+- Racine physique Fhat=d-k*w/sqrt(1-sw²)=0 => W(s,d,k)=d/sqrt(k²+s*d²).
+- À d,k fixés, W_s=-w³/2, W_ss=3w⁵/4, W_sd=-3w²*t^(3/2)/(2k), W_sk=3w³*t/(2k), t=1-sw².
+- Dérivée totale w_s=W_s+W_d*d_s+W_k*k_s, et w_ss=W_ss+2W_sd*d_s+2W_sk*k_s+W_dd*d_s²+2W_dk*d_s*k_s+W_kk*k_s²+W_d*d_ss+W_k*k_ss.
+- Stationnarité et w=constant imposent d=k*w/sqrt(t), d_s=w*k_s/sqrt(t)+k*w³/(2*t^(3/2)), d_ss=w*k_ss/sqrt(t)+w³*k_s/t^(3/2)+3k*w⁵/(4t^(5/2)).
+- SUBSTITUTION SYMBOLIQUE EXACTE : w_s=w_ss=0, donc z=r/250, z'=1/250, z''=0 jusqu'au centre.
+- CONTRÔLE NÉGATIF : omettre W_s créerait un résidu artificiel +w³/2.
+- Caps Fraction exacts (coefficients PARTIELS de référence seulement) : |W_s|=1/31250000; |W_ss|=3/3906250000000; |W_sd|<3/28625; |W_sk|<3/7156250. Aucun bound sur d_s,k_s,d_ss,k_ss hors du profil.
+
+## PROCHAIN VRAI VERROU — STEP68, PAS UNE VALIDATION DE JANUS
+
+1. Reconstituer dans UN vrai workspace l'ensemble original GitHub exact Steps45/46/55/57/58/59/60/63/64/65, ainsi que dépendances transitives et tests. Ne jamais prétendre que Step67 seul a rejoué le cœur physique.
+2. Injecter les jets vrais P',P'',P''' et les jets stationnaires z,z',z'' ci-dessus dans l'opérateur de temps sur la famille positive Step55 (contraintes/prolongations complètes).
+3. Calculer A_N,B_N,A_M,B_M des quatre lapses/gradients de lapses ; tester indépendamment l'oracle Poisson ORIGINAL non-IBP sur SIX couples, les conditions de bord, le rang et la fixation des lapses.
+4. Chartes K=0/J=0 à traiter séparément ; physique 4D / fantôme BD / cosmologie restent NON PROUVÉS.
+
+**GATE_2B OPEN. JANUS_R NOT_VALIDATED.**
+**HISTORIQUE Step66 et toutes les anciennes étapes conservés CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP66 TERMINÉ — 2026-10-24
 
 **ÉCRITURE AUTORISÉE SEULEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne toucher NI `main` NI `research/v2-flrw`. Garder GitHub Actions/workflows DÉSACTIVÉS. **GATE 2B OPEN ; JANUS-R NOT VALIDATED.**
