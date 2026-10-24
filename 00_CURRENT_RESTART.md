@@ -1,3 +1,84 @@
+# JANUS — REPRISE PRIORITAIRE : STEP66 TERMINÉ — 2026-10-24
+
+**ÉCRITURE AUTORISÉE SEULEMENT :** `research/gate2b-nonhomothetic-transfer`. Ne toucher NI `main` NI `research/v2-flrw`. Garder GitHub Actions/workflows DÉSACTIVÉS. **GATE 2B OPEN ; JANUS-R NOT VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP66_CENTER_NORMALIZED_SHIFT_C2_IMPLICIT_CERTIFICATE.md`.
+**RAPPORT MACHINE ARCHIVÉ :** `research/reports/gate2b-step66-report.json`.
+**CODE NOUVEAU TESTÉ :** `numerics/hr_step66_center_shift_implicit_condition.py`, Git blob `47231c568a7a08954dc3894c82552552da58fde5`.
+**20 NOUVEAUX TESTS EXÉCUTÉS :** `tests/test_hr_step66_center_shift_implicit_condition.py`, Git blob `274837f216d3399540a3eb96e5836cb9d721add4`.
+**PRÉCÉDENT :** `research/STEP65_MONOTONE_PHYSICAL_GUU_SHARPER_RATIONAL_BOUND_AUDIT.md`, point de reprise Step65 conservé CI-DESSOUS, avec toutes les étapes 62–65 préservées.
+
+## AVANCÉE ANALYTIQUE EXACTE — DÉPLACEMENT RELATIF C² NORMALISÉ JUSQU'AU CENTRE
+
+Cette étape N'EST PAS l'exécution du vrai calcul temporel Step60. Elle démontre un théorème de conditionnement de l'équation algébrique ORIGINALE du shift relatif de l'action positive-EH HR sphérique à deux poussières / six couples :
+```text
+Fz=Dg-K*z/sqrt(1-z²)=0
+sur la branche radiale initiale Step55 STRICTEMENT POSITIVE :
+s=r², 0<=r<=17/20, Dg=r³ d(s), K=r² k(s), k>229/1000,
+z=r*w(s), w=1/250 (=0.004, pente préscrite du vrai benchmark).
+```
+
+Pour r>0, diviser Fz par r³ et poser w=z/r. La fonction stationnaire normalisée se prolonge EXACTEMENT au centre :
+```text
+Fhat(s,d,k,w)=d - k*w/sqrt(1-s*w²)
+w(d,k;s)=d/sqrt(k²+s*d²)  sur k>0
+∂Fhat/∂w = -k/(1-s*w²)^(3/2)
+t=1-s*w² >=24999711/25000000>9999/10000.
+DONC |∂Fhat/∂w|>229/1000 sur TOUT r∈[0,17/20], centre INCLUS.
+```
+
+**THÉORÈME NOUVEAU** : dérivées premières et SECONDES de cette véritable racine (à s fixé), toutes EXACTES :
+```text
+w_d = t^(3/2)/k
+w_k = -w*t/k
+w_dd = -3*s*w*t²/k²
+w_dk = (3*s*w²-1)*t^(3/2)/k²
+w_kk = w*(2-3*s*w²)*t/k²
+```
+
+Les bornes **Fraction rationnelles strictes CONTINUES** sur le vrai benchmark sont
+```text
+|w_d|<22/5 ; |w_k|<1/50 ;
+|w_dd|<1/5 ; |w_dk|<20 ; |w_kk|<1/5.
+```
+Les caps rationnels plus précis qui impliquent ces bornes sont respectivement `1000/229,4/229,8670/52441,1000000/52441,8000/52441`. Au CENTRE `s=0`, les cinq dérivées valent `1/k,-w/k,0,-1/k²,2w/k²` : **finies** sur k>229/1000. Tous les nombres sont calculés en `fractions.Fraction`, AUCUN flottant dans la preuve.
+
+Pour une variation qui PRÉSERVE la parité radiale de la famille (`delta Dg=r³ delta d`, `delta K=r² delta k`), on obtient EXACTEMENT
+```text
+delta(z/r) = t^(3/2)/k *delta d -w*t/k*delta k
+delta z = r*delta(z/r).
+|delta(z/r)| <= 1000/229*(|delta d|+|delta k|/250).
+```
+**Attention** : <= est indispensable pour le cas de perturbation NULLE, 0<=0. Une version strictement `<` fausse a été **corrigée avant la clôture du Step66** ; un contrôle explicite protège l'inégalité correcte. La normalisation compense l'apparent inverse divergent en `1/r²` des variations du Fz BRUT. Ceci rend l'argument de fonction implicite robuste **dans la charte/parité initiale prescrite**, et NON pour toutes les variations canonique off-shell. Le secteur `K=0` n'est PAS couvert ; à k=0, `∂Fhat/∂w=0`.
+
+## PROVENANCE ET TESTS VRAIMENT EFFECTUÉS
+
+IMPORTANT : le fichier Step66 est un module AUTONOME. Il se fonde sur l'identité physique Fz de l'original Step45 et sur les bornes `K/r²>0.229` et `z/r=0.004` issues des rapports précédents Step54/55 **consultés sur GitHub**. Les sources originales Step45/55, les certifications Step63/64 et le vrai Dirac Step58/60 N'ONT PAS été réimportées dans ce nouvel environnement local ni rejouées. Ne PAS prétendre autrement. La preuve nouvelle symbolique/rationnelle est exacte SOUS CES HYPOTHÈSES certifiées précédemment ; aucun rang temporel n'a été calculé.
+
+Workspace `/mnt/data/janus-step66` ; version FINALE du code et du test byte-identiques à GitHub :
+
+```bash
+cd /mnt/data/janus-step66
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step66_center_shift_implicit_condition.py
+# RÉEL : 20 PASSED en 2.80s (après correction de l'inégalité zéro).
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step66_center_shift_implicit_condition > research/reports/gate2b-step66-local-manifest.json
+# SHA256 brut local 08ec605aea6ad09e9aa55b03c8ebcc832c970b80b702d47123d5885380b8bf19
+```
+
+Manifeste brut local NON téléversé séparément ; module, tests, audit, rapport machine de résultats conservés sur GitHub. Les 20 tests contrôlent symboliquement la racine/Fhat, dérivées et Hessienne, branche positive, parité et centre, bornes en fractions continues, mauvais paramètres/k=0, et refus de prétendre au rang temporel.
+
+## NEXT STEP67 — GROS VERROU TOUJOURS À LEVER
+
+1. **RECONSTITUTION AUTHENTIQUE COHÉRENTE** : importer, avec validation SHA des octets, les originaux Step45/46/55/57/58/59/60 et l'AD physique Steps63/64/65 dans UN même worktree. Le shell local reste non connecté DNS GitHub ; jusqu'ici les modules d'origine n'ont pas été reconstitués dans le nouveau workspace Step66. Ne pas annoncer de faux tests physiques.
+2. Sur la vraie branche positive exacte Step55, reprendre les BORNES `P',P'',P'''` Step64 et la dérivée de G Step65, imposer les vrais `z=Z(Dg,K), z'=Z1, z''=Z2` (correction Step61), et employer les variables **normalisées** `d,k,w` et leurs dérivées Step66 pour éviter les erreurs apparentes au centre.
+3. **CALCULER ET RÉDUIRE** les quatre vrais coefficients du crochet temporel `A_N,B_N,A_M,B_M`, en imposant TOUTES les contraintes et leurs dérivées (`Fz,Hg,Hf,Ddiag,C`), puis leurs rangs et bords, chartes K/J exceptionnelles.
+4. Valider par le crochet temporel **indépendant NON-IBP** sur les 6 couples et des fonctions tests compactes, avant d'affirmer une fixation des lapses ou l'absence du fantôme BD. Aucun théorème d'évolution 4D JANUS n'est encore démontré.
+5. Préfixer le fichier `00_CURRENT_RESTART.md` à chaque étape, préserver tout l'historique et les deux autres branches, Actions OFF.
+
+**VERDICT : Step66 uniform C² condition number of normalized HR algebraic shift, exact center-inclusive rational inequalities and 20 verified tests. FULL TEMPORAL DIRAC RANK, LAPSE FIXING, BD GHOST ABSENCE AND JANUS-R VALIDATION: STILL OPEN.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP65 TERMINÉ — 2026-10-23
 
 **SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`; `main`, `research/v2-flrw` NON MODIFIÉS. GitHub Actions/workflows restent désactivés. **GATE_2B OPEN — JANUS-R NOT VALIDATED.**
