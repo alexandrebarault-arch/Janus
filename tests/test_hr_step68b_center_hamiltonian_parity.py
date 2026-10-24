@@ -75,8 +75,8 @@ def test_f_primary_center_from_original_radial_momentum_relation():
     # Step46: pSf=(-Dg+Lf*pLf'-pf*tfr)/Sfr;
     # Dg=O(r^3), pLf'=2U*r+O(r^3), pf*tfr=O(r^3)
     r=sp.symbols('r',positive=True)
-    expression=(-r**3*h.w+(h.b+h.b2*r*r)*(2*h.U*r+4*h.G2*r**3)
-                -h.rhof*r*r*h.kf0*r*(h.b+h.b2*r*r))/(h.b+3*h.b2*r*r)
+    expression=(-r**3*h.w+(h.b+h.bf2*r*r)*(2*h.U*r+4*h.G2*r**3)
+                -h.rhof*r*r*h.kf0*r*(h.b+h.bf2*r*r))/(h.b+3*h.bf2*r*r)
     assert sp.limit(expression/r,r,0)==2*h.U
 
 
