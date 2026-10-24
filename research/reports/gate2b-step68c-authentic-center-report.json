@@ -1,0 +1,46 @@
+{
+  "step": "68c",
+  "date": "2026-10-24",
+  "historical_source_blob": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+  "original_step45_six_pair_ward_reexecuted": true,
+  "all_nine_original_ward_residuals_exact_zero": true,
+  "original_euler_jet_center_parity": true,
+  "required_f_primary": "pSf/r=2U",
+  "N_M_lapses_independent_even_at_center": true,
+  "negative_off_f_primary": {
+    "N": {
+      "f_metric": "0",
+      "f_momentum": "0"
+    },
+    "M": {
+      "f_metric": "M0*(2*U - V)/(2*Mf2*b)",
+      "f_momentum": "M0*U*(2*U - V)/(2*Mf2*b**2)"
+    }
+  },
+  "jet_signs_N2_M2_verified": true,
+  "shift_stationarity_coefficient_P3": "-4*G*a2/a + 4*G2 + Mg2*a**2*b*beta1*m2*w + 2*Mg2*a*b**2*beta2*m2*w + Mg2*b**3*beta3*m2*w - kg0*rhog",
+  "center_normalized_k0": "Mg2*a*b*m2*(a**2*beta1 + 2*a*b*beta2 + b**2*beta3)",
+  "N2_in_delta_zprime_general": "(-3*G**2 + 4*Mg2**2*a**4*beta0*m2 + 8*Mg2**2*a**3*b*beta1*m2 + 4*Mg2**2*a**2*b**2*beta2*m2 + 48*Mg2**2*a*a2 + 4*Mg2*a*rhog)/(2*Mg2**2*a**2*b*m2*(a**2*beta1 + 2*a*b*beta2 + b**2*beta3))",
+  "N2_in_delta_zprime_on_Hg0": "-2/a",
+  "M2_in_delta_zprime": "2/b",
+  "center_e_d_and_e_k_from_authentic_Hamiltonian": true,
+  "full_trajectory_e_d_e_k": "NOT_COMPUTED; ONLY exact center coefficients computed",
+  "temporal_Dirac_rank": "NOT_COMPUTED",
+  "original_non_IBP_independent_oracle": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "N_center_ed_exact": "(-3*G**2*N2 + 4*Mg2**2*N0*a**3*b*beta1*m2*w**2 + 8*Mg2**2*N0*a**3*beta1*bf2*m2 - 8*Mg2**2*N0*a**2*a2*b*beta1*m2 + 6*Mg2**2*N0*a**2*b**2*beta2*m2*w**2 + 8*Mg2**2*N0*a**2*b*beta2*bf2*m2 - 8*Mg2**2*N0*a*a2*b**2*beta2*m2 + 2*Mg2**2*N0*a*b**3*beta3*m2*w**2 + 4*Mg2**2*N2*a**4*beta0*m2 + 8*Mg2**2*N2*a**3*b*beta1*m2 + 4*Mg2**2*N2*a**2*b**2*beta2*m2 + 48*Mg2**2*N2*a*a2 + 4*Mg2*N2*a*rhog)/(2*Mg2*a)",
+  "M_center_ed_exact": "Mg2*m2*(4*M0*a**3*beta1*w**2 + 7*M0*a**2*b*beta2*w**2 + 4*M0*a**2*beta2*bf2 - 4*M0*a*a2*b*beta2 + 3*M0*a*b**2*beta3*w**2 + 4*M0*a*b*beta3*bf2 - 4*M0*a2*b**2*beta3 + 2*M2*a**3*beta1 + 4*M2*a**2*b*beta2 + 2*M2*a*b**2*beta3)",
+  "N_center_ek_exact": "N0*b*m2*(-G + 2*Mg2*a*w)*(3*a**2*beta1 + 4*a*b*beta2 + b**2*beta3)/(2*a)",
+  "M_center_ek_exact": "M0*Mg2*a*m2*(6*Mf2*a**2*b*beta1*w + 8*Mf2*a*b**2*beta2*w + 2*Mf2*b**3*beta3*w - U*a**2*beta1 - 4*U*a*b*beta2 - 3*U*b**2*beta3)/(2*Mf2*b)",
+  "Hg_center_exact": "(-3*G**2 + 4*Mg2**2*a**4*beta0*m2 + 12*Mg2**2*a**3*b*beta1*m2 + 12*Mg2**2*a**2*b**2*beta2*m2 + 48*Mg2**2*a*a2 + 4*Mg2**2*a*b**3*beta3*m2 + 4*Mg2*a*rhog)/(4*Mg2*a)",
+  "code_blob": "8d91d69cd1712f09cbc2f6fe8217f73ee52bede5",
+  "tests_blob": "4d4cdab8e3a56691a5d60ced8bbc4f49efe85265",
+  "tests_executed": "29 passed in 8.79s",
+  "raw_local_machine_json_sha256": "81aae685a21c00f02860d5fe5600f0af9bf51bbebea1b2899ba97fa9ae8e3e3f",
+  "original_original_sha_verified_in_local": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+  "note": "GitHub JSON includes provenance fields in addition to raw local manifest; raw local SHA256 refers to JSON without these added fields.",
+  "original_Step45_55_57_60_all_reexecuted": false,
+  "full_non_IBP_temporal_oracle": false,
+  "next": "Step68d: import byte-authentic Step55/57/58/60 into one runtime, embed center ed/ek in complete Cdot, impose remaining constraints and their radial prolongations; evaluate lapse operator rank and boundaries without freezing delta zprime."
+}
