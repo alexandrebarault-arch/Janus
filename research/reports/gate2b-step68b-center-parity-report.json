@@ -12,13 +12,14 @@
   "executed": {
     "workdir": "/mnt/data/janus-step68a",
     "command": "PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68b_center_hamiltonian_parity.py",
-    "result": "23 passed in 7.72s",
-    "local_manifest_sha256": "941dfb3828a48385b53b3a8ea000590c02c493f0c198a0633a10d7d24e4e1086",
+    "result": "23 passed in 7.22s (after disambiguating bf2 from beta2); joint Step68a+68b 44 passed in 12.85s",
+    "local_manifest_sha256": "c556154cc6b72266df7143c94f5cce2ba5cb5e2ac4a370ef5df79be37f46c19b",
     "script": "numerics/hr_step68b_center_hamiltonian_parity.py",
-    "script_sha": "a8251a676558a9493559777fcc973381dfb45e60",
+    "script_sha": "e8c7e932994f340933521ac6f48b46f8a53d1bf6",
     "tests": "tests/test_hr_step68b_center_hamiltonian_parity.py",
-    "tests_sha": "4ad09b4ac13df1af430fb74e8bebd2001c183ee2",
-    "github_blobs_verified_against_executed_local": true
+    "tests_sha": "c35fef4551fc68c860147e51cccf5b8069bc4fb1",
+    "github_blobs_verified_against_executed_local": true,
+    "joint_run": "PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py /mnt/data/janus-step68a/tests/test_hr_step68b_center_hamiltonian_parity.py"
   },
   "assumptions": [
     "Sg=rLg and Sf=rLf with even analytic Lg,Lf near center",
@@ -55,5 +56,6 @@
   },
   "next": "Coherently import byte-original Step45/55/57/58/59/60 and test complete constraints; compute center O(r³) coefficients of ΔDg and ΔK/r² under the genuine X_H then reduce A_N,B_N,A_M,B_M using full Step55 physical background, keeping Hamiltonian Δz' and boundary terms.",
   "GATE_2B": "OPEN",
-  "JANUS_R": "NOT_VALIDATED"
+  "JANUS_R": "NOT_VALIDATED",
+  "exact_symbol_disambiguation": "Use bf2 for the r² Taylor coefficient of Lf, separate from beta2 (b2) HR interaction parameter. An initial overlapping display name was caught and corrected before final archival; all local tests rerun."
 }
