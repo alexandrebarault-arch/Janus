@@ -21,6 +21,8 @@ Dans la charte normalisée s=r², Dg=r³d(s), K=r²k(s), z=rw(s), k>229/1000, w=
 
 **CRITICAL Step58 WARNING:** z'=1/250, z''=0 are BACKGROUND-ONLY identities. The Hamiltonian first variations delta z, delta z' (and radial derivatives thereof) are generically NONZERO and must be kept in the original six-pair temporal Dirac operator. delta w = W_d delta d + W_k delta k; delta z'=delta w+2s (delta w)_s. NEVER set delta z' to zero merely because the baseline shift is linear. See Step57/58 and the amended Step67 audit.
 
+**STEP68 PRÉPARATION RÉALISÉE :** research/reports/gate2b-step68-source-preflight.json (Git blob 902dad4052df5304453bb09c00b7f4b6428b8412), qui gèle 15 empreintes authentifiées GitHub et les imports relatifs directs repérés pour reconstituer le vrai noyau physique. Ce manifeste de préparation n'établit PAS la clôture exhaustive des dépendances ni l'exécution du vrai système temporel. Revalider localement chacun de ces blobs avant le calcul de Dirac.
+
 ## PROCHAIN VRAI VERROU — STEP68, PAS UNE VALIDATION DE JANUS
 
 1. Reconstituer dans UN vrai workspace l'ensemble original GitHub exact Steps45/46/55/57/58/59/60/63/64/65, ainsi que dépendances transitives et tests. Ne jamais prétendre que Step67 seul a rejoué le cœur physique.
