@@ -1,3 +1,45 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68b TERMINEE (2026-10-24)
+
+**BRANCHE EXCLUSIVE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main` ni `research/v2-flrw`. GitHub Actions restent désactivées. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68B_CENTER_HAMILTONIAN_PARITY_AND_F_PRIMARY_GATE_AUDIT.md`.
+**SCRIPT EXACT TESTÉ :** `numerics/hr_step68b_center_hamiltonian_parity.py`, Git blob `e8c7e932994f340933521ac6f48b46f8a53d1bf6`.
+**23 TESTS CIBLÉS :** `tests/test_hr_step68b_center_hamiltonian_parity.py`, Git blob `c35fef4551fc68c860147e51cccf5b8069bc4fb1`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step68b-center-parity-report.json`.
+**PRECEDENT :** Step68a et Step67b intégralement conservés ci-dessous.
+
+## NOUVELLE AVANCÉE : VRAI TEST DE PARITÉ CENTRALE DU FLUX HAMILTONIEN
+
+Les densités post-IBP de l'ORIGINAL Step45 ont été TRANSCRITES dans une reconstruction indépendante ; le module original GitHub Step45, quoique LU et comparé, N'A PAS ÉTÉ RÉIMPORTÉ par le code. On utilise la charte radiale analytique du benchmark Step55 : `Sg=r Lg,Sf=r Lf,pLg=r²G,pSg=2rG,pLf=r²U,pSf=2rU`, avec lapses INDEPENDANTS `N=N0+N2r²` et `M=M0+M2r²`. Les deux relations de moments au centre sont des conséquences de la stationnarité du shift (g) et de la contrainte primaire de moment f de Step46 ; il est FAUX de les omettre.
+
+**CALCUL EXACT SYMPY (pour N et M SÉPARÉMENT) :**
+```
+lim delta Sg/r = lim delta Lg; lim delta pSg/r = 2 lim delta pLg/r²
+lim delta Sf/r = lim delta Lf; lim delta pSf/r = 2 lim delta pLf/r²
+=> lim delta Dg/r = 0.
+```
+Ainsi, sur cette famille analytique et ses contraintes centrales, `delta Dg=O(r³)` et `delta K=O(r²)` pour chacun des deux flots de lapses. C'est le premier contrôle d'APPLICABILITÉ CENTRALE des formules de shift Step68a au champ Hamiltonien ; PAS une preuve globale de Dirac.
+
+**CONTROLE NEGATIF MAJEUR :** sans la primaire f et en écrivant `pSf=V*r`, le lapse M donne
+```
+lim(delta Lf - delta Sf/r) = M0 (2U-V)/(2b Mf²)
+lim(delta pSf/r - 2delta pLf/r²) = M0 U(2U-V)/(2b² Mf²).
+```
+Ces termes ne s'annulent PAS génériquement hors de `V=2U`. La primaire f est donc ESSENTIELLE. Les jets des lapses `N2,M2` restent présents : ce travail NE FIXE PAS leur rapport ni le rang.
+
+**RÉSULTATS RÉELLEMENT EXÉCUTÉS :** 23 tests Step68b PASS en 7.22s ; Step68a + Step68b ensemble **44 PASSED en 12.85s**, local `/mnt/data/janus-step68a`. Un risque de confusion entre le coefficient radial métrique f `bf2` et le beta d'interaction `b2` a été détecté, corrigé et les tests REJOUÉS. Les DEUX blobs SHA code/tests GitHub ont été relus et vérifiés byte-identiques à l'exécuté. Manifeste local final SHA256 `c556154cc6b72266df7143c94f5cce2ba5cb5e2ac4a370ef5df79be37f46c19b`. Aucun workflow activé, aucun test complet du repo.
+
+## HARD RED — PROCHAINE STEP68c
+
+1. REIMPORTER et authentifier OCTET PAR OCTET dans UN workspace vrai Step45+46+55+57–60+63–65, plus les jeux de tests, et COMPARER les vrais gradients d'Euler à la reconstruction de Step68b.
+2. Calculer les TERMES FINIS non triviaux `e_d=delta Dg/r³`, `e_k=delta K/r²` et leurs jets sur la solution Step55 authentique, y compris les poussières et séries `U0..U3` de Step67b.
+3. Réduire les vrais quatre coefficients temporels `A_N,B_N,A_M,B_M` du Step58/60 en respectant `delta z,delta z'` de Step68a, les contraintes complètes et leurs prolongations.
+4. Oracle Poisson non-IBP indépendant six-couples, bords, rang de Dirac, lapses et chartes exceptionnelles. **TOUT OUVERT**.
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Conserver la suite historique complète ci-dessous.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68a TERMINÉE (2026-10-24)
 
 **ÉCRITURE AUTORISÉE UNIQUEMENT** sur `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main` ou `research/v2-flrw` ; GitHub Actions/workflows restent désactivés. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
