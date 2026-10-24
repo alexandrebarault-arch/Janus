@@ -127,7 +127,7 @@ def parity_preserving_shift_variation():
     delta_z=sp.Symbol('r',nonnegative=True)*delta_w
     return {'delta_w':delta_w,'delta_z':delta_z,
             'delta_d':dd,'delta_k':dk,
-            'bound':'|delta(z/r)| < (|delta d|+|delta k|/250)/(229/1000) on the prescribed constrained background',
+            'bound':'|delta(z/r)| <= (|delta d|+|delta k|/250)/(229/1000) on the prescribed constrained background',
             'origin':'Dg=r³d, K=r²k, z=r w; normalized implicit map regular at center',
             'full_rank_warning':'Pointwise invertibility of shift Fz does not establish Dirac constraint rank or lapse fixing.'}
 
