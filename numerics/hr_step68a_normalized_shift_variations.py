@@ -16,7 +16,8 @@ W0 = F(1, 250)
 
 def exact_variation_jets():
     s, w = sp.symbols('s w', nonnegative=True)
-    k, k1, k2 = sp.symbols('k k1 k2', positive=True)
+    k = sp.symbols('k', positive=True)
+    k1, k2 = sp.symbols('k1 k2', real=True)
     ed, ek, ed1, ek1, ed2, ek2 = sp.symbols('ed ek ed1 ek1 ed2 ek2', real=True)
     t = 1-s*w*w
     A = t**sp.Rational(3,2)/k
