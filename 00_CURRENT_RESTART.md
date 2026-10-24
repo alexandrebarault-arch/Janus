@@ -1,3 +1,76 @@
+# JANUS — POINT DE REPRISE PRIORITAIRE : STEP67b TERMINÉE (2026-10-24)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main`, `research/v2-flrw`. GitHub Actions/workflows restent DÉSACTIVÉS. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED**.
+
+**LIRE EN PREMIER :** `research/STEP67B_AUTHENTIC_ORIGINAL_G_U3_CENTER_INTERVAL_AUDIT.md`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step67b-original-center-u3-report.json`.
+**NOUVELLE SOURCE TESTÉE :** `numerics/hr_step67_true_center_taylor_certificate.py`, Git blob `d73e74089b9a2437aa6ba9cd011e5b4819dcb339`.
+**16 NOUVEAUX TESTS :** `tests/test_hr_step67_true_center_taylor_certificate.py`, Git blob `681f667b3d1f3a066471efc89c43133dcc78ac12`.
+**AUTRE STEP67 DÉJÀ EXISTANT :** `research/STEP67_CENTER_RADIAL_SHIFT_JETS_AUDIT.md`, `research/reports/gate2b-step67-report.json`, `numerics/hr_step67_radial_shift_jets.py`. Ils sont PRÉSERVÉS INTACTS dans l'historique ci-dessous. Le présent travail « 67b » sur U3 est COMPLÉMENTAIRE et NON un remplacement.
+
+## AVANCÉE DU TOUR : ORIGINAUX PHYSIQUES DÉSORMAIS RÉELLEMENT EXÉCUTABLES
+
+Les QUATRE sources historiques ont été **reconstituées OCTET PAR OCTET et GIT HASH VÉRIFIÉES**, simultanément dans `/mnt/data/janus-step67` :
+
+```text
+numerics/hr_step45_exact_physical_ward.py      66aa43841dccfe4a5d586a49be9c10af3a67a10e
+numerics/hr_step46_exact_secondary_ode.py      bac025c28dbe1561c0c36c56dbfda46dc326f804
+numerics/hr_step55_normalized_secondary.py     a54a6acf2f7ad2f64c500faecfa1406ecbf7b862
+numerics/hr_step55_global_barrier.py           a6e7004120d0a166a3a8973c2fbe1487a8eb70fe
+```
+
+Ce ne sont PAS des copies modifiées, des noyaux manufacturés ou des transcriptions approximatives : les blobs Git calculés localement par `git hash-object` sont égaux aux vrais SHA du connecteur GitHub. Les fichiers Step57/58/59/60 du **Dirac temporel** ne sont PAS encore tous réunis dans CE workspace ; ne pas prétendre au calcul temporel complet.
+
+**LA VRAIE PHYSIQUE G(s,U) A ÉTÉ EXÉCUTÉE :** `numerics.hr_step55_normalized_secondary.normalized_symbolic()`, dérivée de l'action originale Step45 sur les six couples, via la primaire-réduite Step46, retourne un polynôme exactement QUADRATIQUE en U avec 22 paramètres indépendants avant restriction à l'initial-data benchmark.
+
+**LE VRAI CERTIFICAT GLOBAL Step55 A ÉTÉ RÉEXÉCUTÉ** dans le même environnement, `certify_global_barrier(cells=256)`, avec les marges rationnelles originales IDENTIQUES :
+
+```text
+strict_max_Fupper = -1480966474499367232302129/10000000000000000000000000000 <0
+strict_min_Flower = +295653233337826329055403/2000000000000000000000000000 >0
+```
+
+Le certificat concerne le PROFIL SPATIAL initial sur r∈[0,17/20], avec les signes poussières/J/K de Step54 en tant que résultats antérieurs ; il ne démontre pas la fermeture en temps.
+
+## NOUVELLE PREUVE : QUATRIÈME COEFFICIENT REGULIER DU MOMENTUM pLf
+
+Avec `s=r²`, `P(r)=pLf=r² U(s)`, et la véritable EDO `2s U_s=G(s,U)-2U`, écrire `U=U0+U1*s+U2*s²+U3*s³+...`. Les U0,U1,U2 proviennent des vrais INTERVALLES entiers à arrondis extérieurs de l'original `hr_step55_global_barrier.py`. Les fonctions et paramètres géométriques du benchmark sont repris dans l'algèbre de Taylor de degré 3 **en entiers à échelle 10^28 et arrondis extérieurs à chaque opération**, puis réinjectés dans le vrai `G` compilé par Step55. Les 3 résidus des ordres s^0,s^1,s^2 contiennent zéro.
+
+La récurrence non résonante formelle donne `U3=[s³] G(s,U0+U1s+U2s²)/9`. NOUVEL ENCAdREMENT RATIONNEL RIGOUREUX :
+
+```text
+-31325163121998456229/2500000000000000000000000000
+ <= U3 <=
+-62650326243996887233/5000000000000000000000000000 .
+U3 environ -1.253006524879938e-8, STRICTEMENT NÉGATIF.
+Largeur en fraction environ 5.045e-24.
+```
+
+Il s'agit du terme nouveau `U3*r^8` dans la série régulière physique `pLf(r)`. De même `pLf'''/r=24U1+120U2*r²+336U3*r^4+...`, avec `336U3 ~ -4.210101923596592e-6`. L'interprétation suppose l'existence de la branche analytique centrale certifiée Step49 et les bornes U0/U1/U2 Steps52/53. **Ce nouveau coefficient est une propriété SPATIALE, pas une équation de lapses ou une preuve d'absence de fantôme.**
+
+## TESTS VRAIMENT EXÉCUTÉS ET REPRISE
+
+```bash
+cd /mnt/data/janus-step67
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step67_true_center_taylor_certificate.py
+# VRAIMENT : 16 passed in 3.20s.
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m numerics.hr_step67_true_center_taylor_certificate > research/reports/gate2b-step67-local-manifest.json
+# SHA256 local : aada56f82452eb67a5fc43c4808df0731cad6c8cfae3915c6ee6d77504b55cf3
+```
+
+Les DEUX NOUVEAUX fichiers ont été comparés au dépôt GitHub et sont byte-identiques aux fichiers réellement exécutés. Les tests incluent vérification SHA de 4 originaux, mutation négative fail-closed, Ward physique Step45, restauration secondaire Step46, preuve entière ORIGINALE Step55 sur 256 cellules, séries Taylor avec racines/inverses à enveloppement exact, coefficient U3 de signe strict, et test indépendant du facteur 9. Le manifeste brut local n'est pas uploadé séparément ; ses bornes exactes et le code reproductible sont dans le nouveau rapport 67b sur GitHub. Pas de CI ou de suite complète du dépôt.
+
+## NEXT STEP68 — HARD RED
+
+1. **RÉUNIR DANS CE WORKTREE ORIGINAL** les sources authentiques Step57/58/59/60 du calcul TEMPOREL, plus les bornes originales sur G de Steps63/64/65 et la normalisation Step66. Valider TOUS les SHA et rejouer leurs tests ensemble.
+2. Appliquer les véritables contraintes et leurs jets prolongés `Fz,Hg,Hf,Ddiag,C,C',Hg'`, les dérivées cohérentes `z,z',z''` (correction Step61) et le nouveau développement central `U0..U3`, pour réduire les quatre coefficients du lapse `A_N,B_N,A_M,B_M` sur la solution radiale EXACTE et positive.
+3. Construire/vérifier l'oracle TEMPOREL indépendant des six couples depuis l'action originale NON IBP, puis le rang/lapse ratio avec des conditions de bord compatibles ; examiner les charts K=0/J=0 séparément.
+4. Continuer à préfixer `00_CURRENT_RESTART.md` sans écraser les étapes antérieures. Laisser `main`, V2 et Actions inchangés.
+
+**BILAN : réelle action physique 45/46/55 + vrai invariant Step55 256 cellules exécutés ; nouvelle borne U3 prouvée ; Dirac temporel complet, rang des lapses et santé BD du modèle TOUJOURS OPEN. GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE STEP67 TERMINÉE (2026-10-24)
 
 **SEULE BRANCHE MODIFIABLE :** research/gate2b-nonhomothetic-transfer. Ne toucher ni main ni research/v2-flrw. GitHub Actions/workflows restent désactivés selon la demande utilisateur.
