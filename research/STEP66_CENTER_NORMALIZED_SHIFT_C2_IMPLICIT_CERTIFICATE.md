@@ -122,7 +122,7 @@ Le coefficient en \(1/r^2\) de l'inversion non normalisée est donc compensé pa
 
 \[
 \boxed{
-|\delta(z/r)|<
+|\delta(z/r)|\le
 \frac{1000}{229}\left(|\delta d|+\frac1{250}|\delta k|\right).
 }
 \]
@@ -131,9 +131,9 @@ Ce résultat renforce l'audit Step56 sur la sensibilité du déplacement relatif
 
 ## 5. Tests, code exact, contrôle des limites et reprise
 
-Nouveau programme : `numerics/hr_step66_center_shift_implicit_condition.py`, Git blob **`585c3a975d74107e01906a999a5598180a97b128`**.
+Nouveau programme : `numerics/hr_step66_center_shift_implicit_condition.py`, Git blob **`47231c568a7a08954dc3894c82552552da58fde5`**.
 
-Nouveaux tests : `tests/test_hr_step66_center_shift_implicit_condition.py`, Git blob **`0ce9338920941148219d549d4be106dde6b225d0`**.
+Nouveaux tests : `tests/test_hr_step66_center_shift_implicit_condition.py`, Git blob **`274837f216d3399540a3eb96e5836cb9d721add4`**.
 
 Les DEUX empreintes correspondent octet pour octet aux fichiers réellement exécutés localement et ont été vérifiées par le connecteur GitHub. Exécution réellement effectuée :
 
