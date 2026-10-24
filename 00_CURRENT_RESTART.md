@@ -1,3 +1,60 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68d TERMINÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Ne jamais modifier `main` ni `research/v2-flrw`. GitHub Actions/workflows restent désactivés. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68D_AUTHENTIC_SHIFT_LAPSE_SYMBOL_COMPENSATION_AUDIT.md`.
+**SOURCE NOUVELLE TESTÉE :** `numerics/hr_step68d_exact_shift_lapse_symbol.py`, Git blob `6af0322b0ba5c39ab014874455d4f380f6ea66fa`.
+**16 TESTS CIBLÉS :** `tests/test_hr_step68d_exact_shift_lapse_symbol.py`, Git blob `9f1b9bfef4c573fa8fa365a37bf83e4d6307684b`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step68d-exact-shift-lapse-bridge.json`.
+**MODULES PHYSIQUES ORIGINAUX RÉELLEMENT RECONSTITUÉS OCTET-PAR-OCTET ET EXÉCUTÉS ENSEMBLE :**
+```
+numerics/hr_step45_exact_physical_ward.py             66aa43841dccfe4a5d586a49be9c10af3a67a10e
+numerics/hr_step57_secondary_principal_symbol.py      bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f
+numerics/hr_step58_temporal_operator.py                802c23aebd41780d8c462f1aa1711707fe4ee88f
+```
+*ATTENTION : Step46/55/59/60 non réimportés dans le workspace DE CE TOUR ; ne PAS prétendre avoir calculé la réduction temporelle totale ou la branche Step55 physiquement.*
+
+## RÉSULTAT NOUVEAU : FORMULE COURTE EXACTE DU VRAI OPÉRATEUR DE SHIFT
+
+Sur `F_z=D_g-Kz/sqrt(1-z²)=0,K>0`, avec `H_g` **pas encore imposé nul**, le vrai six-pair Step58 `physical_operator()['delta_shift']` satisfait EXACTEMENT :
+```
+coefficient_(N') [delta_H z] = (1-z²)^(3/2) * Hg_on_Fz/K - (1-z²)/Lg
+coefficient_(M') [delta_H z] = (1-z²)/Lf
+C_zprime_on_Fz = -K/(Lg Lf sqrt(1-z²)).
+```
+Preuve SymPy sur les expressions CANONIQUES ORIGINALES, sans noyau reconstruit. Elle révèle deux termes compensateurs non nuls dans le crochet temporel `Cdot` :
+```
+direct_Ndoubleprime = -K sqrt(1-z²)/(Lg² Lf)
+shift_Ndoubleprime  = -(1-z²)Hg/(Lg Lf) + K sqrt(1-z²)/(Lg² Lf)
+TOTAL_Ndoubleprime  = -(1-z²)Hg/(Lg Lf).
+direct_Mdoubleprime = +K sqrt(1-z²)/(Lg Lf²)
+shift_Mdoubleprime  = -K sqrt(1-z²)/(Lg Lf²)
+TOTAL_Mdoubleprime  = 0.
+```
+Sur `Fz=Hg=0`, les deux **coefficients de lapses doubles dans le CROCHET COMPLET** sont exactement nuls. Si on FIGE `delta_H z`, le terme `direct_Mdoubleprime` persiste FAUSSEMENT : un contrôle négatif protège ce point. Ce calcul simplifie et explique le Step58 existant, il ne fixe PAS les lapses.
+
+## NOUVEAU PONT AVEC STEP68c AU CENTRE
+
+Sous `Lg(0)=a>0,Lf(0)=b>0,z=rw,K=r²k0+...,Hg=r²h0+...`, les coefficients `N',M'` de `delta_Hz` admettent les limites
+```
+center Delta_z_Nprime = h0/k0 - 1/a
+center Delta_z_Mprime = 1/b.
+```
+Pour `N=N0+N2r²+...`, `M=M0+M2r²+...`, les contributions PAR LA VOIE `N',M'` à `delta_H z'(0)` sont `2h0/k0-2/a` et `2/b`. Sur `Hg0=0` cela retrouve les coefficients `-2/a` et `2/b` du calcul indépendant du VRAI Step45 à l'étape 68c. Ne pas confondre cette contribution du SHIFT avec les coefficients du crochet complet Cdot. Le test rationnel isolé des constantes Step55 donne `k0>229/1000`.
+
+**EXÉCUTION RÉELLE** `cd /mnt/data/janus-step68d && OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68d_exact_shift_lapse_symbol.py` ⇒ **16 passed in 11.01s**. Le calcul d'authenticité refuse chacun des trois fichiers si un octet est modifié. Code et tests GitHub relus SHA identiques à l'exécution. Manifeste brut local SHA256 `866746017010c856db29e0f3c77ef40fabdff30070939913fd69955dd0d95625`.
+
+## PROCHAINE STEP68e — VERROU RÉEL
+
+1. Reconstituer les sources originales Step45/46/55/57/58/59/60/63–65 ainsi que leurs tests, **TOUTES OCTET IDENTIQUES**, dans un seul environnement et exécuter ensemble leurs vérifications. En ce tour 45/57/58 faits, mais PAS 55/59/60.
+2. Calculer et réduire les QUATRE coefficients d'ordre inférieur `A_N,B_N,A_M,B_M` de `Cdot` sur la **vraie** solution radiale Step55 et toutes les contraintes `Hg,Hf,Ddiag,Fz,C,Hg',C'` avec jets `U0..U3`, `z,z',z''`, **sans figer la réponse du shift**.
+3. Oracle temporel Poisson NON-IBP indépendant sur SIX couples, conditions aux bords et chartes exceptionnelles `J=0,K=0`.
+4. Déterminer rang de Dirac, fixation du rapport des lapses, puis examiner fantôme BD et validation 4D. **TOUT cela est encore OUVERT**. Conserver historique GitHub intégral.
+
+**STATUT : Gate2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68c TERMINÉE (2026-10-24)
 
 **BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` **intouchées**. GitHub Actions restent désactivés. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
