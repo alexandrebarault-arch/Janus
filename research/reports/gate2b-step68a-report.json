@@ -7,8 +7,8 @@
     "physical_identity": "Step58: delta z = Z_D delta D_g + Z_K delta K on positive K stationary Fz=0; Step58 source independently read from GitHub blob 802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "exact_prerequisites": "D_g=r^3 d(s), K=r^2 k(s), z=r w0, s=r², w0=1/250, k>229/1000, 0<=r<=17/20, Step55 branch assumed",
     "original_physical_Step45_55_57_58_60_imported_or_executed_in_this_run": false,
-    "source_local_git_blob": "ea4376a23d7c59b353986022ed23d6d3edf8a7ad",
-    "tests_local_git_blob": "3484e6da8bcdd3d2671e0d79042c2b85d0a8d5bd",
+    "source_local_git_blob": "31840c495175d01d275661e3553436983e3dc43c",
+    "tests_local_git_blob": "7c9ec9569bec35e98d78e540a9e7fe8096c120e6",
     "sha_verified_against_remote": true
   },
   "algebra": {
@@ -37,10 +37,11 @@
   },
   "tests": {
     "command": "PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py",
-    "actual_result": "20 passed in 4.46s (after correcting 2 structural SymPy equality assertions; no change to physical equations)",
+    "actual_result": "21 passed in 6.01s; two initial structural SymPy equality assertions corrected and k_s/k_ss sign assumptions explicitly removed",
     "original_full_repo_suite_rerun": false,
     "github_actions": false,
-    "local_program_manifest_sha256": "92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa"
+    "local_program_manifest_sha256": "92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa",
+    "additional_negative_control": "k_s and k_ss are real with NO assumed sign; test uses negative k_s and validates finite physical variation"
   },
   "unresolved": [
     "Original Step45/55/57/58/59/60 physically executed together within current workspace",
