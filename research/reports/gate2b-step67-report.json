@@ -1,0 +1,33 @@
+{
+  "step": 67,
+  "date": "2026-10-24",
+  "title": "Exact radial shift chain rule and prescribed-profile jet compatibility",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "premises": "Step55 positive k>229/1000, z=r/250; previous physical module not rerun",
+  "s_partial_at_fixed_dk": "-w**3/2",
+  "s_second_at_fixed_dk": "3*w**5/4",
+  "total_w_s": "W_s+W_d*d_s+W_k*k_s",
+  "total_w_ss": "W_ss+2W_sd*d_s+2W_sk*k_s+W_dd*d_s**2+2W_dk*d_s*k_s+W_kk*k_s**2+W_d*d_ss+W_k*k_ss",
+  "profile_d_s": "w*k_s/sqrt(t)+k*w**3/(2*t**(3/2))",
+  "profile_d_ss": "w*k_ss/sqrt(t)+w**3*k_s/t**(3/2)+3*k*w**5/(4*t**(5/2))",
+  "exact_physical_shift_jets": "z(r)=r/250, z_prime(r)=1/250, z_second(r)=0",
+  "profile_cancellation_tests": {
+    "first_exactly_zero": true,
+    "second_exactly_zero": true,
+    "missing_explicit_s_term_error": "w**3/2"
+  },
+  "rational_caps": {
+    "t_min": "24999711/25000000",
+    "abs_partial_s": "1/31250000",
+    "abs_partial_ss": "3/3906250000000",
+    "abs_partial_sd_lt": "3/28625",
+    "abs_partial_sk_lt": "3/7156250",
+    "scope": "pointwise baseline coefficients, not total radial jet estimates"
+  },
+  "radial_k_d_derivatives_bounded": false,
+  "original_physical_Step45_55_imported": false,
+  "temporal_preservation_oracle": "NOT_COMPUTED",
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
