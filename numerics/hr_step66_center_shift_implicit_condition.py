@@ -156,7 +156,6 @@ def manifest():
             'lapse_rank_and_fixing':'NOT_COMPUTED',
             'GATE_2B':'OPEN','JANUS_R':'NOT_VALIDATED'}
 
-
 if __name__=='__main__':
     import json
     print(json.dumps(manifest(),indent=2))
