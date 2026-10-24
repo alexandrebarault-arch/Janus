@@ -1,0 +1,116 @@
+{
+  "step": "68-PREFLIGHT",
+  "date": "2026-10-24",
+  "active_branch": "research/gate2b-nonhomothetic-transfer",
+  "source_of_truth": "GitHub connector fetch_file on active research branch",
+  "scope": "Frozen byte-identifiers for 15 named physical/helper modules required for upcoming six-pair temporal operator reconstruction. Relative import edges are a manual shortlist from direct import inspection; dynamic/conditional dependencies and test fixtures are NOT proven closed.",
+  "sources": [
+    {
+      "path": "numerics/hr_step45_exact_physical_ward.py",
+      "git_blob_sha1": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "known_direct_relative_imports": []
+    },
+    {
+      "path": "numerics/hr_step46_exact_secondary_ode.py",
+      "git_blob_sha1": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "known_direct_relative_imports": [
+        "hr_step45_exact_physical_ward.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step55_normalized_secondary.py",
+      "git_blob_sha1": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "known_direct_relative_imports": [
+        "hr_step46_exact_secondary_ode.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step55_global_barrier.py",
+      "git_blob_sha1": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+      "known_direct_relative_imports": [
+        "hr_step55_normalized_secondary.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step57_secondary_principal_symbol.py",
+      "git_blob_sha1": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+      "known_direct_relative_imports": [
+        "hr_step45_exact_physical_ward.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step58_temporal_operator.py",
+      "git_blob_sha1": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+      "known_direct_relative_imports": [
+        "hr_step57_secondary_principal_symbol.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step59_third_jet_gate.py",
+      "git_blob_sha1": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+      "known_direct_relative_imports": [
+        "hr_step58_temporal_operator.py",
+        "hr_step57_secondary_principal_symbol.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step60_full_constraint_prolongation.py",
+      "git_blob_sha1": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+      "known_direct_relative_imports": [
+        "hr_step58_temporal_operator.py",
+        "hr_step57_secondary_principal_symbol.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step61_normalized_jet_lift.py",
+      "git_blob_sha1": "b345169d8806ce524527229c794ace71cf5d540e",
+      "known_direct_relative_imports": []
+    },
+    {
+      "path": "numerics/hr_step62_original_interval_ad.py",
+      "git_blob_sha1": "a93bcd10cd54eec3b478ab0e02ff24fe592e4b8c",
+      "known_direct_relative_imports": [
+        "hr_step55_global_barrier.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step62_physical_G_curvature.py",
+      "git_blob_sha1": "d2040a4bde9672933eac9bbab91b792005227f40",
+      "known_direct_relative_imports": [
+        "hr_step55_normalized_secondary.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step64_center_third_jet.py",
+      "git_blob_sha1": "07d80d70636952bcabf61bd8eb7da88cc8bc6c72",
+      "known_direct_relative_imports": [
+        "hr_step62_original_interval_ad.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step65_monotone_physical_curvature.py",
+      "git_blob_sha1": "046a58e5c118ac269fc68d4020e1d192349dc28f",
+      "known_direct_relative_imports": [
+        "hr_step62_physical_G_curvature.py"
+      ]
+    },
+    {
+      "path": "numerics/hr_step66_center_shift_implicit_condition.py",
+      "git_blob_sha1": "47231c568a7a08954dc3894c82552552da58fde5",
+      "known_direct_relative_imports": []
+    },
+    {
+      "path": "numerics/hr_step67_radial_shift_jets.py",
+      "git_blob_sha1": "9368df2289756feb2e47a86917e5466c2a90ab75",
+      "known_direct_relative_imports": []
+    }
+  ],
+  "physical_test_execution_in_this_preflight": false,
+  "complete_dependency_closure_proved": false,
+  "original_physical_Step45_55_57_60_reexecuted": false,
+  "current_temporal_lapse_coefficients_reduced": false,
+  "current_Dirac_rank_computed": false,
+  "next_action": "Retrieve all files by these path/hash pairs into one coherent execution environment; verify local Git blob SHA1s, recursively validate runtime imports, rerun the original tests, then substitute exact Step55 radial data into Step58/60 physical operator retaining Hamiltonian delta(z), delta(z').",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
