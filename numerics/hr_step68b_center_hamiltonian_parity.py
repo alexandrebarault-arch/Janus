@@ -55,7 +55,7 @@ for name, val in profiles.items():
     sub[dq[Q.index(name)]]=sp.diff(val,r)
     sub[ddq[Q.index(name)]]=sp.diff(val,r,2)
 sub[dq[Q.index('tg')]]=kg0*r*(a+a2*r**2)
-sub[dq[Q.index('tf')]]=kf0*r*(b+b2*r**2)
+sub[dq[Q.index('tf')]]=kf0*r*(b+bf2*r**2)
 sub[ddq[Q.index('tg')]]=sp.diff(sub[dq[Q.index('tg')]],r)
 sub[ddq[Q.index('tf')]]=sp.diff(sub[dq[Q.index('tf')]],r)
 sub[z]=w*r;sub[zr]=w;sub[zrr]=0
