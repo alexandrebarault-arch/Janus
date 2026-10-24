@@ -1,0 +1,60 @@
+{
+  "checkpoint": "STEP67b",
+  "date": "2026-10-24",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Independent fully authentic original Step45/46/55 four-provider Step55 global 256-cell re-execution + first exact rigorous U3 center coefficient of the physical normalized radial secondary ODE.",
+  "coexistence": "Existing research/reports/gate2b-step67-report.json is a DIFFERENT shift-chain result; DO NOT overwrite. This result is separately archived as gate2b-step67b-original-center-u3-report.json.",
+  "original_pinned_git_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "actual_execution": "All four original modules reconstructed BYTE-IDENTICALLY in a single /mnt/data/janus-step67 directory (git hash-object matches GitHub). The ORIGINAL six-canonical-pair Ward kernel identities and primary-secondary restoration checked. ORIGINAL global 256-cell Step55 integer interval invariance CERTIFICATE rerun with exact historical witness inequalities.",
+  "G_original": "Real numerics.hr_step55_normalized_secondary.normalized_symbolic(); original 22 free symbols, degree 2 in U, exact G_UUU=0",
+  "radial_center": {
+    "s": "r²",
+    "pLf": "r² U(s)",
+    "ODE": "2 s U_s=G(s,U)-2U",
+    "Taylor": "U=U0+U1 s+U2 s²+U3 s³+...",
+    "nonresonance": "Since G_U(0,U0)=-1, [s³]G(s,U0+U1s+U2s²)=9 U3.",
+    "U3_lower_exact": "-31325163121998456229/2500000000000000000000000000",
+    "U3_upper_exact": "-62650326243996887233/5000000000000000000000000000",
+    "U3_approx": "-1.253006524879938e-8",
+    "sign": "strictly negative over rigorous enclosure",
+    "r8_coefficient": "U3 in pLf(r); pLf'''/r=24 U1+120 U2 r²+336 U3 r^4+O(r^6).",
+    "interval_proof": "Exact integer outward rounding at 10^-28 on Taylor coefficients to order three; original Step55 I interval class for every coefficient including root, inverse and products; benchmark constants from unchanged historical Step55 global file; original geometry zeroth term matched for each input, original previous U0/U1/U2 enclosures; first three equation residual coefficient intervals contain zero.",
+    "interval_width_approx": 5.045e-24,
+    "dependence": "Conditional on previously certified existence of analytic center branch (Step49) and U0/U1/U2 enclosures (Step52/53); this is an exact rational enclosure of the next coefficient of THAT spatial branch, not a standalone proof of global 4D dynamics."
+  },
+  "original_step55_global_256_cell_rerun": {
+    "cells": 256,
+    "Fplus_max": "-1480966474499367232302129/10000000000000000000000000000",
+    "Fminus_min": "295653233337826329055403/2000000000000000000000000000",
+    "original_positive_dust_JK_proof": "Only previous conditional original Step54 result on certified Step55 radial tube, not re-run of original Step54 code in this same environment."
+  },
+  "implementation": {
+    "code": "numerics/hr_step67_true_center_taylor_certificate.py",
+    "code_blob": "d73e74089b9a2437aa6ba9cd011e5b4819dcb339",
+    "tests": "tests/test_hr_step67_true_center_taylor_certificate.py",
+    "test_blob": "681f667b3d1f3a066471efc89c43133dcc78ac12",
+    "test_command": "cd /mnt/data/janus-step67 && OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python -m pytest -q tests/test_hr_step67_true_center_taylor_certificate.py",
+    "observed": "16 passed in 3.20s",
+    "both_new_files_Github_byte_identical_to_tested": true,
+    "local_raw_manifest_sha256": "aada56f82452eb67a5fc43c4808df0731cad6c8cfae3915c6ee6d77504b55cf3",
+    "raw_manifest_uploaded": false,
+    "CI": false,
+    "all_historical_tests_rerun": false
+  },
+  "remain_open": {
+    "authentic_complete_sixpair_temporal_steps57_to60_in_same_runtime": "NOT YET RECONSTRUCTED",
+    "four_temporal_lapse_coefficients_on_exact_Step55_profile": "NOT EVALUATED",
+    "independent_nonIBP_temporal_oracle": "NOT RUN",
+    "Dirac_rank": "NOT ESTABLISHED",
+    "relative_lapse_fixing": "NOT ESTABLISHED",
+    "BD_ghost_absence": "NOT PROVED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next": "Rebuild byte-authentic Step57/58/59/60 in this newly authentic Step45/46/55/Step55-barrier worktree; use exact U0-U3 plus Step64/65 G higher radial jets and Step66 shift C2 normalization to simplify all four physical lapse coefficients on the true exact radial constrained profile and compare independent temporal non-IBP oracle. Do not conflate this center certificate with Dirac rank."
+}
