@@ -1,0 +1,54 @@
+{
+  "step": "68a",
+  "date": "2026-10-24",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "title": "Center-regular exact first variation of HR relative shift through second radial jet",
+  "provenance": {
+    "physical_identity": "Step58: delta z = Z_D delta D_g + Z_K delta K on positive K stationary Fz=0; Step58 source independently read from GitHub blob 802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "exact_prerequisites": "D_g=r^3 d(s), K=r^2 k(s), z=r w0, s=r², w0=1/250, k>229/1000, 0<=r<=17/20, Step55 branch assumed",
+    "original_physical_Step45_55_57_58_60_imported_or_executed_in_this_run": false,
+    "source_local_git_blob": "ea4376a23d7c59b353986022ed23d6d3edf8a7ad",
+    "tests_local_git_blob": "3484e6da8bcdd3d2671e0d79042c2b85d0a8d5bd",
+    "sha_verified_against_remote": true
+  },
+  "algebra": {
+    "notation": "e_d=delta(D_g/r³),e_k=delta(K/r²), k1=d k/ds,k2=d²k/ds², t=1-s w0²",
+    "A": "t^(3/2)/k",
+    "B": "-w0*t/k",
+    "As": "-3*w0²*sqrt(t)/(2k) -t^(3/2)*k1/k²",
+    "Bs": "w0³/k+w0*t*k1/k²",
+    "Ass": "3*w0⁴/(4k sqrt(t))+3*w0²*sqrt(t)*k1/k²+t^(3/2)*(2k1²/k³-k2/k²)",
+    "Bss": "-2*w0³*k1/k²+w0*t*(k2/k²-2k1²/k³)",
+    "deltaw": "A*e_d+B*e_k",
+    "deltaw_s": "As*e_d+Bs*e_k+A*e_d_s+B*e_k_s",
+    "deltaw_ss": "Ass*e_d+Bss*e_k+2As*e_d_s+2Bs*e_k_s+A*e_d_ss+B*e_k_ss",
+    "deltaz": "r*deltaw",
+    "deltaz_prime": "deltaw+2s*deltaw_s",
+    "deltaz_second": "2r*(3*deltaw_s+2s*deltaw_ss)",
+    "center": "delta z'(0)=[e_d(0)-w0*e_k(0)]/k(0), potentially nonzero; delta z''(0)=0 for smooth parity preserving inputs",
+    "exact_t_min": "24999711/25000000"
+  },
+  "control": {
+    "example": "at center k=1/2,k_s=k_ss=0,e_d=1,e_k=0,other perturbation derivatives=0",
+    "delta_z_prime": "2",
+    "delta_z_second_over_r": "-9/31250",
+    "implication": "Setting delta z' to zero because physical BACKGROUND z' is constant is false",
+    "negative_K_chart": "K=0 excluded; linear inversion diverges"
+  },
+  "tests": {
+    "command": "PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py",
+    "actual_result": "20 passed in 4.46s (after correcting 2 structural SymPy equality assertions; no change to physical equations)",
+    "original_full_repo_suite_rerun": false,
+    "github_actions": false,
+    "local_program_manifest_sha256": "92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa"
+  },
+  "unresolved": [
+    "Original Step45/55/57/58/59/60 physically executed together within current workspace",
+    "Bound k_s and k_ss and canonical perturbations consistent with all six-pair constraints",
+    "Insert normalized variation operator into authenticated Step58 lapse vector and Step60 constraint prolongations",
+    "Compute A_N B_N A_M B_M on exact Step55 profile and independent non-IBP temporal oracle",
+    "Check temporal Dirac rank, lapse fixing, K=0/J=0, BD ghost and 4D dynamics"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
