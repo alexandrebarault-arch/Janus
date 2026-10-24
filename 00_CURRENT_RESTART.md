@@ -1,3 +1,50 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68a TERMINÉE (2026-10-24)
+
+**ÉCRITURE AUTORISÉE UNIQUEMENT** sur `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main` ou `research/v2-flrw` ; GitHub Actions/workflows restent désactivés. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE D'ABORD** `research/STEP68A_CENTER_SHIFT_FUNCTIONAL_VARIATION_AUDIT.md`.
+**SOURCE LOCALE ET GITHUB IDENTIQUES** : `numerics/hr_step68a_normalized_shift_variations.py`, Git blob `ea4376a23d7c59b353986022ed23d6d3edf8a7ad`.
+**TESTS LOCAUX ET GITHUB IDENTIQUES** : `tests/test_hr_step68a_normalized_shift_variations.py`, Git blob `3484e6da8bcdd3d2671e0d79042c2b85d0a8d5bd`.
+**RAPPORT ARCHIVÉ** : `research/reports/gate2b-step68a-report.json`, Git blob `1a2a54665748ad61ab5b1182c398a9fc7778c6ba`.
+**PREPARATION Step68** : `research/reports/gate2b-step68-source-preflight.json` (15 hashes originaux consultés) reste inchangée.
+**PRÉCÉDENT IMPORTANT** : Step67b (vraie source physique historique 45/46/55 relancée, coefficient U3 certifié) est maintenu INTÉGRALEMENT ci-dessous.
+
+## Résultat nouveau vérifié maintenant : variation spatiale du SHIFT jusqu'à z'' au centre
+
+Sur la SEULE famille analytique de données initiales Step55, `s=r²`, `D_g=r³d(s)`, `K=r²k(s)`, `k>229/1000`, `z=r*w0`, `w0=1/250`, et pour les variations conservant la parité `delta D_g=r³e_d(s)`, `delta K=r²e_k(s)`, définir `t=1-s*w0²` :
+
+```text
+A=t^(3/2)/k, B=-w0*t/k
+delta w=A*e_d+B*e_k
+A_s=-3*w0²*sqrt(t)/(2k)-t^(3/2)*k_s/k²
+B_s= w0³/k+w0*t*k_s/k²
+A_ss=3*w0⁴/(4k*sqrt(t))+3*w0²*sqrt(t)*k_s/k²
+       +t^(3/2)*(2k_s²/k³-k_ss/k²)
+B_ss=-2w0³*k_s/k²+w0*t*(k_ss/k²-2k_s²/k³)
+delta w_s=A_s e_d+B_s e_k+A e_d_s+B e_k_s
+delta w_ss=A_ss e_d+B_ss e_k+2A_s e_d_s+2B_s e_k_s+A e_d_ss+B e_k_ss
+delta z=r*delta w
+delta z'=delta w+2s*delta w_s
+delta z''=2r*(3delta w_s+2s delta w_ss)
+```
+
+Ces égalités ont été vérifiées symboliquement, y compris l'identité de pullback de l'ancienne équation physique Step58 `delta z=Z_D delta D_g+Z_K delta K`. Au centre `delta z'(0)=[e_d(0)-w0 e_k(0)]/k(0)`, généralement NON NUL. Exemple négatif exact : `k=1/2,e_d=1,e_k=0,k_s=k_ss=e_d_s=...=0` => `delta z'(0)=2`, `lim_{r→0}delta z''/r=-9/31250`. Interdire de figer `delta z'` simplement parce que `z''` du FOND vaut zéro.
+
+**RÉELLEMENT EXÉCUTÉ** : `PYTHONPATH=/mnt/data/janus-step68a OPENBLAS_NUM_THREADS=1 python -m pytest -q /mnt/data/janus-step68a/tests/test_hr_step68a_normalized_shift_variations.py` => **20 passed in 4.46s**. Deux égalités algébriques SymPy initialement comparées structurellement ont été réparées par `simplify(a-b)==0` AVANT l'exécution réussie. Source et tests uploadés, Git blobs relus identiques aux fichiers vraiment exécutés. Le manifeste brut local SHA256 est `92db7cfefefbbc6a1393834aec8d377e000d1f7359d39dd0640bd8b9aabc1bfa`.
+
+**PROVENANCE LIMITÉE** : le véritable Step58 a été LU sur GitHub, mais Steps45/55/57/58/59/60 n'ont PAS été exécutés ensemble dans le nouveau workspace. Les variations e_d,e_k ne proviennent PAS encore du Hamiltonien six-couples ; leurs parités doivent être vérifiées dans la vraie solution physique. Ceci est un théorème d'algèbre sur la charte benchmark, pas une preuve de rang Dirac / absence du fantôme BD / cosmologie.
+
+## PROCHAIN VRAI VERROU — STEP68b
+
+1. Recréer un workspace octet-authentique GitHub Step45/46/55/57/58/59/60/63–65/67b ; vérifier les SHA, clôturer toutes dépendances et exécuter tests pertinents ENSEMBLE (clone direct impossible ici : erreur DNS, donc utiliser le connecteur GitHub).
+2. Identifier les variations `delta D_g,delta K` générées par `physical_operator()['delta_Dg'],['delta_K']` sur la vraie solution positive Step55 pour chaque coefficient `N,N',M,M'`. PROUVER ou réfuter leur parité normalisée `r³,r²` avant d'utiliser Step68a sur ces perturbations.
+3. Substituer les vrais `k_s,k_ss` et la vraie géométrie (dont le U3 physique Step67b), reconstruire `delta z,delta z'` dans les vrais coefficients `A_N,B_N,A_M,B_M`; imposer les contraintes originales `Fz,Hg,Hf,Ddiag,C` et leurs dérivées complètes.
+4. Exécuter oracle Poisson temporel indépendant NON IBP sur SIX couples et les bords ; calculer le rang, la fixation des lapses et les chartes exceptionnelles `K=0,J=0`. Jusqu'alors `GATE_2B=OPEN`, `JANUS_R=NOT_VALIDATED`.
+
+**TOUT L'HISTORIQUE DES ÉTAPES 67b, 67, 66, 65... EST PRÉSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — POINT DE REPRISE PRIORITAIRE : STEP67b TERMINÉE (2026-10-24)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main`, `research/v2-flrw`. GitHub Actions/workflows restent DÉSACTIVÉS. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED**.
