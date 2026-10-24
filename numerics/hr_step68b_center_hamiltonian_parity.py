@@ -44,8 +44,8 @@ for label,A,B in [('N',Ag,Bg),('M',Ac,Bf)]:
     for field in ('Lg','Sg','pLg','pSg','Lf','Sf','pLf','pSf'):
         E[(label,field)]=euler(A,B,Q.index(field))
 # substitutions (center analytic family)
-a,a2,b,b2,G,G2,P3,rhog,rhof,U,V,kg0,kf0,w=sp.symbols('a a2 b b2 G G2 P3 rhog rhof U V kg0 kf0 w',real=True)
-profiles={'Lg':a+a2*r**2,'Lf':b+b2*r**2,'Sg':a*r+a2*r**3,'Sf':b*r+b2*r**3,
+a,a2,b,bf2,G,G2,P3,rhog,rhof,U,V,kg0,kf0,w=sp.symbols('a a2 b bf2 G G2 P3 rhog rhof U V kg0 kf0 w',real=True)
+profiles={'Lg':a+a2*r**2,'Lf':b+bf2*r**2,'Sg':a*r+a2*r**3,'Sf':b*r+bf2*r**3,
 'pLg':G*r**2+G2*r**4,'pSg':2*G*r+P3*r**3,'pg':rhog*r**2,
 'pLf':U*r**2,'pSf':V*r,'pf':rhof*r**2,
 'tg':sp.Integer(0),'tf':sp.Integer(0)}
@@ -121,7 +121,7 @@ def manifest():
       'model':'Spherical original Step45 post-IBP lapse densities independently reconstructed',
       'physical_original_Step45_byte_imported':False,
       'exact_center_assumptions':{
-       'metrics':'Lg=a+a2*r²; Lf=b+b2*r²; Sg=r*Lg; Sf=r*Lf',
+       'metrics':'Lg=a+a2*r²; Lf=b+bf2*r²; Sg=r*Lg; Sf=r*Lf; bf2 distinct from interaction beta2',
        'momenta':'pLg=G*r²+G2*r⁴; pSg=2G*r+P3*r³; pLf=U*r²; pSf=V*r with V=2U on f-primary',
        'dust':'pg=r²*rho_g; pf=r²*rho_f; theta_gprime=k_g*r*Lg; theta_fprime=k_f*r*Lf',
        'shift':'z=r*w, zprime=w (fixed initial Step55 benchmark)',
