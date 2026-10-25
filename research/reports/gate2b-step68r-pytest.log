@@ -1,0 +1,124 @@
+
+--- JANUS JOB step68r-regression at 2026-10-25T11:21:20+00:00 deadline=22.0s argv=['python', '-m', 'pytest', '-q', 'tests/test_hr_step68r_cell_replay.py'] ---
+.F.FF.                                                                   [100%]
+=================================== FAILURES ===================================
+________________ test_certified_exact_no_gap_provenance[inner] _________________
+
+label = 'inner'
+
+    @pytest.mark.parametrize('label',('outer','inner'))
+    def test_certified_exact_no_gap_provenance(label):
+>       rows,sha,provenance=prep(label)
+                            ^^^^^^^^^^^
+
+tests/test_hr_step68r_cell_replay.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+numerics/hr_step68r_cell_replay.py:28: in prep
+    raw=path.read_bytes()
+        ^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+__________ test_actual_engine_exact_replay_of_first_three_rows[inner] __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-17/test_actual_engine_exact_repla1')
+label = 'inner'
+
+    @pytest.mark.parametrize('label',('outer','inner'))
+    def test_actual_engine_exact_replay_of_first_three_rows(tmp_path,label):
+        target=tmp_path/(label+'.json')
+>       x=replay(label,target,max_cells=3)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_hr_step68r_cell_replay.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+numerics/hr_step68r_cell_replay.py:47: in replay
+    rows,h,prov=prep(label,proof_path)
+                ^^^^^^^^^^^^^^^^^^^^^^
+numerics/hr_step68r_cell_replay.py:28: in prep
+    raw=path.read_bytes()
+        ^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+_____________ test_tampered_proof_rejected_before_any_computation ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-17/test_tampered_proof_rejected_b0')
+
+    def test_tampered_proof_rejected_before_any_computation(tmp_path):
+        original=Path(__file__).resolve().parents[1]/'research/reports'/PROOFS['inner'][0]
+>       target=tmp_path/'proof.json';target.write_bytes(original.read_bytes()+b' ')
+                                                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_hr_step68r_cell_replay.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/pathlib/_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+
+/usr/lib/python3.13/pathlib/_local.py:539: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_hr_step68r_cell_replay.py::test_certified_exact_no_gap_provenance[inner] - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+FAILED tests/test_hr_step68r_cell_replay.py::test_actual_engine_exact_replay_of_first_three_rows[inner] - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+FAILED tests/test_hr_step68r_cell_replay.py::test_tampered_proof_rejected_before_any_computation - FileNotFoundError: [Errno 2] No such file or directory: '/mnt/data/janus-step68f/research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json'
+3 failed, 3 passed in 4.24s
+
+--- JANUS JOB END step68r-regression: FAILED, exit=1 ---
+
+--- JANUS JOB step68r-regression-rerun at 2026-10-25T11:21:38+00:00 deadline=22.0s argv=['python', '-m', 'pytest', '-q', 'tests/test_hr_step68r_cell_replay.py'] ---
+......                                                                   [100%]
+6 passed in 4.40s
+
+--- JANUS JOB END step68r-regression-rerun: PASSED, exit=0 ---
