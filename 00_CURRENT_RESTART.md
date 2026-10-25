@@ -1,3 +1,58 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68e TERMINÉE (2026-10-25)
+
+**BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` UNIQUEMENT. Ne modifier ni `main` ni `research/v2-flrw`. GitHub Actions/workflows DÉSACTIVÉS, à maintenir ainsi. **GATE_2B OPEN — JANUS-R NOT_VALIDATED.**
+
+**LIRE D'ABORD** : `research/STEP68E_EXACT_SHIFT_FZPRIME_QUOTIENT_AUDIT.md`.
+**CODE SCIENTIFIQUE RÉELLEMENT EXÉCUTÉ** : `numerics/hr_step68e_exact_shift_full_lapse_response.py`, Git blob `8f4e82bcec2b5c179f5c2d4e21ccb70f2828b206`.
+**18 TESTS CIBLÉS** : `tests/test_hr_step68e_exact_shift_full_lapse_response.py`, Git blob `0f9aef7510d4e6d035405cf87820d28f032d0db0`.
+**RAPPORT STRUCTURÉ** : `research/reports/gate2b-step68e-shift-Fzprime-quotient.json`.
+**VRAI FOURNISSEUR PHYSIQUE ORIGINEL IMPORTÉ ET VÉRIFIÉ OCTET PAR OCTET** : `numerics/hr_step45_exact_physical_ward.py`, blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`. Les 9 résidus Ward physiques s'annulent exactement ; six couples originaux et deux poussières intégrés. SEUL Step45 original réellement réimporté dans ce workspace du tour ; anciens tests originaux 55/57/58/59/60 non rejoués ensemble.
+
+## AVANCÉE DU TOUR : VRAI SHIFT COMPLET N,N',M,M' ET QUOTIENT Fz'
+
+Depuis les vrais gradients d'Euler Step45, la variation du déplacement est reconstruite sur les SIX couples :
+```
+delta_H z = Z_N0*N + Z_N1*N' + Z_M0*M + Z_M1*M'.
+```
+Les coefficients en dérivées secondes et troisièmes des lapses dans CETTE VARIATION DE SHIFT s'annulent par le calcul (ne pas confondre avec le crochet Cdot complet). Sur la charte `Fz=0,K>0,|z|<1` on retrouve indépendamment l'étape 68d :
+```
+Z_N1=(1-z²)^(3/2)*Hg/K - (1-z²)/Lg
+Z_M1=(1-z²)/Lf.
+```
+**NOUVEAU résultat exact :** `Z_N0` ne dépend d'aucun jet canonique radial d'ordre 2. `Z_M0` dépend EXACTEMENT des trois jets `pLg'', Sg'', theta_g''`, non nuls en général. Le quotient par la DERIVÉE SPATIALE COMPLETE de la stationnarité les élimine TOUS :
+```
+Fz = Dg - K*z/sqrt(1-z²)=0, et Fz'=0,
+alpha = -z*(1-z²)^(3/2)/(Lf*K)
+R_M0 = Z_M0 + alpha*Fz'
+partial(R_M0)/partial(q_i'') = 0 pour les 12 canoniques.
+```
+Ce certificat a été exécuté exactement sur les fonctions originales, avec tests négatifs : omettre Fz' ou inverser le signe de alpha laisse un jet d'ordre 2 non nul. Sur Fz=Fz'=0, `R_M0=Z_M0`. Il ne s'agit pas de poser les dérivées secondes à zéro.
+
+**REGULARITÉ CENTRALE :** si `s=r²,z=rw(s),K=r²k(s), Fz=r³f(s)`, alors `alpha=O(1/r)` isolément mais
+```
+alpha*Fz'=-r*w*(1-s*w²)^(3/2)*(3*f+2*s*f_s)/(Lf*k) = O(r).
+```
+C'est le PRODUIT du quotient qui est régulier, si `k,Lf` positifs et fonctions normalisées C¹ ; ne PAS attribuer une régularité séparée à alpha.
+
+**RÉELLEMENT EXÉCUTÉ** en local dans `/mnt/data/janus-step68e` :
+```bash
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68e_exact_shift_full_lapse_response.py
+# 18 passed in 2.37s
+python -m numerics.hr_step68e_exact_shift_full_lapse_response
+```
+Les DEUX nouveaux blobs source/test publiés sur GitHub correspondent byte-identically aux vrais fichiers exécutés. SHA256 du manifeste brut `024c4dc81ec76fc2076d683ac42154b43ada352f5aaa9812bd962d5c0695eda1`. Une première erreur de syntaxe du test et une factorisation manifest trop coûteuse ont été corrigées AVANT la suite réussie ; ne pas revendiquer de test complet GitHub Actions.
+
+## PROCHAINE STEP68f : HARD RED SCIENTIFIQUE
+
+1. Reconstituer les originaux historiques physiquement COHERENTS Step45/46/55/57/58/59/60 (+ Steps63–65) dans UN seul runtime, SHA authentifiés ; relancer leurs tests séparés/ensemble et certificat global Step55. Les empreintes des 15 sources sont déjà archivées dans `research/reports/gate2b-step68-source-preflight.json`.
+2. Substituer le nouveau `R_M0` (quotient Fz') dans le VRAI calcul temporal Step58/60 `Cdot=A_NN+B_NN'+A_MM+B_MM'` sur l'exact profil radial Step55, avec contraintes ET PROLONGATIONS `Hg,Hf,Ddiag,Fz,C,Hg',C',Fz'`. NE PAS ANNULER `delta_Hz'` ni ses jets : les annulations de Step68d s'appuient sur sa présence.
+3. Construire et tester l'oracle six-couples indépendant **non intégré par parties**, poser des bords explicites, analyser rang de Dirac, existence de lapses compatibles, secteurs `K=0,J=0`. TOUT EST ENCORE OUVERT.
+4. Sauvegarder chaque nouvelle avancée dans `00_CURRENT_RESTART.md` en PRÉFIXE, conserver l'historique, garder les deux autres branches et GitHub Actions intouchés.
+
+**GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68d TERMINÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Ne jamais modifier `main` ni `research/v2-flrw`. GitHub Actions/workflows restent désactivés. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
