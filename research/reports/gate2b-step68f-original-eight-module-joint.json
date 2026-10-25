@@ -1,0 +1,35 @@
+{
+  "45": {
+    "seconds": 0.6482,
+    "PASS": true
+  },
+  "46": {
+    "seconds": 0.7419,
+    "PASS": true
+  },
+  "57": {
+    "seconds": 0.1611,
+    "PASS": true
+  },
+  "58": {
+    "seconds": 1.525,
+    "PASS": true
+  },
+  "59": {
+    "seconds": 0.3847,
+    "PASS": true
+  },
+  "60": {
+    "seconds": 4.2905,
+    "PASS": true
+  },
+  "55": {
+    "seconds": 1.0885,
+    "PASS": true,
+    "cells": 256,
+    "strict_max_Fupper_rational": "-1480966474499367232302129/10000000000000000000000000000",
+    "strict_min_Flower_rational": "295653233337826329055403/2000000000000000000000000000",
+    "V_minus_Vstar_lower_rational": "-10209601928354599272595789/5000000000000000000000000000",
+    "V_minus_Vstar_upper_rational": "20404447710211286903383733/10000000000000000000000000000"
+  }
+}
