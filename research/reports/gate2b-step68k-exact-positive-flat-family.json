@@ -1,0 +1,75 @@
+{
+  "step": "68k",
+  "source": "Eight authentic original 45/46/55/57/58/59/60 SHA-verified; original Step45/58 algebra",
+  "original_pins": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "hr_step59_third_jet_gate.py": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+    "hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+  },
+  "profile": "Lg=Lf=1,Sg=Sf=r, gravitational canonical momenta zero, z=0, dust spatial phases constant; pg=r²*rho_g,pf=r²*rho_f",
+  "canonical_positive_action": "Mg2=Mf2=m2=1",
+  "parameters": {
+    "T": "beta1 + 2*beta2 + beta3",
+    "rho_g": "-beta0 - 3*beta1 - 3*beta2 - beta3",
+    "rho_f": "-beta1 - 3*beta2 - 3*beta3 - beta4"
+  },
+  "sufficient_positive_domain": "r>0, T>0, rho_g>0, rho_f>0",
+  "all_primary_secondary_and_first_radial_residuals": {
+    "Fz": "0",
+    "Hg": "0",
+    "Hf": "0",
+    "C": "0",
+    "Dg": "0",
+    "Df": "0",
+    "Fzprime": "0",
+    "Hgprime": "0",
+    "Hfprime": "0",
+    "Cprime": "0",
+    "Dgprime": "0",
+    "Dfprime": "0"
+  },
+  "K_original": "r²*T >0 for r>0",
+  "AN": "3*r²*T*(rho_g+2*T)/2 >0 on domain",
+  "AM": "-3*r²*T*(rho_f+2*T)/2 <0 on domain",
+  "BN_BM_second_lapse": "all exactly zero on this family",
+  "positive_lapse_ratio": "(rho_g+2*T)/(rho_f+2*T) >0",
+  "center_normalized_AN_AM": "AN/r², AM/r² finite and strictly nonzero; ratio extends positively to r=0",
+  "rational_witness": {
+    "parameters": {
+      "beta0": "-5",
+      "beta1": "1",
+      "beta2": "0",
+      "beta3": "0",
+      "beta4": "-5"
+    },
+    "T": "1",
+    "rho_g": "2",
+    "rho_f": "4",
+    "ratio": "2/3",
+    "lapses": "N=3, M=2 positive, spatial constraint time-bracket zero",
+    "A_N": "6*r**2",
+    "A_M": "-9*r**2"
+  },
+  "not_claimed": [
+    "NOT Step55 nonhomothetic branch",
+    "NOT globally evolved 4D solution",
+    "NOT conditions at spacetime boundaries",
+    "NOT general Dirac rank",
+    "NOT independent non-IBP oracle",
+    "NOT ghost freedom"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "source_git_blob": "5e8783eec4f342cc29b7208ad6cdeb1d7df9cbd2",
+  "source_sha256": "4be20525d0be88bac4b153f8e19d6cb75d1eb041def429fbafdb00a15f31ac00",
+  "tests_git_blob": "c9c53a6123c84e2310f3fcb52c4b185d18d92410",
+  "tests_sha256": "c7c053ccf4dff17303f7c2ae6a666c568a29d748e4745b10f541c8d4b6ad8d7b",
+  "tests_result": "18 passed in 11.14s after fixing structural SymPy equality assertion in first attempted suite (17 passed, 1 failed); final suite cleanly passed",
+  "tests_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68k_exact_positive_lapse_family.py",
+  "reproducibility_note": "Original Step45/58 imported and eight source fingerprints validated, no GitHub Actions; exact symbolic beta_i family, not full Step55 unique-center solution"
+}
