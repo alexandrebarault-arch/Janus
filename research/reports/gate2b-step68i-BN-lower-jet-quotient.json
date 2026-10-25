@@ -1,0 +1,28 @@
+{
+  "step": "68i",
+  "authenticated_originals": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "hr_step59_third_jet_gate.py": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+    "hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+  },
+  "original_full_Cdot_coefficient": "Nprime",
+  "exact_identity_on_Fz": "R_BN=B_N+(1-z\u00b2)/(Lg Lf)*Hgprime-beta*Hg is independent of all qsecond/qthird",
+  "beta_formula": "beta = partial_Sgrr(B_N+(1-z\u00b2)/(Lg Lf)*Hgprime on Fz)/(2 Mg\u00b2 Sg/Lg)",
+  "beta_ops": 725,
+  "beta_srepr_sha256": "dfdc84fd8cf3b29ede2f2c320a901abd8239325bf0dc8ca6893d394f2824c095",
+  "remaining_partial_second_jet_residuals": {
+    "Lg": "0",
+    "pLg": "0",
+    "Sg": "0",
+    "tg": "0"
+  },
+  "representative_ops": 5010,
+  "representative_is_identically_zero": "NOT_PROVED; numerical generic point NEGATIVE",
+  "regular_center_beta_studied": false,
+  "step55_complete_primary_secondary_shell_substituted": false,
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
