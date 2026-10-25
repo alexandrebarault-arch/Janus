@@ -1,0 +1,37 @@
+{
+  "step": "68u",
+  "original_source_sha": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "center_analytic_recurrence": "Step49 true U0,U1,U2 satisfy F(0)=Fprime(0)=Fdoubleprime(0)=0 exactly, beyond interval containment",
+  "U3_lower_from_published_Step67b": "-31325163121998456229/2500000000000000000000000000",
+  "U3_upper_from_published_Step67b": "-62650326243996887233/5000000000000000000000000000",
+  "s_range": [
+    "0",
+    "1/1024"
+  ],
+  "r_range": [
+    "0",
+    "1/32"
+  ],
+  "cubic_width_coeff": "1/10000000",
+  "upper_F_third_over_6_interval": [
+    "-2575583792061894700823/2500000000000000000000000000",
+    "-4976590240016531320049/5000000000000000000000000000"
+  ],
+  "lower_F_third_over_6_interval": [
+    "1924421421164366052919/2500000000000000000000000000",
+    "2011690220837250529/2500000000000000000000000"
+  ],
+  "Taylor_mean_value": "For s>0 each F(s)=s^3 Fthird(xi)/6; orientation follows strict interval signs.",
+  "center_entering": "Step67b strict |U3|<kappa gives |U(s)-Ustar(s)|<kappa*s^3 for sufficiently small s>0",
+  "continued_comparison": "Original Step49 analytic existence and Step68l global tube/ODE smoothness enable no-first-exit comparison on [0,smax]",
+  "proved_global_center_bound": "|U(s)-Ustar(s)|<=kappa*s^3 for all s in [0,smax]",
+  "temporal_A_N_A_M_near_center": "NOT_YET_CERTIFIED",
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
