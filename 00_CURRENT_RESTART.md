@@ -1,3 +1,38 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68y TERMINÉE (2026-10-25)
+
+**BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. **NE PAS TOUCHER** `main` ou `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED**.
+
+**LIRE IMMÉDIATEMENT** `research/STEP68Y_SIGNED_CENTER_RESIDUAL_AND_F_MOMENTUM_JETS.md` puis l'audit Step68x ci-dessous, CONSERVÉ INTÉGRALEMENT.
+**SOURCE EXACTE PUBLIÉE** `numerics/hr_step68y_signed_center_residual.py`, blob `6176382e73a383daa650fc007457020a3c906e05`.
+**TESTS PUBLIÉS** `tests/test_hr_step68y_signed_center_residual.py`, blob `f7c94caff918b734a65c2e29d84d1f90f0acfb88`.
+**CERTIFICAT MACHINE JSON** `research/reports/gate2b-step68y-signed-center-residual.json`, blob `04271c360f2245142e171a5979db139ac4bdaf79`.
+**SOURCES ORIGINALES RECONSTITUÉES ET AUTHENTIFIÉES en local** : Step68u rapport blob `aaacd0064e04cb0f5d596aa3df042a4c9a4c751d`, Step68v rapport blob `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`. Tests réellement exécutés **8 PASSED en 0.09s**, deuxième reprise locale **8 PASSED en 0.05s** ; fichiers code/test/JSON publiés OCTET-IDENTIQUES à leurs versions testées, SHA Git relus.
+
+## RÉSULTAT MATHÉMATIQUE NOUVEAU — PETIT CENTRE À SIGNE CONTRÔLÉ
+
+Pour `s=r²`, `0<s<=1/1024` (`0<r<=1/32`), dans le modèle sphérique et conditionnel aux preuves source Steps49/67b/68u/68v, avec `Ustar=U0+U1*s+U2*s²`, `kappa=10^-7`, `2sU_s=G(s,U)-2U` :
+
+- Les deux résidus *authentiques* et leur `G_U<0` donnent par intersection EXACTE, sans flottants, **`F0(s)/s³ ∈ [-104671973400629476166791119/800000000000000000000000000000000, -473550521560821294562534863/5000000000000000000000000000000000] <0`**, où `F0=G(s,Ustar)-2Ustar-2sUstar_s`.
+- Step67b donne le coefficient vrai `U3<0`. La comparaison avec `F0<0` interdit une remontée de `U` au-dessus de `Ustar` : **`-kappa*s³<=U-Ustar<=0`**, avec borne supérieure stricte pour tout `s>0`.
+- Par la véritable EDO et `G_U<0`, l'intervalle SIGNÉ de `(U_s-Ustar_s)/s²` est **`[-104671973400629476166791119/1600000000000000000000000000000000, 4117968618087380149271638523/40000000000000000000000000000000000]`** (environ `[-6.54e-8,+1.03e-7]`), plus serré que Step68x `±3.449e-7`.
+- Le même calcul donne `(G(s,U)-Vstar)/s³ ∈ [-104671973400629476166791119/800000000000000000000000000000000, 117968618087380149271638523/20000000000000000000000000000000000]`, environ `[-1.3084e-7,+5.8984e-9]`, `Vstar=2(Ustar+sUstar_s)`.
+- **Lien au secteur canonique original f :** `pLf=sU`, `pLf_prime/r=G(s,U)`. En conséquence le jet de valeur `pLf-sUstar` appartient à `[-kappa*s⁴,0]` et le jet de dérivée normalisée possède la borne signée précédente. Le certificat conserve tous les rationnels aux points `r=1/32` et `r=1/64`.
+
+**NE PAS EXAGÉRER** : 68y ne recalcule PAS les coefficients temporels du Step58 `A_N/r²`, `A_M/r²` pour `r<1/32`, ne borne PAS `U_{ss},U_{sss}`, n'exécute PAS le vrai Hamiltonien six-couples non-IBP, et ne traite PAS le rang Dirac complet ni la cosmologie 4D. L'annulus `[1/64,1/32]` antérieurement INCOMPLET reste NON CERTIFIÉ : Step68u antérieur avait 500 nœuds, 247 cellules signées, **7 PENDING**. Les 1585 cellules Step68w couvrent UNIQUEMENT `[1/32,17/20]`, sans changer.
+
+## NEXT HARD RED STEP68z
+
+1. Depuis le connecteur GitHub, recharger et SHA-authentifier sources originelles Step45/46/55/57/58/60 et moteur `numerics/hr_step68o_temporal_interval_annulus.py`. Le répertoire local `/mnt/data/janus-step68y` est TRANSITOIRE, il ne contient que Step68y, tests et JSON 68u/68v ; **GitHub est le point de reprise fiable**.
+2. Injecter la **barrière signée** `-kappa*s³<=U-Ustar<=0`, et bornes signées de `U_s`, `V=G(s,U)`, dans les douze jets canoniques originaux avant d'évaluer le coefficient temporel complet et non le seul moment radial.
+3. Obtenir `U_{ss}`, `U_{sss}` par différentiation de la VRAIE ODE avec jet analytique/annulation des facteurs `s`, et non en dérivant les inégalités de `U` ou `U_s` (mathématiquement interdit). Normaliser d'abord les annulations `r²` avant intervalles sur `A_N/r²,A_M/r²`.
+4. Certifier de façon **exhaustive** les anneaux `[1/64,1/32]` puis `[1/128,1/64]` et le centre `r=0` avec budgets bornés, reprise atomique, queue vide et double vérification ; enregistrer SANS PRETENDRE des portions incomplètes signées.
+5. Puis autres contraintes temporelles, jauge et bords, indépendance des deux lapses, rang de Dirac COMPLET, oracle six-paires NON-IBP, chartes `J=0,K=0`, BD/4D ; conserver Gate ouvert et JANUS non validé.
+
+**CHECKPOINT PRÉFIXÉ, HISTORIQUE PRÉCÉDENT CI-DESSOUS CONSERVÉ SANS AMPUTATION.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68x, APRÈS AUDIT STEP68w (2026-10-25)
 
 **BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Garder `main` et `research/v2-flrw` intouchées ; GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
