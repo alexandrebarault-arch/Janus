@@ -1,0 +1,37 @@
+{
+  "step": "68x",
+  "source_git_blob_sha": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+  "derivation": "Full original ODE, exact central recurrence and SHA-pinned interval F0third/G_U bounds imply |U_s-Ustar_s|<=C*s^2 for all 0<=s<=1/64",
+  "C_exact": "551901551914723209073991119/1600000000000000000000000000000000",
+  "kappa_exact": "1/10000000",
+  "domain_s": [
+    "0",
+    "1/64"
+  ],
+  "domain_r": [
+    "0",
+    "1/8"
+  ],
+  "at_r_1_over_32": {
+    "s": "1/1024",
+    "U_minus_Ustar_absolute": "1/10737418240000000",
+    "U_s_minus_Ustar_s_absolute": "551901551914723209073991119/1677721600000000000000000000000000000000",
+    "spatial_shrink_factor_vs_1e_minus_6": "10737418240"
+  },
+  "at_r_1_over_8": {
+    "s": "1/64",
+    "U_minus_Ustar_absolute": "1/2621440000000",
+    "U_s_minus_Ustar_s_absolute": "551901551914723209073991119/6553600000000000000000000000000000000",
+    "spatial_shrink_factor_vs_1e_minus_6": "2621440"
+  },
+  "at_center": {
+    "s": "0",
+    "U_minus_Ustar_absolute": "0",
+    "U_s_minus_Ustar_s_absolute": "0",
+    "spatial_shrink_factor_vs_1e_minus_6": "INFINITE_AT_CENTER"
+  },
+  "temporal_A_N_A_M_signs_for_r_lt_1_over_32": "NOT_COMPUTED",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
