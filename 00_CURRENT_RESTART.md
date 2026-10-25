@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68q CERTIFIÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`, `main`/`research/v2-flrw` intouchées. GitHub Actions/workflows OFF. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AUDIT DE PREMIER NIVEAU :** `research/STEP68Q_CERTIFIED_TEMPORAL_SIGN_EXTENSION_TO_R_1OVER16.md` ; puis `research/STEP68N_68P_CERTIFIED_OUTER_TEMPORAL_LAPSE_SIGNS.md`.
+**CERTIFICAT COMPLET 314 CELLULES :** `research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json`, GIT SHA `82f5d046cd0ca0c342adabe8b8f13cfc3f99308d` égal fichier LOCAL vérifié, SHA256 `296e83528f9675fd42521b7cfffa2ec0f6057cce1d930a97a323aa007009e2c2`, 122536 octets.
+**PREUVE SOURCE :** `numerics/hr_step68p_adaptive_temporal_sign.py` Git SHA `10f62bacafa25827de747707dd3f45c7c96458a6`; `numerics/hr_step68o_temporal_interval_annulus.py` Git SHA `c99caebc17f243784450ddff94fb061767e6d8e7`; `numerics/hr_step68n_interval_ode_jets.py` Git SHA `96370e0599748c6dc07faf339ab3646ae3474e7d`. Ces fichiers et les 8 modules physiques originaux SHA-pin sont authentifiés dans le certificat.
+
+**THÉORÈME NOUVEAU, PROLONGEMENT INTÉRIEUR :** sur l'ENSEMBLE du sous-anneau `r∈[1/16,1/8]` de la VRAIE BRANCHE Step55 sous enveloppe globale Step68l `Ustar±1e-6` :
+```
+A_N(r) >= 13992170999239591409209901/500000000000000000000000000 >0,
+A_M(r) <= -17646463958239652791556564517/1250000000000000000000000000 <0.
+```
+Ceci repose sur 627 nœuds de subdivision, 314 feuilles rationnelles fermées et jointives, état `CERTIFIED`, 0 pending/failed. **Joint à Step68p** `[1/8,17/20]`, établit `A_N>0,A_M<0` continûment sur `[1/16,17/20]`, pas le centre.
+**TIMEOUTS** quatre lots terminés sous 24s chacun, avec état local atomique `research/reports/step68q-inner-band-1over16-to-1over8.json` et logs `research/reports/step68q-inner-band-run{1..4}.[state.json|log]`. Lots : 160/77/7 ; 320/158/5 ; 576/286/5 ; 627/314/0 (nœuds/feuilles/attente). Après chaque cellule sauvegarde durable.
+
+**RÉCENTE INTERRUPTION CORRIGÉE :** L'étape 68p précédente a été publiée jusqu'au bout après coupure : 4 sources physiques nouvelles, tests, 265 cellules sur annulus extérieur, Git blob du gros JSON `978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6` byte-identique local ; rapport, logs et audit archivés. 10 tests déjà PASSED 4.75s sous timeout 27s. Les premières parties du nouveau calcul 68q n'ont PAS encore été relancées dans un test de relecture du contenu physique cellule par cellule (mais test indépendant de jonction et signes exacts effectué).
+
+**NEXT** (1) ajouter un replayer physique rigoureux de TOUTES cellules 68p+68q par lots sous timeout, comparant chaque intervalle enregistré à un nouveau calcul `evaluate_cell` et refusant changements SHA/provenance ; publier état/log/resultats. (2) tenter `r∈[1/32,1/16]` sous jobs bornés et éventuellement aller plus près du centre ; si cela échoue, combiner avec normalisation Taylor centrale. (3) reprendre vérifications bords/lapses/gauge et oracle NON-IBP, rang Dirac 4D. **Ne PAS déclarer JANUS validé**.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68p CERTIFIÉE ET ARCHIVÉE (2026-10-25)
 
 **SEULE BRANCHE MODIFIABLE** `research/gate2b-nonhomothetic-transfer`. `main`, `research/v2-flrw` intouchées ; GitHub Actions/workflows désactivés. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
