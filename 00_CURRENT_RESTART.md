@@ -1,3 +1,23 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68r TERMINÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. MAIN/V2 intouchées, GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS-R NOT_VALIDATED.**
+
+**AUDIT IMMÉDIAT :** `research/STEP68R_EXHAUSTIVE_REPLAY_579_TEMPORAL_INTERVAL_CELLS.md`.
+**RÉEXÉCUTION EXHAUSTIVE DES CELLULES PAR LE MÊME MOTEUR :** source `numerics/hr_step68r_cell_replay.py` SHA `60214f32d16ea2aa1f04ff63ce76338e28457034`; tests `tests/test_hr_step68r_cell_replay.py` SHA `b0ddcd8d8504d8bb090148764a06824f86d1c978`.
+**RAPPORT COMBINÉ :** `research/reports/gate2b-step68r-replay-summary.json`; états `.../gate2b-step68r-inner-replay-state.json` et `.../gate2b-step68r-outer-replay-state.json`.
+**ÉVÉNEMENT VÉRIFIÉ :** ALL 579 CELLS STRICTLY MATCHED EXACTLY : 265/265 annulus extérieur [1/8,17/20] et 314/314 bande intérieure [1/16,1/8]. Chaque intervalle de A_N et A_M a été recalculé et DOIT ÊTRE égal à la valeur exacte du JSON source ; SHA256 archives pin, Git originaux pin et source jet/interval pin, jet/constraint physical originals. Quatre jobs PASSÉS, chacun timeout dur 25s, après chaque cellule checkpoint atomique.
+**6 TESTS CIBLÉS PASSED 4.40s** sous launcher borné 22s. PREMIER essai 3 failed et 3 passed UNIQUEMENT faute d'avoir fait copie du JSON intérieur sous son nom définitif local, second essai 6 passed complet. Log conservé `research/reports/gate2b-step68r-pytest.log`. IL NE S'AGIT PAS D'UN ORACLE THÉORIQUE NON-IBP INDÉPENDANT : moteur d'intervalles identique. Ne pas revendiquer rang Dirac ou validité JANUS.
+
+**SITUATION ACTUELLE CERTIFIÉE :** vrais coefficients temporels six-pair `A_N>0,A_M<0` sur **tout r ∈ [1/16,17/20]** conditionnellement aux vrais profils spatiaux originaux et Step68l Ustar±1e-6. Steps68h/j prouvent exactement B_N=B_M=0 on-shell. Sur r<1/16, statut OUVERT.
+
+## NEXT STEP68s
+
+(1) tenter par lots <=25s l'annulus `r∈[1/32,1/16]` avec `python scripts/janus_bounded_job.py --timeout-seconds 24 --grace-seconds 2 ... -- python -m numerics.hr_step68p_adaptive_temporal_sign --state <state> --start 1/32 --end 1/16 --max-cells N --max-depth 22`, données JSON atomiques avec status INCOMPLETE tant que queue non vide. SI ÉCHEC, conserver le blocage et privilégier normalization régulière du centre via série U0..U3 Step67b.
+(2) republier vrais tests, code, rapports, SHA vérifiés, préfixer le journal sans effacer.
+(3) conditions bords/gauge, oracle Poisson non IBP, rang Dirac, K=0/J=0, fantôme BD restent NON PROUVÉS.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68q CERTIFIÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`, `main`/`research/v2-flrw` intouchées. GitHub Actions/workflows OFF. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
