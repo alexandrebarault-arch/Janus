@@ -1,3 +1,48 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68l CERTIFIÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. NE PAS TOUCHER `main` ni `research/v2-flrw`. GitHub Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**DÉBUTER PAR :** `research/STEP68L_CERTIFIED_100X_REFINED_GLOBAL_RADIAL_BARRIER.md`.
+**CODE EXÉCUTÉ, GIT BLOB IDENTIQUE :** `numerics/hr_step68l_refined_global_barrier.py` SHA `2a1ffc026a30abf41208b44a707dc869daf0929d`.
+**8 TESTS EXÉCUTÉS ET RÉUSSIS (39.18s), GIT BLOB IDENTIQUE :** `tests/test_hr_step68l_refined_global_barrier.py` SHA `0b117a8e13cf0bd7344da4c31d0edcb3148c957e`.
+**RAPPORT MACHINE D'INTERVALLES EXACTS ORIGINAL LOCAL, GIT BLOB IDENTIQUE :** `research/reports/gate2b-step68l-refined-global-barrier.json` SHA `b0e698809d0f89d1bc9e618d100e22f1241daced`. **TRACE PYTEST EXACTE :** `research/reports/gate2b-step68l-pytest.log` SHA `d4fad6d097cdb8ae87bec90511c2c0e63eba9c2a`.
+
+## NOUVELLE PREUVE CERTIFIÉE : TUBE SPATIAL GLOBAL 100× PLUS ÉTROIT SUR BRANCHE STEP55
+
+**QUATRE ORIGINAUX PHYSIQUES RECONSTITUÉS À L'OCTET IDENTIQUE :** Step45 `66aa438...`, Step46 `bac025c...`, Step55-normalisé `a54a6ac...`, Step55-global `a6e7004...`. Le certificat NOUVEAU utilise les opérateurs originaux d'arithmétique entière à arrondi externe `I` (`S=10^28`), la vraie source `G(s,U)`, la même géométrie, les mêmes coefficients centraux `U0,U1,U2` et le même argument de comparaison/continuation de Step49–55. **Pas d'échantillonnage**, 16 384 cellules EXACTES fermées couvrant le continuum `s=r² in [0,289/400]`.
+
+```
+Ustar(s)=U0+U1*s+U2*s² (IDENTIQUE au polynôme ancien)
+delta=1/1_000_000 = 1e-6 (ANCIEN Step55: delta=1e-4)
+strict upper Fplus <= -52329410075807340297/78125000000000000000000000 <0
+strict lower Fminus >= 5825322396515812909051/10000000000000000000000000000 >0
+=> POUR LA VRAIE SOLUTION ANALYTIQUE CENTRALE GLOBALE: |U-Ustar| <= 1e-6
+   sur tout 0<=r<=17/20=0.85 ; amélioration certifiée ×100.
+```
+
+Nouvelle enceinte exacte de vitesse `V=G(s,U)=pLf'(r)/r`, `Vstar=2U0+4U1*s+6U2*s²` :
+```
+-106551452922242719145541/5000000000000000000000000000
+  <= V-Vstar <=
+ 212228180149451453699149/10000000000000000000000000000.
+```
+Donc `|V-Vstar|<1/20000=5e-5` sur tout le continuum, contre hypothèse de 0.01 historique. Source et tests GitHub relus strictement identiques octet pour octet aux fichiers locaux réellement exécutés.
+
+**CONTROLE NEGATIF :** `delta=1e-6` sur l'ancien maillage de 8192 cellules échoue EXACTEMENT au slab 0 avec intervalle recouvrant zéro : insuffisance de résolution INTERVALLE, pas une obstruction de l'EDO. 16384 cellules strictement réussies. Le polynôme Ustar n'a PAS été modifié avec U3 ; ce gain provient seulement de l'augmentation du nombre de cellules et de l'ancienne preuve physique.
+
+**CE QUI RESTE NON PROUVÉ :** Ni `A_N>0`, ni `A_M<0` sur la vraie branche non homothétique, ni le rang Dirac complet, ni la fixation des lapses ni la dynamique 4D n'ont été établis par cette étape. Les identités STRUCTURELLES `B_N=B_M=0` sur les contraintes (Steps68h/68j) et le témoin HOMOTHÉTIQUE à lapses positifs Step68k sont conservés et ne suffisent PAS à la branche Step55.
+
+## PROCHAINE STEP68m, VERROU RÉEL
+
+1. Brancher le nouveau tube GLOBAL `Ustar±1e-6`, `Vstar±5e-5` dans l'opérateur temporel ORIGINAL Step58 avec les champs radiaux et jets ENTIERS de Step55, puis CONSTRUIRE arithmétique d'intervalles/AD valide pour `A_N,A_M`. Commencer par des cellules STRICTEMENT éloignées de r=0 ; séparer la limite centrale r→0 et ses facteurs r².
+2. Chercher certification stricte des signes `A_N>0,A_M<0` **SUR LE CONTINUUM UNIQUE**, puis `M/N=-A_N/A_M>0`, contrôle de stabilité sous la variation de `U` et conditions aux bords ; si les bornes se recouvrent, affiner le calcul AD/les cellules plutôt que proclamer le signe.
+3. Oracle Poisson temporel INDEPENDANT non-IBP sur six couples, rang Dirac global, chartes K=0/J=0 et absence BD. NE PAS confondre la nouvelle preuve SPATIALE avec la fermeture temporelle.
+4. Vérifier sources Git et préserver en PRÉFIXE les ~250k caractères d'historique. GitHub Actions OFF, branches main/v2-flrw intouchées.
+
+**GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68k, PUIS STEP68j (2026-10-25)
 
 **SEULE BRANCHE AUTORISÉE À L'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Les branches `main`, `research/v2-flrw` et GitHub Actions DÉSACTIVÉES demeurent intouchées. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
