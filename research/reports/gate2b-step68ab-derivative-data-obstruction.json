@@ -1,0 +1,134 @@
+{
+  "step": "68ab",
+  "domain_s": [
+    "0",
+    "1/1024"
+  ],
+  "verified_original_step68aa_and_68z": true,
+  "analytic_family": "h_n(s)=c+epsilon*sin(n*s)/n; U_n=Ustar+s^3*h_n",
+  "analytic_family_G": "G_n(s,u)=2*(U_n+s*U_n_prime)-(u-U_n), with G_n_U=-1",
+  "c_center_U3": "-125300652487993799691/10000000000000000000000000000",
+  "epsilon": "1/100000000000",
+  "G_U": "-1",
+  "valid_for_all_real_frequencies_n_at_least_1": true,
+  "bands": {
+    "h": {
+      "whole_family_enclosure": [
+        "-125400652487993799691/10000000000000000000000000000",
+        "-125200652487993799691/10000000000000000000000000000"
+      ],
+      "original_band": [
+        "-104671973400629476166791119/7195089541176515764100055780800000",
+        "-473550521560821294562534863/45030426760826663318804444937500000"
+      ],
+      "strictly_interior": true
+    },
+    "f": {
+      "whole_family_enclosure": [
+        "-1128606067704444197219/10000000000000000000000000000",
+        "-1126805677079444197219/10000000000000000000000000000"
+      ],
+      "original_band": [
+        "-104671973400629476166791119/800000000000000000000000000000000",
+        "-473550521560821294562534863/5000000000000000000000000000000000"
+      ],
+      "strictly_interior": true
+    },
+    "ds": {
+      "whole_family_enclosure": [
+        "-376202055120231399073/10000000000000000000000000000",
+        "-375601859807731399073/10000000000000000000000000000"
+      ],
+      "original_band": [
+        "-35792277307192350352129322422254989698253233111548240321/720486828173226613100871119000000000000000000000000000000000000",
+        "-18339739747915914636909686701745010301746766888451759679/719508954117651576410005578080000000000000000000000000000000000"
+      ],
+      "strictly_interior": true
+    },
+    "v": {
+      "whole_family_enclosure": [
+        "-125400676902056299691/1250000000000000000000000000",
+        "-125200628073931299691/1250000000000000000000000000"
+      ],
+      "original_band": [
+        "-43369085652165491065129880230254989698253233111548240321/360243414086613306550435559500000000000000000000000000000000000",
+        "-28806937087978862253588798601745010301746766888451759679/359754477058825788205002789040000000000000000000000000000000000"
+      ],
+      "strictly_interior": true
+    },
+    "aux": {
+      "whole_family_enclosure": [
+        "125200652487993799691/10000000000000000000000000000",
+        "125400652487993799691/10000000000000000000000000000"
+      ],
+      "original_band": [
+        "235321916819808211768774969049598737147375970090428769/22515213380413331659402222468750000000000000000000000000000000",
+        "8424715137649011178742131416077711188177997812792161/575607163294121261128004462464000000000000000000000000000000"
+      ],
+      "strictly_interior": true
+    }
+  },
+  "unbounded_third_derivative_formula_at_smax": "U_n_sss(smax)-6*c = epsilon*smax*(18-4*pi*pi*k*k) for n=2*pi*k/smax, k>=1",
+  "third_derivative_supremum": "UNBOUNDED_BELOW_OVER_ADMISSIBLE_OTHER_G",
+  "IMPORTANT": "The actual original Step55 G is fixed and could constrain higher jets; this only disproves inferring higher jets from published interval bands alone.",
+  "physical_Step55_G_higher_partials": "NOT_YET_INTERVAL_CERTIFIED",
+  "temporal_Step58_AN_AM": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "independent_sympy_oracle": {
+    "ode_identity": "EXACT_ZERO",
+    "slope_G_U": "-1",
+    "F0_over_s3": "9*h+2*s*h_prime",
+    "U_sss_minus_6c_at_special_frequencies": "eps*(-4*pi**2*k**2 + 18)/1024"
+  },
+  "formal_original_U4_recurrence": {
+    "numerator": "U1**4*g04 + U1**3*g13 + 3*U1**2*U2*g03 + U1**2*g22 + 2*U1*U2*g12 + 2*U1*U3*g02 + U1*g31 + U2**2*g02 + U2*g21 + U3*g11 + g40",
+    "denominator": "10-g01",
+    "coefficients": "gij=[s^i*(u-U0)^j] G_original(s,u) at center",
+    "G_U_negative_implies_positive_denominator": true,
+    "actual_G_original_coefficients": "NOT_EVALUATED",
+    "actual_U4_interval": "NOT_CERTIFIED"
+  },
+  "all_original_third_derivative_boundary_certificate_countermodel": {
+    "analytic_other_G_and_branch": "U_n=Ustar+s^3*h_n, h_n=c+epsilon*(s/Smax)^6*sin(n*s)/n; G_n=Vstar+9*c*s^3-(u-Ustar)+A_n(s)*(u-Ustar)*((u-Ustar)^2-kappa^2*s^6)",
+    "A_n(s)": "epsilon*(21*sin(n*s)/n+2*s*cos(n*s))/(Smax^6*h_n*(h_n^2-kappa^2))",
+    "all_frequencies_n_greater_equal_1": true,
+    "Fzero_third_over_6": "-1127705872391944197219/10000000000000000000000000000",
+    "Fplus_third_over_6": "-10127705872391944197219/10000000000000000000000000000",
+    "Fminus_third_over_6": "7872294127608055802781/10000000000000000000000000000",
+    "original_step68u_upper": [
+      "-2575583792061894700823/2500000000000000000000000000",
+      "-4976590240016531320049/5000000000000000000000000000"
+    ],
+    "original_step68u_lower": [
+      "1924421421164366052919/2500000000000000000000000000",
+      "2011690220837250529/2500000000000000000000000"
+    ],
+    "original_step68v_Fzero": [
+      "-60823188230761053901/156250000000000000000000000",
+      "102737555949753696991/625000000000000000000000000"
+    ],
+    "G_U_correction_max": [
+      "-4492187500000000000000000000000000000000000000000000000000/123333301288996396547260387431007960429547718176299065726103629",
+      "4492187500000000000000000000000000000000000000000000000000/123333301288996396547260387431007960429547718176299065726103629"
+    ],
+    "bounded_h_deltas": {
+      "h": "1/102400000000000",
+      "f": "0",
+      "ds": "1/10240000000000",
+      "v": "11/51200000000000",
+      "aux": "11/51200000000000"
+    },
+    "third_derivative_at_smax_for_n_2pi_k_over_smax": "U_n_sss(smax)-6*c = epsilon*smax*(216-4*pi*pi*k*k)",
+    "interpretation": "Even all published F0/Fplus/Fminus THIRD derivative certificates and G_U band do not bound the true solution U_sss without fixed-G derivative controls. These G_n are NOT original physical Step55 G."
+  },
+  "stronger_independent_symbolic_oracle": {
+    "Fzero": "9*c",
+    "Fplus": "9*c-9*kappa",
+    "Fminus": "9*c+9*kappa",
+    "on_shell_residual": "EXACT_ZERO",
+    "Usss_special": "eps*(-4*pi**2*k**2 + 216)/1024",
+    "analytic_GU_at_Ustar": "eps*kappa**2*s**6*(2*s*cos(n*s) + 21*sin(n*s)/n)/((c/1152921504606846976 + eps*s**6*sin(n*s)/n)*(kappa**2 - (c + 1152921504606846976*eps*s**6*sin(n*s)/n)**2)) - 1"
+  },
+  "scope_clarification": "Countermodels G_n vary with n; original Step55 G does not. Uniform original temporal bounds need additional actual-G derivative computations."
+}
