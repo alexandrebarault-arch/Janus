@@ -60,8 +60,11 @@ def tightened_bounds(reports):
         raise ArithmeticError('Center Taylor coefficient not captured by invariant cone')
     # (g-2)*h is positive; monotone in (-g) and (-h).
     dslo, dshi = (flo+(ghi-2)*hhi)/2, (fhi+(glo-2)*hlo)/2
-    vlo, vhi = ghi*hhi, glo*hlo
-    if not (dslo <= dshi < 0 < vlo <= vhi):
+    # G(U)-G(Ustar)=g*d>0, but Vstar=2*(Ustar+s*Ustar_s)
+    # is NOT G(Ustar): F0=G(Ustar)-Vstar<0. Keep both differences.
+    auxlo, auxhi = ghi*hhi, glo*hlo
+    vlo, vhi = flo+auxlo, fhi+auxhi
+    if not (dslo <= dshi < 0 and 0 < auxlo <= auxhi and vlo <= vhi < 0):
         raise ArithmeticError('Strict signed derivatives not certified')
     # Require strict containment in older published weak signed envelopes.
     old_ds = list(map(F, y['U_s_minus_Ustar_s_over_s_squared']))
@@ -69,7 +72,7 @@ def tightened_bounds(reports):
     if not (old_ds[0] <= dslo <= dshi <= old_ds[1]
             and old_v[0] <= vlo <= vhi <= old_v[1]):
         raise ArithmeticError('Refinement not contained in source certificate')
-    return {'h':(hlo,hhi), 'ds':(dslo,dshi), 'v':(vlo,vhi),
+    return {'h':(hlo,hhi), 'ds':(dslo,dshi), 'v':(vlo,vhi), 'aux':(auxlo,auxhi),
             'f':(flo,fhi),'g':(glo,ghi),'u3':(u3lo,u3hi)}
 
 
@@ -80,17 +83,19 @@ def report(folder):
            'center_invariant_cone_h_equals_U_minus_Ustar_over_s_cubed':list(map(str,a['h'])),
            'U_s_minus_Ustar_s_over_s_squared':list(map(str,a['ds'])),
            'G_minus_Vstar_over_s_cubed':list(map(str,a['v'])),
+           'G_U_minus_G_Ustar_over_s_cubed':list(map(str,a['aux'])),
            'signs_for_every_s_gt_zero':{
                 'U_minus_Ustar':'NEGATIVE',
                 'U_s_minus_Ustar_s':'NEGATIVE',
-                'G_minus_Vstar':'POSITIVE'},
+                'G_minus_Vstar':'NEGATIVE',
+                'G_U_minus_G_Ustar':'POSITIVE'},
            'center_U3_Step67b_interval':list(map(str,a['u3'])),
            'center_s_samples':{str(s):{
                'U_minus_Ustar':[str(q*s**3) for q in a['h']],
                'U_s_minus_Ustar_s':[str(q*s**2) for q in a['ds']],
                'G_minus_Vstar':[str(q*s**3) for q in a['v']]}
                for s in (F(1,1024),F(1,4096))},
-           'proof':'Comparison for 2*s*h_s=f+(g-8)*h, h(0)=U3; constant cone [flo/(8-ghi), fhi/(8-glo)] invariant; exact arithmetic.',
+           'proof':'Comparison for 2*s*h_s=f+(g-8)*h, h(0)=U3; constant cone [flo/(8-ghi), fhi/(8-glo)] invariant. IMPORTANT: G(s,U)-Vstar=F0+g*(U-Ustar), not g*(U-Ustar).',
            'temporal_A_N_A_M_near_center':'NOT_COMPUTED',
            'full_Dirac_rank':'NOT_COMPUTED',
            'GATE_2B':'OPEN','JANUS_R':'NOT_VALIDATED'}
