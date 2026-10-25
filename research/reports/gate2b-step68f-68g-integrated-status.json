@@ -1,0 +1,102 @@
+{
+  "step": "68f+68g",
+  "date": "2026-10-25",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "status": "GATE_2B_OPEN_JANUS_R_NOT_VALIDATED",
+  "inputs": "Eight exact original physical GitHub modules reconstructed in /mnt/data/janus-step68f with hashes from research/reports/gate2b-step68-source-preflight.json",
+  "original_joint_certificates": {
+    "45": "PASS original Ward 9 exact zeros",
+    "46": "PASS affine secondary ODE",
+    "55": "PASS original global 256 rational cells",
+    "57": "PASS physical second-jet symbol",
+    "58": "PASS original full temporal high lapse cancellation",
+    "59": "PASS third spatial canonical jets",
+    "60": "PASS full constraint-prolongation quotient",
+    "runtime_seconds": 8.84,
+    "original_256_cell_margins": {
+      "upper": "-1480966474499367232302129/10000000000000000000000000000",
+      "lower": "295653233337826329055403/2000000000000000000000000000"
+    }
+  },
+  "original_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step59_third_jet_gate.py": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+    "numerics/hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+  },
+  "exploratory_temporal": {
+    "procedure": "At each r>0 choose U(r²)=Step55 Ustar(r²)+offset with |offset|<=1e-5, then obtain U_s,U_ss,U_sss from genuine original G(s,U) ODE. Build both dust momenta from original primaries, g momentum from original Step55 geometry, z=r/250. Compute 12 field jets up to fourth radial derivative via mpmath.diff and original six-pair Step58 exact Cdot coefficients via sympy.lambdify. This is a local constrained ODE jet, not a globally integrated exact center branch.",
+    "verification": "At r=0.4 using 55 decimal-digit evaluation, Fz,Hg,Hf,C,Hgprime,Cprime below 2e-54; Nprime/Mprime/Ndoubleprime/Mdoubleprime coefficients similarly of order 1e-54.",
+    "point_r_0_4": {
+      "A_N": "556.3983109239983805209505844",
+      "A_M": "-1071.784882043146390125740547",
+      "M_over_N": "0.5191324492871505994400431975963492886787"
+    },
+    "point_r_0_2": {
+      "M_over_N": "0.5186913761796699677893792490140463259102"
+    },
+    "point_r_0_6": {
+      "M_over_N": "0.5198544380474968113985817827890354769456"
+    },
+    "point_r_0_8": {
+      "M_over_N": "0.520836896256065310633951489184823938501"
+    },
+    "sample_radii_count": 17,
+    "radius_min": "0.05",
+    "radius_max": "0.85",
+    "candidate_positive_ratio_scan_range_approx": [
+      0.51855234812938,
+      0.52111990952429
+    ],
+    "controlled_variations_r_0_4": {
+      "offset_plus_1e-5": "0.5191311791250029079484193494557836926595",
+      "offset_minus_1e-5": "0.5191336216049922797013034443965054827908"
+    },
+    "negative_off_primary": "At r=0.4 perturb pSf canonical value +0.001 while leaving all other jets: C≈-0.18355984, Hf≈+0.00037429554, B_N≈-0.00073388706. Demonstrates vanishing constraints/first-lapse coefficients is not manufactured by universally zero algebra.",
+    "caveat": "All these ratio values are exploratory numerical evaluations. Step55 rational tube bounds U-Ustar but do NOT certify Dirac coefficients or global positive M/N. Decimal digits not rigorously enclosed; Ustar+offset pointwise may be different local ODE trajectories from the unique center-regular global branch. No boundary, rank or BD ghost theorem."
+  },
+  "new_exact_68g": {
+    "scope": "Full ORIGINAL Step58 Cdot Mprime coefficient on Fz=0, K>0, independent canonical second spatial jets. Need Fzprime=0 for quotient equivalence.",
+    "coefficient_name": "B_M=[Cdot]_{Mprime}",
+    "second_jets_before": [
+      "pLg''",
+      "Sg''",
+      "theta_g''"
+    ],
+    "lambda": "3*z*(z²-1)/(Lg*Lf²)=-3*z*(1-z²)/(Lg*Lf²)",
+    "quotient": "R_BM=B_M-lambda*Fzprime; all twelve partial derivatives wrt independent q_i'' vanish on Fz=0.",
+    "center": "For z=r w(s), K=r² k(s), Fz=r³f(s), lambda*Fzprime=-3 r³ w(1-s w²)(3f+2s f_s)/(Lg Lf²), regular under assumed smooth parities.",
+    "wrong_sign_negative": "B_M+lambda*Fzprime retains nonzero pLg'' sensitivity",
+    "analytic_B_M_zero_on_all_physical_data": "NOT_PROVED",
+    "Dirac_rank": "NOT_COMPUTED"
+  },
+  "executed_regression": {
+    "command": "cd /mnt/data/janus-step68f && OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68f_joint_profile.py tests/test_hr_step68g_full_Cdot_Mprime_quotient.py tests/test_hr_step68e_exact_shift_full_lapse_response.py",
+    "result": "41 passed in 16.48s",
+    "original_joint_command": "See research/reports/gate2b-step68f-original-eight-module-joint.json",
+    "new_68f_test_count": 13,
+    "new_68g_test_count": 10,
+    "old_68e_test_count": 18,
+    "source_68f": "numerics/hr_step68f_physical_pointwise.py",
+    "source_68f_blob": "82e1ebb3a290f54a0d3b5069df67504044381626",
+    "test_68f": "tests/test_hr_step68f_joint_profile.py",
+    "test_68f_blob": "5d423b4d646c6c3ac4d28884e3116bf56a35bde0",
+    "source_68g": "numerics/hr_step68g_full_Cdot_Mprime_quotient.py",
+    "source_68g_blob": "2245403862795569d3d6215aeb5e6227ee1148d6",
+    "test_68g": "tests/test_hr_step68g_full_Cdot_Mprime_quotient.py",
+    "test_68g_blob": "5afc5b52e260532eb94e8ecec940354eb3f12d9d",
+    "all_new_68f_68g_source_and_test_blobs_match_executed_local": true
+  },
+  "raw_evidence": [
+    "research/reports/gate2b-step68f-original-eight-module-joint.json",
+    "research/reports/gate2b-step68f-physical-highprecision-scan.json",
+    "research/reports/gate2b-step68f-negative-off-primary.json",
+    "research/reports/gate2b-step68f-extended-radius-scan.json"
+  ],
+  "next": "Step68h priority: derive analytically (or interval-certify along exact Step55 center branch) B_N=B_M=0 under all Fz,Hg,Hf,Ddiag,C and prolongations, prove signs A_N>0,A_M<0 uniformly on r in (0,.85], and regular M/N limit at r=0, then impose appropriate boundary conditions and independent non-IBP Poisson oracle. Until then do NOT assert Dirac rank, uniqueness/positivity of lapses or ghost absence.",
+  "GitHub_Actions": "OFF"
+}
