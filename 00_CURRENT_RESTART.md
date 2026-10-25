@@ -1,3 +1,46 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68z TERMINÉE (2026-10-25)
+
+**ÉCRITURE UNIQUEMENT** sur `research/gate2b-nonhomothetic-transfer`. **INTERDIT** de toucher `main`, `research/v2-flrw`, GitHub Actions/workflows OFF.
+**ÉTAT SCIENTIFIQUE : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PRIORITÉ** `research/STEP68Z_EXACT_INVARIANT_CENTER_CONE_AND_SIGNED_F_MOMENTUM.md`. Les anciens checkpoints Steps68y/x/w/etc. demeurent intégralement CI-DESSOUS. REPRISE doit partir de **Step68aa**, pas Step68d. Branche initialement retrouvée au commit `ba933be17f52ff7aa0337a45c31f5802e676faf5` avec Step68y, puis cette session a enregistré Step68z.
+
+## PREUVE NOUVELLE ET DÉLIMITATION
+
+Pour `s=r², 0<s<=1/1024` et solution analytique Step49/EDO Step45/46/55, en utilisant les vrais rapports d'origine Steps68u/v/y :
+
+```
+d=U-Ustar=s³*h
+f=F0/s³, F0=G(s,Ustar)-2*(Ustar+s*Ustar_s)
+g=(G(s,U)-G(s,Ustar))/(U-Ustar) in [glo,ghi] <0
+2*s*h_s=f+(g-8)*h
+h ∈ [ flo/(8-ghi), fhi/(8-glo) ]
+  ≈ [-1.4547695730763e-8,-1.0516234369175e-8]  (strict negative)
+(U_s-Ustar_s)/s² ∈ [-4.9677906532e-8,-2.5489244634e-8]  (strict negative)
+[G(s,U)-G(s,Ustar)]/s³ ∈ [+1.0451684949e-8,+1.4636223583e-8]  (strict positive)
+[G(s,U)-Vstar]/s³ ∈ [-1.2038828180e-7,-8.0073880730e-8]  (strict negative)
+Vstar=2*(Ustar+s*Ustar_s).
+```
+
+**ATTENTION — ERREUR DÉTECTÉE AU TEST ORIGINAL ET CORRIGÉE :** `G(s,Ustar) != Vstar` car `F0<0`. Dans la quantité physique `pLf_prime/r=G(s,U)`, l'écart à `Vstar` est `F0+g*d`, NON `g*d`. Une version intermédiaire erronée de Step68z a été commitée, mais les commits finaux source/tests ont été **CORRIGÉS**, testés et leurs SHA identiques au local. Voir audit Step68z §4.
+
+**CODE FINAL GITHUB** `numerics/hr_step68z_invariant_center_cone.py` SHA `8c3a46b44e5c55c7b8f464668f9e8dc7d17eae8b`. **TESTS FINAUX** `tests/test_hr_step68z_invariant_center_cone.py` SHA `33d20c7e109d1066372292558c17c1a4862346cc`. **MACHINE JSON** `research/reports/gate2b-step68z-invariant-center-cone.json` SHA `38f55aabf7a7c47c812f32db684f50ffbaf16374`. **AUDIT COMPLET** `research/STEP68Z_EXACT_INVARIANT_CENTER_CONE_AND_SIGNED_F_MOMENTUM.md`.
+
+**8 tests réellement PASSED en 0.05s, zéro skip** avec les trois rapports originaux 68u SHA `aaacd0064e04cb0f5d596aa3df042a4c9a4c751d`, 68v SHA `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`, 68y SHA `04271c360f2245142e171a5979db139ac4bdaf79`, tous reconstitués localement OCTET IDENTIQUES et vérifiés Git hash-object. Le JSON final a été généré par l'exécutable avec sources authentiques, son blob GitHub a été comparé à celui du local. L'oracle indépendant BigInt JavaScript sur les trois sources authentiques a validé le cône et les signes, AVANT le correctif distinguant les deux écarts G.
+
+**NON PROUVÉ** : les coefficients temporels Step58 `A_N/r², A_M/r²` jusqu'à r=0, les 7 cellules PENDING sur `[1/64,1/32]`, l'équation complète de stabilité temporelle, rang Dirac, lapses et bords, stabilité nonlinéaire/cosmologie 4D.
+
+## NEXT HARD RED : STEP68aa
+
+1. Authentifier Step45/46/55/57/58/60 et Step68o, reconstructeurs `Jet` et intervalles `I`. Reprendre du précédent Step68z.
+2. Insérer les bornes signées des 4 écarts, en distinguant expressément **G(Ustar) vs Vstar**. Calculer `U_{ss},U_{sss}` par différentiation de l'EDO et annulations analytiques au centre, **jamais** par différentiation d'une inégalité sur U ou Us.
+3. Evaluer le vrai opérateur temporel six-paires, et recertifier les 7 cellules antérieurement PENDING du trou `[1/64,1/32]`, puis descendre `[1/128,1/64]` et r=0. Exhaustivité, budget, queue vide, 2 contrôles.
+4. Vérifier contraintes Dirac complètes/bords/lapses, secteurs J=0,K=0, jauge et 4D. Pas de validation JANUS sans ces vérifications.
+
+**CHECKPOINT AJOUTÉ PAR PRÉFIXE ; HISTORIQUE CONSERVÉ ENTIÈREMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68y TERMINÉE (2026-10-25)
 
 **BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. **NE PAS TOUCHER** `main` ou `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
