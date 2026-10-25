@@ -1,0 +1,53 @@
+{
+  "step": "68v",
+  "center_s_range": [
+    "0",
+    "1/64"
+  ],
+  "center_r_range": "0<=r<=1/8",
+  "original_physical_shas": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "upstream_shas": {
+    "hr_step68u_cubic_center_barrier.py": "4249c1a8c1f60071612c52d756d9f4ff753f22e3",
+    "hr_step68m_positive_radial_slope.py": "639c88563411ad6d69298f36cf878f46c0e7be79"
+  },
+  "center_cubic_barrier_kappa": "1/10000000",
+  "center_spatial_inclusion": "|U(s)-Ustar(s)|<=kappa*s^3 by Step49 analytic center recurrence, Step67b strict U3 bound and third-derivative comparison",
+  "Fplus_third_over6": [
+    "-6459335014235568976637/5000000000000000000000000000",
+    "-3664994635715032685663/5000000000000000000000000000"
+  ],
+  "Fminus_third_over6": [
+    "1270413128798157440287/2500000000000000000000000000",
+    "5334540011257620607023/5000000000000000000000000000"
+  ],
+  "F0_third_over6": [
+    "-60823188230761053901/156250000000000000000000000",
+    "102737555949753696991/625000000000000000000000000"
+  ],
+  "G_U_center_interval": [
+    "-80486828173226613100871119/80000000000000000000000000",
+    "-496930963235322352562534863/500000000000000000000000000"
+  ],
+  "U_s_deviation_absolute_upper": [
+    "1/40960000000",
+    "210533734098328861/2500000000000000000000000000"
+  ],
+  "reference_Ustar_slope": [
+    "789430358798785746302019/1000000000000000000000000000",
+    "7897451667202464909325109/10000000000000000000000000000"
+  ],
+  "U_s_center_lower_rational": "3947151372926460534852373/5000000000000000000000000000",
+  "U_s_center_upper_rational": "7897452509337401302640553/10000000000000000000000000000",
+  "U_s_strict_positive_inner": true,
+  "outer_proof_step68m_domain": "s in [1/64,289/400], r in [1/8,17/20] original certified strict U_s > 0",
+  "new_full_radius_radial_U_monotonicity": "U_s>0 for every s in [0,289/400] conditional on original Step49/67b and 68l/m",
+  "time_coefficient_A_N_A_M_at_r0": "NOT_CERTIFIED",
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
