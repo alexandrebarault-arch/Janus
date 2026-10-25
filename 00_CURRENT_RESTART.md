@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68t TERMINÉE (2026-10-25)
+
+**SEULE BRANCHE D'ÉCRITURE** `research/gate2b-nonhomothetic-transfer`, main et v2-flrw intouchées, GitHub Actions OFF. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AUDIT :** `research/STEP68T_EXACT_REPLAY_1006_INNER_TEMPORAL_CELLS.md`.
+**CODE SOURCE :** `numerics/hr_step68t_replay_near_center.py` SHA `4cf195f22ec2218de7453797bccaf5f151a4d2cd`.
+**TESTS :** `tests/test_hr_step68t_replay_near_center.py` SHA `2f9929f1433d00d2026478d48606a46a790dd2b7`, trois tests PASSED 4.19s, sous timeout 16s.
+**REPLAY COMPLET :** `research/reports/gate2b-step68t-replay-1006-cells-report.json` Git blob `b5c5a52a0b3960ae630ef2d3521e0d4d9689f4d3` ; état `research/reports/gate2b-step68t-replay-state.json` Git blob `1ac99ccbbd5413f67ffa140d28bf091c8c6eb5f2` : 1006/1006, PASSED, zéro discrepancy. SIX jobs séparés sous timeout 24s chaque. L'état est atomique par cellule et refuse toute dérive SHA du certificat/moteur.
+**AVERTISSEMENT :** il s'agit du MEME évaluateur arithmétique Step58 relancé exactement, PAS un oracle non-IBP indépendant.
+
+**STATUT CALCUL :** 3 certificats continus joints **r∈[1/32,17/20]** pour vrai profil Step55 de l'EDO originale : Step68p 265 feuilles ([1/8,17/20]), Step68q 314 feuilles ([1/16,1/8]), Step68s 1006 feuilles ([1/32,1/16]). Total **1585 cellules certifiées et effectivement re-évaluées une par une, strictement (A_N>0,A_M<0)**. Les fractions et sources exactes se trouvent dans les 3 archives GitHub.
+**RESTE SCIENTIFIQUE** : centre `[0,1/32)` NON CERTIFIÉ, limites A_N/r² A_M/r², bords/jauge, rang Dirac, oracle Poisson NON-IBP, charts exceptionnelles, BD et cosmologie JANUS-R encore OUVERTS. Le théorème ne constitue pas une validation de 4D JANUS.
+
+## NEXT STEP68u (HARD RED)
+
+1. Tenter `[1/64,1/32]` en lots bornés avec le moteur inchangé (`--start 1/64 --end 1/32 --max-depth 24`) et états enregistrés à chaque feuille ; si la quantité de cellules explose, NE PAS ignorer l'inefficacité, écrire explicitement le blocage et la file de reprise.
+2. Prioriser la méthode normale du centre en traitant l'ODE singulière (2sU_s=G-2U) via la récurrence U0..U3 certifiée originale Step67b. Obtenir des bornes de A_N/r² et A_M/r² sur [0,epsilon], avec un calcul exact dans les variables normalisées. Ne PAS déduire les signes au centre par extrapolation.
+3. Ensuite bords + gauge, vrai oracle non-IBP six couples, rang global Dirac, K0/J0. Maintenir état durable et timeout sur toute exécution.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68s CERTIFIÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE MODIFIABLE :** `research/gate2b-nonhomothetic-transfer`. MAIN/V2 intouchées ; GITHUB ACTIONS OFF ; **GATE_2B OPEN, JANUS-R NOT_VALIDATED**.
