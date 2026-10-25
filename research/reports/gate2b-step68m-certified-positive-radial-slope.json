@@ -1,0 +1,31 @@
+{
+  "step": "68m",
+  "original_physical_shas": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "Step68l_pinned_git_blob": "2a1ffc026a30abf41208b44a707dc869daf0929d",
+  "Step68l_certification_reexecuted": true,
+  "grid_cells": 8192,
+  "s_interval": [
+    "1/64",
+    "289/400"
+  ],
+  "r_interval": [
+    "1/8",
+    "17/20"
+  ],
+  "U_enclosure": "Ustar(s)+[-1/1000000,+1/1000000] verified Step68l",
+  "exact_ode": "2*s*U_s=G(s,U)-2*U",
+  "strict_lower_U_s": "2616650086463031354471/1250000000000000000000000000",
+  "upper_U_s": "30880835985796069042583/19531250000000000000000000",
+  "whole_closed_interval_positive": true,
+  "outward_arithmetic_scale": 10000000000000000000000000000,
+  "small_center_r_below_1_8_covered": false,
+  "temporal_lapse_A_coefficients_certified": false,
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
