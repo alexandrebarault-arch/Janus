@@ -1,3 +1,47 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68k, PUIS STEP68j (2026-10-25)
+
+**SEULE BRANCHE AUTORISÉE À L'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Les branches `main`, `research/v2-flrw` et GitHub Actions DÉSACTIVÉES demeurent intouchées. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PRIORITÉ :** `research/STEP68K_EXACT_POSITIVE_LAPSE_FLAT_FAMILY_AUDIT.md` pour le résultat nouveau, puis `research/STEP68J_EXACT_FULL_CDOT_BN_SECONDARY_IDENTITY_AUDIT.md` pour la preuve structurelle générale des annulations de N',M'.
+**CODE STEP68k :** `numerics/hr_step68k_exact_positive_lapse_family.py`, Git blob `5e8783eec4f342cc29b7208ad6cdeb1d7df9cbd2`.
+**18 TESTS STEP68k :** `tests/test_hr_step68k_exact_positive_lapse_family.py`, Git blob `c9c53a6123c84e2310f3fcb52c4b185d18d92410`. VRAIMENT **18 passed in 11.14s** après correction d'une comparaison syntaxique SymPy d'expressions mathématiquement égales.
+**RAPPORT MACHINE :** `research/reports/gate2b-step68k-exact-positive-flat-family.json`, Git blob `7beda486cd587303df8b376c946b7f8a82f94d8a`.
+**SOURCE DES RÉSULTATS STRUCTURELS STEP68j :** `numerics/hr_step68j_BN_exact_secondary_identity.py` SHA `a500cdb1a09c853d46848719e26be9bbec55fb64` ; `tests/test_hr_step68j_BN_exact_secondary_identity.py` SHA `44a84c5b5aa234ae719fa2e6f818456985c2dad9` ; rapport `research/reports/gate2b-step68j-original-BN-C-identity.json` SHA `25a47c7eeed9dec111ecd3f5da891a02d84184d9`. TOUS les blobs ci-dessus relus sur GitHub et byte-identiques aux fichiers exécutés.
+
+## NOUVEAU THÉORÈME STEP68k : LAPSUS POSITIFS SUR UNE FAMILLE SPATIALE PLATE HOMOTHÉTIQUE EXACTEMENT CONTRAINTE
+
+Les HUIT sources ORIGINALES Step45/46/55normal/55global/57/58/59/60 sont authentifiées SHA Git avant calcul, et les vrais opérateurs Step45/58 sont exécutés dans le même runtime. Sur la famille spatiale CANONIQUE HOMOTHÉTIQUE plate, qui N'EST PAS la solution non homothétique Step55 :
+```
+Mg²=Mf²=m²=1 ; Lg=Lf=1 ; Sg=Sf=r ;
+pLg=pLf=pSg=pSf=0 ; z=0 ; theta_g=theta_f=const ;
+p_g=r²*rho_g, p_f=r²*rho_f ;
+T=beta1+2 beta2+beta3 ;
+rho_g= -(beta0+3 beta1+3 beta2+beta3) ;
+rho_f= -(beta1+3 beta2+3 beta3+beta4).
+```
+La contrainte de shift K=r² T>0 dès r>0,T>0. Le vrai ORIGINAL vérifie EXACTEMENT à TOUT rayon r>0 : `Fz=Hg=Hf=C=Dg=Df=0` et les SIX dérivées premières radiales égales à zéro ; tous jets canoniques jusqu'à 4 calculés analytiquement à partir du profil. Le vrai Cdot Step58 donne
+```
+A_N = +3/2*r²*T*(rho_g+2T) > 0
+A_M = -3/2*r²*T*(rho_f+2T) < 0
+B_N=B_M=coeff_N''=coeff_M''=0
+=> dot C = 3/2*r²*T * [(rho_g+2T)*N-(rho_f+2T)*M].
+=> M/N = (rho_g+2T)/(rho_f+2T)>0,
+```
+si `r>0,T>0,rho_g>0,rho_f>0`. Le rapport est constant en r et a limite régulière comme quotient r²/r² au centre (attention chart K(0)=0 non résolu en variables canoniques).
+
+TÉMOIN RATiONNEL EXACT : `(beta0,beta1,beta2,beta3,beta4)=(-5,1,0,0,-5)`, `T=1,rho_g=2,rho_f=4`, `dot C=r²(6N-9M)`, positif `N=3,M=2`, ratio `M/N=2/3` pour TOUT r>0 sur cette famille spatiale. Régularité 4D et évolution complète/non-IBP non démontrées. Cette famille est HOMOTHÉTIQUE ET LE CHOIX DE beta DIFFÈRE DU BENCHMARK Step55 ; ne PAS en déduire les signes de la branche Janus non homothétique cible.
+
+**PREUVE STRUCTURELLE STEP68j RETENUE :** sur `Fz=0,K>0`, le vrai coefficient temporel `B_N=-(1-z²)/(Lg Lf)*Hgprime+beta*Hg+(z/Lg)*C`, certifié par 25 dérivées symboliques indépendantes et référence `C=-53/40 !=0`. Donc `B_N=0` sur `Hg=Hgprime=C=0`. Step68h certifie `B_M=3z(z²-1)/(Lg Lf²)*Fzprime` et `B_M=0` sur `Fzprime=0`. Step58 certifie coefficients de N'',M'' nuls sur Hg,Fz. Donc TEMPORAL Cdot sur shell se réduit EXACTEMENT à `A_N N + A_M M`. Les coefficients A_N,A_M du Step55 global n'ont ENCORE AUCUN certificat par intervalles.
+
+## NEXT HARD RED STEP68l — VOIE VERS CONCLUSION
+
+1. Sur le VRAI profil non homothétique positif Step55 (pas la famille homothétique de contrôle), prouver/certifier par intervalles l'évaluation complète des coefficients `A_N,A_M` sur les 256 cellules rationnelles, avec AD de `U(s)` solution ODE et bornes sur tous ses jets ainsi que paramètres. Isoler le centre r=0 avec la régularité normalisée, calculer rang local et signe `M/N=-A_N/A_M` **sur toute la branche**.
+2. Vérifier les équations de préservation des autres contraintes, conditions aux bords, choix de jauge, et existence de lapses globaux positifs. Les 17 rayons Step68f et leur ratio ~0.519 positif restent des évaluations numériques exploratoires, NON des intervalles.
+3. Oracle ORIGINAL temporel Poisson NON-IBP indépendant sur 6 couples, rang Dirac complet, chartes `K=0,J=0`, fantôme BD, cosmologie 4D. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.
+4. Continuer à PRÉFIXER ce journal de reprise en conservant l'historique existant ci-dessous. Aucune exécution asynchrone une fois la réponse terminée.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68j CERTIFICAT ORIGINAL COMPLET (2026-10-25)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` restent intouchées. Ne réactiver AUCUN GitHub Actions/workflow. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
