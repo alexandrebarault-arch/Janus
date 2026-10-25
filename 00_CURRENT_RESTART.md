@@ -1,3 +1,54 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68aa TERMINÉE (2026-10-25)
+
+**SEULE BRANCHE AUTORISÉE À L'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. **NE JAMAIS MODIFIER** `main`, `research/v2-flrw`, GitHub Actions/workflows OFF (désactivés par utilisateur).
+**GATE_2B OPEN — JANUS_R NOT_VALIDATED**.
+
+**LIRE D'ABORD** `research/STEP68AA_AUTHENTIC_F_CANONICAL_CENTER_THIRD_RADIAL_JETS.md` ; ensuite `research/STEP68Z_EXACT_INVARIANT_CENTER_CONE_AND_SIGNED_F_MOMENTUM.md`. Tous les checkpoints antérieurs Steps68z/y/x/... demeurent CI-DESSOUS intégralement, sans amputation. Commencer le calcul suivant à **Step68ab** et ne pas refaire Step68aa.
+
+## NOUVEAUX RÉSULTATS CANONIQUES ORIGINAUX — POINT CENTRE UNIQUEMENT
+
+Partant de la vraie branche analytique Step49 / ODE original Steps45/46/55, `s=r²`, `pLf(r)=r² U(s)`, `U=U0+U1*s+U2*s²+U3*s³+O(s⁴)`, coefficient `U3<0` historiquement borné exactement par Step67b (publié dans le véritable rapport 68u), **neuf relations de limite analytiques** ont été certifiées. En particulier :
+
+```
+lim(r->0) ((pLf''-(2U0+12U1*r²+30U2*r⁴))/r^6) = 56*U3 <0
+lim(r->0) ((pLf'''/r-(24U1+120U2*r²))/r^4) = 336*U3 <0
+lim(r->0) ((pLf'/r-(2U0+4U1*r²+6U2*r⁴))/r^6) = 8*U3 <0
+pLf^(8)(0)=40320*U3 <0.
+U_sss(0)=6U3<0.
+```
+
+TOUTES ces égalités valent au CENTRE seulement ; aucune borne `pLf'''(r)` exhaustive pour `0<r<=1/32` n'en découle. Les fractions bornées EXACTES et les neuf multiplications se trouvent dans le rapport machine.
+
+**SOURCES EXÉCUTÉES/PUBLIÉES, SHA GIT OCTET-IDENTIQUE VÉRIFIÉS** :
+
+- `numerics/hr_step68aa_canonical_center_radial_jets.py` blob `924192725dc20597df96451e7f211eba91861b50`.
+- `tests/test_hr_step68aa_canonical_center_radial_jets.py` blob `f83d6f72570646e2cc04cb4a73f3213373425301`.
+- `research/reports/gate2b-step68aa-canonical-center-radial-jets.json` blob `1a536bd0ff9e7b2a95254b3b7cd883d6fd9c524c`.
+- Audit `research/STEP68AA_AUTHENTIC_F_CANONICAL_CENTER_THIRD_RADIAL_JETS.md` (lire d'abord).
+
+**TESTS RÉELLEMENT EXÉCUTÉS EN LOCAL : 9 nouveaux tests Step68aa + 8 tests Step68z = 17 PASSED en 0,65s, sans skip**. Le vrai Step68z code blob `8c3a46b44e5c55c7b8f464668f9e8dc7d17eae8b`, certificat blob `38f55aabf7a7c47c812f32db684f50ffbaf16374`, vrais reports Step68u/v/y blobs `aaacd0064e04cb0f5d596aa3df042a4c9a4c751d`/`d83a3b80862a2e990a4c4879ec8745a4e91c8b34`/`04271c360f2245142e171a5979db139ac4bdaf79` sont **byte-authentifiés** par le nouvel outil. Un oracle SymPy indépendant avec U4 libre a recomputé les 9 multiplicateurs en dérivant réellement pLf en r. Deux omissions initiales `U2*s` au lieu de `U2*s²` dans des expressions tests ont été REJETÉES par l'oracle et CORRIGÉES avant la publication finale. Les originaux Step45/46/55/58 n'ont PAS été importés/rejoués dans cette session ; ils sont seulement sous-jacents à l'authenticité de la chaîne amont.
+
+**IDENTITÉS ANALYTIQUES SUR s>0, PAS ENCORE ENCLOSURES** :
+
+```
+2s Uss = G_s+(G_U-4)*Us
+2s Usss = G_ss+2 G_sU Us+G_UU Us²+(G_U-6) Uss
+(2n+2-G_U(0,U0))*U_n=[s^n]G(s,Σ_{k<n} U_k s^k), n>=1
+```
+
+`G_U<0` (Step68v) implique absence de résonance des dénominateurs de récurrence au centre. Ne PAS utiliser naïvement `1/s` en intervalles, ni différencier des inégalités `|U-Ustar|`.
+
+## NEXT HARD RED STEP68ab
+
+1. Reconstituer byte-authentiquement les sources originales Steps45/46/55/57/58/60 et `hr_step68n_interval_ode_jets.py`, `hr_step68o_temporal_interval_annulus.py` et dépendances. Étape 68aa n'a PAS fait la relecture complète du Hamiltonien original cette fois.
+2. Calculer explicitement `U4` via la vraie fonction G originale et obtenir des bornes de ses dérivées/reste continu, afin de certifier les 2e et 3e jets pour un intervalle entier `0<s<=1/1024`, avec cancellations exactes de centre. Les limites Step68aa sont **tests limites obligatoires**, non remplaçantes.
+3. Propager les jets authentiques dans les 12 variables, calculer les coefficients temporels originaux Step58 `A_N/r²,A_M/r²`, certifier EXHAUSTIVEMENT et sans trou `r∈[1/64,1/32]` (ancienne file 7 PENDING), puis `[1/128,1/64]` et centre. Vérifier cellules et limites sans surinterprétation.
+4. Enfin contraintes supplémentaires, lapses/bords/jauge, J=0,K=0, rang Dirac COMPLET, nonIBP indépendance, dynamique 4D, stabilité et observables. Conserver GATE ouvert jusqu'à preuve.
+
+**CHECKPOINT PRÉFIXÉ. HISTORIQUE PRÉCÉDENT INTACT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68z TERMINÉE (2026-10-25)
 
 **ÉCRITURE UNIQUEMENT** sur `research/gate2b-nonhomothetic-transfer`. **INTERDIT** de toucher `main`, `research/v2-flrw`, GitHub Actions/workflows OFF.
