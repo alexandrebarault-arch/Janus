@@ -1,0 +1,58 @@
+{
+  "step": "68r",
+  "date": "2026-10-25",
+  "kind": "REPLAY_SAME_BYTE_AUTHENTIC_INTERVAL_EVALUATOR_NOT_INDEPENDENT_POISSON_ORACLE",
+  "checks": {
+    "outer": {
+      "completed": 265,
+      "total": 265,
+      "status": "PASSED",
+      "proof_sha256": "179b967cc21160dcfef5eb98e1142c5ca17b83ee182d17162a2ec64708e48e4f"
+    },
+    "inner": {
+      "completed": 314,
+      "total": 314,
+      "status": "PASSED",
+      "proof_sha256": "296e83528f9675fd42521b7cfffa2ec0f6057cce1d930a97a323aa007009e2c2"
+    }
+  },
+  "total_exact_rational_cells_recomputed": 579,
+  "all_bounds_match_saved_exactly": true,
+  "all_job_states": [
+    {
+      "label": "step68r-inner1",
+      "status": "PASSED",
+      "timeout_seconds": 25.0,
+      "elapsed_seconds": 11.4,
+      "exit_code": 0
+    },
+    {
+      "label": "step68r-inner2",
+      "status": "PASSED",
+      "timeout_seconds": 25.0,
+      "elapsed_seconds": 12.659,
+      "exit_code": 0
+    },
+    {
+      "label": "step68r-outer1",
+      "status": "PASSED",
+      "timeout_seconds": 25.0,
+      "elapsed_seconds": 11.904,
+      "exit_code": 0
+    },
+    {
+      "label": "step68r-outer2",
+      "status": "PASSED",
+      "timeout_seconds": 25.0,
+      "elapsed_seconds": 9.695,
+      "exit_code": 0
+    }
+  ],
+  "source": "numerics/hr_step68r_cell_replay.py",
+  "tests": "tests/test_hr_step68r_cell_replay.py",
+  "tests_final": "6 passed in 4.40s after fixing missing local copy; first run 3 failed 3 passed preserved in prior log",
+  "logical_scope": "r in [1/16,17/20]; center r<1/16 NOT covered; only Step58 lapse coefficients, not full Dirac rank",
+  "next": "Attempt r in [1/32,1/16] under bounded jobs, and central normalization; independent NON-IBP oracle still required",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
