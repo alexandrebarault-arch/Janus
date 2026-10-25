@@ -1,3 +1,44 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68m TERMINÉE APRÈS STEP68l (2026-10-25)
+
+**SEULE BRANCHE D'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Préserver `main` et `research/v2-flrw` et NE PAS RÉACTIVER GitHub Actions/workflows. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP68M_CERTIFIED_POSITIVE_RADIAL_U_SLOPE_ANNULUS.md`, puis `research/STEP68L_CERTIFIED_100X_REFINED_GLOBAL_RADIAL_BARRIER.md`.
+**CODE STEP68m EXÉCUTÉ, GIT BLOB IDENTIQUE :** `numerics/hr_step68m_positive_radial_slope.py`, SHA `639c88563411ad6d69298f36cf878f46c0e7be79`.
+**5 TESTS STEP68m VRAIMENT PASSÉS (46.07s), BLOB IDENTIQUE :** `tests/test_hr_step68m_positive_radial_slope.py`, SHA `bbba6eee09b81c7932a81b55d3c03739a11ef71b`.
+**RAPPORT RATIONNEL BRUT :** `research/reports/gate2b-step68m-certified-positive-radial-slope.json`, Git blob `b3ef2cdc0b187df12a671c1bd276e4142eb73495`.
+**PYTEST BRUT :** `research/reports/gate2b-step68m-pytest.log`, Git blob `9517377423e1e99b4cdf66fb17af73ea18b837f4`.
+
+## NOUVELLE CERTIFICATION DE MONOTONIE SUR LA VRAIE BRANCHE ORIGINALE STEP55
+
+En s'appuyant sur le certificat Step68l global `|U(s)-Ustar(s)|<=1e-6`, **le programme Step68m REEXECUTE ENCORE CE CERTIFICAT EXACT** depuis les quatre sources originales physiques Step45/46/55normal/55global, SHA octet-identiques. Puis il utilise la vraie EDO `2*s*U_s=G(s,U)-2U` et l'arithmétique entière orientée historique `I, S=10^28` pour évaluer les dérivées de U sur **8192 cellules rationnelles** couvrant **TOUT** le sous-domaine fermé `s in [1/64,289/400]` (`r in [1/8,17/20]`).
+
+```
+STRICT exact lower U_s >=
+2616650086463031354471/1250000000000000000000000000
+≈ 2.093320069170425e-6 >0
+
+STRICT exact upper U_s <=
+30880835985796069042583/19531250000000000000000000
+≈ 0.0015810988024727588
+```
+
+Donc sur **TOUTE LA VRAIE BRANCHE RADIALE** : `U_s>0` pour **CHAQUE** r de `[0.125,0.85]`, pas des points isolés. Les tests de provenance, mutation de la preuve, refus de résolution grossière et refus de paramètres non couverts ont PASSÉ ; les 4 nouveaux blobs source/test/rapport/log sur GitHub ont été relus et sont strictement identiques aux fichiers exécutés.
+
+**LIMITES :** Ce certificat NE COUVRE PAS r in [0,0.125) par cette méthode divisant par s ; même si `U_s(0)=U1>0` par Taylor et qu'un voisinage existe, PAS de borne explicite réconciliant les deux domaines. NE prouve A_N,A_M temporels, M/N positif global, rang de Dirac, fantôme BD ou théorie 4D.
+
+## STEP68l A LIRE CI-DESSOUS : TUBE 100× PLUS PRÉCIS
+
+Step68l a VRAIMENT prouvé à 16 384 cellules fermées : `|U-Ustar|<=1e-6` pour TOUT 0<=r<=0.85 et encadré exactement `V=G(s,U)=pLf'/r` avec `|V-Vstar|<1/20000`, en resserrant l'original Step55 de 100× (ancien deltaU 1e-4). Huit tests Step68l PASSÉS (39.18s) et blobs GitHub authentifiés. Les résultats d'origine Step68k et la suppression algébrique des lapses dérivés Step68j/h ne sont PAS remaniés.
+
+## NEXT STEP68n — VERROU TEMPORAL DÉCISIF
+
+1. Utiliser le tube continu amélioré `Ustar±1e-6`, la borne exacte `V=G(s,U)` et `U_s>0` pour r>=1/8 afin de construire les dérivées complètes q'', q''' etc avec AD d'intervalles, en conservant les deux poussières, la variation de z,z' et le vrai Step58.
+2. CERTIFIER ou RÉFUTER `A_N>0,A_M<0` du VRAI crochet temporel sur la solution NON HOMOTHÉTIQUE Step55 pour TOUT 0<r<=0.85, en séparant les zones r<1/8 et r=0 à l'aide des séries certifiées centrales U0..U3. L'ancien M/N ~0.519 est numériquement favorable mais NON CERTIFIÉ.
+3. Ensuite étudier globalement la jauge et les lapses positifs, les conditions aux bords, le rang de Dirac et l'oracle Poisson NON-IBP à six couples, ainsi que les charts exceptionnelles K=0,J=0. Si l'intervalle de A_N ou A_M inclut 0, NE PAS conclure : raffiner la preuve / publier l'obstruction exacte.
+4. A CHAQUE nouvelle avancée préfixer ce checkpoint et préserver l'historique entier ; n'écrire que sur branche active, GitHub Actions OFF. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED**.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68l CERTIFIÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. NE PAS TOUCHER `main` ni `research/v2-flrw`. GitHub Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
