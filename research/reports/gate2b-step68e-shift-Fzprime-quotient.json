@@ -1,0 +1,72 @@
+{
+  "step": "68e",
+  "date": "2026-10-25",
+  "active_branch": "research/gate2b-nonhomothetic-transfer",
+  "name": "Original six-pair shift lower-lapse coefficient: complete radial stationarity Fz-prime jet quotient",
+  "original_physical_module": {
+    "path": "numerics/hr_step45_exact_physical_ward.py",
+    "authentic_git_blob_sha": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "byte_identical_original_reconstructed_and_imported": true,
+    "six_pairs": true,
+    "two_moving_dusts": true,
+    "nine_ward_residuals_reexecuted_and_exact_zero": true
+  },
+  "scope": {
+    "branch": "positive K, |z|<1, Lg,Lf nonzero; Fz=0 and Fz'=0 for physical lower-shift quotient",
+    "external_lapses": "N and M independent with arbitrary radial dependence in compact support variation",
+    "computed": "Complete Frechet response delta_H z coefficients for N,Nprime,M,Mprime using all 12 original Step45 symplectic vector components and dust",
+    "not_computed": "Full temporal secondary Cdot coefficients A_N,B_N,A_M,B_M on physical Step55 exact radial solution; no independent non-IBP oracle, no Dirac rank or lapse fixing"
+  },
+  "new_exact_theorem": {
+    "baseline": "On Fz=0 the coefficient of undifferentiated M in delta_H z contains precisely pLg'', Sg'', theta_g''; the undifferentiated N coefficient already contains no canonical second radial jets.",
+    "Fz_prime": "Total radial derivative of the COMPLETE original Fz=Dg-K*z/sqrt(1-z²) with canonical and external z,zprime jets retained, evaluated after Fz=0 on pLgprime.",
+    "alpha": "-z*(1-z²)^(3/2)/(Lf*K)",
+    "definition": "R_M0 = [delta_H z]_{M} + alpha * (Fz)' after solving Fz=0 (NO discarded terms).",
+    "verified_derivatives": {
+      "pLg_second": "0",
+      "Sg_second": "0",
+      "theta_g_second": "0",
+      "remaining_9_second_jets": "0; not present"
+    },
+    "no_nontrivial_quadratic_jet_terms": true,
+    "independent_symbolic_relations": "Full SymPy symbolic proof across all twelve original canonical second radial jets, rather than a sampled profile.",
+    "negative_control_omit_Fzprime": "NONZERO pLg'' dependence remains",
+    "negative_control_wrong_sign": "NONZERO pLg'' dependence remains",
+    "qualifier": "On exact stationary radial data Fz=0,Fz'=0, R_M0=[delta_H z]_M. Removing second jets without imposing full prolongation would be erroneous."
+  },
+  "regular_center": {
+    "background_assumptions": "s=r², K=r² k(s) with k>0, z=r w(s), Lf finite positive; Fz=r³ f(s) with f and f_s finite.",
+    "alpha_scaling": "alpha= -w*(1-sw²)^(3/2)/(r*Lf*k), apparently O(1/r).",
+    "Fzprime_scaling": "Fz'=r²*(3f+2s f_s).",
+    "product": "alpha*Fz'= -r*w*(1-sw²)^(3/2)*(3f+2s f_s)/(Lf*k), regular O(r).",
+    "test": "exact symbolic equality and r→0 limit zero; includes independent rational w=1/250,k=1/4,Lf=1/5 test only (not full Step55 physical trajectory)"
+  },
+  "regression": {
+    "source": "numerics/hr_step68e_exact_shift_full_lapse_response.py",
+    "source_git_blob_sha": "8f4e82bcec2b5c179f5c2d4e21ccb70f2828b206",
+    "tests": "tests/test_hr_step68e_exact_shift_full_lapse_response.py",
+    "tests_git_blob_sha": "0f9aef7510d4e6d035405cf87820d28f032d0db0",
+    "source_and_tests_read_back_github_byte_identical_to_executed_local": true,
+    "environment": "/mnt/data/janus-step68e",
+    "command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68e_exact_shift_full_lapse_response.py",
+    "result": "18 passed in 2.37s (after fixing an initial test-file syntax error and avoiding expensive factorization in manifest; final source/tests rerun)",
+    "machine_manifest_SHA256": "024c4dc81ec76fc2076d683ac42154b43ada352f5aaa9812bd962d5c0695eda1",
+    "source_sha256": "3d647cd2c78b20e841c3ab686596c8178083a68ad18f85cb1c69889a6e651c50",
+    "test_sha256": "6f55ef002183e367ec3f1aee72dfdecde416e9e4e17b9bfdc53ad1c39602a4fb"
+  },
+  "remaining": {
+    "original_full_Step45_46_55_57_58_59_60_joint_run": false,
+    "step55_256_cell_certificate_rerun_this_turn": false,
+    "lower_temporal_Cdot_coefficients_physical": false,
+    "global_Dirac_rank": false,
+    "positive_lapses_boundary": false,
+    "original_non_IBP_six_pair_oracle": false,
+    "exceptional_K0_J0_charts": false,
+    "BD_ghost_absence": false,
+    "JANUS_R_validation": false
+  },
+  "next": "Step68f: import byte-original Step57–60 plus Step46/55 into same environment as Step45 (preflight SHA map already saved); evaluate the complete lower-order TEMPORAL secondary Cdot N,Nprime,M,Mprime after quotienting all full radial primaries and stationarity prolongations, use regular normalized Step55 profile, then independent non-IBP oracle, boundary/gauge lapse rank; do NOT mistake this delta_H z quotient for the Dirac rank.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "github_actions": "OFF"
+}
