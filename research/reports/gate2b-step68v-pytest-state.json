@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_hr_step68v_global_monotone_U.py"
+  ],
+  "child_pid": 8323,
+  "elapsed_seconds": 4.48,
+  "exit_code": 0,
+  "finished_at_utc": "2026-10-25T11:56:01+00:00",
+  "label": "step68v-tests",
+  "log_path": "research/reports/step68v-tests.log",
+  "schema": "janus-bounded-job-v1",
+  "started_at_utc": "2026-10-25T11:55:57+00:00",
+  "status": "PASSED",
+  "termination_grace_seconds": 2.0,
+  "timeout_seconds": 22.0,
+  "working_directory": "/mnt/data/janus-step68f"
+}
