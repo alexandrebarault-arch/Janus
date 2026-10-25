@@ -1,3 +1,37 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68v (APRÈS 68u) TERMINÉE (2026-10-25)
+
+**SEULE BRANCHE MODIFIABLE** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` INTACTES. GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68V_CERTIFIED_GLOBAL_RADIAL_U_MONOTONICITY.md`, puis `research/STEP68U_CERTIFIED_SHRINKING_CUBIC_CENTER_BARRIER.md`; conserver preuves temporelles précédentes `research/STEP68S_CERTIFIED_TEMPORAL_SIGNS_TO_R_1OVER32.md`.
+
+**NOUVELLE SOURCE 68v VRAIMENT EXÉCUTÉE, GIT SHA BYTE-MATCH :** `numerics/hr_step68v_global_monotone_U.py`, blob `9b6a2f93271a96af97d62648201c163282758c08`. **6 TESTS RÉUSSIS** (2.27s, lanceur timeout 22s) : `tests/test_hr_step68v_global_monotone_U.py`, blob `6bdff3937051dd40719eb1d0f1441065eecb4b54`. **RAPPORT RATIONNEL** `research/reports/gate2b-step68v-global-monotone-radial-U.json`, blob `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`. États/logs `research/reports/gate2b-step68v-pytest-state.json` et `...pytest.log`.
+
+## THÉORÈME SPATIAL NOUVEAU : U_s>0 JUSQU'AU CENTRE ET SUR TOUT LE RAYON
+
+Sur `0<=s<=1/64` (`0<=r<=1/8`), prendre la VRAIE branche analytique centrale Step49/67b et ses coefficients EXACTS `U0,U1,U2`, et le coefficient `U3` encadré rigoureusement Step67b. Définir `Ustar=U0+U1*s+U2*s²` ; `kappa=1/10^7`, barrières `Ustar±kappa*s³`. Les dérivées 3 des vrais résidus `Fplus,Fminus` de la véritable EDO 45/46/55 satisfont STRICTEMENT :
+```
+Fplus'''/6 <= -3664994635715032685663/5000000000000000000000000000 <0
+Fminus'''/6 >= 1270413128798157440287/2500000000000000000000000000 >0
+```
+par jets I entiers dirigés original `S=10^28` sur le continuum. La vraie récurrence analytique centrale donne exactement F±(0)=F±'(0)=F±''(0)=0 (NE PAS affirmer que la seule appartenance numérique de zéro à l'intervalle suffit). Taylor-Lagrange + |U3|<kappa + comparaison donne `|U-Ustar|<=10^-7*s³` sur le centre ENTIER r<=1/8. L'ancien Step68u (`numerics/hr_step68u_cubic_center_barrier.py`, Git blob `4249c1a8c1f60071612c52d756d9f4ff753f22e3`, **6 tests PASSED**, rapport `research/reports/gate2b-step68u-center-cubic-barrier.json`) n'avait certifié que r<=1/32 ; il reste un sous-théorème valide et est conservé.
+
+**NOUVEAU CONTRÔLE DE DERIVÉE DE LA VRAIE EDO :** G_U bornée exactement sur tout le nouveau tube par une différentiation automatique originale. Si `F0=G(s,Ustar)-2Ustar-2sUstar'`, alors `|U_s-Ustar'|<=s²*(R0+(L_G+2)*kappa)/2`, où R0 borne `|F0'''/6|` et L_G borne `|G_U|`, toutes deux obtenues par intervalles. La borne inférieure strictement positive de la VRAIE solution normalisée est
+```
+U_s(s)>=3947151372926460534852373/5000000000000000000000000000 >0
+pour TOUT s in [0,1/64], inclut U_s(0)=U1.
+```
+Step68m original a déjà CERTIFIÉ `U_s>0` par 8192 cellules sur `s in [1/64,289/400]` soit `r in [1/8,17/20]` ; leurs intervalles joints prouvent donc **U_s>0 pour CHAQUE s∈[0,289/400]**, c'est-à-dire **TOUT r∈[0,0.85]** (SPATIAL SEULEMENT), conditionnel aux preuves anciennes Step49/67b. Tous fournisseurs physiques Step45/46/55 originales byte-identiques et sources 68u/m pin SHA.
+
+## TEMPORAL ENCORE OUVERT
+
+Le VRAI opérateur temporel six-pair Step58 a son signe `A_N>0, A_M<0` continu sur `r∈[1/32,17/20]` certifié Steps68p/q/s et **1585 cellules EXACTEMENT rejouées** Steps68r/t. Pas de preuve `A_N,A_M` sur `0<=r<1/32`. Step68u essai brut `r in [1/64,1/32]` **INCOMPLETE : 500 nœuds, 247 cellules certifiées, 7 en attente**, SHA authentifié GitHub `research/reports/gate2b-step68u-incomplete-1over64-to-1over32-checkpoint.json` blob `fbbeeb09fb397abf14d77fb0bce22d8a44172b79`. Relance possible depuis workspace local `research/reports/step68u-band-1over64-to-1over32.json` avec `--start 1/64 --end 1/32 --max-depth 25` dans lanceur jobs TIMEOUT 24s, mais sub-division brut inefficace. La nouvelle barrière cubique élimine l'incertitude U dominante, cependant pour des cellules LARGES les autres dépendances d'intervalles du Step58 restent inflationnistes.
+
+**PRIORITÉ UNIQUE SUIVANTE :** construire un module de jets canoniques/réponse du shift NORMALISÉ PAR r,s au centre, réduire `A_N/r²` et `A_M/r²` sur les contraintes complètes avec les séries centrales `U0..U3` et l'encadrement cubique `|U-Ustar|<=10^-7*s³`, puis certifier signes jusque r=0. NE PAS simplement prolonger les résultats extérieurs sans calcul. Les limites/signes de A_N/r²,A_M/r² au centre NON PROUVÉS. Ensuite : jauge/bords/lapses temporels, rang Dirac, vrai oracle Poisson NON-IBP indépendant, charts K0/J0, fantôme BD, cosmologie 4D.
+
+**RAPPEL OPERATOIRE :** chaque calcul >quelques secondes doit être lancé sous `python scripts/janus_bounded_job.py --timeout-seconds 20..25 --grace-seconds 2 --state <state> --log <log> --label <name> -- <cmd>` ; état JSON atomique et interrompt les enfants. Après chaque vraie avancée préfixer ce fichier en conservant les anciennes ~260K lignes/chars et publier code/test/rapport SHA-vérifiés. **GATE_2B OPEN — JANUS_R NOT_VALIDATED**.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68t TERMINÉE (2026-10-25)
 
 **SEULE BRANCHE D'ÉCRITURE** `research/gate2b-nonhomothetic-transfer`, main et v2-flrw intouchées, GitHub Actions OFF. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
