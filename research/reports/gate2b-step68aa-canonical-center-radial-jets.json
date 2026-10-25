@@ -1,0 +1,76 @@
+{
+  "step": "68aa",
+  "type": "EXACT_AUTHENTIC_F_CANONICAL_CENTER_LIMITS_ONLY",
+  "analytic_spatial_origin": "Step49 and original Step45/46/55, conditional on original published certificates",
+  "input_authentic_Git_blobs": {
+    "68z_source": "8c3a46b44e5c55c7b8f464668f9e8dc7d17eae8b",
+    "68z_report": "38f55aabf7a7c47c812f32db684f50ffbaf16374",
+    "68u": "aaacd0064e04cb0f5d596aa3df042a4c9a4c751d",
+    "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+    "68y": "04271c360f2245142e171a5979db139ac4bdaf79"
+  },
+  "strictly_negative_Step67b_U3": [
+    "-31325163121998456229/2500000000000000000000000000",
+    "-62650326243996887233/5000000000000000000000000000"
+  ],
+  "exact_center_limit_intervals": {
+    "U_minus_Ustar_over_s3": [
+      "-31325163121998456229/2500000000000000000000000000",
+      "-62650326243996887233/5000000000000000000000000000"
+    ],
+    "U_s_minus_Ustar_s_over_s2": [
+      "-93975489365995368687/2500000000000000000000000000",
+      "-187950978731990661699/5000000000000000000000000000"
+    ],
+    "U_ss_minus_2U2_over_s": [
+      "-93975489365995368687/1250000000000000000000000000",
+      "-187950978731990661699/2500000000000000000000000000"
+    ],
+    "U_sss_at_s0": [
+      "-93975489365995368687/1250000000000000000000000000",
+      "-187950978731990661699/2500000000000000000000000000"
+    ],
+    "pLf_minus_r2Ustar_over_r8": [
+      "-31325163121998456229/2500000000000000000000000000",
+      "-62650326243996887233/5000000000000000000000000000"
+    ],
+    "pLf_prime_over_r_minus_Vstar_over_s3": [
+      "-31325163121998456229/312500000000000000000000000",
+      "-62650326243996887233/625000000000000000000000000"
+    ],
+    "pLf_doubleprime_minus_2U0_12U1s_30U2s2_over_s3": [
+      "-219276141853989193603/312500000000000000000000000",
+      "-438552283707978210631/625000000000000000000000000"
+    ],
+    "pLf_tripleprime_over_r_minus_24U1_120U2s_over_s2": [
+      "-657828425561967580809/156250000000000000000000000",
+      "-1315656851123934631893/312500000000000000000000000"
+    ],
+    "pLf_8th_r_derivative_at_center": [
+      "-1973485276685902742427/3906250000000000000000000",
+      "-3946970553371803895679/7812500000000000000000000"
+    ]
+  },
+  "independent_sympy_polynomial_oracle_multipliers": {
+    "U_minus_Ustar_over_s3": 1,
+    "U_s_minus_Ustar_s_over_s2": 3,
+    "U_ss_minus_2U2_over_s": 6,
+    "U_sss_at_s0": 6,
+    "pLf_minus_r2Ustar_over_r8": 1,
+    "pLf_prime_over_r_minus_Vstar_over_s3": 8,
+    "pLf_doubleprime_minus_2U0_12U1s_30U2s2_over_s3": 56,
+    "pLf_tripleprime_over_r_minus_24U1_120U2s_over_s2": 336,
+    "pLf_8th_r_derivative_at_center": 40320
+  },
+  "regularized_ode_derivative_identities": {
+    "second_identity": "2*s*U_ss=G_s+(G_U-4)*U_s",
+    "third_identity": "2*s*U_sss=G_ss+2*G_sU*U_s+G_UU*U_s^2+(G_U-6)*U_ss",
+    "center_denominator_proof": "2*n+2-G_U(0,U0)>0 for n>=1 since authenticated Step68v G_U<0"
+  },
+  "crucial_scope": "Limits at r=0, NOT uniform bounds for 0<r<=1/32. Higher radial derivatives require actual G partial-derivative interval certificates.",
+  "temporal_Step58_AN_AM_near_center": "NOT_COMPUTED",
+  "annulus_r_1over64_1over32": "NOT_CERTIFIED",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
