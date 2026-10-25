@@ -1,3 +1,56 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ac TERMINÉE (2026-10-25)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` ; **NE JAMAIS TOUCHER** `main`, `research/v2-flrw`, ni GitHub Actions/workflows que l'utilisateur a désactivés.
+**STATUT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE IMMÉDIATEMENT** `research/STEP68AC_AUTHENTIC_ORIGINAL_PHYSICAL_U4_CENTER_CERTIFICATE.md`, puis l'audit Step68ab intégralement conservé CI-DESSOUS. **REPRENDRE À STEP68ad**. GitHub est le journal permanent, le workspace local `/mnt/data/janus-step68ac` est TRANSITOIRE.
+
+## NOUVEAU RÉSULTAT PHYSIQUE ORIGINAL — VRAI U4 CERTIFIÉ
+
+**SIX SOURCES PHYSIQUES ORIGINALES RECONSTITUÉES, GIT HASH BYTE-IDENTIQUE ET EXÉCUTÉES :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55 normalized `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step55 global barrier `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step68l `2a1ffc026a30abf41208b44a707dc869daf0929d`, Step68n `96370e0599748c6dc07faf339ab3646ae3474e7d`. Les reports Steps68u/v/y, le code/report Step68z et la source Step68aa sont également réauthentifiés via `authenticated_inputs()`, y compris l'intervalle U3 originel Step67b.
+
+La **VRAIE fonction G physique** issue du Hamiltonien sphérique original Step45/46/55 est dérivée symboliquement, ~1048 opérations, **PAS un G alternatif du contre-modèle Step68ab**. Son identité centrale EXACTE, démontrée SymPy avant intervalle :
+
+```
+partial_U G(s,U)|_(s=0) = -Sfr0/Lf0 .
+Sur le centre régulier Sfr0(0)=Lf0(0)>0 => G_U(0,U)=-1 EXACT.
+U_n = [s^n]G(s,Σ_{k<n} U_k s^k)/(2n+3).
+Dénominateurs pour n=1,2,3,4 : 5, 7, 9, 11.
+```
+
+**NOUVELLE BORNES RATIONNELLES CERTIFIÉES EXACTES POUR LA SOLUTION ORIGINALE :**
+
+```
+U4 ∈ [
+ -3728419736053033407/10000000000000000000000000000,
+ -3728419736052979197/10000000000000000000000000000
+] ⊂ (-∞,0)
+U4 ≈ -3.728419736053e-10
+pLf(r)=r²[U0+U1r²+U2r⁴+U3r⁶+U4r⁸+O(r^10)]
+pLf^(10)(0)=3628800*U4 ≈ -0.001352968953819 <0.
+```
+
+Méthode RIGOUREUSE : original Step68n `Jet` temporairement K=4 en MÉMOIRE, source inchangée, try/finally restaure K=3 ; arithmétique exacte d'intervalles entiers sortants Step55 à S=10^28, racines/quotients inclus ; d'abord récurrence U1..U4 depuis U0, puis calcul U4 avec intervalles hist. U1,U2 et intervalle prouvé Step67b U3, intersection; **ces deux usages du MÊME G sont deux inclusions compatibles, PAS des oracles indépendants**. Résidus de l'ODE originale sur cinq coefficients n=0..4 contiennent zéro. U1/U2 recouvrent les sources historiques, U3 recouvre Step67b. Original Step55 barrière spatiale **256 cellules effectivement RERUN** et POSITIF.
+
+**SOURCE FINALE PUBLIÉE TESTÉE** `numerics/hr_step68ac_authentic_original_U4.py`, blob `a90b2d6d4882a0ff0aa810c5a320ba247f171a13`.
+**TESTS FINAUX PUBLIÉS TESTÉS** `tests/test_hr_step68ac_authentic_original_U4.py`, blob `705108773b57f4f621ac7888a63359cb19e4429b`.
+**RAPPORT MACHINE ORIGINAL** `research/reports/gate2b-step68ac-authentic-U4-report.json`, blob `16ae8dab3563c17134e4e20f886fb7306dc2e4ba`.
+**AUDIT DÉTAILLÉ** `research/STEP68AC_AUTHENTIC_ORIGINAL_PHYSICAL_U4_CENTER_CERTIFICATE.md`.
+**TESTS RÉELLEMENT EXÉCUTÉS ENSEMBLE : 44 PASSED EN 5.92s, zéro skip** : 15 Step68ac authentiques +29 régressions Step68ab/aa/z. Six fichiers originaux ET TROIS nouveaux fichiers source/test/JSON recontrôlés OCTET IDENTIQUES GitHub/local. AUCUNE assertion de l'exécution Steps57/58/60 ou d'un vrai coefficient temporel nouveau.
+
+**NON RÉSOLU :** il s'agit du SEUL COEFFICIENT CENTRAL U4 (s=0) et de la barrière spatiale historique, PAS d'un reste Taylor C³ certifié sur 0<s<=1/1024, PAS d'encadrements temporels AN/r², AM/r² au-dessous de r=1/32, PAS d'un rang de Dirac complet ni d'une preuve de stabilité BD/4D.
+
+## NEXT HARD RED : STEP68ad
+
+1. Reconstruire/AUTHENTIFIER Steps57/58/60 et 68o originaux à leur SHA historiques depuis GitHub. Conserver l'exact G physique ci-dessus et ses 6 fichiers originaux inchangés.
+2. Calculer rigoureusement les dérivées G_s,G_U,G_ss,G_sU,G_UU,... et des restes de U(s) à partir de CETTE fonction fixe pour `s ∈ [0,1/1024]`. Utiliser les séries renormalisées `h=(U-Ustar)/s³` et U4 signé ; **interdit** de différencier naïvement des bornes sur U,Us ou de diviser des intervalles non factorisés par s.
+3. Obtenir inclusion entière de U_ss,U_sss et des 12 vrais jets canoniques; tester l'opérateur temporel original Step58 normalisé A_N/r²,A_M/r². Certifier les 7 cellules PENDING [1/64,1/32] et anneau [1/128,1/64], puis centre, ENTIÈREMENT sans trou.
+4. Ensuite certificat complet lapses/bords/jauge et rang Dirac, exceptions K=0,J=0, vrai oracle NON-IBP, stabilité cosmologique 4D / observables. Maintenir GATE ouvert / JANUS-R non validé.
+
+**CHECKPOINT NOUVEAU PRÉFIXÉ ; TOUS LES CHECKPOINTS ANTÉRIEURS RESTENT INTÉGRALEMENT CI-DESSOUS, SANS AMPUTATION.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ab TERMINÉE (2026-10-25)
 
 **BRANCHE UNIQUE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. Ne jamais écrire dans `main`, `research/v2-flrw`, ni réactiver GitHub Actions/workflows OFF.
