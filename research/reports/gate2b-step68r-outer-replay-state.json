@@ -1,0 +1,26 @@
+{
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "completed": 265,
+  "failures": [],
+  "label": "outer",
+  "proof_sha256": "179b967cc21160dcfef5eb98e1142c5ca17b83ee182d17162a2ec64708e48e4f",
+  "schema": "janus-temporal-replay-v1",
+  "source_provenance": {
+    "interval_jet_sha": "96370e0599748c6dc07faf339ab3646ae3474e7d",
+    "new_engine_sha": "c99caebc17f243784450ddff94fb061767e6d8e7",
+    "original_shas": {
+      "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+      "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+      "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+      "hr_step59_third_jet_gate.py": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+      "hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+    }
+  },
+  "status": "PASSED",
+  "total": 265,
+  "warning": "Replay uses SAME authenticated Step58 interval evaluator; not a second independent theoretical oracle"
+}
