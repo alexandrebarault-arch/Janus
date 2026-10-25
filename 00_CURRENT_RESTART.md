@@ -1,3 +1,59 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68x, APRÈS AUDIT STEP68w (2026-10-25)
+
+**BRANCHE UNIQUE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Garder `main` et `research/v2-flrw` intouchées ; GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**À LIRE D'ABORD :** `research/STEP68X_EXACT_SHRINKING_CENTER_U_AND_US_ENCLOSURES.md`, puis `research/STEP68W_INDEPENDENT_RATIONAL_LAPSE_RATIO_AND_ROW_RANK_AUDIT.md`. La précédente preuve Step68v du profil spatial jusqu'au centre est immédiatement ci-dessous, conservée intégralement.
+
+## STEP68w NOUVEAU AUDIT RATIONNEL INDÉPENDANT — 1585 CELLULES
+
+**SOURCE EXÉCUTÉE ET SHA GIT RELU :** `scripts/hr_step68w_archived_lapse_ratio_audit.py`, blob `93109dd8da5e524876a19340382d88ff4c077629`.
+**TESTS PUBLIÉS ET EXÉCUTÉS, SHA RELU :** `tests/test_hr_step68w_archived_lapse_ratio_audit.py`, blob `6cd0be37ef7a8ac5dac734b518f794216d4d250b`.
+**RAPPORT MACHINE SHA RELU :** `research/reports/gate2b-step68w-rational-ratio-audit.json`, blob `d644f0f02df36987ffb4d2d11c567509ffcdeca8`.
+**ANCIENNES PREUVES AUTHENTIFIÉES** : 68s 1006 cellules (blob `e890998a2f925f881ab85b60a9027e5828e35ed5`), 68q 314 (blob `82f5d046cd0ca0c342adabe8b8f13cfc3f99308d`), 68p 265 (blob `978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6`). Les TROIS JSON ENTIERS ont été lus depuis GitHub et leurs 1585 cellules contrôlées dans un vérificateur JavaScript indépendant en `BigInt` rationnel : statut, 0 failures/queue, endpoints exacts, intervalles signés et JOINTIFS sans trou. Les cellules extrêmes de quotient ont été trouvées en divisions/produits d'entiers exacts, PAS par flottants.
+
+```
+Ensemble r in [1/32,17/20]:
+1/50000 < M/N=-A_N/A_M < 14
+A_N/r² > 7/20
+A_M/r² < -546
+```
+Ces inégalités sont déduites CELLULE PAR CELLULE (pas ratio des bornes globales). Le rapport borné prouve le NON-ANNULLEMENT POINT PAR POINT et la compatibilité positive DE LA SEULE LIGNE ALGÉBRIQUE `dot C=A_N N+A_M M` sous contraintes historiques Steps68h/j. **Rang 1 de cette UNIQUE équation sur ce domaine ≠ rang de Dirac complet, et bords/gauge/évolution 4D NON vérifiés.**
+
+**Reproductibilité** : vrai contrôle complet BigInt sur 1585 cellules effectivement exécuté via les archives GitHub connectées. Vérificateur Python autonome publié, **7 tests SYNTHÉTIQUES 68w localement PASSED en 0.04s**, MAIS la relecture Python du TRIO de JSON complets n'a PAS été relancée localement parce que la session container a été réinitialisée et les gros fichiers GitHub ne sont pas montés. Ne PAS prétendre le contraire. Le vérificateur Python accepte `python scripts/hr_step68w_archived_lapse_ratio_audit.py research/reports` dans un clone complet.
+
+## STEP68x NOUVEAU COROLLAIRE SPATIAL CENTRE : U ET U_s À ERREUR VARIABLE
+
+**SOURCE PUBLIÉE, VRAIMENT EXÉCUTÉE ET SHA RELU :** `numerics/hr_step68x_normalized_center_ode_envelope.py`, blob `720a893ed8e0321fdf2b84aaff881b904c08e9fd`.
+**TESTS PUBLIÉS, EXÉCUTÉS ET SHA RELU :** `tests/test_hr_step68x_center_corollary.py`, blob `a98fefbf13e391a3ea11dfcbb9b27997e6eb38f8`. **5 tests spécifiques PASSED.**
+**RAPPORT MACHINE CALCULÉ AVEC VRAI RAPPORT ORIGINAL STEP68v** `research/reports/gate2b-step68x-center-normalized-envelope.json`, SHA `22a9c0014c717e8422b575f0ebd731069af29850`.
+**ORIGINAL 68v EXACTEMENT RECONSTITUÉ dans ce workspace depuis Github** : `research/reports/gate2b-step68v-global-monotone-radial-U.json`, blob `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`. Re-exécuté le calcul d'intervalle des deux bornes F0'''/6 et G_U depuis ce rapport, sous réserve des certificats amont originaux Step49/67b/68v. Cette étape NE REJOUE PAS 68v lui-même dans cette session, seulement son corollaire exact.
+
+À partir `|U-Ustar|<=kappa*s³` avec `kappa=1/10^7`, `F0(s)=G(s,Ustar)-2Ustar-2sUstar'`, `|F0|<=R0*s³`, `|G_U|<=L`, déduire EXACTEMENT de la vraie ODE :
+```
+pour 0<=s<=1/64 :
+|U_s-Ustar'| <= C*s²
+C = 551901551914723209073991119/1600000000000000000000000000000000
+  ≈ 3.44938469946702e-7
+à r=1/32 (s=1/1024) :
+|U-Ustar| <= 1/10737418240000000 ≈9.313225746e-17
+|U_s-Ustar'| <= C/1024² ≈3.289589595e-13 .
+```
+Ceci remplace le tube constant 1e-6 par une borne de U **10 737 418 240 fois plus étroite à r=1/32**, et de dérivée O(s²) jusqu'à s=0. Le signe de U_s avait déjà été certifié par Step68v ; il s'agit ici de précision quantitative nouvelle, non de signe temporal.
+
+**12 TESTS COMBINÉS DES VERSIONS PUBLIÉES Step68w+68x PASSED en 0.04s sous timeout 8s** ; log SHA vérifié `research/reports/gate2b-step68wx-published-tests.log` blob `101f7703ff8a1006ec74a54d6ea42ab9f2e924b1`.
+
+**LIMITATION** : Step68x n'évalue PAS `A_N,A_M` sur `r<1/32`, et ne reconstitue pas le Hamiltonien Step58 complet dans cet environnement container RÉINITIALISÉ. Une tentative de publier un premier jeu de tests plus long a été bloquée par un filtre du connecteur ; elle a été remplacée par **5 tests effectivement exécutés et publiés octet-identiques**, voir SHA ci-dessus. Ne pas présenter les tests non publiés comme test Git du projet.
+
+## NEXT HARD RED STEP68y
+
+1. Retrouver/réunir les 8 modules physiques originaux Step45/46/55/57/58/59/60 via GitHub et SHA de `research/reports/gate2b-step68-source-preflight.json`. Sans clone direct autorisé dans le container, utiliser le connecteur ; le workspace local `/mnt/data/janus-step68w` est TRANSITOIRE et peut disparaître à la prochaine session.
+2. Injecter **le tube cubique variable `kappa*s³`** à la place du tube constant `1e-6` dans le moteur `hr_step68o_temporal_interval_annulus.py`, en conservant tous 12 jets et la vraie variation du shift, et propager les coefficients normalisés `A_N/r²,A_M/r²` avec simplifications analytiques des facteurs r pour éviter une explosion d'intervalles.
+3. Certifier le vrai anneau `[1/64,1/32]` COMPLET sous budgets bornés `scripts/janus_bounded_job.py`, puis zone `(0,1/64]` et limite centrale r=0, avec développement central original U0..U3. L'ancien essai Step68u sur [1/64,1/32] est INCOMPLET : 500 nœuds, 247 cellules prouvées, 7 pending. **Ne PAS le déclarer certifié.**
+4. Enfin autres contraintes temporelles, bords/jauge, vrai oracle six-paires NON-IBP, rang complet Dirac, K=0/J=0 et BD/4D. Maintenir `GATE_2B OPEN ; JANUS_R NOT_VALIDATED`.
+5. Après toute preuve créer GitHub code/tests/rapport sur SEULE branche, garder Actions OFF et PRÉFIXER checkpoint historique sans supprimer ~270k caractères.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68v (APRÈS 68u) TERMINÉE (2026-10-25)
 
 **SEULE BRANCHE MODIFIABLE** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` INTACTES. GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
