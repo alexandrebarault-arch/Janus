@@ -1,0 +1,101 @@
+{
+  "step": "68p",
+  "date": "2026-10-25",
+  "status": "CERTIFIED_OUTER_ANNULUS_ONLY",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "physical_provenance": {
+    "interval_jet_sha": "96370e0599748c6dc07faf339ab3646ae3474e7d",
+    "new_engine_sha": "c99caebc17f243784450ddff94fb061767e6d8e7",
+    "original_shas": {
+      "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+      "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "hr_step57_secondary_principal_symbol.py": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+      "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+      "hr_step59_third_jet_gate.py": "ae26a79cbfa7bb50fbb398d7d6c18478adf7627e",
+      "hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+    }
+  },
+  "scope": {
+    "radial_interval_inclusive": [
+      "1/8",
+      "17/20"
+    ],
+    "s_interval_inclusive": [
+      "1/64",
+      "289/400"
+    ],
+    "Step68l_global_unique_center_branch_tube_U": "Ustar(s) +/- 1e-6",
+    "r_0_center_excluded": true,
+    "all_12_six_pair_canonical_fields_with_two_dusts": true,
+    "original_Step58_full_Cdot_zero_lapse_derivative_coefficients": [
+      "N",
+      "M"
+    ],
+    "physical_original_sectors": "positive EH, HR interaction, two moving dusts, specified Step55 benchmark",
+    "nonIBP_independent_oracle": "NOT_RUN",
+    "interval_rounding": "original Step55 I integer outward, fixed scale 10^28 with half integer power sqrt",
+    "Taylor_ODE_derivatives": "U_s,U_ss,U_sss from exact original 2s U_s=G-2U, third-order factorial-normalized interval jets",
+    "closure_of_Hamiltonian_time_constraints": "NOT PROVED"
+  },
+  "certificate": {
+    "algorithm": "depth-first adaptive splitting of failed/undefined outward intervals",
+    "processed_nodes": 529,
+    "closed_leaf_cells_certified": 265,
+    "unfinished_queue": 0,
+    "uncertified_leaves": 0,
+    "exact_no_gaps_coverage_verified": true,
+    "lower_A_N_global": "74947205335628168039413183/1250000000000000000000000000",
+    "upper_A_N_global": "23499911936075363691837651212831/5000000000000000000000000000",
+    "lower_A_M_global": "-47339272411569593486538215426321/5000000000000000000000000000",
+    "upper_A_M_global": "-237882690187249002934304118023/5000000000000000000000000000",
+    "conservative_ratio_M_over_N_global_lower": "299788821342512672157652732/12067825969226896389389147905439",
+    "conservative_ratio_M_over_N_global_upper": "12100110164989551454170392062459/870429215706122757278389599591",
+    "numerical_readability_not_certificates": {
+      "min_A_N": 0.059957764268502536,
+      "max_A_M": -47.5765380374498,
+      "ratio_lower": 2.4841990770083842e-05,
+      "ratio_upper": 13.901314370719412
+    },
+    "signs_proved": "A_N>0 and A_M<0 for every r in [1/8,17/20] conditional on original Step68l global U certificate and ODE",
+    "local_lapse_M_over_N": "-A_N/A_M is strictly positive for N>0 at every radius on this annulus assuming Step68h/j full lapse derivative elimination on constraints",
+    "proof_rows": "research/reports/gate2b-step68p-adaptive-outer-cover.json"
+  },
+  "execution": {
+    "joint_certification_runs": [
+      "step68p-outer-run2.state.json",
+      "step68p-outer-run3.state.json",
+      "step68p-outer-run4.state.json"
+    ],
+    "per_job_timeout_seconds": [
+      28,
+      27,
+      27
+    ],
+    "expired_jobs": "none in successful adaptive proof; initial unsplit wide interval raise was fixed by fail-closed bisection",
+    "test_command": "OPENBLAS_NUM_THREADS=1 PYTHONPATH=. python scripts/janus_bounded_job.py --timeout-seconds 27 --grace-seconds 2 --state research/reports/gate2b-step68p-final-test.state.json --log research/reports/gate2b-step68p-final-test.log --label step68p-final-test -- python -m pytest -q tests/test_hr_step68o_68p_temporal_annulus.py",
+    "test_result": "10 passed in 4.75s final run, 27s hard deadline",
+    "all_source_and_test_sha_bytes": {
+      "interval_ode_jets": "96370e0599748c6dc07faf339ab3646ae3474e7d",
+      "temporal_one_radius": "33e2ab71738baaea104e686c427bd8c52109343d",
+      "annulus_interval_engine": "c99caebc17f243784450ddff94fb061767e6d8e7",
+      "adaptive_resume_proof": "10f62bacafa25827de747707dd3f45c7c96458a6",
+      "tests": "381f44035d638fab153373ac5a2e76c830b46c5d",
+      "bounded_job_runner": "b714eefb4b5e3e1e41b722ccba3744ec4b4d7840"
+    },
+    "proof_rows_sha256": "179b967cc21160dcfef5eb98e1142c5ca17b83ee182d17162a2ec64708e48e4f",
+    "test_state": "research/reports/gate2b-step68p-final-test.state.json",
+    "test_log": "research/reports/gate2b-step68p-final-test.log",
+    "proof_rows": "research/reports/gate2b-step68p-adaptive-outer-cover.json"
+  },
+  "open_issues": [
+    "0<=r<1/8 including normalization at center; cannot extend this certificate there",
+    "full secondary and primary preservation at all times, lapse gauge and boundary compatibility",
+    "independent non-integrated-by-parts six pair canonical Poisson oracle",
+    "K=0 and J=0 singular charts, global Dirac rank and BD ghost absence",
+    "4D JANUS cosmological perturbation stability and observations"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
