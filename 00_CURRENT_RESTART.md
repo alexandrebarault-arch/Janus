@@ -1,3 +1,58 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68g ACHEVÉE APRÈS STEP68f (2026-10-25)
+
+**SEULE BRANCHE MODIFIABLE :** `research/gate2b-nonhomothetic-transfer`. Ne toucher ni `main` ni `research/v2-flrw`. GitHub Actions/workflows demeurent DÉSACTIVÉS. **GATE 2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE ABSOLUMENT :** `research/STEP68F_68G_ORIGINAL_JOINT_TEMPORAL_LAPSE_AND_EXACT_MPRIME_QUOTIENT.md`.
+**SYNTHÈSE MACHINE :** `research/reports/gate2b-step68f-68g-integrated-status.json`.
+**NOUVELLE SOURCE PHYSIQUE EXÉCUTÉE :** `numerics/hr_step68f_physical_pointwise.py` SHA Git blob `82e1ebb3a290f54a0d3b5069df67504044381626`.
+**NOUVEAUX TESTS DE RACCORDEMENT :** `tests/test_hr_step68f_joint_profile.py` SHA Git blob `5d423b4d646c6c3ac4d28884e3116bf56a35bde0`.
+**NOUVEAU THÉORÈME SYMBOLIQUE EXACT :** `numerics/hr_step68g_full_Cdot_Mprime_quotient.py` SHA Git blob `2245403862795569d3d6215aeb5e6227ee1148d6`.
+**TESTS DE CE THÉORÈME :** `tests/test_hr_step68g_full_Cdot_Mprime_quotient.py` SHA Git blob `5afc5b52e260532eb94e8ecec940354eb3f12d9d`.
+
+**IMPORTANT : HUIT MODULES PHYSIQUES ORIGINAUX TESTÉS ENSEMBLE OCTET IDENTIQUES À GITHUB** dans `/mnt/data/janus-step68f/numerics` : Step45, Step46, Step55normal, Step55global, Step57, Step58, Step59, Step60. Voir source hashes exacts dans `research/reports/gate2b-step68f-68g-integrated-status.json`. Les certificats physiques 45/46/55/57/58/59/60 ont RÉELLEMENT PASSÉ dans le même process, incluant certificat spatial global Step55 256 cellules et ses marges rationnelles strictes d'origine. Trace GitHub : `research/reports/gate2b-step68f-original-eight-module-joint.json`.
+
+## AVANCÉE SÉRIEUSE : PREMIER COEFFICIENT TEMPORAL NUMÉRIQUE ÉVALUÉ SOUS LES CONTRAINTES
+
+À rayon `r>0`, choisir un point `U(s0)=Ustar(s0)+offset` dans la barrière certifiée Step55 ; déterminer `U_s,U_ss,U_sss` depuis le vrai second membre original `G(s,U)` et ses dérivées, pas par différentiation arbitraire de Ustar. Tous les champs canoniques à six couples, les moments poussière, `z,z',z''` et jets radiaux jusqu'à l'ordre 4 sont construits selon les sources physiques originales. L'original Step58 calcule le VRAI crochet temporel `Cdot` avec la réponse du shift non figée.
+
+```
+r=0.4 ; précision mpmath 55 chiffres :
+contraintes Fz,Hg,Hf,C,Hg',C' : |résidu| < 2e-54
+coefficient N0 de Cdot : +556.3983109239983805209505844...
+coefficient M0 de Cdot : -1071.784882043146390125740547...
+coefficients N',M',N'',M'' : ~1e-54
+rapport local candidat M/N = +0.519132449287150599440043197596...
+```
+
+À 17 rayons DISTINCTS observés sur `0.05≤r≤0.85`, les signes `A_N>0,A_M<0` et `M/N>0` persistent numériquement ; valeurs observées `M/N ≈ 0.518552348... à 0.521119909...`. À `r=0.4`, décalages `Ustar±1e-5` préservent le signe positif. Contrôle négatif : ajout volontaire `pSf+=0.001` rompt Hf,C et crée `B_N ≈ -0.000733887` ; les annulations ne sont pas constantes hors contraintes. Données BRUTES ET BYTE-COPIÉES sur GitHub :
+
+- `research/reports/gate2b-step68f-physical-highprecision-scan.json` ;
+- `research/reports/gate2b-step68f-extended-radius-scan.json` ;
+- `research/reports/gate2b-step68f-negative-off-primary.json`.
+
+**LIMITATION MAJEURE :** ces jets sont des SOLUTIONS LOCALES de l'EDO à un rayon choisi, initialisées à `Ustar+offset`, mais pas une preuve qu'ils appartiennent à la trajectoire UNIQUE exactement prolongée du centre. Les signes/ratios de l'opérateur temporel ne sont PAS encadrés uniformément par intervalles. Les dizaines de décimales décrivent seulement la stabilité arithmétique de l'évaluation à ce point, PAS une précision certifiée du véritable profil global. Il manque rang et bords.
+
+## DEUXIÈME AVANCÉE — STEP68g : QUOTIENT COMPLET DU COEFFICIENT TEMPOREL M'
+
+En utilisant le VRAI six-pair Step58, sur la stationnarité `Fz=0,K>0`, définir `B_M=[Cdot]_{M'}` et
+```
+lambda=3*z*(z²-1)/(Lg*Lf²)=-3*z*(1-z²)/(Lg*Lf²)
+R_BM = B_M - lambda * Fz'
+```
+avec `Fz'` obtenu en dérivant la CONTRAINTE COMPLÈTE. Le calcul exact SymPy démontre **toutes les 12 dérivées `partial(R_BM)/partial(q_i'')=0` sur `Fz=0`**. Avant quotient, B_M dépend NON TRIVIALEMENT de `pLg'', Sg'', theta_g''` seulement. Mauvais signe ou omission de Fz' donne un résidu non nul. Sur `Fz=Fz'=0`, `R_BM=B_M`. Le produit `lambda Fz'` vaut `-3r³w(1-sw²)(3f+2sf_s)/(Lg Lf²)` avec `Fz=r³f(s)`, régulier au centre sous les parités. **ATTENTION : B_M=0 SUR TOUTE LA BRANCHE N'EST PAS ENCORE DÉMONTRÉ** ; ce quotient enlève uniquement les jets seconds.
+
+**TESTS RÉELLEMENT EXÉCUTÉS ENSEMBLE : 41 PASSED en 16.48s** (13 nouveaux 68f, 10 nouveaux 68g, 18 précédents 68e) par `OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q tests/test_hr_step68f_joint_profile.py tests/test_hr_step68g_full_Cdot_Mprime_quotient.py tests/test_hr_step68e_exact_shift_full_lapse_response.py`. Les 4 NOUVEAUX Git blobs source/test ont été relus identiques octet pour octet aux fichiers VRAIMENT exécutés.
+
+## PRIORITÉ UNIQUE À LA REPRISE — STEP68h (HARD RED)
+
+1. **NE PAS PERDRE LES 8 SOURCES ORIGINALes** : recharger leur liste/SHA depuis le rapport Step68f et vérifier hashes avant chaque nouveau calcul. Les modules original 63–65 peuvent être ajoutés en fonction des dérivées requises, mais ne bloquent plus le calcul conjoint de base.
+2. **PROUVER AU LIEU D'ÉCHANTILLONNER** : réduire exactement `B_N,B_M` modulo `Fz,Hg,Hf,Ddiag,C,Fz',Hg',C'`, en partant du nouveau `R_BM` sans jets seconds. Déterminer s'ils sont identiquement nuls sur la branche admissible ou si une obstruction réelle survit.
+3. Certifier uniformément les signes `A_N>0,A_M<0` et la limite `r→0` de leur quotient sur la VRAIE solution régulière globale Step55 (et non seulement des jets locaux `Ustar`). Employer intervalles/outward AD et rapports aux Steps62–65, avec tests de signe négatifs. Essayer le ratio `M/N` positif, mais NE PAS LE TENIR POUR ACQUIS.
+4. Tester l'existence de lapses positifs avec conditions aux limites et gauge temporelle, oracle Poisson indépendant NON IBP à six couples, rang de Dirac complet, secteur exceptionnel K=0/J=0. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED**.
+5. Après CHAQUE vraie avancée, publier code/tests/rapport dans GitHub sur la branche active, et PRÉFIXER ce fichier en conservant tous ses ~215K caractères historiques.
+
+---
+
 # JANUS — REPRISE ACTIVE : STEP68f — RÉSULTAT EXPÉRIMENTAL RÉEL (2026-10-25)
 
 **ONLY WRITABLE BRANCH** `research/gate2b-nonhomothetic-transfer` ; preserve main, v2-flrw and disabled GitHub Actions. **GATE_2B OPEN, JANUS-R NOT_VALIDATED.**
