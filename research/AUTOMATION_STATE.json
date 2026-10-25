@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "project": "JANUS",
+  "task": "JANUS — recherche autonome",
+  "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
+  "verified_session_date": "2026-10-26",
+  "research_branch": "research/gate2b-nonhomothetic-transfer",
+  "verified_research_head_before_state_file": "2495c98d362267c974759942573a5a07b92f6277",
+  "latest_verified_completed_step": "68ac",
+  "next_pending_step": "68ad",
+  "primary_checkpoint": "00_CURRENT_RESTART.md",
+  "latest_scientific_audit": "research/STEP68AC_AUTHENTIC_ORIGINAL_PHYSICAL_U4_CENTER_CERTIFICATE.md",
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "last_reported_tests": {
+    "passed": 44,
+    "failed": 0,
+    "skipped": 0,
+    "source": "00_CURRENT_RESTART.md Step68ac, previous scientific run, NOT rerun by automation setup"
+  },
+  "github_write_probe": "The creation of this file itself is a non-artificial GitHub write verification; compare returned Git blob and readback after publishing.",
+  "required_per_run": [
+    "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
+    "Read this state; resolve divergence in favor of newest authenticated checkpoint",
+    "Carry out genuine science and tests using original source hashes",
+    "On meaningful progress write results/tests/reports to research branch",
+    "Read back each published blob and validate against executed source and report bytes",
+    "Prepend full checkpoint to 00_CURRENT_RESTART.md without deleting previous content",
+    "Update this JSON with actual finished and next steps, tests, commits, blocker, current scientific status",
+    "Check main and research/v2-flrw unchanged, keep GitHub Actions OFF",
+    "Give French summary with verified commit, tests, limits, pending actions"
+  ],
+  "forbidden_branches": [
+    "main",
+    "research/v2-flrw"
+  ],
+  "workflows": "user-disabled; do not reactivate",
+  "current_blocker": "Need rigorous original-G higher partial derivatives / C3 Taylor remainder, then true Step58 AN/r2 and AM/r2 certification near r=0 and full Dirac checks",
+  "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state."
+}
