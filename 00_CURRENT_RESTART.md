@@ -1,3 +1,17 @@
+# JANUS — REPRISE ACTIVE : STEP68f — RÉSULTAT EXPÉRIMENTAL RÉEL (2026-10-25)
+
+**ONLY WRITABLE BRANCH** `research/gate2b-nonhomothetic-transfer` ; preserve main, v2-flrw and disabled GitHub Actions. **GATE_2B OPEN, JANUS-R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT PRIORITAIRE:** HUIT modules historiques ORIGINAUX Step45/46/55normal/55barrier/57/58/59/60 réunis byte-identiques au dépôt dans `/mnt/data/janus-step68f/numerics`, avec hashes authentifiés via `research/reports/gate2b-step68-source-preflight.json`. Leurs 7 certificats physiques originaux 45,46,57,58,59,60,55 ont TOUS été exécutés successivement dans le MEME processus local, **PASSED**, dont le certificat global Step55 256 cellules avec les deux marges exactes originelles et vérification des dérivées troisièmes Step60. Exécution totale environ 8.84s. Trace locale `/mnt/data/janus-step68f/research/reports/step68f-8module-original-joint.json` SHA256 `4c20479ef8a6fd448f34c432eeeadf70315f80bc668c577777682a832b3e74c8`.
+
+**NOUVEAU TEST DU VRAI CROCHET TEMPOREL SUR DONNEES PHYSiQUES:** `/mnt/data/janus-step68f/numerics/hr_step68f_physical_pointwise.py`, SHA256 `fcfca8eaf2f6cede8ffa3e996b0bf700d4030f731df6fa37fc2acee1df78e403`; 8 SHA source originaux vérifiés avant chaque calcul. A rayons r=.2,.4,.6,.8, sur un jet local de l'EDO physique exacte Step55 initialisé à Ustar(s), primaires Fz,Hg,Hf,C et prolongations Hg',C' résidu ~1e-54 à mp.dps=55 ; B_N,B_M et coeff N'',M'' ~1e-54 ; MAIS A_N>0, A_M<0, non nuls. Exemple r=.4: A_N=556.39831092399838..., A_M=-1071.78488204314639..., M/N=0.519132449287150599..., avec B_N/B_M ~1e-54. Sur 17 rayons r=.05...0.85 (4 également high precision), ratio positif augmente de .518552348 (r=.05) à .521119910 (r=.85). Deux offsets Ustar±1e-5 à r=.4 conservent cette conclusion. Perturbation NON PHYSIQUE pSf+=.001 laisse C=-.18355984, Hf=.0003743 et B_N=-.0007339 (test négatif). **13 nouveaux tests intégrés PASSED en 14.97s**.
+
+**AVERTISSEMENT CRUCIAL :** Les U(s0)=Ustar(s0)+offset sont des valeurs LOCALes dans la barrière Step55. Leurs dérivées U'(s0), U''(s0), U'''(s0) proviennent du véritable G(s,U) de Step55, mais ce ne sont PAS une trajectoire exactement intégrée sur tout [0,.85], ni des bornes par intervalles pour A_N,A_M, ni une preuve de rang de Dirac. Ratios numériques d'ordre inférieur prometteurs, besoins de preuve analytique et d'oracle indépendant. Les calculs interpolent des constantes Step55 `I` à leurs milieux rationnels; l'évaluation de `Cdot` utilise le symbole ORIG original Step58 lambdifié à 55 chiffres puis double dans test quadrillage. Les chiffres à 40 décimales ne sont PAS certifiés à ce nombre de décimales pour la branche originale (incertitudes du benchmark et du tube).
+
+**ACTION IMMÉDIATE SI INTERRUPTION :** (1) lire présent en-tête et reprendre dossier local si toujours monté ; (2) publier/code complet `hr_step68f_physical_pointwise.py`, tests `test_hr_step68f_joint_profile.py` et rapports sur GitHub, vérifier blobs ; (3) démontrer que B_N=B_M=0 modulo contraintes, et encadrer A_N>0,A_M<0 sur la vraie branche Step55 (arithmétique d'intervalles/AD), puis étudier bords et lapses ; (4) oracle non-IBP six-paires indépendant, rang complet. **GATE_2B OPEN**.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68e TERMINÉE (2026-10-25)
 
 **BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` UNIQUEMENT. Ne modifier ni `main` ni `research/v2-flrw`. GitHub Actions/workflows DÉSACTIVÉS, à maintenir ainsi. **GATE_2B OPEN — JANUS-R NOT_VALIDATED.**
