@@ -1,3 +1,37 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68p CERTIFIÉE ET ARCHIVÉE (2026-10-25)
+
+**SEULE BRANCHE MODIFIABLE** `research/gate2b-nonhomothetic-transfer`. `main`, `research/v2-flrw` intouchées ; GitHub Actions/workflows désactivés. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT IMMÉDIAT :** `research/STEP68N_68P_CERTIFIED_OUTER_TEMPORAL_LAPSE_SIGNS.md`.
+**ORIGINAL CANONICAL SOURCES :** huit véritables modules Step45/46/55/57/58/59/60 byte-SHA authentifiés ; Step68l certificat global `|U-Ustar|≤10^-6` disponible et Step68m preuve `U_s>0` sur anneau.
+**NOUVEAU CALCUL EXACT TEMPOREL :** `numerics/hr_step68n_interval_ode_jets.py` (`96370e0599748c6dc07faf339ab3646ae3474e7d`), `numerics/hr_step68n_temporal_interval_point.py` (`33e2ab71738baaea104e686c427bd8c52109343d`), `numerics/hr_step68o_temporal_interval_annulus.py` (`c99caebc17f243784450ddff94fb061767e6d8e7`), `numerics/hr_step68p_adaptive_temporal_sign.py` (`10f62bacafa25827de747707dd3f45c7c96458a6`), tests `tests/test_hr_step68o_68p_temporal_annulus.py` (`381f44035d638fab153373ac5a2e76c830b46c5d`). TOUS les blobs ont été comparés aux exécutables locaux.
+**CERTIFICAT COMPLET DES 265 CELLULES** (105268 bytes !) `research/reports/gate2b-step68p-adaptive-outer-cover.json`, Git blob `978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6`, SHA256 local `179b967cc21160dcfef5eb98e1142c5ca17b83ee182d17162a2ec64708e48e4f` **VERSION VRAIMENT RELUE GITHUB : MATCH SHA Git exact**.
+**RAPPORT SYNTHÈSE** `research/reports/gate2b-step68p-certification-machine-summary.json`, ET état/test logs `research/reports/gate2b-step68p-final-test.state.json` / `...-test.log`. Nouveau test 10 PASSED 4.75s sous lanceur timeout 27s.
+
+## THÉORÈME TEMPOREL NOUVEAU, CONDITIONNEL AU VRAI PROFIL GLOBAL STEP55
+
+Sur TOUT `r∈[1/8,17/20]=[0.125,0.85]`, avec les intervalles outward originaux de tous 12 jets canoniques (poussières incluses), générés depuis l'EDO EXACTE `2sU_s=G-2U` et le tube Step68l 10^-6 :
+```
+A_N(r) = [dot C_original_step58]_N > 0
+  (borne rationnelle globale) A_N >= 74947205335628168039413183/1250000000000000000000000000 >0;
+A_M(r) = [dot C_original_step58]_M < 0
+  (borne rationnelle globale) A_M <= -237882690187249002934304118023/5000000000000000000000000000 <0.
+```
+**Algorithme :** 529 cellules adaptatives examinées, 265 cellules fermées certifiées couvrent TOUT cet anneau SANS TROUS ni cell pending. Calcul original six-pair Step58 (full shift non figé). A chaque cellule source-sha vérifié + checkpoints atomiques, jamais affirmer CERTIFIED avec file non vide. Premier large slab non-certifiant correctement subdivisé. Ratio local `M/N=-A_N/A_M>0` sur cet anneau si l'algèbre Steps68h/j réduit les lapses dérivés sur shell. La borne globale du ratio est TRÈS PRUDENTE (voir JSON), NE PAS affirmer ratio=0.519 avec erreur globale faible.
+
+**TOUS LES CALCULS LONGS AVEC DEADLINE :** `scripts/janus_bounded_job.py --timeout-seconds 27 --grace-seconds 2 --state <state.json> --log <job.log> --label <name> -- <cmd>`. Trois lots de preuve sous 28s/27s/27s ; test final terminé avant 27s, 10 PASSED. En cas SIGTERM/SIGKILL arrêt du groupe enfant et état JSON, reprise cellule par cellule depuis disque.
+
+## ENCORE OUVERT (PRIORITÉ STEP68q)
+
+1. **REJOUER INDÉPENDAMMENT LES 265 CELLULES** de la preuve Step68p avec l'évaluateur original, vérifier chaque enclosure recomputé contenue ou respectée dans sauvegarde et publier certificat de relecture; le test existant ne rejoue pas automatiquement toutes les cellules.
+2. ATTENTION : `r in [0,1/8)` TOUJOURS NON CERTIFIÉ pour signes A_N,A_M. Faire un prolongement par bornes de série Taylor centrées `U0..U3` ou continuation adaptative s>0 rapprochant progressivement le centre, sous JOBS bornés. Dans tous les cas normaliser A_N/r², A_M/r² et assurer extension r=0. Ne pas injecter arbitrairement des jets / geler z.
+3. Fixation globale et compatibilité conditions de jauge/bords, oracle Poisson indépendant NON-IBP six-paires, rang Dirac complet, charts exceptionnelles K=0,J=0 ; BD et 4D encore OUVERTS.
+4. Après chaque résultat créer code + tests + JSON + audit GitHub sur seule branche, et préfixer ce fichier sans perdre les centaines de kilooctets d'historique.
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68m TERMINÉE APRÈS STEP68l (2026-10-25)
 
 **SEULE BRANCHE D'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Préserver `main` et `research/v2-flrw` et NE PAS RÉACTIVER GitHub Actions/workflows. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
