@@ -1,0 +1,37 @@
+{
+  "step": "68l",
+  "mode": "RIGOROUS_GLOBAL_RADIAL_BARRIER_WITH_ORIGINAL_INTEGER_OUTWARD_INTERVALS",
+  "all_original_blobs_verified": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "continuous_s_domain": [
+    "0",
+    "289/400"
+  ],
+  "continuous_r_domain": [
+    "0",
+    "17/20"
+  ],
+  "rational_slabs": 16384,
+  "U_minus_Ustar_abs_lt": "1/1000000",
+  "V_minus_Vstar_abs_lt": "1/20000",
+  "strict_max_Fupper": "-52329410075807340297/78125000000000000000000000",
+  "strict_min_Flower": "5825322396515812909051/10000000000000000000000000000",
+  "strict_V_minus_Vstar_lower": "-106551452922242719145541/5000000000000000000000000000",
+  "strict_V_minus_Vstar_upper": "212228180149451453699149/10000000000000000000000000000",
+  "V_actual_min_enclosure": "-526267743472054172708359/50000000000000000000000000",
+  "V_actual_max_enclosure": "-82329584349897839547221809/10000000000000000000000000000",
+  "outward_integer_scale": 10000000000000000000000000000,
+  "original_center_polynomial": "Ustar=U0+U1*s+U2*s**2 (unchanged original Step55)",
+  "source": "identical original Step45/46/55norm/55global, original interval I and G",
+  "historical_bound_U": "1/10000",
+  "factor_stronger_than_historical": "100",
+  "scope": "continuum spatial original constrained branch; original Step49 center uniqueness and Step55 first-contact argument imported as established; not full temporal Dirac or 4D",
+  "temporal_A_N_A_M_signs": "NOT_CERTIFIED",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
