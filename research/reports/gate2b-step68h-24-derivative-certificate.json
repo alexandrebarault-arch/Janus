@@ -1,0 +1,130 @@
+{
+  "source": "Step58 full original Cdot coefficient B_M after Fz=0, Fzprime quotient, 2nd canonical jet elimination",
+  "variables": {
+    "Lf": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 1.434
+    },
+    "Lfr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.087
+    },
+    "Lg": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 1.301
+    },
+    "Lgr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.057
+    },
+    "Mf2": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.596
+    },
+    "Mg2": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.753
+    },
+    "Sf": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 1.639
+    },
+    "Sfr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.123
+    },
+    "Sg": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 1.625
+    },
+    "Sgr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.182
+    },
+    "beta1": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.823
+    },
+    "beta2": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.818
+    },
+    "beta3": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.778
+    },
+    "m2": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.852
+    },
+    "pLf": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.09
+    },
+    "pLg": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.085
+    },
+    "pSf": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.068
+    },
+    "pSg": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.125
+    },
+    "pSgr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.03
+    },
+    "pg": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.078
+    },
+    "pgr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.032
+    },
+    "tgr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.079
+    },
+    "z": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 1.358
+    },
+    "zr": {
+      "status": "EXACT_ZERO",
+      "method": "NUMERATOR_EXPANDS_EXACTLY_ZERO",
+      "seconds": 0.171
+    }
+  },
+  "symbol_count": 24,
+  "reference_point": "all source symbols 1, except z=3/5,zr=1/10,tgr=0,beta2=-1/2",
+  "reference_value": "0",
+  "certified_identity": "B_M = 3*z*(z\u00b2-1)/(Lg*Lf\u00b2) * Fzprime on Fz=0, and thus B_M=0 on Fz=Fzprime=0",
+  "time_s": 13.48
+}
