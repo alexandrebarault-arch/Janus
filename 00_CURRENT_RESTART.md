@@ -1,3 +1,33 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68j CERTIFICAT ORIGINAL COMPLET (2026-10-25)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` restent intouchées. Ne réactiver AUCUN GitHub Actions/workflow. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68J_EXACT_FULL_CDOT_BN_SECONDARY_IDENTITY_AUDIT.md`.
+**SOURCE PROUVANT LA NOUVELLE IDENTITÉ :** `numerics/hr_step68j_BN_exact_secondary_identity.py`, Git blob `a500cdb1a09c853d46848719e26be9bbec55fb64` VERIFIÉ identique au fichier exécuté.
+**TESTS RÉELS :** `tests/test_hr_step68j_BN_exact_secondary_identity.py`, Git blob `44a84c5b5aa234ae719fa2e6f818456985c2dad9` VERIFIÉ identique au fichier exécuté.
+**CERTIFICAT DES 25 DÉRIVÉES :** `research/reports/gate2b-step68j-original-BN-C-identity.json`, SHA blob `25a47c7eeed9dec111ecd3f5da891a02d84184d9`. Contient les noms des 25 variables, chaque dérivée EXACTEMENT NULLE, ancrage `C=-53/40` et test du mauvais signe.
+
+## VERROU B_N LEVÉ EXACTEMENT AU NIVEAU DE LA CHARTE PHYSIQUE ET DES CONTRAINTES
+
+Les VRAIES sources originales Step45/57/58/59/60 sont toutes importées et SHA authentifiées dans `/mnt/data/janus-step68f` avec les modules précédents. Leur vrai coefficient du crochet temporel à six couples `B_N=[dot C]_(N')` vérifie, sur `Fz=0` (charte `K>0,|z|<1,Lg Lf Sg Mg² nonzero`) l'IDENTITÉ EXACTE :
+```
+alpha=(1-z²)/(Lg Lf)
+beta= [partial_(Sg'') (B_N + alpha Hgprime)]/[2 Mg² Sg/Lg]
+B_N = -alpha*Hgprime + beta*Hg + (z/Lg)*C .
+```
+PREUVE : Step60 élimine jets q''' avec Hgprime ; Step68i élimine les 12 jets q'' avec beta Hg. Step68j construit `T=(B_N+alpha Hgprime-beta Hg)-(z/Lg)*C` sur Fz=0 et prouve EXACTEMENT toutes les 25 dérivées indépendantes `dT/dx=0` (numérateur symbolique expansé ZÉRO), plus référence rationnelle régulière `T=0` et **C=-53/40 NON NUL**, excluant toute annulation fabriquée en posant C=0. Mauvais signe devant `zC/Lg` explicitement réfuté. D'où **B_N=0** sur `Fz=Hg=Hgprime=C=0`. À Step68h, `B_M=3z(z²-1)/(Lg Lf²)*Fzprime`, donc **B_M=0** sur `Fz=Fzprime=0`. Étape 58 avait annulé `N''`,`M''` sur `Fz=Hg=0`. Ainsi, sur ces contraintes du système SPHÉRIQUE à six paires, le crochet temporel local se réduit EXACTEMENT à `dot C=A_N N+A_M M` ; **les coefficients A_N,A_M et leur rang/compatibilité globale ne sont PAS encore certifiés**.
+
+**EXÉCUTION RÉELLE DES VÉRIFICATIONS PAR GROUPES :** 4 tests Pytest réussis (13 jets + ancrage/sanity), 1 test métriques A (2 variables) réussi, 1 test métriques B (2 variables) réussi. Le groupe des 8 couplages/z a été vérifié à terminaison normale directement par `group_certificate('couplings_and_z')`. Une tentative Pytest de ce groupe a affiché `1 passed` MAIS dépassé ensuite la limite de sortie ; elle n'est PAS comptée comme succès Pytest terminé. Ces groupes couvrent précisément 13+2+2+8=25 dérivées EXACTES ; aucune suite Pytest combinée n'est revendiquée. Voir détails et commandes dans l'audit Step68j.
+
+## PROCHAINE PRIORITÉ STEP68k — SIGNES ET LAPSES (DÉCISIF)
+
+1. Sur la **vraie branche intégrée et certifiée depuis r=0** Step55 (PAS seulement `U(s0)=Ustar(s0)+offset` de Step68f), démontrer ou certifier par intervalles les signes exacts `A_N>0,A_M<0` pour `0<r<=0.85`, et limites centrales `A_N/r²,A_M/r²` non nulles et régulières ; traiter les garanties d'erreur de troncature et paramètres rationnels, poussières.
+2. Alors `M/N=-A_N/A_M>0` deviendrait une conclusion compatible LOCALEMENT, mais reste à traiter toutes les primaires de temps, conditions de bord/gauge, existence de lapses positifs et normalisation globale. Sur 17 rayons Step68f : ratio positif NUMÉRIQUE ~0.51855..0.52112 ; ce n'est PAS un certificat continuum.
+3. Construire oracle Poisson ORIGINAL six-couples NON intégré par parties, analyser rang complet de Dirac, chartes K=0/J=0, fantôme BD et théorie 4D. **TOUJOURS OUVERTS — JANUS_R NOT_VALIDATED**.
+4. Conserver les anciens 230k caractères ci-dessous, les SHA et les fichiers de reprise ; après chaque étape préfixer ce fichier. Aucun travail en arrière-plan en dehors des sessions explicites.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68i ACHEVÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Laisser `main` et `research/v2-flrw` INTACTES. GitHub Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
