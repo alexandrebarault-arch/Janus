@@ -1,3 +1,44 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68h CERTIFICAT ANALYTIQUE ACHEVÉ (2026-10-25)
+
+**BRANCHE D'ÉCRITURE EXCLUSIVE** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` intouchées, Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP68H_EXACT_ORIGINAL_FULL_CDOT_BM_IDENTITY.md`.
+**CODE EXÉCUTÉ ET GIT BLOB VÉRIFIÉ :** `numerics/hr_step68h_BM_global_identity.py`, SHA `991eeb0e1b557a65964ca0157c0577ce7524dcfc`.
+**8 TESTS SPÉCIFIQUES :** `tests/test_hr_step68h_BM_global_identity.py`, SHA `4cdd3fce5b385e77894cac4e29e58386dbf1995b`.
+**CERTIFICATS BRUTS :** `research/reports/gate2b-step68h-original-BM-identity.json`, `research/reports/gate2b-step68h-24-derivative-certificate.json`. Tous fichiers publiés relus byte-identiques à l'exécution locale.
+
+## NOUVEAU THÉORÈME EXACT : UN COEFFICIENT DE DERIVÉE PREMIÈRE DU LAPSE DISPARAÎT
+
+Dans l'ORIGINAL complet Step58 six-couples avec deux poussières, coefficient `B_M=[dot C_red]_(M')`. Dans la charte `K>0,|z|<1,Lg Lf nonzero`, avec `Fz=Dg-Kz/sqrt(1-z²)` :
+
+```
+lambda = 3*z*(z²-1)/(Lg*Lf²) = -3*z*(1-z²)/(Lg*Lf²)
+EXACTEMENT SUR Fz=0 : B_M = lambda * Fz'
+=> EXACTEMENT SUR Fz=Fz'=0 : B_M=0 .
+```
+
+Ceci est un résultat ANALYTIQUE nouveau, PAS une observation numérique Step68f. Il NE requiert PAS `Hg=Hf=C=0`. Preuve dans code : partir du quotient Step68g `R_BM=B_M-lambda Fz'`, dont les 12 dépendances q'' avaient été éliminées exactement. Les 24 symboles INDEPENDANTS restants du représentant sont TOUS dérivés ; chaque numérateur rationnel de chaque dérivée s'expanse EXACTEMENT à ZÉRO. Valeur en point rationnel régulier (z=3/5, sqrt=4/5, autres paramètres simples) EXACTEMENT 0. Donc le représentant est nul sur la branche analytique régulière physique. Oracle indépendant : on résout `Fz=0` pour `pLg'`, `Fz'=0` pour `pLg''`, et le vrai `B_M` vaut EXACTEMENT ZÉRO tout en conservant `Hg=357/80`, `Hf=33/10+11sqrt(2)/10`, `C=-247/200` **NON NULS**. Test négatif mauvais signe nonzero.
+
+**SUITE INTÉGRÉE VRAIMENT EXÉCUTÉE : 49 passed in 31.86s** avec ordre de tests
+```bash
+cd /mnt/data/janus-step68f
+OPENBLAS_NUM_THREADS=1 PYTHONPATH=. pytest -q \
+ tests/test_hr_step68e_exact_shift_full_lapse_response.py \
+ tests/test_hr_step68f_joint_profile.py \
+ tests/test_hr_step68g_full_Cdot_Mprime_quotient.py \
+ tests/test_hr_step68h_BM_global_identity.py
+```
+(18+13+10+8 tests). L'ordre inverse a atteint un timeout avant conclusion ; seul le passage COMPLET de 49 tests est retenu. Les HUIT sources historiques originales Step45/46/55normal/55barrier/57/58/59/60 sont déjà reconstituées, SHA vérifiées et exécutées ENSEMBLE avec le certificat spatial global Step55 256 cellules. Reprise de leurs preuves/nombres et des indicateurs de ratio M/N numérique dans `research/STEP68F_68G_ORIGINAL_JOINT_TEMPORAL_LAPSE_AND_EXACT_MPRIME_QUOTIENT.md`.
+
+## PROCHAINE STEP68i — TEST DE RANG TOUJOURS CRUCIAL
+
+1. Réduire analytiquement le coefficient TEMPOREL `B_N=[dot C]_(N')`, après élimination des jets q''' par `Hg'` comme dans original Step60, puis des jets q'' par les dérivées COMPLETES `Fz',Hg',C',Hf',Ddiag'`. NE PAS fixer les jets arbitrairement. Chercher un certificat du type Step68h : dérivées symboliques nulles et point rationnel exact.
+2. Sur la VRAIE solution globale unique du centre Step55, et pas uniquement les jets LOCAUX de Ustar du Step68f, certifier par calcul rationnel/intervalle `A_N>0`, `A_M<0` et existence d'une limite régulière `M/N=-A_N/A_M` vers r=0. Les 17 points numériques favorables précédents NE VALENT PAS une preuve globale.
+3. Etudier compatibilité avec contraintes primaires de temps, gauge, conditions aux bords ; construire oracle Poisson NON-IBP indépendant original six-couples, analyser rang de Dirac et secteur K=0/J=0. **JUSQU'ALORS : JANUS_R NOT_VALIDATED**.
+4. Continuer à préfixer ce fichier à chaque accomplissement et conserver l'historique précédent sans le supprimer.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68g ACHEVÉE APRÈS STEP68f (2026-10-25)
 
 **SEULE BRANCHE MODIFIABLE :** `research/gate2b-nonhomothetic-transfer`. Ne toucher ni `main` ni `research/v2-flrw`. GitHub Actions/workflows demeurent DÉSACTIVÉS. **GATE 2B OPEN ; JANUS-R NOT_VALIDATED.**
