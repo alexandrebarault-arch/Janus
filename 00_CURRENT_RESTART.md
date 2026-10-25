@@ -1,3 +1,35 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ab TERMINÉE (2026-10-25)
+
+**BRANCHE UNIQUE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. Ne jamais écrire dans `main`, `research/v2-flrw`, ni réactiver GitHub Actions/workflows OFF.
+**ÉTAT DURABLE : GATE_2B OPEN ; JANUS_R NOT_VALIDATED**.
+
+**LIRE D'ABORD** `research/STEP68AB_PROOF_HARNESS_HIGHER_JETS_NOT_FROM_SIGNED_BARRIERS.md`, puis la preuve Step68aa immédiatement ci-dessous. L'historique entier 68aa/68z/... est conservé SANS suppression. **REPRENDRE À STEP68ac.**
+
+## STEP68ab — RÉSULTAT RIGOUREUX, NON-PHYSIQUE MAIS BLOQUANT UN FAUX RACCOURCI
+
+Les certificats SHA-originaux Step68u (Fplus/Fminus'''/6), Step68v (F0'''/6 et G_U), Step68y (F0 signé), Step68z (cône h et U_s, G−Vstar), Step68aa (U3<0 et jets au point r=0) ne permettent **PAS, à eux seuls**, de borner U_sss au rayon fixé `smax=1/1024`.
+
+Contre-modèle EXACT analytique qui conserve ces inclusions (mais NE REMPLACE PAS le G physique original) : c=milieu rationnel de U3 authentique, kappa=10^-7, eps=10^-11, `h_n=c+eps*(s/smax)^6*sin(n*s)/n`, `U_n=Ustar+s³*h_n`. Définir G_n(s,u) par interpolation cubique et exacte de ses trois courbes Ustar, Ustar±kappa*s³, et par l'EDO sur la courbe U_n ; G_n analytique et G_n,U~-1 sur tout le tube. Toutes les inégalités de sources originales ont été calculées exactement en Fraction et vérifiées strictement, les résidus F0/Fplus/Fminus sont même des constantes fois s³. Pourtant pour `n=2πk/smax`, `U_n'''(smax)−6c = eps*smax*(216−4π²k²)→−∞`. Ceci prouve la **non-déductibilité des jets à partir des certificats agrégés**, ABSOLUMENT PAS un problème avéré de la fonction physique G originale, qui est FIXE.
+
+**RÉCURRENCE U4 EXACTE**, à évaluer sur VRAI G : `U4=[s^4]G(s,U0+U1*s+U2*s²+U3*s³)/(10-G_U(0,U0))`. Le développement polynomial de g_ij, avec dépendance vraie en U et facteur (10−g01), a été validé indépendamment par SymPy. Aucun g_ij ORIGINAL ni U4 numérique physiquement certifié dans cette session. L'opérateur temporel Step58, ses bornes AN/AM pour r<1/32 et le rang Dirac COMPLET restent NON CALCULÉS.
+
+**CODE PUBLIÉ TESTÉ** `numerics/hr_step68ab_derivative_data_obstruction.py` blob `32c3a2172155bad361bc6c3d73bdec63fc27423d`.
+**TESTS PUBLIÉS TESTÉS** `tests/test_hr_step68ab_derivative_data_obstruction.py` blob `5a790953779c81db7eb729948f078c9d3b682956`.
+**RAPPORT MACHINE PUBLIÉ** `research/reports/gate2b-step68ab-derivative-data-obstruction.json` blob `fcef873c8d565bc9c326043906fb4efaa613d395`.
+**AUDIT COMPLET** `research/STEP68AB_PROOF_HARNESS_HIGHER_JETS_NOT_FROM_SIGNED_BARRIERS.md`.
+**29 TESTS RÉELLEMENT PASSED en 3.21s**, 12 Step68ab +17 regressions 68aa/68z, zéro skip ; origine 68u/v/y et sources 68aa/68z revérifiées par SHA, 3 NOUVEAUX blobs Git égaux aux fichiers locaux effectivement exécutés et au JSON CLI. Une faute symbolique intermédiaire (`k` doit être entier pour sin(2πk)=0) a été détectée et corrigée avant publication.
+
+## NEXT HARD RED : STEP68ac
+
+1. SHA-authentifier et charger dans un espace Python **la vraie fonction G originale** Steps45,46,55-normalized,55-global, Step68n Jet, Step68o, Steps57/58/60. Ce nouvel audit Step68ab est mathématique et ne ré-exécute PAS encore le véritable opérateur temporel Step58.
+2. Extraire les coefficients g_ij du Taylor de G original i+j≤4, bornés en fractions, puis calculer le VRAI U4 par la récurrence. Utiliser les limites centre Step68aa comme oracle et établir bornes de reste des jets 2/3 par une majoration des dérivées réelles du G FIXE ; **interdit** de seulement différencier les enveloppes U ou U_s publiées.
+3. Avec les douze vrais jets canoniques, calculer les coefficients du Step58 A_N/r²,A_M/r² et certifier sans trou `[1/64,1/32]` dont sept cellules sont PENDING, puis `[1/128,1/64]`, puis r=0. Ne pas transformer des échantillons en preuve.
+4. Ensuite traiter lapses/bords/jauge, contraintes secondaires, rang Dirac COMPLET, exceptions J=0/K=0, oracle indépendant NON-IBP, cosmologie 4D/stabilité/observations. Le statut reste OPEN et NOT_VALIDATED.
+
+**CHECKPOINT NOUVEAU PRÉFIXÉ ; TOUS LES CHECKPOINTS HISTORIQUES SONT CI-DESSOUS INTÉGRALEMENT.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68aa TERMINÉE (2026-10-25)
 
 **SEULE BRANCHE AUTORISÉE À L'ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. **NE JAMAIS MODIFIER** `main`, `research/v2-flrw`, GitHub Actions/workflows OFF (désactivés par utilisateur).
