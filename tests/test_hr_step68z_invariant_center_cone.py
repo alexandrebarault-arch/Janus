@@ -23,7 +23,7 @@ def fixture_reports():
 def test_exact_barrier_and_sharp_signs():
     a=tightened_bounds(fixture_reports())
     assert a['h']==(FLO/(8-GHI),FHI/(8-GLO))
-    assert a['ds'][1]<0 and a['v'][0]>0
+    assert a['ds'][1]<0 and a['v'][1]<0 and a['aux'][0]>0
     assert -F(2,100000000)<a['h'][1]<0
     assert all(x.denominator>0 for bounds in a.values() for x in bounds)
 
@@ -41,7 +41,7 @@ def test_sharper_than_prior_envelopes():
     assert a['h'][0]>-F(1,10000000)
     assert a['ds'][0]>FLO/2
     assert a['ds'][1]<0
-    assert a['v'][0]>0
+    assert a['v'][1]<0 and a['aux'][0]>0
 
 def test_reject_changed_u3():
     d=fixture_reports();d['68u']['U3_upper_from_published_Step67b']='0'
@@ -63,5 +63,6 @@ def test_authenticated_full_run_when_originals_available():
     if not ROOT.exists() or not (ROOT/'gate2b-step68u-center-cubic-barrier.json').exists():
         pytest.skip('Authenticated upstream reports unavailable in local scratch')
     o=report(ROOT)
-    assert o['signs_for_every_s_gt_zero']['G_minus_Vstar']=='POSITIVE'
+    assert o['signs_for_every_s_gt_zero']['G_minus_Vstar']=='NEGATIVE'
+    assert o['signs_for_every_s_gt_zero']['G_U_minus_G_Ustar']=='POSITIVE'
     assert o['GATE_2B']=='OPEN' and o['JANUS_R']=='NOT_VALIDATED'
