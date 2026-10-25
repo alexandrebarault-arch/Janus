@@ -1,3 +1,41 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68i ACHEVÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Laisser `main` et `research/v2-flrw` INTACTES. GitHub Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN ; JANUS-R NOT_VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP68I_EXACT_FULL_CDOT_BN_LOWER_JET_QUOTIENT_AUDIT.md`.
+**SOURCE NOUVELLE EXÉCUTÉE ET GIT BYTE IDENTIQUE :** `numerics/hr_step68i_BN_lower_jet_quotient.py` SHA `2ffc0f4bb65615836c25c5af83d905bd8b94783a`.
+**NOUVEAUX TESTS :** `tests/test_hr_step68i_BN_lower_jet_quotient.py` SHA `94253af441672db15387f7dc6d6c049c5c4c8e4d`.
+**RAPPORT MACHINE :** `research/reports/gate2b-step68i-BN-lower-jet-quotient.json` SHA `49f1158cd1e9583a29cc583c30c8d96fe1dcd3b6`.
+**RÉSULTAT ANTÉRIEUR IMMEDIAT CRUCIAL :** Step68h a démontré EXACTEMENT pour le vrai six-pair Cdot `B_M = 3z(z²-1)/(Lg Lf²)*Fz'` sur `Fz=0,K>0` ; **B_M=0** sur `Fz=Fz'=0` SANS imposer Hg,Hf,C. Le rapport scientifique `research/STEP68H_EXACT_ORIGINAL_FULL_CDOT_BM_IDENTITY.md` et ses 24 dérivées symboliques sont conservés ci-dessous.
+
+## AVANCÉE STEP68i : VRAI COEFFICIENT DE N' SANS AUCUN JET CANONIQUE D'ORDRE 2/3
+
+L'ORIGINAL physique Step60 donne sur Fz=0 le coefficient complet après élimination exacte des 12 jets q''' avec la dérivée COMPLETE Hg' :
+```
+tilde_B_N = B_N + (1-z²)/(Lg Lf) * Hgprime
+```
+Ce représentant contient APPAREMMENT `Lg'',pLg'',Sg'',theta_g''`. Leurs dérivées EXACTES satisfont `partial_Lgrr=partial_pLgrr=partial_tgrr=0` ; une seule reste, celle de `Sg''`. Depuis l'original Step45, `partial Hg / partial Sg'' = 2 Mg² Sg/Lg`, non nul sur la charte `r>0,Sg>0`.
+
+Définir **exactement** :
+```
+beta = [partial_(Sg'') tilde_B_N] / [2 Mg² Sg/Lg]
+R_BN = B_N + (1-z²)/(Lg Lf)*Hgprime - beta*Hg .
+```
+Le calcul EXÉCUTÉ prouve **partial_(q_i'') R_BN=0 pour les 12 canoniques ET absence des 12 jets q_i'''**, sur Fz=0 ; un vrai représentant ne contenant que q,q',z,z' est construit et testé. Le mauvais signe de beta restitue une dépendance non nulle à Sg''. La source calcule beta (725 opérations) et conserve le hash SHA256 de son `srepr` `dfdc84fd8cf3b29ede2f2c320a901abd8239325bf0dc8ca6893d394f2824c095`.
+
+**CE QUI RESTE OUVERT :** contrairement à B_M, `R_BN` est NON NUL génériquement HORS des autres contraintes : le test négatif sur variables canoniques libres le prouve. Sur le jet physique radial Step55 à r=0.4, il tend numériquement à zéro, MAIS `R_BN=0` sur le système complet n'est PAS démontré. Le coefficient beta contient 1/Sg, sa normalisation régulière au centre r=0 est aussi non prouvée. Aucun verdict sur rang de Dirac ou fantôme BD.
+
+**TESTS RÉELLEMENT PASSED :** Step68i 9 PASSED en 13.51s ; Steps68e/f/g/h 49 PASSED dans un processus séparé en 31.86s. Une tentative de les concaténer en une suite de 58 tests a EXPIRÉ à 180s et NE DOIT PAS ÊTRE PRÉSENTÉE COMME PASSÉE. HUIT originaux physiques historiques Step45/46/55normal/55global/57/58/59/60 déjà réunis byte-identiques et leurs certificats conjointement rejoués. Aucun CI activé.
+
+## NEXT STEP68j HARD RED
+
+1. Eliminer algébriquement les DERNIÈRES dépendances q,q',z,z' du R_BN modulo `Hg,Hf,Ddiag,Fz,C` et leurs prolongations. Etablir, ou réfuter via contre-exemple physique, `B_N=0` sur tout le secteur initial positif Step55 ; privilégier éliminations variables linéaires/coefficients séparés, car substitution globale naïve SymPy a time-out.
+2. Certifier par INTERVALLES sur la VRAIE trajectoire globale du centre les signes `A_N>0`, `A_M<0`, la régularité centrale du rapport `M/N` et les conditions aux bords. Les 17 rayons Step68f et leur ratio positif ~0.51855..0.52112 sont NUMÉRIQUES, PAS une preuve.
+3. Calcul indépendant original Poisson NON intégré par parties, toutes six paires, puis rang Dirac, lapse fixing, charts exceptionnels K=0,J=0 et BD. **GATE_2B OPEN — JANUS_R NOT_VALIDATED**.
+4. CONTINUER À PRÉFIXER ce fichier avec chaque nouvelle avancée, tout en préservant intégralement son historique.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68h CERTIFICAT ANALYTIQUE ACHEVÉ (2026-10-25)
 
 **BRANCHE D'ÉCRITURE EXCLUSIVE** `research/gate2b-nonhomothetic-transfer`. `main` et `research/v2-flrw` intouchées, Actions/workflows utilisateur restent DÉSACTIVÉS. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
