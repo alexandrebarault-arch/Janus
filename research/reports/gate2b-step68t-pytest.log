@@ -1,0 +1,6 @@
+
+--- JANUS JOB step68t-tests at 2026-10-25T11:35:22+00:00 deadline=16.0s argv=['python', '-m', 'pytest', '-q', 'tests/test_hr_step68t_replay_near_center.py'] ---
+...                                                                      [100%]
+3 passed in 4.19s
+
+--- JANUS JOB END step68t-tests: PASSED, exit=0 ---
