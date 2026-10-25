@@ -1,0 +1,131 @@
+{
+  "step": "68w",
+  "date": "2026-10-25",
+  "status": "INDEPENDENT_ARCHIVED_RATIONAL_COVER_AUDIT_PASSED",
+  "original_sources": [
+    {
+      "band": "p",
+      "path": "research/reports/gate2b-step68p-adaptive-outer-cover.json",
+      "git_blob": "978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6",
+      "range": [
+        "1/8",
+        "17/20"
+      ],
+      "certified_cells": 265,
+      "processed": 529
+    },
+    {
+      "band": "q",
+      "path": "research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json",
+      "git_blob": "82f5d046cd0ca0c342adabe8b8f13cfc3f99308d",
+      "range": [
+        "1/16",
+        "1/8"
+      ],
+      "certified_cells": 314,
+      "processed": 627
+    },
+    {
+      "band": "s",
+      "path": "research/reports/gate2b-step68s-inner-1over32-to-1over16-cover.json",
+      "git_blob": "e890998a2f925f881ab85b60a9027e5828e35ed5",
+      "range": [
+        "1/32",
+        "1/16"
+      ],
+      "certified_cells": 1006,
+      "processed": 2011
+    }
+  ],
+  "full_proof_cells": 1585,
+  "all_archives_status_certified": true,
+  "unresolved_cells": 0,
+  "exact_connected_closed_cover": [
+    "1/32",
+    "17/20"
+  ],
+  "checks": "Connector-run independent JS BigInt exact arithmetic: all 1585 rows validated cell ordering, strictly positive N, strictly negative M, non-overlap and no gaps; rat extrema computed per cell. Python implementation shipped and synthetic tests run locally, but full archived JSON not independently reloaded in local Python runtime due unavailable GitHub network.",
+  "interval_arithmetic": "Exact rational endpoint division, not floating point",
+  "cellwise_extrema": {
+    "ratio_low": {
+      "fraction": "299788821342512672157652732/12067825969226896389389147905439",
+      "band": "p",
+      "radius": [
+        "209/512",
+        "2119/5120"
+      ],
+      "index_in_archive": 202,
+      "approx_for_display_only": 2.4841990770083842e-05
+    },
+    "ratio_high": {
+      "fraction": "12100110164989551454170392062459/870429215706122757278389599591",
+      "band": "p",
+      "radius": [
+        "1741/2560",
+        "177/256"
+      ],
+      "index_in_archive": 250,
+      "approx_for_display_only": 13.901314370719412
+    },
+    "A_N_per_r2_low": {
+      "fraction": "74947205335628168039413183/214107561111450195312500000",
+      "band": "p",
+      "radius": [
+        "209/512",
+        "2119/5120"
+      ],
+      "index_in_archive": 202,
+      "approx_for_display_only": 0.3500446455350338
+    },
+    "A_N_per_r2_high": {
+      "fraction": "36300330494968654362511176187377/4625062561035156250000000000",
+      "band": "p",
+      "radius": [
+        "1741/2560",
+        "177/256"
+      ],
+      "index_in_archive": 250,
+      "approx_for_display_only": 7848.61394109318
+    },
+    "A_M_per_r2_low": {
+      "fraction": "-72377081726262193355417589642449/4625062561035156250000000000",
+      "band": "p",
+      "radius": [
+        "1741/2560",
+        "177/256"
+      ],
+      "index_in_archive": 250,
+      "approx_for_display_only": -15648.887073662232
+    },
+    "A_M_per_r2_high": {
+      "fraction": "-290143071902040919092796533197/531158447265625000000000000",
+      "band": "p",
+      "radius": [
+        "1741/2560",
+        "177/256"
+      ],
+      "index_in_archive": 250,
+      "approx_for_display_only": -546.2458017860429
+    }
+  },
+  "proved_simpler_uniform_strict_bounds": {
+    "ratio": "1/50000 < M/N=-A_N/A_M < 14",
+    "N": "A_N/r^2 > 7/20",
+    "M": "A_M/r^2 < -546"
+  },
+  "interpretation": "Single-row algebraic local temporal lapse equation has rank exactly one at every radius in certified [1/32,17/20], assuming the previous structural elimination of lapse derivatives and constrained original background. NOT the full Dirac constraint matrix rank.",
+  "not_proved": [
+    "r<1/32",
+    "regular center lapse limit",
+    "full constraint consistency",
+    "positive boundary-compatible global lapses",
+    "independent non-IBP Poisson dynamics",
+    "BD ghost freedom",
+    "4D JANUS validity"
+  ],
+  "standalone_auditor": "scripts/hr_step68w_archived_lapse_ratio_audit.py",
+  "tests": "tests/test_hr_step68w_archived_lapse_ratio_audit.py",
+  "local_synthetic_tests": "7 passed in 0.04s",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
