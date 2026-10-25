@@ -1,3 +1,23 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68s CERTIFIÉE (2026-10-25)
+
+**BRANCHE EXCLUSIVE MODIFIABLE :** `research/gate2b-nonhomothetic-transfer`. MAIN/V2 intouchées ; GITHUB ACTIONS OFF ; **GATE_2B OPEN, JANUS-R NOT_VALIDATED**.
+
+**LIRE D'ABORD :** `research/STEP68S_CERTIFIED_TEMPORAL_SIGNS_TO_R_1OVER32.md` ; puis `research/STEP68R_EXHAUSTIVE_REPLAY_579_TEMPORAL_INTERVAL_CELLS.md`.
+**NOUVEAU GROS CERTIFICAT 390326 OCTETS :** `research/reports/gate2b-step68s-inner-1over32-to-1over16-cover.json`, Git blob `e890998a2f925f881ab85b60a9027e5828e35ed5`, SHA256 local `7491e166286279f8ac6423677fec069f7fc9d6bca7bfda4271cedd1c0addedd4`. Certifié par SAME byte-original original Step58/Jets/adaptive SHA-pin 68n/68o/68p. 2011 nœuds (1006 FEUILLES fermées), 0 pending et 0 failed. Fractions exactes pour TOUTES les 1005 jonctions et deux bornes terminales [1/32,1/16]. `A_N >=23763242565712321121633107/10^28 >0` ; `A_M <= -21235779180155817648396567047/(5*10^27)<0`.
+**NOUVELLE ZONE SIGNÉE CONTINUE TOTALE**, jointe aux certificats précédents 68q/68p : `A_N(r)>0,A_M(r)<0 POUR CHAQUE r in [1/32,17/20]` sur vraie branche radiale Step55 sous le tube global certifié Step68l et contraintes locales originales Steps68h/j. Rapport de lapses local `-A_N/A_M>0` sous shell. NE PAS INFÉRER rang global Dirac, bords ou fantôme BD.
+
+**JOBS BORNÉS :** neuf lots `scripts/janus_bounded_job.py --timeout-seconds 24 --grace-seconds 2`, tous PASSED et chacun 9..19 secondes, avec états atomiques `research/reports/step68s-inner-band-run1..9.state.json` et logs `...log`. Un état `INCOMPLETE` a été conservé à chaque coupure, puis `CERTIFIED` seulement quand file vide.
+**AUDIT REPLAY PRECEDENT STEP68r :** 579/579 cellules historiques p/q recalculées EXACTEMENT, 4 lots <=25 secondes PASSED; source `numerics/hr_step68r_cell_replay.py` SHA `60214f32d16ea2aa1f04ff63ce76338e28457034` et tests 6 PASSED, états et rapport archivés GitHub. IL S'AGIT DU MÊME MOTEUR PHYSIQUE, pas d'un oracle Poisson indépendant.
+
+## NEXT STEP68t
+
+1. Prolonger le script de REPLAY `numerics/hr_step68r_cell_replay.py` à la nouvelle preuve `[1/32,1/16]` (1006 cellules) avec SHA256 pin, vérifier toutes les cellules par lots <=25s et états persistants, puis publier preuve de relecture et tests GitHub.
+2. **CENTRE non couvert r∈[0,1/32) :** tenter calcul par intervalles à `[1/64,1/32]` sous jobs bornés, mais le coût croit rapidement. Passer ensuite à normalisation centrale des moments (Taylor réel U0...U3 certifiés Step67b) et calcul des limites `A_N/r²,A_M/r²` sans division impropre par s. Ne PAS proclamer centre par continuité non chiffrée.
+3. Bords, choix de jauge, lapses positifs globaux, rang six-pair Poisson indépendant NON-IBP, charts K=0/J=0 ; Gate2B reste OPEN.
+4. Après chaque vraie avancée récrire en PRÉFIXE ce restart, conserver tous les anciens contenus et ne jamais réactiver Actions.
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68r TERMINÉE (2026-10-25)
 
 **BRANCHE EXCLUSIVE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. MAIN/V2 intouchées, GitHub Actions/workflows OFF. **GATE_2B OPEN — JANUS-R NOT_VALIDATED.**
