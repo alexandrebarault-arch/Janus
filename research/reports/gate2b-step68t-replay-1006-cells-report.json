@@ -1,0 +1,55 @@
+{
+  "step": "68t",
+  "date": "2026-10-25",
+  "result": "1006_OF_1006_REPLAYED_EXACTLY_USING_SAME_PINNED_ORIGINAL_INTERVAL_EVALUATOR",
+  "original_proof": "research/reports/gate2b-step68s-inner-1over32-to-1over16-cover.json",
+  "original_proof_sha256": "7491e166286279f8ac6423677fec069f7fc9d6bca7bfda4271cedd1c0addedd4",
+  "replay_count": 1006,
+  "replay_total": 1006,
+  "replay_status": "PASSED",
+  "all_rational_bounds_exactly_matched": true,
+  "jobs": [
+    {
+      "label": "step68t-replay1",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 14.912
+    },
+    {
+      "label": "step68t-replay2",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 14.862
+    },
+    {
+      "label": "step68t-replay3",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 14.61
+    },
+    {
+      "label": "step68t-replay4",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 15.217
+    },
+    {
+      "label": "step68t-replay5",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 15.058
+    },
+    {
+      "label": "step68t-replay6",
+      "status": "PASSED",
+      "timeout_seconds": 24.0,
+      "elapsed_seconds": 4.432
+    }
+  ],
+  "tests": "3 passed in 4.19s",
+  "source": "numerics/hr_step68t_replay_near_center.py",
+  "tests_file": "tests/test_hr_step68t_replay_near_center.py",
+  "limits": "Same Step58 interval evaluator; not a new independent Poisson oracle. Outer radius coverage [1/32,17/20] only. Dirac rank/ghost/4D not proved.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
