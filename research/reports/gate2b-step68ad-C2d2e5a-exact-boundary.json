@@ -1,0 +1,63 @@
+{
+  "stage": "68ad-C2d2e5a",
+  "kind": "EXACT_FIXED_Z_BOUNDARY_IDENTITY_NOT_DIRAC",
+  "original_blobs": {
+    "unintegrated": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "integrated": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81",
+    "primary": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41"
+  },
+  "canonical_pairs": [
+    [
+      "Lg",
+      "pLg"
+    ],
+    [
+      "Sg",
+      "pSg"
+    ],
+    [
+      "tg",
+      "pg"
+    ],
+    [
+      "Lf",
+      "pLf"
+    ],
+    [
+      "Sf",
+      "pSf"
+    ],
+    [
+      "tf",
+      "pf"
+    ]
+  ],
+  "interval": [
+    "1/2",
+    "1"
+  ],
+  "B_left": "195/64",
+  "B_right": "51/8",
+  "integrated_boundary_defect": "213/64",
+  "right_endpoint_flux": {
+    "dSgPrime": "2",
+    "dSfPrime": "2",
+    "dpLg": "-3/8",
+    "dtg": "3/8",
+    "dtf": "0"
+  },
+  "conditional_claim": "Original minus integrated-by-parts density equals dB/dr for arbitrary regular fields at fixed z; free outer endpoint variations need conditions or counterterms.",
+  "not_proven": [
+    "full six-pair Dirac bracket",
+    "shift-eliminated boundary symplectic form",
+    "global lapses",
+    "physical boundary conditions",
+    "K=0/J=0",
+    "4D stability and observables"
+  ],
+  "executed_tests": {
+    "passed": 28,
+    "failed": 0,
+    "kind": "EXACT_RATIONAL_NONIBP_BOUNDARY_AUDIT"
+  }
+}
