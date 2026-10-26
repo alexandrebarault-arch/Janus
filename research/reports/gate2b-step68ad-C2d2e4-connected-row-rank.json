@@ -1,0 +1,86 @@
+{
+  "step": "68ad-C2d2e4",
+  "generated_on": "2026-10-26",
+  "verified_head_at_start": "2f7906e9c3f5093c49cb4ae8c8dd6ed68b6265b2",
+  "sources": [
+    {
+      "band": "inner",
+      "path": "research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json",
+      "git_blob_sha": "0c688d6648e16064b1eb4e8ad9c55e7b44a95947",
+      "certified_cells": 225
+    },
+    {
+      "band": "s",
+      "path": "research/reports/gate2b-step68s-inner-1over32-to-1over16-cover.json",
+      "git_blob_sha": "e890998a2f925f881ab85b60a9027e5828e35ed5",
+      "certified_cells": 1006
+    },
+    {
+      "band": "q",
+      "path": "research/reports/gate2b-step68q-inner-1over16-to-1over8-cover.json",
+      "git_blob_sha": "82f5d046cd0ca0c342adabe8b8f13cfc3f99308d",
+      "certified_cells": 314
+    },
+    {
+      "band": "p",
+      "path": "research/reports/gate2b-step68p-adaptive-outer-cover.json",
+      "git_blob_sha": "978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6",
+      "certified_cells": 265
+    }
+  ],
+  "tests_executed": {
+    "self_tests": 11,
+    "full_archived_rational_audit_runs": 1,
+    "verified_rows": 1810,
+    "failed": 0,
+    "environment": "V8 code evaluated with exact BigInt arithmetic against four live GitHub report contents; Node CLI code not independently executed in a local full clone"
+  },
+  "status": "CONDITIONAL_LOCAL_ROW_RANK_ONLY",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "coverage": [
+    "1/64",
+    "17/20"
+  ],
+  "counts": {
+    "inner": 225,
+    "s": 1006,
+    "q": 314,
+    "p": 265
+  },
+  "total": 1810,
+  "M_over_N_lower": "374736026678140840197065915000000000000000000000000000/15084782461533620486736434881798750000000000000000000000000",
+  "M_over_N_upper": "363003304949686543625111761873770000000000000000000000000000/26112876471183682718351687987730000000000000000000000000000",
+  "lower_at": {
+    "band": "p",
+    "index": 202,
+    "r": [
+      "209/512",
+      "2119/5120"
+    ]
+  },
+  "upper_at": {
+    "band": "p",
+    "index": 250,
+    "r": [
+      "1741/2560",
+      "177/256"
+    ]
+  },
+  "min_AN_over_r2_lower": "1964696019550291048252392944435200/5612701250000000000000000000000000",
+  "max_AM_over_r2_upper": "-171133347241549383062989622396387328/313290000000000000000000000000000",
+  "simple_bounds": {
+    "M_over_N": [
+      "1/50000",
+      "14"
+    ],
+    "AN_over_r2_lower": "7/20",
+    "AM_over_r2_upper": "-546"
+  },
+  "full_Dirac_rank": "NOT_PROVED",
+  "boundary_compatible_lapses": "NOT_PROVED",
+  "singular_charts": "NOT_PROVED",
+  "oracle_independent_non_IBP": "NOT_PROVED",
+  "interpretation": "Conditional audit of four SHA-pinned original Step58 reports; no independent Poisson/Hamiltonian oracle.",
+  "critical_caveat": "This is a new connected-cover verification, not a proof of full Dirac matrix rank, boundary-compatible lapses or 4D dynamics."
+}
