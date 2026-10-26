@@ -1,3 +1,27 @@
+# JANUS — REPRISE PRIORITAIRE : Step60 A_M CERTIFIÉ STRICTEMENT NÉGATIF SUR LES 7 CELLULES CONTINUES (2026-10-26)
+
+**BRANCHE D'ÉCRITURE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw` ni les workflows désactivés.
+**ÉTAPE EFFECTIVE ACHEVÉE : 68ad-C2d2d — certification corrélée par théorème des accroissements finis du représentant inférieur A_M de Step60. PROCHAINE ÉTAPE : 68ad-C2d2e — traiter B_N Step60 et A_N/A_M Step58 sur le continuum, puis Dirac/lapses/bords.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT SCIENTIFIQUE EXACT ET CONDITIONNEL :** après authentification de 20 sources/rapports locaux (20/20 Git blobs identiques à GitHub), le véritable représentant inférieur `third_free_AM_on_Fz` de Step60 a été évalué avec les jets canoniques Step68o et les bornes spatiales SHA-pinnées Step68v/68ac/B2. Différentiation automatique radiale par intervalles à arrondi extérieur 10^-28, avec dérivées jusqu'à U_sss et factorisation d'interaction exactement vérifiée sur coquille. Sur chaque sous-cellule fermée [a,b], `A_M([a,b]) ⊆ A_M(m)+[-(b-a)/2,(b-a)/2] A_M'([a,b])`. Les 7 cellules originales ont été subdivisées en 32 sous-cellules rationnelles chacune : **224/224 bornes supérieures strictement négatives**, sans trou de couverture, `max A_M upper = -12463417589607208432272964557/10000000000000000000000000000` (environ -1,24634). C'est une certification CONTINUE conditionnelle du signe de ce représentant, pas une preuve de lapse admissible ni de rang Dirac.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2d_correlated_mean_value.py` → **9 PASS, 0 FAIL (17,91 s après version finale)**. Vérifications des dérivées duales, domaines interdits, contre-exemple aux signes ponctuels, SHA sources, 224 sous-cellules, strictes fractions négatives, inclusion du véritable Step60 au milieu d'une sous-cellule et reproduction indépendante de la première borne. Les 224 évaluations physiques ont été exécutées en quatre lots bornés, sans les compter comme 224 tests pytest. Les 88 tests de régression de l'étape précédente ne sont PAS recomptés ni prétendus rejoués.
+
+**FICHIERS NOUVEAUX PUBLIÉS ET RELUS, SHA BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2d_correlated_mean_value.py` — `534a7b57294ccbcfcdaa0708c63db415d644fc5f`.
+- `tests/test_hr_step68ad_c2d2d_correlated_mean_value.py` — `9a44c876a6e319b759a126ae7cf83a579e6850d6`.
+- `research/reports/gate2b-step68ad-C2d2d-Step60-AM-mean-value-compact.json` — `d4c81ec912ec6cdfce19585f79d06a2e6761ea12`.
+- `research/STEP68AD_C2D2D_CORRELATED_MEAN_VALUE_STEP60_AM_CONTINUUM.md` — `37fad77c7db391ecb73fd15a3d872f5fe0195c24`.
+
+**HEAD INITIAL DE CETTE SESSION :** `d4e95966f1e1f67243240ab38b08f63fec7ee8db`. **LIMITES :** Step60 `B_N` toujours INCOMPLETE ; Step58 `A_N,A_M` sur les sept cellules toujours INCOMPLETE ; contraintes Dirac, lapses et conditions aux bords, rang, dynamique 4D, stabilité, observables NON DÉMONTRÉS. Ne pas confondre signe de coefficient et signe de lapse. Aucune validation cosmologique.
+
+**ACTIONS PRIORITAIRES :** (1) chercher annulation exacte de `B_N` sur coquille ou certificat corrélé ; (2) construire des bornes corrélées pour les coefficients Step58, avec dérivées suffisantes ou réduction symbolique de l'ordre ; (3) confronter au rang et aux conditions aux bords ; (4) réexaminer les hypothèses physiques, stabilité et observables. Nettoyage des anciennes copies temporaires Library à retenter seulement si le service autorise la suppression.
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : Step60 QUOTIENT INFÉRIEUR ORIGINAL EXÉCUTÉ SUR 7 CELLULES ; SIGNES CONTINUS INCOMPLETE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw`, ni les workflows désactivés.
