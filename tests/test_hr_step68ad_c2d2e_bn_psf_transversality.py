@@ -43,7 +43,7 @@ def test_full_seven_cell_certificate(reports):
     assert r['subcells']==224 and r['original_cells']==7
     assert r['J_strictly_negative_continuum']
     assert F(r['max_J_upper'])<0
-    assert r['BN_zero_on_shell']=='NOT_PROVED'
+    assert r['BN_zero_on_shell']=='PREVIOUS_STEP68J_IDENTITY_MODULO_Hg_C'
     for row in r['cells']:
         for leaf in row['leaves']:
             assert F(leaf['J'][1])<0
@@ -81,3 +81,21 @@ def test_independent_original_bn_psf_perturbation(reports):
     observed=shifted-original
     assert max(delta.lo,observed.lo)<=min(delta.hi,observed.hi)
     assert shifted.hi<0
+
+
+def test_historical_step68j_exact_identity_reference():
+    # Re-run a nontrivial original exact rational anchor, with C != 0.
+    # The 25-variable theorem is historical; not all groups are re-run here.
+    from numerics.hr_step68j_BN_exact_secondary_identity import rational_reference
+    witness=rational_reference()
+    assert witness['remainder_exact_zero']=='0'
+    assert witness['C_on_Fz_nonzero']=='-53/40'
+    assert witness['wrong_sign_not_an_identity']
+
+
+def test_historical_step68j_certificate_authentication():
+    from pathlib import Path
+    from numerics.hr_step68ad_c2d2e_bn_psf_transversality import verified_historical_identity
+    original=verified_historical_identity(Path.cwd())
+    assert original['numerics/hr_step68j_BN_exact_secondary_identity.py']=='a500cdb1a09c853d46848719e26be9bbec55fb64'
+    assert original['research/reports/gate2b-step68j-original-BN-C-identity.json']=='25a47c7eeed9dec111ecd3f5da891a02d84184d9'
