@@ -1,5 +1,5 @@
 {
-  "BN_zero_on_shell": "NOT_PROVED",
+  "BN_zero_on_shell": "PREVIOUS_STEP68J_IDENTITY_MODULO_Hg_C",
   "GATE_2B": "OPEN",
   "JANUS_R": "NOT_VALIDATED",
   "J_strictly_negative_continuum": true,
@@ -2303,7 +2303,12 @@
     }
   ],
   "exact_identity": "BN=B0+J*pSf; J=d(BN)/d(pSf); d2(BN)/d(pSf)^2=0, for original Step60 third_free_BN_on_Fz",
-  "limitations": "J<0 means BN is strictly decreasing in independent pSf on this conditional shell. It neither proves BN=0 on the constrained physical profile nor the Dirac rank, lapse existence, boundary compatibility, 4D dynamics, stability, or observables.",
+  "historical_step68j_git_blobs": {
+    "numerics/hr_step68i_BN_lower_jet_quotient.py": "2ffc0f4bb65615836c25c5af83d905bd8b94783a",
+    "numerics/hr_step68j_BN_exact_secondary_identity.py": "a500cdb1a09c853d46848719e26be9bbec55fb64",
+    "research/reports/gate2b-step68j-original-BN-C-identity.json": "25a47c7eeed9dec111ecd3f5da891a02d84184d9"
+  },
+  "limitations": "J<0 means BN is strictly decreasing in independent pSf on this conditional shell. Step68j already proves BN=0 modulo Hg=C=0 on regular Fz=0; this run did not independently re-prove all 25 historical partial derivatives. No Dirac rank, lapse existence, boundary compatibility, 4D dynamics, stability, or observables.",
   "max_J_upper": "-345763471741167637281851/312500000000000000000000000",
   "min_J_lower": "-45183603720227163110391799/10000000000000000000000000000",
   "original_cells": 7,
