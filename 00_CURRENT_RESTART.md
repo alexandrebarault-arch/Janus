@@ -1,3 +1,39 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C2d1 TERMINÉE (2026-10-26)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
+**DERNIÈRE ÉTAPE VÉRIFIÉE : 68ad-C2d1 (annulation exacte de la variation du shift et régularité conditionnelle au centre). NEXT : 68ad-C2d2.**
+**STATUT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68AD_C2D1_EXACT_SHIFT_RESPONSE_CENTER_CANCELLATION.md`, `numerics/hr_step68ad_c2d1_shift_variation_center.py`, `research/reports/gate2b-step68ad-C2d1-shift-variation-center.json`, `research/AUTOMATION_STATE.json`. Le checkpoint 68ad-C2c et TOUT l'historique antérieur sont conservés intégralement CI-DESSOUS.
+
+## RÉSULTAT ORIGINAL VÉRIFIÉ — RÉPONSE DU SHIFT AU CENTRE
+
+**TROIS SOURCES PHYSIQUES ORIGINALES AUTHENTIFIÉES PAR SHA-1 GIT RECALCULÉ SUR LE CONTENU COMPLET LU VIA LE CONNECTEUR :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step60 `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`. La reconstruction algébrique indépendante reproduit les densités originales post-IBP et les variations canoniques utiles de D,K ; le code original Step58 Cdot et Step60 quotient n'ont PAS été exécutés.
+
+**HUIT IDENTITÉS EXACTES HORS CONTRAINTES :** les coefficients des dérivées secondes et troisièmes des lapses N,M dans `deltaD` et `deltaK` s'annulent identiquement (2 secteurs × 2 grandeurs × 2 ordres). Cela concerne seulement le SOUS-OPÉRATEUR de réponse du shift, pas les dérivées de lapse du Cdot complet.
+
+**LEMME DE CENTRE CONDITIONNEL :** avec `Lg(0)=A>0, Lf(0)=B>0, pLg=r²(G+O(r²)), pSg=r(P+O(r²)), z=rZ`, les limites symboliques exactes donnent
+```
+lim (deltaD_N0/r) = Z(P-2G)
+lim (deltaD_M0/r) = 3AZ(P-2G)/B
+Fz=0 impose P=2G (car D=A(P-2G)r+O(r³), Kz=O(r³)).
+```
+Les coefficients de profils d'ordre supérieur sont laissés symboliques. Sur Fz=0 : `deltaD_N0,deltaD_M0=O(r³)`, `deltaD_N1,deltaD_M1=O(r²)`, `deltaK_N0,deltaK_M0=O(r²)`, `deltaK_N1,deltaK_M1=O(r³)`. Pour des lapses réguliers PAIRS `N',M'=O(r)` et `K/r²>0` (C2c), le shift non figé vérifie `deltaZ=Z_D deltaD+Z_K deltaK=O(r)`, malgré `Z_D=O(r^-2)` isolément. Cela NE démontre ni l'existence de lapses positifs, ni la préservation de C, ni l'absence du fantôme BD.
+
+**22 TESTS LOCAUX RÉELLEMENT EXÉCUTÉS : 22 PASS, 0 FAIL**, `cd /mnt/data/janus_c2d1 && PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d1_shift_variation_center.py` (11,21 s). Les tests exécutent la reconstruction SymPy exacte, PAS les coefficients temporels complets Step58/60. Les sept signes temporels restent PENDING.
+
+**QUATRE FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d1_shift_variation_center.py` — blob `2e499b7ea3d1fe0a87df7a485c3bb9367a00a0e3`, identique aux octets locaux exécutés.
+- `tests/test_hr_step68ad_c2d1_shift_variation_center.py` — blob `6913aaeba68925d8405d9dacb830c7a57cc1f5e9`, identique aux octets locaux exécutés.
+- `research/reports/gate2b-step68ad-C2d1-shift-variation-center.json` — blob `e8647d7dbc808b9ee18e5042094ea985b563a21d`, identique au certificat local.
+- `research/STEP68AD_C2D1_EXACT_SHIFT_RESPONSE_CENTER_CANCELLATION.md` — blob `ccffef117d8c48bfa908eaea85db33f9478cbfaa`.
+
+**NEXT 68ad-C2d2 :** reconstituer les dépendances originales dans un environnement d'exécution, convertir les 7 boîtes C2b en jets `old.I` sortants, exécuter réellement les A_N/A_M de Step58 et les quotients Step60 sans figer le shift ; si une borne contient zéro, conserver INCOMPLETE. Exploiter la factorisation en r des variations avant division par K. Rang Dirac, lapses/bords, J/K, NON-IBP, BD, dynamique 4D et observables toujours ouverts.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE COMPLET CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C2c TERMINÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
