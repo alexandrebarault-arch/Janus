@@ -1,0 +1,244 @@
+{
+  "status": "NUMERICAL_OFF_SHELL_ONLY",
+  "rows": [
+    {
+      "n": 41,
+      "h": 0.020000000000000004,
+      "bracket_original": 0.044066423548804357,
+      "bracket_ibp": 0.035447574754540516,
+      "pair_original": [
+        2.934475338243791,
+        -2.895241347782386,
+        -0.00022173698765901988,
+        -0.00095482215387157,
+        0.006008992228929752,
+        0.0
+      ],
+      "pair_ibp": [
+        2.707555046939918,
+        -2.6770133394780977,
+        -0.00014689640439465146,
+        -0.0009561094782303744,
+        0.006008873175345373,
+        0.0
+      ],
+      "pair_frozen_shift": [
+        2.934475338243791,
+        -2.8952413477823846,
+        -0.00022173698765902042,
+        -0.00095482215387157,
+        0.006008992228929753,
+        0.0
+      ],
+      "frozen_shift_bracket_difference": -1.3325928902019335e-15,
+      "bracket_difference": 0.008618848794263837,
+      "compact_action_difference": [
+        1.4838522555023215e-06,
+        -3.975744223859434e-06
+      ],
+      "compact_boundary": [
+        0.0,
+        0.0
+      ],
+      "noncompact_action_difference": [
+        2.054218341769256,
+        0.6379156381720252
+      ],
+      "noncompact_boundary": [
+        2.0542433321545386,
+        0.6379360194819342
+      ],
+      "noncompact_boundary_residual": [
+        -2.4990385282475103e-05,
+        -2.038130990900111e-05
+      ],
+      "K_min": 0.013285803919966982,
+      "shift_equation_max": 1.3877787807814457e-17
+    },
+    {
+      "n": 81,
+      "h": 0.009999999999999995,
+      "bracket_original": 0.0438213800990676,
+      "bracket_ibp": 0.041600217837053616,
+      "pair_original": [
+        2.9955941821791576,
+        -2.956600656927365,
+        -0.00022632423603102542,
+        -0.0009548139058734816,
+        0.006008992989179325,
+        0.0
+      ],
+      "pair_ibp": [
+        2.936161054966101,
+        -2.899407641928718,
+        -0.00020702056573472622,
+        -0.0009551376800755411,
+        0.006008963045480885,
+        0.0
+      ],
+      "pair_frozen_shift": [
+        2.995594182179158,
+        -2.9566006569273657,
+        -0.00022632423603102507,
+        -0.0009548139058734816,
+        0.006008992989179325,
+        0.0
+      ],
+      "frozen_shift_bracket_difference": 4.4373684414400483e-16,
+      "bracket_difference": 0.0022211622620139843,
+      "compact_action_difference": [
+        3.711253689431867e-07,
+        -9.937801149236913e-07
+      ],
+      "compact_boundary": [
+        0.0,
+        0.0
+      ],
+      "noncompact_action_difference": [
+        2.0542363211509347,
+        0.6379299811870429
+      ],
+      "noncompact_boundary": [
+        2.0542425268657887,
+        0.6379350457299265
+      ],
+      "noncompact_boundary_residual": [
+        -6.205714853990685e-06,
+        -5.064542883626011e-06
+      ],
+      "K_min": 0.013285803919966982,
+      "shift_equation_max": 2.7755575615628914e-17
+    },
+    {
+      "n": 161,
+      "h": 0.0050000000000000044,
+      "bracket_original": 0.043759252893857147,
+      "bracket_ibp": 0.04319972683180122,
+      "pair_original": [
+        3.011101298085284,
+        -2.9721687435731403,
+        -0.00022748295384441314,
+        -0.0009548118437195855,
+        0.006008993179277425,
+        0.0
+      ],
+      "pair_ibp": [
+        2.9960682967127776,
+        -2.9577000436695915,
+        -0.0002226189841507497,
+        -0.0009548929092666537,
+        0.006008985682032477,
+        0.0
+      ],
+      "pair_frozen_shift": [
+        3.011101298085284,
+        -2.972168743573142,
+        -0.0002274829538444125,
+        -0.0009548118437195855,
+        0.006008993179277425,
+        0.0
+      ],
+      "frozen_shift_bracket_difference": 1.7757063180967592e-15,
+      "bracket_difference": 0.0005595260620559372,
+      "compact_action_difference": [
+        9.279158219577255e-08,
+        -2.4843515411543393e-07
+      ],
+      "compact_boundary": [
+        0.0,
+        0.0
+      ],
+      "noncompact_action_difference": [
+        2.05424078188049,
+        0.6379335429694442
+      ],
+      "noncompact_boundary": [
+        2.0542423256707316,
+        0.637934802440604
+      ],
+      "noncompact_boundary_residual": [
+        -1.543790241420595e-06,
+        -1.2594711598090669e-06
+      ],
+      "K_min": 0.013285803919966982,
+      "shift_equation_max": 2.7755575615628914e-17
+    },
+    {
+      "n": 321,
+      "h": 0.0025000000000000022,
+      "bracket_original": 0.043743666068480305,
+      "bracket_ibp": 0.04360351853125577,
+      "pair_original": [
+        3.0149924327082713,
+        -2.9760751751566725,
+        -0.00022777338175010176,
+        -0.0009548113281712706,
+        0.006008993226802876,
+        0.0
+      ],
+      "pair_ibp": [
+        3.0112231692415894,
+        -2.9724472554640973,
+        -0.00022655499582818279,
+        -0.0009548316021914778,
+        0.00600899135178331,
+        0.0
+      ],
+      "pair_frozen_shift": [
+        3.0149924327082718,
+        -2.9760751751566668,
+        -0.00022777338175010127,
+        -0.0009548113281712704,
+        0.006008993226802876,
+        0.0
+      ],
+      "frozen_shift_bracket_difference": -6.217953669312992e-15,
+      "bracket_difference": 0.00014014753722453772,
+      "compact_action_difference": [
+        2.3198537313362522e-08,
+        -6.210816938523323e-08
+      ],
+      "compact_boundary": [
+        0.0,
+        0.0
+      ],
+      "noncompact_action_difference": [
+        2.0542418905426647,
+        0.6379344277751633
+      ],
+      "noncompact_boundary": [
+        2.0542422753798757,
+        0.6379347416275803
+      ],
+      "noncompact_boundary_residual": [
+        -3.848372109871434e-07,
+        -3.1385241705539357e-07
+      ],
+      "K_min": 0.013285803919966982,
+      "shift_equation_max": 2.7755575615628914e-17
+    }
+  ],
+  "step": "68ad-C2d2e5b2",
+  "verdict": "OFF_SHELL_NUMERICAL_SIX_PAIR_CROSSCHECK_PASS_NOT_FULL_DIRAC",
+  "science": "GATE_2B OPEN; JANUS_R NOT_VALIDATED",
+  "original_source_blobs": {
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "numerics/hr_spherical_mixed_hamiltonian_bracket.py": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81",
+    "numerics/hr_spherical_adm_primary.py": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41"
+  },
+  "source_modules_executed": false,
+  "reconstructed_source_formula_executed": true,
+  "tests": {
+    "python_unittest_passed": 12,
+    "failed": 0,
+    "command": "cd /mnt/data/janus_e5b2 && python -m unittest -v test_hr_step68ad_c2d2e5b2_six_pair_crosscheck.py"
+  },
+  "limitations": [
+    "Finite-grid off-shell benchmark only; not physical Step55/68o solution",
+    "No continuum enclosure or Dirac rank",
+    "K>0 only; J=0 not covered",
+    "Noncompact lapse examples show boundary flux; boundary conditions unspecified",
+    "Finite difference convergence not a proof of functional identity"
+  ],
+  "next_step": "68ad-C2d2e5b3: authentic physical Step55/68o shell six-pair nonIBP with boundaries, full constraint Poisson matrix/tertiaries, K=0/J=0"
+}
