@@ -1,3 +1,37 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C2b TERMINÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
+**ÉTAPE TERMINÉE : 68ad-C2b (boîtes d'entrée rationnelles, PAS évaluation temporelle). NEXT : 68ad-C2c.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md`, `numerics/hr_step68ad_c2b_center_boxes.py`, `research/reports/gate2b-step68ad-C2b-center-safe-input-summary.json`, `research/AUTOMATION_STATE.json`. Tous les checkpoints antérieurs sont conservés intégralement CI-DESSOUS.
+
+## RÉSULTAT NOUVEAU — 7 CELLULES D'ENTRÉE PHYSIQUES RIGOUREUSES, SANS DIVISION PAR s
+
+Les trois rapports physiques originaux sont identifiés et lus via GitHub : Step68v `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`, Step68ac `16ae8dab3563c17134e4e20f886fb7306dc2e4ba`, Step68ad-B2 `ac961b5b83667a83497497d22a701c24584cb561`. Leur contenu établit, conditionnellement à la branche analytique Step49, le tube `|U-Ustar|<=s³/10^7` et les bornes des dérivées U_s, U_ss, U_sss sur `0<=s<=1/1024`.
+
+**NOUVELLE APPLICATION EXACTE FRACTION :** 7 cellules fermées couvrant sans lacune `r∈[1/64,1/32]`, extrémités `1/64,1/56,9/448,5/224,11/448,3/112,13/448,1/32`. Intersecter la barrière cubique avec le tube de monotonie U_s>0 donne :
+- largeur MAX des boîtes U `5349668327184482945967454922219/50352619520000000000000000000000000000` ≈ `1.0624409173110848e-7`;
+- erreur MAX de la seule barrière cubique `1/10737418240000000` ≈ `9.313225746154785e-17`;
+- sur chacune des 7 cellules : `U<0, U_s>0, U_ss<0, U_sss<0`, les dérivées sont des bornes historiques IMPORTÉES, PAS différentiées de l'intervalle U;
+- `r=0` également supporté par les formules, sans `1/s`.
+
+Les dix profils canoniques non-horloges de l'original Step68o sont des compositions algébriques de `s,U,G(s,U)` et de `jet_geometry(s)` : le troisième jet de chacun n'exige pas `U_ssss`, sous réserve de dénominateurs non nuls. Le prochain calcul doit utiliser `Jet([U,U_s,U_ss/2,U_sss/6])` puis le vrai Step58/60, sans changer le Step68o original.
+
+**16 TESTS RÉELLEMENT EXÉCUTÉS : 16 PASS, 0 FAIL, 2.18s** dans `/mnt/data/janus_c2b`, `PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2b_center_boxes.py`. Tests de fractions exactes, partition, centre, signes, provenance négative (tamper), règles de chaîne symboliques, dépendance d'ordre 3. **LIMITATION** : ces tests utilisent des champs rationnels recopiés des rapports lus via le connecteur GitHub ; le conteneur n'a pas DNS GitHub, donc pas de relecture LOCALE positive des trois rapports complets. `load_pinned()` exige néanmoins leurs octets SHA exacts en clone complet et doit être rejoué. Aucune exécution du vrai Step58/60 ; les sept signes temporels restent PENDING.
+
+**FICHIERS PUBLIÉS ET RELUS SHA OCTET IDENTIQUES :**
+- `numerics/hr_step68ad_c2b_center_boxes.py` — `94928e285f7e04deaf546abbeb9d3f05db33b213`.
+- `tests/test_hr_step68ad_c2b_center_boxes.py` — `ae95668d5401df63c74fe22380b00fdc561fb426`.
+- `research/reports/gate2b-step68ad-C2b-center-safe-input-summary.json` — `a131c60c221a9f54f9437b932dd44e04eddd2398`.
+- `research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md` — `6c4fed04e581ef7fc984f6f6d348b74be00a5bab`.
+
+**NEXT 68ad-C2c :** (1) reconstituer les 3 rapports complets et vérifier leurs blobs localement ; (2) convertir les boîtes rationnelles en `old.I` sortants, les injecter dans le vrai Step68o via un nouveau module sans `_ode_coeff=(G-2U)/(2s)` ; (3) exécuter `jet_geometry`, `jet_G`, f-dust, les 12 jets, puis le vrai Step58 et quotient Step60 non-frozen-shift sur les 7 cellules ; (4) si signe non séparé de zéro, conserver INCOMPLETE et raffiner sans faux certificat ; (5) poursuivre vers r=0, rang Dirac, lapses, bords, jauge, J/K, NON-IBP, BD, cosmologie 4D.
+
+**POINT DE REPRISE PRÉFIXÉ, HISTORIQUE COMPLET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C2a TERMINÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
