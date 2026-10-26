@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "a1e6cc4987d67456cacedb75eb643414d4b2f28e",
-  "latest_verified_completed_step": "68ad-C2d2c-authentic-Step60-lower-jet-quotient-seven-cell-execution-INCOMPLETE",
-  "next_pending_step": "68ad-C2d2c-correlated-continuum-Step58-Step60-enclosures",
+  "verified_research_head_before_state_file": "cd4901810f52e21c8dd0ad45728f696e3e4105a7",
+  "latest_verified_completed_step": "68ad-C2d2d-correlated-continuum-Step60-AM-224-rational-subcells-CERTIFIED_CONDITIONAL",
+  "next_pending_step": "68ad-C2d2e-Step60-BN-and-original-Step58-correlated-continuum",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2D_CORRELATED_MEAN_VALUE_STEP60_AM_CONTINUUM.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 88,
+    "passed": 9,
     "failed": 0,
     "skipped": 0,
-    "source": "Actual Python: PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py tests/test_hr_step68ad_c2d2b_guard.py tests/test_hr_step68ad_c2d2a_temporal_replay.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step60_full_constraint_prolongation.py (88 PASS, 14.29s); 9 new, 79 regression."
+    "source": "Actually executed: PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2d_correlated_mean_value.py → 9 PASS, 0 FAIL (17.91 s) after final code. 224 original Step60 AM subcell evaluations in 4 bounded batches, not counted as pytest tests; prior 88 tests not rerun."
   },
-  "github_write_probe": "GitHub create_file/update_file on research branch only; four new scientific files and checkpoint read back with Git blob SHA equal to tested bytes; old restart content preserved as exact 349231-character suffix.",
+  "github_write_probe": "GitHub create_file/update_file genuinely executed on research branch only; 4 new files and checkpoint+README read back with matching Git blob SHA, historical restart suffix preserved byte-for-byte as text.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,7 +37,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step60 lower-jet BN/AM seven-cell quotient EXECUTED with exact on-shell CSE factorization; 14/14 intervals include zero (0/14 continuum signs). Eight edge AM strictly negative, BN intervals include zero; Step58 continuum 0/14. Need correlated Taylor/affine interval model or globally simplified on-shell symbolic expression, then Dirac/lapse/boundary.",
+  "current_blocker": "Step60 BN intervals still contain zero, Step58 original A_N/A_M continuum not certified. Need on-shell exact BN identity or correlated Taylor/affine bounds and sufficient higher derivative control for Step58; then Dirac/lapse/boundary rank.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -66,7 +66,7 @@
     "research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json": "e1b1eadabe99ffa49ea070caaaffb35981a4b5d2",
     "research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md": "c7eb3be98ea269900f4729a76ed8712765e12e24"
   },
-  "current_proven_result": "24/24 source/test/report Git blobs verified; original Step60 q'''-free lower representatives evaluated on all seven physical cells with exact on-shell interaction T factorization and original Step68o jets; 0/14 continuum signs, 8 pointwise AM negative, 8 BN intervals overlap zero, 8/8 AM overlaps original Step58; Step58 previous 0/14.",
+  "current_proven_result": "Original Step60 third-free AM strictly negative on entire r in [1/64,1/32] conditional on SHA-pinned original physical Step68o spatial profile, via 224 exact rational subcell midpoint mean-value enclosures, max AM upper -12463417589607208432272964557/10000000000000000000000000000. BN and original Step58 continuum INCOMPLETE.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -77,22 +77,20 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Step58 original seven-cell executed (0/14 signs); Step60 original lower-jet quotient seven-cell executed (0/14 signs). Dirac rank, lapses, boundary, 4D, stability, observables unresolved.",
-  "source_authentication_this_session": "24/24 Git blobs from live research branch materialized and verified; Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f; Step60 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509; Step68o c99caebc17f243784450ddff94fb061767e6d8e7.",
+  "scope": "Step60 lower-jet AM continuum conditional sign certified over all seven cells; BN Step60 and Step58 A_N/A_M continuum still incomplete; Dirac rank, lapses, boundaries, 4D, stability, observables unresolved.",
+  "source_authentication_this_session": "20/20 original Python source and pinned physical report blobs SHA-matched from live GitHub branch in local Python environment; Step60 original 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509; Step68o c99caebc17f243784450ddff94fb061767e6d8e7.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "1aeb49a1502ea6a69ec9a51cd04fd36f9a7409fc",
+  "last_read_branch_head_at_session_start": "d4e95966f1e1f67243240ab38b08f63fec7ee8db",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
-    "kind": "ORIGINAL_STEP58_WITH_EXACT_ON_SHELL_CSE_REWRITE",
-    "cells": 7,
-    "coefficients": 14,
-    "continuum_signs_certified": 0,
-    "continuum_incomplete": 14,
-    "pointwise_radii": 8,
-    "pointwise_signs_strict": 16,
-    "Step60_symbolic_executed": true,
-    "Step60_lower_jet_seven_cell_evaluated": false,
-    "source_blobs_verified": 22
+    "kind": "ORIGINAL_STEP60_LOWER_AM_CORRELATED_INTERVAL_AD_MEAN_VALUE",
+    "original_radial_cells": 7,
+    "certified_subcells": 224,
+    "AM_continuum_negative": 7,
+    "BN_continuum": "INCOMPLETE",
+    "Step58_continuum": "INCOMPLETE",
+    "original_source_and_report_blobs_verified": 20,
+    "max_AM_upper": "-12463417589607208432272964557/10000000000000000000000000000"
   },
   "temporary_staging_cleanup": {
     "google_drive_document": "TEMP_JANUS_20261026_C2d2c_SOURCE_BRIDGE_DELETE_AFTER_EXPORT",
@@ -115,5 +113,37 @@
     "pointwise_BN_contains_zero": 8,
     "original_Step58_continuum_signs_certified": 0,
     "source_blobs_verified": 24
+  },
+  "latest_verified_published_blobs": {
+    "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
+    "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
+    "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
+    "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
+    "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
+    "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
+    "00_CURRENT_RESTART.md": "da207123de541e4f8b3b507cd9df8f8ca429c882",
+    "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
+    "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
+    "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
+    "tests/test_hr_step68ad_c2d2b_shift_second_jet.py": "c3fb478715587c02bad49f95093e9d4b06a0cae1",
+    "research/STEP68AD_C2D2B_EXACT_SHIFT_SECOND_JET_CENTER_LEMMA.md": "a364d1d8c4660903951e96db68e0750d5c376be4",
+    "research/reports/gate2b-step68ad-C2d2b-conditional-shift-second-jet.json": "33e39f996abb54b8c943ac4a07645ece863eafba",
+    "numerics/hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "3a996c87fd832d927066e0a68f17279df50ac84c",
+    "tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "7746ca04e8c46c34f17a8bf35c4f90cdd71b251b",
+    "research/STEP68AD_C2D2B_EXACT_STEP68O_SHIFT_SHELL_AUDIT.md": "a7a0fef0cd05519fa1830314489bc43c20a79498",
+    "research/reports/gate2b-step68ad-C2d2b-exact-Step68o-shift-shell.json": "5e7abde6bbd0265874fca2cecad47ed2689ddfdf",
+    "numerics/hr_step68ad_c2d2b_executed_temporal_probe.py": "c81c08502bdd50f6c13fbe09d1fcecf853036ffd",
+    "tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py": "1b2ac08636874501a800d0ce61608bec8274cf08",
+    "research/reports/gate2b-step68ad-C2d2b-executed-physical-temporal.json": "a369c2e65205d228a734817df3d3a02cf0e41c3d",
+    "research/STEP68AD_C2D2B_AUTHENTIC_STEP58_EXECUTION_AND_INTERVAL_DEPENDENCY.md": "188df51cc5d81ba690eb10806a4f99a36a215d9c",
+    "numerics/hr_step68ad_c2d2c_step60_lower_quotient_replay.py": "96196aa02050a274d055831ef0e9091141aeed2e",
+    "tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py": "54d872c2b74169f4d8976341d1c05fea76c18aaa",
+    "research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json": "e1b1eadabe99ffa49ea070caaaffb35981a4b5d2",
+    "research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md": "c7eb3be98ea269900f4729a76ed8712765e12e24",
+    "numerics/hr_step68ad_c2d2d_correlated_mean_value.py": "534a7b57294ccbcfcdaa0708c63db415d644fc5f",
+    "tests/test_hr_step68ad_c2d2d_correlated_mean_value.py": "9a44c876a6e319b759a126ae7cf83a579e6850d6",
+    "research/reports/gate2b-step68ad-C2d2d-Step60-AM-mean-value-compact.json": "d4c81ec912ec6cdfce19585f79d06a2e6761ea12",
+    "research/STEP68AD_C2D2D_CORRELATED_MEAN_VALUE_STEP60_AM_CONTINUUM.md": "37fad77c7db391ecb73fd15a3d872f5fe0195c24",
+    "README.md": "298ac002b81f0d4e03125c60480e4c8f9561572a"
   }
 }
