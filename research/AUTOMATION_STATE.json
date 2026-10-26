@@ -5,7 +5,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "913d801f8847c1ff3109b10acaad4fb4c8485d42",
+  "verified_research_head_before_state_file": "88a063eb1cfdb1844bb584b3cc800c8466e28406",
   "latest_verified_completed_step": "68ad-C2d2e2-CONDITIONAL_EXACT_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION",
   "next_pending_step": "68ad-C2d2e3-original-Step58-AN-AM-correlated-continuum-enclosures",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -110,14 +110,28 @@
     "new_folder": "/JANUS-temporary-github-publish-20261026-C2d2d",
     "new_folder_files_remaining": 4,
     "google_drive_bridge_document_deleted": true,
-    "last_attempts": "Authentic delete of new bundle failed 401 Unauthorized; previous two folder cleanup failures persist. Three ephemeral Google Docs transfer documents created and deleted successfully.",
+    "last_attempts": "8 authenticated Library deletes by library_file_id attempted 2026-10-26; all failed 401 Unauthorized on injest-server; old folder /JANUS-temporary-github-publish-20261026 currently lists empty; non-secret research copies only.",
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
-    "action": "Delete both C2d2e ephemeral Library bundles and prior temporary folders when 401 Unauthorized service recovers; non-secret scientific sources only.",
+    "action": "Retry cleanup only when Library delete service recovers. GitHub source of truth unaffected.",
     "new_current_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026.json",
     "new_bundle_library_file_id": "libfile_17f52736778c819195709abedd20af01",
     "corrected_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026-corrected.json",
     "corrected_bundle_library_file_id": "libfile_2cbe0de137148191bfec9338dd737d90",
-    "google_drive_bridge_documents_deleted": true
+    "google_drive_bridge_documents_deleted": true,
+    "current_session_folder": "/JANUS-stage-20261026-C2d2e2",
+    "current_session_files_remaining": 4,
+    "current_session_file_ids": [
+      "libfile_ffcf28ebb08c819187b0e8d04e4dd019",
+      "libfile_91b192b1641481918edd82126f18839e",
+      "libfile_f1e9c49fc5408191a2f65afaee7d7a65",
+      "libfile_e075032cc4c481919cf7959ddb53b16a"
+    ],
+    "previous_session_file_ids_remaining": [
+      "libfile_a966ead16af481919b8ed067cf349796",
+      "libfile_2595a4c164448191a0a9b1910e78cd6d",
+      "libfile_17f52736778c819195709abedd20af01",
+      "libfile_2cbe0de137148191bfec9338dd737d90"
+    ]
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
