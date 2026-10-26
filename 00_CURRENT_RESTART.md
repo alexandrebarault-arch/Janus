@@ -12,13 +12,13 @@ L'ancien `evaluate_original_step58` vérifiait le domaine radial demandé par St
 
 La sortie distingue désormais la certification de non-nullité de N/M et la concordance avec le motif historique N>0, M<0 ; une orientation inverse n'est pas automatiquement qualifiée de confirmation physique.
 
-**12 TESTS NOUVEAUX LOCAUX : 12 PASS, 0 FAIL**, `cd /mnt/data/janus_c2d2b_guard && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py` (0,06 s). Tests de GARDE, pas de physique. Le test complet de l'adaptateur modifié n'a PAS été relancé en clone ; les 20 tests historiques C2d2a ne sont PAS comptés comme exécutés aujourd'hui. Sept intersections rationnelles des boîtes physiques ont été vérifiées indépendamment, 7/7 non vides, mais cela n'exécute pas Step58.
+**12 TESTS NOUVEAUX LOCAUX : 12 PASS, 0 FAIL**, `cd /mnt/data/janus_c2d2b_guard && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py` (0,04 s). Tests de GARDE, pas de physique. Le test complet de l'adaptateur modifié n'a PAS été relancé en clone ; les 20 tests historiques C2d2a ne sont PAS comptés comme exécutés aujourd'hui. Sept intersections rationnelles des boîtes physiques ont été vérifiées indépendamment, 7/7 non vides, mais cela n'exécute pas Step58.
 
 **SIX SOURCES ORIGINALES Step55/58/60/68n/68o/C2b RE-LUES ET REHASHÉES SHA Git : 6/6 MATCH**. Le module de garde et son fichier de tests publiés sont byte-identiques aux octets locaux testés.
 
 **FICHIERS NOUVEAUX :**
 - `numerics/hr_step68ad_c2d2b_guard.py` — blob `a0657a023fc59073bd1ab9f9a4255cf5248e0b9b`.
-- `tests/test_hr_step68ad_c2d2b_guard.py` — blob `0daa20efbe1df763b91ba01268e25daf81d89731`.
+- `tests/test_hr_step68ad_c2d2b_guard.py` — blob `78a00ecccbffbfbd5d262c1cac9d6437d12f3c3f`.
 - `research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md` — blob `33a35f037f2d0c0bbb1f0c174d6f0dc62de08bae`.
 - `research/reports/gate2b-step68ad-C2d2b-interface-guard.json` — blob `bef872259eba1f9086ec44940b2101b22c63b486`.
 
