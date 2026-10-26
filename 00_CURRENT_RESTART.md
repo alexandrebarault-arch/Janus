@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5a, IDENTITÉ DE BORD ORIGINALE NON-IBP (2026-10-26)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5a — dérivation exacte du terme de bord original/IBP à shift fixé et audit des variations aux bords. PROCHAINE : 68ad-C2d2e5b — construire le véritable oracle fonctionnel de Poisson/Dirac à six couples sur coquille, shift éliminé, avec bords, rang, tertiaires et chartes K=0/J=0.**
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Seule branche d'écriture `research/gate2b-nonhomothetic-transfer`; `main`, `research/v2-flrw`, workflows désactivés inchangés.
+
+**SOURCES PHYSIQUES ORIGINALES RELUES SUR GITHUB :** `numerics/hr_step37_original_nonibp_oracle.py` blob `005449ade6e3582e3b9a5c3374a881a77e73e3f6`; `numerics/hr_spherical_mixed_hamiltonian_bracket.py` blob `6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81`; `numerics/hr_spherical_adm_primary.py` blob `c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41`. Ces moteurs originaux n'ont PAS été réexécutés en Python ; reconstruction analytique et audit rationnel indépendants.
+
+**NOUVEAU THÉORÈME EXACT, FIXED-z :** pour les termes de courbure EH non intégrés et le terme `pLg'` des Hamiltoniens originaux, `L_original-L_IBP=∂r B` avec `B=2Mg² N Sg Sg'/Lg+2Mf² M Sf Sf'/Lf-z pLg(N+M Lg/Lf)`. Les autres termes communs s'annulent dans la différence. Si `N=M=0` aux bords, `[B]=0`. Sans cette hypothèse, suppression du bord INJUSTIFIÉE. Contre-exemple exact HORS coquille : `Lg=1,Lf=2,Sg=r,Sf=2r,pLg=-r²,z=r/4,N=M=1,Mg²=Mf²=1`, `B(1/2)=195/64`, `B(1)=51/8`, `[B]=213/64`. Les coefficients de `δSg'`, `δSf'`, `δpLg` au bord sont respectivement `2Mg² N Sg/Lg`, `2Mf² M Sf/Lf`, `-z(N+M Lg/Lf)`. Flux des deux poussières dérivés séparément dans l'audit. Ceci ne démontre PAS d'obstruction physique définitive : fixer les variations ou ajouter des contretermes peut rétablir la différentiabilité, et la variation du shift éliminé `z_*` reste à traiter.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** **28 assertions rationnelles BigInt PASS, 0 FAIL** dans V8 sur deux familles de champs, 7+4 rayons rationnels, lapses compacts/non compacts, contre-exemples négatifs, flux, six couples déclarés et chartes non régulières rejetées ; **3 identités symboliques SymPy indépendantes PASS** dans Python (courbures g/f et impulsion). Les assertions ne constituent PAS un oracle de Poisson six couples complet ; aucune matrice de Dirac ni contrainte tertiaire physique n'a été calculée.
+
+**QUATRE LIVRABLES PUBLIÉS ET RELUS OCTET POUR OCTET :**
+- `scripts/hr_step68ad_c2d2e5a_original_boundary.cjs` — Git blob `78fe086dd06004fdcf30c2f022f759595671275a`.
+- `tests/test_hr_step68ad_c2d2e5a_original_boundary.cjs` — Git blob `49657554d7246aa0607161afd795c1714f7b3454`.
+- `research/reports/gate2b-step68ad-C2d2e5a-exact-boundary.json` — Git blob `c0167d2c370ee131769e1d148640d4fe3b60ba66`.
+- `research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md` — Git blob `4d1f229cba28ee83a2bb2c47c34969239fba3601`.
+README synchronisé. HEAD au démarrage `c2d625d35df086f4295255f99cc6eead7df0d363`; les commits ci-dessus sont publiés sur la branche autorisée uniquement ; relire le HEAD final après mise à jour de l'index.
+
+**NETTOYAGE :** huit suppressions Library par `library_file_id` exact ont été réellement retentées : huit échecs `401 Unauthorized` de `/uninjest_file`. Aucune suppression prétendue.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) construire et confronter le crochet de Poisson non-IBP original à six couples avec variations du shift réduit et termes de bord ; (2) spécifier conditions aux bords et contretermes, tester lapses globaux et tertiaires ; (3) rang Dirac complet et chartes K=0/J=0 ; (4) dynamique 4D, stabilité, observables ; (5) retenter nettoyage Library. Le rang 1 de la seule ligne temporelle Step58 sur 1 810 cellules reste conditionnel, inchangé.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e4, AUDIT DU RANG LOCAL DES LAPSES (2026-10-26)
 
 **ÉTAPE TERMINÉE : 68ad-C2d2e4 — raccordement rationnel conditionnel de quatre certificats originaux Step58. PROCHAINE : 68ad-C2d2e5 — calcul indépendant non-IBP du crochet fonctionnel de Dirac à six couples, contraintes et conditions aux bords, chartes K=0/J=0.**
