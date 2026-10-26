@@ -1,3 +1,31 @@
+# JANUS — REPRISE PRIORITAIRE : LEMME CONDITIONNEL DE SECOND JET SHIFT Step60 ; EXÉCUTION PHYSIQUE TOUJOURS PENDING (2026-10-26)
+
+**SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
+**DERNIÈRE ÉTAPE PHYSIQUE : 68ad-C2d2a (ADAPTATEUR UNIQUEMENT). DERNIER LEMME ALGÉBRIQUE TESTÉ : 68ad-C2d2b-conditional-shift-second-jet. NEXT EFFECTIF : 68ad-C2d2b — EXÉCUTER LE VRAI Step58 SUR SEPT CELLULES, PUIS Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+## NOUVEAU RÉSULTAT EXACT — SECOND JET STATIONNAIRE DU SHIFT RÉGULARISÉ
+
+Sources physiques Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step60 `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509` et Step68o `c99caebc17f243784450ddff94fb061767e6d8e7` lues directement sur GitHub. Sur Fz=0, K>0 : `z=D/sqrt(D²+K²)`, `W=K*D'-D*K'`, `z'=K*W/(D²+K²)^(3/2)` et `z''=[K'W+K(KD''-DK'')]/(D²+K²)^(3/2)-3KW(DD'+KK')/(D²+K²)^(5/2)`. L'expression originale Step60 pour z'' donne exactement la même dérivée après substitution cohérente `z=D/R`, `z'=KW/R³`.
+
+Si de plus `D=r³d(r²)`, `K=r²k(r²)`, `k>0`, d,k C³, alors `z=rA(r²)` avec `A=d/sqrt(k²+s d²)`, `z''=r(6A_s+4sA_ss)`, `z'''=6A_s+24sA_ss+8s²A_sss`. Au centre `z''(0)=0`, `z'''(0)=6(d1/k0-d0*k1/k0²-d0³/(2k0³))`. Il s'agit d'un **lemme algébrique conditionnel**, pas d'un résultat temporel sur les sept cellules.
+
+**EXÉCUTIONS LOCALES :** `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2b_shift_second_jet` : 10 identités symboliques exactes ; `PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_shift_second_jet.py` : **10 PASS, 0 FAIL (1,42 s)**, six profils rationnels indépendants et deux contre-exemples de domaine/branche. Ces profils tests ne sont PAS des solutions physiques.
+
+**FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d2b_shift_second_jet.py` — blob `b10085e6c8cbfc562f3b2cc1a120eb6448535a57`, identique aux octets locaux testés.
+- `tests/test_hr_step68ad_c2d2b_shift_second_jet.py` — blob `c3fb478715587c02bad49f95093e9d4b06a0cae1`, identique aux octets locaux testés.
+- `research/STEP68AD_C2D2B_EXACT_SHIFT_SECOND_JET_CENTER_LEMMA.md` — blob `a364d1d8c4660903951e96db68e0750d5c376be4`.
+- `research/reports/gate2b-step68ad-C2d2b-conditional-shift-second-jet.json` — blob `33e39f996abb54b8c943ac4a07645ece863eafba`.
+
+**HEAD RELU À LA REPRISE :** `b3dd7c08e84933e1d43f9de0530553d4c695a907`. **BLOCAGE INCHANGÉ :** le conteneur Python ne possède pas les sources originales authentifiées et les trois rapports dans un même checkout ; DNS GitHub direct échoue. **Aucun vrai Step58/60 exécuté ; 0/14 nouveaux signes temporels physiques.** Le lemme ne prouve ni la réalisation de D=r³d(s) sur tout profil, ni les lapses admissibles, le rang de Dirac, les conditions aux bords, la stabilité ou les observables.
+
+**ACTIONS PRIORITAIRES :** (1) réunir le checkout byte-authentique des dépendances et rapports ; (2) rejouer les tests d'intégration C2d2a/C2d2b ; (3) exécuter le véritable Step58 sur sept cellules et vérifier les 14 intervalles exacts ; (4) exécuter le quotient original Step60 en imposant les jets du shift stationnaire, notamment z' et z'' ; (5) si un intervalle traverse zéro, rester INCOMPLETE ; (6) seulement ensuite reprendre Dirac/lapses/bords/4D. **NE PAS CONFONDRE LEMME ET EXÉCUTION PHYSIQUE.**
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE INTÉGRAL ANTÉRIEUR CONSERVÉ CI-DESSOUS SANS MODIFICATION (338312 caractères).**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2b CERTIFICAT DE SIGNES RENFORCÉ ; PHYSIQUE TOUJOURS PENDING (2026-10-26)
 
 **SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
