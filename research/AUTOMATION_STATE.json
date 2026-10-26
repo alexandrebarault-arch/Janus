@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "0b6400dd75e3add863cdfd4c258285cc0e2fa131",
-  "latest_verified_completed_step": "68ad-C2d1",
-  "next_pending_step": "68ad-C2d2",
+  "verified_research_head_before_state_file": "5f1e2db8e5e924a8faf562719c1ebf182c0783ee",
+  "latest_verified_completed_step": "68ad-C2d2a",
+  "next_pending_step": "68ad-C2d2b",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D1_EXACT_SHIFT_RESPONSE_CENTER_CANCELLATION.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 22,
+    "passed": 20,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed /mnt/data/janus_c2d1: PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d1_shift_variation_center.py (22 PASS, 11.21s). Symbolic independent reconstruction of Step45/58 shift response, NOT Step58 full Cdot/Step60 quotient."
+    "source": "Actually executed /mnt/data/janus_c2d2a: PYTHONPATH=/mnt/data/janus_c2d2a python -m pytest -q /mnt/data/janus_c2d2a/tests/test_hr_step68ad_c2d2a_temporal_replay.py (20 PASS, 0.07s). Harness tests with local doubles only; original Step58/60 NOT executed."
   },
-  "github_write_probe": "Four scientific files created on research branch and read back: code/tests/JSON match local Git blobs; audit reviewed. 00_CURRENT_RESTART.md prepended 3838 characters, retaining all 323845 old characters. Three original Step45/58/60 full files independently Git SHA1 authenticated via connector; no original workflows or protected branches changed.",
+  "github_write_probe": "Three files published/read back with matching Git blob SHA to tested local bytes, journal prepended 3418 characters and prior checkpoint retained. Positive source validation in local clone NOT executed.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,15 +37,15 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The original full Step58 Cdot A_N,A_M and Step60 quotient remain UNEXECUTED on seven cells [1/64,1/32]. This run proved the exact shift-variation N''/N'''/M''/M''' coefficients vanish and regular even lapses imply deltaZ=O(r) on Fz=0. Next: reconstruct original dependencies and run genuine interval evaluation with outward C2b jets. Local clone not available (container DNS GitHub unavailable).",
+  "current_blocker": "Full original Step58 A_N/A_M on seven center cells and Step60 quotient still NOT EXECUTED because container has no GitHub checkout/network. New center-safe harness ready to run in full checkout, including outward-lattice-domain guard; execute it before any temporal sign claim.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_c2d1_shift_variation_center.py": "2e499b7ea3d1fe0a87df7a485c3bb9367a00a0e3",
-    "tests/test_hr_step68ad_c2d1_shift_variation_center.py": "6913aaeba68925d8405d9dacb830c7a57cc1f5e9",
-    "research/reports/gate2b-step68ad-C2d1-shift-variation-center.json": "e8647d7dbc808b9ee18e5042094ea985b563a21d",
-    "research/STEP68AD_C2D1_EXACT_SHIFT_RESPONSE_CENTER_CANCELLATION.md": "ccffef117d8c48bfa908eaea85db33f9478cbfaa"
+    "numerics/hr_step68ad_c2d2a_temporal_replay.py": "6b68c33ceac7f1f1a890e0d61a938a9ddb23ea95",
+    "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "3dea95d2233ea23b5cbee2583a38ca5a9be16dba",
+    "research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md": "589b473285143af59890545d898dba6140336ca4",
+    "00_CURRENT_RESTART.md": "1f27c2867e8688efbda675d9025e7bcee7fcf90a"
   },
-  "current_proven_result": "Exact off-shell cancellation of all N'',N''',M'',M''' lapse jets in deltaD and deltaK (eight identities), from original Step45 post-IBP densities and Step58 shift-response formulas. Exact center limits deltaD_N0/r=Z(P-2G), deltaD_M0/r=3AZ(P-2G)/B. Stationarity Fz=0 forces P=2G; for smooth even lapses and C2c K/r²>0, deltaZ=O(r). No temporal sign certification.",
+  "current_proven_result": "Exact rational counterexample to naively using C2b ideal-cell boxes on Step68o outward-rounded si=I.hull(rlo,rhi)**2. Tested guard recomputes U/U_s/U_ss/U_sss on true rounded s interval; 20 local harness tests PASS. No new physical temporal sign.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -56,6 +56,6 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Exact symbolic regularization of original stationary shift Frechet variation under even lapse parity. Not seven-cell temporal evaluation, Dirac rank, lapse fixing, boundary or BD ghost theorem.",
-  "source_authentication_this_session": "3/3 full original Step45/58/60 source files Git SHA1 recalculated independently in JS from GitHub connector-returned UTF8 bytes. Original Step58/60 execution NOT performed."
+  "scope": "Certified algorithmic guard for outward lattice and source-pinned replay harness; NOT physical Step58/60 execution, no seven-cell signs, no Dirac rank, positive lapse, boundary or BD theorem.",
+  "source_authentication_this_session": "GitHub branch directory and original file SHAs checked against expected pin metadata; positive SHA re-hashing of complete originals in local checkout NOT executed. The new harness will fail closed on source drift."
 }
