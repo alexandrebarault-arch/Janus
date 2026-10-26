@@ -1,3 +1,39 @@
+# JANUS — REPRISE PRIORITAIRE : C2d2b GARDE RENFORCÉE, EXÉCUTION PHYSIQUE TOUJOURS PENDING (2026-10-26)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` ; ne jamais modifier `main`, `research/v2-flrw`, GitHub Actions/workflows désactivés.
+**DERNIÈRE ÉTAPE PHYSIQUE VALIDÉE : 68ad-C2d2a (adaptateur seulement). DERNIER CORRECTIF TESTÉ : 68ad-C2d2b-interface-hardening. NEXT EFFECTIF : 68ad-C2d2b — EXÉCUTER LE VRAI Step58 ET ENSUITE Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE D'ABORD :** `research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md`, `numerics/hr_step68ad_c2d2b_guard.py`, `numerics/hr_step68ad_c2d2a_temporal_replay.py`, `research/AUTOMATION_STATE.json`. Tout l'historique est conservé ci-dessous.
+
+## CORRECTIF CONCRET — BINDING DES BOÎTES ET ORIENTATION DES SIGNES
+
+L'ancien `evaluate_original_step58` vérifiait le domaine radial demandé par Step68o, mais pas l'égalité entre le vrai `s=I.hull(rlo,rhi)**2` et l'intervalle `s` des bornes U/U_s/U_ss/U_sss injectées. Une boîte périmée pouvait donc être utilisée directement. Le nouveau garde vérifie cette égalité en fractions rationnelles EXACTES, la présence du marqueur outward, le domaine `s≤1/1024`, et les quatre paires ordonnées, avant toute évaluation.
+
+La sortie distingue désormais la certification de non-nullité de N/M et la concordance avec le motif historique N>0, M<0 ; une orientation inverse n'est pas automatiquement qualifiée de confirmation physique.
+
+**12 TESTS NOUVEAUX LOCAUX : 12 PASS, 0 FAIL**, `cd /mnt/data/janus_c2d2b_guard && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py` (0,06 s). Tests de GARDE, pas de physique. Le test complet de l'adaptateur modifié n'a PAS été relancé en clone ; les 20 tests historiques C2d2a ne sont PAS comptés comme exécutés aujourd'hui. Sept intersections rationnelles des boîtes physiques ont été vérifiées indépendamment, 7/7 non vides, mais cela n'exécute pas Step58.
+
+**SIX SOURCES ORIGINALES Step55/58/60/68n/68o/C2b RE-LUES ET REHASHÉES SHA Git : 6/6 MATCH**. Le module de garde et son fichier de tests publiés sont byte-identiques aux octets locaux testés.
+
+**FICHIERS NOUVEAUX :**
+- `numerics/hr_step68ad_c2d2b_guard.py` — blob `a0657a023fc59073bd1ab9f9a4255cf5248e0b9b`.
+- `tests/test_hr_step68ad_c2d2b_guard.py` — blob `0daa20efbe1df763b91ba01268e25daf81d89731`.
+- `research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md` — blob `33a35f037f2d0c0bbb1f0c174d6f0dc62de08bae`.
+- `research/reports/gate2b-step68ad-C2d2b-interface-guard.json` — blob `bef872259eba1f9086ec44940b2101b22c63b486`.
+
+**FICHIERS MODIFIÉS :**
+- `numerics/hr_step68ad_c2d2a_temporal_replay.py` — blob `e5a6c34ba95548527bc26d946f1e210d77355ee6`.
+- `tests/test_hr_step68ad_c2d2a_temporal_replay.py` — blob `1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9`.
+
+**BLOCAGE EXACT :** le connecteur GitHub peut lire/écrire, mais le conteneur de calcul ne peut pas résoudre/joindre GitHub pour cloner et ne possède pas de checkout complet. **Aucun vrai coefficient Step58/60 calculé aujourd'hui ; 0/14 signes temporels nouveaux ; Step60 quotient NON exécuté.** Ne pas confondre garde testée et preuve physique.
+
+**NEXT 68ad-C2d2b TOUJOURS OUVERT :** matérialiser les fichiers authentiques complets et trois rapports dans un même environnement Python ; exécuter les 20 tests de l'adaptateur plus les 12 nouveaux ; exécuter le vrai `numerics.hr_step68ad_c2d2a_temporal_replay.run()` sur 7 cellules, inspecter les 14 intervalles N/M (et les orientations), puis le vrai quotient Step60 avec contraintes et shift prolongé. Ne jamais certifier un intervalle contenant zéro. Rang Dirac, lapses positifs/bords, BD et dynamique 4D restent OPEN.
+
+**CHECKPOINT PRÉFIXÉ ; LES 331101 CARACTÈRES DE L'HISTORIQUE ANTÉRIEUR SONT CONSERVÉS OCTET POUR OCTET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C2d2a TERMINÉE (2026-10-26)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE PAS MODIFIER `main`, `research/v2-flrw` ni les GitHub Actions/workflows désactivés.
