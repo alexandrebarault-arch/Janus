@@ -1,7 +1,9 @@
 """68ad-C2d2e: conditional continuum transversality of original Step60 BN in pSf.
 
 Exact algebra: d²(BN)/d(pSf)²=0 for the ORIGINAL third-jet-free Step60
-representative, so BN=B0+J*pSf.  This module certifies J<0, not BN=0.
+representative, so BN=B0+J*pSf.  This module certifies J<0.  The
+previous Step68j theorem already proves BN=0 modulo Hg=C=0 (and original
+B_N=0 modulo Hg=Hgprime=C=0) on the regular Fz=0 chart.
 
 Mean-value enclosures are conditional on the original SHA-pinned Step68o
 spatial branch and the U,U_s,U_ss,U_sss tubes from the three physical reports.
@@ -20,6 +22,28 @@ from .hr_step68ad_c2d2d_correlated_mean_value import radial_duals, Dual
 from .hr_step68ad_c2b_center_boxes import load_pinned, certify_cells
 from .hr_step68ad_c2d2a_temporal_replay import verify_original_files
 from .hr_step68n_interval_ode_jets import I
+
+PINNED_HISTORICAL = {
+    'numerics/hr_step68i_BN_lower_jet_quotient.py': '2ffc0f4bb65615836c25c5af83d905bd8b94783a',
+    'numerics/hr_step68j_BN_exact_secondary_identity.py': 'a500cdb1a09c853d46848719e26be9bbec55fb64',
+    'research/reports/gate2b-step68j-original-BN-C-identity.json': '25a47c7eeed9dec111ecd3f5da891a02d84184d9',
+}
+
+def verified_historical_identity(root):
+    root=Path(root)
+    for name,expected in PINNED_HISTORICAL.items():
+        actual=git_blob((root/name).read_bytes())
+        if actual!=expected:raise ValueError(f'Historical Step68j provenance mismatch {name}: {actual}')
+    report=json.loads((root/'research/reports/gate2b-step68j-original-BN-C-identity.json').read_text())
+    if (report.get('step')!='68j'
+        or report.get('num_remaining_lower_jet_partials')!=25
+        or len(report.get('derivatives',{}))!=25
+        or any(v!='EXACT_NUMERATOR_ZERO' for v in report['derivatives'].values())
+        or report.get('identity_on_Fz0')!='B_N=-(1-z²)/(Lg Lf)*Hgprime + beta*Hg + z/Lg*C'
+        or report.get('GATE_2B')!='OPEN'
+        or report.get('JANUS_R')!='NOT_VALIDATED'):
+        raise ValueError('Historical Step68j identity certificate invalid')
+    return PINNED_HISTORICAL.copy()
 
 @lru_cache(maxsize=1)
 def original_bn_affine():
@@ -71,6 +95,7 @@ def certify(reports,parts=32):
     if not isinstance(parts,int) or parts<1 or parts>4096:raise ValueError('Invalid rational partition')
     verified=verify_original_files(Path(__file__).parent)
     verified.update(verified_original_sources())
+    historical=verified_historical_identity(Path(__file__).resolve().parent.parent)
     original=certify_cells(reports)
     if original['cell_count']!=7 or original['closed_radius_domain']!=['1/64','1/32']:
         raise AssertionError('Unexpected physical radial cover')
@@ -92,16 +117,17 @@ def certify(reports,parts=32):
     return {
         'step':'68ad-C2d2e-Step60-BN-pSf-transversality',
         'source_git_blobs':verified,
+        'historical_step68j_git_blobs':historical,
         'original_report_git_blobs':original['pinned_original_report_git_blobs'],
         'exact_identity':'BN=B0+J*pSf; J=d(BN)/d(pSf); d2(BN)/d(pSf)^2=0, for original Step60 third_free_BN_on_Fz',
         'proof_method':'Original Step60 symbolic affine differentiation plus outward rational interval AD and mean-value theorem for J(r) on each closed rational subcell',
         'cells':cells,'original_cells':len(cells),'subcells':len(upper),
         'max_J_upper':str(max(upper)),'min_J_lower':str(min(lower)),
         'J_strictly_negative_continuum':all(x<0 for x in upper),
-        'BN_zero_on_shell':'NOT_PROVED',
+        'BN_zero_on_shell':'PREVIOUS_STEP68J_IDENTITY_MODULO_Hg_C',
         'Step58_continuum':'INCOMPLETE',
         'GATE_2B':'OPEN','JANUS_R':'NOT_VALIDATED',
-        'limitations':'J<0 means BN is strictly decreasing in independent pSf on this conditional shell. It neither proves BN=0 on the constrained physical profile nor the Dirac rank, lapse existence, boundary compatibility, 4D dynamics, stability, or observables.'}
+        'limitations':'J<0 means BN is strictly decreasing in independent pSf on this conditional shell. Step68j already proves BN=0 modulo Hg=C=0 on regular Fz=0; this run did not independently re-prove all 25 historical partial derivatives. No Dirac rank, lapse existence, boundary compatibility, 4D dynamics, stability, or observables.'}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--repo',type=Path,default=Path.cwd());p.add_argument('--out',type=Path,required=True);p.add_argument('--parts',type=int,default=32)
