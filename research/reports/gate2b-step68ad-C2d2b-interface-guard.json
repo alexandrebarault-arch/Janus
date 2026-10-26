@@ -11,7 +11,7 @@
     "path": "tests/test_hr_step68ad_c2d2b_guard.py",
     "passed": 12,
     "failed": 0,
-    "elapsed_seconds_approx": 0.06,
+    "elapsed_seconds_approx": 0.04,
     "original_adapter_integration_executed": false
   },
   "rational_cell_check": {
@@ -27,7 +27,7 @@
   },
   "published_tested_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "a0657a023fc59073bd1ab9f9a4255cf5248e0b9b",
-    "tests/test_hr_step68ad_c2d2b_guard.py": "0daa20efbe1df763b91ba01268e25daf81d89731"
+    "tests/test_hr_step68ad_c2d2b_guard.py": "78a00ecccbffbfbd5d262c1cac9d6437d12f3c3f"
   },
   "patched_integration_blobs": {
     "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
