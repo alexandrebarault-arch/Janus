@@ -1,0 +1,73 @@
+{
+  "step": "68ad-C1",
+  "kind": "CONDITIONAL_EXACT_RATIONAL_ORIGINAL_CANONICAL_P_LF_THIRD_JET",
+  "pinned_original_report_blobs": {
+    "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
+    "B2": "ac961b5b83667a83497497d22a701c24584cb561"
+  },
+  "physical_domain_s": [
+    "0",
+    "1/1024"
+  ],
+  "physical_domain_r": [
+    "0",
+    "1/32"
+  ],
+  "U_center": [
+    "-10504853793521470008293157/2000000000000000000000000000",
+    "-26262134483803675020732891/5000000000000000000000000000"
+  ],
+  "U_s_continuum": [
+    "3947151372926460534852373/5000000000000000000000000000",
+    "7897452509337401302640553/10000000000000000000000000000"
+  ],
+  "U_ss_continuum": [
+    "-1414170375015186192017477/69938619264706447051250697260",
+    "-281308311835510868820846/14012170704330665327521777975"
+  ],
+  "U_sss_continuum": [
+    "-3660344913192819744137/44969309632353223525625348630",
+    "-6226026282646364646283/90060853521653326637608889875"
+  ],
+  "U_continuum": [
+    "-10504853793521470008293157/2000000000000000000000000000",
+    "-10755390794064117808231664043/2048000000000000000000000000000"
+  ],
+  "pLf_prime_over_r_continuum": [
+    "-10504853793521470008293157/1000000000000000000000000000",
+    "-26884528258905625819927839831/2560000000000000000000000000000"
+  ],
+  "pLf_second_continuum": [
+    "-10504853793521470008293157/1000000000000000000000000000",
+    "-1074749334155478040692902349/102400000000000000000000000000"
+  ],
+  "pLf_third_over_r_continuum": [
+    "186205292360195068450289403458672472794260520805768270686320569419028779186356511/9828410703043276102213607865624307560251725640056517980625000000000000000000000000",
+    "23692357528012203907921659/1250000000000000000000000000"
+  ],
+  "U_of_r_third_over_r_continuum": [
+    "-4884052387835912945199225261375119950774212962273248199/20128585119832629457333468908798581883395534110835748824320",
+    "-3375699742026130425850152/14012170704330665327521777975"
+  ],
+  "pLf_prime_over_r_strict_negative": true,
+  "pLf_second_strict_negative": true,
+  "pLf_third_over_r_strict_positive": true,
+  "U_of_r_third_over_r_strict_negative": true,
+  "center_pLf_second_equals_2U0": true,
+  "center_pLf_third_equals_zero": true,
+  "identities": {
+    "pLf": "r² U(s), s=r²",
+    "pLf_prime_over_r": "2(U+s U_s)",
+    "pLf_second": "2U+10s U_s+4s² U_ss",
+    "pLf_third_over_r": "24 U_s+36s U_ss+8s² U_sss",
+    "U_of_r_third_over_r": "12 U_ss+8s U_sss"
+  },
+  "scope": "Original Step45/46/55 radial physical branch, conditional on Step49/68v/68ad-B2 certificates. Only pLf canonical jet; other 11 canonical jets and Step58 temporal coefficients not yet evaluated.",
+  "temporal_original_A_N_A_M": "NOT_COMPUTED",
+  "remaining_seven_temporal_cells": "PENDING",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "next_step": "68ad-C2: inject these center-safe original pLf third-jet bounds into all 12 canonical jets, original non-frozen-shift Step58/60; bound A_N/r²,A_M/r² on seven pending cells and continue to r=0."
+}
