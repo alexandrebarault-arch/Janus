@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : COQUILLE STATIONNAIRE Step55/68o VÉRIFIÉE ALGÉBRIQUEMENT ; Step58/60 PHYSIQUES TOUJOURS PENDING (2026-10-26)
+
+**BRANCHE D'ÉCRITURE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. Interdiction de modifier `main`, `research/v2-flrw` et les workflows GitHub désactivés.
+**DERNIÈRE ÉTAPE PHYSIQUE : 68ad-C2d2a (adaptateur uniquement). DERNIER LEMME CONDITIONNEL TESTÉ : 68ad-C2d2b-exact-Step68o-shift-shell. NEXT EFFECTIF : 68ad-C2d2b — EXÉCUTER LE VRAI Step58 SUR SEPT CELLULES, PUIS Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+## NOUVELLE IDENTITÉ STRUCTURELLE DU PROFIL PHYSIQUE PRESCRIT
+
+Lecture directe GitHub : Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`. Reconstitution symbolique indépendante des **formules** originales, sans exécuter le Step58 complet : pour `s=r²`, `Dg=pSg*Sg'-Lg*pLg'+pg*tg'=r³ Dbar`, `K=r² k`, `Dbar=k*z1/sqrt(1-z1²r²)`. Les termes en densité de poussière et en moment gravitationnel se compensent exactement dans `Dg`. Ainsi `(Dg²+K²)(1-z1²r²)=r⁴k²`. Pour `r>0,k>0,1-z1²r²>0`, le shift stationnaire est **exactement `z=r*z1`**, donc `z'=z1,z''=z'''=0`. Les quatre jets du shift fixés par Step68o sont compatibles avec cette coquille. Si `k<0`, la branche de la racine positive inverse le signe : l'hypothèse est indispensable.
+
+**TESTS EXÉCUTÉS :** `cd /mnt/data/janus_shift_shell && PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py` → **10 PASS, 0 FAIL (21,26 s)**. Manifeste `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2b_exact_step68o_shift_shell` → PASS (15,12 s). Ces tests portent sur des identités symboliques conditionnelles, pas sur les 14 coefficients temporels.
+
+**FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d2b_exact_step68o_shift_shell.py` — blob `3a996c87fd832d927066e0a68f17279df50ac84c`, identique aux octets testés.
+- `tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py` — blob `7746ca04e8c46c34f17a8bf35c4f90cdd71b251b`, identique aux octets testés.
+- `research/STEP68AD_C2D2B_EXACT_STEP68O_SHIFT_SHELL_AUDIT.md` — blob `a7a0fef0cd05519fa1830314489bc43c20a79498`.
+- `research/reports/gate2b-step68ad-C2d2b-exact-Step68o-shift-shell.json` — blob `5e7abde6bbd0265874fca2cecad47ed2689ddfdf`.
+
+**HEAD INITIAL RELU :** `a0e0b6a1215ed305d33eb583754eed3223ef58f8`. **BLOCAGE MATÉRIEL INCHANGÉ :** le conteneur Python ne possède pas le checkout original et les trois rapports ensemble ; DNS GitHub direct indisponible. Le connecteur GitHub lit et écrit correctement. **Step58 physique sept cellules NON EXÉCUTÉ ; Step60 quotient NON EXÉCUTÉ ; 0/14 nouveaux signes temporels certifiés.** Le lemme ne prouve ni le rang de Dirac, ni les lapses admissibles, ni les bords, ni la stabilité ni les observables.
+
+**ACTIONS PRIORITAIRES :** (1) matérialiser sources authentifiées Step45/55/57/58/60/68n/68o/C2b + trois rapports dans un même Python ; (2) rejouer intégration C2d2a et garde C2d2b ; (3) évaluer le vrai Step58 sur les sept cellules et inspecter les 14 enclosures ; (4) évaluer Step60 avec les jets exacts du shift ; (5) si une enclosure traverse zéro, rester INCOMPLETE ; (6) seulement ensuite traiter Dirac/lapses/bords/4D. Ne pas remplacer l'exécution physique par une nouvelle succession de lemmes préparatoires.
+
+**CHECKPOINT PRÉFIXÉ ; L'HISTORIQUE INTÉGRAL ANTÉRIEUR (341784 caractères) EST CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : LEMME CONDITIONNEL DE SECOND JET SHIFT Step60 ; EXÉCUTION PHYSIQUE TOUJOURS PENDING (2026-10-26)
 
 **SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
