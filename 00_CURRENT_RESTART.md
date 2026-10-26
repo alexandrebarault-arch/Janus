@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b1, VARIATION DU SHIFT RÉDUIT AU BORD (2026-10-26)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b2 — calculer le véritable opérateur de Poisson/Dirac fonctionnel non-IBP à six couples, shift éliminé avec sa variation, termes de bord, rang et chartes K=0/J=0.** Le HEAD de branche et `research/AUTOMATION_STATE.json` prévalent sur tout repère daté.
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Branche d'écriture exclusive `research/gate2b-nonhomothetic-transfer`, `main`, `research/v2-flrw` et workflows désactivés intouchés.
+
+**AVANCÉE EXACTE ET LIMITÉE :** sur K>0, `z*=D/sqrt(K²+D²)`, `D=pSg*Sg'-Lg*pLg'+pg*tg'`. Le terme de bord de C2d2e5a `B_shift=-(N+M Lg/Lf) pLg z*` possède la variation `∂B_shift/∂pLg'=(N+M Lg/Lf)pLg Lg K²/(K²+D²)^(3/2)`, généralement non nulle ; la variation à shift fixé ne la capture pas. Témoin rationnel hors coquille K=3,D=4,Lg=2,Lf=3,N=M=1,pLg=7 : z*=4/5, Fz=0, ∂z*/∂pLg'=-18/125, ∂B_shift/∂pLg'=42/25. Pour K<0, le signe de la racine doit être inversé : K=-3,D=4 donne z*=-4/5 et Fz=0, tandis que +4/5 donne Fz=8. À K=0,D≠0 pas de racine intérieure ; à K=D=0 racine non unique. Ces témoins ne sont PAS des solutions Step68o ni une preuve de rang Dirac.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_e5b && python -m unittest -v test_hr_step68ad_c2d2e5b_shift_boundary.py` : 9 tests PASS, 0 FAIL, incluant quatre sous-identités exactes SymPy ; `python hr_step68ad_c2d2e5b_shift_boundary.py` PASS. Trois sources originales GitHub relues et leurs SHA authentifiés ; modules physiques originaux non réexécutés. **AUCUN oracle Poisson complet ni matrice Dirac calculé.**
+
+**FICHIERS PUBLIÉS, RELUS ET SHA BLOBS :**
+- `numerics/hr_step68ad_c2d2e5b_shift_boundary.py` — `1996748565b7f587eaf46be3b740167e9bd1adbc` (identique aux octets testés).
+- `tests/test_hr_step68ad_c2d2e5b_shift_boundary.py` — `d771a62f9a0806ed39f3eeeea54233258e2f5978` (identique aux octets testés).
+- `research/reports/gate2b-step68ad-C2d2e5b1-shift-boundary-chain.json` — `68afbfb6264d693636a76850d669220ff509d147`.
+- `research/STEP68AD_C2D2E5B1_REDUCED_SHIFT_BOUNDARY_VARIATION_AND_K_CHARTS.md` — `25e9192af017864bbed993263afbcc003ddd3acb`.
+
+**ACTIONS PRIORITAIRES :** (1) dérivées fonctionnelles originales non-IBP avec variation complète de z* et bords ; (2) comparer aux six contributions canoniques IBP et tester tertiaires/rang ; (3) conditions aux bords/lapses et chartes K=0/J=0 ; (4) dynamique 4D, stabilité et observables ; (5) retenter le nettoyage Library 401 Unauthorized. Aucun changement de conclusion scientifique globale.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE PRÉCÉDENT CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5a, IDENTITÉ DE BORD ORIGINALE NON-IBP (2026-10-26)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5a — dérivation exacte du terme de bord original/IBP à shift fixé et audit des variations aux bords. PROCHAINE : 68ad-C2d2e5b — construire le véritable oracle fonctionnel de Poisson/Dirac à six couples sur coquille, shift éliminé, avec bords, rang, tertiaires et chartes K=0/J=0.**
