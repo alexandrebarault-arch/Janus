@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "b7dc0a8ef2cbb3a842adf448973f0d8285b37f30",
-  "latest_verified_completed_step": "68ad-B2",
-  "next_pending_step": "68ad-C",
+  "verified_research_head_before_state_file": "ea2d36e0674b840378832fdffd87e9c88f8e6efe",
+  "latest_verified_completed_step": "68ad-C1",
+  "next_pending_step": "68ad-C2",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md",
+  "latest_scientific_audit": "research/STEP68AD_C1_ORIGINAL_CANONICAL_MOMENTUM_THIRD_JET.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 16,
+    "passed": 15,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed on byte-authentic ORIGINAL physical six-pair G and SHA-original Step68v/68ac reports: PYTHONPATH=/mnt/data/janus68adB2 OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step68ad_b2_physical_center_higher_jets.py (16.26s); first run 1 test-design failure corrected; final 16 PASS. Original Step55 256-cell barrier replayed PASS; B2 32/64/128-cell certificates executed and negative signs stable. No temporal Step58 test run."
+    "source": "Actually executed PYTHONPATH=. pytest -q tests/test_hr_step68ad_c1_center_momentum_jet.py in temporary /mnt/data/janus68adC1: 15 PASS 0.61s. SymPy arbitrary-function chain-rule identities and exact Fraction rational inequalities from GitHub-fetched Step68v/68ac/B2 fields; does NOT reexecute Step58 temporal operator or original B2 16 tests; full original report read_pinned positive path not exercised locally, tamper rejection tested."
   },
-  "github_write_probe": "Actually created code/tests/JSON/audit via GitHub connector; each read back SHA equals exact locally executed source/test/report SHA (code 89ce02af..., tests 5e2b5f..., JSON ac961b5...).",
+  "github_write_probe": "GitHub connector create_file succeeded on research branch for code/tests/report/audit; three source/test/JSON blob SHA read back equal exact locally executed bytes; checkpoint update succeeded. GitHub external read/write operational; container lacks direct network/clone.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,15 +37,15 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical R2, R3, U_ss and U_sss are now rigorously enclosed on continuum s=[0,1/1024], using 32-cell SHA-authentic original G and Step68ad-A transport; exact G quadratic in U and G_UU=s*C(s)>0. Next 68ad-C: original Step58/60/68o temporal A_N/r²,A_M/r² on seven PENDING r=[1/64,1/32], with all 12 canonical jets and proven higher U derivatives. Dirac rank/4D remain open.",
+  "current_blocker": "Original Step68ad-C1 pLf canonical third-jet normalized by r is strictly positive on [0,1/32], but other 11 canonical jets and full Step58/60 temporal A_N/r²,A_M/r² on seven PENDING [1/64,1/32] are NOT computed. Next 68ad-C2: reconstruct complete original Python modules and replace Step68o near-center /s recurrence with regular U,Us,Uss,Usss from authenticated B2.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_b2_physical_center_higher_jets.py": "89ce02af12145eb8ab6bdcc354649571dd5da179",
-    "tests/test_hr_step68ad_b2_physical_center_higher_jets.py": "5e2b5f297fbef78e38f05c76aebd05f8f4b2ee02",
-    "research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json": "ac961b5b83667a83497497d22a701c24584cb561",
-    "research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md": "d49e30ce7093927480dcac6e8f962556eebe963c"
+    "numerics/hr_step68ad_c1_center_momentum_jet.py": "08f6d13b2f799705328f10f12d80433617f16ef8",
+    "tests/test_hr_step68ad_c1_center_momentum_jet.py": "a367c80566a6bec9119201a23136f597619ee3a7",
+    "research/reports/gate2b-step68ad-C1-original-canonical-pLf-third-jet.json": "62f98abd0fe18004b2a6654e1d422d02cfe025aa",
+    "research/STEP68AD_C1_ORIGINAL_CANONICAL_MOMENTUM_THIRD_JET.md": "87925fee61f7236fa8e4616aadb61f23f983606f"
   },
-  "current_proven_result": "Step68ad-B2 original six-pair physical G: exact degree_U(G)=2, G_UUU=0, G_UU=s*C(s), C(s) in (0.87576,0.87592) on 0<=s<=1/1024. Original interval 32-cell continuum R2 in [-1.414170375015186e-4,-1.406541559177554e-4], U_ss in [-2.022016433671329e-5,-2.007599805707252e-5], R3 in [-7.320689826385639e-7,-6.226026282646365e-7], U_sss in [-8.139651115656399e-8,-6.913132664403898e-8], all strictly negative; conditioned on historical Step49/68v. Full exact fractions and 32+32 closed cells in published machine JSON.",
+  "current_proven_result": "Step68ad-C1, exact rational conditional spatial original pLf=r²U(r²): pLf'/r in [-0.010504853794,-0.010501768851]<0, pLf'' in [-0.010504853794,-0.010495598966]<0, pLf'''/r in [0.018945615724,0.018953886023]>0, and d³U(r²)/dr³/r in [-0.000242642608,-0.000240911976]<0 for all r∈[0,1/32]. Exact fractions in C1 report. This is one canonical jet only, NOT original Step58 temporal Dirac sign or rank.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
@@ -56,5 +56,5 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
     "68o": "c99caebc17f243784450ddff94fb061767e6d8e7d"
   },
-  "scope": "Original fixed physical six-pair radial branch on continuous s=[0,1/1024], not a temporal Step58/60/Dirac/BD or 4D validation. Scientific gate OPEN."
+  "scope": "Exact algebraic postprocessing of original SHA-verified Step68v/68ac/B2 spatial intervals for pLf canonical third jet on [0,1/32]; all 12 canonical jets and original Step58/60 time preservation, Dirac rank, 4D and BD stability remain OPEN."
 }
