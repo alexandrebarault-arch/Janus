@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "31b933cd94cc87a57a4855f158b4ea2874e32574",
-  "latest_verified_completed_step": "68ad-B1",
-  "next_pending_step": "68ad-B2",
+  "verified_research_head_before_state_file": "b7dc0a8ef2cbb3a842adf448973f0d8285b37f30",
+  "latest_verified_completed_step": "68ad-B2",
+  "next_pending_step": "68ad-C",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B1_DIRECTIONAL_POLARIZATION_HARNESS.md",
+  "latest_scientific_audit": "research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 18,
+    "passed": 16,
     "failed": 0,
     "skipped": 0,
-    "source": "Executed locally: PYTHONPATH=/mnt/data/janus68adB python -m pytest -q tests/test_hr_step68ad_b_directional_polarization.py (1.88s); generic SymPy/Fraction algebra only. ORIGINAL physical G and historical tests NOT executed this session."
+    "source": "Actually executed on byte-authentic ORIGINAL physical six-pair G and SHA-original Step68v/68ac reports: PYTHONPATH=/mnt/data/janus68adB2 OPENBLAS_NUM_THREADS=1 python -m pytest -q tests/test_hr_step68ad_b2_physical_center_higher_jets.py (16.26s); first run 1 test-design failure corrected; final 16 PASS. Original Step55 256-cell barrier replayed PASS; B2 32/64/128-cell certificates executed and negative signs stable. No temporal Step58 test run."
   },
-  "github_write_probe": "The creation of this file itself is a non-artificial GitHub write verification; compare returned Git blob and readback after publishing.",
+  "github_write_probe": "Actually created code/tests/JSON/audit via GitHub connector; each read back SHA equals exact locally executed source/test/report SHA (code 89ce02af..., tests 5e2b5f..., JSON ac961b5...).",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,14 +37,15 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical Step45/46/55/68n G runtime not locally materialized; Step68ad-B1 polarization algebra tested, but physical_R2_global and U_ss/R3/U_sss/Step58 temporal signs NOT executed or certified. Next 68ad-B2: run physical_R2_global on SHA-original sources and certify continuous R2 and U_ss.",
+  "current_blocker": "Original physical R2, R3, U_ss and U_sss are now rigorously enclosed on continuum s=[0,1/1024], using 32-cell SHA-authentic original G and Step68ad-A transport; exact G quadratic in U and G_UU=s*C(s)>0. Next 68ad-C: original Step58/60/68o temporal A_N/r²,A_M/r² on seven PENDING r=[1/64,1/32], with all 12 canonical jets and proven higher U derivatives. Dirac rank/4D remain open.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_b_directional_polarization.py": "3d075699fb8266ddce2ee9b370afa85cb17f2c73",
-    "tests/test_hr_step68ad_b_directional_polarization.py": "6e1b4b81fe1e5b8588c6c9639829727da6eb4d21",
-    "research/STEP68AD_B1_DIRECTIONAL_POLARIZATION_HARNESS.md": "09f56801dd01b78c8213d70aa505acb034c4840b"
+    "numerics/hr_step68ad_b2_physical_center_higher_jets.py": "89ce02af12145eb8ab6bdcc354649571dd5da179",
+    "tests/test_hr_step68ad_b2_physical_center_higher_jets.py": "5e2b5f297fbef78e38f05c76aebd05f8f4b2ee02",
+    "research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json": "ac961b5b83667a83497497d22a701c24584cb561",
+    "research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md": "d49e30ce7093927480dcac6e8f962556eebe963c"
   },
-  "current_proven_result": "Step68ad-B1: exact four-direction Taylor polarization reconstructs all 10 mixed partials of total order <=3 for any C3 G; R2/R3 chain rules verified independently by SymPy; exact rational interval oracle inclusion tests passed (18 tests). No physical R2 or temporal sign result yet.",
+  "current_proven_result": "Step68ad-B2 original six-pair physical G: exact degree_U(G)=2, G_UUU=0, G_UU=s*C(s), C(s) in (0.87576,0.87592) on 0<=s<=1/1024. Original interval 32-cell continuum R2 in [-1.414170375015186e-4,-1.406541559177554e-4], U_ss in [-2.022016433671329e-5,-2.007599805707252e-5], R3 in [-7.320689826385639e-7,-6.226026282646365e-7], U_sss in [-8.139651115656399e-8,-6.913132664403898e-8], all strictly negative; conditioned on historical Step49/68v. Full exact fractions and 32+32 closed cells in published machine JSON.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
@@ -55,5 +56,5 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
     "68o": "c99caebc17f243784450ddff94fb061767e6d8e7d"
   },
-  "scope": "Algebraic polarization harness proved/tested; physical G evaluation on continuous center chart not executed; U_ss, U_sss, temporal Step58 A_N/A_M and Dirac rank still OPEN."
+  "scope": "Original fixed physical six-pair radial branch on continuous s=[0,1/1024], not a temporal Step58/60/Dirac/BD or 4D validation. Scientific gate OPEN."
 }
