@@ -1,0 +1,46 @@
+{
+  "step": "68ad-C2b",
+  "scope": "Exact-rational propagation of previously certified physical Step68v/68ac/B2 report fields to seven closed cells; no new Step58/60 evaluation",
+  "source_report_git_blob_pins": {
+    "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
+    "B2": "ac961b5b83667a83497497d22a701c24584cb561"
+  },
+  "local_input_method": "Exact rational report fields manually transcribed from GitHub connector reads; local run did NOT materialize or byte-authenticate full report files; production CLI load_pinned() does require SHA-matching complete report bytes",
+  "domain_r": [
+    "1/64",
+    "1/32"
+  ],
+  "domain_s": [
+    "1/4096",
+    "1/1024"
+  ],
+  "cells": 7,
+  "cell_r_edges": [
+    "1/64",
+    "1/56",
+    "9/448",
+    "5/224",
+    "11/448",
+    "3/112",
+    "13/448",
+    "1/32"
+  ],
+  "max_width_U_exact": "5349668327184482945967454922219/50352619520000000000000000000000000000",
+  "max_width_U_approx": 1.0624409173110848e-7,
+  "max_cubic_barrier_error_exact": "1/10737418240000000",
+  "max_cubic_barrier_error_approx": 9.313225746154785e-17,
+  "derivative_tubes": "U_s>0, U_ss<0, U_sss<0 in all seven cells; all values supplied by earlier certified global bounds, not differentiated from U box",
+  "radial_center": "The method also accepts rlo=0 with no division by r or s",
+  "tests": {
+    "new_passed": 16,
+    "failed": 0,
+    "command": "PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2b_center_boxes.py",
+    "duration_seconds": 2.18
+  },
+  "original_temporal_Step58_Step60": "NOT_EXECUTED",
+  "seven_temporal_signs": "PENDING",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
