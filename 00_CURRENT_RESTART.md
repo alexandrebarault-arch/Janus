@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b2, ORACLE NUMÉRIQUE NON-IBP/IBP À SIX COUPLES (2026-10-26)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b2. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3 — véritable profil physique Step55/68o dans l'oracle à six couples, bords, matrice complète de Poisson/Dirac, contraintes tertiaires, chartes K=0/J=0.** **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**SOURCES GITHUB AUTHENTIFIÉES (LUES, NON IMPORTÉES/EXÉCUTÉES) :** non-IBP Step37 `numerics/hr_step37_original_nonibp_oracle.py` blob `005449ade6e3582e3b9a5c3374a881a77e73e3f6`, IBP `numerics/hr_spherical_mixed_hamiltonian_bracket.py` blob `6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81`, ADM `numerics/hr_spherical_adm_primary.py` blob `c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41`. Formules reconstruites dans un programme Python autonome ; ne PAS prétendre avoir réexécuté les modules sources originaux.
+
+**CALCUL RÉEL HORS COQUILLE :** 12 champs canoniques polynomiaux indépendants, deux poussières, 6 contributions de crochet Poisson ; 4 maillages n=41,81,161,321 sur r∈[0.1,0.9], smearings compacts, K>0. Crochets non-IBP = [0.04406642354880436,0.04382138009906760,0.04375925289385715,0.04374366606848031] ; IBP = [0.03544757475454052,0.04160021783705362,0.04319972683180122,0.04360351853125577]. Différences = [0.00861884879426384,0.00222116226201398,0.00055952606205594,0.00014014753722454], décroissance ≈ facteur 4 à chaque raffinement, compatible avec O(h²), PAS preuve continuum. Résidu F_z≤2.8e-17. Geler z* UNIQUEMENT dans les variations bulk change le crochet de <7e-15, contrôle de la règle de l'enveloppe, PAS du bord.
+
+**BORDS :** N=M=1 non compacts, sauts des primitives B_g≈2.05424226, B_f≈0.63793473 ; erreurs action-originale moins IBP moins sauts diminuent quadratiquement (résidus maximaux 2.50e-5,6.21e-6,1.54e-6,3.85e-7). Les termes de bord ne sont PAS annulés sans conditions aux limites. K≤0 rejeté explicitement par ce moteur de benchmark, charte J=0 non traitée.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_e5b2 && python -m unittest -v test_hr_step68ad_c2d2e5b2_six_pair_crosscheck.py` → **12 PASS, 0 FAIL** ; `python oracle.py > report_raw.json` → 4 maillages calculés. Les 6 contributions ne sont pas 6 tests indépendants ; les modules physiques historiques ne sont pas rejoués.
+
+**FICHIERS PUBLIÉS ET RELUS OCTET-IDENTIQUES :**
+- `numerics/hr_step68ad_c2d2e5b2_six_pair_crosscheck.py` — Git blob `83ab284cf38aaad3ab509be0ccbbb0df275fd72e`.
+- `tests/test_hr_step68ad_c2d2e5b2_six_pair_crosscheck.py` — `2f18ac63f96b498f900b41dc78154f1009badac0`.
+- `research/reports/gate2b-step68ad-C2d2e5b2-six-pair-nonIBP-IBP-crosscheck.json` — `def1df65dc4ec5480ad7aa5b0eca7947f7d5a811`.
+- `research/STEP68AD_C2D2E5B2_SIX_PAIR_NONIBP_IBP_NUMERICAL_CROSSCHECK.md` — `f22fba82c022dfedeb74c258fa5074d0dfc811b5`.
+
+**HEAD À LA REPRISE :** `f4ee5f02aa044d24bdc88ef25a42bbe7e8e4e146`; **HEAD APRÈS 4 PUBLICATIONS SCIENTIFIQUES :** `af25cd80ba7ddbee422471a29ee74be1cf390704`. Vérifier le HEAD final après index. `main` et `research/v2-flrw` protégées ; aucun workflow modifié.
+
+**VERROUS :** rang complet de Dirac, lapses globaux/bords, contraintes tertiaires, vraie coquille physique, K=0/J=0, 4D, stabilité et observables NON DÉMONTRÉS. Un crochet hors coquille non nul ne prouve ni ne réfute la suppression du mode BD. Prochaine étape : **68ad-C2d2e5b3**, comparer sur Step55/68o, puis rang et bords. Nettoyage des copies temporaires Library à retenter.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b1, VARIATION DU SHIFT RÉDUIT AU BORD (2026-10-26)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b2 — calculer le véritable opérateur de Poisson/Dirac fonctionnel non-IBP à six couples, shift éliminé avec sa variation, termes de bord, rang et chartes K=0/J=0.** Le HEAD de branche et `research/AUTOMATION_STATE.json` prévalent sur tout repère daté.
