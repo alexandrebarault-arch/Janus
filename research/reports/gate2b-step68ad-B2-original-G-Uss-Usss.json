@@ -653,5 +653,5 @@
   "full_Dirac_rank": "NOT_COMPUTED",
   "GATE_2B": "OPEN",
   "JANUS_R": "NOT_VALIDATED",
-  "next_step": "68ad-C: reconstruct original Step58/60/68o, feed these rigorously enclosed U_ss and U_sss into original 12 canonical jets on seven pending cells r in [1/64,1/32], then r→0. Never differentiate coarse U/U_s tubes."
+  "next_step": "68ad-C: reconstruct original Step58/60/68o, feed these rigorously enclosed U_ss and U_sss into original 12 canonical jets on seven pending cells r in [1/64,1/32], then r\u21920. Never differentiate coarse U/U_s tubes."
 }
