@@ -1,3 +1,27 @@
+# JANUS — REPRISE PRIORITAIRE : Step60 QUOTIENT INFÉRIEUR ORIGINAL EXÉCUTÉ SUR 7 CELLULES ; SIGNES CONTINUS INCOMPLETE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw`, ni les workflows désactivés.
+**DERNIÈRE ÉTAPE EFFECTIVE : 68ad-C2d2c — EXÉCUTION PHYSIQUE CONDITIONNELLE DU QUOTIENT INFÉRIEUR ORIGINAL Step60 ; PROCHAINE ÉTAPE : 68ad-C2d2c-continuum-correlated-Step58-Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT VÉRIFIÉ :** 24 fichiers sources/tests/rapports matérialisés depuis GitHub et vérifiés par recalcul des 24/24 Git blob SHA ; originaux Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step60 `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7` inchangés. Le quotient original Step60 a été compilé à partir de `full_constraint_prolongation()['third_free_BN_on_Fz']` et `['third_free_AM_on_Fz']` (annulation exacte préalable des q''' originalement démontrée). Les CSE d'interaction originaux indices 103 (BN) et 107 (AM) ont été développés et comparés symboliquement au même T ; seule l'évaluation de T a été factorisée sur la coquille Sg=r Lg, Sf=r Lf, Lg>0, K>0.
+
+**EXÉCUTION EFFECTIVE :** 7/7 cellules radiales [1/64,1/32] calculées avec les vrais jets Step68o et les rapports spatiaux SHA-pinnés ; 14/14 enclosures rationnelles Step60 BN/AM contiennent zéro ; **0/14 signes CONTINUS Step60 certifiés**. Huit frontières radiales évaluées : 8/8 enclosures de AM strictement négatives ; 8/8 enclosures BN contiennent zéro (proches de zéro mais identité NON démontrée) ; 8/8 AM Step60 intersectent AM Step58 original. Les 14 enclosures Step58 précédentes restent INCOMPLETE. **Ne jamais interpréter des signes ponctuels comme une preuve continue, ni des enclosures contenant zéro comme un contre-exemple physique.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2c_step60_lower_quotient_replay --repo . --out research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json` → 7 cellules, 8 frontières, 0 signe continu ; `PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py tests/test_hr_step68ad_c2d2b_guard.py tests/test_hr_step68ad_c2d2a_temporal_replay.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step60_full_constraint_prolongation.py` → **88 PASS, 0 FAIL (9 nouveaux, 79 non-régression)**.
+
+**FICHIERS PUBLIÉS ET RELUS, GIT BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2c_step60_lower_quotient_replay.py` — `96196aa02050a274d055831ef0e9091141aeed2e`.
+- `tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py` — `54d872c2b74169f4d8976341d1c05fea76c18aaa`.
+- `research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json` — `e1b1eadabe99ffa49ea070caaaffb35981a4b5d2`.
+- `research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md` — `c7eb3be98ea269900f4729a76ed8712765e12e24`.
+
+**HEAD À LA REPRISE :** `1aeb49a1502ea6a69ec9a51cd04fd36f9a7409fc`. **PROCHAINES ACTIONS PRIORITAIRES :** (1) construire et prouver un encadrement radial CORRÉLÉ des coefficients Step58 et Step60 sur sept cellules (Taylor avec majorant de reste, factorisation globale ou arithmétique affine rigoureuse) ; (2) certifier les signes continus ou garder INCOMPLETE ; (3) seulement ensuite étudier rang de Dirac, lapses et conditions aux bords, dynamique 4D, stabilité et observables. **AUCUNE validation JANUS.**
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE INTÉGRAL ANTÉRIEUR CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : Step58 PHYSIQUE EXÉCUTÉ SUR 7 CELLULES, SIGNES CONTINUS INCOMPLETE ; Step60 SYMBOLIQUE REJOUÉ (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw`, ni les workflows désactivés.
