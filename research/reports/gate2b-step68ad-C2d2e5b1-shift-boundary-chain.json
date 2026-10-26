@@ -1,0 +1,55 @@
+{
+  "stage": "68ad-C2d2e5b1",
+  "status": "EXACT_REGULAR_CHART_SHIFT_BOUNDARY_CHAIN_RULE_NOT_FULL_DIRAC",
+  "date": "2026-10-26",
+  "original_source_blobs": {
+    "nonibp": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "ibp": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81",
+    "adm_primary": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41"
+  },
+  "source_blobs": {
+    "numerics/hr_step68ad_c2d2e5b_shift_boundary.py": "1996748565b7f587eaf46be3b740167e9bd1adbc",
+    "tests/test_hr_step68ad_c2d2e5b_shift_boundary.py": "d771a62f9a0806ed39f3eeeea54233258e2f5978"
+  },
+  "exact_regular_chart": "K>0, z*=D/sqrt(K^2+D^2), dz/dD=K^2/(K^2+D^2)^(3/2); Bshift=-(N+M Lg/Lf) pLg z*; dBshift/d(pLg')=(N+M Lg/Lf) pLg Lg K^2/(K^2+D^2)^(3/2)",
+  "witness": {
+    "K": "3",
+    "D": "4",
+    "Lg": "2",
+    "Lf": "3",
+    "N": "1",
+    "M": "1",
+    "pLg": "7",
+    "z*": "4/5",
+    "Fz": "0",
+    "dz/d(pLg')": "-18/125",
+    "dB/d(pLg')": "42/25"
+  },
+  "chart_negative_K": {
+    "K": "-3",
+    "D": "4",
+    "correct_z": "-4/5",
+    "correct_Fz": "0",
+    "incorrect_z": "4/5",
+    "incorrect_Fz": "8"
+  },
+  "chart_K_zero": {
+    "D_nonzero": "Fz=D!=0, no interior root",
+    "D_zero": "Fz=0 for all |z|<1, no unique implicit shift"
+  },
+  "tests": {
+    "unittest_cases_passed": 9,
+    "unittest_failed": 0,
+    "exact_symbolic_identities_checked": 4,
+    "standalone_script_passed": true,
+    "original_physics_modules_reexecuted": 0
+  },
+  "limitations": [
+    "Synthetic off-shell rational witnesses, not Step55/68o physical on-shell rank",
+    "No complete six-pair Poisson matrix or boundary symplectic form",
+    "No lapse boundary compatibility or tertiary constraint",
+    "No Dirac-rank or J=0 chart proof",
+    "GATE_2B OPEN",
+    "JANUS_R NOT_VALIDATED"
+  ]
+}
