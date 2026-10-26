@@ -1,3 +1,39 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C2a TERMINÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
+**ÉTAPE VALIDÉE : 68ad-C2a. PROCHAINE ÉTAPE EXACTE : 68ad-C2b.**
+**STATUT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE D'ABORD** `research/STEP68AD_C2A_ALL_TWELVE_CANONICAL_PARITY_LEMMA.md`, `numerics/hr_step68ad_c2a_all_canonical_parity.py`, `research/reports/gate2b-step68ad-C2a-canonical-parity.json`, puis `research/AUTOMATION_STATE.json`. Tous les checkpoints antérieurs restent intégralement CI-DESSOUS.
+
+## NOUVEAU RÉSULTAT RÉEL — LEMME EXACT POUR LES 12 JETS CANONIQUES, PAS ENCORE TEMPOREL
+
+La source originale Step68o, blob `c99caebc17f243784450ddff94fb061767e6d8e7`, a été lue, ainsi que le Step58 temporel complet non-frozen-shift (`802c23aebd41780d8c462f1aa1711707fe4ee88f`) et Step60 quotient des contraintes (`9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`). L'ancien `_ode_coeff` de Step68o utilise `(G-2U)/(2s)` et souffre d'un élargissement d'intervalles près du centre.
+
+**DÉMONSTRATION SYMBOLIQUE EXACTE (SymPy) DES 12 PROFILS DE PARITÉ :**
+- `Lg,Lf` : F(s) ; `Sg,Sf,pSg,pSf` : rF(s) ; `pLg,pLf,pg,pf` : r²F(s) ; `tg,tf` : horloges dont t'=r k L(s), avec t(r0) valeur de jauge ponctuelle.
+- Pour `F(s)` : `X'=2rF_s ; X''=2F_s+4sF_ss ; X'''=r(12F_ss+8sF_sss)`.
+- Pour `rF(s)` : `X'=F+2sF_s ; X''=r(6F_s+4sF_ss) ; X'''=6F_s+24sF_ss+8s²F_sss`.
+- Pour `r²F(s)` : `X'=2r(F+sF_s) ; X''=2F+10sF_s+4s²F_ss ; X'''=r(24F_s+36sF_ss+8s²F_sss)`.
+- Horloges : `t''=k(L+2sL_s)`, `t'''=rk(6L_s+4sL_ss)`.
+- **AUCUNE DIVISION PAR r OU s** ; 12/12 champs et leurs dérivées 0..3 ont un prolongement régulier au centre, SOUS RÉSERVE que leurs profils F possèdent les dérivées nécessaires. L'identité pLf'''/r de Step68ad-C1 est retrouvée exactement.
+
+**15 NOUVEAUX TESTS RÉELLEMENT EXÉCUTÉS : 15 PASSED EN 0,74 s ; 0 FAIL**, `PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2a_all_canonical_parity.py` dans `/mnt/data/janus68adC2a`. Tests de chaîne symbolique indépendante, polynômes rationnels, r=0, horloges, complétude des 12 champs et entrées altérées. Ce ne sont PAS des tests numériques du Step58 original.
+
+**FICHIERS PUBLIÉS ET BLOBS GitHub RELUS, IDENTIQUES AUX OCTETS TESTÉS LOCALEMENT :**
+- `numerics/hr_step68ad_c2a_all_canonical_parity.py` — `bf673187d6b923193c846749b15c3e291ef3ac9f`
+- `tests/test_hr_step68ad_c2a_all_canonical_parity.py` — `e465fcb265a76998d6db662836b500e3b8ba9d10`
+- `research/reports/gate2b-step68ad-C2a-canonical-parity.json` — `1f0ecef8fa1a8dbf9d8f38c2a9a5609dc0bdf5f7`
+- `research/STEP68AD_C2A_ALL_TWELVE_CANONICAL_PARITY_LEMMA.md` — `66614703349b8a50483b0aec94c9ff0feaf5ed71`
+
+**LIMITES :** aucune certification de F_s,F_ss,F_sss pour les NEUF autres profils, aucun A_N/r² ou A_M/r² évalué, aucun des sept intervalles temporels en attente certifié. La vérification positive locale des sources originales n'a pas eu lieu : le conteneur n'a pas de DNS GitHub (`git ls-remote` échoue), mais le connecteur GitHub permet les lectures et les écritures. Ne pas confondre le lemme cinématique avec un théorème de rang Dirac.
+
+**NEXT 68ad-C2b :** reconstruire octet-identiques les vrais Steps68n/68o/58/60 via GitHub ; former dans la variable s les dix profils F,F_s,F_ss,F_sss par l'original `Jet` Step68n à partir des tubes prouvés Step68v/B2, en particulier `rhof` et `psf` ; injecter dans les 12 jets réguliers ; évaluer le vrai opérateur Step58/60 non-frozen-shift sur les sept cellules PENDING [1/64,1/32], puis r→0. Si dépendances d'intervalles trop larges, garder le statut INCOMPLETE. Les contraintes temporelles, rang complet, lapses/bords/jauge, J/K, oracle NON-IBP et cosmologie 4D restent ouverts.
+
+**CHECKPOINT PRÉFIXÉ, HISTORIQUE COMPLET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C1 TERMINÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE :** research/gate2b-nonhomothetic-transfer. **NE JAMAIS MODIFIER** main, research/v2-flrw, ni GitHub Actions/workflows désactivés.
