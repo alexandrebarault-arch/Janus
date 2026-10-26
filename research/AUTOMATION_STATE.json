@@ -5,25 +5,25 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "58f3fd7448670391b302afd55bf488fa75683511",
-  "latest_verified_completed_step": "68ad-C2d2e4-CONNECTED_STEP58_LAPSE_ROW_RANK_AUDIT_CONDITIONAL",
-  "next_pending_step": "68ad-C2d2e5-independent-six-pair-nonIBP-Dirac-Poisson-boundary-and-singular-chart-audit",
+  "verified_research_head_before_state_file": "683b099c66096a25260ed138116f2e29692049c9",
+  "latest_verified_completed_step": "68ad-C2d2e5a-EXACT_FIXED_SHIFT_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT",
+  "next_pending_step": "68ad-C2d2e5b-authentic-six-pair-nonIBP-Poisson-Dirac-shift-elimination-boundary-and-singular-charts",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E4_CONNECTED_LAPSE_ROW_RANK_AND_DIRAC_LIMITS.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 11,
+    "passed": 28,
     "failed": 0,
     "skipped": 0,
-    "synthetic_adversarial_tests": 11,
-    "real_archived_audit_runs": 1,
-    "certified_cells_checked": 1810,
-    "source": "JavaScript V8 BigInt exact arithmetic on four live GitHub report contents; published Node CLI not rerun in full clone."
+    "exact_rational_assertions": 28,
+    "independent_sympy_exact_identities": 3,
+    "original_physics_modules_reexecuted": 0,
+    "description": "JS V8 exact BigInt rational checks on original-vs-IBP boundary identity plus three independent SymPy symbolic residual identities; no six-pair Poisson matrix."
   },
-  "github_write_probe": "Four create_file writes and three sequential state/index updates on research branch, each read back with identical UTF-8 content. Full old restart journal preserved.",
+  "github_write_probe": "Four actual create_file writes, one audit correction, README update, full restart prepend, and index update on research branch; each read back byte-identical. Prior restart text retained exactly.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -40,7 +40,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full six-pair functional Dirac/Poisson operator and independent non-IBP oracle absent; boundary-compatible lapses, K=0/J=0 singular charts, 4D/stability/observables unproved. Row rank one is insufficient.",
+  "current_blocker": "Full six-pair Dirac Poisson functional with z* response and boundary symplectic terms NOT computed. Boundary conditions/counterterms not specified; physical on-shell lapse compatibility, K=0/J=0, 4D, stability and observables remain unproved.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -49,7 +49,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "a70780f5f341ba39d05ec49e628e40677585ec44",
+    "00_CURRENT_RESTART.md": "636f01bc141b4233b1880d8935eb09f7198f2aae",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -72,7 +72,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "164ded088968302de014147ef4badd5e136c5acb",
+    "README.md": "4c811b52cc9969ff500c5e68c0c854306d349f40",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -84,9 +84,13 @@
     "scripts/hr_step68ad_c2d2e4_connected_row_rank.cjs": "a719cfed2292489b3c0e24cb6b422b9e42a823dd",
     "tests/test_hr_step68ad_c2d2e4_connected_row_rank.cjs": "e5df52e75bfd38655afbcf6085e26198a835e46e",
     "research/reports/gate2b-step68ad-C2d2e4-connected-row-rank.json": "a9721a0077d6ae0d89514b09b8476edf56451118",
-    "research/STEP68AD_C2D2E4_CONNECTED_LAPSE_ROW_RANK_AND_DIRAC_LIMITS.md": "778b33be781ed3cc7083b6e05f6debc1d5b84fc9"
+    "research/STEP68AD_C2D2E4_CONNECTED_LAPSE_ROW_RANK_AND_DIRAC_LIMITS.md": "778b33be781ed3cc7083b6e05f6debc1d5b84fc9",
+    "scripts/hr_step68ad_c2d2e5a_original_boundary.cjs": "78fe086dd06004fdcf30c2f022f759595671275a",
+    "tests/test_hr_step68ad_c2d2e5a_original_boundary.cjs": "49657554d7246aa0607161afd795c1714f7b3454",
+    "research/reports/gate2b-step68ad-C2d2e5a-exact-boundary.json": "c0167d2c370ee131769e1d148640d4fe3b60ba66",
+    "research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md": "4d1f229cba28ee83a2bb2c47c34969239fba3601"
   },
-  "current_proven_result": "CONDITIONAL connected closed radial cover [1/64,17/20] with 1810/1810 signed Step58 coefficient enclosures, AN>0 AM<0, local lapse row rank 1, M/N positive and bounded 1/50000<M/N<14. Extrema unchanged from historical Step68w outer bands. Full Dirac rank NOT PROVED.",
+  "current_proven_result": "EXACT fixed-z original/IBP boundary primitive B=2Mg² N Sg Sg'/Lg+2Mf² M Sf Sf'/Lf-z pLg(N+M Lg/Lf); noncompact lapse example [B]=213/64 off-shell; necessary boundary variations/counterterms. Previous conditional 1810-cell Step58 signs unchanged.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -98,9 +102,9 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "scope": "Only smooth regular Step55/68o constrained shell, conditional on four SHA-pinned Step58 interval reports; continuous r in [1/64,17/20]. Not global Dirac or 4D.",
-  "source_authentication_this_session": "22/22 source and report blobs transferred via GitHub connector, independently Git-SHA verified on local UTF-8 bytes. Three original pinned physical reports verified. Original Step58 and Step68o imported and actually executed, with exact Step68o 144 lower-jet comparisons and original Step58 pointwise checks. New code/test/report/audit Git blob SHA identical to tested local bytes.",
+  "source_authentication_this_session": "Three ORIGINAL GitHub source blobs fetched from research branch and their connector-returned blob SHA recorded; source Python modules read, not executed.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "2f7906e9c3f5093c49cb4ae8c8dd6ed68b6265b2",
+  "last_read_branch_head_at_session_start": "c2d625d35df086f4295255f99cc6eead7df0d363",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
     "kind": "ORIGINAL_STEP58_AN_AM_CONTINUUM_MVT_CONDITIONAL",
@@ -126,7 +130,7 @@
     "new_folder": "/JANUS-temporary-github-publish-20261026-C2d2d",
     "new_folder_files_remaining": 4,
     "google_drive_bridge_document_deleted": true,
-    "last_attempts": "Eight exact library_file_id deletes retried on 2026-10-26, all failed 401 Unauthorized /uninjest_file; do not claim deletion.",
+    "last_attempts": "Eight exact library_file_id delete operations retried 2026-10-26; all failed 401 Unauthorized /uninjest_file; no deletion claimed.",
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
     "action": "Retry cleanup if service recovers; GitHub source of truth unaffected.",
     "new_current_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026.json",
@@ -214,5 +218,21 @@
     "real_audit_passed": true,
     "full_Dirac_rank": "NOT_PROVED",
     "lapse_boundary": "NOT_PROVED"
+  },
+  "last_research_run": {
+    "stage": "68ad-C2d2e5a",
+    "status": "PARTIAL_DIRAC_BOUNDARY_LEMMA_ONLY",
+    "original_source_blobs": {
+      "nonIBP": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+      "IBP": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81",
+      "ADM": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41"
+    },
+    "tests_rational": 28,
+    "tests_symbolic": 3,
+    "failed": 0,
+    "exact_boundary_example": "213/64",
+    "dirac_rank": "NOT_PROVED",
+    "global_lapses": "NOT_PROVED",
+    "next": "68ad-C2d2e5b"
   }
 }
