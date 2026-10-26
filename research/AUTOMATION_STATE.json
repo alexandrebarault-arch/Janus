@@ -5,24 +5,24 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "4bd19cc95700eaf2469825e8e3105f69108923b5",
-  "latest_verified_completed_step": "68ad-C2d2e-Step60-BN-pSf-transversality-CERTIFIED_CONDITIONAL-STEP68J_IDENTITY_RECONCILED",
-  "next_pending_step": "68ad-C2d2e2-verify-Step68o-Hg-C-Hgprime-Fzprime-then-Step58-correlated-continuum",
+  "verified_research_head_before_state_file": "913d801f8847c1ff3109b10acaad4fb4c8485d42",
+  "latest_verified_completed_step": "68ad-C2d2e2-CONDITIONAL_EXACT_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION",
+  "next_pending_step": "68ad-C2d2e3-original-Step58-AN-AM-correlated-continuum-enclosures",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 36,
+    "passed": 14,
     "failed": 0,
     "skipped": 0,
-    "new_tests": 15,
-    "regression_tests": 21,
-    "source": "Final exact run PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py tests/test_hr_step68ad_c2d2d_correlated_mean_value.py tests/test_hr_step60_full_constraint_prolongation.py → 36 PASS 0 FAIL (21.07 s); original Step68j 13/25 exact derivative group directly PASS, rational anchor PASS; other 12 historical derivatives not fully rerun in this session."
+    "new_tests": 14,
+    "regression_tests": 0,
+    "source": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py (0.87 s), standalone independent reconstruction; historical 36 tests not rerun"
   },
-  "github_write_probe": "GitHub create_file/update_file genuinely executed on research branch only; 4 new files and checkpoint+README read back with matching Git blob SHA, historical restart suffix preserved byte-for-byte as text.",
+  "github_write_probe": "GitHub create_file genuinely executed on research branch only for four new files; readback Git blob SHA matched locally tested bytes. Restart prefix readback exact with 365098-character historical suffix preserved. README updated and read back. State readback follows.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -39,7 +39,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Step68j ALREADY PROVED exact BN(original)=-alpha Hgprime+beta Hg+(z/Lg)C on regular Fz=0 chart; Step60 BN(lower)=beta Hg+(z/Lg)C, so zero modulo Hg=C=0. Need explicitly verify original Step68o physical profile satisfies Hg=C=Hgprime=Fzprime=0 continuously, plus Step58 A_N/A_M continuum, Dirac rank, lapse, boundary, 4D, stability and observables.",
+  "current_blocker": "Step68o spatial shell is conditionally composed from exact Step45/46/55/68o formulas and prior Step58/68h/68j identities; original modules were read directly from GitHub but not reexecuted locally in this session. Original Step58 AN/AM continuous signs, full Dirac rank, lapses, boundaries, 4D, stability, observables remain open.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -48,7 +48,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "25e167dedf120cdbd8dd6ada67b28474851e3c9a",
+    "00_CURRENT_RESTART.md": "3eca97990f7af48a80e7fa377f3f3446162ced72",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -71,9 +71,13 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "8a6618eae096ff22273795ffe310127b3d138952"
+    "README.md": "1a6f8ebd1a4cac06d09aa0b822f1965b124552ca",
+    "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
+    "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
+    "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
+    "research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md": "f7ffd1c69ff4eec1d1882a1e94b1a9f6d252359f"
   },
-  "current_proven_result": "New: exact affine dependence Step60 BN(lower)=B0+J*pSf and conditional J<0 on 7x32 rational subcells, max upper -345763471741167637281851/312500000000000000000000000. HISTORICAL Step68j exact theorem already proves BN(lower)=beta Hg+(z/Lg)C on Fz=0; zero on Hg=C=0. Step60 AM<0 previous conditional certificate. Step58 continuum still incomplete.",
+  "current_proven_result": "NEW conditional exact algebraic composition: original reduced primaries Hg=Hf=0 by Step55 dust formulas, Fz=0 by positive shift shell, C=0 by Step46 affine constraint plus actual Step55 ODE; on smooth branch Hgprime=Cprime=Fzprime=0; historical Step58/68h/68j imply four lapse-derivative coefficients vanish. Step68o dust-clock local-zero jet placeholders admit exact global polynomial primitives. No new original Step58 continuum signs.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -84,10 +88,10 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Step60 BN(lower) vanishes exactly modulo Hg=C=0 by PRE-EXISTING Step68j theorem; new independent conditional transversality J<0 on r in [1/64,1/32]. Verify spatial shell constraints and Step58 continuum; Dirac rank, lapses, boundaries, 4D, stability, observables unresolved.",
-  "source_authentication_this_session": "28/28 original sources, transitive dependencies, historic tests/reports and Step68i/j historical identity certificate Git blob SHA locally matched. Step68j source a500cdb1a09c853d46848719e26be9bbec55fb64; report 25a47c7eeed9dec111ecd3f5da891a02d84184d9; 13/25 historical derivative identities directly rerun plus exact rational anchor.",
+  "scope": "Conditional original spherical spatial shell and lapse-jet composition, not original 4D Dirac proof. Previous Step60 AM<0 continuum conditional and Step68j BN(lower)=0 modulo Hg=C remain. Step58 AN/AM continuum INCOMPLETE.",
+  "source_authentication_this_session": "Original Step45, Step46, Step55-normalized, Step55-global, Step68o, Step68j, Step58 and Step60 read through live GitHub connector with displayed blob SHAs; no local byte-authenticated import of the complete original physical modules. New standalone reconstruction tested and published with byte-identical Git blob SHA.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "155be7f5f486388ca4a75a4c5032aacea99bdb9f",
+  "last_read_branch_head_at_session_start": "47c3c384c08c217cf00ec2a58fbaf3a6f15bf023",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_BN_PSF_TRANSVERSALITY_WITH_STEP68J_IDENTITY_RECONCILIATION",
@@ -158,5 +162,16 @@
     "research/reports/gate2b-step68ad-C2d2d-Step60-AM-mean-value-compact.json": "d4c81ec912ec6cdfce19585f79d06a2e6761ea12",
     "research/STEP68AD_C2D2D_CORRELATED_MEAN_VALUE_STEP60_AM_CONTINUUM.md": "37fad77c7db391ecb73fd15a3d872f5fe0195c24",
     "README.md": "298ac002b81f0d4e03125c60480e4c8f9561572a"
+  },
+  "latest_conditional_composition": {
+    "step": "68ad-C2d2e2",
+    "test_count": 14,
+    "tests_passed": 14,
+    "tests_failed": 0,
+    "kind": "EXACT_SYMBOLIC_RECONSTRUCTION_CONDITIONAL_ON_PREVIOUS_STEP46_55_58_68H_68J_THEOREMS",
+    "new_original_Step58_signs": 0,
+    "readback_published_files": 4,
+    "original_modules_reexecuted": false,
+    "checkpoint_suffix_preserved": true
   }
 }
