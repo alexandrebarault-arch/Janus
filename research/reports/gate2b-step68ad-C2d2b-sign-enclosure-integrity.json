@@ -1,0 +1,45 @@
+{
+  "step": "68ad-C2d2b-certificate-integrity",
+  "date": "2026-10-26",
+  "kind": "EXECUTED_NEGATIVE_CONTROL_AND_GUARD_FIX_NOT_PHYSICAL_TEMPORAL_PROOF",
+  "preexisting_guard_blob": "a0657a023fc59073bd1ab9f9a4255cf5248e0b9b",
+  "counterexample": {
+    "cells": 7,
+    "coefficients": 14,
+    "enclosure": [
+      "-1",
+      "1"
+    ],
+    "declared_N": "POSITIVE_CERTIFIED",
+    "declared_M": "NEGATIVE_CERTIFIED",
+    "old_summary_all_nonzero": true,
+    "actual_all_nonzero": false,
+    "negative_control_executed": true,
+    "negative_control_method": "Python faithful reconstruction of old GitHub guard's summary control flow"
+  },
+  "tests": {
+    "command": "cd /mnt/data/janus_c2d2b_integrity && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py",
+    "passed": 23,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds_approx": 0.07,
+    "scope": "Guard and certificate verifier only; no original Step58/60"
+  },
+  "verified_published_code_blobs": {
+    "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
+    "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1"
+  },
+  "certificate_checks": [
+    "exact rational enclosure sign recomputation",
+    "14/14 declared labels must agree with bounds",
+    "seven-cell continuous cover exactly [1/64,1/32]",
+    "N/M denote A_N/A_M coefficients not lapse values"
+  ],
+  "original_step58_executed": false,
+  "original_step60_executed": false,
+  "new_physical_temporal_signs_certified": 0,
+  "full_adapter_integration_tests_executed": false,
+  "next_pending_step": "68ad-C2d2b",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
