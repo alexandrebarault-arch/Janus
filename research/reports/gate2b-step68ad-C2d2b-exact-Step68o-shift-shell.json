@@ -1,0 +1,53 @@
+{
+  "step": "68ad-C2d2b-exact-Step68o-shift-shell",
+  "kind": "CONDITIONAL_SYMBOLIC_CONSISTENCY_OF_ORIGINAL_STEP55_STEP68O_PROFILE",
+  "date": "2026-10-26",
+  "source_provenance": {
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "step68o": "c99caebc17f243784450ddff94fb061767e6d8e7",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "source_authentication": "Original source files fetched directly through GitHub connector and blob SHAs checked; original Step58/60 NOT imported into the local execution.",
+  "formulas": {
+    "s": "r^2",
+    "D": "r^3 Dbar",
+    "K": "r^2 k",
+    "k": "m2*mg*Lg*Lf*(b1*Lg^2+2*b2*Lg*Lf+b3*Lf^2)",
+    "Dbar": "k*z1/sqrt(1-z1^2*r^2)",
+    "norm_squared": "(D^2+K^2)*(1-z1^2*r^2)=r^4*k^2",
+    "Fz": "D-K*z/sqrt(1-z^2)=0 for z=r*z1",
+    "shift": "z=r*z1 for k>0",
+    "zprime": "z1",
+    "zsecond": "0",
+    "zthird": "0"
+  },
+  "assumptions": [
+    "r>0",
+    "k>0",
+    "1-z1^2*r^2>0",
+    "Step55/68o canonical fields as prescribed",
+    "all parameters real and denominators nonzero"
+  ],
+  "negative_branch_counterexample": "k<0 implies D/sqrt(D^2+K^2)=-r*z1 (for z1>0), so positivity is essential.",
+  "execution": {
+    "command": "cd /mnt/data/janus_shift_shell && PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py",
+    "passed": 10,
+    "failed": 0,
+    "elapsed_seconds": 21.26,
+    "manifest_command": "PYTHONPATH=. python -m numerics.hr_step68ad_c2d2b_exact_step68o_shift_shell",
+    "manifest_executed": true,
+    "manifest_elapsed_seconds": 15.12
+  },
+  "tested_blobs": {
+    "numerics/hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "3a996c87fd832d927066e0a68f17279df50ac84c",
+    "tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "7746ca04e8c46c34f17a8bf35c4f90cdd71b251b"
+  },
+  "physical_temporal_step58_seven_cells": "NOT_EXECUTED",
+  "step60_quotient": "NOT_EXECUTED",
+  "new_temporal_signs_certified": 0,
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next": "68ad-C2d2b — materialize byte-authentic Step45/55/57/58/60/68n/68o/C2b and 3 pinned reports into a single Python environment, run original Step58 seven-cell interval operator, then original Step60; certify no sign when enclosure crosses zero."
+}
