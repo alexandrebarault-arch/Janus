@@ -1,0 +1,53 @@
+{
+  "step": "68ad-C2a",
+  "source": "Original Step68o radial profile structure, Step58 and Step60 pinned for subsequent physical use",
+  "original_temporal_git_blob_pins": {
+    "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+    "68o": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "all_twelve_canonical_fields": [
+    "Lg",
+    "pLg",
+    "Sg",
+    "pSg",
+    "tg",
+    "pg",
+    "Lf",
+    "pLf",
+    "Sf",
+    "pSf",
+    "tf",
+    "pf"
+  ],
+  "parity_powers": {
+    "Lg": 0,
+    "Lf": 0,
+    "Sg": 1,
+    "Sf": 1,
+    "pSg": 1,
+    "pSf": 1,
+    "pLg": 2,
+    "pLf": 2,
+    "pg": 2,
+    "pf": 2
+  },
+  "clock_derivatives": "tprime=r*k*L(r²), t gauge value arbitrary",
+  "exact_chain_rule_to_order": 3,
+  "singular_division_by_r_or_s": false,
+  "physical_interval_profile_derivatives": "REQUIRED_NOT_COMPUTED",
+  "temporal_Step58_AN_AM": "NOT_EVALUATED",
+  "seven_pending_cells": "NOT_CERTIFIED",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "executed_tests": {
+    "command": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2a_all_canonical_parity.py",
+    "passed": 15,
+    "failed": 0,
+    "duration_seconds": 0.74,
+    "nature": "exact symbolic/rational algebraic chain rule and tamper rejection; not original Step58 temporal evaluation"
+  },
+  "new_result": "12/12 canonical q,qprime,qdoubleprime,qtripleprime kinematic formulas regular at r=0; profile s derivatives still require physical interval certification",
+  "next_step": "68ad-C2b: compute genuine ten profile s derivatives from SHA-authentic Step68n jet_geometry/jet_G and Step68v/B2 tubes, then run original Step58/60 temporal operator on seven pending cells; if dependency blow-up, report uncertified."
+}
