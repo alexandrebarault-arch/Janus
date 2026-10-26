@@ -1,3 +1,51 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-B2 VRAIE PHYSIQUE CERTIFIÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE JAMAIS modifier `main`, `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
+**STATUT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+**DERNIÈRE ÉTAPE TERMINÉE : 68ad-B2 ; PROCHAINE ÉTAPE EXACTE : 68ad-C.** NE PAS recommencer 68ad-B1 ou 68ad-B2.
+
+**LIRE D'ABORD :** `research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md`, `numerics/hr_step68ad_b2_physical_center_higher_jets.py`, `research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json`, `research/AUTOMATION_STATE.json`. TOUS les checkpoints historiques sont conservés intégralement CI-DESSOUS.
+
+## RÉSULTAT SCIENTIFIQUE NOUVEAU ET RÉELLEMENT EXÉCUTÉ — ORIGINAL G PHYSIQUE
+
+Les **six originaux** du Hamiltonien six couples canoniques Steps45/46/55norm/55barrier/68l/68n ont été reconstitués depuis GitHub **OCTET POUR OCTET** et SHA-authentifiés ; les deux programmes originaux 68ad-A/B1 et rapports historiques 68v/68ac également. Contrairement au dernier run B1, le vrai `physical_R2_global` et les quatre jets Step68n du vrai G ont **RÉELLEMENT TOURNÉ** sur le continuum `s∈[0,1/1024]` (`r∈[0,1/32]`), avec 32 cellules rationnelles fermées et arithmétique entière sortante 10^-28.
+
+**NOUVELLE PREUVE PHYSIQUE SPATIALE (conditionnelle aux hypothèses historiques Step49/68v) :**
+
+```
+R2(s)    ∈ [-1.414170375015186e-4, -1.406541559177554e-4] < 0
+U_ss(s)  ∈ [-2.022016433671329e-5, -2.007599805707252e-5] < 0
+R3(s)    ∈ [-7.320689826385639e-7, -6.226026282646365e-7] < 0
+U_sss(s) ∈ [-8.139651115656399e-8, -6.913132664403898e-8] < 0
+pour TOUT s∈[0,1/1024], sans trou, incluant s=0.
+```
+
+Les **FRACTIONS RATIONNELLES EXACTES** et les 32 lignes de R2 + 32 lignes de R3 figurent dans le JSON machine authentifié, pas dans ces seules approximations. Step68ad-A transport positif `2s y'+a_n y=R_n` (`a_n=2n+2-G_U>0`) transforme R2→U_ss puis R3→U_sss sans division par s. Le certificat contient les valeurs centrales `2U2` et `6U3`. Avec `U_s>0` historique, U est **croissante et strictement concave** et U_ss **strictement décroissante** sur ce domaine.
+
+**THÉORÈME EXACT SUPPLÉMENTAIRE :** sur le vrai G symbolique original `degree_U(G)=2`, `G_UUU=0` IDENTIQUEMENT et `G_UU=s*C(s)` EXACTEMENT. SymPy vérifie l'identité en soustrayant la factorisation fermée. L'intervalle entier original sur tout `s∈[0,1/1024]` prouve `0.87576275<C(s)<0.87591186` ; donc `G_UU>0` pour tout `s>0`. Voir la formule exacte et les fractions dans l'audit/JSON.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 16 nouveaux tests Step68ad-B2 **PASS** (16,26 s, 0 FAIL final), dont le vrai Hamiltonien original, les identités exactes Step45/46, factorisation G, signes continus U_ss/U_sss, contrôle des valeurs centrales, cellules 32 et 64, altération SHA, comparaison au JSON machine. Un premier run avait 1 échec de TEST mal formulé (il demandait la contenance d'un intervalle indépendant au lieu de leur intersection non vide) ; corrigé, suite complète relancée 16 PASS. **Original Step55 256 cellules rejoué PASS** ; tests de raffinement physique B2 à 64 et **128 cellules** également exécutés, signes négatifs stables, intervalles plus serrés (128 : U_ss ~[-2.017945e-5,-2.011665e-5], U_sss ~[-7.690428e-8,-7.360654e-8]). Ne PAS additionner les anciens tests 18 B1 ou 19 A comme s'ils avaient été rejoués.
+
+**FICHIERS RÉELLEMENT PUBLIÉS ET SHA Git blob identiques aux octets locaux exécutés :**
+
+- `numerics/hr_step68ad_b2_physical_center_higher_jets.py` blob **89ce02af12145eb8ab6bdcc354649571dd5da179**
+- `tests/test_hr_step68ad_b2_physical_center_higher_jets.py` blob **5e2b5f297fbef78e38f05c76aebd05f8f4b2ee02**
+- `research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json` blob **ac961b5b83667a83497497d22a701c24584cb561**
+- `research/STEP68AD_B2_ORIGINAL_PHYSICAL_CONTINUUM_HIGHER_JETS.md` blob **d49e30ce7093927480dcac6e8f962556eebe963c**
+- `research/AUTOMATION_STATE.json` blob **a5cbe90cdd891f2eb44230de5460262c62bf6b6f**
+
+## NEXT EXACT ACTION : STEP68ad-C — TEMPORAL ORIGINAL, PAS UN NOUVEAU POLYNÔME JOUET
+
+1. **AUTHENTIFIER** les sources originales Steps57/58/60/68o et le vrai opérateur temporel non-frozen-shift Step58, à leurs Git blob SHA ; préserver les huit sources physiques et les deux rapports originaux déjà certifiés. Reprendre sur GitHub le dernier HEAD, jamais un ancien checkpoint.
+2. Dans les 12 vrais jets canoniques, substituer **les tubes rigoureux U_ss/U_sss** de B2 (ou des tubes locaux resserrés par sous-cellule), sans diviser naïvement par `s` ni différencier les bornes de U/Us. Exploiter `G_UUU=0` et `G_UU=s*C(s)` pour améliorer les bornes si nécessaire.
+3. Évaluer `A_N/r²,A_M/r²` du VRAI Step58/60 sur les **sept cellules PENDING r∈[1/64,1/32]**, puis anneau plus intérieur et centre r→0. Vérifier toutes les hypothèses, signes et collisions d'intervalles ; si les signes ne sont pas certifiés, déclarer précisément le blocage.
+4. Même en cas de signes temporels favorables, **NE PAS FERMER** le GATE sans rang Dirac complet, lapses/bords/jauge, exceptions J/K, oracle indépendant NON-IBP, stabilité BD et validation 4D. Documenter et publier chaque vraie avancée.
+5. PRÉFIXER CE fichier après l'avancée suivante SANS SUPPRIMER aucun ancien texte ; actualiser l'index machine, SHA, tests et HEAD. Ne jamais faire de commit artificiel.
+
+**POINT DE REPRISE PERMANENT MIS À JOUR ; HISTORIQUE COMPLET CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-B1 OUTIL ALGÉBRIQUE TERMINÉ (2026-10-26)
 
 **BRANCHE UNIQUE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. Ne jamais modifier `main`, `research/v2-flrw` ni les workflows GitHub Actions désactivés.
