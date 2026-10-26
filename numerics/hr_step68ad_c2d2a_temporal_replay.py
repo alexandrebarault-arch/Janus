@@ -15,6 +15,7 @@ from hashlib import sha1
 from pathlib import Path
 from unittest.mock import patch
 import json
+from .hr_step68ad_c2d2b_guard import assert_guard_binding, summarize_temporal_signs
 
 PINNED = {
     "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
@@ -121,6 +122,7 @@ def evaluate_original_step58(box, annulus, Jet, I):
     if not (F(0) < lo < hi <= F(1, 32)):
         raise ValueError("Only seven positive center cells are supported")
     expected_s = I.hull(lo, hi) ** 2
+    assert_guard_binding(box, expected_s)
     with inject_s_jet(annulus, box, Jet, I, expected_s):
         coeff = annulus.evaluate_cell(lo, hi)
     return {label: {"enclosure": [str(F(v.lo, 10**28)), str(F(v.hi, 10**28))],
@@ -146,11 +148,12 @@ def run(repo: Path):
         rows.append({"r": box["r"], "outward_s":guarded["s"],
                      "temporal": evaluate_original_step58(guarded, annulus, Jet, I)})
     assert len(rows) == 7
+    sign_summary = summarize_temporal_signs(rows)
     return {"step": "68ad-C2d2a", "kind": "EXECUTED_ORIGINAL_STEP58_NONFROZEN_SHIFT",
             "provenance": verified, "input_report_blobs": boxes["pinned_original_report_git_blobs"],
             "cells": rows,
-            "seven_temporal_signs_certified": all(row["temporal"][lab]["sign"] != "INCOMPLETE"
-                                                   for row in rows for lab in ("N", "M")),
+            "seven_temporal_signs_certified": sign_summary["all_nonzero_signs_certified"],
+            "temporal_sign_pattern_audit": sign_summary,
             "Step60_quotient": "NOT_EVALUATED",
             "GATE_2B": "OPEN", "JANUS_R": "NOT_VALIDATED"}
 
