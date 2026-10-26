@@ -2,9 +2,9 @@
   "step": "68ad-C2a",
   "source": "Original Step68o radial profile structure, Step58 and Step60 pinned for subsequent physical use",
   "original_temporal_git_blob_pins": {
+    "68o": "c99caebc17f243784450ddff94fb061767e6d8e7",
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
-    "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
-    "68o": "c99caebc17f243784450ddff94fb061767e6d8e7"
+    "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "all_twelve_canonical_fields": [
     "Lg",
