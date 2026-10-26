@@ -5,9 +5,9 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "e09ec1bac8c31caa67559b35a79447ec66d51be8",
-  "latest_verified_completed_step": "68ad-C2d2e-Step60-BN-pSf-transversality-CERTIFIED_CONDITIONAL",
-  "next_pending_step": "68ad-C2d2e2-exact-BN-on-shell-root-comparison-then-Step58-continuum",
+  "verified_research_head_before_state_file": "5f68a0baef442fdd6124c9f0d6b6ea0546b39152",
+  "latest_verified_completed_step": "68ad-C2d2e-Step60-BN-pSf-transversality-CERTIFIED_CONDITIONAL-STEP68J_IDENTITY_RECONCILED",
+  "next_pending_step": "68ad-C2d2e2-verify-Step68o-Hg-C-Hgprime-Fzprime-then-Step58-correlated-continuum",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
   "latest_scientific_audit": "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md",
   "scientific_status": {
@@ -15,12 +15,12 @@
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 34,
+    "passed": 36,
     "failed": 0,
     "skipped": 0,
-    "new_tests": 13,
+    "new_tests": 15,
     "regression_tests": 21,
-    "source": "Actually executed PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py tests/test_hr_step68ad_c2d2d_correlated_mean_value.py tests/test_hr_step60_full_constraint_prolongation.py → 34 PASS 0 FAIL (18.98 s); CLI original Step60 BN slope 224 subcells PASS."
+    "source": "Final exact run PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py tests/test_hr_step68ad_c2d2d_correlated_mean_value.py tests/test_hr_step60_full_constraint_prolongation.py → 36 PASS 0 FAIL (21.07 s); original Step68j 13/25 exact derivative group directly PASS, rational anchor PASS; other 12 historical derivatives not fully rerun in this session."
   },
   "github_write_probe": "GitHub create_file/update_file genuinely executed on research branch only; 4 new files and checkpoint+README read back with matching Git blob SHA, historical restart suffix preserved byte-for-byte as text.",
   "required_per_run": [
@@ -39,7 +39,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Exact BN=0 on physical Step68o shell NOT proved; BN continuum sign not certified. J=dBN/dpSf<0 conditionally on seven-cell continuum; need exact root pSf*=-B0/J comparison to Step68o pSf. Step58 original A_N/A_M continuum INCOMPLETE; Dirac rank, lapse, boundaries, 4D, stability and observables unresolved.",
+  "current_blocker": "Step68j ALREADY PROVED exact BN(original)=-alpha Hgprime+beta Hg+(z/Lg)C on regular Fz=0 chart; Step60 BN(lower)=beta Hg+(z/Lg)C, so zero modulo Hg=C=0. Need explicitly verify original Step68o physical profile satisfies Hg=C=Hgprime=Fzprime=0 continuously, plus Step58 A_N/A_M continuum, Dirac rank, lapse, boundary, 4D, stability and observables.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -48,7 +48,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "d0366bbdc3a2d4219113f920983460759ffbdf2c",
+    "00_CURRENT_RESTART.md": "25e167dedf120cdbd8dd6ada67b28474851e3c9a",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -67,12 +67,12 @@
     "tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py": "54d872c2b74169f4d8976341d1c05fea76c18aaa",
     "research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json": "e1b1eadabe99ffa49ea070caaaffb35981a4b5d2",
     "research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md": "c7eb3be98ea269900f4729a76ed8712765e12e24",
-    "numerics/hr_step68ad_c2d2e_bn_psf_transversality.py": "0c97d7dd3580f85e0268657a139a563208181e03",
-    "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "4b2e888d0268f1875545cde6210c9f937e98dfbe",
-    "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "77dfc389993cef38f05671378efb6935b44404f3",
-    "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "c0252f29a6bd4cdfe70e32526592696cfd5028c5"
+    "numerics/hr_step68ad_c2d2e_bn_psf_transversality.py": "69045785b00302f272aff266ce3d89e7fe0ba7ac",
+    "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
+    "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
+    "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea"
   },
-  "current_proven_result": "Original Step60 third_free_BN_on_Fz affine in pSf exactly (second derivative zero); conditional radial slope J=dBN/dpSf<0 on r in [1/64,1/32] by 224 rational mean-value interval AD enclosures, max J upper -345763471741167637281851/312500000000000000000000000. Step60 AM<0 previously certified. BN=0 on shell and Step58 continuum NOT proved.",
+  "current_proven_result": "New: exact affine dependence Step60 BN(lower)=B0+J*pSf and conditional J<0 on 7x32 rational subcells, max upper -345763471741167637281851/312500000000000000000000000. HISTORICAL Step68j exact theorem already proves BN(lower)=beta Hg+(z/Lg)C on Fz=0; zero on Hg=C=0. Step60 AM<0 previous conditional certificate. Step58 continuum still incomplete.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -83,21 +83,21 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Conditional Step60 BN pSf-transversality J<0 on all seven cells, AM<0 previously certified. BN=0 on physical shell not proven; Step58 continuum, Dirac rank, lapse, boundary, 4D, stability and observables open.",
-  "source_authentication_this_session": "24/24 source/dependency/report/historical-test blobs from live GitHub verified with Git SHA-1 locally. Original Step60 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509; Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f; Step68o c99caebc17f243784450ddff94fb061767e6d8e7.",
+  "scope": "Step60 BN(lower) vanishes exactly modulo Hg=C=0 by PRE-EXISTING Step68j theorem; new independent conditional transversality J<0 on r in [1/64,1/32]. Verify spatial shell constraints and Step58 continuum; Dirac rank, lapses, boundaries, 4D, stability, observables unresolved.",
+  "source_authentication_this_session": "28/28 original sources, transitive dependencies, historic tests/reports and Step68i/j historical identity certificate Git blob SHA locally matched. Step68j source a500cdb1a09c853d46848719e26be9bbec55fb64; report 25a47c7eeed9dec111ecd3f5da891a02d84184d9; 13/25 historical derivative identities directly rerun plus exact rational anchor.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
   "last_read_branch_head_at_session_start": "155be7f5f486388ca4a75a4c5032aacea99bdb9f",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
-    "kind": "ORIGINAL_STEP60_BN_PSF_AFFINE_EXACT_AND_CONDITIONAL_CONTINUUM_SLOPE",
+    "kind": "ORIGINAL_STEP60_BN_PSF_TRANSVERSALITY_WITH_STEP68J_IDENTITY_RECONCILIATION",
     "original_radial_cells": 7,
     "certified_subcells": 224,
     "BN_pSf_slope_negative": true,
     "max_J_upper": "-345763471741167637281851/312500000000000000000000000",
-    "BN_on_shell_zero": "NOT_PROVED",
+    "BN_on_shell_zero": "PREVIOUS_STEP68J_EXACT_MODULO_Hg_C_ON_REGULAR_Fz0",
     "Step60_AM_negative_continuum": "PREVIOUSLY_CERTIFIED_CONDITIONAL",
     "Step58_continuum": "INCOMPLETE",
-    "source_and_report_blobs_verified": 24
+    "source_and_report_blobs_verified": 28
   },
   "temporary_staging_cleanup": {
     "old_folder": "/JANUS-temporary-github-publish-20261026",
@@ -107,9 +107,12 @@
     "google_drive_bridge_document_deleted": true,
     "last_attempts": "Authentic delete of new bundle failed 401 Unauthorized; previous two folder cleanup failures persist. Three ephemeral Google Docs transfer documents created and deleted successfully.",
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
-    "action": "Retry Library deletion when 401 service issue resolves. Non-secret scientific files only.",
+    "action": "Delete both C2d2e ephemeral Library bundles and prior temporary folders when 401 Unauthorized service recovers; non-secret scientific sources only.",
     "new_current_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026.json",
-    "new_bundle_library_file_id": "libfile_17f52736778c819195709abedd20af01"
+    "new_bundle_library_file_id": "libfile_17f52736778c819195709abedd20af01",
+    "corrected_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026-corrected.json",
+    "corrected_bundle_library_file_id": "libfile_2cbe0de137148191bfec9338dd737d90",
+    "google_drive_bridge_documents_deleted": true
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
