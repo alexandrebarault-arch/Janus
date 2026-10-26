@@ -95,13 +95,14 @@
     "source_blobs_verified": 22
   },
   "temporary_staging_cleanup": {
-    "google_drive_document": "TEMP_JANUS_20261026_SOURCE_BRIDGE_DELETE_AFTER_EXPORT",
+    "google_drive_document": "TEMP_JANUS_20261026_C2d2c_SOURCE_BRIDGE_DELETE_AFTER_EXPORT",
     "google_drive_document_deleted": true,
     "library_folder": "/JANUS-temporary-github-publish-20261026",
     "library_folder_deleted": false,
-    "attempts": 3,
+    "files_remaining": 4,
+    "attempts_this_session": 2,
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
-    "note": "Temporary copies of new non-secret research code/audit may remain in Library. Retry cleanup only if authorized file-delete tool is functional; GitHub branch is the authoritative scientific archive."
+    "note": "4 temporary copies of new non-secret code/test/report/audit remain in Library after both file-by-id deletion and recursive folder deletion failed. Retry only if Library delete service recovers; GitHub branch is authoritative."
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
