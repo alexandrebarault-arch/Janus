@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : Step58 PHYSIQUE EXÉCUTÉ SUR 7 CELLULES, SIGNES CONTINUS INCOMPLETE ; Step60 SYMBOLIQUE REJOUÉ (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw`, ni les workflows désactivés.
+**ÉTAPE EFFECTIVE TERMINÉE : 68ad-C2d2b, EXÉCUTION PHYSIQUE AUTHENTIQUE Step58 ; PROCHAINE ÉTAPE : 68ad-C2d2c, CERTIFICATION CORRÉLÉE DES SIGNES ET QUOTIENT INFÉRIEUR Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**BLOCAGE MATÉRIEL RÉSOLU :** 22 fichiers (19 sources/tests Python + 3 rapports physiques) transférés depuis le connecteur GitHub dans un environnement Python unique ; 22/22 SHA Git blobs authentifiés sur les octets locaux. Les originaux Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step60 `9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7` restent intacts. Le transfert a utilisé un document Google temporaire, à supprimer après sauvegarde.
+
+**EXÉCUTION RÉELLE :** `python -m numerics.hr_step68ad_c2d2a_temporal_replay --repo . --out ...` : échoue effectivement sur première cellule par `ZeroDivisionError: crossing zero` (dénominateur CSE d'interaction `beta1*Sg²+2beta2*Sg*Sf+beta3*Sf²` ; dépendance d'intervalles perdue, NON une singularité physique prouvée). Nouvelle factorisation exacte sur coquille `Sg=r Lg,Sf=r Lf` : `T=Sg²*(beta1+2beta2*(Lf/Lg)+beta3*(Lf/Lg)²)`. Identité des CSE `x79` (N) et `x75` (M) démontrée par SymPy sur les sources originales. **Step58 original exécuté sur les 7 cellules avec cette réécriture algébrique équivalente : 14/14 enclosures contiennent zéro, 0/14 signes continus certifiés.** 8 frontières radiales évaluées ponctuellement : 8/8 `A_N>0` et 8/8 `A_M<0` ; ces 16 signes ponctuels NE CERTIFIENT PAS LE CONTINUUM. Raffinement de la première cellule en 32,64,128,256 sous-cellules : tous les coefficients encore INCOMPLETE.
+
+**STEP60 :** `python -m numerics.hr_step60_full_constraint_prolongation` réellement exécuté sur les originaux SHA-authentifiés (EXIT=0, ~11.49 s) ; annulation symbolique des coefficients q''' du quotient original confirmée (BN:1, AM:3, tous zéro). **Step60 quotient inférieur sur les 7 cellules NON ÉVALUÉ** ; le manifeste original indique `full_lower_jet_constraint_quotient=NOT COMPLETED`.
+
+**TESTS EXÉCUTÉS :** `PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py tests/test_hr_step68ad_c2d2b_guard.py tests/test_hr_step68ad_c2d2a_temporal_replay.py tests/test_hr_step58_temporal_operator.py tests/test_hr_step60_full_constraint_prolongation.py` : **79 PASS, 0 FAIL (21.60 s pytest)** ; 9 tests nouveaux, 70 préexistants. Aucun test physique de rang de Dirac ni lapse admissible.
+
+**FICHIERS PUBLIÉS ET RELUS, BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2b_executed_temporal_probe.py` — `c81c08502bdd50f6c13fbe09d1fcecf853036ffd`.
+- `tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py` — `1b2ac08636874501a800d0ce61608bec8274cf08`.
+- `research/reports/gate2b-step68ad-C2d2b-executed-physical-temporal.json` — `a369c2e65205d228a734817df3d3a02cf0e41c3d`.
+- `research/STEP68AD_C2D2B_AUTHENTIC_STEP58_EXECUTION_AND_INTERVAL_DEPENDENCY.md` — `188df51cc5d81ba690eb10806a4f99a36a215d9c`.
+
+**HEAD À LA REPRISE :** `caf2bb50db5a17860fefe713d2996557eef33dd9`. **PROCHAINES ACTIONS :** (1) construire une enclosure corrélée/Taylor du Step58 original, avec test d'inclusion des enclosures ponctuelles et couverture de chaque cellule ; (2) certifier signes continus ou conserver INCOMPLETE/produire contre-exemple ; (3) évaluer quotient inférieur Step60 sur la coquille exacte ; (4) ensuite seulement Dirac/lapses/bords/4D/stabilité/observables. **NE PAS CONFONDRE signes ponctuels, annulations algébriques et cohérence physique globale.**
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE INTÉGRAL ANTÉRIEUR CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : COQUILLE STATIONNAIRE Step55/68o VÉRIFIÉE ALGÉBRIQUEMENT ; Step58/60 PHYSIQUES TOUJOURS PENDING (2026-10-26)
 
 **BRANCHE D'ÉCRITURE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. Interdiction de modifier `main`, `research/v2-flrw` et les workflows GitHub désactivés.
