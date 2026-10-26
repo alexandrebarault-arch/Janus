@@ -1,3 +1,28 @@
+# JANUS — RECTIFICATION SCIENTIFIQUE PRIORITAIRE : Step68j PROUVE DÉJÀ B_N=0 MODULO CONTRAINTES (2026-10-26)
+
+**BRANCHE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. **ÉTAPE VALIDÉE : 68ad-C2d2e (transversality conditionnelle J<0, corrigée par relecture Step68j). PROCHAINE : 68ad-C2d2e2 — vérification explicite des contraintes Step68o, puis Step58 continu.**
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**ERRATUM OBLIGATOIRE AU CHECKPOINT PRÉCÉDENT :** le résultat exact de l'étape historique Step68j, retrouvé dans `README.md`, `research/STEP68J_EXACT_FULL_CDOT_BN_SECONDARY_IDENTITY_AUDIT.md` et `numerics/hr_step68j_BN_exact_secondary_identity.py` (SHA `a500cdb1a09c853d46848719e26be9bbec55fb64`), était déjà établi : sur la charte régulière `F_z=0`, `B_N(original)=-alpha Hg'+beta Hg+(z/Lg)C`, `alpha=(1-z²)/(Lg Lf)`. Par conséquent le représentant Step60 `B_N(lower)=B_N(original)+alpha Hg' = beta Hg+(z/Lg)C`, et il **s'annule EXACTEMENT si Hg=C=0** ; le coefficient original s'annule aussi lorsque `Hg'=0`. Il était incorrect de présenter cette identité comme non prouvée en général sur la surface contrainte. La nouvelle pente `J=∂B_N(lower)/∂pSf<0` décrit la transversality HORS de cette surface, et n'invalide nullement Step68j. L'applicabilité à la totalité du profil physique et aux prolongations requises doit être explicitement vérifiée ; ni le rang Dirac ni les lapses ne sont résolus.
+
+**NOUVELLE CERTIFICATION CONDITIONNELLE :** `∂² B_N(lower)/∂pSf²=0` EXACTEMENT sur la coquille `F_z=0` ; `J=∂B_N(lower)/∂pSf` est indépendant de `pSf` et `J<0` sur `r∈[1/64,1/32]` par 224/224 enclosures de Taylor/MVT rationnelles à arrondi extérieur. Plus grande borne supérieure `-345763471741167637281851/312500000000000000000000000` (≈−0,0011064431). La nouvelle certification est une sensibilité canonique partielle, PAS une nouvelle preuve de B_N=0. La tentative de simplification globale a expiré après 130 s ; le théorème Step68j existant a évité une redémonstration inutile.
+
+**TESTS EXÉCUTÉS APRÈS CORRECTION FINALE :** `PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py tests/test_hr_step68ad_c2d2d_correlated_mean_value.py tests/test_hr_step60_full_constraint_prolongation.py` → **36 PASS, 0 FAIL** (15 nouveaux, 21 régressions). En plus, le groupe Step68j de **13/25 dérivées symboliques** a été exécuté directement à terminaison normale et le point rationnel original `R_BN-z C/Lg=0,C=-53/40≠0` a été rejoué. Les 12 autres dérivées du théorème historique n'ont PAS été entièrement réexécutées ici (tentative supplémentaire >240 s) ; leur certificat original SHA-pinné `25a47c7eeed9dec111ecd3f5da891a02d84184d9` est authentifié. **28/28** fichiers sources/dépendances/tests/rapports historiques transférés et Git-SHA authentifiés.
+
+**QUATRE FICHIERS PUBLIÉS, CORRIGÉS ET RELUS (SHA blobs des octets finaux testés) :**
+- `numerics/hr_step68ad_c2d2e_bn_psf_transversality.py` — `69045785b00302f272aff266ce3d89e7fe0ba7ac`.
+- `tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py` — `a2f715c3bd8925ecfae4cc0c92e80587db36c1c2`.
+- `research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json` — `0edd2a168efea3064abf9b948fb5c6de61293496`.
+- `research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md` — `f5921c5a602a0aa2ae47dbf735cd2129c680baea`.
+
+**HEAD INITIAL :** `155be7f5f486388ca4a75a4c5032aacea99bdb9f`. **HEAD APRÈS RECTIFICATION DES 4 FICHIERS :** `40a2de933c7d8ed4441eb39d3368c5affdc540ed`. `main=aead63f4098f0d15a849e579105af034b6317b30` et `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` inchangées. Documents Google éphémères supprimés ; deux bundles temporaires Library à nettoyer (service `401 Unauthorized`).
+
+**ACTIONS PRIORITAIRES :** (1) vérifier sur le profil Step68o original `Hg=C=Hgprime=Fzprime=0` avec hypothèses et prolongations correctes, et le lien avec Step68j ; (2) enclosures corrélées continues des deux coefficients originaux Step58 ; (3) rang Dirac complet, lapses, conditions aux limites, dynamique 4D, stabilité et observables. Ne pas créer de pseudo-preuve de `B_N=0` déjà démontré, ne pas confondre une annulation modulo contraintes avec la fermeture globale.
+
+**CHECKPOINT RECTIFICATIF PRÉFIXÉ ; TOUT L'HISTORIQUE ANTÉRIEUR, Y COMPRIS LE CHECKPOINT RECTIFIÉ, RESTE STRICTEMENT IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : Step60 B_N AFFINE EN pSf ET PENTE J<0 CERTIFIÉE SUR LE CONTINUUM (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. `main`, `research/v2-flrw` et les workflows désactivés sont intouchables.
