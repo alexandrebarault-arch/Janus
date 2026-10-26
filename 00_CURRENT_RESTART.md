@@ -1,3 +1,45 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C1 TERMINÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE :** research/gate2b-nonhomothetic-transfer. **NE JAMAIS MODIFIER** main, research/v2-flrw, ni GitHub Actions/workflows désactivés.
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+**DERNIÈRE ÉTAPE TERMINÉE : 68ad-C1. PROCHAINE ÉTAPE EXACTE : 68ad-C2.** Ne pas recommencer 68ad-B2.
+
+**LIRE EN PREMIER :** research/STEP68AD_C1_ORIGINAL_CANONICAL_MOMENTUM_THIRD_JET.md, numerics/hr_step68ad_c1_center_momentum_jet.py, research/reports/gate2b-step68ad-C1-original-canonical-pLf-third-jet.json et research/AUTOMATION_STATE.json. L'historique complet reste CI-DESSOUS.
+
+## NOUVELLE CONSÉQUENCE MATHÉMATIQUE ORIGINALE — TROISIÈME JET CANONIQUE f AU CENTRE
+
+À partir des TROIS rapports originaux GitHub authentifiés (Step68v U_s, Step68ac U0, Step68ad-B2 U_ss/U_sss), sur TOUT r∈[0,1/32] : le véritable moment canonique radial f satisfait pLf(r)=r² U(r²). Dérivation symbolique EXACTE :
+
+    pLf'/r   = 2(U+s U_s)
+    pLf''    = 2U+10s U_s+4s² U_ss
+    pLf'''/r = 24U_s+36s U_ss+8s² U_sss
+    U(r²)'''/r = 12U_ss+8s U_sss,  s=r².
+
+**NOUVEAUX INTERVALLES RATIONNELS CERTIFIÉS CONDITIONNELS À LA BRANCHE PHYSIQUE HISTORIQUE :**
+
+    pLf'/r   ∈ [-0.010504853794,-0.010501768851] <0
+    pLf''    ∈ [-0.010504853794,-0.010495598966] <0
+    pLf'''/r ∈ [ 0.018945615724, 0.018953886023] >0
+    U(r²)'''/r∈[-0.000242642608,-0.000240911976] <0
+
+**Fractions exactes** dans le rapport JSON. Les quotients par r sont prolongés analytiquement jusqu'au centre, SANS division d'intervalles contenant zéro. pLf'''(0)=0, pLf''(0)=2U0<0, et pLf'' croît strictement pour r>0. C'est une avancée sur **UN SEUL DES DOUZE JETS CANONIQUES**, PAS encore sur le temps.
+
+**Rapports GitHub vérifiés :** 68v d83a3b80862a2e990a4c4879ec8745a4e91c8b34 ; 68ac 16ae8dab3563c17134e4e20f886fb7306dc2e4ba ; B2 ac961b5b83667a83497497d22a701c24584cb561. Les sources temporelles Step57/58/60/68o ont été lues via GitHub, SHA respectifs bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f, 802c23aebd41780d8c462f1aa1711707fe4ee88f, 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509, c99caebc17f243784450ddff94fb061767e6d8e7 ; **NON EXÉCUTÉES LOCALEMENT** (pas de clone, pas de réseau externe container).
+
+**15 TESTS RÉELLEMENT PASSÉS EN 0,61s** (Python Fraction et SymPy, sur champs rationnels des trois rapports lus via connecteur), 0 FAIL. Il s'agit des tests du NOUVEAU POST-TRAITEMENT ALGÉBRIQUE, PAS de la réexécution B2 ni d'un certificat temporel. Test de rejet de rapports altérés exécuté ; lecture complète des trois rapports avec vérification SHA dans un clone reste à rejouer.
+
+**FICHIERS NOUVEAUX PUBLIÉS, GIT BLOBS VÉRIFIÉS IDENTIQUES AUX OCTETS LOCAUX EXÉCUTÉS :**
+- numerics/hr_step68ad_c1_center_momentum_jet.py — 08f6d13b2f799705328f10f12d80433617f16ef8
+- tests/test_hr_step68ad_c1_center_momentum_jet.py — a367c80566a6bec9119201a23136f597619ee3a7
+- research/reports/gate2b-step68ad-C1-original-canonical-pLf-third-jet.json — 62f98abd0fe18004b2a6654e1d422d02cfe025aa
+- research/STEP68AD_C1_ORIGINAL_CANONICAL_MOMENTUM_THIRD_JET.md — 87925fee61f7236fa8e4616aadb61f23f983606f
+
+**NEXT STEP68ad-C2 :** reconstruire/authentifier le vrai Step58/60/68o et les 12 jets canoniques ; remplacer dans le Step68o la division par s de _ode_coeff par le jet régulier issu des tubes B2 (U,Us,Uss,Usss) et la formule C1 ; évaluer A_N/r² et A_M/r² sur les sept cellules PENDING [1/64,1/32], puis r→0. Préserver Fz=0, réponse du shift NON GELÉ, quotient complet Step60 ; arrêter honnêtement sur toute dépendance d'intervalle excessive. Aucun signe temporel original nouveau ni rang de Dirac n'a été calculé en C1.
+
+**POINT DE REPRISE DURABLE AJOUTÉ ; TOUS LES CHECKPOINTS ANTÉRIEURS CONSERVÉS INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-B2 VRAIE PHYSIQUE CERTIFIÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE JAMAIS modifier `main`, `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
