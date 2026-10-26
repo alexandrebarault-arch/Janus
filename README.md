@@ -101,3 +101,7 @@ Do not assume Janus is true or false. Reconstruct the published model, separate 
 ## Current headline conclusion
 
 The strongest surviving idea is not fundamental negative mass. It is the possibility that two positive-energy matter sectors coupled to different metrics can experience scale-dependent effective cross-sector interactions through the mixing of massless and massive spin-2 modes. The current main branch requires Vainshtein screening and must now pass a lensing-and-void-profile test before it deserves further cosmological fitting.
+
+### Recherche Gate 2B — 26 octobre 2026, C2d2e5b1
+
+Le [nouvel audit de variation du shift réduit](research/STEP68AD_C2D2E5B1_REDUCED_SHIFT_BOUNDARY_VARIATION_AND_K_CHARTS.md) établit une contribution de bord supplémentaire après substitution de `z*` (témoin rationnel `dB/dpLg'=42/25`) et distingue rigoureusement les chartes `K>0`, `K<0` et `K=0`. **Ce résultat partiel ne calcule pas le rang complet de Dirac. `GATE_2B OPEN` et `JANUS_R NOT_VALIDATED`.** Prochaine étape : C2d2e5b2, véritable oracle fonctionnel non-IBP à six couples avec bords et shift éliminé.
