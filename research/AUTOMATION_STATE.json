@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "06c1e860658e3a56edaee0fe489c2e6eb1bf91b5",
-  "latest_verified_completed_step": "68ad-C2a",
-  "next_pending_step": "68ad-C2b",
+  "verified_research_head_before_state_file": "fb5281e9c550d72890b7694f3b4792535a60dae6",
+  "latest_verified_completed_step": "68ad-C2b",
+  "next_pending_step": "68ad-C2c",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2A_ALL_TWELVE_CANONICAL_PARITY_LEMMA.md",
+  "latest_scientific_audit": "research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 15,
+    "passed": 16,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2a_all_canonical_parity.py in /mnt/data/janus68adC2a: 15 PASS, 0.74s. Independent SymPy chain rule for all parity classes, exact rational polynomial and center cases, clock gauge, tamper rejection. NOT original Step58 physical evaluation."
+    "source": "Actually executed in /mnt/data/janus_c2b: PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2b_center_boxes.py (16 PASS, 2.18s). Exact rational copied fields and SymPy chain rule; original Step58/60 NOT executed, full reports not locally byte-authenticated."
   },
-  "github_write_probe": "GitHub connector create_file succeeded for source, tests, JSON and audit on research branch; source/test/JSON read-back blob SHA exactly equal local executed bytes. One JSON key-order difference detected and corrected via update_file; final SHA matches. Full historical checkpoint successfully prepended. Container GitHub DNS inaccessible; connector read/write operational.",
+  "github_write_probe": "This run: create_file source/test/summary/audit succeeded on research branch; fetched and matched source/test Git blob SHA exactly against 16 locally executed tests, JSON/audit content read back. 00_CURRENT_RESTART.md prepended without deleting prior 316367 characters. Full report positive byte authentication not executed locally.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,15 +37,15 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Kinematic 12-field q/qprime/qdoubleprime/qtripleprime regular formulas proven, but only pLf U_s/U_ss/U_sss physical tubes from 68v/B2. Need certified s derivatives of all ten profiles (including f dust rho_f, pSf) before temporal Step58/60 interval A_N/r²,A_M/r² on seven PENDING [1/64,1/32]. Step58/60 source blobs read but NOT executed in this session.",
+  "current_blocker": "Full original Step58/60 non-frozen-shift temporal coefficients not executed; 7 temporal signs PENDING. Must authenticate three full physical reports locally in full clone, construct outward old.I jets [U,Us,Uss/2,Usss/6], run original Step68o jet_geometry/G/rho_f/pSf and Step58/60; if wide, refine. Container lacks DNS GitHub; connector reads/writes work.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_c2a_all_canonical_parity.py": "bf673187d6b923193c846749b15c3e291ef3ac9f",
-    "tests/test_hr_step68ad_c2a_all_canonical_parity.py": "e465fcb265a76998d6db662836b500e3b8ba9d10",
-    "research/reports/gate2b-step68ad-C2a-canonical-parity.json": "1f0ecef8fa1a8dbf9d8f38c2a9a5609dc0bdf5f7",
-    "research/STEP68AD_C2A_ALL_TWELVE_CANONICAL_PARITY_LEMMA.md": "66614703349b8a50483b0aec94c9ff0feaf5ed71"
+    "numerics/hr_step68ad_c2b_center_boxes.py": "94928e285f7e04deaf546abbeb9d3f05db33b213",
+    "tests/test_hr_step68ad_c2b_center_boxes.py": "ae95668d5401df63c74fe22380b00fdc561fb426",
+    "research/reports/gate2b-step68ad-C2b-center-safe-input-summary.json": "a131c60c221a9f54f9437b932dd44e04eddd2398",
+    "research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md": "6c4fed04e581ef7fc984f6f6d348b74be00a5bab"
   },
-  "current_proven_result": "Exact symbolic/rational regular third radial derivative formulas for all 12 canonical fields on original Step68o ansatz: Lg,Lf even F(s); Sg,Sf,pSg,pSf odd rF(s); pLg,pLf,pg,pf even r²F(s); tg,tf clocks t'=r k L(s). 15 algebraic tests PASS. This is a conditional kinematic lemma, NOT interval certification of ten physical profile derivatives or temporal Dirac.",
+  "current_proven_result": "Seven closed rational r cells [1/64,1/32] enclose U,Us,Uss,Usss without 1/s; max U width exact 5349668327184482945967454922219/50352619520000000000000000000000000000, max cubic error 1/10737418240000000. All U<0,Us>0,Uss<0,Usss<0 conditional on original historical physical certificates. Algebraic profile composition uses at most Usss. No temporal signs.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
@@ -55,5 +55,5 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
     "68o": "c99caebc17f243784450ddff94fb061767e6d8e7"
   },
-  "scope": "Original Step68o 12 canonical field parity chain-rule identity to third radial jet, with no r or s division. Physical derivative intervals of nine other profiles, Step58/60 temporal sign, full Dirac rank and 4D cosmology OPEN."
+  "scope": "Rigorous exact-rational physical U(s) 0..3 jet INPUT enclosures on 7 closed center cells, no division by s. Not a Step58/60 temporal sign or Dirac-rank proof. Historical source fields transcribed from pinned GitHub reports; local full report SHA positive verification still pending."
 }
