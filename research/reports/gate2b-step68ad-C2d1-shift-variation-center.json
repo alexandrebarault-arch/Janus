@@ -1,0 +1,54 @@
+{
+  "step": "68ad-C2d1",
+  "scope": "ORIGINAL_STEP45_58_SHIFT_RESPONSE_CENTER_REGULARITY",
+  "higher_lapse_coefficients": {
+    "N_D_2": "EXACT_ZERO_OFF_SHELL",
+    "N_K_2": "EXACT_ZERO_OFF_SHELL",
+    "N_D_3": "EXACT_ZERO_OFF_SHELL",
+    "N_K_3": "EXACT_ZERO_OFF_SHELL",
+    "M_D_2": "EXACT_ZERO_OFF_SHELL",
+    "M_K_2": "EXACT_ZERO_OFF_SHELL",
+    "M_D_3": "EXACT_ZERO_OFF_SHELL",
+    "M_K_3": "EXACT_ZERO_OFF_SHELL"
+  },
+  "center_D0_leading_N": "-Z*(2*G - P)",
+  "center_D0_leading_M": "-3*A*Z*(2*G - P)/B",
+  "Fz_implies": "P=2*G, where pSg=r*P+O(r^3), pLg=r^2*G+O(r^4)",
+  "stationary_shift_deltaD": "O(r^3) for even N,M; first-lapse coefficient O(r^2)",
+  "stationary_shift_deltaK": "O(r^2) for even N,M; first-lapse coefficient O(r^3)",
+  "stationary_shift_deltaZ": "O(r) for smooth even N,M and K/r^2>0; no raw 1/K divergence",
+  "Step58_Cdot_7_cell_signs": "NOT_EVALUATED",
+  "Step60_quotient": "NOT_EVALUATED",
+  "Dirac_rank": "OPEN",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "original_physical_source_pins": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
+  },
+  "original_sources_independent_Git_SHA1_via_connector": "3/3 PASS: Step45, Step58, Step60",
+  "local_tests": {
+    "passed": 22,
+    "failed": 0,
+    "command": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d1_shift_variation_center.py",
+    "runtime_seconds": 11.21
+  },
+  "center_leading_coefficients": {
+    "N": {
+      "D0_over_r": "-Z*(2*G - P)",
+      "D1_over_r2": "(4*A**4*M2*MG**2*b0v + 8*A**3*B*M2*MG**2*b1v + 4*A**2*B**2*M2*MG**2*b2v + 48*A**2*MG**2*a1 - 8*A*G*MG*Z + 4*A*MG*P*Z + 4*A*MG*Rg + G**2 - 2*G*P)/(4*A*MG)",
+      "K0_over_r2": "B*M2*(6*A**3*MG*Z*b1v + 8*A**2*B*MG*Z*b2v - A**2*G*b1v - A**2*P*b1v + 2*A*B**2*MG*Z*b3v - 2*A*B*P*b2v + B**2*G*b3v - B**2*P*b3v)/(2*A)",
+      "K1_over_r3": "B*M2*MG*Z*(A**2*b1v + 2*A*B*b2v + B**2*b3v)",
+      "D0_on_shell_over_r3": "A**2*B*M2*MG*Z**2*b1v - 4*A**2*B*M2*MG*a1*b1v + 4*A**2*B*M2*MG*b1c*b1v + A*B**2*M2*MG*Z**2*b2v - 4*A*B**2*M2*MG*a1*b2v + 4*A*B**2*M2*MG*b1c*b2v + 4*G*Z*a1 + KG*Rg*Z - 4*Z*g1 + Z*p1"
+    },
+    "M": {
+      "D0_over_r": "-3*A*Z*(2*G - P)/B",
+      "D1_over_r2": "A*(A**2*B*M2*MG*b1v + 2*A*B**2*M2*MG*b2v + B**3*M2*MG*b3v - 4*G*Z + 2*P*Z)/B",
+      "K0_over_r2": "A*M2*MG*(6*A**2*B*MF*Z*b1v + A**2*U*b1v - A**2*V*b1v + 8*A*B**2*MF*Z*b2v - 2*A*B*V*b2v + 2*B**3*MF*Z*b3v - B**2*U*b3v - B**2*V*b3v)/(2*B*MF)",
+      "K1_over_r3": "A*M2*MG*Z*(A**2*b1v + 2*A*B*b2v + B**2*b3v)",
+      "D0_on_shell_over_r3": "A*(-A**2*B*M2*MG*Z**2*b1v - 3*A*B**2*M2*MG*Z**2*b2v - 4*A*B**2*M2*MG*a1*b2v + 4*A*B**2*M2*MG*b1c*b2v - 2*B**3*M2*MG*Z**2*b3v - 4*B**3*M2*MG*a1*b3v + 4*B**3*M2*MG*b1c*b3v + 20*G*Z*a1 + 5*KG*Rg*Z - 20*Z*g1 + 5*Z*p1)/B"
+    }
+  },
+  "positive_K_chart": "Previously certified Step68ad-C2c, not re-proved in this step"
+}
