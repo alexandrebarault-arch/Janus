@@ -5,23 +5,23 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2a5bdeac124095720a3a3522ca66a49102c5ea3a",
+  "verified_research_head_before_state_file": "891cd9da48839ff337c42a01b9258a94c9e6295f",
   "latest_verified_completed_step": "68ad-C2d2a",
   "next_pending_step": "68ad-C2d2b",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 12,
+    "passed": 23,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed local guard module: cd /mnt/data/janus_c2d2b_guard && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py (12 PASS, 0.04s). Original modified C2d2a adapter integration tests NOT executed; original Step58/60 NOT executed.",
-    "elapsed_seconds_approx": 0.04
+    "source": "Actually executed cd /mnt/data/janus_c2d2b_integrity && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py; 23 PASS, 0.07s. Separately executed 1 negative control reconstructing old summary. Full adapter integration and original physical Step58/60 NOT executed.",
+    "elapsed_seconds_approx": 0.07
   },
-  "github_write_probe": "Six new/updated code/test/audit/report files published and re-read; source SHA independently rehashed 6/6, new tested guard module and tests byte-identical; restart history preserved exactly.",
+  "github_write_probe": "Four code/test/audit/report files published through genuine GitHub create_file/update_file calls, re-read; code and tests blob SHAs equal local tested bytes; restart old content exactly preserved.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -38,18 +38,20 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical Step58/60 still NOT EXECUTED: Python container has no full checkout and cannot resolve/connect to GitHub; connector can read/write but not directly materialize the complete source tree into the execution container. Next step must obtain a byte-authentic checkout or bridge before any 14 N/M signs are claimed.",
+  "current_blocker": "Original Step58/60 still NOT EXECUTED: Python container has no JANUS checkout and DNS github.com fails; GitHub connector can read/write but no direct bridge into container. Need authentic checkout to run physical seven-cell evaluation and Step60 quotient.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_c2d2b_guard.py": "a0657a023fc59073bd1ab9f9a4255cf5248e0b9b",
-    "tests/test_hr_step68ad_c2d2b_guard.py": "78a00ecccbffbfbd5d262c1cac9d6437d12f3c3f",
+    "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
+    "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
     "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "7c7087bf1ca95f16516c0f83201ca8d1c8e40676"
+    "00_CURRENT_RESTART.md": "785a01effddab952a650c38497c59c55f3054125",
+    "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
+    "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac"
   },
-  "current_proven_result": "New fail-closed binding ensures injected s-jet belongs to the exact outward-rounded Step68o lattice cell; reports distinguish nonzero signs from historical N+/M- orientation. 12 new pure guard tests PASS. Independent 7/7 rational cell intersections nonempty. No new physical temporal sign.",
+  "current_proven_result": "Executed negative control: old summary labels 14 zero-crossing [-1,1] enclosures as certified. Patched verifier recomputes all 14 signs from exact rational bounds, checks seven-cell [1/64,1/32] cover and disambiguates A_N/A_M coefficients from lapse values. 23 guard tests PASS, 0 FAIL; 1 additional negative-control execution. No physical Step58/60 run.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -60,7 +62,7 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Tested interface guard and provenance, NOT original physical Step58/60 execution, no temporal coefficient certified, no Dirac/lapse/boundary/BD theorem.",
-  "source_authentication_this_session": "Six full original GitHub files independently SHA-1 Git blob rehashed via JavaScript V8, 6/6 matches; not imported/executed in local Python.",
-  "latest_tested_safety_patch": "68ad-C2d2b-interface-hardening"
+  "scope": "Certified new sign-verifier integrity counterexample and 23 local guard tests only. No physical Step58/60 execution, no temporal coefficient certified, no Dirac/lapse/boundary/BD theorem.",
+  "source_authentication_this_session": "GitHub source files read directly with blob metadata: original Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f, Step60 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509, Step68o c99caebc17f243784450ddff94fb061767e6d8e7, old guard a0657a023fc59073bd1ab9f9a4255cf5248e0b9b; not imported into local Python.",
+  "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity"
 }
