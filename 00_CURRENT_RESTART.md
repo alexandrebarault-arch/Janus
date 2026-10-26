@@ -1,3 +1,40 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C2c TERMINÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
+**DERNIÈRE ÉTAPE TERMINÉE : 68ad-C2c (carte positive du shift, PAS encore opérateur temporel). NEXT : 68ad-C2d.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68AD_C2C_POSITIVE_SHIFT_CHART_AND_DENOMINATORS.md`, `numerics/hr_step68ad_c2c_shift_chart.py`, `research/reports/gate2b-step68ad-C2c-shift-chart.json`, `research/AUTOMATION_STATE.json`. Le checkpoint 68ad-C2b et TOUT l'historique antérieur sont conservés intégralement CI-DESSOUS.
+
+## RÉSULTAT ORIGINAL : K/r² > 0, SHIFT RESCALÉ ET DÉNOMINATEUR f-DUST
+
+**SIX SOURCES PHYSIQUES COMPLÈTES POSITIVEMENT AUTHENTIFIÉES PAR SHA-1 GIT RECALCULÉ SUR LE CONTENU LU VIA LE CONNECTEUR :** Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7`, rapports Step68v `d83a3b80862a2e990a4c4879ec8745a4e91c8b34`, Step68ac `16ae8dab3563c17134e4e20f886fb7306dc2e4ba`, Step68ad-B2 `ac961b5b83667a83497497d22a701c24584cb561`. Le conteneur n'a toujours pas de clone GitHub ; ce contrôle a été exécuté via le connecteur, avec SHA-1 JavaScript indépendant.
+
+**IDENTITÉ EXACTE DU VRAI Step58/68o :**
+```
+s=r² ; y=Lf/Lg ; q(y)=b1+2*b2*y+b3*y²
+K/r²=m2*mg*Lg³*Lf*q(y), r>0 (prolongement régulier en 0)
+0.23384592478391242 < K/r² < 0.23385629318172435
+|z|<=1/8000 ; 4.276130247104033 < r² Z_D < 4.27631997831076
+|r² Z_K| < 0.000534539997289
+rho_f denominator=beta_f+s*Ffac*KF*Lf >=1
+```
+Bornes **rationnelles exactes** dans le certificat JSON ; les décimales affichées sont indicatives. La preuve du continuum utilise la monotonie rationnelle de `q(y)` sur `y>=1/2` et les signes authentifiés `U<0, KF<0`. **ATTENTION : K(0)=0 et le Z_D NON rescalé diverge comme 1/r² au centre** ; il faut factoriser les variations avant la limite, sans conclure à une singularité physique. Sur les 7 cellules positives, K>0.
+
+**12 TESTS LOCAUX RÉELLEMENT EXÉCUTÉS : 12 PASS, 0 FAIL**, `cd /mnt/data/janus_c2c && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2c_shift_chart.py` (0,07 s). Il s'agit d'un certificat algébrique rationnel autonome, **PAS d'une exécution des opérateurs Step58/60** ; la CLI qui vérifie les fichiers originaux dans un clone complet n'a pas été exécutée localement.
+
+**QUATRE FICHIERS PUBLIÉS, RELUS ET OCTET-IDENTIQUES AUX FICHIERS LOCAUX TESTÉS :**
+- `numerics/hr_step68ad_c2c_shift_chart.py` — blob `7318b33d7bb1a982e9dc8d1c2780470887c919ed`
+- `tests/test_hr_step68ad_c2c_shift_chart.py` — blob `719bda24064315094e1a86142f3637a46f591809`
+- `research/reports/gate2b-step68ad-C2c-shift-chart.json` — blob `723e98fd5b490f92c3781d87477c7d8c24a3918c`
+- `research/STEP68AD_C2C_POSITIVE_SHIFT_CHART_AND_DENOMINATORS.md` — blob `3781f6b76a791e7e7fd2e352f3c179cf2f080f5f`
+
+**NEXT 68ad-C2d :** utiliser les sept boîtes C2b `Jet([U,U_s,U_ss/2,U_sss/6])` avec conversion outward `old.I.hull`, injecter dans l'original Step68o sans le modifier, exécuter le vrai Step58 non-frozen-shift et le quotient Step60 ; si les bornes contiennent zéro, garder INCOMPLETE et traiter explicitement les corrélations et la factorisation r². Les 7 signes temporels restent PENDING ; rang Dirac, lapses/bords, J/K, NON-IBP, BD, dynamique 4D et observables restent ouverts.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE COMPLET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C2b TERMINÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
