@@ -93,14 +93,14 @@
     "max_AM_upper": "-12463417589607208432272964557/10000000000000000000000000000"
   },
   "temporary_staging_cleanup": {
-    "google_drive_document": "TEMP_JANUS_20261026_C2d2c_SOURCE_BRIDGE_DELETE_AFTER_EXPORT",
-    "google_drive_document_deleted": true,
-    "library_folder": "/JANUS-temporary-github-publish-20261026",
-    "library_folder_deleted": false,
-    "files_remaining": 4,
-    "attempts_this_session": 2,
+    "old_folder": "/JANUS-temporary-github-publish-20261026",
+    "old_folder_current_listing": "empty, folder itself remains",
+    "new_folder": "/JANUS-temporary-github-publish-20261026-C2d2d",
+    "new_folder_files_remaining": 4,
+    "google_drive_bridge_document_deleted": true,
+    "last_attempts": "Two recursive folder deletes plus one canonical library_file_id delete, all failed with 401 Unauthorized",
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
-    "note": "4 temporary copies of new non-secret code/test/report/audit remain in Library after both file-by-id deletion and recursive folder deletion failed. Retry only if Library delete service recovers; GitHub branch is authoritative."
+    "action": "Retry when Library deletion service recovers; only non-secret code/test/certificate/audit staging copies, GitHub authoritative."
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
