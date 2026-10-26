@@ -1,0 +1,128 @@
+{
+  "step": "68ad-A",
+  "type": "EXACT_DERIVATIVE_TRANSPORT_AND_ORIGINAL_PHYSICAL_DAMPING",
+  "original_git_blob_sha_reports": {
+    "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
+  },
+  "original_physical_source_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "physical_domain_s": [
+    "0",
+    "1/64"
+  ],
+  "physical_domain_r": [
+    "0",
+    "1/8"
+  ],
+  "original_G_U_continuum_interval": [
+    "-80486828173226613100871119/80000000000000000000000000",
+    "-496930963235322352562534863/500000000000000000000000000"
+  ],
+  "transport_identity_symbolic_n1_to_n4": {
+    "1": {
+      "damping": "2n+2-G_U",
+      "source_excludes_U_n": true,
+      "symbolic_identity_exact": true,
+      "source_term_count": 1
+    },
+    "2": {
+      "damping": "2n+2-G_U",
+      "source_excludes_U_n": true,
+      "symbolic_identity_exact": true,
+      "source_term_count": 4
+    },
+    "3": {
+      "damping": "2n+2-G_U",
+      "source_excludes_U_n": true,
+      "symbolic_identity_exact": true,
+      "source_term_count": 9
+    },
+    "4": {
+      "damping": "2n+2-G_U",
+      "source_excludes_U_n": true,
+      "symbolic_identity_exact": true,
+      "source_term_count": 17
+    }
+  },
+  "damping_original_physical": {
+    "1": {
+      "a_n_interval": [
+        "2496930963235322352562534863/500000000000000000000000000",
+        "400486828173226613100871119/80000000000000000000000000"
+      ],
+      "a_n_strict_positive": true
+    },
+    "2": {
+      "a_n_interval": [
+        "3496930963235322352562534863/500000000000000000000000000",
+        "560486828173226613100871119/80000000000000000000000000"
+      ],
+      "a_n_strict_positive": true
+    },
+    "3": {
+      "a_n_interval": [
+        "4496930963235322352562534863/500000000000000000000000000",
+        "720486828173226613100871119/80000000000000000000000000"
+      ],
+      "a_n_strict_positive": true
+    },
+    "4": {
+      "a_n_interval": [
+        "5496930963235322352562534863/500000000000000000000000000",
+        "880486828173226613100871119/80000000000000000000000000"
+      ],
+      "a_n_strict_positive": true
+    }
+  },
+  "center_source_terms_original_physical": {
+    "1": {
+      "multiplier_exact": "5",
+      "R_n_at_center": [
+        "1974362916800616227331277/500000000000000000000000000",
+        "7897451667202464909325109/2000000000000000000000000000"
+      ],
+      "sign": "POSITIVE"
+    },
+    "2": {
+      "multiplier_exact": "14",
+      "R_n_at_center": [
+        "-705169744072067972301583/5000000000000000000000000000",
+        "-88146218009008496537697/625000000000000000000000000"
+      ],
+      "sign": "NEGATIVE"
+    },
+    "3": {
+      "multiplier_exact": "54",
+      "R_n_at_center": [
+        "-845779404293958318183/1250000000000000000000000000",
+        "-1691558808587915955291/2500000000000000000000000000"
+      ],
+      "sign": "NEGATIVE"
+    },
+    "4": {
+      "multiplier_exact": "264",
+      "R_n_at_center": [
+        "-123037851289750102431/1250000000000000000000000000",
+        "-123037851289748313501/1250000000000000000000000000"
+      ],
+      "sign": "NEGATIVE"
+    }
+  },
+  "transport_theorem": "If a_n(s)=2(n+1)-G_U(s,U(s))>=amin>0 and R_n(s) is continuous with rigorous interval [Rlo,Rhi] on [0,S], the unique bounded-center solution y=U^(n) of 2s*y_prime+a_n*y=R_n lies in the rational interval range([Rlo,Rhi]/[amin,amax]) at EVERY s in [0,S]. Proof: integrating factor yields a positive normalized kernel with weights a_n(t)/(2t)*exp(-integral_t^s a_n(v)/(2v)dv), whose integral from 0 to s equals 1 because amin>0. No division by an interval containing s=0.",
+  "missing_physical_Rn_continuum_enclosures": [
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "physical_U_ss_and_U_sss_on_positive_radius": "NOT_CERTIFIED",
+  "temporal_original_Step58_A_N_A_M": "NOT_COMPUTED",
+  "full_Dirac_rank": "NOT_COMPUTED",
+  "next_step": "68ad-B: original Step55/68n interval mixed partials of fixed G on [0,1/1024], then bound R2,R3,R4 with certified U,U_s and recursively apply comparison lemma; evaluate original Step58 temporal operator only after higher canonical jets are enclosed.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
