@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3a, CHARTE K=0 : SINGULARITÉ AMBIANTE ET CHEMIN PHYSIQUE (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b — véritable oracle fonctionnel de Poisson/Dirac sur le profil authentique Step55/68o, variations transverses, bords, contraintes tertiaires, rang et charte J=0.** **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**SOURCES PHYSIQUES RELUES/AUTHENTIFIÉES MAIS NON RÉEXÉCUTÉES :** `numerics/hr_step55_global_barrier.py` Git blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe` ; `numerics/hr_step68o_temporal_interval_annulus.py` blob `c99caebc17f243784450ddff94fb061767e6d8e7`. Formules reconstruites dans un script autonome à fractions rationnelles exactes + SymPy ; aucune exécution de l'EDO Step55, aucun rang Dirac calculé.
+
+**RÉSULTAT EXACT NOUVEAU :** pour `F(z)=D*z+K*sqrt(1-z²)`, `F_z=D-K*z/sqrt(1-z²)`, la carte `z*=sign(K)*D/sqrt(K²+D²)` existe uniquement pour `K≠0` (racine intérieure). `K=0,D≠0` n'admet aucune racine intérieure ; `K=D=0` laisse tout `|z|<1` stationnaire avec `∂F_z/∂z=0`. Sur `K=epsilon,D=0`, `z*=0`, alors que sur `K=3epsilon,D=4epsilon`, `z*=4/5` et `∂z*/∂D=9/(125epsilon)` diverge. **Pas d'extension continue dans l'espace ambiant (K,D)** ; ce n'est PAS une obstruction physique définitive ni une preuve du rang Dirac.
+
+**NOUVELLE GARDE RATIONNELLE CONTINUE :** sur la géométrie prescrite Step55 `0≤r≤17/20`, `K=r²*k(r)`, borne **exacte** `k(r)≥klo>0`, avec `float(klo)≈0.221156881156` (fraction intégrale dans le certificat). Par `ylo≤Lf/Lg≤Y`, `T/Lg²≥1+2*beta2*Y+beta3*ylo²>0`. Donc `K>0` pour `0<r≤17/20`, mais `K(0)=0`. Sur le chemin algébrique Step68o `D=r³*k*Z1/sqrt(1-r²Z1²)`, `Z1=0.004`, `z=r*Z1` et `|z|≤17/5000`, avec limite radiale unique `z(0)=0` ; **régularité le long de CE chemin seulement**, pas dans toutes les directions de l'espace des phases.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_e5b3 && python -m unittest -v test_hr_step68ad_c2d2e5b3_k0_chart.py` → **15 PASS, 0 FAIL** à la seconde exécution, après correction du premier essai échoué (SymPy avait besoin de l'hypothèse explicite `K>0` pour simplifier la racine). `python hr_step68ad_c2d2e5b3_k0_chart.py > report.json` → 16 sous-identités symboliques exactes PASS, 4 contrôles ponctuels rationnels PASS. Ne PAS additionner ces 16 sous-identités aux 15 tests.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS AUX SHA BLOBS TESTÉS :**
+- `numerics/hr_step68ad_c2d2e5b3_k0_chart.py` — `4dc80d951cb0b400445c4df864b7d49345faddfc`.
+- `tests/test_hr_step68ad_c2d2e5b3_k0_chart.py` — `e9d09f2656a4b2f44a7d82c064515d687a768321`.
+- `research/reports/gate2b-step68ad-C2d2e5b3a-K0-chart.json` — `ce2f1bb0094433fe3fac86480fd97e102768179e`.
+- `research/STEP68AD_C2D2E5B3A_K_ZERO_CHART_AMBIENT_VS_PHYSICAL_PATH.md` — `0b4592ebae296d9e614fba4ed05cee39932e2a4c`.
+
+**HEAD À LA REPRISE :** `c592a6cfc14b52ebd9fc1b13ff9db56ba4e25487`. **APRÈS QUATRE PUBLICATIONS SCIENTIFIQUES :** `f54642b942e9f933b38cb6b1fe4edb8d22d2c241`. Lire HEAD final après README/journal/index. `main`, `research/v2-flrw`, workflows désactivés intouchables.
+
+**VERROUS SCIENTIFIQUES :** vraie coquille physique et variations fonctionnelles transverses, matrice Poisson/Dirac complète, rang, tertiaires, bords/lapses, J=0, dynamique 4D, stabilité et observables NON DÉMONTRÉS. La garde K>0 ne concerne que la géométrie Step55 prescrite. **NETTOYAGE LIBRARY :** bundle éphémère `/JANUS-e5b3a-EPHEMERAL-publish-bundle-20261027.json` et deux dossiers temporaires précédents : suppression réellement retentée, trois échecs `401 Unauthorized`.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b2, ORACLE NUMÉRIQUE NON-IBP/IBP À SIX COUPLES (2026-10-26)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b2. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3 — véritable profil physique Step55/68o dans l'oracle à six couples, bords, matrice complète de Poisson/Dirac, contraintes tertiaires, chartes K=0/J=0.** **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
