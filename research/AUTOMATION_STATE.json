@@ -5,20 +5,20 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2495c98d362267c974759942573a5a07b92f6277",
-  "latest_verified_completed_step": "68ac",
-  "next_pending_step": "68ad",
+  "verified_research_head_before_state_file": "f79aaf122cf4ddf3a3707a1dfb11e647b763f387",
+  "latest_verified_completed_step": "68ad-A",
+  "next_pending_step": "68ad-B",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AC_AUTHENTIC_ORIGINAL_PHYSICAL_U4_CENTER_CERTIFICATE.md",
+  "latest_scientific_audit": "research/STEP68AD_A_DESINGULARIZED_PHYSICAL_DERIVATIVE_TRANSPORT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 44,
+    "passed": 19,
     "failed": 0,
     "skipped": 0,
-    "source": "00_CURRENT_RESTART.md Step68ac, previous scientific run, NOT rerun by automation setup"
+    "source": "Executed locally 2026-10-26: PYTHONPATH=. pytest -q tests/test_hr_step68ad_center_derivative_transport.py (1.21s), SHA-authentic Step68v/68ac reports; previous Step68ac 44 tests NOT rerun this session"
   },
   "github_write_probe": "The creation of this file itself is a non-artificial GitHub write verification; compare returned Git blob and readback after publishing.",
   "required_per_run": [
@@ -37,6 +37,26 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Need rigorous original-G higher partial derivatives / C3 Taylor remainder, then true Step58 AN/r2 and AM/r2 certification near r=0 and full Dirac checks",
-  "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state."
+  "current_blocker": "Step68ad-B: need certified original fixed-G partial derivative enclosures on continuous s in [0,1/1024] for R2,R3,R4; positive transport damping proved, but physical U_ss/U_sss and original Step58 A_N/A_M temporal signs remain unproved",
+  "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
+  "last_verified_published_blobs": {
+    "numerics/hr_step68ad_center_derivative_transport.py": "3768d309f008391813c5fd70302ff487141afe1b",
+    "tests/test_hr_step68ad_center_derivative_transport.py": "79946d5f7220f7445676f27b68a92c0be30bf98e",
+    "research/reports/gate2b-step68ad-A-derivative-transport.json": "6be5cc1e9cb61479cf4b9dd897aa28105195d4f5",
+    "research/STEP68AD_A_DESINGULARIZED_PHYSICAL_DERIVATIVE_TRANSPORT.md": "4e39bf191ce858ef647f731945cd4c2abb19cfe0",
+    "00_CURRENT_RESTART.md": "da1c7a326f874571a6f516b68fc320750bb58e36",
+    "README.md": "7843eb5e8bdac55181f3d3178863d2fa2b2a2f45"
+  },
+  "current_proven_result": "Original Step68v SHA-authenticated G_U negative on s in [0,1/64], yields exact positive derivative transport a_n=2(n+1)-G_U for n=1..4; exact weighted-average lemma; center source signs R1>0,R2<0,R3<0,R4<0 from SHA-authentic Step68ac U1..U4.",
+  "last_original_reports_verified": {
+    "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
+    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
+  },
+  "last_source_operator_read_only": {
+    "57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+    "68o": "c99caebc17f243784450ddff94fb061767e6d8e7d"
+  },
+  "scope": "No physical R2/R3/R4 continuum enclosures, no physical U_ss/U_sss positive-radius certificate, no temporal Dirac rank/4D; keep OPEN."
 }
