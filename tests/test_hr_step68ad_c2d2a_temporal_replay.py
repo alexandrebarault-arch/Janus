@@ -22,6 +22,9 @@ class Jet:
 BOX={"r":["1/64","1/56"],"U":["-1/7","-1/8"],
      "U_s":["1/1000","2/1000"],"U_ss":["-1/30000","-1/40000"],
      "U_sss":["-1/10000000","-1/20000000"]}
+RBOX=I.hull(F(1,64),F(1,56))**2
+BOX["s"]=[str(F(RBOX.lo,S)),str(F(RBOX.hi,S))]
+BOX["outward_s_lattice_guard"]=True
 
 @pytest.mark.parametrize("x",["1/7","-1/7","-1/123456789123456789","1/3","0"])
 def test_outward_conversion(x):
