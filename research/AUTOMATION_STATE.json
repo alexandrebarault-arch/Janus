@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "fb5281e9c550d72890b7694f3b4792535a60dae6",
-  "latest_verified_completed_step": "68ad-C2b",
-  "next_pending_step": "68ad-C2c",
+  "verified_research_head_before_state_file": "b1680b75defe3b2e5de59cb44a99529f192a124c",
+  "latest_verified_completed_step": "68ad-C2c",
+  "next_pending_step": "68ad-C2d",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md",
+  "latest_scientific_audit": "research/STEP68AD_C2C_POSITIVE_SHIFT_CHART_AND_DENOMINATORS.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 16,
+    "passed": 12,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed in /mnt/data/janus_c2b: PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2b_center_boxes.py (16 PASS, 2.18s). Exact rational copied fields and SymPy chain rule; original Step58/60 NOT executed, full reports not locally byte-authenticated."
+    "source": "Actually executed /mnt/data/janus_c2c: PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2c_shift_chart.py (12 PASS, 0.07s). Exact Fraction algebra and pointwise checks; NO execution of Step58/60 or full-clone integrated CLI."
   },
-  "github_write_probe": "This run: create_file source/test/summary/audit succeeded on research branch; fetched and matched source/test Git blob SHA exactly against 16 locally executed tests, JSON/audit content read back. 00_CURRENT_RESTART.md prepended without deleting prior 316367 characters. Full report positive byte authentication not executed locally.",
+  "github_write_probe": "Four new scientific files created on research branch, read back and matched byte-identical to locally executed source/tests and JSON/audit; checkpoint prepended preserving all previous 320327 characters; full GitHub connector content independently Git SHA1 authenticated 6/6 original sources/reports. No GitHub Actions changed.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,23 +37,26 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full original Step58/60 non-frozen-shift temporal coefficients not executed; 7 temporal signs PENDING. Must authenticate three full physical reports locally in full clone, construct outward old.I jets [U,Us,Uss/2,Usss/6], run original Step68o jet_geometry/G/rho_f/pSf and Step58/60; if wide, refine. Container lacks DNS GitHub; connector reads/writes work.",
+  "current_blocker": "Step58/60 non-frozen-shift temporal coefficients remain UNEXECUTED on seven cells; C2c proves K/r^2 positive and r^2*Z_D finite, but raw Z_D~r^-2 at center. Next inject outward C2b U jets into original Step68o, evaluate original Step58/60; factor r^2 and shift variation cancellations before r->0. Full local GitHub clone unavailable (DNS).",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_c2b_center_boxes.py": "94928e285f7e04deaf546abbeb9d3f05db33b213",
-    "tests/test_hr_step68ad_c2b_center_boxes.py": "ae95668d5401df63c74fe22380b00fdc561fb426",
-    "research/reports/gate2b-step68ad-C2b-center-safe-input-summary.json": "a131c60c221a9f54f9437b932dd44e04eddd2398",
-    "research/STEP68AD_C2B_SEVEN_CENTER_SAFE_INPUT_BOXES.md": "6c4fed04e581ef7fc984f6f6d348b74be00a5bab"
+    "numerics/hr_step68ad_c2c_shift_chart.py": "7318b33d7bb1a982e9dc8d1c2780470887c919ed",
+    "tests/test_hr_step68ad_c2c_shift_chart.py": "719bda24064315094e1a86142f3637a46f591809",
+    "research/reports/gate2b-step68ad-C2c-shift-chart.json": "723e98fd5b490f92c3781d87477c7d8c24a3918c",
+    "research/STEP68AD_C2C_POSITIVE_SHIFT_CHART_AND_DENOMINATORS.md": "3781f6b76a791e7e7fd2e352f3c179cf2f080f5f"
   },
-  "current_proven_result": "Seven closed rational r cells [1/64,1/32] enclose U,Us,Uss,Usss without 1/s; max U width exact 5349668327184482945967454922219/50352619520000000000000000000000000000, max cubic error 1/10737418240000000. All U<0,Us>0,Uss<0,Usss<0 conditional on original historical physical certificates. Algebraic profile composition uses at most Usss. No temporal signs.",
+  "current_proven_result": "Original Step58/68o exact K/r²=m2*mg*Lg³*Lf*q(Lf/Lg) on 0<=r<=1/32. Rational continuum bounds K/r²∈[0.23384592478391242...,0.23385629318172435...], r² Z_D∈[4.276130247104033...,4.27631997831076...], |r² Z_K|<0.000534539997289; f-dust denominator >=1. K(0)=0, raw Z_D diverges as r^-2, not evidence of physical singularity. 7 temporal signs still PENDING.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
-    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba"
+    "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
+    "68ad-B2": "ac961b5b83667a83497497d22a701c24584cb561"
   },
   "last_source_operator_read_only": {
+    "55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
     "68o": "c99caebc17f243784450ddff94fb061767e6d8e7"
   },
-  "scope": "Rigorous exact-rational physical U(s) 0..3 jet INPUT enclosures on 7 closed center cells, no division by s. Not a Step58/60 temporal sign or Dirac-rank proof. Historical source fields transcribed from pinned GitHub reports; local full report SHA positive verification still pending."
+  "scope": "Original physical positive-K center-chart denominator and rescaled shift sensitivity lemma, exact Fraction bounds. Not temporal sign or Dirac-rank proof; Step58/60 original not executed.",
+  "source_authentication_this_session": "6/6 complete original files Git SHA1 recalculated from connector-returned UTF8 bytes: Step55, Step58, Step68o, reports Step68v, Step68ac, Step68ad-B2. Positive local clone replay not executed."
 }
