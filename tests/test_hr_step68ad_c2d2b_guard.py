@@ -7,10 +7,10 @@ from numerics.hr_step68ad_c2d2b_guard import assert_guard_binding, summarize_tem
 
 def fixture_box():
     lo, hi = F(1, 64), F(1, 56)
-    a = lo*lo
-    b = hi*hi
-    cell = SimpleNamespace(lo=a.numerator*SCALE//a.denominator,
-                           hi=-((-b.numerator*SCALE)//b.denominator))
+    rlo = lo.numerator*SCALE//lo.denominator
+    rhi = -((-hi.numerator*SCALE)//hi.denominator)
+    cell = SimpleNamespace(lo=rlo*rlo//SCALE,
+                           hi=-((-rhi*rhi)//SCALE))
     box = {"s": [str(F(cell.lo, SCALE)), str(F(cell.hi, SCALE))],
            "outward_s_lattice_guard": True,
            "U": ["-1/4", "-1/5"], "U_s": ["1/1000", "2/1000"],
