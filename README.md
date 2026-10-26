@@ -1,5 +1,8 @@
 # Janus Research
 
+> **CURRENT GATE 2B — Step68ad-C2d2e5b2 (26 Oct 2026):** [contrôle numérique six couples non-IBP/IBP](research/STEP68AD_C2D2E5B2_SIX_PAIR_NONIBP_IBP_NUMERICAL_CROSSCHECK.md) ; 12 tests PASS ; convergence compatible O(h²), hors coquille seulement. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Prochaine étape 68ad-C2d2e5b3 : vrai profil Step55/68o, matrice complète de Dirac, bords et chartes singulières.
+
+
 > **CURRENT GATE 2B — Step68ad-C2d2e5a (26 Oct 2026) :** [audit exact des termes de bord de l'action originale non-IBP](research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md) → [vérificateur rationnel six couples déclarés](scripts/hr_step68ad_c2d2e5a_original_boundary.cjs) → [certificat](research/reports/gate2b-step68ad-C2d2e5a-exact-boundary.json). **NOUVEAU :** identité exacte à shift fixé `L_original-L_IBP=∂r B`, avec `B=2Mg² N Sg Sg'/Lg+2Mf² M Sf Sf'/Lf-z pLg(N+M Lg/Lf)`. Pour lapses non compacts, le terme de bord ne s'annule pas automatiquement : exemple rationnel hors coquille sur [1/2,1], `[B]=213/64`; flux non nuls pour variations libres des champs au bord. **28 assertions rationnelles PASS, 3 identités SymPy exactes PASS ; 0 FAIL.** C'est une **étape partielle** vers l'oracle Dirac à six couples, non un calcul du rang complet ni une obstruction physique sur coquille. **NEXT : 68ad-C2d2e5b — oracle Poisson original non-IBP, shift éliminé et bords, rang/tertiaires, chartes K=0/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 
