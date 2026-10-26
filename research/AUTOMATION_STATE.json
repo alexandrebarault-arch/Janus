@@ -5,11 +5,11 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "693bede8f59d908462af934c67ba35d0de7bbd06",
+  "verified_research_head_before_state_file": "4951eb665fb80ccbf398f6b63230e2fd6e7310a4",
   "latest_verified_completed_step": "68ad-C2d2a",
   "next_pending_step": "68ad-C2d2b",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2B_EXACT_SHIFT_SECOND_JET_CENTER_LEMMA.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2B_EXACT_STEP68O_SHIFT_SHELL_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
@@ -18,10 +18,9 @@
     "passed": 10,
     "failed": 0,
     "skipped": 0,
-    "source": "Executed locally: PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_shift_second_jet.py, 10 PASS 1.42 s; additionally 10 exact SymPy identities via python -m numerics.hr_step68ad_c2d2b_shift_second_jet. NOT a physical Step58/60 evaluation.",
-    "elapsed_seconds_approx": 1.42
+    "source": "Executed in container: PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py (10 PASS, 21.26 s); independent symbolic manifest executed (15.12 s). NO original Step58/60 temporal execution."
   },
-  "github_write_probe": "Genuine GitHub create_file 4 files and update_file restart/state; code/test SHA matches local executed bytes; restart 338312 old characters preserved as exact suffix.",
+  "github_write_probe": "GitHub create_file 4 new files + update_file full restart/state, readback SHA and content equality; prior restart 341784 characters preserved as exact suffix.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -38,7 +37,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Step58 original seven-cell and Step60 quotient NOT EXECUTED: no authenticated checkout and 3 reports in the Python container; direct GitHub DNS inaccessible. A conditional exact Step60 shift second-jet identity is established, but 0/14 new physical temporal signs.",
+  "current_blocker": "Original Step58 seven-cell temporal operator and Step60 quotient NOT EXECUTED; authenticated source files/reports cannot be materialized together into the Python container via connector; direct DNS GitHub fails. Exact Step55/68o stationary shift shell is verified algebraically; 0/14 new physical signs.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -47,15 +46,19 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "593dba617fa89203454973bb4244651f7ac4744f",
+    "00_CURRENT_RESTART.md": "2d194ce8dbae23aecf2827d0f8487383e340444d",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
     "tests/test_hr_step68ad_c2d2b_shift_second_jet.py": "c3fb478715587c02bad49f95093e9d4b06a0cae1",
     "research/STEP68AD_C2D2B_EXACT_SHIFT_SECOND_JET_CENTER_LEMMA.md": "a364d1d8c4660903951e96db68e0750d5c376be4",
-    "research/reports/gate2b-step68ad-C2d2b-conditional-shift-second-jet.json": "33e39f996abb54b8c943ac4a07645ece863eafba"
+    "research/reports/gate2b-step68ad-C2d2b-conditional-shift-second-jet.json": "33e39f996abb54b8c943ac4a07645ece863eafba",
+    "numerics/hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "3a996c87fd832d927066e0a68f17279df50ac84c",
+    "tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "7746ca04e8c46c34f17a8bf35c4f90cdd71b251b",
+    "research/STEP68AD_C2D2B_EXACT_STEP68O_SHIFT_SHELL_AUDIT.md": "a7a0fef0cd05519fa1830314489bc43c20a79498",
+    "research/reports/gate2b-step68ad-C2d2b-exact-Step68o-shift-shell.json": "5e7abde6bbd0265874fca2cecad47ed2689ddfdf"
   },
-  "current_proven_result": "Conditional algebraic lemma on Fz=0,K>0,D=r^3 d(s),K=r^2 k(s),k>0: z=r*d/sqrt(k^2+s d^2); regular z'', z''' center limits; Step60 z'' chain rule matches exact closed derivative on shift shell. 10 symbolic identities and 10 independent pytest tests passed. No seven-cell physical evaluation.",
+  "current_proven_result": "Conditional exact Step55/68o canonical shift-shell identity: Dg=r^3 Dbar, K=r^2 k, Dbar=k z1/sqrt(1-z1^2 r^2); if r>0,k>0,1-z1^2r^2>0 then z=r z1 and z'=z1,z''=z'''=0. Dust-density contributions cancel. Ten independent SymPy/pytest checks passed; this is not original Step58/60 evaluation.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -66,9 +69,9 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "New conditional shift-jet exact identities and independent rational examples only; original Step58/60 unexecuted; Dirac/lapse/boundary/BD/4D unresolved.",
+  "scope": "New conditional exact stationary-shift identity on prescribed Step55/68o canonical profile; not an interval sign certification; Dirac/lapse/boundary/BD/4D unresolved.",
   "source_authentication_this_session": "GitHub source files read directly with blob metadata: original Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f, Step60 9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509, Step68o c99caebc17f243784450ddff94fb061767e6d8e7, old guard a0657a023fc59073bd1ab9f9a4255cf5248e0b9b; not imported into local Python.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "b3dd7c08e84933e1d43f9de0530553d4c695a907",
-  "latest_tested_conditional_lemma": "68ad-C2d2b-conditional-shift-second-jet"
+  "last_read_branch_head_at_session_start": "a0e0b6a1215ed305d33eb583754eed3223ef58f8",
+  "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell"
 }
