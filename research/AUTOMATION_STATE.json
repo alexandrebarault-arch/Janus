@@ -156,7 +156,8 @@
       "libfile_17f52736778c819195709abedd20af01",
       "libfile_2cbe0de137148191bfec9338dd737d90"
     ],
-    "current_session_google_docs_bridge": "Three ephemeral Docs A/B/C successfully permanently deleted 2026-10-26"
+    "current_session_google_docs_bridge": "Three ephemeral Docs A/B/C successfully permanently deleted 2026-10-26",
+    "latest_attempt_20261026": "Folder /JANUS-ephemeral-c2d2e3-20261026 DELETED (succeeded); /JANUS-stage-20261026-C2d2e2 DELETED (succeeded). /JANUS-temporary-github-publish-20261026-C2d2d nonempty, recursive delete FAILED 401 Unauthorized; /JANUS-temporary-github-publish-20261026 nonempty, nonrecursive delete refused. Earlier bundles may remain; no false deletion claims."
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
