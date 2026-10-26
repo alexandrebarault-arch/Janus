@@ -1,0 +1,69 @@
+{
+  "step": "68ad-C2d2e5b3a",
+  "kind": "EXACT_POINTWISE_K_ZERO_CHART_AND_PHYSICAL_PATH_GUARD",
+  "original_blobs_read_not_executed": {
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "rational_bounds": {
+    "r_domain": [
+      "0",
+      "17/20"
+    ],
+    "y_lower": "1444418923561876775155324829/2505421686285156250000000000",
+    "y_upper": "1446926807006261/2500000000000000",
+    "T_over_Lg_squared_lower": "10055488472672658779370939792173284322534976149911239306981535683/15692844565269889753445472717285156250000000000000000000000000000",
+    "K_over_r_squared_lower": "1694619414318567141478618024940618376555414753803991785502437652082890734656524125096348025072890251311/7662521760385688356174547225236892700195312500000000000000000000000000000000000000000000000000000000000",
+    "K_over_r_squared_lower_decimal": "0.221156881156",
+    "max_abs_z": "17/5000"
+  },
+  "symbolic_checks": {
+    "shift_stationarity": true,
+    "positive_K_root": true,
+    "negative_K_root": true,
+    "negative_K_wrong_sign": true,
+    "positive_K_extremum": true,
+    "negative_K_extremum": true,
+    "implicit_derivative": true,
+    "ray_z_3_4": true,
+    "ray_z_1_0": true,
+    "ray_derivative_diverges": true,
+    "physical_path_Fz": true,
+    "physical_path_zprime": true,
+    "physical_path_zsecond": true,
+    "K_zero_D_nonzero_no_root": true,
+    "origin_shift_flat": true,
+    "origin_implicit_rank_zero": true
+  },
+  "sample_checks": [
+    {
+      "s": "0",
+      "k": "1784166243092997376761817176759665626197752785541887340443793729319/7629394531250000000000000000000000000000000000000000000000000000000",
+      "k_gt_rational_lower": true
+    },
+    {
+      "s": "1/4096",
+      "k": "138042253335618941948795885785102548890837560999125117899909719629002852469028129453497123720806207259232049988518220493959/590295810358705651712000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "k_gt_rational_lower": true
+    },
+    {
+      "s": "1/1024",
+      "k": "2106315351880233839078463257687241113596741513281113166448466796280757861206850694904609140389116730687491843966669959/9007199254740992000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "k_gt_rational_lower": true
+    },
+    {
+      "s": "289/400",
+      "k": "1119310171393987546506900679860822682658425608511020400584104222446054158868507637619389388275738047532747799414279/4882812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "k_gt_rational_lower": true
+    }
+  ],
+  "theorem": "K>0 for 0<r<=17/20 on prescribed Step55 geometry; K=D=0 at center. z*=D/sqrt(K^2+D^2) has no continuous ambient extension at origin (different rays), and its derivative diverges along rays; the prescribed smooth shell D=r^3*k*Z1/sqrt(1-r^2*Z1^2) has z=r*Z1 and a unique pathwise limit 0.",
+  "not_proved": [
+    "Step55 U(s) solution or full on-shell Poisson/Dirac matrix",
+    "Dirac rank, tertiary constraints, boundary admissibility",
+    "extension of reduced shift chart through arbitrary K=D=0 configurations",
+    "4D dynamics, stability, observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
