@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : Step60 B_N AFFINE EN pSf ET PENTE J<0 CERTIFIÉE SUR LE CONTINUUM (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. `main`, `research/v2-flrw` et les workflows désactivés sont intouchables.
+**ÉTAPE TERMINÉE : 68ad-C2d2e — transversality conditionnelle de B_N en pSf. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e2 — dériver exactement la racine pSf*=-B0/J et la comparer au pSf de la coquille Step68o, puis Step58 corrélé.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**PREUVE ALGÉBRIQUE EXACTE :** dans le véritable représentant inférieur Step60 `third_free_BN_on_Fz`, `d²B_N/d(pSf)²=0`, `J=dB_N/d(pSf)` indépendant de `pSf` ; donc `B_N=B0+J*pSf` pour les autres jets fixés sur la coquille de stationnarité (B0 ici = ordonnée à l'origine, non le paramètre beta0). **CERTIFICAT CONTINU CONDITIONNEL :** par différentiation automatique d'intervalles et théorème des accroissements finis sur 7×32 sous-cellules rationnelles de `r∈[1/64,1/32]`, 224/224 bornes supérieures de J sont strictement négatives ; maximum exact `-345763471741167637281851/312500000000000000000000000` (≈−0,00110644). Minimum inférieur exact `-45183603720227163110391799/10000000000000000000000000000`. Une perturbation indépendante `ΔpSf=1/10000` dans le véritable Step60 donne une variation négative cohérente avec J. **AUCUNE identité B_N=0 sur la solution radiale n'est prouvée ; aucun signe B_N continu n'est certifié.**
+
+**DIAGNOSTIC CRITIQUE :** aux points r=1/64,1/48,1/32, l'intervalle B_N se contracte autour de zéro lorsque la précision expérimentale passe de 28 à 50 puis 80 décimales (largeurs ~10^-15,10^-37,10^-67). Ce n'est PAS une preuve exacte ; une tentative de simplification globale `sympy.cancel` a été arrêtée après 130 s. Les essais sur des cellules trop larges ont été correctement rejetés (INCOMPLETE, pas singularité physique). Ne pas confondre la pente partielle J avec un signe de B_N, un lapse ou le rang de Dirac.
+
+**TESTS EXÉCUTÉS APRÈS CORRECTION FINALE :** `PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py tests/test_hr_step68ad_c2d2d_correlated_mean_value.py tests/test_hr_step60_full_constraint_prolongation.py` → **34 PASS, 0 FAIL** (13 nouveaux, 21 régressions). `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2e_bn_psf_transversality --repo . --out research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json` → 224/224 témoins rationnels négatifs. 24/24 blobs de sources, dépendances, rapports et tests historiques ont été authentifiés lors de la reconstruction locale depuis GitHub ; originaux physiques inchangés.
+
+**QUATRE FICHIERS PUBLIÉS ET RELUS, BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2e_bn_psf_transversality.py` — `0c97d7dd3580f85e0268657a139a563208181e03`.
+- `tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py` — `4b2e888d0268f1875545cde6210c9f937e98dfbe`.
+- `research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json` — `77dfc389993cef38f05671378efb6935b44404f3`.
+- `research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md` — `c0252f29a6bd4cdfe70e32526592696cfd5028c5`.
+
+**HEAD INITIAL RELU :** `155be7f5f486388ca4a75a4c5032aacea99bdb9f`. **HEAD APRÈS QUATRE FICHIERS :** `cfc78835b5ec8b17468a95daa4a985e622324bc6`. Les branches `main=aead63f4098f0d15a849e579105af034b6317b30` et `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` sont inchangées.
+
+**LIMITES ET PRIORITÉS :** (1) prouver ou réfuter `B_N=0` sur la coquille Step68o par factorisation exacte de `B_N` et comparaison de `pSf*=-B0/J` avec le profil physique ; (2) certifier ou réfuter les signes continus Step58 `A_N/A_M` ; (3) seulement ensuite rang Dirac, lapses et bords, dynamique 4D, stabilité, observables. Step60 `A_M<0` antérieur reste certifié conditionnellement. Un fichier temporaire Library `/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026.json` reste à supprimer : tentative authentique de suppression échouée `401 Unauthorized`, comme les deux dossiers temporaires historiques ; les documents Google de transfert ont été supprimés.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ STRICTEMENT À L'IDENTIQUE CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : Step60 A_M CERTIFIÉ STRICTEMENT NÉGATIF SUR LES 7 CELLULES CONTINUES (2026-10-26)
 
 **BRANCHE D'ÉCRITURE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. Ne pas modifier `main`, `research/v2-flrw` ni les workflows désactivés.
