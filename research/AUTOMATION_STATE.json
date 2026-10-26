@@ -5,24 +5,24 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "88a063eb1cfdb1844bb584b3cc800c8466e28406",
-  "latest_verified_completed_step": "68ad-C2d2e2-CONDITIONAL_EXACT_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION",
-  "next_pending_step": "68ad-C2d2e3-original-Step58-AN-AM-correlated-continuum-enclosures",
+  "verified_research_head_before_state_file": "989c57790907b354aeaa590a454e3e371a7d7e17",
+  "latest_verified_completed_step": "68ad-C2d2e3-ORIGINAL_STEP58_AN_AM_CORRELATED_CONTINUUM_CERTIFIED_CONDITIONAL",
+  "next_pending_step": "68ad-C2d2e4-full-Dirac-rank-lapse-boundary-and-singular-chart-audit",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E3_ORIGINAL_STEP58_CONTINUUM_SIGN_CERTIFICATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 14,
+    "passed": 18,
     "failed": 0,
     "skipped": 0,
-    "new_tests": 14,
+    "new_tests": 18,
     "regression_tests": 0,
-    "source": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py (0.87 s), standalone independent reconstruction; historical 36 tests not rerun"
+    "source": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e3_step58_mvt.py (26.66s); original Step58 pointwise, original Step68o 144 exact lower-jet comparisons, 225-leaf physical continuum replay. Historical suites not rerun."
   },
-  "github_write_probe": "GitHub create_file genuinely executed on research branch only for four new files; readback Git blob SHA matched locally tested bytes. Restart prefix readback exact with 365098-character historical suffix preserved. README updated and read back. State readback follows.",
+  "github_write_probe": "Four genuine GitHub create_file writes on authorized research branch; each new blob read back and SHA matched tested local bytes. Restart prefixed and previous 369204-character journal preserved exactly. README updated and read back. State updated and read back.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -39,7 +39,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Step68o spatial shell is conditionally composed from exact Step45/46/55/68o formulas and prior Step58/68h/68j identities; original modules were read directly from GitHub but not reexecuted locally in this session. Original Step58 AN/AM continuous signs, full Dirac rank, lapses, boundaries, 4D, stability, observables remain open.",
+  "current_blocker": "Both original Step58 zeroth lapse coefficients A_N>0 and A_M<0 now conditionally certified on 7 continuous radial cells r=[1/64,1/32]. However full Dirac constraint rank, lapse existence with boundary conditions, K=0/J=0 charts, independent Hamiltonian oracle, nonlinear 4D, stability and observables remain unproved. Positive coefficient signs alone do not validate JANUS.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -48,7 +48,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "3eca97990f7af48a80e7fa377f3f3446162ced72",
+    "00_CURRENT_RESTART.md": "9497557688032183ac652cd1023175e6928a8971",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -71,13 +71,17 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "1a6f8ebd1a4cac06d09aa0b822f1965b124552ca",
+    "README.md": "a0a185e965e186738aa4ba8cbb5d9ba90f96fa01",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
-    "research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md": "f7ffd1c69ff4eec1d1882a1e94b1a9f6d252359f"
+    "research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md": "f7ffd1c69ff4eec1d1882a1e94b1a9f6d252359f",
+    "numerics/hr_step68ad_c2d2e3_step58_mvt.py": "8574eb05a64b251b007cc9f16d586bf1965467f0",
+    "tests/test_hr_step68ad_c2d2e3_step58_mvt.py": "272500b23a94c6f812a21769bc2c94485fae19a9",
+    "research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json": "0c688d6648e16064b1eb4e8ad9c55e7b44a95947",
+    "research/STEP68AD_C2D2E3_ORIGINAL_STEP58_CONTINUUM_SIGN_CERTIFICATE.md": "520799e1a190d0f125a30b46eb0dc92cabba3644"
   },
-  "current_proven_result": "NEW conditional exact algebraic composition: original reduced primaries Hg=Hf=0 by Step55 dust formulas, Fz=0 by positive shift shell, C=0 by Step46 affine constraint plus actual Step55 ODE; on smooth branch Hgprime=Cprime=Fzprime=0; historical Step58/68h/68j imply four lapse-derivative coefficients vanish. Step68o dust-clock local-zero jet placeholders admit exact global polynomial primitives. No new original Step58 continuum signs.",
+  "current_proven_result": "CONDITIONAL original Step58 continuous sign certificate: 225/225 rational leaves, 7 original cells, 1 adaptive bisection; min AN lower=738081248225184126420269/312500000000000000000000000>0, max AM upper=-1514435823797833476506571291/1250000000000000000000000000<0. Fourth radial jets derived rigorously from genuine Step55 ODE, original Step68o 0..3 jets match exactly (144 interval equalities), original Step58 pointwise values compared. No full Dirac/lapse theorem.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -88,21 +92,28 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Conditional original spherical spatial shell and lapse-jet composition, not original 4D Dirac proof. Previous Step60 AM<0 continuum conditional and Step68j BN(lower)=0 modulo Hg=C remain. Step58 AN/AM continuum INCOMPLETE.",
-  "source_authentication_this_session": "Original Step45, Step46, Step55-normalized, Step55-global, Step68o, Step68j, Step58 and Step60 read through live GitHub connector with displayed blob SHAs; no local byte-authenticated import of the complete original physical modules. New standalone reconstruction tested and published with byte-identical Git blob SHA.",
+  "scope": "Original physical Step58 lapse-zeroth coefficients on smooth positive-K Step68o shell, continuous r in [1/64,1/32] only. Conditional on SHA-pinned Step68v/68ac/B2 physical enclosures. Does not cover r=0, K=0/J=0, full Dirac rank, boundary-compatible lapses, 4D or observables.",
+  "source_authentication_this_session": "22/22 source and report blobs transferred via GitHub connector, independently Git-SHA verified on local UTF-8 bytes. Three original pinned physical reports verified. Original Step58 and Step68o imported and actually executed, with exact Step68o 144 lower-jet comparisons and original Step58 pointwise checks. New code/test/report/audit Git blob SHA identical to tested local bytes.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "47c3c384c08c217cf00ec2a58fbaf3a6f15bf023",
+  "last_read_branch_head_at_session_start": "998ca92d2ef6797080a1deb9b8e5cd56e200cb03",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
-    "kind": "ORIGINAL_STEP60_BN_PSF_TRANSVERSALITY_WITH_STEP68J_IDENTITY_RECONCILIATION",
+    "kind": "ORIGINAL_STEP58_AN_AM_CONTINUUM_MVT_CONDITIONAL",
     "original_radial_cells": 7,
-    "certified_subcells": 224,
-    "BN_pSf_slope_negative": true,
-    "max_J_upper": "-345763471741167637281851/312500000000000000000000000",
-    "BN_on_shell_zero": "PREVIOUS_STEP68J_EXACT_MODULO_Hg_C_ON_REGULAR_Fz0",
+    "initial_subcells": 224,
+    "adaptive_bisections": 1,
+    "certified_subcells": 225,
+    "AN_positive_continuum": true,
+    "AM_negative_continuum": true,
+    "min_AN_lower": "738081248225184126420269/312500000000000000000000000",
+    "max_AM_upper": "-1514435823797833476506571291/1250000000000000000000000000",
+    "fourth_radial_jet": "EXACT_STEP55_ODE_RECURRENCE_OUTWARD_INTERVAL",
+    "source_report_blobs_verified": 22,
+    "tests_passed": 18,
     "Step60_AM_negative_continuum": "PREVIOUSLY_CERTIFIED_CONDITIONAL",
-    "Step58_continuum": "INCOMPLETE",
-    "source_and_report_blobs_verified": 28
+    "Step60_BN_lower_zero": "PREVIOUS_STEP68J_MODULO_CONSTRAINTS",
+    "Dirac_rank": "NOT_PROVED",
+    "lapse_boundary": "NOT_PROVED"
   },
   "temporary_staging_cleanup": {
     "old_folder": "/JANUS-temporary-github-publish-20261026",
@@ -110,28 +121,29 @@
     "new_folder": "/JANUS-temporary-github-publish-20261026-C2d2d",
     "new_folder_files_remaining": 4,
     "google_drive_bridge_document_deleted": true,
-    "last_attempts": "8 authenticated Library deletes by library_file_id attempted 2026-10-26; all failed 401 Unauthorized on injest-server; old folder /JANUS-temporary-github-publish-20261026 currently lists empty; non-secret research copies only.",
+    "last_attempts": "4 new Library file deletes by exact library_file_id attempted and failed 401 Unauthorized on injest-server; earlier 8 delete failures remain unresolved, some old folders currently list empty.",
     "exact_error": "401, message='Unauthorized', url='http://injest-server.openai.internal/uninjest_file'",
-    "action": "Retry cleanup only when Library delete service recovers. GitHub source of truth unaffected.",
+    "action": "Retry cleanup if service recovers; GitHub source of truth unaffected.",
     "new_current_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026.json",
     "new_bundle_library_file_id": "libfile_17f52736778c819195709abedd20af01",
     "corrected_bundle": "/JANUS-C2d2e-EPHEMERAL-publish-bundle-20261026-corrected.json",
     "corrected_bundle_library_file_id": "libfile_2cbe0de137148191bfec9338dd737d90",
     "google_drive_bridge_documents_deleted": true,
-    "current_session_folder": "/JANUS-stage-20261026-C2d2e2",
+    "current_session_folder": "/JANUS-ephemeral-c2d2e3-20261026",
     "current_session_files_remaining": 4,
     "current_session_file_ids": [
-      "libfile_ffcf28ebb08c819187b0e8d04e4dd019",
-      "libfile_91b192b1641481918edd82126f18839e",
-      "libfile_f1e9c49fc5408191a2f65afaee7d7a65",
-      "libfile_e075032cc4c481919cf7959ddb53b16a"
+      "libfile_132bfa6161c881919c6d2dcf420aa2bd",
+      "libfile_c27b08dcde6881919fb8fb97fa9ca716",
+      "libfile_cfc4ee77560c8191a872a8df46143e8a",
+      "libfile_1ee13b7afafc8191b98e64cae02ab2e9"
     ],
     "previous_session_file_ids_remaining": [
       "libfile_a966ead16af481919b8ed067cf349796",
       "libfile_2595a4c164448191a0a9b1910e78cd6d",
       "libfile_17f52736778c819195709abedd20af01",
       "libfile_2cbe0de137148191bfec9338dd737d90"
-    ]
+    ],
+    "current_session_google_docs_bridge": "Three ephemeral Docs A/B/C successfully permanently deleted 2026-10-26"
   },
   "latest_verified_physical_execution": {
     "kind": "ORIGINAL_STEP60_LOWER_JET_QUOTIENT_WITH_EXACT_ON_SHELL_CSE_REWRITE",
