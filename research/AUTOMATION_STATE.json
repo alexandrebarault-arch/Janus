@@ -5,7 +5,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "5f68a0baef442fdd6124c9f0d6b6ea0546b39152",
+  "verified_research_head_before_state_file": "4bd19cc95700eaf2469825e8e3105f69108923b5",
   "latest_verified_completed_step": "68ad-C2d2e-Step60-BN-pSf-transversality-CERTIFIED_CONDITIONAL-STEP68J_IDENTITY_RECONCILED",
   "next_pending_step": "68ad-C2d2e2-verify-Step68o-Hg-C-Hgprime-Fzprime-then-Step58-correlated-continuum",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -70,7 +70,8 @@
     "numerics/hr_step68ad_c2d2e_bn_psf_transversality.py": "69045785b00302f272aff266ce3d89e7fe0ba7ac",
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
-    "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea"
+    "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
+    "README.md": "8a6618eae096ff22273795ffe310127b3d138952"
   },
   "current_proven_result": "New: exact affine dependence Step60 BN(lower)=B0+J*pSf and conditional J<0 on 7x32 rational subcells, max upper -345763471741167637281851/312500000000000000000000000. HISTORICAL Step68j exact theorem already proves BN(lower)=beta Hg+(z/Lg)C on Fz=0; zero on Hg=C=0. Step60 AM<0 previous conditional certificate. Step58 continuum still incomplete.",
   "last_original_reports_verified": {
