@@ -1,3 +1,30 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-C2d2a TERMINÉE (2026-10-26)
+
+**SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. NE PAS MODIFIER `main`, `research/v2-flrw` ni les GitHub Actions/workflows désactivés.
+**DERNIÈRE ÉTAPE RÉELLEMENT TESTÉE : 68ad-C2d2a (garde d'arrondi extérieur + adaptateur original Step58). NEXT : 68ad-C2d2b (EXÉCUTION PHYSIQUE EFFECTIVE).**
+**STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**LIRE EN PREMIER :** `research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md`, `numerics/hr_step68ad_c2d2a_temporal_replay.py`, `tests/test_hr_step68ad_c2d2a_temporal_replay.py`, `research/AUTOMATION_STATE.json`. Historique antérieur conservé intégralement CI-DESSOUS.
+
+## NOUVEAU RÉSULTAT MÉTHODOLOGIQUE — DÉFAUT RÉEL DE COUVERTURE PAR ARRONDI
+
+Le Step68o original évalue `si=I.hull(rlo,rhi)**2`, qui est plus large que `[rlo²,rhi²]` pour plusieurs frontières internes rationnelles. Les boîtes C2b construites sur les seules frontières exactes ne suffisent donc pas telles quelles pour garantir une inclusion sur le vrai domaine machine. **Contre-exemple exécuté :** pour `r∈[1/56,9/448]`, la fonction test `U(s)=s` dépasse sa borne idéale à l'extrémité arrondie supérieure. Ce constat concerne la preuve d'intervalle, PAS une invalidation physique du modèle.
+
+Un nouvel adaptateur reconstruit la boîte `U,U_s,U_ss,U_sss` sur les bornes EXACTES de l'intervalle entier `si`, par fractions rationnelles et certificats historiques. Il injecte le jet `[U,U_s,U_ss/2,U_sss/6]` uniquement pendant l'appel au vrai Step68o, avec restauration automatique de la fonction d'origine et rejet des sources non conformes aux SHA Git attendus. Les sorties futures ne pourront certifier un signe que si l'intervalle exclut strictement zéro.
+
+**20 TESTS LOCAUX RÉELLEMENT EXÉCUTÉS : 20 PASS, 0 FAIL**, `PYTHONPATH=/mnt/data/janus_c2d2a python -m pytest -q /mnt/data/janus_c2d2a/tests/test_hr_step68ad_c2d2a_temporal_replay.py` (0,07 s). Les tests utilisent des DOUBLES pour I/Jet/Step68o : **le vrai Step58/60 et les sept signes temporels n'ont PAS été exécutés dans cette session**. Le conteneur ne dispose pas du clone GitHub complet (DNS GitHub inaccessible) ; la provenance positive des six dépendances sera vérifiée par le nouveau code lors de sa première exécution dans un clone.
+
+**TROIS FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d2a_temporal_replay.py` — blob `6b68c33ceac7f1f1a890e0d61a938a9ddb23ea95`, identique aux octets locaux testés.
+- `tests/test_hr_step68ad_c2d2a_temporal_replay.py` — blob `3dea95d2233ea23b5cbee2583a38ca5a9be16dba`, identique aux octets locaux testés.
+- `research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md` — blob `589b473285143af59890545d898dba6140336ca4`.
+
+**NEXT 68ad-C2d2b :** dans un clone complet, exécuter réellement `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2a_temporal_replay --repo . --out research/reports/gate2b-step68ad-C2d2b-original-temporal-seven-cells.json` et les tests d'intégration, examiner les 7 intervalles N/M du vrai Step58 ; ne jamais inventer les signes si les boîtes traversent zéro. Exécuter ensuite le quotient Step60 avec le vrai shift et les contraintes ; approfondir Dirac/lapses/bords/BD/4D seulement sur preuves. **NE PAS CONFONDRE HARNESS TESTÉ ET ÉVALUATION PHYSIQUE EXÉCUTÉE.**
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-C2d1 TERMINÉE (2026-10-26)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows/Actions GitHub désactivés.
