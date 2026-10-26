@@ -1,3 +1,47 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-A TERMINÉE (2026-10-26)
+
+**BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main`, `research/v2-flrw` ni les workflows/Actions GitHub désactivés.
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED**. **PROCHAINE SOUS-ÉTAPE EXACTE : 68ad-B** (ne PAS relancer 68ac ni 68ad-A).
+
+## RÉSULTAT NOUVEAU : TRANSPORT DÉRIVÉ ORIGINAL SANS SINGULARITÉ ARTIFICIELLE
+
+**LIRE EN PREMIER** `research/STEP68AD_A_DESINGULARIZED_PHYSICAL_DERIVATIVE_TRANSPORT.md` et `research/reports/gate2b-step68ad-A-derivative-transport.json` ; puis le checkpoint 68ac intégralement conservé CI-DESSOUS. Les deux rapports historiques Step68v et Step68ac ont été reconstruits localement **octet pour octet** et vérifiés à leur SHA Git respectifs `d83a3b80862a2e990a4c4879ec8745a4e91c8b34` et `16ae8dab3563c17134e4e20f886fb7306dc2e4ba`. La chaîne originale Steps45/46/55 est ainsi traçable. Les codes Step57/58/60/68o ont été **relus sur GitHub mais NON exécutés** dans cette session.
+
+Pour la VRAIE EDO physique `2s U_s=G(s,U)-2U`, les identités symboliques EXACTES (SymPy, n=1,2,3,4) donnent :
+
+```
+2s*(U^(n))_s + a_n(s)*U^(n) = R_n(s),
+a_n(s)=2n+2-G_U(s,U(s)),
+R_n=d^n[G(s,U(s))]/ds^n-G_U(s,U(s))*U^(n),
+R_n ne contient PAS U^(n) (plus haute dérivée recherchée).
+R1=G_s;
+R2=G_ss+2 G_sU U_s+G_UU U_s²;
+R3=G_sss+3G_ssU U_s+3G_sUU U_s²+G_UUU U_s³+3G_sU U_ss+3G_UU U_s U_ss.
+```
+
+**THÉORÈME EXACT DE COMPARAISON (démontré)** : pour `2s y'+a(s)y=R(s)` avec a(s) strictement positif sur [0,S] et y bornée au centre, y(s) est une **moyenne positive de R(t)/a(t)**, poids normalisé à 1. Donc un intervalle rigoureux [Rlo,Rhi] sur le DOMAINE ENTIER et un intervalle 0<amin<=a<=amax donnent `y(s) ∈ range([Rlo,Rhi]/[amin,amax])` pour TOUT s∈[0,S]. **AUCUNE division par s=0, aucun échantillonnage.**
+
+**CERTIFICATION PHYSIQUE ORIGINALE RÉELLE** : Step68v fournit G_U sur le continuum s∈[0,1/64] dans [-1.00608535216533...,-0.99386192647064...], et donc a1∈(4.99386,5.00609), a2∈(6.99386,7.00609), a3∈(8.99386,9.00609), a4∈(10.99386,11.00609). Bornes rationnelles EXACTES dans JSON. Le transport ne peut pas résonner sur ce chart aux quatre premiers ordres. Les signes EXACTS au CENTRE de R_n(0)=(2n+3)n!U_n sont +,−,−,− pour n=1,2,3,4 ; valeurs en fractions dans JSON.
+
+**VERROU MAJEUR TOUJOURS OUVERT** : il MANQUE des enclosures CONTINUES de `R2(s),R3(s),R4(s)` calculées sur le G physique fixe. Le théorème ne constitue PAS un certificat de U_ss/U_sss à rayon positif ; il ne prouve PAS les signes des coefficients temporels Step58 ni le rang Dirac. **NE JAMAIS EXTRAPOLER** les signes de Rn(0) au voisinage sans une preuve uniforme.
+
+**CODE PUBLIÉ ET TESTÉ** `numerics/hr_step68ad_center_derivative_transport.py` blob Git `3768d309f008391813c5fd70302ff487141afe1b`.
+**TESTS PUBLIÉS ET TESTÉS** `tests/test_hr_step68ad_center_derivative_transport.py` blob `79946d5f7220f7445676f27b68a92c0be30bf98e`.
+**RAPPORT MACHINE CLI PUBLIÉ ET TESTÉ** `research/reports/gate2b-step68ad-A-derivative-transport.json` blob `6be5cc1e9cb61479cf4b9dd897aa28105195d4f5`.
+**AUDIT SCIENTIFIQUE** `research/STEP68AD_A_DESINGULARIZED_PHYSICAL_DERIVATIVE_TRANSPORT.md` blob `4e39bf191ce858ef647f731945cd4c2abb19cfe0`.
+**19 TESTS NOUVEAUX RÉELLEMENT PASSED EN 1.21s**, zéro échec, avec reports Step68v/ac reconstitués à SHA identique. Les TROIS nouveaux fichiers source/test/JSON publiés ont été relus GitHub et leurs blob SHA comparés OCTET IDENTIQUES aux fichiers locaux exécutés. Les tests historiques Step68ac (44) ne sont PAS rejoués dans cette session, ne pas additionner comme si exécutés.
+
+## NEXT EXACT ACTION : STEP68ad-B
+
+1. Authentifier originaux 45/46/55/68n et les reports 68v/68ac ; utiliser l'AD MULTIVARIÉE sur le G original pour borner `G_ss,G_sU,G_UU` et R2 sur s∈[0,1/1024] avec les vrais tubes U,Us (68v/x/z). Appliquer le théorème positif pour U_ss.
+2. Borner `G_sss,G_ssU,G_sUU,G_UUU` et R3 avec U_ss prouvé, puis U_sss ; si besoin quatrième ordre et R4. Utiliser des cellules rationnelles sortantes, sans différencier des enveloppes ni diviser des intervalles par s.
+3. Reconstruire les 12 jets canoniques et tester le VRAI Step58/60 temporel, normalisé A_N/r² et A_M/r² sur les 7 cellules PENDING [1/64,1/32], puis [1/128,1/64], puis le centre. Garder le rang Dirac et 4D ouverts.
+4. Sauvegarder chaque résultat dans code/tests/JSON/audit et PRÉFIXER CE JOURNAL, conserver intégralement tout historique ; actualiser `research/AUTOMATION_STATE.json`, vérifier SHA GitHub et HEAD.
+
+**TOUS LES ANCIENS CHECKPOINTS 68ac, 68ab, 68aa, ... SONT CONSERVÉS SANS SUPPRESSION CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ac TERMINÉE (2026-10-25)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` ; **NE JAMAIS TOUCHER** `main`, `research/v2-flrw`, ni GitHub Actions/workflows que l'utilisateur a désactivés.
