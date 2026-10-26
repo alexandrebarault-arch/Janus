@@ -5,7 +5,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "647edf950a7e3621dcb1ad566bef261f3cfa6b0a",
+  "verified_research_head_before_state_file": "2a5bdeac124095720a3a3522ca66a49102c5ea3a",
   "latest_verified_completed_step": "68ad-C2d2a",
   "next_pending_step": "68ad-C2d2b",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -45,9 +45,9 @@
     "tests/test_hr_step68ad_c2d2b_guard.py": "78a00ecccbffbfbd5d262c1cac9d6437d12f3c3f",
     "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
-    "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "33a35f037f2d0c0bbb1f0c174d6f0dc62de08bae",
-    "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "bef872259eba1f9086ec44940b2101b22c63b486",
-    "00_CURRENT_RESTART.md": "fe22c91d4112bfd2d334280b685c077173a1682a"
+    "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
+    "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
+    "00_CURRENT_RESTART.md": "7c7087bf1ca95f16516c0f83201ca8d1c8e40676"
   },
   "current_proven_result": "New fail-closed binding ensures injected s-jet belongs to the exact outward-rounded Step68o lattice cell; reports distinguish nonzero signs from historical N+/M- orientation. 12 new pure guard tests PASS. Independent 7/7 rational cell intersections nonempty. No new physical temporal sign.",
   "last_original_reports_verified": {
