@@ -1,3 +1,43 @@
+# JANUS — REPRISE PRIORITAIRE : STEP68ad-B1 OUTIL ALGÉBRIQUE TERMINÉ (2026-10-26)
+
+**BRANCHE UNIQUE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. Ne jamais modifier `main`, `research/v2-flrw` ni les workflows GitHub Actions désactivés.
+**ÉTAT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+**DERNIÈRE SOUS-ÉTAPE TERMINÉE : 68ad-B1. PROCHAINE SOUS-ÉTAPE : 68ad-B2.**
+
+**LIRE EN PREMIER** `research/STEP68AD_B1_DIRECTIONAL_POLARIZATION_HARNESS.md`, puis `numerics/hr_step68ad_b_directional_polarization.py`, `tests/test_hr_step68ad_b_directional_polarization.py` et `research/AUTOMATION_STATE.json`. TOUS les anciens checkpoints 68ad-A/68ac/... sont intégralement conservés CI-DESSOUS.
+
+## NOUVELLE PREUVE EXACTE, SANS NOUVELLE CERTIFICATION PHYSIQUE
+
+Pour le VRAI G fixe Step45/46/55, le code nouvellement publié permet de calculer TOUTES les dérivées partielles mixtes de degré total ≤3 par quatre appels au moteur original de Taylor intervalle Step68n `jet_G` : `A(t)=G(s+t,U)`, `B(t)=G(s,U+t)`, `C(t)=G(s+t,U+t)`, `D(t)=G(s+t,U-t)`. En notant `X_k=[t^k]X(t)` :
+
+```
+G_s=A1, G_U=B1, G_ss=2A2, G_sU=C2-A2-B2, G_UU=2B2,
+G_sss=6A3, G_ssU=C3-D3-2B3, G_sUU=C3+D3-2A3, G_UUU=6B3.
+R2=G_ss+2 G_sU U_s+G_UU U_s².
+R3=G_sss+3 G_ssU U_s+3 G_sUU U_s²+G_UUU U_s³
+   +3 G_sU U_ss+3 G_UU U_s U_ss.
+```
+
+Identités EXACTES démontrées par polarisation et testées indépendamment en SymPy sur dix monômes et des polynômes mixtes, plus oracle Fraction d'intervalles vérifiant les inclusions. **18 TESTS RÉELLEMENT PASSÉS EN 1,88s, zéro échec final.** Un premier run avait 1 FAIL dû à un import avant validation des entrées ; corrigé, suite complète relancée à 18 PASS.
+
+**Code réellement testé ET PUBLIÉ SHA IDENTIQUE** `numerics/hr_step68ad_b_directional_polarization.py` blob `3d075699fb8266ddce2ee9b370afa85cb17f2c73`.
+**Tests réellement testés ET PUBLIÉS SHA IDENTIQUE** `tests/test_hr_step68ad_b_directional_polarization.py` blob `6e1b4b81fe1e5b8588c6c9639829727da6eb4d21`.
+**Audit** `research/STEP68AD_B1_DIRECTIONAL_POLARIZATION_HARNESS.md` blob `09f56801dd01b78c8213d70aa505acb034c4840b`.
+**État machine** `research/AUTOMATION_STATE.json` mis à jour et relu, blob `c5e779869f80c5a67de3e7abc216ef12298558b3`.
+
+**ATTENTION CRITIQUE :** le runtime de cette session ne possédait pas le clone Python du dépôt (DNS `github.com` impossible dans container) ; GitHub a été consulté ET écrit via son connecteur, mais `physical_G_partials`, `physical_R2_global` et les originales Steps45/46/55/68n n'ont PAS été exécutés localement. Les 18 tests valident les IDENTITÉS et l'inclusion d'intervalles sur polynômes génériques, **PAS les bornes physiques de R2/U_ss/U_sss**. Le harnais original fail-closed vérifie Step68n blob `96370e0599748c6dc07faf339ab3646ae3474e7d`, sources Step45/46/55/68l et rapports Step68v/68ac ; son exécution sur tout `s∈[0,1/1024]` reste PENDING.
+
+## NEXT EXACT ACTION : STEP68ad-B2 (NE PAS RÉPÉTER B1)
+
+1. Dans un workspace avec les six sources Python physiques originelles et rapports SHA authentiques, exécuter `physical_R2_global('research/reports',cells=32)`. Il parcourt tout le centre `0<=s<=1/1024` avec les tubes U et U_s prouvés Step68v, appelle 4 jets de G original par cellule, calcule R2 puis U_ss via théorème positif Step68ad-A. Mesurer les bornes et ajuster le nombre de cellules en cas d'effet de dépendance ; produire et TESTER le JSON réel, sans inventer de résultat.
+2. Avec U_ss réellement certifié, calculer R3 et U_sss, puis le vrai opérateur temporel Step58/60, les sept cellules PENDING [1/64,1/32], et la zone centrale ; préserver les hypothèses des 12 jets canoniques.
+3. Maintenir le rang de Dirac, lapses/bords/jauge, exceptions K/J, NON-IBP et 4D OUVERTS. Aucun verdict cosmologique validé.
+4. Préfixer de nouveau CE fichier après toute avancée, conserver l'historique, mettre à jour l'index `research/AUTOMATION_STATE.json`, relire les blobs et HEAD GitHub. Si exécution physique impossible, rapporter explicitement le blocage sans faux certificat.
+
+**CHECKPOINT NOUVEAU PRÉFIXÉ ; HISTORIQUE INTÉGRAL CI-DESSOUS SANS SUPPRESSION.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : STEP68ad-A TERMINÉE (2026-10-26)
 
 **BRANCHE UNIQUE AUTORISÉE EN ÉCRITURE** `research/gate2b-nonhomothetic-transfer`. NE PAS modifier `main`, `research/v2-flrw` ni les workflows/Actions GitHub désactivés.
