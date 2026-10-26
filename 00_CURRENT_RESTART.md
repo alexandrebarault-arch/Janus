@@ -1,3 +1,33 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2b CERTIFICAT DE SIGNES RENFORCÉ ; PHYSIQUE TOUJOURS PENDING (2026-10-26)
+
+**SEULE BRANCHE AUTORISÉE :** `research/gate2b-nonhomothetic-transfer`. Ne modifier ni `main`, ni `research/v2-flrw`, ni GitHub Actions/workflows désactivés.
+**DERNIÈRE ÉTAPE PHYSIQUE : 68ad-C2d2a (ADAPTATEUR SEULEMENT). DERNIER CORRECTIF TESTÉ : 68ad-C2d2b-sign-enclosure-integrity. NEXT EFFECTIF : 68ad-C2d2b — EXÉCUTER LE VRAI Step58 SUR SEPT CELLULES, PUIS Step60.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+## NOUVEAU CONTRE-EXEMPLE EXÉCUTÉ — 14 FAUX SIGNES CERTIFIÉS PAR ANCIEN RÉSUMÉ
+
+L'ancien `summarize_temporal_signs` vérifiait les étiquettes `POSITIVE_CERTIFIED`/`NEGATIVE_CERTIFIED`, **sans jamais lire les intervalles**. Un contrôle négatif Python reproduisant fidèlement l'ancien algorithme retourne `True,True` pour sept cellules dont les 14 `enclosure=[-1,1]` traversent zéro. C'est un défaut RÉEL de validation du rapport, PAS une réfutation des opérateurs physiques originaux.
+
+Le nouveau garde recalcule indépendamment les 14 signes depuis les fractions exactes des bornes, rejette les divergences étiquette/bornes, et vérifie que les sept cellules forment sans trou/recouvrement la couverture `[1/64,1/32]`. `N/M` dans le rapport signifient **coefficients A_N/A_M d'ordre zéro**, PAS valeurs des lapses N/M ; le résultat fournit `all_expected_A_N_positive_A_M_negative` (alias historique conservé).
+
+**TESTS RÉELLEMENT EXÉCUTÉS : 23 PASS, 0 FAIL**, `cd /mnt/data/janus_c2d2b_integrity && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py` (0,07 s). **1 contrôle négatif supplémentaire** de l'ancien résumé exécuté séparément. Ce sont des tests du GARDE, PAS de la physique.
+
+**FICHIERS MODIFIÉS ET RELUS APRÈS ÉCRITURE, BLOBS IDENTIQUES AUX OCTETS LOCAUX TESTÉS :**
+- `numerics/hr_step68ad_c2d2b_guard.py` — `7ea03654054632d1ca8ecbe9dbf8df0d66cf582c`.
+- `tests/test_hr_step68ad_c2d2b_guard.py` — `cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1`.
+
+**NOUVEAUX LIVRABLES RELUS :**
+- `research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md` — `d154d54d767224edb24016a6c8109c05c357aa8a`.
+- `research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json` — `8007c76e369ef07198f8797db47b15bf1a2b86ac`.
+
+**LIMITES :** le vrai Step58 sur sept cellules et Step60 quotient n'ont PAS été exécutés ; 0/14 nouveaux signes temporels physiques. Tests d'intégration de l'adaptateur modifié non exécutés. Le conteneur Python ne dispose pas du checkout complet et ne peut résoudre GitHub ; le connecteur GitHub fonctionne en lecture/écriture, mais ne matérialise pas les sources dans le conteneur. Les anciens rapports de preuve restent CONDITIONNELS ; aucun rang de Dirac, lapses admissibles, bords, BD ou 4D validé.
+
+**ACTIONS PRIORITAIRES :** (1) obtenir un checkout byte-authentique exécutable avec les 6 sources pinées, dépendances et 3 rapports ; (2) rejouer les 23 tests et l'intégration C2d2a ; (3) exécuter effectivement Step58 sur les sept cellules, vérifier 14 intervalles par le nouveau garde ; (4) exécuter le quotient original Step60 sur contraintes/shift prolongé ; (5) si zéro appartient à un intervalle, rester INCOMPLETE, affiner plutôt que certifier ; (6) traiter ensuite rang Dirac/lapses/bords/dynamique 4D.
+
+**CHECKPOINT PRÉFIXÉ : les 334908 caractères de l'historique précédent sont conservés strictement à l'identique ci-dessous.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : C2d2b GARDE RENFORCÉE, EXÉCUTION PHYSIQUE TOUJOURS PENDING (2026-10-26)
 
 **SEULE BRANCHE AUTORISÉE EN ÉCRITURE :** `research/gate2b-nonhomothetic-transfer` ; ne jamais modifier `main`, `research/v2-flrw`, GitHub Actions/workflows désactivés.
