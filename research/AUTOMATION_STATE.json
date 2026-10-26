@@ -5,22 +5,22 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "5f1e2db8e5e924a8faf562719c1ebf182c0783ee",
+  "verified_research_head_before_state_file": "647edf950a7e3621dcb1ad566bef261f3cfa6b0a",
   "latest_verified_completed_step": "68ad-C2d2a",
   "next_pending_step": "68ad-C2d2b",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 20,
+    "passed": 12,
     "failed": 0,
     "skipped": 0,
-    "source": "Actually executed /mnt/data/janus_c2d2a: PYTHONPATH=/mnt/data/janus_c2d2a python -m pytest -q /mnt/data/janus_c2d2a/tests/test_hr_step68ad_c2d2a_temporal_replay.py (20 PASS, 0.07s). Harness tests with local doubles only; original Step58/60 NOT executed."
+    "source": "Actually executed local guard module: cd /mnt/data/janus_c2d2b_guard && PYTHONPATH=. pytest -q tests/test_hr_step68ad_c2d2b_guard.py (12 PASS, 0.06s). Original modified C2d2a adapter integration tests NOT executed; original Step58/60 NOT executed."
   },
-  "github_write_probe": "Three files published/read back with matching Git blob SHA to tested local bytes, journal prepended 3418 characters and prior checkpoint retained. Positive source validation in local clone NOT executed.",
+  "github_write_probe": "Six new/updated code/test/audit/report files published and re-read; source SHA independently rehashed 6/6, new tested guard module and tests byte-identical; restart history preserved exactly.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -37,15 +37,18 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full original Step58 A_N/A_M on seven center cells and Step60 quotient still NOT EXECUTED because container has no GitHub checkout/network. New center-safe harness ready to run in full checkout, including outward-lattice-domain guard; execute it before any temporal sign claim.",
+  "current_blocker": "Original physical Step58/60 still NOT EXECUTED: Python container has no full checkout and cannot resolve/connect to GitHub; connector can read/write but not directly materialize the complete source tree into the execution container. Next step must obtain a byte-authentic checkout or bridge before any 14 N/M signs are claimed.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
-    "numerics/hr_step68ad_c2d2a_temporal_replay.py": "6b68c33ceac7f1f1a890e0d61a938a9ddb23ea95",
-    "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "3dea95d2233ea23b5cbee2583a38ca5a9be16dba",
-    "research/STEP68AD_C2D2A_OUTWARD_DOMAIN_GUARD_AND_TEMPORAL_REPLAY.md": "589b473285143af59890545d898dba6140336ca4",
-    "00_CURRENT_RESTART.md": "1f27c2867e8688efbda675d9025e7bcee7fcf90a"
+    "numerics/hr_step68ad_c2d2b_guard.py": "a0657a023fc59073bd1ab9f9a4255cf5248e0b9b",
+    "tests/test_hr_step68ad_c2d2b_guard.py": "0daa20efbe1df763b91ba01268e25daf81d89731",
+    "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
+    "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
+    "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "33a35f037f2d0c0bbb1f0c174d6f0dc62de08bae",
+    "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "bef872259eba1f9086ec44940b2101b22c63b486",
+    "00_CURRENT_RESTART.md": "fe22c91d4112bfd2d334280b685c077173a1682a"
   },
-  "current_proven_result": "Exact rational counterexample to naively using C2b ideal-cell boxes on Step68o outward-rounded si=I.hull(rlo,rhi)**2. Tested guard recomputes U/U_s/U_ss/U_sss on true rounded s interval; 20 local harness tests PASS. No new physical temporal sign.",
+  "current_proven_result": "New fail-closed binding ensures injected s-jet belongs to the exact outward-rounded Step68o lattice cell; reports distinguish nonzero signs from historical N+/M- orientation. 12 new pure guard tests PASS. Independent 7/7 rational cell intersections nonempty. No new physical temporal sign.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -56,6 +59,7 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Certified algorithmic guard for outward lattice and source-pinned replay harness; NOT physical Step58/60 execution, no seven-cell signs, no Dirac rank, positive lapse, boundary or BD theorem.",
-  "source_authentication_this_session": "GitHub branch directory and original file SHAs checked against expected pin metadata; positive SHA re-hashing of complete originals in local checkout NOT executed. The new harness will fail closed on source drift."
+  "scope": "Tested interface guard and provenance, NOT original physical Step58/60 execution, no temporal coefficient certified, no Dirac/lapse/boundary/BD theorem.",
+  "source_authentication_this_session": "Six full original GitHub files independently SHA-1 Git blob rehashed via JavaScript V8, 6/6 matches; not imported/executed in local Python.",
+  "latest_tested_safety_patch": "68ad-C2d2b-interface-hardening"
 }
