@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e2, COMPOSITION CONDITIONNELLE DE LA COQUILLE SPATIALE (2026-10-26)
+
+**ÉTAPE TERMINÉE : 68ad-C2d2e2 — preuve symbolique indépendante de composition des contraintes spatiales Step45/46/55/68o avec les identités historiques Step58/68h/68j. PROCHAINE : 68ad-C2d2e3 — enclosures corrélées des deux coefficients originaux Step58 A_N/A_M sur les sept cellules, puis Dirac/lapses/bords.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Branche unique `research/gate2b-nonhomothetic-transfer` ; `main`, `research/v2-flrw` et workflows désactivés intouchés.
+
+**RÉSULTATS EXACTS CONDITIONNELS :** reconstruction symbolique indépendante de l'identité de réduction des primaires originales `H_a=A_a-dB_a/dr=kinetic+dust-M_a² L_a S_a² R_a/2+W_a+zD_g/L_a`. Les densités de poussière prescrites Step55 imposent exactement `H_g/r²=H_f/r²=0` pour r>0 ; `Psg` impose `D_g=r³ Dbar` et `F_z=0` sur la branche k>0. L'identité affine **HISTORIQUE** Step46 `C=C0+C1 pLf'`, `C1!=0`, avec l'EDO **HISTORIQUE** Step55 `2sU_s=G(s,U)-2U`, `G=V_rhs/r`, donne exactement `C=0` sur la vraie solution, et non sur des boîtes indépendantes arbitraires. Si les fonctions sont suffisamment régulières sur un intervalle ouvert, `Hg'=C'=Fz'=0` par dérivation. Composition avec les identités **DÉJÀ PROUVÉES** Step58/68h/68j : les coefficients de `N'',M'',N',M'` s'annulent sur cette coquille. Un contre-exemple avec `Hg=C=0` mais `Hg'!=0` prouve que les prolongations ne sont pas facultatives. Les valeurs `tg=tf=0` des jets Step68o sont des origines LOCALES, pas deux fonctions globalement nulles ; deux primitives polynomiales explicites rétablissent des champs de poussière globaux avec jets 1–3 exacts.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_stage && PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py` → **14 PASS, 0 FAIL (0,87 s)**. Manifeste produit par `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2e2_spatial_shell_closure`. Les 36 tests historiques ne sont PAS comptés comme réexécutés. Les sources physiques originales ont été RELUES en direct sur GitHub et leurs SHA enregistrés, mais les modules originaux Step45/46/55/68o/58/60 n'ont PAS été importés et exécutés ensemble ici : la preuve est une reconstruction/composition indépendante sous hypothèses, pas une exécution intégrale de ces moteurs.
+
+**QUATRE FICHIERS PUBLIÉS ET RELUS, SHA BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py` — `63deac8423b9352cd3ed0c37c66247648e3d876b`.
+- `tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py` — `f551d7ab14323424da478befd95617413e969274`.
+- `research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json` — `30d69cbe0796cba9851cdd48d21d15c6f8b33349`.
+- `research/STEP68AD_C2D2E2_CONDITIONAL_SPATIAL_SHELL_AND_LAPSE_JET_COMPOSITION.md` — `f7ffd1c69ff4eec1d1882a1e94b1a9f6d252359f`.
+
+**HEAD AVANT CHECKPOINT :** `abec7124030e1bf1be872c9c0984b928472cd814`. **HEAD DE DÉMARRAGE :** `47c3c384c08c217cf00ec2a58fbaf3a6f15bf023`. `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`, aucune écriture dans ces branches.
+
+**LIMITES :** aucun signe Step58 continu nouveau ; coefficient Step60 A_M<0 reste certifié CONDITIONNELLEMENT depuis C2d2d ; Step68j B_N(lower)=0 modulo Hg=C=0 reste un théorème ANTÉRIEUR ; aucun rang Dirac complet, lapse avec conditions aux bords, carte K=0/J=0, stabilité 4D ou observables. Les sources historiques n'ont pas été réexécutées localement dans cette session.
+
+**ACTIONS PRIORITAIRES :** (1) construire et tester les enclosures corrélées originales Step58 `A_N,A_M` sur les sept cellules et rechercher des contre-exemples ; (2) confronter les signes/rations aux contraintes Dirac, lapses, bords et chartes singulières ; (3) examiner 4D, stabilité et observables ; (4) supprimer les copies temporaires Library lorsque le service de suppression cessera de renvoyer 401 Unauthorized.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS SANS AUCUNE MODIFICATION.**
+
+---
+
 # JANUS — RECTIFICATION SCIENTIFIQUE PRIORITAIRE : Step68j PROUVE DÉJÀ B_N=0 MODULO CONTRAINTES (2026-10-26)
 
 **BRANCHE UNIQUE :** `research/gate2b-nonhomothetic-transfer`. **ÉTAPE VALIDÉE : 68ad-C2d2e (transversality conditionnelle J<0, corrigée par relecture Step68j). PROCHAINE : 68ad-C2d2e2 — vérification explicite des contraintes Step68o, puis Step58 continu.**
