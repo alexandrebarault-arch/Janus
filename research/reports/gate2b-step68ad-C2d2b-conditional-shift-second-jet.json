@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "step": "68ad-C2d2b-conditional-shift-second-jet",
+  "kind": "EXACT_CONDITIONAL_ALGEBRAIC_LEMMA_NOT_PHYSICAL_SEVEN_CELL_REPLAY",
+  "date": "2026-10-26",
+  "source_blobs": {
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step60_full_constraint_prolongation.py": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "tested_code_blobs": {
+    "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
+    "tests/test_hr_step68ad_c2d2b_shift_second_jet.py": "c3fb478715587c02bad49f95093e9d4b06a0cae1"
+  },
+  "assumptions": [
+    "Fz=0",
+    "K>0",
+    "D=r^3*d(r^2)",
+    "K=r^2*k(r^2)",
+    "k(0)>0",
+    "d,k C^3"
+  ],
+  "identities": {
+    "count": 10,
+    "verified": "SymPy exact simplification",
+    "center_zprime": "d0/k0",
+    "center_zdoubleprime": "0",
+    "center_ztripleprime": "6*(d1/k0-d0*k1/k0**2-d0**3/(2*k0**3))",
+    "step60_second_shift_jet_on_shell": "EXACT_MATCH"
+  },
+  "tests": {
+    "command": "PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2b_shift_second_jet.py",
+    "passed": 10,
+    "failed": 0,
+    "seconds": 1.42,
+    "independent_rational_profiles": 6
+  },
+  "physical": {
+    "Step58_seven_cells": "NOT_EXECUTED",
+    "Step60_full_quotient": "NOT_EXECUTED",
+    "new_certified_temporal_coefficients": 0
+  },
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "next_effective_step": "68ad-C2d2b"
+}
