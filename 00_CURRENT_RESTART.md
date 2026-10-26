@@ -1,3 +1,30 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e3, DEUX SIGNES STEP58 CONTINUS CERTIFIÉS CONDITIONNELLEMENT (2026-10-26)
+
+**ÉTAPE TERMINÉE : 68ad-C2d2e3 — CERTIFICATION CONDITIONNELLE SUR LE CONTINUUM des coefficients d'ordre zéro de l'opérateur ORIGINAL Step58, A_N>0 et A_M<0 sur r∈[1/64,1/32]. PROCHAINE : 68ad-C2d2e4 — audit contradictoire du rang Dirac complet et des lapses avec conditions aux bords, chartes singulières, puis 4D/stabilité/observables.**
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Seule branche d'écriture `research/gate2b-nonhomothetic-transfer`. Ne jamais toucher `main`, `research/v2-flrw` ni les workflows désactivés.
+
+**AVANCÉE PHYSIQUE RIGOUREUSE SOUS HYPOTHÈSES :** 22/22 fichiers originaux, dépendances et trois rapports Step68v/68ac/B2 transférés par GitHub et authentifiés par SHA Git des octets locaux. Le véritable `physical_operator()['operator'][N/M][0]` Step58 a été évalué avec le vrai profil Step68o, sur la coquille régulière `Sg=r Lg,Sf=r Lf,K>0` et avec la factorisation CSE déjà démontrée exactement. L'opérateur dépend des jets radiaux d'ordre 3 : pour une preuve MVT continue, l'ordre 4 est indispensable. Nouveau prolongement des jets via l'EDO Step55 originale `2s U_s=G(s,U)-2U` : `U_ssss/24 = [t³]((G(s+t,U(s+t))-2U(s+t))/(2(s+t)))/4`, et `[r⁴]U(r²)=U_ss/2+2r²U_sss+(2/3)r⁴U_ssss`. Les 48 jets Step68o originaux d'ordres 0–3 sont inchangés et comparés exactement sur trois rayons (144 égalités).
+
+**CERTIFICAT CONTINU :** 7 cellules originales ×32 sous-cellules rationnelles ; une sous-cellule grossière a été déclarée INCOMPLETE pour A_N et scindée en deux. Résultat **225/225 sous-cellules fermées couvrantes**, A_N.lower>0 et A_M.upper<0. Plus petite borne inférieure de A_N : `738081248225184126420269/312500000000000000000000000` (≈0,00236186). Plus grande borne supérieure de A_M : `-1514435823797833476506571291/1250000000000000000000000000` (≈−1,21155). Toutes les bornes sont rationnelles sur la grille entière extérieure 10^28, dérivées par AD d'intervalles + théorème des accroissements finis. Ce ne sont ni des tests ponctuels ni une preuve de rang Dirac.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_stage_c2d2e3 && PYTHONPATH=. python -m numerics.hr_step68ad_c2d2e3_step58_mvt --repo . --out research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json` → 7/7 cellules, 225 feuilles, 1 bisection, PASS. `PYTHONPATH=. python -m pytest -q tests/test_hr_step68ad_c2d2e3_step58_mvt.py` → **18 PASS, 0 FAIL**. Inclus : vrais Step58 ponctuels, 144 comparaisons exactes de jets Step68o, SHA originaux, deux identités symboliques d'ordre 4, cas grossier INCOMPLETE, bisection positive et refus de rapports/sources altérés. Ne PAS compter les campagnes historiques comme rejouées.
+
+**QUATRE FICHIERS PUBLIÉS ET RELUS AVEC SHA BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2e3_step58_mvt.py` — `8574eb05a64b251b007cc9f16d586bf1965467f0`.
+- `tests/test_hr_step68ad_c2d2e3_step58_mvt.py` — `272500b23a94c6f812a21769bc2c94485fae19a9`.
+- `research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json` — `0c688d6648e16064b1eb4e8ad9c55e7b44a95947`.
+- `research/STEP68AD_C2D2E3_ORIGINAL_STEP58_CONTINUUM_SIGN_CERTIFICATE.md` — `520799e1a190d0f125a30b46eb0dc92cabba3644`.
+
+**HEAD AU DÉMARRAGE :** `998ca92d2ef6797080a1deb9b8e5cd56e200cb03`. **HEAD APRÈS PUBLICATION DES QUATRE FICHIERS :** `3bae1997f7399d7f3eed49365f71fdd88a286150`. `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`, aucun changement.
+
+**INTERPRÉTATION LIMITÉE :** Si les termes N',M',N'',M'' s'annulent sur la coquille contrainte lisse comme l'indiquent les identités historiques Step58/68h/68j et l'étape C2d2e2, l'équation locale `A_N N+A_M M=0` impose `N/M=-A_M/A_N>0`. Ce n'est PAS une démonstration de lapses globaux admissibles, de rang Dirac, de fermeture de l'algèbre des contraintes, de bords, de dynamique 4D, de stabilité ou d'observables. La preuve ne couvre pas les chartes K=0/J=0.
+
+**ACTIONS PRIORITAIRES :** (1) audit contradictoire des contraintes Dirac complètes et du rang de l'opérateur, des lapses avec bords et de la cohérence des prolongations sur le profil exact ; (2) singularités K=0/J=0 ; (3) extension 4D, stabilité, observables ; (4) nettoyer les documents Google temporaires et copies Library éphémères si possible.
+
+**CHECKPOINT PRÉFIXÉ. L'INTÉGRALITÉ DU JOURNAL PRÉCÉDENT EST CONSERVÉE OCTET POUR OCTET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e2, COMPOSITION CONDITIONNELLE DE LA COQUILLE SPATIALE (2026-10-26)
 
 **ÉTAPE TERMINÉE : 68ad-C2d2e2 — preuve symbolique indépendante de composition des contraintes spatiales Step45/46/55/68o avec les identités historiques Step58/68h/68j. PROCHAINE : 68ad-C2d2e3 — enclosures corrélées des deux coefficients originaux Step58 A_N/A_M sur les sept cellules, puis Dirac/lapses/bords.**
