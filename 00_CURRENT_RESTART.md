@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e4, AUDIT DU RANG LOCAL DES LAPSES (2026-10-26)
+
+**ÉTAPE TERMINÉE : 68ad-C2d2e4 — raccordement rationnel conditionnel de quatre certificats originaux Step58. PROCHAINE : 68ad-C2d2e5 — calcul indépendant non-IBP du crochet fonctionnel de Dirac à six couples, contraintes et conditions aux bords, chartes K=0/J=0.**
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Seule branche d'écriture `research/gate2b-nonhomothetic-transfer`. `main`, `research/v2-flrw`, workflows désactivés intouchés.
+
+**RÉSULTAT EXACT CONDITIONNEL :** quatre rapports originaux GitHub, authentifiés par SHA blobs (`0c688d6648e16064b1eb4e8ad9c55e7b44a95947`, `e890998a2f925f881ab85b60a9027e5828e35ed5`, `82f5d046cd0ca0c342adabe8b8f13cfc3f99308d`, `978d77d7dc8b30c3bdd78b25f1ca0d1c68900fe6`), contrôlés par calcul rationnel BigInt : 225+1006+314+265=**1 810 cellules fermées**, couverture sans lacune `r∈[1/64,17/20]`, `A_N>0`, `A_M<0`. Les inégalités uniformes `1/50000 < M/N=-A_N/A_M < 14`, `A_N/r²>7/20`, `A_M/r²<-546` sont valables **uniquement sous les hypothèses des quatre certificats** et de la coquille lisse. Les extrêmes sont dans Step68p : le raccordement intérieur ne les améliore pas. La SEULE ligne `[A_N,A_M]` est de rang local 1, mais le rang COMPLET de Dirac demeure **NON PROUVÉ**. Contre-exemple abstrait : deux complétions antisymétriques 6×6 avec même première ligne non nulle peuvent avoir rang 2 ou 4 ; elles ne sont pas les matrices physiques JANUS.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** **11 tests adversariaux synthétiques PASS, 0 FAIL** dans le même module JavaScript V8 publié (un cas valide, dix données corrompues rejetées) ; **1 exécution complète** sur les 1 810 cellules archivées, toutes vérifiées. Ce sont 11 tests, PAS 1 810 tests. Le CLI Node publié vérifie les SHA Git à partir des octets d'un clone local, mais **n'a PAS été exécuté dans un clone complet** pendant cette session ; les opérateurs physiques originaux n'ont pas été réexécutés, aucun oracle Poisson indépendant n'a été réalisé.
+
+**QUATRE FICHIERS PUBLIÉS ET RELUS IDENTIQUES :**
+- `scripts/hr_step68ad_c2d2e4_connected_row_rank.cjs` — SHA blob `a719cfed2292489b3c0e24cb6b422b9e42a823dd`.
+- `tests/test_hr_step68ad_c2d2e4_connected_row_rank.cjs` — SHA blob `e5df52e75bfd38655afbcf6085e26198a835e46e`.
+- `research/reports/gate2b-step68ad-C2d2e4-connected-row-rank.json` — SHA blob `a9721a0077d6ae0d89514b09b8476edf56451118`.
+- `research/STEP68AD_C2D2E4_CONNECTED_LAPSE_ROW_RANK_AND_DIRAC_LIMITS.md` — SHA blob `778b33be781ed3cc7083b6e05f6debc1d5b84fc9`.
+
+**HEAD AU DÉMARRAGE :** `2f7906e9c3f5093c49cb4ae8c8dd6ed68b6265b2`. **HEAD APRÈS QUATRE PUBLICATIONS :** `53f7844440b91044a9c4ddfbf3f9f9d16af7b807`. Les branches protégées restent aux références historiques `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` (à revérifier en fin de session).
+
+**LIMITES PRIORITAIRES :** rang de la matrice/opérateur complet de Dirac, conditions aux bords des lapses, éventuelles contraintes tertiaires, jauge, chartes singulières `K=0/J=0`, oracle indépendant NON-IBP, évolution 4D, stabilité et observables NON DÉMONTRÉS. Le calcul d'un noyau de la ligne locale ne résout aucune de ces questions. Prochaine action : **68ad-C2d2e5**, commencer par reconstruire l'opérateur fonctionnel de Poisson indépendant avec les six couples et les termes de bord, puis chercher activement un contre-exemple ou une obstruction au rang admissible.
+
+**INCIDENT DE NETTOYAGE :** huit suppressions Library réellement retentées par ID exact ; **8 échecs 401 Unauthorized** de `/uninjest_file`. Copies éphémères non supprimées, GitHub inchangé.
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ EXACTEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e3, DEUX SIGNES STEP58 CONTINUS CERTIFIÉS CONDITIONNELLEMENT (2026-10-26)
 
 **ÉTAPE TERMINÉE : 68ad-C2d2e3 — CERTIFICATION CONDITIONNELLE SUR LE CONTINUUM des coefficients d'ordre zéro de l'opérateur ORIGINAL Step58, A_N>0 et A_M<0 sur r∈[1/64,1/32]. PROCHAINE : 68ad-C2d2e4 — audit contradictoire du rang Dirac complet et des lapses avec conditions aux bords, chartes singulières, puis 4D/stabilité/observables.**
