@@ -5,25 +5,25 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-26",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "683b099c66096a25260ed138116f2e29692049c9",
-  "latest_verified_completed_step": "68ad-C2d2e5a-EXACT_FIXED_SHIFT_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT",
-  "next_pending_step": "68ad-C2d2e5b-authentic-six-pair-nonIBP-Poisson-Dirac-shift-elimination-boundary-and-singular-charts",
+  "verified_research_head_before_state_file": "4b6892e9fa3ba9402b032e966de8533561c3a973",
+  "latest_verified_completed_step": "68ad-C2d2e5b1-EXACT_REDUCED_SHIFT_BOUNDARY_JET_AND_K_CHARTS",
+  "next_pending_step": "68ad-C2d2e5b2-authentic-six-pair-nonIBP-functional-Poisson-Dirac-with-shift-variation-and-boundaries",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B1_REDUCED_SHIFT_BOUNDARY_VARIATION_AND_K_CHARTS.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 28,
+    "passed": 9,
     "failed": 0,
-    "skipped": 0,
-    "exact_rational_assertions": 28,
-    "independent_sympy_exact_identities": 3,
+    "exact_symbolic_subidentities": 4,
+    "standalone_script_passed": true,
     "original_physics_modules_reexecuted": 0,
-    "description": "JS V8 exact BigInt rational checks on original-vs-IBP boundary identity plus three independent SymPy symbolic residual identities; no six-pair Poisson matrix."
+    "full_dirac_oracle_executed": false,
+    "description": "9 Python unittest methods, one with 4 exact SymPy subidentities; independent synthetic rational branch and boundary tests."
   },
-  "github_write_probe": "Four actual create_file writes, one audit correction, README update, full restart prepend, and index update on research branch; each read back byte-identical. Prior restart text retained exactly.",
+  "github_write_probe": "Four actual create_file writes on research branch; restart prepend and README update; each read back byte-identical and code/test blobs match locally executed bytes; state updated after these.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -40,7 +40,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full six-pair Dirac Poisson functional with z* response and boundary symplectic terms NOT computed. Boundary conditions/counterterms not specified; physical on-shell lapse compatibility, K=0/J=0, 4D, stability and observables remain unproved.",
+  "current_blocker": "Six-pair functional Poisson/Dirac operator with boundary symplectic terms and eliminated z* not computed; conditional Step58 rank-one lapse row is not complete Dirac rank. K=0 and J=0 physical charts, lapse boundary conditions, tertiary constraints, 4D, stability, observables remain open.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -49,7 +49,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "636f01bc141b4233b1880d8935eb09f7198f2aae",
+    "00_CURRENT_RESTART.md": "b0502a3c28908f29e9114f66853842099f2c2869",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -72,7 +72,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "4c811b52cc9969ff500c5e68c0c854306d349f40",
+    "README.md": "3d7cc3cec72c5f129f3fb2285800a1a0640b4e78",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -88,9 +88,13 @@
     "scripts/hr_step68ad_c2d2e5a_original_boundary.cjs": "78fe086dd06004fdcf30c2f022f759595671275a",
     "tests/test_hr_step68ad_c2d2e5a_original_boundary.cjs": "49657554d7246aa0607161afd795c1714f7b3454",
     "research/reports/gate2b-step68ad-C2d2e5a-exact-boundary.json": "c0167d2c370ee131769e1d148640d4fe3b60ba66",
-    "research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md": "4d1f229cba28ee83a2bb2c47c34969239fba3601"
+    "research/STEP68AD_C2D2E5A_ORIGINAL_NONIBP_BOUNDARY_DIFFERENTIABILITY_AUDIT.md": "4d1f229cba28ee83a2bb2c47c34969239fba3601",
+    "numerics/hr_step68ad_c2d2e5b_shift_boundary.py": "1996748565b7f587eaf46be3b740167e9bd1adbc",
+    "tests/test_hr_step68ad_c2d2e5b_shift_boundary.py": "d771a62f9a0806ed39f3eeeea54233258e2f5978",
+    "research/reports/gate2b-step68ad-C2d2e5b1-shift-boundary-chain.json": "68afbfb6264d693636a76850d669220ff509d147",
+    "research/STEP68AD_C2D2E5B1_REDUCED_SHIFT_BOUNDARY_VARIATION_AND_K_CHARTS.md": "25e9192af017864bbed993263afbcc003ddd3acb"
   },
-  "current_proven_result": "EXACT fixed-z original/IBP boundary primitive B=2Mg² N Sg Sg'/Lg+2Mf² M Sf Sf'/Lf-z pLg(N+M Lg/Lf); noncompact lapse example [B]=213/64 off-shell; necessary boundary variations/counterterms. Previous conditional 1810-cell Step58 signs unchanged.",
+  "current_proven_result": "On regular K>0 chart, exact dBshift/d(pLg')=(N+M Lg/Lf)pLg Lg K²/(K²+D²)^(3/2), nonzero rational off-shell witness 42/25; K<0 requires sign(K) in z*, K=0,D!=0 no root, K=D=0 shift undetermined. Not physical Dirac proof.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -102,9 +106,9 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "scope": "Only smooth regular Step55/68o constrained shell, conditional on four SHA-pinned Step58 interval reports; continuous r in [1/64,17/20]. Not global Dirac or 4D.",
-  "source_authentication_this_session": "Three ORIGINAL GitHub source blobs fetched from research branch and their connector-returned blob SHA recorded; source Python modules read, not executed.",
+  "source_authentication_this_session": "Three original GitHub source blobs read on research branch: 005449ade6e3582e3b9a5c3374a881a77e73e3f6, 6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81, c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41; originals not reexecuted.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "c2d625d35df086f4295255f99cc6eead7df0d363",
+  "last_read_branch_head_at_session_start": "ce7f2433fca0c9028cf5e14cbd45170b2f3ce4e5",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
     "kind": "ORIGINAL_STEP58_AN_AM_CONTINUUM_MVT_CONDITIONAL",
