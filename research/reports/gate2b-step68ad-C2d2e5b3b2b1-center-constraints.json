@@ -68,5 +68,13 @@
       "broken_Psg1_detected",
       "broken_Psf1_detected"
     ]
-  }
+  },
+  "independent_sympy_scratch": {
+    "passed": 15,
+    "failed": 0,
+    "scope": "original Step45 curvature and leading Hg,Hf,Dg,Df; substitutions; finite Pg family; Step49 historical C2 composition",
+    "original_modules_executed": false,
+    "standalone_script_published": false
+  },
+  "total_exact_checks": 52
 }
