@@ -1,7 +1,7 @@
 """Independent exact-rational tests of the conditional Step55 boundary trace."""
 import unittest
 from fractions import Fraction as F
-from hr_step68ad_c2d2e5b3b2c1_boundary_trace import (
+from numerics.hr_step68ad_c2d2e5b3b2c1_boundary_trace import (
     A, B, CG, MF2, MG2, R_OUT, certificate,
     reconstruction_Dg_residual, trace_coefficients,
 )
