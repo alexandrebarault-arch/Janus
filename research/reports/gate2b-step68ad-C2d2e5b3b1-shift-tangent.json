@@ -1,0 +1,46 @@
+{
+  "step": "68ad-C2d2e5b3b1",
+  "kind": "EXACT_TRANSVERSE_REDUCED_SHIFT_CENTER_DOMAIN_AUDIT",
+  "checks_passed": 18,
+  "checks_failed": 0,
+  "checks": [
+    "exact_w_relation",
+    "K_r2k",
+    "D_r3ka_over_w",
+    "reduced_shift_3_over_5",
+    "stationary_shift_D_minus_Kz_over_w",
+    "exact_transverse_shift_derivative",
+    "exact_transverse_hessian_quadratic",
+    "Hessian_rank_one_determinant",
+    "Hessian_trace_inverse_radius",
+    "Hessian_positive_on_nonradial_direction",
+    "Hessian_radial_null_direction",
+    "canonical_pLg_r2_shift_derivative",
+    "canonical_pLg_r2_Hessian",
+    "physical_geometry_central_k_positive",
+    "positive_epsilon_shift_approaches_minus_one",
+    "negative_epsilon_shift_approaches_plus_one",
+    "nonuniform_linear_shift_response_1_over_r",
+    "physical_perturbation_order_r3_shift_order_r"
+  ],
+  "exact_sample": {
+    "K": "9/8",
+    "D": "27/32",
+    "R": "45/32",
+    "z": "3/5",
+    "transverse_dz": "48/125",
+    "transverse_Hessian_Q": "81/250",
+    "pLg_r2_dz_depsilon": "-512/1875",
+    "pLg_r2_Hessian_Q": "512/3125",
+    "central_k": "1784166243092997376761817176759665626197752785541887340443793729319/7629394531250000000000000000000000000000000000000000000000000000000",
+    "off_shell_ratio_at_r_1_over_100000": "-400"
+  },
+  "original_sources_sha_read_not_executed": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "logical_scope": "Exact pointwise and radial-center transverse variation identities, with a smooth off-shell canonical perturbation pLg -> pLg + epsilon*r^2. NOT a six-pair functional Poisson/Dirac matrix, NOT constraint-preserving variations, NOT a physical instability proof.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
