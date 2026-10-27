@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3a, VARIATION NON-IBP AU BORD (2026-10-27)
+
+**ÉTAPE EXACTE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3b — conditions aux bords physiques, contretermes, carte des traces f sur le tube, puis oracle Poisson/Dirac non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT CONDITIONNEL :** famille spatiale authentique Step55/68o certifiée précédemment pour |lambda|<=1/5000. Pendant Pg→Pg+lambda, géométrie, potentiels de poussière et shift z=r*z1 sont fixés ; N,M également fixés pendant la variation. À R=17/20 : ∂lambda pLg=92730563/128000000 ; ∂lambda pLg'=2734739/1600000 ; ∂lambda U0=274023815147385251710689588080861/40000000000000000000000000000000000 ; z(R)=17/5000 ; Lg/Lf(R)=2505421686285156250000000000/1444418923561876775155324829. L'identité original−IBP donne B=2Mg² N Sg Sg'/Lg+2Mf² M Sf Sf'/Lf−z pLg(N+M Lg/Lf). Pour lapses bornés B(0)=0, et ∂lambda[B]_0^R=−z(R)∂lambda pLg(R)[N(R)+M(R)Lg(R)/Lf(R)] ; pour N=M=1 : exactement −6226606039693438177138189375297828359/924428111079601136099407890560000000000<0. Robin alpha*pLg+beta*pLg'=const annule cette direction SSI alpha*a+beta*d=0 ; si alpha=1, beta=−5454739/12869360. Dirichlet sur les seules coordonnées n'annule pas ce flux pour lapses positifs non compacts. Il faut sélectionner les conditions physiques/contretermes. Les variations de N,M et du secteur f ne sont pas calculées.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** code et wrapper JavaScript rationnels réexécutés depuis les contenus GitHub publiés : 25 assertions BigInt exactes PASS, 0 FAIL. Rapport JSON régénéré et comparé octet pour octet. Traces, signes N/M, N=M=0, centre, quatre différences finies exactes, produit original−IBP sur trois rayons, Robin exceptionnel et non-validation contrôlés. Aucune exécution Node ni des moteurs Python physiques originaux cette session ; sources Step45/46/55 et Step37 relues et SHA authentifiés. Le tube spatial original Step55 reste un résultat antérieur.
+
+**QUATRE LIVRABLES PUBLIÉS ET RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs — blob 485cbfcd9ccb255c12b1da1ff4615fdaa66df066.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs — blob 1681226f7f4c29ec7f59c5ad1a0db07df4902a4b.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3a-nonibp-boundary.json — blob b60a7fd132b8f8803c6eea5649b87c840b5502c0.
+- research/STEP68AD_C2D2E5B3B2C2B3A_EXACT_PG_BOUNDARY_FLUX_AND_ROBIN_CLASSIFICATION.md — blob 865f1ed1d1c9a8f0c2a7bd62101dee29f387c38b.
+
+**ÉTAT GITHUB :** HEAD de reprise 312e19cdb6571467516d6e9c4a1bf3d069263224 ; HEAD après les quatre livrables et avant les états b3ac027539d6cddd0424747018e71939c63e9441. main=aead63f4098f0d15a849e579105af034b6317b30 ; research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb ; aucun workflow modifié. Nettoyage Library non retenté cette session ; précédents échecs 401 Unauthorized, aucune suppression revendiquée.
+
+**LIMITES / ACTIONS PRIORITAIRES :** (1) déterminer bords physiques, contretermes, variations des lapses ; (2) calculer la sensibilité des traces f à R sur le vrai tube paramétrique ; (3) oracle fonctionnel original Poisson/Dirac non-IBP six couples, rang/tertiaires, K=0/J=0 ; (4) 4D, stabilité, observables ; (5) nettoyer Library si autorisations rétablies. Aucune preuve de bords globaux, rang Dirac ou validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2, VRAI G PARAMÉTRÉ ET DEUX POUSSIÈRES POSITIVES (2026-10-27)
 
 **ÉTAPE SPATIALE CERTIFIÉE : 68ad-C2d2e5b3b2c2b2. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3 — conditions aux limites physiques, carte des traces du tube paramétrique, puis opérateur fonctionnel Poisson/Dirac non-IBP à six couples, rang/tertiaires/lapses, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
