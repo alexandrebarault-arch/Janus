@@ -1,0 +1,47 @@
+{
+  "step": "68ad-C2d2e5b3b2a",
+  "date": "2026-10-27",
+  "kind": "EXACT_CENTRAL_PARITY_SHIFT_CHART_NECESSARY_SUFFICIENT_NOT_DIRAC",
+  "original_source_sha_read_not_executed": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "published_source_blob": "63b84e9fad6051c45961247ac00f5abd23e6a1e8",
+  "published_test_blob": "062e028ac9e88977add283f57775dbab861e07f6",
+  "checks_v8_core": 18,
+  "checks_v8_wrapper": 14,
+  "checks_sympy_independent": 8,
+  "failed_final": 0,
+  "failed_preliminary_sympy": 1,
+  "preliminary_failure_reason": "SymPy scratch check mistakenly treated s and r as independent while writing r^3 dust term; corrected to r*s and rerun 8/8.",
+  "exact_sample": {
+    "c0": "0",
+    "k0": "99/800",
+    "D": "1885671/437500000",
+    "K": "239602484673/5000000000000"
+  },
+  "nonlinear_witness": {
+    "epsilon": "1/10",
+    "curved_c0": "1/100",
+    "regular_c0": "0",
+    "same_first_tangent": true,
+    "ratio_at_small_r": "1000/3"
+  },
+  "theorem": "For analytic parity chart, D=r C(s), K=r² k(s), s=r², k(0)>0: z*=O(r) iff C(0)=P(0)H(0)-2L(0)G(0)=0. On C(0)=0, C=s d, z*=r d/sqrt(k²+s d²).",
+  "tangent_condition": "delta(P0 H0-2L0 G0)=H0 delta P0+P0 delta H0-2G0 delta L0-2L0 delta G0=0. With H0=L0 and P0=2G0 and delta H0=delta L0: delta P0=2 delta G0.",
+  "second_order_caveat": "c0(epsilon)=epsilon² violates finite chart although c0(0)=c0'(0)=0, same nonzero first-order tangent as exact c0(epsilon)=0 path.",
+  "unproved": [
+    "linearized Hg,Hf,C constraints",
+    "six-pair functional Poisson/Dirac matrix",
+    "boundary differentiability",
+    "tertiaries",
+    "J=0",
+    "global lapses",
+    "4D",
+    "stability",
+    "observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
