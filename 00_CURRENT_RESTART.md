@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b2b, TANGENTE RADIALE PARAMÉTRIQUE CONDITIONNELLE (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b2b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c — exécuter l'authentique G(s,U,Pg) Step45/46/55 avec paramètre Pg variable, calculer sa sensibilité et certifier une marge de continuation lambda, puis imposer les conditions aux bords et construire le véritable oracle Dirac non-IBP six couples, rang/tertiaires, K=0/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU THÉORÈME CONDITIONNEL, PAS UNE CERTIFICATION PHYSIQUE GLOBALE :** Step49 donne G(0,U;Pg)=3U0(Pg)−U et U0(Pg)=Mf2*b*(Pg/(Mg2*a)−2*z1). En faisant varier Pg dans TOUTES les reconstructions g Step55, en conservant géométrie/shift, puis en résolvant l'EDO originale 2sU_s=G(s,U;Pg)−2U et en reconstruisant les variables f par Step46, les cinq contraintes spatiales sont préservées sur l'intervalle **si** les identités originales et la continuation analytique sur la charte régulière compacte sont applicables. La tangente non triviale v=∂Pg U satisfait 2s v_s=(G_U−2)v+G_Pg sur tout 0<s≤289/400, v(0)=Mf2*b/(Mg2*a)=274023815147385251710689588080861/40000000000000000000000000000000000>0. La formule intégrale de Volterra exclut le mode singulier s^(-3/2). Le shift réduit reste régulier sur cette famille restreinte car la reconstruction g garde Dg=r³Dbar. **Ni l'admissibilité de la variation aux bords externes, ni un rang Dirac, ni les lapses globaux ne sont établis.** La variation de Pg change les données du benchmark.
+
+**SOURCES ORIGINALES AUTHENTIFIÉES PAR LECTURE GITHUB, NON RÉEXÉCUTÉES :** Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e ; Step46 bac025c28dbe1561c0c36c56dbfda46dc326f804 ; Step49 d570948912885d45a625fa2db31c6a5435b6a654 ; Step55 normalization a54a6acf2f7ad2f64c500faecfa1406ecbf7b862 ; Step55 barrier a6e7004120d0a166a3a8973c2fbe1487a8eb70fe ; Step68o c99caebc17f243784450ddff94fb061767e6d8e7.
+
+**TESTS EXÉCUTÉS ET REJOUÉS SUR LES FICHIERS PUBLIÉS :** 36 assertions rationnelles BigInt dans V8 + 10 assertions wrapper V8 + 21 contrôles SymPy indépendants scratch (9 jets de l'EDO synthétique, 9 jets linéarisés, 3 identités de centre/reconstruction), **67 vérifications PASS, 0 FAIL**. Le modèle de séries est synthétique et respecte la forme Step49, PAS le G physique ; le témoin Dg=9/10 est un contrôle algébrique synthétique. Pas d'exécution Node native ni des moteurs physiques Python historiques.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS OCTET-IDENTIQUES :**
+- scripts/hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs — blob 2630dc6b2c7cc741f28a47dfa4a9b5d3bb0f1b80.
+- tests/test_hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs — blob a12abddda71a42eec44b2303ec82d390bb0241e8.
+- research/reports/gate2b-step68ad-C2d2e5b3b2b2b-parameter-tangent.json — blob f2912e4023720d62ea3af74abf58dd1fffb9eb7f.
+- research/STEP68AD_C2D2E5B3B2B2B_CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT.md — blob e989a0fa7c486259d70ae76475f1249355f4343d.
+
+**HEAD INITIAL RELU :** 36b61286cf123edf32748fec1b0ad3b13ecac101. **ACTIONS PRIORITAIRES :** (1) rejouer l'authentique G physique paramétré et dérivée G_Pg ; (2) obtenir une borne quantitative de lambda et contrôler les bords externes ; (3) opérateur fonctionnel non-IBP à six couples, rang complet/tertiaires et conditions de lapse ; (4) K=0/J=0, 4D, stabilité, observables ; (5) retenter le nettoyage Library si 401 se résout. Aucun workflow ni branche protégée modifié.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b2a, CONTRE-EXEMPLE EXACT DE JET RADIAL SUPÉRIEUR (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b2b — dériver la famille tangentielle à la secondaire sur tout r via la variation de l'EDO Step55, puis oracle fonctionnel non-IBP six couples, bords, rang Dirac/tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
