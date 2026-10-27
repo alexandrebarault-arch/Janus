@@ -1,31 +1,40 @@
 {
+  "latest_session_published_blobs": {
+    "scripts/hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs": "2630dc6b2c7cc741f28a47dfa4a9b5d3bb0f1b80",
+    "tests/test_hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs": "a12abddda71a42eec44b2303ec82d390bb0241e8",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2b2b-parameter-tangent.json": "f2912e4023720d62ea3af74abf58dd1fffb9eb7f",
+    "research/STEP68AD_C2D2E5B3B2B2B_CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT.md": "e989a0fa7c486259d70ae76475f1249355f4343d",
+    "README.md": "2fd87d0aaca89e806a566e2fe8c527d88a91a9b5",
+    "00_CURRENT_RESTART.md": "f4f410b9ce1ee8cade9504d7091ebbaa7b90f857"
+  },
+  "verified_research_head_at_session_start": "36b61286cf123edf32748fec1b0ad3b13ecac101",
+  "next_priority": "Execute authentic Step55 G(s,U,Pg) and sensitivity; certify nonzero parameter neighborhood and boundary traces; then full Dirac.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ec4b492849181f0a892c41c61cbf800af3dfafd2",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2b2a-EXACT_HIGHER_RADIAL_SECONDARY_JET_COUNTEREXAMPLE",
-  "next_pending_step": "68ad-C2d2e5b3b2b2b-FULL_RADIAL_LINEARIZED_SECONDARY_TANGENT_AND_DIRAC",
+  "verified_research_head_before_state_file": "093526e750c97b1fb4a7be18379c0b5608f80847",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT",
+  "next_pending_step": "68ad-C2d2e5b3b2c-AUTHENTIC_PHYSICAL_PARAMETER_SENSITIVITY_AND_BOUNDARIES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2B2A_EXACT_HIGHER_RADIAL_SECONDARY_JET_COUNTEREXAMPLE.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2B2B_CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 36,
+    "passed": 67,
     "failed": 0,
-    "core_bigint_v8": 12,
-    "wrapper_bigint_v8": 9,
-    "python_unittest_scratch": 15,
-    "independent_sympy_internal_assertions": 9,
-    "python_scratch_published": false,
+    "core_bigint_v8": 36,
+    "wrapper_bigint_v8": 10,
+    "independent_sympy_scratch": 21,
     "original_physics_modules_reexecuted": 0,
-    "full_dirac_oracle_executed": false
+    "full_dirac_oracle_executed": false,
+    "synthetic_normal_form_not_original_G": true
   },
-  "github_write_probe": "Four genuine create_file calls on research branch and two update_file calls for restart and README; all six read back exactly. State update_file pending final verification. main and research/v2-flrw untouched.",
+  "github_write_probe": "Four genuine GitHub create_file calls (first completed before a V8 TextEncoder reporting error), README/restart/state update_file calls on research branch; all scientific files and README/restart read back exactly. State verification pending.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -42,7 +51,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full radial constrained tangent family on authentic Step55/68o remains unconstructed; original six-pair functional Poisson/Dirac, boundary conditions, full rank, tertiaries, K=0/J=0, lapses, 4D, stability and observables NOT proved.",
+  "current_blocker": "Authentic physical G(s,U,Pg) not executed or sensitivity enclosed; no quantitative parameter interval or fixed outer boundary admissibility; full original six-pair functional Dirac, tertiaries, K=0/J=0, lapse boundary, 4D, stability and observables NOT proved.",
   "task_self_update": "2026-10-27: automation prompt updated successfully to 68ad-C2d2e5b3b2b2; permanent instructions preserved byte-for-byte from OBJECTIF PERMANENT onward, original hourly schedule unchanged, task enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -120,7 +129,7 @@
     "research/reports/gate2b-step68ad-C2d2e5b3b2b2a-secondary-highjet.json": "5c6eefc2d4747f768d383213c3f21169f4f94a89",
     "research/STEP68AD_C2D2E5B3B2B2A_EXACT_HIGHER_RADIAL_SECONDARY_JET_COUNTEREXAMPLE.md": "691c09a7a2e658411396d5166a77a6605b5dac9d"
   },
-  "current_proven_result": "Conditional exact off-secondary-shell counterexample: delta pLf=epsilon*r^6 with f dust and pSf reconstructed leaves Hg,Hf,Fz,Ddiag and central C2 intact but delta C=7 A(0)epsilon*r^6+O(epsilon*r^8)+O(epsilon^2*r^10), A(0)=-m2 Mg2 At/(2 b Mf2)<0. Does NOT disprove existence of full radial tangents.",
+  "current_proven_result": "Conditional exact parameter-tangent existence: on the regular compact Step55 spatial chart, Pg variation with all g/f reconstruction yields a nonzero tangent to full radial spatial constraints; v(0)=Mf2*b/(Mg2*a)>0, 2s v'=(G_U-2)v+G_Pg. Original physical G parameter derivative NOT executed; outer boundary admissibility NOT proved.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -132,7 +141,7 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "scope": "Higher-order radial secondary obstruction on exact analytic Step55 background, with f primaries reconstructed; not a global constrained tangent or Dirac rank.",
-  "source_authentication_this_session": "GitHub connector read Step45=66aa43841dccfe4a5d586a49be9c10af3a67a10e, Step46=bac025c28dbe1561c0c36c56dbfda46dc326f804, Step49=d570948912885d45a625fa2db31c6a5435b6a654, Step55=a6e7004120d0a166a3a8973c2fbe1487a8eb70fe. Original modules NOT executed.",
+  "source_authentication_this_session": "GitHub connector read Step45=66aa43841dccfe4a5d586a49be9c10af3a67a10e, Step46=bac025c28dbe1561c0c36c56dbfda46dc326f804, Step49=d570948912885d45a625fa2db31c6a5435b6a654, Step55 normalized=a54a6acf2f7ad2f64c500faecfa1406ecbf7b862, Step55=a6e7004120d0a166a3a8973c2fbe1487a8eb70fe, Step68o=c99caebc17f243784450ddff94fb061767e6d8e7. Original Python engines NOT executed.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
   "last_read_branch_head_at_session_start": "5f2612ea9aa3106fc730a2777de37a6b2b4eb5a3",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
