@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2c, TÉMOIN DE COURBURE SUR CONTRAINTES PRIMAIRES PONCTUELLES (2026-10-27)
+
+**ÉTAPE d2c PARTIELLE TERMINÉE ; PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2d — imposer la secondaire FONCTIONNELLE C(r)=0, les jets radiaux et les contraintes de préservation temporelle, calculer les véritables variations tangentes Dirac et le pullback de dTheta ; ensuite conditions de bord/lapses/contretermes, oracle original non-IBP six couples, rang, tertiaires, K=0/J=0, dynamique 4D, stabilité et observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT ET LIMITÉ :** pour une interaction témoin beta1=1/50, autres beta=0 (NON paramètres Step55), et des données de bord régulières Lg=2,Lf=3,Sg=5,Sf=7,Sg'=Sf'=1,Sg''=Sf''=-2,pSg=4,pLf=3,pSf=0,tg'=tf'=0,N=M=1,V=0, poser x=pLg, y=pLg', Dg=4-2y, K=3, z*=Dg/sqrt(9+Dg²), pLf'=Dg/3 et résoudre les deux poussières par pg=-Hg0(x,y), pf=-Hf0(x,y). Alors Hg=Hf=Dg+Df=Fz=0 EXACTEMENT sur une sous-variété bidimensionnelle des contraintes PRIMAIRES PONCTUELLES. Au témoin x=2,y=0 : pg=173/25>0, pf=5995/588>0, z*=4/5, pLf'=4/3. La forme de bord originale réduite se tire en arrière en i*Theta=-(5/3) z*(y) dx ; sa courbure est d(i*Theta)=30/(9+(4-2y)^2)^(3/2) dy∧dx, strictement positive, égale à 6/25 au témoin. Aucun contreterme scalaire ne peut annuler cette forme sur un ouvert de CE SOUS-ESPACE primaire. Cela ne prouve RIEN sur la secondaire fonctionnelle, la surface Dirac complète, les paramètres physiques Step55, les bords admissibles ou la dynamique.
+
+**TESTS EXÉCUTÉS :** `python numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py` : 19 assertions SymPy exactes PASS, 0 FAIL. `python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py' -v` : 1 unittest PASS rejouant les mêmes 19 assertions, non indépendant. Le certificat JSON est généré par le programme, identique octet pour octet à la publication. Sources originales Step37/ADM/IBP lues/SHA authentifiées, moteurs physiques originaux NON réexécutés dans cette étape.
+
+**FICHIERS SCIENTIFIQUES PUBLIÉS, RELUS ET SHA COMPARÉS AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py` — blob `a71df68f58ea49e142e962bb9a5663de290e05b5`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py` — blob `55f736654f8a7087a664ae86b32a8c87b983ca98`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2c-primary-tangent-curvature.json` — blob `d9cd003e79d9cd6e11d96b99941e795d11c9bad5`.
+- `research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md` — blob `b9098cc4c48c5cc380cba0e60af1d6bcf1b6bb64`.
+- `README.md` — blob `95b1b5777539192b0fadab86cad1f1e3af3e50cd`.
+
+**GITHUB :** HEAD initial lu en direct `28b08c060751b76e45a57c02d3caddd9f936cb57`. Écritures exclusivement sur `research/gate2b-nonhomothetic-transfer`. Les refs protégées initiales `main=aead63f4098f0d15a849e579105af034b6317b30` et `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ne doivent pas bouger ; workflows désactivés intouchés. Relire HEAD final après mise à jour de l'index.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) Revenir aux vrais paramètres Step55 et à la secondaire `C(r)=0` sur tout le domaine ; identifier des directions tangentes fonctionnelles non triviales, pas uniquement des contraintes primaires ponctuelles. (2) Calculer `i^*dTheta` sur cette vraie surface et la préservation temporelle des conditions de bord, avec lapses/shift et contretermes. (3) Seulement ensuite construire l'oracle Poisson/Dirac original non-IBP à six couples, rang/tertiaires et chartes K=0/J=0 ; 4D/stabilité/observables restent ouverts. Ne pas assimiler ce témoin positif de poussière à une solution physique JANUS.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2b, COURBURE EXACTE DE LA FORME DE BORD RÉDUITE (2026-10-27)
 
 **ÉTAPE d2b TERMINÉE SUR L'ESPACE AMBIANT DES JETS, PAS SUR LA SURFACE DES CONTRAINTES. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2c — pullback de la 2-forme de bord aux variations tangentes aux contraintes physiques, conditions de bord et contretermes admissibles ; puis gradients fonctionnels améliorés, oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
