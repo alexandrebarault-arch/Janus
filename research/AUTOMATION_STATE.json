@@ -1,14 +1,20 @@
 {
   "latest_session_cleanup": {
-    "attempted": 0,
+    "attempted": 2,
     "succeeded": 0,
-    "failed": 0,
-    "status": "NOT_RETRIED_THIS_SESSION_PREVIOUS_401_UNAUTHORIZED",
-    "previous_error": "401 Unauthorized /uninjest_file"
+    "failed": 2,
+    "file_ids": [
+      "libfile_45aa141b5df881918aff37fe431c9c0b",
+      "libfile_17f52736778c819195709abedd20af01"
+    ],
+    "exact_error": "401 Unauthorized /uninjest_file",
+    "status": "TEMPORARY_LIBRARY_COPIES_NOT_DELETED"
   },
   "latest_session_automation_update": {
-    "success": false,
-    "status": "PENDING_TOOL_UPDATE",
+    "success": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
     "next_step_marker": "68ad-C2d2e5b3b2c2b3b"
   },
   "latest_session_published_blobs": {
@@ -27,7 +33,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "8d60dabb7ea63e34b46c5c24693c130f24ae976f",
+  "verified_research_head_before_state_file": "b55a84226a645045c4e2bb5ed220da1e32778538",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3a_EXACT_NONIBP_PG_BOUNDARY_FLUX",
   "next_pending_step": "68ad-C2d2e5b3b2c2b3b_PHYSICAL_BOUNDARY_CONDITIONS_F_TRACE_AND_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -64,7 +70,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Physical outer boundary conditions/counterterms not selected; f-sector trace derivative and lapse variation not certified; full six-pair Dirac rank/tertiaries/lapses, K=0/J=0 and 4D/stability/observables unproved.",
-  "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3; preserved all text from OBJECTIF PERMANENT verbatim, schedule unchanged and enabled.",
+  "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3b; preserved all text from OBJECTIF PERMANENT verbatim; schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
