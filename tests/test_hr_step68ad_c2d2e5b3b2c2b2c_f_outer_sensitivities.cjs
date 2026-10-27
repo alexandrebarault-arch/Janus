@@ -1,0 +1,42 @@
+'use strict';
+const {Q,I,compute,outward,certificate,provenance}=require('../scripts/hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs');
+const q=Q.of;let n=0;
+function check(cond,msg){if(!cond)throw Error('FAIL '+msg);n++;}
+const x=compute(),c=certificate();
+check(q('1/5000').cmp('0.0002')===0,'lambda radius');
+check(x.R.lo.cmp('17/20')===0,'R exact');
+check(x.s.lo.cmp('289/400')===0,'s exact');
+check(x.Lf.lo.cmp(0)>0,'Lf positive');
+check(x.Sfr.lo.cmp(0)>0,'Sfr positive');
+check(x.D.inside('1','1.01'),'f denominator');
+check(x.H.inside('-2','-0.6'),'H strict negative');
+check(x.chi.inside('-0.84','-0.71'),'chi Step46');
+check(x.dV.inside('0.0135','0.0139'),'dV true physical bounds');
+check(x.dpLf.inside('0.0049','0.0050'),'pLf derivative');
+check(x.dpLfPrime.inside('0.0115','0.0118'),'pLf prime derivative');
+check(x.dpf.inside('-0.020','-0.011'),'pf derivative');
+check(x.dpSf.inside('0.0115','0.0118'),'pSf derivative');
+check(x.GU.hi.cmp(0)<0,'GU negative');
+check(x.GP.lo.cmp(0)>0,'GP positive');
+check(x.v.lo.cmp(0)>0,'v positive');
+check(x.U.hi.cmp(0)<0,'U negative');
+check(x.V.hi.cmp(0)<0,'V negative');
+check(x.rho.lo.cmp(0)>0,'f dust positive');
+check(x.Dbar.lo.cmp(0)>0,'Dbar positive');
+check(x.beta.lo.cmp(1)>=0,'beta sqrt lower');
+check(x.dV.lo.cmp(x.GU.mul(x.v).add(x.GP).lo)===0,'chain rule dV');
+check(x.dpLf.lo.cmp(x.s.mul(x.v).lo)===0,'pLf chain');
+check(x.dpLfPrime.lo.cmp(x.R.mul(x.dV).lo)===0,'pLf prime chain');
+check(x.dpf.lo.cmp(x.H.mul(x.dpLf).add(x.chi.mul(x.dpLfPrime)).lo)===0,'pf chain');
+check(x.dpSf.lo.cmp(x.Lf.div(x.Sfr).mul(x.dpLfPrime).sub(x.R.mul('-0.0016').mul(x.Lf).div(x.Sfr).mul(x.dpf)).lo)===0,'pSf chain');
+for(let k of ['dV','dpLf','dpLfPrime','dpf','dpSf']){
+ const [a,b]=c.bounds_rounded_outward_1e_minus_12[k];
+ check(q(a).cmp(x[k].lo)<=0&&q(b).cmp(x[k].hi)>=0,'outward enclosure '+k);
+}
+check(Object.keys(provenance).length===8,'eight pinned upstream blobs');
+check(c.original_python_reexecuted_this_step===false,'no fabricated reexecution');
+check(c.boundary_conditions_selected===false,'no boundary condition selection');
+check(c.full_dirac_oracle_executed===false,'no Dirac oracle');
+check(c.GATE_2B==='OPEN'&&c.JANUS_R==='NOT_VALIDATED','science gates');
+check(c.strict_signs.dpf==='NEGATIVE'&&c.strict_signs.dpSf==='POSITIVE','mixed trace signs');
+console.log('PASS '+n+' exact rational assertions; FAIL 0');
