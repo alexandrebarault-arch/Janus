@@ -1,0 +1,22 @@
+{
+  "stage": "68ad-C2d2e5b3b2c2b2d2d2a",
+  "kind": "EXACT_BOUNDARY_FLAT_RADIAL_GAUGE_TANGENT_KERNEL",
+  "passed": 211,
+  "failed": 0,
+  "conclusions": [
+    "Two linearly independent boundary-flat diagonal radial diffeomorphism directions exist on any regular radial profile; smooth interior compact-support versions can be made by multiplying by a bump.",
+    "All 12 canonical variations and their first two radial jets vanish at both boundaries for these polynomial generators.",
+    "The original non-IBP boundary one-form and the boundary two-form vanish on their span, irrespective of background coefficients.",
+    "Dg,Df and HR K transform exactly as weight-two densities; z*(Dg,K) is scalar on the regular K>0 chart.",
+    "Full Dirac tangency and time preservation are CONDITIONAL on a genuine solution and covariant transformations of lapse/shift; no such solution is certified here.",
+    "These are gauge directions, not two independent physical boundary directions; no Dirac rank or counterterm admissibility follows."
+  ],
+  "source_sha": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "radial_ward": "89e7f6eab35d28317f2f7a4330601736525487e5",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "boundary_d2d1": "1ba6d012133a92b69a8c91498d065b22649afbe0"
+  },
+  "gate": "GATE_2B OPEN",
+  "janus": "JANUS_R NOT_VALIDATED"
+}
