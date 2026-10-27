@@ -1,0 +1,28 @@
+{
+  "assertions_failed": 0,
+  "assertions_passed": 19,
+  "curvature_general": "30/(9+(4-2*y)^2)^(3/2)",
+  "interaction": {
+    "beta0": "0",
+    "beta1": "1/50",
+    "beta2": "0",
+    "beta3": "0",
+    "beta4": "0"
+  },
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "scope": "two-dimensional pointwise primary-constraint submanifold; NOT full Dirac tangent",
+  "witness": {
+    "Dg": "4",
+    "K": "3",
+    "dTheta_dy_dx": "6/25",
+    "pLf_prime": "4/3",
+    "pf": "5995/588",
+    "pg": "173/25",
+    "x_pLg": "2",
+    "y_pLg_prime": "0",
+    "z": "4/5"
+  }
+}
