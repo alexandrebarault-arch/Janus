@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2a, TUBE UNIFORME DE POUSSIÈRE g SOUS PARAMÈTRE P_g (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b — exécuter le véritable moteur physique G(s,U,Pg) Step45/46/55 avec Pg variable, certifier la continuation du secteur f et la sensibilité, puis examiner les conditions aux limites, les crochets Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT EXACT, STRICTEMENT LIMITÉ AU SECTEUR g :** à partir d'une transcription indépendante de la reconstruction g Step55, le programme en arithmétique rationnelle exacte avec encadrements dirigés des racines prouve sur les 256 cellules jointives `0<=s=r²<=289/400` et simultanément `|lambda|<=1/1000` que `22/25<rho_g<9/10`, `beta_g>999/1000`, `Lg>=2/5`, `Sg'>=2/5`, `sqrt(1-z²)>0`, `Pg+lambda<0`. Minima d'enclosure brute : rho_g≈0.8806795666522835, beta_g≈0.9991750787755442 ; majorant rho_g≈0.8963937829249305. Les seuils renforcés ont été comparés EXACTEMENT comme fractions. **Cette marge |lambda|<=1/1000 N'EST PAS une marge de solution physique complète, car la poussière f, le vrai G, la continuation U et les bords restent non certifiés.**
+
+**TESTS EXÉCUTÉS :** `PYTHONPATH=/mnt/data python -m unittest -v test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube` : **13 unittest PASS, 0 FAIL** ; `python /mnt/data/hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py` : certificat 256 cellules généré ; audits 64/128/512 cellules exécutés ; 3 inégalités rationnelles renforcées PASS. Les sources originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55 normalization `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862` et barrier `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe` ont été relues via GitHub. **MOTEURS ORIGINAUX NON RÉEXÉCUTÉS ; aucun vrai G ni matrice de Dirac exécutés.**
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py` — blob `0def484f17d991bca4b482091d4e45711ec8d1b6`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py` — blob `bff1e9a18a48311ba8cb90502f73ce6b822deb53`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2a-gdust-parameter-tube.json` — blob `9b775de06f6a391c6817fa2bdb184e09d887ea76`.
+- `research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md` — blob `675b7826c8fe37d9a8032984f0df51b2edf3dcc5`.
+
+**HEAD DE REPRISE INITIAL RELU :** `8fdf9c53aa7ba0c0d0f90a19b36e7dd2ee3803ab`. **BRANCHES INTERDITES RELUES INCHANGÉES :** main `aead63f4098f0d15a849e579105af034b6317b30`, research/v2-flrw `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. **NETTOYAGE LIBRARY :** deux suppressions retentées (`libfile_45aa141b5df881918aff37fe431c9c0b`, `libfile_17f52736778c819195709abedd20af01`), deux échecs `401 Unauthorized /uninjest_file`, aucune suppression déclarée.
+
+**ACTIONS PRIORITAIRES :** (1) exécuter réellement les modules physiques originaux et leur G paramétré ; (2) obtenir une borne non nulle de lambda qui contrôle aussi U, la poussière f, les dénominateurs et les bords ; (3) calculer l'opérateur fonctionnel Poisson/Dirac non-IBP six couples, rang/tertiaires et lapses ; (4) K=0/J=0, 4D, stabilité et observables ; (5) retenter nettoyage Library seulement si autorisations changent.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c1, TRACES EXTÉRIEURES EXACTES DE LA FAMILLE P_g (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2 — exécuter l'authentique moteur G(s,U,Pg) Step45/46/55 avec Pg variable, calculer sa sensibilité et certifier une marge lambda et les bords réellement prescrits, puis oracle Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
