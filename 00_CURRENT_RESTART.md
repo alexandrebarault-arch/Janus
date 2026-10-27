@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2b, COURBURE EXACTE DE LA FORME DE BORD RÉDUITE (2026-10-27)
+
+**ÉTAPE d2b TERMINÉE SUR L'ESPACE AMBIANT DES JETS, PAS SUR LA SURFACE DES CONTRAINTES. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2c — pullback de la 2-forme de bord aux variations tangentes aux contraintes physiques, conditions de bord et contretermes admissibles ; puis gradients fonctionnels améliorés, oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT :** Sur la charte HR régulière K=m² Mg² Lg Lf At>0, avec D=pSg Sg'−Lg pLg'+pg tg', z*=D/sqrt(K²+D²), A=N+M Lg/Lf, la forme de bord originale sous Dirichlet des six coordonnées et N,M,V fixes vaut Theta_D=(2Mg² N Sg/Lg)dSg'+(2Mf² M Sf/Lf)dSf'−(A z*+V Lg)dpLg−V Lf dpLf. Son extérieur différentiel est non nul : dTheta_D(∂pLg',∂pLg)=A Lg K²/(K²+D²)^(3/2)>0, indépendamment de Sg'. Également dTheta_D(∂pSg,∂pLg)=−A Sg' K²/(K²+D²)^(3/2). Par d²C=0, AUCUN contreterme scalaire local C ne peut annuler Theta_D sur un ouvert de jets ambiants avec δpLg et δpLg' indépendants, sous ces hypothèses. Témoin rationnel HORS COQUILLE K=3,D=4,Lg=2,Lf=3,N=M=1,z*=4/5 : courbures 6/25 et −3/25. Ceci n'exclut pas des conditions physiques restreintes ou des variations tangentes aux contraintes.
+
+**CONSTRUCTIONS RESTREINTES :** à coordonnées et N,M,V fixés, si δpLg=0, C1=−2Mg² N Sg Sg'/Lg−2Mf² M Sf Sf'/Lf+V Lf pLf annule Theta sur les directions restantes ; si δz*=0, C2=C1+(A z*+V Lg)pLg convient sur cette sous-variété. Si δz* est libre, dC2 contient A pLg dz*, non annulé (témoin A pLg ∂pSg z*=6/25). Ces polarisations ne sont PAS déclarées physiquement admissibles. Lapses variables non traités.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `python numerics/hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py` : 21 assertions SymPy exactes PASS, 0 FAIL. `python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py' -v` : 1 cas PASS rejouant les mêmes 21 assertions, non indépendant. Sources Step37/ADM/IBP lues sur GitHub, SHA authentifiés, moteurs Python originaux NON réexécutés. Code et test locaux exécutés et octet-identiques aux blobs GitHub relus.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- numerics/hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py — blob 5bf025f11798772ee03d55f8e58b5c3febfcf419.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py — blob c15f9a71240cdf6db113c0c054b242c08bf4d713.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2b-boundary-curvature.json — blob 46feb5e0647f46c7ae06d44ed9d89b1f72a73440.
+- research/STEP68AD_C2D2E5B3B2C2B2D2B_REDUCED_SHIFT_BOUNDARY_CURVATURE_NO_GO.md — blob 5f9262416ecb380c662e2f7a25597e6a4540bd61.
+- README.md — blob f12303a68e76c87f01534b48cf9266569fb22eaf.
+
+**ÉTAT GITHUB :** HEAD initial authentifié cf39bb6c7cdae806dcb5e1a2637e10f298e2578b ; écritures uniquement sur research/gate2b-nonhomothetic-transfer. Vérifier HEAD final après publication de l'index ; main et research/v2-flrw interdits ; workflows désactivés intouchés.
+
+**LIMITES / ACTIONS PRIORITAIRES :** (1) Calculer le tiré-en-arrière de Theta_D et dTheta_D sur les variations tangentes à la surface complète des contraintes ; ne pas inférer une obstruction physique de la courbure ambiante. (2) Examiner les conditions de bord sur les lapses et le shift diagonal et la préservation temporelle des conditions choisies. (3) Construire l'oracle original non-IBP six couples et calculer la matrice de Dirac, son rang, les tertiaires et les chartes K=0/J=0. (4) Seulement ensuite tester 4D, stabilité et observables. Aucune validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2a, FORME DE BORD TOTALE NON-IBP SIX COUPLES (2026-10-27)
 
 **ÉTAPE EXACTE MAIS LIMITÉE À LA FORME DE BORD AMBIANTE TERMINÉE : 68ad-C2d2e5b3b2c2b2d2a. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2b — conditions physiques aux frontières et contretermes, variations tangentes aux contraintes, puis oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
