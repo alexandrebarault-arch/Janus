@@ -1,0 +1,54 @@
+{
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "T_lower": "1060297323982008983172834881/10000000000000000000000000000",
+  "U_lower": "-10707594192153122134265173/2000000000000000000000000000",
+  "U_upper": "-1146420876631433922729177/250000000000000000000000000",
+  "cells": 256,
+  "f_dust_denominator_lower": "1",
+  "g_dust_beta_lower": "2497939873765488755587503833/2500000000000000000000000000",
+  "lambda_domain": [
+    "-1/5000",
+    "1/5000"
+  ],
+  "mode": "ORIGINAL_G_EXECUTED_UNIFORM_PG_PARAMETER_INTERVAL_SPATIAL",
+  "not_proven": [
+    "physical external boundary admissibility",
+    "full Dirac rank",
+    "temporal tertiaries",
+    "global lapses",
+    "K=0/J=0",
+    "4D evolution",
+    "stability",
+    "observables"
+  ],
+  "original_G": "Step45/46 C exact -> Step55 normalized symbolic -> interval compiled",
+  "original_step55_inward_barrier": {
+    "V_actual_max_enclosure": "-61130791189474633664185037/10000000000000000000000000000",
+    "V_actual_min_enclosure": "-31475070089799984705831899/2500000000000000000000000000",
+    "V_minus_Vstar_lower_rational": "-10770848851911459197434117/5000000000000000000000000000",
+    "V_minus_Vstar_upper_rational": "4305237100680266681976623/2000000000000000000000000000",
+    "strict_max_Fupper_rational": "-35926098627046194028661/1000000000000000000000000000",
+    "strict_min_Flower_rational": "177870060224748118538199/5000000000000000000000000000"
+  },
+  "proven_under_original_center_analyticity": [
+    "strict inward barrier on all radial and parameter cells",
+    "uniform |U|<1 and positive rho_g,rho_f on original spatial reconstructed branch",
+    "nonzero Pg interval for spatial radial C=0 continuation subject to Step49 center theorem"
+  ],
+  "rho_f_lower": "13681002401623193480723629/125000000000000000000000000",
+  "rho_f_upper": "1269204970466940095332675403/10000000000000000000000000000",
+  "rho_g_lower": "4422476139582034562946109931/5000000000000000000000000000",
+  "rho_g_upper": "8925646079175223516019449447/10000000000000000000000000000",
+  "s_domain": [
+    "0",
+    "289/400"
+  ],
+  "source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862"
+  },
+  "step": "68ad-C2d2e5b3b2c2b2"
+}
