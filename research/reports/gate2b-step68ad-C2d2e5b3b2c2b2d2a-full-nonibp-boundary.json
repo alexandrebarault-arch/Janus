@@ -1,0 +1,54 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2a",
+  "status": "EXACT_FORMAL_BOUNDARY_ONE_FORM; NOT_FULL_DIRAC",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "original_source_blobs": {
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "numerics/hr_spherical_adm_primary.py": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41",
+    "numerics/hr_spherical_mixed_hamiltonian_bracket.py": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81"
+  },
+  "test_run": {
+    "sympy_exact_assertions": 27,
+    "unittest_cases": 1,
+    "failures": 0,
+    "original_python_engines_reexecuted": false,
+    "command": "python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py' -v"
+  },
+  "notation": {
+    "Q": "N/Lg + M/Lf",
+    "Dg": "pSg*Sg' - Lg*pLg' + pg*tg'",
+    "Df": "pSf*Sf' - Lf*pLf' + pf*tf'",
+    "K": "m2*mg2*Lg*Lf*At",
+    "shift_equation": "dF/dz = Q*(Dg - K*z/sqrt(1-z*z))"
+  },
+  "boundary_one_form_coefficients": {
+    "delta_Sg_prime": "2*mg2*N*Sg/Lg",
+    "delta_Sf_prime": "2*mf2*M*Sf/Lf",
+    "delta_Sg": "-2*mg2*N'*Sg/Lg + (z*Q+V)*pSg",
+    "delta_Sf": "-2*mf2*M'*Sf/Lf + V*pSf",
+    "delta_Lg": "-2*mg2*N*Sg*Sg'/Lg**2",
+    "delta_Lf": "-2*mf2*M*Sf*Sf'/Lf**2",
+    "delta_pLg": "-z*(N+M*Lg/Lf)-V*Lg",
+    "delta_pLf": "-V*Lf",
+    "delta_tg": "pg*(N*tg'/(Lg**2*sqrt(1+(tg'/Lg)**2))+z*Q+V)",
+    "delta_tf": "pf*(M*tf'/(Lf**2*sqrt(1+(tf'/Lf)**2))+V)"
+  },
+  "original_minus_ibp": {
+    "B": "2*mg2*N*Sg*Sg'/Lg + 2*mf2*M*Sf*Sf'/Lf - z*pLg*(N+M*Lg/Lf)",
+    "exact_boundary_one_form_difference": "Theta_original-Theta_IBP=delta B, including delta z",
+    "delta_z_B": "-pLg*(N+M*Lg/Lf)",
+    "ibp_boundary_delta_z_coefficient": "pLg*(N+M*Lg/Lf)",
+    "shift_reduction": "At F_z=0, delta z*(canonical jets) contributes no independent term to the original bulk variation; it DOES contribute to delta B and cancels against the IBP boundary z' term."
+  },
+  "rational_off_shell_witness": {
+    "delta_Sg_prime_coefficient": "10",
+    "delta_Sf_prime_coefficient": "14",
+    "delta_pLg_coefficient": "-4/3"
+  },
+  "limits": [
+    "Formal boundary variation of bare original radial Hamiltonian; radial counterterms and physical boundary data not selected.",
+    "Dirichlet coordinate data alone do not remove delta S' flux for unrestricted ambient variations and positive lapses.",
+    "Not an on-shell Dirac-tangent boundary proof, not a full six-pair Dirac matrix, and not a 4D stability or observable result."
+  ],
+  "scientific_status": {"GATE_2B": "OPEN", "JANUS_R": "NOT_VALIDATED"}
+}
