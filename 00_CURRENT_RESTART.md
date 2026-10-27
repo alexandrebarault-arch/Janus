@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3b, TRACES f AU BORD ET LAPSÉS VARIABLES (2026-10-27)
+
+**ÉTAPE EXACTE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c — dériver et certifier la sensibilité v=∂lambda U du véritable G jusqu'à R, carte différentielle des traces f, déterminer les conditions aux bords physiques/contretermes, puis oracle Poisson/Dirac original non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE SCIENTIFIQUE EXACTE, PORTÉE LIMITÉE :** propagation rationnelle rigoureuse du certificat authentique Step45/46/55 b2 (blob 012e70e49b41cc3180da423c3962d279e3909a26) à la reconstruction canonique f originale Step46 au bord R=17/20, pour tous |lambda|<=1/5000. Les enclosures de U=pLf/r², V=pLf'/r et rho_f=pf/r² et l'encadrement sqrt(1-z1²R²)∈(99999/100000,1) donnent exactement pLf(R)<0, pLf'(R)<0, pSf(R)<0, pf(R)>0. En particulier -0.013076<pSf(R)<-0.007534 et -0.003869<pLf(R)<-0.003313 (décimales élargies ; fractions exactes dans certificat). Ce sont des intervalles de valeurs, **PAS des dérivées en lambda**. Moteurs physiques originaux **NON RÉEXÉCUTÉS dans cette session** ; les sources Step45/46/55 ont été relues et authentifiées par leurs SHA Git, et le certificat b2 a été relu.
+
+**VARIATIONS DES LAPSÉS ET NON-SÉPARABILITÉ :** B(R)=Ag*N+Af*M-z*pLg*(N+q*M), q=Lg/Lf, Ag=2Mg² R Sgr, Af=2Mf² R Sfr. À géométrie/shift fixes, delta B=(Ag-z*pLg)delta N+(Af-z*q*pLg)delta M-z*a*(N+q*M)delta lambda, a=partial_lambda pLg(R)>0. Les dérivées croisées partial_lambda partial_N B=-z*a<0 et partial_lambda partial_M B=-z*a*q<0 sont exactes ; aucun contreterme dépendant seulement de lambda, indépendant des lapses, ne peut annuler partial_lambda B pour tous N,M indépendants. **Cela ne prouve ni la non-différentiabilité générale de H_original, ni l'inadmissibilité de contretermes dépendant des lapses.** Les lapses sont des multiplicateurs et leur variation doit être traitée dans un espace fonctionnel correctement défini.
+
+**TESTS EXÉCUTÉS :** 25 assertions BigInt rationnelles dans V8 PASS, 0 FAIL, sur le code produit puis de nouveau sur les octets effectivement relus de GitHub. Certificat JSON régénéré octet-identique. Les assertions couvrent l'encadrement de la racine, les quatre signes canoniques f, T/Dbar, bornes grossières et dérivées croisées des lapses. Aucune exécution Node, aucun moteur original réexécuté, aucun oracle Dirac fonctionnel exécuté.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3b_f_traces_lapses.cjs — blob dae748bedd926327c2cdee9d474b97393f06f3dc.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3b_f_traces_lapses.cjs — blob 53ce8c8ea6f36a9f35b037595bf5abb9f4b83db8.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3b-f-traces-lapses.json — blob 4595292ee18c7f71cf773338177321a2b617592d.
+- research/STEP68AD_C2D2E5B3B2C2B3B_EXACT_F_OUTER_TRACE_AND_LAPSE_MIXED_VARIATIONS.md — blob 814e91a9597f925d077c3ac996093c3f86a73266.
+- README.md actualisé — blob a3278b607e6da8afda3f1b855503bef36805fd3f.
+
+**ÉTAT GITHUB :** branche research/gate2b-nonhomothetic-transfer uniquement ; dernier commit vérifié avant journal 9cd527e824b53fe1e5f91edf3740fe56d0a74642. main=aead63f4098f0d15a849e579105af034b6317b30, research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb vérifiés inchangés au début. GitHub Actions non modifiées. Nettoyage Library non retenté dans cette session (échecs 401 Unauthorized antérieurs ; aucune suppression revendiquée).
+
+**LIMITES ET PRIORITÉS :** (1) calculer les dérivées véritables des traces f via équation variationnelle et bords ; (2) sélectionner l'espace fonctionnel physique et les contretermes/lapses admissibles ; (3) oracle non-IBP original six couples, rang/tertiaires, K=0/J=0 ; (4) 4D/stabilité/observables. Aucune validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3a, VARIATION NON-IBP AU BORD (2026-10-27)
 
 **ÉTAPE EXACTE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3b — conditions aux bords physiques, contretermes, carte des traces f sur le tube, puis oracle Poisson/Dirac non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
