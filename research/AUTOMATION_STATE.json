@@ -1,4 +1,19 @@
 {
+  "latest_session_cleanup": {
+    "attempted": 2,
+    "succeeded": 0,
+    "failed": 2,
+    "file_ids": ["libfile_45aa141b5df881918aff37fe431c9c0b", "libfile_17f52736778c819195709abedd20af01"],
+    "exact_error": "401 Unauthorized /uninjest_file",
+    "status": "TEMPORARY_LIBRARY_COPIES_NOT_DELETED"
+  },
+  "latest_session_automation_update": {
+    "success": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "next_step_marker": "68ad-C2d2e5b3b2c"
+  },
   "latest_session_published_blobs": {
     "scripts/hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs": "2630dc6b2c7cc741f28a47dfa4a9b5d3bb0f1b80",
     "tests/test_hr_step68ad_c2d2e5b3b2b2b_parameter_tangent.cjs": "a12abddda71a42eec44b2303ec82d390bb0241e8",
