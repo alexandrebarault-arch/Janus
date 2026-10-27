@@ -5,26 +5,26 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ce59cdaee3f0e9e6e633d363ea9d667f5a3d770b",
-  "latest_verified_completed_step": "68ad-C2d2e5b3a-EXACT_K0_SHIFT_CHART_AMBIENT_VS_PHYSICAL_PATH",
-  "next_pending_step": "68ad-C2d2e5b3b-authentic-Step55-Step68o-functional-six-pair-Dirac-matrix-boundaries-tertiaries-J0",
+  "verified_research_head_before_state_file": "44ff22c8c65ef194f9018a020fe564ca5ba50e2c",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b1-EXACT_TRANSVERSE_SHIFT_CENTER_DOMAIN",
+  "next_pending_step": "68ad-C2d2e5b3b2-physical-Step55-Step68o-six-pair-functional-Dirac-regular-tangent-boundaries-tertiaries-J0",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3A_K_ZERO_CHART_AMBIENT_VS_PHYSICAL_PATH.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 15,
+    "passed": 18,
     "failed": 0,
-    "command": "cd /mnt/data/janus_e5b3 && python -m unittest -v test_hr_step68ad_c2d2e5b3_k0_chart.py",
-    "symbolic_subchecks": 16,
-    "rational_sample_checks": 4,
-    "first_attempt_failed_before_sympy_sign_assumption_fix": 7,
+    "command": "V8 eval of exact published scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs runTests(); published Node test wrapper replayed in V8 with require/console shim",
+    "wrapper_assertions_passed": 8,
+    "report_byte_identical": true,
     "original_physics_modules_reexecuted": 0,
-    "full_dirac_oracle_executed": false
+    "full_dirac_oracle_executed": false,
+    "notes": "18 exact rational checks plus 8 wrapper checks; no Node clone execution or original physical engine replay"
   },
-  "github_write_probe": "Four genuine create_file calls on exclusive research branch, 4 Git blobs read back matching exact tested bytes, README update and checkpoint prepend read back; old restart suffix preserved exactly. State update executed after verifying branch HEAD.",
+  "github_write_probe": "Four genuine GitHub create_file writes to exclusive research branch, then README and full-history checkpoint update_file; published script and wrapper reexecuted in V8; JSON report exactly regenerated; GitHub blob SHA read back; no writes to main, research/v2-flrw or Actions.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -41,7 +41,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Authentic Step55/68o on-shell functional Poisson/Dirac matrix with transverse canonical variations and boundary terms not computed; rank/tertiaries, admissible lapses, J=0, 4D/stability/observables NOT proved. K=0 reduced chart is ambient singular at center, despite regular prescribed path.",
+  "current_blocker": "Must classify constraint-preserving central tangent variations and boundary conditions before a valid six-pair reduced functional Dirac oracle; physical Step55/68o six-pair bracket matrix, rank, tertiaries, J=0, global lapses, 4D, stability, observables NOT proved.",
   "task_self_update": "If task-update tool is exposed during scheduled run, refresh next-step hint without losing fixed rules; GitHub is always the authoritative dynamic state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -50,7 +50,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "059140cf15678be3ca7315628398d69144916ab9",
+    "00_CURRENT_RESTART.md": "b929d5f9218b11d3ff92b95940e06c78475f7718",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -73,7 +73,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "16983d2004ccc915dc2e68e7c4da02e83fa07f3e",
+    "README.md": "d0136b8457d5a7b7a943fed1b01a7c11987ba24a",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -101,9 +101,13 @@
     "numerics/hr_step68ad_c2d2e5b3_k0_chart.py": "4dc80d951cb0b400445c4df864b7d49345faddfc",
     "tests/test_hr_step68ad_c2d2e5b3_k0_chart.py": "e9d09f2656a4b2f44a7d82c064515d687a768321",
     "research/reports/gate2b-step68ad-C2d2e5b3a-K0-chart.json": "ce2f1bb0094433fe3fac86480fd97e102768179e",
-    "research/STEP68AD_C2D2E5B3A_K_ZERO_CHART_AMBIENT_VS_PHYSICAL_PATH.md": "0b4592ebae296d9e614fba4ed05cee39932e2a4c"
+    "research/STEP68AD_C2D2E5B3A_K_ZERO_CHART_AMBIENT_VS_PHYSICAL_PATH.md": "0b4592ebae296d9e614fba4ed05cee39932e2a4c",
+    "scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs": "3e47422a3b3f5c4f61cc32bae1588929b5de2ace",
+    "tests/test_hr_step68ad_c2d2e5b3b1_shift_tangent.cjs": "498949c2ba7343fe699726446f95fe2e586fef03",
+    "research/reports/gate2b-step68ad-C2d2e5b3b1-shift-tangent.json": "05af81e309abac84eda716f1e3081bd486ca0c1d",
+    "research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md": "efab645b92c9bec1ab2a26946d9718431167f100"
   },
-  "current_proven_result": "EXACT pointwise chart lemma: on prescribed Step55 geometry r in [0,17/20], K=r^2 k(r) with rational k(r)>=klo>0, float(klo)=0.221156881156..., so K>0 for r>0 but K=D=0 at r=0. At K=D=0 reduced shift has no ambient continuous extension (rays z=0 versus z=4/5, derivative 9/(125 epsilon) diverges), yet prescribed Step68o algebraic path D=r^3*k*Z1/sqrt(1-r^2*Z1^2) gives z=r Z1 with regular pathwise limit 0. Does NOT prove actual Step55 ODE solution, Dirac rank, boundaries, or 4D.",
+  "current_proven_result": "Exact reduced-shift Hessian rank 1 on (K,D) != (0,0), not Dirac rank. For Step68o K=r²k,D=r³ka/w, δK=r²κ,δD=r³d gives δz=r w²/k(wd-aκ), quadratic Hessian r⁴ w/k(wd-aκ)². Smooth formal off-shell canonical perturbation δpLg=εr² gives ∂εz=-2Lg w³/(r k) and for fixed ε!=0 zε(r)->-sign(ε) while z0(r)->0, so unrestricted reduced-shift linearization not uniform at center. No assertion of constraint tangency or physical obstruction.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -114,10 +118,10 @@
     "58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
-  "scope": "Pointwise algebraic reduced-shift K=0 chart and independent exact rational K>0 bound on prescribed Step55 geometry r in (0,17/20]; regular Step68o pathwise limit only. NOT full constrained functional Dirac rank or 4D.",
-  "source_authentication_this_session": "GitHub connector read two original source blobs: hr_step55_global_barrier.py=a6e7004120d0a166a3a8973c2fbe1487a8eb70fe and hr_step68o_temporal_interval_annulus.py=c99caebc17f243784450ddff94fb061767e6d8e7. Formula reconstruction with exact Fraction/SymPy executed; original modules not executed.",
+  "scope": "Exact pointwise shift-reduction Hessian and canonical off-shell center perturbation; no full functional Poisson/Dirac matrix and no physical ghost/instability verdict.",
+  "source_authentication_this_session": "GitHub connector read original source SHA: Step45=66aa43841dccfe4a5d586a49be9c10af3a67a10e, Step55=a6e7004120d0a166a3a8973c2fbe1487a8eb70fe, Step68o=c99caebc17f243784450ddff94fb061767e6d8e7; original modules NOT executed.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
-  "last_read_branch_head_at_session_start": "c592a6cfc14b52ebd9fc1b13ff9db56ba4e25487",
+  "last_read_branch_head_at_session_start": "40ab9560ae62f2e6e4b6bd4132767d32027f318c",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
   "last_verified_physical_execution": {
     "kind": "ORIGINAL_STEP58_AN_AM_CONTINUUM_MVT_CONDITIONAL",
