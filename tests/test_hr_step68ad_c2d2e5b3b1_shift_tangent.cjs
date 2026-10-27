@@ -12,4 +12,4 @@ assert.equal(report.exact_sample.pLg_r2_Hessian_Q,"512/3125");
 assert.equal(report.exact_sample.off_shell_ratio_at_r_1_over_100000,"-400");
 assert.equal(report.GATE_2B,"OPEN");
 assert.equal(report.JANUS_R,"NOT_VALIDATED");
-console.log("18 exact rational assertions PASS; 8 independent report checks PASS");
+console.log("18 exact rational assertions PASS; 9 independent report checks PASS");
