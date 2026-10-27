@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b1, SENSIBILITÉ EXACTE DE LA POUSSIÈRE g (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2 — véritable G_U/G_Pg de Step45/46/55, équation variationnelle et v(R), dérivées des traces f, bords/contretermes puis oracle Dirac original non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE ET LIMITÉE :** en transcrivant indépendamment la reconstruction originale g de Step55 (blob a6e7004120d0a166a3a8973c2fbe1487a8eb70fe), rho_g(s,P)=-(a2 P²+a1 P+a0)/(b0+dP), P=Pg+lambda, on a dérivé exactement les dérivées première et seconde de cette fraction rationnelle. Sur s∈[0,289/400] et |lambda|<=1/5000, 256 cellules jointives et arithmétique entière dirigée 10^-28 prouvent uniformément -2.88<partial_lambda rho_g<-2.85, 3.74<partial_lambda² rho_g<3.77, 0.88<rho_g<0.90 et denom_g>0.999. L'enclosure à 512 cellules confirme les signes. Les fractions exactes figurent dans le certificat. La densité g décroît strictement et est convexe en lambda sur ce tube, à géométrie/shift fixes. Cela ne donne PAS G_U, G_Pg, v(R) ni la sensibilité des traces f.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 1551 assertions BigInt V8 PASS, 0 FAIL, réexécutées à partir des octets GitHub publiés. Cela comprend 256 cellules x 6 inégalités (1536) et 15 contrôles globaux, centraux, 512 cellules et garde-fous. Les 512 cellules sont un contrôle des signes, pas 3072 tests indépendants supplémentaires. Source originale Step55 SHA authentifiée et relue ; moteurs physiques Python Step45/46/55 NON réexécutés cette session. Aucun oracle Dirac exécuté.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS, RELUS ET TESTÉS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3c2b1_gdust_sensitivity.cjs — blob 3336afdf3c2a6ecbb0446b682516ca17bdc5390a.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b1_gdust_sensitivity.cjs — blob 83c04c69f736714073522a5efebe746a61f50b2b.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b1-gdust-sensitivity.json — blob 68d9e728c561ab52ab9c676da63d3c1b3310f052.
+- research/STEP68AD_C2D2E5B3B2C2B3C2B1_UNIFORM_G_DUST_PARAMETER_SENSITIVITY.md — blob 002c120fc713054b7c76f5e736c1e3e168907c52.
+
+**ÉTAT GITHUB :** HEAD vérifié au début 847995c5c40f0fc91bdc783777ff4b28bfeb7d56. Quatre créations scientifiques sur research/gate2b-nonhomothetic-transfer ; README, journal et index actualisés ensuite. main et research/v2-flrw interdits de modification ; aucun workflow touché. Vérifier le HEAD final et les deux branches après écriture. Nettoyage Library non retenté (401 Unauthorized antérieur).
+
+**LIMITES/PRIORITÉS :** (1) différencier le G original du secteur f et certifier G_U/G_Pg ; (2) résoudre rigoureusement v(s) jusqu'à R et calculer les quatre dérivées de traces f ; (3) définir les bords physiques et contretermes, y compris lapses ; (4) Dirac six couples, rang, tertiaires, K=0/J=0 ; (5) 4D, stabilité, observables. Aucun résultat physique global JANUS revendiqué.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2a, JACOBIEN EXACT DES TRACES f AU BORD (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b — exécuter les véritables dérivées G_U et G_Pg du moteur Step45/46/55 sur le tube paramétrique, certifier l'équation variationnelle et v(R), calculer la sensibilité réelle des traces f et les conditions de bord/contretermes, puis oracle Dirac original non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
