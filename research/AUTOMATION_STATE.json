@@ -10,10 +10,10 @@
     ]
   },
   "latest_session_automation_update": {
-    "success": false,
-    "status": "PENDING_IF_AVAILABLE",
+    "success": true,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
+    "enabled": true,
     "next_step_marker": "68ad-C2d2e5b3b2c2b3c"
   },
   "latest_session_published_blobs": {
@@ -69,7 +69,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "True parameter sensitivity of U and f traces at R not certified; physical boundary conditions/counterterms and independent lapse variations not selected; full six-pair Dirac rank/tertiaries/lapses, K=0/J=0, 4D/stability/observables unproved.",
-  "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3b; preserved all text from OBJECTIF PERMANENT verbatim; schedule unchanged and enabled.",
+  "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3c; preserved OBJECTIF PERMANENT and all following instructions byte-identical; schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
