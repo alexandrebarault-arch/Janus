@@ -1,3 +1,23 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c1, TRACES EXTÉRIEURES EXACTES DE LA FAMILLE P_g (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2 — exécuter l'authentique moteur G(s,U,Pg) Step45/46/55 avec Pg variable, calculer sa sensibilité et certifier une marge lambda et les bords réellement prescrits, puis oracle Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT EXACT CONDITIONNEL AUX BORDS :** la famille paramétrique Step55 a pLg(r)=r² Pg (1+5cg r²/2), cg=0.0015. À R=17/20, ∂lambda pLg(R)=92730563/128000000=0.7244575234375>0 et ∂lambda pLg'(R)=2734739/1600000=1.709211875>0. Step49 donne ∂lambda U0=274023815147385251710689588080861/40000000000000000000000000000000000>0. Par conséquent, **SI** pLg(R), pLg'(R) ou U0 est fixé par les conditions aux limites, cette famille à un seul paramètre ne permet que lambda=0. Ce n'est PAS une obstruction JANUS générale : les conditions physiques ne sont pas encore établies, et d'autres directions ou des bords mixtes peuvent convenir. Identité Dg=r³ Dbar vérifiée pour les reconstructions g Step55, sans exécution de l'EDO f.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 11 tests Python unittest PASS, 0 FAIL depuis une arborescence numerics/ et tests/ ; commande `python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c1_boundary_trace.py' -v`. Le certificat JSON a été régénéré et son blob Git correspond aux octets produits. Sources Step45/46/49/55 relues et SHA authentifiés ; moteurs historiques NON RÉEXÉCUTÉS. Aucune marge lambda0, aucun oracle complet de Dirac, aucune condition de bord globale prouvée.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS OCTET-IDENTIQUES :**
+- `numerics/hr_step68ad_c2d2e5b3b2c1_boundary_trace.py` — blob `ef031e1016f53fb0615d588dc63814b1a5c29030`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c1_boundary_trace.py` — blob `eae8ea08049177749ef3aefc695c9ce765ac5071`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c1-boundary-trace.json` — blob `6909e2b896470f49825ee458e4bf39a60e60184d`.
+- `research/STEP68AD_C2D2E5B3B2C1_EXACT_PARAMETER_BOUNDARY_TRACE.md` — blob `fa39bdf695aed12cd173623185f35f3b3cb0d80e`.
+
+**HEAD INITIAL AUTHENTIFIÉ :** d32ec6b518cd403b1ad1373416d3cae3c37ca2b4. **BRANCHES INTERDITES :** main=aead63f4098f0d15a849e579105af034b6317b30 ; research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb, inchangées à la vérification. Aucun workflow modifié. **ACTIONS PRIORITAIRES :** (1) vraie exécution G physique paramétré et bornes lambda ; (2) spécifier les bords admissibles, tester la tangence avec ces bords ; (3) six couples Poisson/Dirac, rang, tertiaires, lapses et chartes singulières ; (4) 4D/stabilité/observables ; (5) nettoyage Library si autorisation rétablie.
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b2b, TANGENTE RADIALE PARAMÉTRIQUE CONDITIONNELLE (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b2b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c — exécuter l'authentique G(s,U,Pg) Step45/46/55 avec paramètre Pg variable, calculer sa sensibilité et certifier une marge de continuation lambda, puis imposer les conditions aux bords et construire le véritable oracle Dirac non-IBP six couples, rang/tertiaires, K=0/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
