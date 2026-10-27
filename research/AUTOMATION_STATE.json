@@ -12,42 +12,45 @@
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b"
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b2"
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs": "1d047b8653af8b0dd8cee3735c29c1bc502983e3",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs": "4783099f702e7805c03ec7529854e846ec0aca70",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2a-gauge-tangent-kernel.json": "363a34d59bf3046baec0168efb8b59eaa98b04bf",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md": "21d2dfacead128479844d88804926b716a7841ab"
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2d2d2b1_clock_translation.py": "1d973e04f296df9144f6ddef40681dd18342e28e",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b1_clock_translation.py": "945b0327c631c131d7e31bda865283283448fc88",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b1-clock-translation.json": "50586bd81a9cdf35e966e6a13504bdf28906345f",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B1_DUST_CLOCK_TRANSLATIONS_AND_BOUNDARY_ISOTROPY.md": "b419859f173794471a4eed253d27a6ae1ce0960e",
+    "README.md": "3b16bdc6c5a880fab8e2f2dcfc1e857253b55051",
+    "00_CURRENT_RESTART.md": "2eb74105fa6a8b2386021584e61c61e676617403"
   },
-  "verified_research_head_at_session_start": "f617d71e9182a74f706da7b44f69c935c24a3caf",
-  "next_priority": "Construct at least two NON-GAUGE independent canonical boundary-trace directions modulo diagonal radial diffeomorphisms, satisfying full functional C(r)=0 and temporal preservation; then pull back dTheta and test physical boundary/lapse/counterterm conditions and original six-pair Dirac.",
+  "verified_research_head_at_session_start": "103770128d44146a886da1fab713c1ee2f988a42",
+  "next_priority": "Analyze improved clock charges and boundary conditions t_i(0),t_i(R); quotient boundary traces by temporal gauge, then construct two independent admissible physical canonical tangents and compute dTheta. Full original non-IBP Dirac six-pair rank/tertiaries/lapses/K=0/J=0/4D/stability/observables remain.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
-  "verified_session_date": "2026-10-27",
+  "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "840ca1ceb0e11ddebf5fed5f175ff1cdde857fdd",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2a_EXACT_BOUNDARY_FLAT_GAUGE_KERNEL",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b_NON_GAUGE_FUNCTIONAL_TEMPORAL_TANGENT",
+  "verified_research_head_before_state_file": "8f07f9dc056d327034883f0df5d20c0a1467e537",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b1_EXACT_BULK_DUST_CLOCK_TRANSLATIONS_PARTIAL_BOUNDARY",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b2_TEMPORAL_GAUGE_CLOCK_BOUNDARY_QUOTIENT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2B1_DUST_CLOCK_TRANSLATIONS_AND_BOUNDARY_ISOTROPY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 211,
+    "passed": 48,
     "failed": 0,
-    "runtime": "V8 BigInt exact integer polynomial identities",
-    "replayed_from_github": 211,
+    "runtime": "Python SymPy exact symbolic algebra",
+    "replayed_from_github": 48,
     "wrapper_guards": 4,
+    "wrapper_unittests": 1,
     "original_physics_modules_reexecuted": 0,
     "full_dirac_oracle_executed": false,
-    "scope": "Gauge-kernel methodological lemma, not full physical tangent."
+    "scope": "Two independent dust-clock translations are bulk canonical symmetries and radial-gauge-independent boundary traces, not established physical Dirac tangents; dTheta vanishes on their 2-plane."
   },
-  "github_write_probe": "Four scientific create_file calls succeeded; 211 V8 assertions replayed from published source; README, journal, index updated on research branch only.",
+  "github_write_probe": "Four scientific create_file calls succeeded, files read back and Git blob SHA matched local tested bytes; README and journal updated on research branch, full old journal preserved; state update pending final read.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -64,8 +67,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The authentic Step55 spatial secondary shell provides only one canonical parameter lambda, so its fixed-multiplier boundary 2-form pullback vanishes by dimension. Nonzero extended multiplier curvature is not a full Dirac obstruction. Need a second independent canonical functional tangent with temporal preservation and admissible boundary conditions.",
-  "task_self_update": "2026-10-27: marker advanced to d2d2, permanent instruction suffix preserved byte-identically; schedule/timezone/enabled verified unchanged.",
+  "current_blocker": "Need classify constant dust clock shifts versus full temporal first-class gauge and allowed center/outer clock boundary data; bulk canonical symmetry does not prove two physical non-gauge tangents. No complete lapse/Dirac temporal solution, physical boundary counterterm or 4D stability/observables.",
+  "task_self_update": "2026-10-28: prepended d2d2b1 marker; prior 6206-character prompt preserved, schedule/timezone/enabled verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
@@ -202,7 +205,7 @@
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json": "5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24",
     "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0"
   },
-  "current_proven_result": "Exact ambient boundary one-form for bare original non-IBP Hamiltonian with six canonical pairs and diagonal shift V, 10 coefficients; 11 exact original-minus-IBP delta B identities including delta z* cancellation. Dirichlet canonical coordinates alone leave nonzero delta S' flux for positive lapses in unrestricted ambient variations. No on-shell Dirac closure.",
+  "current_proven_result": "Exact independent constant dust-clock translations preserve the six-pair original bulk primaries/shift and all Poisson descendants algebraically; rank 2 in boundary clock-value traces modulo diagonal radial diffeomorphisms on Step55, but dTheta on their plane is zero and bare boundary one-form generally nonzero. This does not certify full Dirac physical independence or boundary admissibility.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
