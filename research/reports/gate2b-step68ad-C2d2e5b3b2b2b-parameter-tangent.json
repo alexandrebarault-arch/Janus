@@ -1,0 +1,80 @@
+{
+  "step": "68ad-C2d2e5b3b2b2b",
+  "kind": "CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT_EXISTENCE_THEOREM_AND_EXACT_STRUCTURAL_TESTS",
+  "date": "2026-10-27",
+  "verified_original_source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step49_analytic_center.py": "d570948912885d45a625fa2db31c6a5435b6a654",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "theorem": "With Step55 reconstructed g-sector sources parameterized by Pg and original Step46 f-sector reconstruction, if G(s,U,Pg) remains analytic near the regular compact Step55 graph, the center-analytic C=0 solution admits a unique nonzero Pg tangent v(s) on s in [0,289/400], 2s v'=(G_U-2)v+G_Pg, v(0)=Mf2*b/(Mg2*a)>0. All radial spatial constraints follow by original reconstruction, conditional on the source identities and openness of the regular chart. This does not impose external boundary conditions or temporal constraints.",
+  "center_slope": "274023815147385251710689588080861/40000000000000000000000000000000000",
+  "tests": {
+    "bigint_structural": 36,
+    "bigint_wrapper": 10,
+    "independent_sympy_scratch": 21,
+    "failed": 0
+  },
+  "test_details": {
+    "structural": [
+      "exact_physical_center_derivative",
+      "nonzero_center_tangent",
+      "Step49_center_Pg_parameter_difference",
+      "G_Pg_center_3c",
+      "regular_indicial_center",
+      "exact_tangent_series_0",
+      "exact_tangent_series_1",
+      "exact_tangent_series_2",
+      "exact_tangent_series_3",
+      "exact_tangent_series_4",
+      "exact_tangent_series_5",
+      "exact_tangent_series_6",
+      "exact_tangent_series_7",
+      "exact_tangent_series_8",
+      "full_radial_model_ode_coefficient_1",
+      "full_radial_model_ode_coefficient_2",
+      "full_radial_model_ode_coefficient_3",
+      "full_radial_model_ode_coefficient_4",
+      "full_radial_model_ode_coefficient_5",
+      "full_radial_model_ode_coefficient_6",
+      "full_radial_model_ode_coefficient_7",
+      "full_radial_model_ode_coefficient_8",
+      "linearized_model_ode_coefficient_1",
+      "linearized_model_ode_coefficient_2",
+      "linearized_model_ode_coefficient_3",
+      "linearized_model_ode_coefficient_4",
+      "linearized_model_ode_coefficient_5",
+      "linearized_model_ode_coefficient_6",
+      "linearized_model_ode_coefficient_7",
+      "linearized_model_ode_coefficient_8",
+      "Step55_g_radial_reconstruction_P1",
+      "Step55_g_radial_reconstruction_P2",
+      "Step55_Dg_independent_of_Pg",
+      "Fz_exact_rational_synthetic_witness",
+      "toy_outer_trace_nonzero_not_physical_boundary",
+      "fixed_background_regular_homogeneous_tangent_zero"
+    ],
+    "wrapper": [
+      "core_zero_fail",
+      "core_checks_executed",
+      "nonzero_physical_center_parameter_slope",
+      "exact_finite_Pg_center_shift",
+      "indicial_regular_tangent",
+      "first_linearized_jet",
+      "eighth_jet_exact_linearized",
+      "radial_shift_source_unchanged",
+      "synthetic_Dg_exact",
+      "no_physical_validation"
+    ]
+  },
+  "limitations": [
+    "The original physical G(s,U,Pg) is NOT numerically reexecuted in this run.",
+    "The global tangent existence follows conditionally from smooth parameter dependence and compact regularity, not a computed interval enclosure for the varied parameter.",
+    "No fixed outer boundary condition, full six-pair functional Poisson/Dirac rank, tertiaries, lapse boundary, K=0/J=0, 4D, stability or observables certified."
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
