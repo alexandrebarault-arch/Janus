@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b2a, CONTRE-EXEMPLE EXACT DE JET RADIAL SUPÉRIEUR (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b2b — dériver la famille tangentielle à la secondaire sur tout r via la variation de l'EDO Step55, puis oracle fonctionnel non-IBP six couples, bords, rang Dirac/tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVELLE PREUVE CONDITIONNELLE EXACTE :** sur la solution analytique Step55/68o, avec s=r² et pLf=r²U(s), la secondaire primaire-réduite Step46 s'écrit C/r²=A(s,U)[W−G(s,U)] avec W=2U+2sU_s, A(0)=−m2 Mg2 At/(2 b Mf2)≠0. L'identité Step49 G(0,U)=3U0−U donne G_U(0)=−1. Pour la perturbation pLf→pLf+epsilon*r^6, f poussière et pSf reconstruits algébriquement, Hg, Hf, Fz et Ddiag restent nuls (sous les hypothèses originales), et les premiers jets centraux demeurent inchangés ; mais **delta C=7A(0)epsilon*r^6+O(epsilon*r^8)+O(epsilon²*r^10)**. Sur les paramètres rationnels physiques Step55, 7A(0) est strictement négatif (≈−3225.510376708569). Il s'agit d'un **contre-exemple hors coquille secondaire** à la suffisance des jets centraux, PAS d'une réfutation de JANUS, PAS d'une preuve de rang Dirac et PAS d'une réfutation de la famille Pg de l'étape précédente.
+
+**SOURCES PHYSIQUES ORIGINALES RELUES SUR GITHUB, SHA AUTHENTIFIÉS, NON RÉEXÉCUTÉES :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step49 `d570948912885d45a625fa2db31c6a5435b6a654`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`.
+
+**EXÉCUTION RÉELLE :** 12 assertions BigInt V8 du programme publié PASS ; 9 assertions adversariales V8 du wrapper publié PASS ; 15 tests unittest Python PASS, avec 9 sous-identités SymPy exactes dans un script scratch non publié. **Ne pas additionner les sous-identités aux tests unittest.** Aucun échec final. Les moteurs physiques originaux et le script Node dans un clone complet n'ont pas été exécutés.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS, RELUS BYTE-IDENTIQUES :**
+- `scripts/hr_step68ad_c2d2e5b3b2b2a_secondary_highjet.cjs` — blob `572e458622c853a09d4e6d859af424442c8833cd`.
+- `tests/test_hr_step68ad_c2d2e5b3b2b2a_secondary_highjet.cjs` — blob `96fc16ff68e7f7f60ccf472b31dc46a81fd108ae`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2b2a-secondary-highjet.json` — blob `5c6eefc2d4747f768d383213c3f21169f4f94a89`.
+- `research/STEP68AD_C2D2E5B3B2B2A_EXACT_HIGHER_RADIAL_SECONDARY_JET_COUNTEREXAMPLE.md` — blob `691c09a7a2e658411396d5166a77a6605b5dac9d`.
+
+**LIMITES ET PRIORITÉS :** (1) démontrer/tester la vraie équation tangentielle linéarisée sur tout le domaine radial, y compris les bords, et classifier les variations admissibles ; (2) calculer l'opérateur original Poisson/Dirac non-IBP sur six couples, rang et tertiaires ; (3) traiter K=0/J=0 et lapses globaux ; (4) 4D, stabilité et observables. Le contre-exemple ne fournit pas une famille tangentielle à C=0.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b1, CONTRAINTES CENTRALES TRONQUÉES (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b2 — linéariser les contraintes physiques comme fonctions sur la solution Step55/68o, puis véritable oracle Poisson/Dirac non-IBP six couples, bords, rang, tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
