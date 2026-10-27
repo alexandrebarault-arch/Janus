@@ -1,3 +1,9 @@
+## JANUS research checkpoint — 2026-10-28 / 68ad-C2d2e5b3b2c2b2d2d2b1
+
+**Exact bulk dust-clock translation symmetry, NOT two physical Dirac degrees of freedom.** Constant shifts of the two dust clocks preserve all original bulk primary/shift densities and their Poisson descendants, and have independent clock-value traces modulo *radial* diffeomorphisms on Step55. Their boundary two-form pairing vanishes, but the original boundary one-form is generally nonzero (opposite signs at Step55 R with N=M=1,V=0 and positive dust). This does NOT settle temporal gauge, admissible center/boundary clock values, full Dirac rank or counterterms. **48 exact SymPy assertions PASS, 1 replay unittest PASS, 0 FAIL**; original engines not rerun. [Audit](research/STEP68AD_C2D2E5B3B2C2B2D2D2B1_DUST_CLOCK_TRANSLATIONS_AND_BOUNDARY_ISOTROPY.md). Next: d2d2b2, quotient by temporal gauge and boundary conditions, then physical tangent curvature and full six-pair Dirac. **GATE_2B OPEN; JANUS_R NOT_VALIDATED.**
+
+---
+
 ## JANUS research checkpoint — 2026-10-27 / 68ad-C2d2e5b3b2c2b2d2d2a
 
 **Exact boundary-flat diagonal radial gauge kernel, NOT a Dirac solution.** Two linearly independent gauge generators `eta1=x^4(1-x)^4`, `eta2=x eta1` have zero boundary jets for all 12 canonical fields through order two; their pullback of the original non-IBP boundary one-form and its curvature vanishes. Exact polynomial Ward identities for Dg, Df and K confirm weight-two covariance. Thus two independent *gauge* tangent directions cannot test physical boundary curvature: require non-gauge boundary-trace rank modulo diffeomorphisms and full temporal constraints. 211 exact BigInt assertions PASS (V8 and replay), 0 FAIL; no original physical Python engines rerun. [Audit](research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md). **GATE_2B OPEN; JANUS_R NOT_VALIDATED.** Next: 68ad-C2d2e5b3b2c2b2d2d2b, non-gauge full functional/temporal tangent and boundary-trace quotient.
