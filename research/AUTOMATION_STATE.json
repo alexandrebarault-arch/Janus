@@ -10,49 +10,50 @@
     ]
   },
   "latest_session_automation_update": {
-    "success": true,
+    "success": null,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b3c2b2b",
-    "verified_after_update": true
+    "next_step_marker": "68ad-C2d2e5b3b2c2b3c2b2c",
+    "verified_after_update": false,
+    "status": "PENDING_OPTIONAL_AUTOMATION_DESCRIPTION_UPDATE; GitHub remains authoritative"
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs": "66a1c4846518d036a167fce7595949bf382df144",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs": "c5432c15c01ea8da0ea1637f4e1dd97aa7ffe17b",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2a-regular-variation.json": "478be1ec26e99525a7d99f93698b40a40a32c2ae",
-    "research/STEP68AD_C2D2E5B3B2C2B3C2B2A_CONDITIONAL_REGULAR_VARIATIONAL_LEMMA.md": "1f0429d4269a54e2693946e64244faac8bcd1289",
-    "00_CURRENT_RESTART.md": "cfaf9db9bd2f232b60a90db44687cb520ee034fc",
-    "README.md": "9f0f955f1ccbccdfcdaa856f6d80efdfd2b91dc7"
+    "numerics/hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py": "285e547658dec8534247faf67fbd26dba15400bf",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py": "f29015a1a2d14edcacfced0643040798cb626d36",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2b-authentic-variational-barrier.json": "c8100b22ec0f169af2151f4308eea0bc6ba26c80",
+    "research/STEP68AD_C2D2E5B3B2C2B3C2B2B_AUTHENTIC_PHYSICAL_G_VARIATIONAL_BARRIER.md": "52937e5388438c0434c92020db667d1c4900cc11",
+    "README.md": "0334cd9ad38cb698dee6a5918955659eb656d877",
+    "00_CURRENT_RESTART.md": "a0301be34e0539c933c024cd3dfec2d8a548ab90"
   },
-  "verified_research_head_at_session_start": "cdbdbe554bab461e10196629b58291c48d386b29",
-  "next_priority": "Execute authentic Step45/46/55 G_U/G_Pg on parameter tube, enclose sensitivity v(R) and four f boundary derivatives; physical boundary/counterterms and six-pair non-IBP Dirac.",
+  "verified_research_head_at_session_start": "7097b3d305c7cf9c257861c7f82fb4133fdf80c6",
+  "next_priority": "Use certified physical G_U/G_Pg and 0.00681<v(R²,lambda)<0.00689 to enclose delta V=G_U*v+G_Pg and all four f canonical outer trace derivatives; then physical boundary/counterterms and full non-IBP six-pair Dirac.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "3f11e00f941a2096749d5b97500f809e3da04191",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3c2b2a_CONDITIONAL_CENTER_VARIATIONAL_REGULARIZATION",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b3c2b2b_AUTHENTIC_G_DERIVATIVES_AND_VARIATIONAL_PROPAGATION",
+  "verified_research_head_before_state_file": "7edd4d349d83645818b3e0326e8d4a3e3df3d9fc",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3c2b2b_AUTHENTIC_PHYSICAL_G_VARIATIONAL_BARRIER",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b3c2b2c_F_TRACE_DERIVATIVES_AND_BOUNDARY_ADMISSIBILITY",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B3C2B2A_CONDITIONAL_REGULAR_VARIATIONAL_LEMMA.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B3C2B2B_AUTHENTIC_PHYSICAL_G_VARIATIONAL_BARRIER.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 47,
+    "passed": 17,
     "failed": 0,
-    "runtime": "V8 Code Mode on original and GitHub-reread JS bytes",
-    "method": "exact BigInt rational central recurrence and polynomial residuals; conditional synthetic alpha/beta bounds",
-    "original_physics_modules_reexecuted": 0,
+    "runtime": "Python unittest in isolated workspace with four original Git-blob-identical physical source modules",
+    "method": "10^-28 directed integer interval forward-mode dual derivatives of original Step55 compiled G, 256-cell invariant v barrier; independent SymPy partial derivative at s=1/3; 512-cell check",
+    "original_physics_modules_reexecuted": 4,
     "original_sources_authenticated": 4,
     "full_dirac_oracle_executed": false,
     "report_byte_identical": true
   },
-  "github_write_probe": "4 files created and byte-readback verified; 47 BigInt assertions rerun on published bytes; full prior journal preserved; README updated; research branch only.",
+  "github_write_probe": "Four scientific files created and read back with matching tested Git blob SHA; README updated; 443929-character prior journal preserved byte-identically under prepend; state update performed on research branch only.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +70,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical G_U and G_Pg not evaluated away from s=0; alpha/beta synthetic only; v(R), f boundary derivatives, physical boundary/Dirac unproved.",
+  "current_blocker": "Physical G derivatives and uniform v(R²) interval now certified; exact point value, four f trace sensitivities, physical boundary conditions/counterterms, full Dirac rank/tertiaries/lapses, K=0/J=0, 4D/stability/observables remain open.",
   "task_self_update": "2026-10-27: dynamic marker updated to 68ad-C2d2e5b3b2c2b3c2b2b; permanent instructions verified unchanged; hourly schedule and enabled status unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -78,7 +79,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "cfaf9db9bd2f232b60a90db44687cb520ee034fc",
+    "00_CURRENT_RESTART.md": "a0301be34e0539c933c024cd3dfec2d8a548ab90",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -101,7 +102,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "9f0f955f1ccbccdfcdaa856f6d80efdfd2b91dc7",
+    "README.md": "0334cd9ad38cb698dee6a5918955659eb656d877",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -181,7 +182,11 @@
     "scripts/hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs": "66a1c4846518d036a167fce7595949bf382df144",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs": "c5432c15c01ea8da0ea1637f4e1dd97aa7ffe17b",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2a-regular-variation.json": "478be1ec26e99525a7d99f93698b40a40a32c2ae",
-    "research/STEP68AD_C2D2E5B3B2C2B3C2B2A_CONDITIONAL_REGULAR_VARIATIONAL_LEMMA.md": "1f0429d4269a54e2693946e64244faac8bcd1289"
+    "research/STEP68AD_C2D2E5B3B2C2B3C2B2A_CONDITIONAL_REGULAR_VARIATIONAL_LEMMA.md": "1f0429d4269a54e2693946e64244faac8bcd1289",
+    "numerics/hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py": "285e547658dec8534247faf67fbd26dba15400bf",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py": "f29015a1a2d14edcacfced0643040798cb626d36",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2b-authentic-variational-barrier.json": "c8100b22ec0f169af2151f4308eea0bc6ba26c80",
+    "research/STEP68AD_C2D2E5B3B2C2B3C2B2B_AUTHENTIC_PHYSICAL_G_VARIATIONAL_BARRIER.md": "52937e5388438c0434c92020db667d1c4900cc11"
   },
   "current_proven_result": "Exact conditional Step55/68o Pg-family non-IBP outer boundary variation at fixed geometry/shift/lapses: d[B]_0^R/dlambda=-z(R)*d pLg(R)/dlambda*(N+M Lg/Lf), strictly negative for fixed positive lapses; N=M=1 coefficient -6226606039693438177138189375297828359/924428111079601136099407890560000000000. Exceptional Robin beta/alpha=-5454739/12869360. Prior certified two-dust spatial tube unchanged; no physical BC or Dirac proof.",
   "last_original_reports_verified": {
