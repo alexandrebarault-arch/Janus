@@ -1,3 +1,9 @@
+## JANUS research checkpoint — 2026-10-27 / 68ad-C2d2e5b3b2c2b2d2d2a
+
+**Exact boundary-flat diagonal radial gauge kernel, NOT a Dirac solution.** Two linearly independent gauge generators `eta1=x^4(1-x)^4`, `eta2=x eta1` have zero boundary jets for all 12 canonical fields through order two; their pullback of the original non-IBP boundary one-form and its curvature vanishes. Exact polynomial Ward identities for Dg, Df and K confirm weight-two covariance. Thus two independent *gauge* tangent directions cannot test physical boundary curvature: require non-gauge boundary-trace rank modulo diffeomorphisms and full temporal constraints. 211 exact BigInt assertions PASS (V8 and replay), 0 FAIL; no original physical Python engines rerun. [Audit](research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md). **GATE_2B OPEN; JANUS_R NOT_VALIDATED.** Next: 68ad-C2d2e5b3b2c2b2d2d2b, non-gauge full functional/temporal tangent and boundary-trace quotient.
+
+---
+
 ## JANUS research checkpoint — 2026-10-27 / 68ad-C2d2e5b3b2c2b2d2c
 
 Exact **pointwise primary-constraint tangent** counterexample to closure of the reduced original non-IBP boundary one-form: a two-dimensional algebraic patch with `H_g=H_f=D_g+D_f=F_z=0`, regular `K=3>0`, positive dust momenta `p_g=173/25`, `p_f=5995/588` at its witness, and `d(i*Theta)(∂y,∂x)=6/25>0`. Interaction `beta_1=1/50` is a **toy witness, NOT Step55**. This does NOT impose the functional secondary constraint, time preservation, or full Dirac tangent space. **GATE_2B OPEN; JANUS_R NOT_VALIDATED.** 19 exact SymPy assertions and 1 replay unittest PASS, 0 FAIL. Code: `numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py`; audit: `research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md`. Next: full secondary/Dirac tangent pullback and physical boundary conditions, then six-pair non-IBP oracle, rank, tertiaries, K=0/J=0, 4D/stability/observables.
