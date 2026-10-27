@@ -41,6 +41,7 @@ function center(){
  // On lambda in [-1/5000,+1/5000], rho(lambda) strictly decreases; minimum at lambda=+1/5000.
  const rad=q('1/5000');
  check(drho(uhi).add(q(2).mul(quadratic).mul(rad)).cmp(0)<0,'strict monotonicity entire parameter tube');
+ check(drho(ulo.sub(v.mul(rad))).cmp(q('-.020'))>0 && drho(uhi.add(v.mul(rad))).cmp(q('-.019'))<0,'uniform derivative bounds on parameter tube');
  check(rho(uhi.add(v.mul(rad))).cmp(q('.12'))>0,'uniform central rho_f>0.12');
  // Step46 central identities: V0=2U0, pSf/r -> 2U0, pLf/r^2 -> U0, pLf_prime/r -> 2U0.
  check(q(3).mul(v).sub(v).cmp(q(2).mul(v))===0,'G(0) central slope');
