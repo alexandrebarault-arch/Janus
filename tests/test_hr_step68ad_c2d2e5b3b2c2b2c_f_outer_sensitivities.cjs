@@ -34,6 +34,7 @@ for(let k of ['dV','dpLf','dpLfPrime','dpf','dpSf']){
  check(q(a).cmp(x[k].lo)<=0&&q(b).cmp(x[k].hi)>=0,'outward enclosure '+k);
 }
 check(Object.keys(provenance).length===8,'eight pinned upstream blobs');
+check(provenance['research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2a-f-boundary-jacobian.json']==='e7966302ed157695df64fc887883a558d24e87ef','authenticated Step46 boundary jacobian path');
 check(c.original_python_reexecuted_this_step===false,'no fabricated reexecution');
 check(c.boundary_conditions_selected===false,'no boundary condition selection');
 check(c.full_dirac_oracle_executed===false,'no Dirac oracle');
