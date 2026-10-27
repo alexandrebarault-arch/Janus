@@ -6,8 +6,12 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": false,
-    "status": "NOT_ATTEMPTED_YET",
+    "success": true,
+    "verified_after_update": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2"
   },
   "latest_session_published_blobs": {
@@ -64,7 +68,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "The authentic Step55 spatial secondary shell provides only one canonical parameter lambda, so its fixed-multiplier boundary 2-form pullback vanishes by dimension. Nonzero extended multiplier curvature is not a full Dirac obstruction. Need a second independent canonical functional tangent with temporal preservation and admissible boundary conditions.",
-  "task_self_update": "2026-10-27: current automation prompt marker updated to d2d; permanent instruction suffix preserved byte-identically, schedule/timezone/enabled unchanged and re-read.",
+  "task_self_update": "2026-10-27: marker advanced to d2d2, permanent instruction suffix preserved byte-identically; schedule/timezone/enabled verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
