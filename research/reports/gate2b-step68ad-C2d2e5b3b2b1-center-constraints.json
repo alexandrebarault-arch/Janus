@@ -1,0 +1,72 @@
+{
+  "core": {
+    "step": "68ad-C2d2e5b3b2b1",
+    "kind": "EXACT_CENTRAL_LEADING_JETS_ONLY",
+    "passed": 25,
+    "failed": 0,
+    "checks": [
+      "center_Hg2",
+      "center_Hf2",
+      "center_C2",
+      "center_Dg1",
+      "center_Df1",
+      "center_Fz3",
+      "center_Ddiag3",
+      "center_Dg3",
+      "center_Df3",
+      "positive_K2",
+      "positive_dust_g",
+      "positive_dust_f",
+      "finite_family_plus",
+      "finite_family_minus",
+      "nonzero_tangent",
+      "deltaU_exact",
+      "delta_rhog_exact",
+      "delta_rhof_exact",
+      "C_detects_uncompensated_U",
+      "Hg_detects_uncompensated_rhog",
+      "Hf_detects_uncompensated_rhof",
+      "Fz_detects_uncompensated_Psg1",
+      "Ddiag_detects_uncompensated_Psf1",
+      "c0_detects_uncompensated_Psg0",
+      "singular_K_rejected"
+    ],
+    "witness": {
+      "Pg": "-3/5",
+      "U": "-377/16000",
+      "rhog": "127491/40000",
+      "rhof": "1812387/16000000",
+      "k0": "89/800",
+      "Psg1": "-130991/40000000",
+      "Psf1": "-23283613/16000000000"
+    },
+    "finite_family": "Pg->Pg+epsilon; all other centre jets re-solved algebraically, preserving Hg2,Hf2,C2,Fz3,Ddiag3 exactly, not full radial constraints",
+    "sources_read_not_executed": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step49_analytic_center.py": "d570948912885d45a625fa2db31c6a5435b6a654",
+      "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+    },
+    "limitations": "Leading central jets only, assumes regular analytic parity and positive K. C2 uses historical Step49 identity after f-dust elimination. No global radial tangent, no full functional Dirac rank, no lapse/boundary theorem.",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "wrapper": {
+    "passed": 12,
+    "failed": 0,
+    "checks": [
+      "core_replay",
+      "all_central_zero",
+      "different_Pg_preserves_shell",
+      "different_z1_preserves_shell",
+      "different_Pg1_preserves_shell",
+      "different_U1_preserves_shell",
+      "change_cg_rebalances_Hg",
+      "change_cf_rebalances_Hf",
+      "broken_Psg0_detected",
+      "broken_Psf0_detected",
+      "broken_Psg1_detected",
+      "broken_Psf1_detected"
+    ]
+  }
+}
