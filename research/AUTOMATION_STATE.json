@@ -6,9 +6,13 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": false,
-    "not_yet_attempted": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d"
+    "success": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d",
+    "verified_after_update": true
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py": "a71df68f58ea49e142e962bb9a5663de290e05b5",
@@ -26,7 +30,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "35c5dfb0f888b8bc05a0a241dac2b7006be9ef4f",
+  "verified_research_head_before_state_file": "3bac60acc3dc545d08fd30ee56293d49493c0bfd",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2c_EXACT_POINTWISE_PRIMARY_TANGENT_CURVATURE_WITNESS",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d_FULL_SECONDARY_FUNCTIONAL_TANGENT_BOUNDARY_PULLBACK",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -66,7 +70,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "The new positive-dust toy interaction witness has nonzero boundary curvature even on a 2D submanifold satisfying pointwise primary constraints. But it is NOT Step55, and the full functional secondary C(r)=0, tertiary/time preservation, and physical boundary conditions are not imposed. No full Dirac tangent or rank.",
-  "task_self_update": "2026-10-27: updated current automation marker to d2c while preserving entire permanent instruction suffix byte-identically, hourly schedule, Europe/Paris timezone and enabled status.",
+  "task_self_update": "2026-10-27: current automation prompt marker updated to d2d; permanent instruction suffix preserved byte-identically, schedule/timezone/enabled unchanged and re-read.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
