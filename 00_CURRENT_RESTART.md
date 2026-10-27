@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2c, SENSIBILITÉS EXTÉRIEURES DES QUATRE TRACES f (2026-10-27)
+
+**ÉTAPE SPATIALE CERTIFIÉE TERMINÉE : 68ad-C2d2e5b3b2c2b2c. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d — sélectionner/tester des conditions physiques aux limites, les variations indépendantes des lapses et les contretermes admissibles ; puis construire l'oracle Poisson/Dirac original non-IBP à six couples, rang, tertiaires, K=0/J=0, 4D, stabilité, observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT RIGOUREUX MAIS SPATIAL :** à R=17/20, pour toute la famille Step55/68o |lambda|<=1/5000 sous Step49 et les tubes authentiques b2/b2b, propagation par fractions rationnelles exactes du jacobien primaire f Step46 : 0.0135<∂lambda V<0.0139, 0.0049<∂lambda pLf<0.0050, 0.0115<∂lambda pLf'<0.0118, -0.020<∂lambda pf<-0.011, 0.0115<∂lambda pSf<0.0118. En outre -2<H<-0.6, -0.84<chi<-0.71, 1<D<1.01. Le certificat donne des fractions plus serrées, arrondies rigoureusement vers l'extérieur au pas 10^-12. Formules : ∂lambda V=G_U*v+G_Pg ; ∂lambda pLf=R²*v ; ∂lambda pLf'=R*∂lambda V ; ∂lambda pf=H*∂lambda pLf+chi*∂lambda pLf' ; ∂lambda pSf=(Lf/Sfr)*∂lambda pLf'-(R*kf*Lf/Sfr)*∂lambda pf. Les quatre traces f sont strictement monotones sur le tube ; en fixer UNE à sa valeur lambda=0 force lambda=0 DANS CETTE FAMILLE UNIQUEMENT. Aucune obstruction générale JANUS démontrée.
+
+**MÉTHODE/TESTS :** 38 assertions exactes BigInt PASS, 0 FAIL, exécutées dans V8 sur les sources construites, puis réexécutées depuis les octets GitHub publiés ; certificat JSON régénéré identique. Les huit blobs sources/certificats précédents ont été relus et comparés aux SHA épinglés. Moteurs Python originaux Step45/46/55 NON réexécutés dans CETTE étape (ils ont été exécutés dans b2/b2b). Arithmétique rationnelle exacte, aucun échantillonnage de lambda. Commande reproductible dans le dépôt : `node tests/test_hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs`.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS/RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs — blob 315d6226f5feeb346d60ab0ac2e16ca0b9de9b41.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs — blob 2787d5a79755b500d323e11e4844aa73eae3b030.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2c-f-outer-sensitivities.json — blob b53eb93c48fba7099ae2d3275ec4eb5e0464a7a4.
+- research/STEP68AD_C2D2E5B3B2C2B2C_CERTIFIED_F_OUTER_TRACE_SENSITIVITIES.md — blob 9ef72a5fe7f23785465356260ca30efcb0a80322.
+
+**ÉTAT GITHUB :** HEAD authentifié au démarrage ee39bea4925b23b0606e7dcbb38d487bab453a4e. Écritures uniquement sur research/gate2b-nonhomothetic-transfer ; main et research/v2-flrw interdits ; GitHub Actions intouchées. Relire le HEAD final après l'index. Ancien journal de 447747 caractères conservé intégralement après ce préfixe.
+
+**LIMITES/PRIORITÉS :** les conditions aux limites physiques, contretermes dépendant des lapses, différentiabilité fonctionnelle, rang Dirac six couples, tertiaires, lapses globaux, chartes K=0/J=0, évolution 4D, stabilité et observables ne sont PAS démontrés. Le rang 2 du jacobien formel n'est pas le rang Dirac. Prochaine étape : bords/contretermes et oracle fonctionnel original non-IBP ; ne pas créer de micro-étapes de simple reformulation.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b2b, DÉRIVÉES PHYSIQUES G ET BARRIÈRE VARIATIONNELLE (2026-10-27)
 
 **ÉTAPE RIGOUREUSE SPATIALE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b2b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2c — encloser delta V=G_U*v+G_Pg et les quatre dérivées des traces canoniques f à R, puis sélectionner les conditions aux bords/contretermes et construire l'oracle fonctionnel Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
