@@ -11,47 +11,50 @@
     "status": "TEMPORARY_LIBRARY_COPIES_NOT_DELETED"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2"
+    "success": false,
+    "reason": "not yet attempted; GitHub state authoritative",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_c2d2e5b3b2c1_boundary_trace.py": "ef031e1016f53fb0615d588dc63814b1a5c29030",
-    "tests/test_hr_step68ad_c2d2e5b3b2c1_boundary_trace.py": "eae8ea08049177749ef3aefc695c9ce765ac5071",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c1-boundary-trace.json": "6909e2b896470f49825ee458e4bf39a60e60184d",
-    "research/STEP68AD_C2D2E5B3B2C1_EXACT_PARAMETER_BOUNDARY_TRACE.md": "fa39bdf695aed12cd173623185f35f3b3cb0d80e",
-    "README.md": "c110c9ae90101dd13528e31bf06547df5761a750",
-    "00_CURRENT_RESTART.md": "be9d7a3b8e84f49d65847abdaeeb126c6641187a"
+    "numerics/hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "0def484f17d991bca4b482091d4e45711ec8d1b6",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "bff1e9a18a48311ba8cb90502f73ce6b822deb53",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2a-gdust-parameter-tube.json": "9b775de06f6a391c6817fa2bdb184e09d887ea76",
+    "research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md": "675b7826c8fe37d9a8032984f0df51b2edf3dcc5"
   },
-  "verified_research_head_at_session_start": "d32ec6b518cd403b1ad1373416d3cae3c37ca2b4",
-  "next_priority": "Run authentic physical G(s,U,Pg) Step45/46/55, bound nonzero lambda neighborhood, specify actual outer boundary conditions; then original six-pair functional Dirac, tertiaries, K=0/J=0, 4D, stability and observables.",
+  "verified_research_head_at_session_start": "8fdf9c53aa7ba0c0d0f90a19b36e7dd2ee3803ab",
+  "next_priority": "Execute authentic Step45/46/55 G with Pg variable; certify f-sector U and f-dust parameter tube plus boundary admissibility; then original six-pair Dirac operator.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2aa505b514c042d2d97e4511e3ca8c064ecd622e",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c1-EXACT_CONDITIONAL_PARAMETER_BOUNDARY_TRACE",
-  "next_pending_step": "68ad-C2d2e5b3b2c2-AUTHENTIC_G_SENSITIVITY_AND_BOUNDARY_ADMISSIBILITY",
+  "verified_research_head_before_state_file": "ff8adaeacd136977dd0204f6c1c4489122af210a",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2a_UNIFORM_G_DUST_PARAMETER_TUBE_PARTIAL",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b_AUTHENTIC_G_AND_F_TUBE",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C1_EXACT_PARAMETER_BOUNDARY_TRACE.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 11,
+    "passed": 13,
     "failed": 0,
-    "python_unittest": 11,
-    "executed_command": "python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c1_boundary_trace.py' -v",
+    "python_unittest": 13,
+    "additional_exact_rational_threshold_checks": 3,
+    "interval_cells_primary": 256,
+    "interval_cells_regressions": [
+      64,
+      128,
+      512
+    ],
     "original_physics_modules_reexecuted": 0,
     "authentic_G_executed": false,
-    "full_dirac_oracle_executed": false
+    "full_dirac_oracle_executed": false,
+    "command": "PYTHONPATH=/mnt/data python -m unittest -v test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube"
   },
-  "github_write_probe": "Genuine create_file and update_file calls succeeded on research branch only; four science files plus README and full restart read back exactly; Git blobs checked against local executed source/report bytes.",
+  "github_write_probe": "create_file called 4 times on research branch; three science artifacts SHA blobs match locally tested bytes, audit read back; state/README/restart updated subsequently.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -68,7 +71,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "No authentic physical G(s,U,Pg) execution or sensitivity enclosure; no certified lambda0; actual boundary conditions not specified. Fixed pLg(R), pLg'(R) or U0 would kill THIS one-parameter family, not all tangent directions. Full Dirac rank, tertiaries, lapse/bounds, K=0/J=0, 4D, stability, observables unproved.",
+  "current_blocker": "Uniform g-dust positive on full s domain for |lambda|<=1/1000 under independently transcribed Step55 reconstruction, NOT a certified physical parameter continuation: original G and f ODE not executed, no f-dust or boundary compatibility, no full Dirac rank/tertiaires/lapses/K=0/J=0/4D/stability/observables.",
   "task_self_update": "2026-10-27: automation prompt repère updated to 68ad-C2d2e5b3b2c1; permanent instructions preserved exactly from OBJECTIF PERMANENT onward; schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -148,7 +151,11 @@
     "numerics/hr_step68ad_c2d2e5b3b2c1_boundary_trace.py": "ef031e1016f53fb0615d588dc63814b1a5c29030",
     "tests/test_hr_step68ad_c2d2e5b3b2c1_boundary_trace.py": "eae8ea08049177749ef3aefc695c9ce765ac5071",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c1-boundary-trace.json": "6909e2b896470f49825ee458e4bf39a60e60184d",
-    "research/STEP68AD_C2D2E5B3B2C1_EXACT_PARAMETER_BOUNDARY_TRACE.md": "fa39bdf695aed12cd173623185f35f3b3cb0d80e"
+    "research/STEP68AD_C2D2E5B3B2C1_EXACT_PARAMETER_BOUNDARY_TRACE.md": "fa39bdf695aed12cd173623185f35f3b3cb0d80e",
+    "numerics/hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "0def484f17d991bca4b482091d4e45711ec8d1b6",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "bff1e9a18a48311ba8cb90502f73ce6b822deb53",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2a-gdust-parameter-tube.json": "9b775de06f6a391c6817fa2bdb184e09d887ea76",
+    "research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md": "675b7826c8fe37d9a8032984f0df51b2edf3dcc5"
   },
   "current_proven_result": "Conditional exact parameter-tangent existence: on the regular compact Step55 spatial chart, Pg variation with all g/f reconstruction yields a nonzero tangent to full radial spatial constraints; v(0)=Mf2*b/(Mg2*a)>0, 2s v'=(G_U-2)v+G_Pg. Original physical G parameter derivative NOT executed; outer boundary admissibility NOT proved.",
   "last_original_reports_verified": {
