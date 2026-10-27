@@ -1,0 +1,33 @@
+'use strict';
+const assert=require('assert');
+const m=require('../scripts/hr_step68ad_c2d2e5b3b2c2b3b_f_traces_lapses.cjs');
+const c=m.calculate();let passed=0;
+function ok(x,msg){assert.ok(x,msg);passed++;}
+function less(a,b){return m.cmp(m.q(a),m.q(b))<0;}
+ok(c.step==='68ad-C2d2e5b3b2c2b3b','step');
+ok(c.original_tube_certificate_blob===m.BASE_CERT_BLOB,'authentic certificate pointer');
+ok(c.root_bracket[0]==='99999/100000','root lower');
+ok(less('9999800001/10000000000',c.root_square_exact),'root lower squared');
+ok(less(c.root_square_exact,'1'),'root upper');
+ok(c.pLf_sign==='STRICT_NEGATIVE','pLf sign');
+ok(c.pLf_prime_sign==='STRICT_NEGATIVE','pLf prime sign');
+ok(c.pSf_sign==='STRICT_NEGATIVE','pSf sign');
+ok(c.pf_sign==='STRICT_POSITIVE','pf sign');
+ok(less(c.pLf_outer[1],'0'),'pLf upper negative');
+ok(less(c.pLf_prime_outer[1],'0'),'pLf prime upper negative');
+ok(less(c.pSf_outer[1],'0'),'pSf upper negative');
+ok(less('0',c.pf_outer[0]),'pf lower positive');
+ok(less(c.mixed_lambda_lapse_N,'0'),'N mixed nonzero');
+ok(less(c.mixed_lambda_lapse_M,'0'),'M mixed nonzero');
+ok(c.lambda_domain.join(',')==='-1/5000,1/5000','lambda domain');
+ok(c.GATE_2B==='OPEN'&&c.JANUS_R==='NOT_VALIDATED','no false validation');
+ok(c.pSf_outer.length===2&&less(c.pSf_outer[0],c.pSf_outer[1]),'nonempty f interval');
+ok(c.Dbar_outer.length===2&&less('0',c.Dbar_outer[0]),'Dbar positive');
+ok(less('0',c.T_outer),'T positive');
+ok(less('-1/50',c.pSf_outer[0]),'pSf coarse lower');
+ok(less(c.pSf_outer[1],'-1/200'),'pSf coarse upper');
+ok(less('-1/50',c.pLf_prime_outer[0]),'pLfprime coarse lower');
+ok(less(c.pLf_prime_outer[1],'-1/200'),'pLfprime coarse upper');
+ok(less('0',c.pf_outer[0])&&less(c.pf_outer[1],'1/10'),'pf coarse bounds');
+if(require.main===module)console.log(JSON.stringify({passed,failed:0,step:c.step}));
+module.exports={passed};
