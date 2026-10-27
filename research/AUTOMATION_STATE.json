@@ -5,7 +5,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "482dad1ea9c205c0bde12d501f22150884d9256b",
+  "verified_research_head_before_state_file": "175a4f11c6f6d1232e592d9f0294b9b4e85604e4",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2b1-EXACT_LEADING_CENTRAL_CONSTRAINT_JET_COMPATIBILITY",
   "next_pending_step": "68ad-C2d2e5b3b2b2-FULL_RADIAL_LINEARIZED_CONSTRAINTS_THEN_FUNCTIONAL_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -42,7 +42,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Only leading central constraint jets Hg2,Hf2,C2,Fz3,Ddiag3 solved; global radial linearized constraints and physical Step55/68o functional Poisson/Dirac, boundary differentiability, rank, tertiaries, K=0/J=0, lapses, 4D, stability and observables NOT proved.",
-  "task_self_update": "Current task description update pending or skipped this session; GitHub state is authoritative. Schedule unchanged.",
+  "task_self_update": "2026-10-27: automation prompt updated successfully to 68ad-C2d2e5b3b2b2; permanent instructions preserved byte-for-byte from OBJECTIF PERMANENT onward, original hourly schedule unchanged, task enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
