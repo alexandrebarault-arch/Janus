@@ -1,0 +1,64 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2b",
+  "status": "EXACT_AMBIENT_BOUNDARY_JET_CURVATURE; CONDITIONAL_POLARIZATIONS; NOT_PHYSICAL_DIRAC",
+  "original_sources": {
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "numerics/hr_spherical_adm_primary.py": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41",
+    "numerics/hr_spherical_mixed_hamiltonian_bracket.py": "6e7a91b0ff4b63c4442b1ba3a05a06cafc585d81"
+  },
+  "assumptions": "Regular K>0 HR principal-root chart; Lg,Lf,N,M,K>0; six canonical coordinates fixed at boundary; N,M,V fixed; independent ambient boundary jets pLg,pLg',pSg. Does not assume full constraint tangency.",
+  "definitions": {
+    "D": "pSg*Sg'-Lg*pLg'+pg*tg'",
+    "K": "m2*Mg2*Lg*Lf*At",
+    "z_star": "D/sqrt(K^2+D^2) (K>0)",
+    "A": "N+M*Lg/Lf",
+    "theta_dirichlet": "2Mg2*N*Sg/Lg dSg' + 2Mf2*M*Sf/Lf dSf' - (A*z_star+V*Lg) dpLg - V*Lf dpLf"
+  },
+  "curvature": {
+    "dTheta(d/dpLgprime,d/dpLg)": "A*Lg*K^2/(K^2+D^2)^(3/2) > 0",
+    "dTheta(d/dpSg,d/dpLg)": "-A*Sgprime*K^2/(K^2+D^2)^(3/2)",
+    "witness": {
+      "Lg": "2",
+      "Lf": "3",
+      "N": "1",
+      "M": "1",
+      "V": "0",
+      "K": "3",
+      "D": "4",
+      "z": "4/5",
+      "pLg": "2",
+      "pSg": "4",
+      "pLgprime": "0",
+      "pg": "1",
+      "tgprime": "0",
+      "Sgprime": "1",
+      "curvature_pLgprime_pLg": "6/25",
+      "curvature_pSg_pLg": "-3/25"
+    }
+  },
+  "theorem": "No differentiable local boundary scalar C with dC=-Theta on an open unrestricted coordinate-Dirichlet ambient boundary-jet domain containing independent pLg and pLg' variations: dTheta !=0. This is not a no-go on the full Dirac constraint tangent space.",
+  "conditional_counterterms": {
+    "fixed_pLg_and_fixed_N_M_V": "C=-2Mg2*N*Sg*Sg'/Lg-2Mf2*M*Sf*Sf'/Lf+V*Lf*pLf; valid only on stated restricted tangent directions",
+    "fixed_zstar_and_fixed_N_M_V": "C=-2Mg2*N*Sg*Sg'/Lg-2Mf2*M*Sf*Sf'/Lf+(A*zstar+V*Lg)*pLg+V*Lf*pLf; valid only if delta zstar=0",
+    "unfixed_zstar_obstruction": "delta C includes A*pLg*delta zstar; witness A*pLg*d(zstar)/d(pSg)=6/25"
+  },
+  "test_run": {
+    "exact_sympy_assertions": 21,
+    "unittest_cases": 1,
+    "failures": 0,
+    "original_python_modules_reexecuted": false,
+    "source_and_test_git_blobs_byte_verified": true,
+    "command": "python numerics/hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py; python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b2d2b_boundary_curvature.py' -v"
+  },
+  "limits": [
+    "Not on-shell constraint-tangent variations",
+    "No physically selected boundary polarization or lapse variations",
+    "No full six-pair Poisson/Dirac matrix, rank or tertiary constraints",
+    "K=0 and J=0 charts not treated",
+    "No 4D dynamics, stability, cosmological observables"
+  ],
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
