@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b2a, LEMME VARIATIONNEL CENTRAL RÉGULIER (2026-10-27)
+
+**ÉTAPE CONDITIONNELLE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2b — dériver et EXÉCUTER les vrais G_U/G_Pg du moteur original Step45/46/55, encloser leurs coefficients sur le tube, certifier v(R), dérivées des quatre traces f, bords et contretermes, puis oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT MAIS CONDITIONNEL :** l'identité centrale authentifiée lors de b2, G(0,U,P)=3*Mf2*b*(P/a-2*z1)-U, impose G_U(0)=-1, G_Pg(0)=3*v0 et v0=Mf2*b/a=274023815147385251710689588080861/40000000000000000000000000000000000. Pour A(s)=G_U-2=-3+Σ a_k s^k, B(s)=G_Pg=3v0+Σ b_k s^k, la sensibilité analytique v=Σv_n s^n satisfait exactement (2n+3)v_n=b_n+Σ(k=1..n)a_k v_(n-k). En particulier v1=(a1*v0+b1)/5 ; le mode s^(-3/2) est exclu. Sous les hypothèses supplémentaires |G_U+1|≤alpha*s, |G_Pg-3v0|≤beta*s, une majoration conditionnelle est |v(s)-v0|≤(alpha*|v0|+beta)*s*exp(alpha*s/2)/5 ; pour alpha*S/2<1, majorant rationnel ≤(alpha*|v0|+beta)*S/[5*(1-alpha*S/2)]. Les constantes alpha=1/10 et beta=1/100 sont EXCLUSIVEMENT SYNTHÉTIQUES et ne sont pas démontrées pour le G physique.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 47 assertions rationnelles BigInt V8 PASS, 0 FAIL, puis les mêmes 47 réexécutées depuis les octets GitHub relus ; le certificat JSON est régénéré octet-identique. Ce sont 47 cas distincts, pas 94 tests indépendants. Les quatre fichiers scientifiques ont été créés et relus octet-identiques. Sources physiques originales Step45/46/55 consultées avec SHA Git : 66aa43841dccfe4a5d586a49be9c10af3a67a10e, bac025c28dbe1561c0c36c56dbfda46dc326f804, a54a6acf2f7ad2f64c500faecfa1406ecbf7b862, a6e7004120d0a166a3a8973c2fbe1487a8eb70fe. Moteurs Python originaux NON réexécutés ; aucun G_U/G_Pg physique sur s>0, v(R) ou oracle Dirac calculé.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs — blob 66a1c4846518d036a167fce7595949bf382df144.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2a_variational_regularization.cjs — blob c5432c15c01ea8da0ea1637f4e1dd97aa7ffe17b.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2a-regular-variation.json — blob 478be1ec26e99525a7d99f93698b40a40a32c2ae.
+- research/STEP68AD_C2D2E5B3B2C2B3C2B2A_CONDITIONAL_REGULAR_VARIATIONAL_LEMMA.md — blob 1f0429d4269a54e2693946e64244faac8bcd1289.
+
+**ÉTAT GITHUB :** HEAD authentifié au démarrage cdbdbe554bab461e10196629b58291c48d386b29 ; seules créations sur research/gate2b-nonhomothetic-transfer. Les branches main et research/v2-flrw restent interdites de modification ; aucune action workflow autorisée. Vérifier HEAD final après journal/index. Nettoyage Library non retenté dans cette session (anciens 401 Unauthorized).
+
+**LIMITES :** ce lemme facilite une certification future mais n'établit aucune borne physique alpha/beta, aucune valeur v(R), aucune condition de bord admissible, aucune fermeture temporelle de Dirac, aucune stabilité ni observable cosmologique. Éviter de présenter le cas synthétique comme un calcul de sensibilité JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b1, SENSIBILITÉ EXACTE DE LA POUSSIÈRE g (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2 — véritable G_U/G_Pg de Step45/46/55, équation variationnelle et v(R), dérivées des traces f, bords/contretermes puis oracle Dirac original non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
