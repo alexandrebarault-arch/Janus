@@ -1,0 +1,38 @@
+{
+  "step": "68ad-C2d2e5b3b2b2a",
+  "kind": "CONDITIONAL_EXACT_SECONDARY_HIGHER_JET_COUNTEREXAMPLE",
+  "passed": 12,
+  "failed": 0,
+  "checks": [
+    "Astar_positive",
+    "coefficient_negative",
+    "coefficient_nonzero",
+    "leading_exact_7cw",
+    "delta_W_six",
+    "delta_G_minus_one_plus_s_lambda",
+    "delta_residual_7_minus_s_lambda",
+    "residual_nonzero",
+    "radial_momentum_exact",
+    "delta_pLf_r6_delta_W",
+    "first_unconstrained_jet_r6",
+    "leading_not_ghost_proof"
+  ],
+  "original_identity": "C/r^2=A(s,U)*(W-G(s,U)), W=pLf_prime/r=2U+2sU_s, A(0)=-m2*mg*At/(2*b*mf)",
+  "construction": "On exact Step55/68o radial background set delta pLf=epsilon*r^6; recompute f dust and pSf by original Step46; leave g fields and z fixed.",
+  "exact_leading": "delta C = 7*A(0)*epsilon*r^6 + O(epsilon*r^8)+O(epsilon^2*r^10) near center",
+  "physical": {
+    "At": "10568489488216307024971913040693908331123/97656250000000000000000000000000000000000",
+    "A0": "-7383670097498879070952948034390626481769176679837/16024034849093916758905407237138671875000000000",
+    "seven_A0": "-7383670097498879070952948034390626481769176679837/2289147835584845251272201033876953125000000000"
+  },
+  "interpretation": "Hg,Fz unchanged; Hf and Dg+Df preserved by algebraic reconstruction; C2 and all leading center jets unchanged, but C(r) nonzero for generic epsilon.",
+  "original_source_sha_read_not_executed": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step49_analytic_center.py": "d570948912885d45a625fa2db31c6a5435b6a654",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "limits": "Original engines not reexecuted; perturbation is off the full secondary shell and not a physical Dirac tangent; no complete rank/lapse/boundary/4D proof.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
