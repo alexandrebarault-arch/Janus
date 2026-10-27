@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b1, COEFFICIENT AFFINE Step46 f SUR UN CONTINUUM (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2 — exécuter le véritable G(s,U,Pg) Step45/46/55 avec Pg variable, certifier U et poussière f et bords, puis oracle Poisson/Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT EXACT CONDITIONNEL (PAS UNE SOLUTION f CERTIFIÉE) :** sur la géométrie Step55, pour tout s=r²∈[0,289/400] et tout U avec |U|<=1, le polynôme T(s)=beta1*Lg²+2beta2*Lg*Lf+beta3*Lf² a cinq coefficients Bernstein rationnels exacts tous dans (1/10,11/100). La formule originale Step46 donne le dénominateur poussière f beta_f+fac*tfr=sqrt(1+kf²*s)+kf*s*U/(2*Mf2*Sfr)>3/4 et le coefficient affine secondaire normalisé C_V/r<-372 pour 0<r<=17/20. Minima rationnels indicatifs T>0.106037774505..., dénominateur>0.787967230705..., -C_V/r>372.501551686... . **C_V n'est PAS J=∂B_N/∂pSf temporel** ; C_V=O(r) au centre. L'hypothèse |U|<=1 N'EST PAS certifiée pour le vrai U(s,lambda) ; aucune densité de poussière f positive ni continuation paramétrique n'est prouvée.
+
+**EXÉCUTION RÉELLE :** `cd /mnt/data/janus68ad_c2d2e5b3b2c2b1 && PYTHONPATH=. python -m unittest discover -s tests -v` : **13 tests Python PASS, 0 FAIL** (dont 2 identités SymPy incluses, non additionnées). `python numerics/hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py` : JSON rationnel régénéré. Source originale Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55 normalized `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step55 barrier `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe` relues et SHA authentifiés ; **moteurs originaux et G paramétré NON RÉEXÉCUTÉS**.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS OCTET-IDENTIQUES AUX TESTS :**
+- `numerics/hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py` — blob `d16150475c4d3ac38162c8be06c07d8734efa4c2`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py` — blob `c608333536783b0c67a1c842b0ba94253939331d`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b1-f-chart-coefficient.json` — blob `24d9f2cefa001b1fabd3634b87556cbab6c90b42`.
+- `research/STEP68AD_C2D2E5B3B2C2B1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL.md` — blob `cf2fe91387f667a0792633bf43d39b784cf39865`.
+
+**HEAD DE REPRISE INITIAL RELU :** `c73949877acf4b30d67073f1b8d6a0d8d6641092`. **HEAD AVANT JOURNAL :** `7b1fdefb966223855858769fb94775016f2272b6`. Branches main et research/v2-flrw non modifiées, aucun workflow Actions touché. **NETTOYAGE LIBRARY :** deux suppressions par library_file_id retentées, 2 échecs `401 Unauthorized /uninjest_file` ; aucune suppression déclarée.
+
+**ACTIONS PRIORITAIRES :** (1) exécuter le G physique original avec Pg variable, certifier une borne uniforme de U et rho_f sur un intervalle non nul de lambda ; (2) conditions aux limites externes admissibles ; (3) oracle fonctionnel original non-IBP à six couples, rang Dirac/tertiaires et lapses ; (4) K=0/J=0, 4D/stabilité/observables ; (5) nettoyage Library seulement si autorisations rétablies.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2a, TUBE UNIFORME DE POUSSIÈRE g SOUS PARAMÈTRE P_g (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b — exécuter le véritable moteur physique G(s,U,Pg) Step45/46/55 avec Pg variable, certifier la continuation du secteur f et la sensibilité, puis examiner les conditions aux limites, les crochets Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
