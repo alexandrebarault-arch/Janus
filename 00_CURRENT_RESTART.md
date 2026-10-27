@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2a, JACOBIEN EXACT DES TRACES f AU BORD (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b — exécuter les véritables dérivées G_U et G_Pg du moteur Step45/46/55 sur le tube paramétrique, certifier l'équation variationnelle et v(R), calculer la sensibilité réelle des traces f et les conditions de bord/contretermes, puis oracle Dirac original non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE, PORTÉE LIMITÉE :** à géométrie, shift et reconstruction g fixés, la primaire f originale Step46 fournit rho=-A/D, avec D=beta_f+kf*s*U/(2Mf2*Sfr), A=U²/(4Mf2Lf)-U*(V-sDbar/Lf)/(2Mf2Sfr)-Mf2Lf³Rf/2+s*z1*Dbar/Lf+Wfbar. Au bord R=17/20, définir H=-(A_U+rho D_U)/D et chi=R*U/(2Mf2*Sfr*D). Les identités exactes sont delta pf=H delta pLf+chi delta pLf' et delta pSf=(Lf/Sfr)delta pLf'-(R*kf*Lf/Sfr)delta pf. Le jacobien formel (delta U,delta V) vers les quatre traces a rang 2 puisque ses deux premières lignes sont diag(R²,R) ; ce n'est PAS le rang de Dirac. Le certificat b2 authentique antérieur et une borne rationnelle de sqrt prouvent uniformément -21/25<chi<-71/100 pour |lambda|<=1/5000. Ce chi n'est PAS le J temporel.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 24 assertions exactes BigInt PASS, 0 FAIL dans Node.js local et 24 réexécutées dans V8 sur les octets publiés (24 cas distincts, pas 48 tests indépendants). Dix égalités par nombres duaux rationnels sur cinq directions synthétiques, contrôles de signes, fractions physiques, garde-fous GATE/JANUS. Le certificat JSON a été régénéré octet-identique depuis le programme publié. Source originale Step46 relue avec blob Git bac025c28dbe1561c0c36c56dbfda46dc326f804 ; certificat b2 relu blob 012e70e49b41cc3180da423c3962d279e3909a26. Les moteurs Python physiques originaux n'ont PAS été réexécutés dans cette étape ; G_U/G_Pg authentiques et v(R) ne sont PAS calculés.
+
+**LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3c2a_f_boundary_jacobian.cjs — blob 7615cdb1624748dac56ab1d969c401b258f8cdaa.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3c2a_f_boundary_jacobian.cjs — blob fdbc28c258cd38d96da602db5992dca10a85bf45.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2a-f-boundary-jacobian.json — blob e7966302ed157695df64fc887883a558d24e87ef.
+- research/STEP68AD_C2D2E5B3B2C2B3C2A_EXACT_F_BOUNDARY_TRACE_JACOBIAN.md — blob d40b07eb87bbcb09b8c6b00a03a63152dd5472a4.
+- README.md — blob d40f7b1e87807190312bd61561f61d035576d70c.
+
+**ÉTAT GITHUB :** HEAD de reprise 770bb8e36b1519290748d48bd39c87c926125362 ; publications exclusivement sur research/gate2b-nonhomothetic-transfer. main et research/v2-flrw doivent être relus en fin de session ; aucun workflow modifié. Nettoyage Library non retenté, échecs 401 Unauthorized antérieurs.
+
+**LIMITES ET PRIORITÉS :** (1) différencier le véritable G(s,U,Pg) original et encadrer G_U/G_Pg ; (2) certifier la sensibilité v(R) puis substituer delta U=v(R), delta V=G_U v+G_Pg dans les identités de bord ; (3) définir espace fonctionnel physique, lapses et contretermes ; (4) oracle original non-IBP six couples, rang/tertiaires/K=0/J=0 ; (5) 4D/stabilité/observables. Ne pas transformer un rang de jacobien de traces en rang Dirac.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c1, SENSIBILITÉ CENTRALE EXACTE f (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2 — vraie équation variationnelle G_U/G_Pg, v(R), dérivées des traces f, espace de bords et contretermes, puis oracle Dirac non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
