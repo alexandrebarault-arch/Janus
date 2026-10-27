@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2b1, CONTRAINTES CENTRALES TRONQUÉES (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b2 — linéariser les contraintes physiques comme fonctions sur la solution Step55/68o, puis véritable oracle Poisson/Dirac non-IBP six couples, bords, rang, tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**SOURCES ORIGINALES RELUES SUR GITHUB, SHA AUTHENTIFIÉS, NON RÉEXÉCUTÉES :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step49 `d570948912885d45a625fa2db31c6a5435b6a654`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`. La formule de C/r² est reprise du théorème historique Step49 après élimination de la primaire poussière f, **pas** nouvellement dérivée de l'intégralité du crochet original.
+
+**NOUVEAU RÉSULTAT EXACT CONDITIONNEL AUX JETS CENTRAUX :** avec `Lg=a(1+cg r²)², Sg=r Lg, Lf=b(1+cf r²)², Sf=r Lf`, moments `pLg=r²(Pg+Pg1 r²)`, `pLf=r²(U+U1 r²)`, `pSg=r(2Pg+Psg1 r²)`, `pSf=r(2U+Psf1 r²)`, poussières `pg=r² rhog,pf=r² rhof`, gradients `tg'=r kg Lg,tf'=r kf Lf`, shift `z=r z1+O(r³)`, les deux primaires originales ont pour coefficients d'ordre r² `Hg2=-3Pg²/(4mg a)+rhog+24mg a cg+m2 mg Vg`, `Hf2=-3U²/(4mf b)+rhof+24mf b cf+m2 mg Vf`. Leurs annulations fixent les deux densités de poussière. Step49 impose `U=mf b(Pg/(mg a)-2 z1)` à partir de C2=0. `Dg3=a(Psg1+8cg Pg-4Pg1+kg rhog)`, `Df3=b(Psf1+8cf U-4U1+kf rhof)` ; choisir `Psg1=k0 z1/a-8cg Pg+4Pg1-kg rhog`, `Psf1=-k0 z1/b-8cf U+4U1-kf rhof` avec `k0=m2 mg a b(b1 a²+2b2 ab+b3 b²)>0` impose `Fz3=Dg3-k0 z1=0` et `Ddiag3=Dg3+Df3=0`. Une famille `Pg→Pg+epsilon` avec ajustement algébrique non linéaire des autres jets préserve **exactement ces contraintes TRONQUÉES** ; cela ne prouve PAS la tangence aux contraintes fonctionnelles globales.
+
+**EXÉCUTION RÉELLE :** programme publié exécuté dans V8 : **25 assertions rationnelles BigInt PASS** ; wrapper adversarial exécuté dans V8 : **12 assertions PASS** ; contrôle SymPy indépendant en session : **15 identités exactes PASS** (courbures, primaires, moments radiaux, substitutions, famille finie et tangence), script SymPy scratch **non publié**. Total **52 vérifications PASS, 0 FAIL**, ne pas les présenter comme 52 tests unitaires Python. Moteurs physiques originaux NON réexécutés ; aucun oracle Dirac complet exécuté.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS, RELUS ET OCTET-IDENTIQUES :**
+- `scripts/hr_step68ad_c2d2e5b3b2b1_center_constraint_jets.cjs` — blob `de5e67cc1082335718575a72a5d2794bdca7afc6`.
+- `tests/test_hr_step68ad_c2d2e5b3b2b1_center_constraint_jets.cjs` — blob `90328310e4887cf63ab0c8ec6fd9da4639a20ed9`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2b1-center-constraints.json` — blob `418e647c8ae5aeaa1e7204af1ec052fa0bb16542`.
+- `research/STEP68AD_C2D2E5B3B2B1_EXACT_CENTRAL_CONSTRAINT_JET_COMPATIBILITY.md` — blob `5b2f4df4901610138492502f974a79b1d051eae9`.
+- README actualisé — blob `77cae587c72033479bf008bd7044e3ad3bd862cb`.
+
+**NETTOYAGE LIBRARY :** suppressions réellement retentées sur `libfile_c03fc70b65508191b4df733834c5b614` et `libfile_45aa141b5df881918aff37fe431c9c0b` ; **2 échecs exacts `401 Unauthorized /uninjest_file`**, fichiers non supprimés.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) dériver les contraintes linéarisées **pour tout r** sur la véritable solution Step55/68o, avec variations de poussière et shift régulier ; (2) calculer le crochet original non-IBP à six couples et termes de bord, rang complet/tertiaires ; (3) examiner K=0/J=0, lapses/bords ; (4) 4D/stabilité/observables. **Aucun rang Dirac, lapse global, liberté du fantôme ni validation cosmologique démontré.** Branche autorisée uniquement ; main/v2-flrw/Actions intouchés.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2a, CHARTE CENTRALE DE PARITÉ DU SHIFT RÉDUIT (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b — imposer les contraintes linéarisées Hg/Hf/C sur les variations centrales, puis calculer le véritable oracle fonctionnel non-IBP à six couples sur la solution Step55/68o, avec bords, rang Dirac, tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
