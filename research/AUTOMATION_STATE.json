@@ -6,24 +6,17 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "verified_after_update": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2"
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b"
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "2d646edb9c571ef75ef0e3d3448ad53a0b59b42a",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "103c20deb16c3b6903eecae047ebcc154e8fde03",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json": "5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0",
-    "README.md": "f70eeb0e1cd0caf7329bce12fa55076e4bb5a9a3",
-    "00_CURRENT_RESTART.md": "1390a0efabc3ab57dd6c35ab03aec3d59038c785"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs": "1d047b8653af8b0dd8cee3735c29c1bc502983e3",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs": "4783099f702e7805c03ec7529854e846ec0aca70",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2a-gauge-tangent-kernel.json": "363a34d59bf3046baec0168efb8b59eaa98b04bf",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md": "21d2dfacead128479844d88804926b716a7841ab"
   },
-  "verified_research_head_at_session_start": "6a69648cb7596ac2ad0ab043593275ffd8a16fa6",
-  "next_priority": "Construct two genuinely independent canonical variations satisfying full functional secondary C(r)=0, primaries, center/boundary regularity and temporal preservation; then evaluate pullback dTheta, boundary polarization, lapses/counterterms and six-pair non-IBP Dirac rank/tertiaries/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "f617d71e9182a74f706da7b44f69c935c24a3caf",
+  "next_priority": "Construct at least two NON-GAUGE independent canonical boundary-trace directions modulo diagonal radial diffeomorphisms, satisfying full functional C(r)=0 and temporal preservation; then pull back dTheta and test physical boundary/lapse/counterterm conditions and original six-pair Dirac.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -31,26 +24,25 @@
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
   "verified_research_head_before_state_file": "840ca1ceb0e11ddebf5fed5f175ff1cdde857fdd",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d1_AUTHENTIC_SPATIAL_SHELL_MULTIPLIER_CURVATURE",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2_FULL_FUNCTIONAL_CANONICAL_TANGENT",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2a_EXACT_BOUNDARY_FLAT_GAUGE_KERNEL",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b_NON_GAUGE_FUNCTIONAL_TEMPORAL_TANGENT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 35,
+    "passed": 211,
     "failed": 0,
-    "runtime": "V8 exact rational BigInt",
-    "wrapper_invariants_passed": 4,
-    "wrapper_replays_same_assertions": true,
+    "runtime": "V8 BigInt exact integer polynomial identities",
+    "replayed_from_github": 211,
+    "wrapper_guards": 4,
     "original_physics_modules_reexecuted": 0,
-    "original_sources_authenticated": 4,
     "full_dirac_oracle_executed": false,
-    "method": "Authentic Step55 one-parameter spatial shell; mixed boundary multiplier curvature; f derivative interval certified earlier"
+    "scope": "Gauge-kernel methodological lemma, not full physical tangent."
   },
-  "github_write_probe": "Seven authorized branch writes succeeded (four scientific, README, journal, index); all scientific files/README/journal reread byte-identical; no original physics engines rerun.",
+  "github_write_probe": "Four scientific create_file calls succeeded; 211 V8 assertions replayed from published source; README, journal, index updated on research branch only.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
