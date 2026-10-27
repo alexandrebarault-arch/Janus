@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2a, NOYAU DE JAUGE DES TANGENTES CANONIQUES (2026-10-27)
+
+**ÉTAPE d2d2a TERMINÉE : LEMME STRUCTUREL EXACT, PAS UNE SOLUTION DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b — chercher des variations CANONIQUES NON-JAUGE à traces de bord indépendantes modulo difféomorphismes, satisfaisant primaires, secondaire C(r)=0 et préservation temporelle ; puis pullback de dTheta, bords/contretermes/lapses, oracle Dirac six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT :** Deux générateurs radiaux `eta1=x^4(1-x)^4`, `eta2=x*eta1`, x=r/R, sont indépendants et plats au bord jusqu'à l'ordre 3. Ils induisent les variations canoniques `delta X=eta X'+w eta' X` sur les SIX couples, et annulent toutes les variations des 12 champs et leurs jets jusqu'à l'ordre 2 aux deux frontières. Les identités exactes `delta Dg=eta Dg'+2 eta' Dg`, idem Df et K HR, confirment la covariance des densités et du shift z* scalaire sur K>0. Le tiré-en-arrière de Theta original non-IBP et de dTheta sur ces deux directions est NUL : le seul critère « deux directions indépendantes » ne suffit donc pas ; il faut des directions à traces de bord NON-JAUGE indépendantes. Les polynômes sont plats aux bords, PAS strictement à support compact ; une coupure C∞ intérieure fournit des variantes compactes. La tangence aux contraintes fonctionnelles/à leur préservation temporelle est CONDITIONNELLE à l'existence d'une solution complète et à la covariance des multiplicateurs, NON vérifiée ici sur Step55.
+
+**TESTS EXÉCUTÉS :** 211 assertions BigInt EXACTES PASS dans V8 avant publication, 0 FAIL ; 211 PASS en rejeu sur octets GitHub et 4 gardes de wrapper vérifiés (non indépendants). Source originale Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e, Ward 89e7f6eab35d28317f2f7a4330601736525487e5, Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f et audit d2d1 1ba6d012133a92b69a8c91498d065b22649afbe0 relus sur GitHub. Aucun moteur Python physique original réexécuté ; témoins polynomiaux NON physiques.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs` — blob `1d047b8653af8b0dd8cee3735c29c1bc502983e3`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2a_gauge_tangent_kernel.cjs` — blob `4783099f702e7805c03ec7529854e846ec0aca70`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2a-gauge-tangent-kernel.json` — blob `363a34d59bf3046baec0168efb8b59eaa98b04bf`.
+- `research/STEP68AD_C2D2E5B3B2C2B2D2D2A_GAUGE_TANGENT_BOUNDARY_KERNEL.md` — blob `21d2dfacead128479844d88804926b716a7841ab`.
+
+**GITHUB :** HEAD initial `f617d71e9182a74f706da7b44f69c935c24a3caf`. Écritures exclusivement sur `research/gate2b-nonhomothetic-transfer` ; protéger `main`, `research/v2-flrw` et les workflows désactivés. HEAD final à relire après index.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) Pas de rang Dirac, de contreterme physique, de lapse déterminé, de seconde direction NON-JAUGE Step55. (2) Construire le quotient des traces de bord par jauge, vérifier sa dimension sur le vrai linéarisé des contraintes. (3) Contrôler préservation temporelle et bords, puis oracle original six couples. (4) Ne pas confondre covariance cinématique et existence d'une solution temporelle complète.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d1, COURBURE MIXTE DES MULTIPLICATEURS SUR LA FAMILLE SPATIALE STEP55 (2026-10-27)
 
 **ÉTAPE d2d1 TERMINÉE, RÉSULTAT EXACT/ENCADRÉ MAIS NON DIRAC. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2d2 — trouver au moins deux variations CANONIQUES indépendantes tangentes à la secondaire fonctionnelle C(r)=0, primaires, régularité et préservation temporelle ; évaluer le pullback de dTheta, bords/lapses/contretermes puis Dirac original six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
