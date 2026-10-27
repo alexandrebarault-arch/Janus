@@ -1,63 +1,52 @@
 {
   "latest_session_cleanup": {
-    "attempted": 2,
+    "attempted": 0,
     "succeeded": 0,
-    "failed": 2,
-    "file_ids": [
-      "libfile_45aa141b5df881918aff37fe431c9c0b",
-      "libfile_17f52736778c819195709abedd20af01"
-    ],
-    "exact_error": "401 Unauthorized /uninjest_file",
-    "status": "TEMPORARY_LIBRARY_COPIES_NOT_DELETED"
+    "failed": 0,
+    "status": "NOT_RETRIED_THIS_SESSION_PREVIOUS_401_UNAUTHORIZED",
+    "previous_error": "401 Unauthorized /uninjest_file"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b3"
+    "success": false,
+    "status": "PENDING_TOOL_UPDATE",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b3b"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "180307509ad7992880b99319dbeb6f8662752127",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "ec8e3145b65f902a95648872bfc3e5b554c25046",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2-authentic-Pg-fdust-tube.json": "012e70e49b41cc3180da423c3962d279e3909a26",
-    "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md": "2e388ef7eacf59df7bea0e443486bee72fb38fa3",
-    "README.md": "4c9d01ac30e347b41dfc586d3e85746ddf8300db",
-    "00_CURRENT_RESTART.md": "d5584dfe7cfdbad91c4aaeb74eb712e94b14ffba"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs": "485cbfcd9ccb255c12b1da1ff4615fdaa66df066",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs": "1681226f7f4c29ec7f59c5ad1a0db07df4902a4b",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3a-nonibp-boundary.json": "b60a7fd132b8f8803c6eea5649b87c840b5502c0",
+    "research/STEP68AD_C2D2E5B3B2C2B3A_EXACT_PG_BOUNDARY_FLUX_AND_ROBIN_CLASSIFICATION.md": "865f1ed1d1c9a8f0c2a7bd62101dee29f387c38b",
+    "README.md": "47fa29482c1eb76d15ab9717bd3834405e85d652",
+    "00_CURRENT_RESTART.md": "561413126a5edc2a22e4718a1ec78a5443692ff9"
   },
-  "verified_research_head_at_session_start": "9559ffba454c126ccbc15531860a157c733c4e28",
-  "next_priority": "Specify admissible physical boundary conditions and compute boundary trace map on certified |lambda|<=1/5000 spatial two-dust family; then original six-pair non-IBP Poisson/Dirac functional oracle, rank/tertiaires/lapses/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "312e19cdb6571467516d6e9c4a1bf3d069263224",
+  "next_priority": "Determine physical boundary conditions, counterterms and lapse variations; compute authentic f-sector outer trace sensitivity on Pg tube; then original six-pair non-IBP functional Dirac operator/rank/tertiaries, K=0/J=0, 4D.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "70c54510b227fd5b450e9eb93b9f2b06fca2bf25",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b3_BOUNDARY_TRACE_AND_DIRAC_ORACLE",
+  "verified_research_head_before_state_file": "8d60dabb7ea63e34b46c5c24693c130f24ae976f",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3a_EXACT_NONIBP_PG_BOUNDARY_FLUX",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b3b_PHYSICAL_BOUNDARY_CONDITIONS_F_TRACE_AND_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B3A_EXACT_PG_BOUNDARY_FLUX_AND_ROBIN_CLASSIFICATION.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 13,
+    "passed": 25,
     "failed": 0,
-    "python_unittest": 13,
-    "sympy_identities_inside_unittest": 2,
-    "additional_independent_symbolic_checks_not_counted": 0,
-    "original_physics_modules_reexecuted": 4,
-    "authentic_G_executed": true,
+    "runtime": "V8",
+    "method": "BigInt rational source and wrapper reexecuted from published GitHub content",
+    "original_physics_modules_reexecuted": 0,
+    "original_sources_authenticated": 4,
     "full_dirac_oracle_executed": false,
-    "command": "cd /mnt/data/janus_run && PYTHONPATH=. python -m unittest discover -s tests -v",
-    "continuum_interval_cells": 256,
-    "independent_revalidation_cells": 512,
-    "noncertified_coarse_cells": 128,
-    "lambda_radius": "1/5000"
+    "report_byte_identical": true
   },
-  "github_write_probe": "create_file called successfully 4 times on research branch; new code/tests/certificate blob SHAs equal tested bytes; audit read back; README/restart/state updated.",
+  "github_write_probe": "create_file succeeded 4 times on research branch; source/test/report/audit fetched, 25 exact tests rerun on published contents, JSON byte equal; README/restart/state updated.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -74,7 +63,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical outer boundary conditions for the spatial Pg parameter tube not specified; full functional six-pair Dirac matrix/rank/tertiaries/lapses, K=0/J=0 and 4D/stability/observables remain unproved.",
+  "current_blocker": "Physical outer boundary conditions/counterterms not selected; f-sector trace derivative and lapse variation not certified; full six-pair Dirac rank/tertiaries/lapses, K=0/J=0 and 4D/stability/observables unproved.",
   "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3; preserved all text from OBJECTIF PERMANENT verbatim, schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -83,7 +72,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "d5584dfe7cfdbad91c4aaeb74eb712e94b14ffba",
+    "00_CURRENT_RESTART.md": "561413126a5edc2a22e4718a1ec78a5443692ff9",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -106,7 +95,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "4c9d01ac30e347b41dfc586d3e85746ddf8300db",
+    "README.md": "47fa29482c1eb76d15ab9717bd3834405e85d652",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -166,9 +155,13 @@
     "numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "180307509ad7992880b99319dbeb6f8662752127",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "ec8e3145b65f902a95648872bfc3e5b554c25046",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2-authentic-Pg-fdust-tube.json": "012e70e49b41cc3180da423c3962d279e3909a26",
-    "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md": "2e388ef7eacf59df7bea0e443486bee72fb38fa3"
+    "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md": "2e388ef7eacf59df7bea0e443486bee72fb38fa3",
+    "scripts/hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs": "485cbfcd9ccb255c12b1da1ff4615fdaa66df066",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b3a_nonibp_boundary.cjs": "1681226f7f4c29ec7f59c5ad1a0db07df4902a4b",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3a-nonibp-boundary.json": "b60a7fd132b8f8803c6eea5649b87c840b5502c0",
+    "research/STEP68AD_C2D2E5B3B2C2B3A_EXACT_PG_BOUNDARY_FLUX_AND_ROBIN_CLASSIFICATION.md": "865f1ed1d1c9a8f0c2a7bd62101dee29f387c38b"
   },
-  "current_proven_result": "Authenticated original Step45/46/55 G executed with uniform Pg+lambda interval |lambda|<=1/5000 over 0<=s<=289/400. 256 outward integer cells certify inward Step55 barriers, |U|<1, rho_f>0.109448, rho_g>0.884495, positive denominators and T, subject to Step49 analytic center theorem. Only spherical spatial constrained data; no physical external boundary or temporal Dirac validation.",
+  "current_proven_result": "Exact conditional Step55/68o Pg-family non-IBP outer boundary variation at fixed geometry/shift/lapses: d[B]_0^R/dlambda=-z(R)*d pLg(R)/dlambda*(N+M Lg/Lf), strictly negative for fixed positive lapses; N=M=1 coefficient -6226606039693438177138189375297828359/924428111079601136099407890560000000000. Exceptional Robin beta/alpha=-5454739/12869360. Prior certified two-dust spatial tube unchanged; no physical BC or Dirac proof.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -180,7 +173,7 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "scope": "Exact rational conditional f-secondary affine coefficient nondegeneracy for |U|<=1; no full f sector continuation.",
-  "source_authentication_this_session": "Connector read Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e; Step46 bac025c28dbe1561c0c36c56dbfda46dc326f804; Step55 normalized a54a6acf2f7ad2f64c500faecfa1406ecbf7b862; Step55 barrier a6e7004120d0a166a3a8973c2fbe1487a8eb70fe. None reexecuted.",
+  "source_authentication_this_session": "Connector fetched Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e; Step46 bac025c28dbe1561c0c36c56dbfda46dc326f804; Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe; Step37 original non-IBP 005449ade6e3582e3b9a5c3374a881a77e73e3f6. SHA verified, not reexecuted.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
   "last_read_branch_head_at_session_start": "5f2612ea9aa3106fc730a2777de37a6b2b4eb5a3",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
