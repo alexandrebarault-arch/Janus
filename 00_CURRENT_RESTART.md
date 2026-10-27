@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2a, CHARTE CENTRALE DE PARITÉ DU SHIFT RÉDUIT (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2b — imposer les contraintes linéarisées Hg/Hf/C sur les variations centrales, puis calculer le véritable oracle fonctionnel non-IBP à six couples sur la solution Step55/68o, avec bords, rang Dirac, tertiaires et J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**SOURCES ORIGINALES AUTHENTIFIÉES SUR GITHUB, NON RÉEXÉCUTÉES :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7`.
+
+**NOUVEAU THÉORÈME EXACT CONDITIONNEL À LA CLASSE DE PARITÉ :** avec `s=r²`, `Lg=L(s),Sg=rH(s),pSg=rP(s),pLg=r²G(s),pg=r²rho(s),tg'=rTd(s)`, et `Lf=Lf(s),Sf=rF(s)`, les expressions originales donnent `D=r C(s)`, `C=P(H+2sH_s)-2L(G+sG_s)+s rho Td`, `K=r² k(s)`. Si `k(0)>0` et fonctions analytiques, `z*=D/sqrt(K²+D²)=O(r)` si et seulement si `c0=P0H0−2L0G0=0`. Sur `c0=0`, `C=s d`, `z*=r d/sqrt(k²+s d²)`. Tangence nécessaire `H0δP0+P0δH0−2G0δL0−2L0δG0=0` ; pour `H0=L0,P0=2G0,δH0=δL0` : `δP0=2δG0`. **Ce n'est PAS la tangence aux contraintes de Dirac.**
+
+**CONTRE-EXEMPLE ALGÉBRIQUE NON LINÉAIRE HORS COQUILLE :** `Pε=2+ε+ε²`, `Gε=1+ε/2`, `H=L=1` : `c0(ε)=ε²`, donc `c0(0)=c0'(0)=0` mais `zε(r)->+1` pour `ε≠0` fixé. La famille `Pε=2+ε,Gε=1+ε/2` a la même tangente non nulle et conserve exactement `c0=0`. La condition linéarisée seule ne garantit donc pas la charte pour des perturbations finies.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** programme publié V8 **18 assertions PASS**, wrapper adversarial V8 **14 assertions PASS**, contrôle indépendant SymPy **8 identités PASS** après correction d'un brouillon échoué (confusion temporaire entre `s` et `r²` dans le terme de poussière). **40 vérifications finales PASS, 0 FAIL** ; ne pas les appeler 40 tests Python. Le programme Node natif dans un clone et les moteurs physiques originaux **NON réexécutés**.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `scripts/hr_step68ad_c2d2e5b3b2a_center_parity_chart.cjs` — blob `63b84e9fad6051c45961247ac00f5abd23e6a1e8`.
+- `tests/test_hr_step68ad_c2d2e5b3b2a_center_parity_chart.cjs` — blob `062e028ac9e88977add283f57775dbab861e07f6`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2a-center-parity.json` — blob `a53cf171a7d5b76a7161e59b34e8c3e646cfd5af`.
+- `research/STEP68AD_C2D2E5B3B2A_EXACT_CENTRAL_PARITY_SHIFT_CHART.md` — blob `1a39a677eb82ed0a4576bf0e26482bd46d1b61e0`.
+
+**HEAD À LA REPRISE :** `dfa1d2636dbeea3570ada1f09f9bb346d3b810e8`. HEAD APRÈS QUATRE PUBLICATIONS SCIENTIFIQUES : `8414d468045185862a52d343f33061acb3516614`. HEAD FINAL À RELIRE APRÈS MISE À JOUR DU JOURNAL ET DE L'INDEX. Branches `main` et `research/v2-flrw` intouchées ; aucun workflow modifié.
+
+**LIMITES :** aucune preuve de `δHg=δHf=δC=0`, ni matrice fonctionnelle complète de Poisson/Dirac, rang, tertiaires, lapses/bords, charte `J=0`, 4D, stabilité ou observables. **ACTIONS PRIORITAIRES :** (1) dériver/tester les contraintes linéarisées dans cette charte centrale ; (2) calculer les crochets non-IBP avec les six couples et variations transverses admissibles ; (3) bords/rang/tertiaires/J=0 ; (4) 4D/stabilité/observables ; (5) nettoyage Library des copies temporaires si l'autorisation revient.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE PRÉCÉDENT CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b1, VARIATIONS TRANSVERSES DU SHIFT RÉDUIT AU CENTRE (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2 — construire l'oracle fonctionnel original à six couples sur la vraie solution Step55/68o, après définition explicite de l'espace tangent des variations canoniques régulières, avec bords, rang Dirac, tertiaires, charte J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
