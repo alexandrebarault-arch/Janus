@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c1, SENSIBILITÉ CENTRALE EXACTE f (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2 — vraie équation variationnelle G_U/G_Pg, v(R), dérivées des traces f, espace de bords et contretermes, puis oracle Dirac non-IBP six couples, rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE, UNIQUEMENT AU CENTRE :** sur les identités originales Step46/49/55, U₀(λ)=Mf²b[(Pg+λ)/a−2z₁], V₀=2U₀. En utilisant la primaire f et la géométrie Step55, ρf,0(λ)=3U₀(λ)²/(4Mf²b)+Mf²b³Rf,0/2−Wfbar,0. Donc ∂λU₀=Mf²b/a=274023815147385251710689588080861/40000000000000000000000000000000000>0, ∂λV₀=2∂λU₀>0 et ∂λρf,0=3U₀(λ)/(2a)<0. Certification par fractions exactes et carré de Pg : −0,764<Pg<−0,763 ; sur |λ|≤1/5000, −0,020<∂λρf,0<−0,019 et ρf,0>0,12. Valeurs indicatives λ=0 : U₀≈−0,005252426897, ∂λρf,0≈−0,019696600863, ρf,0≈0,124270000262. La dépendance quadratique est exacte, pas une approximation par différences finies. Cela ne certifie AUCUNE dérivée à R.
+
+**TESTS EXÉCUTÉS :** 20 assertions adversariales BigInt Node local PASS, 0 FAIL, et réexécution des mêmes 20 assertions dans V8 depuis les octets relus de GitHub. Le générateur comporte des contrôles rationnels internes supplémentaires non comptés comme tests indépendants. Rapport JSON généré, publié, relu octet-identique. Les sources originales Step46/55 ont été relues et SHA-authentifiées, mais leurs moteurs Python n'ont PAS été réexécutés dans cette session. Le tube spatial f/g global reste le certificat b2 antérieur. Une erreur initiale de chemin de test local a été corrigée avant la campagne finale.
+
+**QUATRE LIVRABLES PUBLIÉS/RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b3c1_center_f_sensitivity.cjs — blob 77d141fb3d091d54b83fa622ec6dd98931e8d050.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3c1_center_f_sensitivity.cjs — blob db03a9e9997505967d88e7387b4c8599ca833996.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c1-center-f-sensitivity.json — blob dc46e73ad6b283c489efe67a179680ad68bffbfc.
+- research/STEP68AD_C2D2E5B3B2C2B3C1_EXACT_CENTRAL_F_DUST_PARAMETER_SENSITIVITY.md — blob a8fc7e0d0adab1dfb4059d24eb774c5d0dd0ee87.
+- README.md — blob eec6a8a3f25c450dbcb490de445965119dfb39eb.
+
+**ÉTAT GITHUB :** HEAD à la reprise 4dd37794d54142e1e9d0553eaabae2c351380abf ; publication exclusivement sur research/gate2b-nonhomothetic-transfer, aucun changement voulu à main, research/v2-flrw ou workflows. HEAD final à vérifier après index. Les fichiers et leurs contenus ont été relus après écriture. Nettoyage Library non retenté cette session (401 Unauthorized antérieur).
+
+**LIMITES ET PRIORITÉS :** (1) calculer et encadrer G_U, G_Pg sur le tube authentique puis v(R) ; (2) dériver les quatre traces f à R et déterminer bords/lapses/contretermes physiquement admissibles ; (3) oracle original non-IBP six couples, rang/tertiaires, K=0/J=0 ; (4) 4D/stabilité/observables. Ne pas confondre sensibilité centrale et globale ; ne pas valider JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3b, TRACES f AU BORD ET LAPSÉS VARIABLES (2026-10-27)
 
 **ÉTAPE EXACTE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c — dériver et certifier la sensibilité v=∂lambda U du véritable G jusqu'à R, carte différentielle des traces f, déterminer les conditions aux bords physiques/contretermes, puis oracle Poisson/Dirac original non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
