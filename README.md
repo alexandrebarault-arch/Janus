@@ -1,5 +1,7 @@
 # Janus Research
 
+> **CURRENT GATE 2B — Step68ad-C2d2e5b3b2a (27 Oct 2026):** [critère exact de régularité centrale du shift réduit](research/STEP68AD_C2D2E5B3B2A_EXACT_CENTRAL_PARITY_SHIFT_CHART.md). Dans la charte analytique de parité, `D=r C(r²)`, `K=r² k(r²)`, `k(0)>0` : `z*=O(r)` ssi `P0 H0=2 L0 G0`. Une condition tangentielle linéarisée ne garantit pas le maintien de cette égalité le long d'une famille finie (témoin `c0(epsilon)=epsilon²`). **32 assertions BigInt V8 + 8 identités SymPy réussies ; pas de matrice Dirac ni de tangence aux contraintes prouvées.** Étape suivante : `68ad-C2d2e5b3b2b`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
 > **CURRENT GATE 2B — Step68ad-C2d2e5b3b1 (27 Oct 2026):** [audit exact des variations transverses du shift au centre](research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md) → [18 assertions rationnelles](scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs) → [rapport](research/reports/gate2b-step68ad-C2d2e5b3b1-shift-tangent.json). Sur K=r²k,D=r³ka/w, variations δK=r²κ,δD=r³d : δz=O(r), Hessienne quadratique O(r⁴). **Contre-exemple hors coquille** δpLg=εr² : ∂εz~1/r et zε→−sign ε au centre, empêchant une linéarisation uniforme naïve du shift réduit sur cette classe. **18 assertions PASS + 9 contrôles du wrapper PASS en V8**, moteurs physiques originaux non réexécutés. Pas de rang Dirac prouvé. **NEXT 68ad-C2d2e5b3b2 : espace tangent régulier puis véritable oracle fonctionnel six couples Step55/68o, bords/tertiaires/rang/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 
