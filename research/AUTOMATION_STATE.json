@@ -3,57 +3,51 @@
     "attempted": 0,
     "succeeded": 0,
     "failed": 0,
-    "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED",
-    "prior_file_ids": [
-      "libfile_45aa141b5df881918aff37fe431c9c0b",
-      "libfile_17f52736778c819195709abedd20af01"
-    ]
+    "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2",
-    "verified_after_update": true
+    "success": false,
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2b"
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b2d1_boundary_lapse_compensation.cjs": "ae3957e6c28e26de580b125f6e8dc875405172c5",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d1_boundary_lapse_compensation.cjs": "9065f20befabc1e06f0a3e0e4e94874f6d34d61e",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d1-boundary-lapse-compensation.json": "dc8ac53e33dff4cf5fab1ef3cab92ead506f4c7e",
-    "research/STEP68AD_C2D2E5B3B2C2B2D1_BOUNDARY_LAPSE_COMPENSATION_AND_COUNTERTERM_CLASSIFICATION.md": "ae50361a697fc4d7764094c3d89f8a1b6abd25ca",
-    "README.md": "a73af04c5772916f4cf45195a393a74e65fc60de",
-    "00_CURRENT_RESTART.md": "cd389a4ee1f470b5b27fd4e177ac9762b836d0fd"
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py": "94bd7e089ebb0978569361c03a4f3ab950b950df",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py": "75c7ec89400ecd1abca6d2c709999648381d5f47",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2a-full-nonibp-boundary.json": "39aed544c8f7d5e25330de000ec464fd8a0b9bdc",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2A_FULL_NONIBP_SIX_PAIR_BOUNDARY_ONE_FORM.md": "7f006902c31cfefdc8d94e011359a1b6c0f71101",
+    "README.md": "ef79618c57a560b16d75296f4bb8d0ea3242cf3c",
+    "00_CURRENT_RESTART.md": "4ce355d05194fa12f7c995ba101db3d7749952f5"
   },
-  "verified_research_head_at_session_start": "4e74225dc2910031c4f81071b77dfb1c310469a4",
-  "next_priority": "Audit the full original non-IBP boundary variation with reduced shift and six canonical pairs; select/test physically admissible boundary conditions and counterterms, then compute functional Dirac rank/tertiaries/lapses/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "1e45dcdb01fc57bc4b8bbdfd8bfc39002252e9a6",
+  "next_priority": "Select physically admissible radial boundary data and counterterms for the improved Hamiltonian; certify tangent variations and compute full original non-IBP six-pair Dirac matrix, rank, tertiaries, lapse constraints, K=0/J=0, 4D stability and observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "790c74885a552d2d06915d41d6a86c8827757036",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d1_EXACT_BOUNDARY_LAPSE_COMPENSATION",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2_FULL_NONIBP_BOUNDARY_VARIATION_AND_SIX_PAIR_DIRAC",
+  "verified_research_head_before_state_file": "0d31d73d7fc68975b29b0e7b9f626449a45fd490",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2a_EXACT_FULL_BARE_NONIBP_BOUNDARY_ONE_FORM",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2b_PHYSICAL_BOUNDARY_COUNTERTERMS_AND_ONSHELL_SIX_PAIR_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D1_BOUNDARY_LAPSE_COMPENSATION_AND_COUNTERTERM_CLASSIFICATION.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2A_FULL_NONIBP_SIX_PAIR_BOUNDARY_ONE_FORM.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 114,
+    "passed": 27,
     "failed": 0,
-    "runtime": "V8 exact rational BigInt on source and published bytes",
-    "method": "Exact boundary pullback, uniform physical Pg enclosure and positive lapse compensation; not a physical lapse condition",
+    "runtime": "Python SymPy exact symbolic/rational identities",
+    "unittest_passed": 1,
+    "unittest_failed": 0,
+    "method": "10 boundary coefficients + 11 original/IBP delta B identities + shift factorization + true HR derivative + 3 rational witness checks",
     "original_physics_modules_reexecuted": 0,
     "original_sources_authenticated": 3,
     "full_dirac_oracle_executed": false,
     "report_byte_identical": true
   },
-  "github_write_probe": "Four scientific files and three state/docs files published/read back; 114 V8 rational assertions rerun after explicit-lambda counterterm qualification; journal old history preserved.",
+  "github_write_probe": "Four scientific files plus README and complete journal written on research branch; SHA of source/tests/certificate/audit matches exact local tested bytes; journal old history suffix verified identical.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -70,7 +64,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full non-IBP six-pair functional boundary variation and Dirac closure unproved. The no-momentum counterterm exclusion assumes no explicit lambda dependence at fixed geometry/shift; otherwise lambda can encode momentum on the restricted pullback.",
+  "current_blocker": "The bare original Hamiltonian has nonvanishing curvature delta S' boundary flux under coordinate-only Dirichlet variations; no physically selected counterterm or on-shell tangent variation space; full six-pair Dirac matrix/rank/tertaries uncomputed.",
   "task_self_update": "2026-10-27: task marker advanced to 68ad-C2d2e5b3b2c2b2d2; permanent suffix byte-identical, hourly schedule, timezone and enabled status verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -79,7 +73,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "94fe8d2930a504da5e6c3dc6a5445aa441275bcb",
+    "00_CURRENT_RESTART.md": "4ce355d05194fa12f7c995ba101db3d7749952f5",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -102,7 +96,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "1c6c58458ea62e700d7e47cb9d2dc3e555126a37",
+    "README.md": "ef79618c57a560b16d75296f4bb8d0ea3242cf3c",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -190,9 +184,13 @@
     "scripts/hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs": "315d6226f5feeb346d60ab0ac2e16ca0b9de9b41",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs": "2787d5a79755b500d323e11e4844aa73eae3b030",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2c-f-outer-sensitivities.json": "b53eb93c48fba7099ae2d3275ec4eb5e0464a7a4",
-    "research/STEP68AD_C2D2E5B3B2C2B2C_CERTIFIED_F_OUTER_TRACE_SENSITIVITIES.md": "9ef72a5fe7f23785465356260ca30efcb0a80322"
+    "research/STEP68AD_C2D2E5B3B2C2B2C_CERTIFIED_F_OUTER_TRACE_SENSITIVITIES.md": "9ef72a5fe7f23785465356260ca30efcb0a80322",
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py": "94bd7e089ebb0978569361c03a4f3ab950b950df",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py": "75c7ec89400ecd1abca6d2c709999648381d5f47",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2a-full-nonibp-boundary.json": "39aed544c8f7d5e25330de000ec464fd8a0b9bdc",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2A_FULL_NONIBP_SIX_PAIR_BOUNDARY_ONE_FORM.md": "7f006902c31cfefdc8d94e011359a1b6c0f71101"
   },
-  "current_proven_result": "Exact conditional Step55/68o Pg-family non-IBP outer boundary variation at fixed geometry/shift/lapses: d[B]_0^R/dlambda=-z(R)*d pLg(R)/dlambda*(N+M Lg/Lf), strictly negative for fixed positive lapses; N=M=1 coefficient -6226606039693438177138189375297828359/924428111079601136099407890560000000000. Exceptional Robin beta/alpha=-5454739/12869360. Prior certified two-dust spatial tube unchanged; no physical BC or Dirac proof.",
+  "current_proven_result": "Exact ambient boundary one-form for bare original non-IBP Hamiltonian with six canonical pairs and diagonal shift V, 10 coefficients; 11 exact original-minus-IBP delta B identities including delta z* cancellation. Dirichlet canonical coordinates alone leave nonzero delta S' flux for positive lapses in unrestricted ambient variations. No on-shell Dirac closure.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
