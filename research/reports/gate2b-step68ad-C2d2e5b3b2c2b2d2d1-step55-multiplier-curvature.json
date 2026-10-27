@@ -1,0 +1,50 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d1",
+  "assertions_passed": 35,
+  "assertions_failed": 0,
+  "scope": "Authentic Step55/68o one-parameter spatial C(r)=0 family conditional on Step49 and b2/b2b; boundary multipliers independent; NOT full Dirac tangent.",
+  "R": "17/20",
+  "lambda": [
+    "-1/5000",
+    "1/5000"
+  ],
+  "exact": {
+    "Lg": "641387951689/1600000000000",
+    "Lf": "1444418923561876775155324829/6250000000000000000000000000",
+    "q": "2505421686285156250000000000/1444418923561876775155324829",
+    "z": "17/5000",
+    "a_dpLg_dlambda": "92730563/128000000",
+    "dTheta_dN_wedge_dlambda": "-1576419571/640000000000",
+    "dTheta_dM_wedge_dlambda": "-394959577986774259929296875/92442811107960113609940789056"
+  },
+  "enclosures": {
+    "dpLf_dlambda": [
+      "196809/40000000",
+      "199121/40000000"
+    ],
+    "dTheta_dV_wedge_dlambda": [
+      "-72890477740988538717054687810275309/250000000000000000000000000000000000",
+      "-72887138244437263657950528699270661/250000000000000000000000000000000000"
+    ]
+  },
+  "one_dimensional_fixed_multiplier_pullback": "dTheta=0 on the lambda-only spatial family for fixed N,M,V, by dimension; no ambient obstruction can be inferred from this 1D pullback.",
+  "extended_multiplier_pullback": "Theta=F(lambda,N,M,V) d(lambda); dTheta=cN dN^d(lambda)+cM dM^d(lambda)+cV dV^d(lambda), with cV enclosed; no dN/dM/dV components of Theta at fixed boundary fields.",
+  "status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "original_source_blobs": {
+    "step37": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step46": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "prior_f_derivative_certificate": "b53eb93c48fba7099ae2d3275ec4eb5e0464a7a4"
+  },
+  "limits": [
+    "No second independent canonical tangent to the full secondary functional constraint surface constructed",
+    "N,M,V are Lagrange multipliers, not canonical pairs",
+    "No physical lapse/boundary polarization selected",
+    "No tertiary preservation or full six-pair Dirac matrix",
+    "No original Python engine rerun in this step"
+  ]
+}
