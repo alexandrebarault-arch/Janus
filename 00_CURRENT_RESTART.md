@@ -1,3 +1,29 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b1, VARIATIONS TRANSVERSES DU SHIFT RÉDUIT AU CENTRE (2026-10-27)
+
+**ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2 — construire l'oracle fonctionnel original à six couples sur la vraie solution Step55/68o, après définition explicite de l'espace tangent des variations canoniques régulières, avec bords, rang Dirac, tertiaires, charte J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**SOURCES PHYSIQUES ORIGINALES RELUES SUR GITHUB, SHA AUTHENTIFIÉS, NON RÉEXÉCUTÉES :** `numerics/hr_step45_exact_physical_ward.py` blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` ; `numerics/hr_step55_global_barrier.py` blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe` ; `numerics/hr_step68o_temporal_interval_annulus.py` blob `c99caebc17f243784450ddff94fb061767e6d8e7`.
+
+**NOUVEAU RÉSULTAT ALGÉBRIQUE EXACT (PAS UN RANG DIRAC) :** à K>0, `F_red=sqrt(K²+D²)`, `z*=D/F_red`. Hessienne de F_red sur (K,D) : `[[D²,-KD],[-KD,K²]]/(K²+D²)^(3/2)`, rang ponctuel 1 et trace 1/F_red ; ne PAS confondre avec la matrice de Dirac. Sur le chemin Step68o `K=r²k>0,D=r³ka/w,w=sqrt(1-r²a²),a=Z1`, les variations `δK=r²κ,δD=r³d` donnent exactement `δz=r*w²/k*(w*d-a*κ)` et `δ²F_red=r⁴*w/k*(w*d-a*κ)²`. Sous bornes régulières, ces réponses sont O(r) et O(r⁴).
+
+**NOUVEAU CONTRE-EXEMPLE HORS COQUILLE À UNE LINÉARISATION UNIFORME NON RESTREINTE :** la perturbation lisse formelle `pLg_ε=pLg+εr²` (autres variables fixes) impose `∂εD=-2r Lg`, donc `∂εz|0=-2 Lg*w³/(r*k)`, divergent comme 1/r. Pour ε fixé non nul, `z_ε(r)→-sign(ε)` à r→0+, contre `z_0(r)→0`. Cela démontre une obstruction à l'emploi naïf de l'oracle réduit sur toutes les variations lisses off-shell dans la norme sup, **PAS une instabilité physique ni une impossibilité de la formulation non réduite**. Cette perturbation n'est pas certifiée tangentielle aux contraintes ou admissible aux bords.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** script publié exécuté dans V8, **18 assertions rationnelles BigInt PASS, 0 FAIL** ; wrapper de tests publié rejoué dans V8 avec shim Node (8 assertions de rapport supplémentaires PASS). Rapport JSON reconstitué octet-identique à la publication. Pas d'exécution Node autonome dans un clone, pas d'exécution des moteurs physiques originaux. Témoin exact : r=3/4,a=w=4/5,k=2,κ=3,d=5,Lg=2/5, K=9/8,D=27/32,z=3/5, δz=48/125, δ²F=81/250, ∂εz=-512/1875, δ²F(pLg-r²)=512/3125.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs` — blob `3e47422a3b3f5c4f61cc32bae1588929b5de2ace`.
+- `tests/test_hr_step68ad_c2d2e5b3b1_shift_tangent.cjs` — blob `498949c2ba7343fe699726446f95fe2e586fef03`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b1-shift-tangent.json` — blob `05af81e309abac84eda716f1e3081bd486ca0c1d`.
+- `research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md` — blob `efab645b92c9bec1ab2a26946d9718431167f100`.
+
+**HEAD INITIAL LU DIRECTEMENT :** `40ab9560ae62f2e6e4b6bd4132767d32027f318c`. **APRÈS QUATRE ÉCRITURES SCIENTIFIQUES :** `66a1f48f50f27581f40658ff5f155ef0090c1403`. HEAD final à relire après journal, README et index. Aucun changement autorisé sur `main`, `research/v2-flrw` ou workflows désactivés.
+
+**VERROUS :** espace tangent régulier et coquille linéarisée, vrai oracle fonctionnel Poisson/Dirac à six couples sur Step55/68o, rang complet/tertiaires, lapses/bords, J=0, dynamique 4D, stabilité et observables NON DÉMONTRÉS. **ACTIONS PRIORITAIRES :** (1) classifier les perturbations centrales de D,K issues des six couples et tester leur compatibilité avec les contraintes linéarisées ; (2) calculer les crochets fonctionnels non-IBP sur le profil exact avec bords ; (3) matrice de Dirac/tertiaires/J=0 ; (4) 4D/stabilité/observables ; (5) retenter le nettoyage des copies temporaires Library si le service récupère.
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE PRÉCÉDENT CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3a, CHARTE K=0 : SINGULARITÉ AMBIANTE ET CHEMIN PHYSIQUE (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b — véritable oracle fonctionnel de Poisson/Dirac sur le profil authentique Step55/68o, variations transverses, bords, contraintes tertiaires, rang et charte J=0.** **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
