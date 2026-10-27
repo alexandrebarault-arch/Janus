@@ -15,7 +15,7 @@
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c"
+    "next_step_marker": "68ad-C2d2e5b3b2c2"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_c2d2e5b3b2c1_boundary_trace.py": "ef031e1016f53fb0615d588dc63814b1a5c29030",
@@ -69,7 +69,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "No authentic physical G(s,U,Pg) execution or sensitivity enclosure; no certified lambda0; actual boundary conditions not specified. Fixed pLg(R), pLg'(R) or U0 would kill THIS one-parameter family, not all tangent directions. Full Dirac rank, tertiaries, lapse/bounds, K=0/J=0, 4D, stability, observables unproved.",
-  "task_self_update": "2026-10-27: automation prompt updated successfully to 68ad-C2d2e5b3b2b2; permanent instructions preserved byte-for-byte from OBJECTIF PERMANENT onward, original hourly schedule unchanged, task enabled.",
+  "task_self_update": "2026-10-27: automation prompt repère updated to 68ad-C2d2e5b3b2c1; permanent instructions preserved exactly from OBJECTIF PERMANENT onward; schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
