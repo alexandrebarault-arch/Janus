@@ -1,3 +1,27 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2, VRAI G PARAMÉTRÉ ET DEUX POUSSIÈRES POSITIVES (2026-10-27)
+
+**ÉTAPE SPATIALE CERTIFIÉE : 68ad-C2d2e5b3b2c2b2. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3 — conditions aux limites physiques, carte des traces du tube paramétrique, puis opérateur fonctionnel Poisson/Dirac non-IBP à six couples, rang/tertiaires/lapses, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE PHYSIQUE SPATIALE RÉELLEMENT EXÉCUTÉE :** les QUATRE sources originales Step45/46/55 ont été recopiées, SHA-authentifiées et réellement exécutées, notamment le véritable G(s,U,Pg) compilé depuis C=K00-(K01)' et le véritable moteur d'intervalles Step55. Sur tout s=r²∈[0,289/400], simultanément pour tout |lambda|<=1/5000, avec 256 cellules radiales et une enclosure unique du paramètre, les barrières originales restent strictement entrantes (Fplus<-0.0000359260, Fminus>0.0000355740). En reconstruisant la poussière f depuis la primaire Step46 originale : rho_f>0.1094480192, rho_g>0.8844952279, denom_f>=1, beta_g>0.9991759495, T>0.1060297323 et -0.005354<U<-0.004585. Les fractions EXACTES sont dans le certificat. La formule originale de rho_f et l'identité centrale G(0,U,Pg)=3Mf²*b*(Pg/a-2z1)-U ont des résidus SymPy EXACTEMENT nuls. U1/U2 de la base restent seulement des fonctions de comparaison, PAS les vrais jets perturbés. La continuation de la famille spatiale s'appuie sur le théorème analytique local Step49, non sur un tir numérique ponctuel.
+
+**TESTS EXÉCUTÉS :** `cd /mnt/data/janus_run && PYTHONPATH=. python -m unittest discover -s tests -v` : **13 unittest PASS, 0 FAIL**, dont 2 identités SymPy exactes incluses. `PYTHONPATH=. python numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py` régénère le JSON ; revalidation à 512 cellules PASS ; à 128 cellules l'enclosure est insuffisante (échec de certification attendu et testé), pas un contre-exemple. Les quatre sources originales ont été exécutées dans une arborescence locale vérifiée par blob SHA : Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55 normalisation `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step55 barrière `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`.
+
+**LIVRABLES PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py` — blob `180307509ad7992880b99319dbeb6f8662752127`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py` — blob `ec8e3145b65f902a95648872bfc3e5b554c25046`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2-authentic-Pg-fdust-tube.json` — blob `012e70e49b41cc3180da423c3962d279e3909a26`.
+- `research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md` — blob `2e388ef7eacf59df7bea0e443486bee72fb38fa3`.
+
+**LIMITES STRICTES :** il s'agit d'une famille de données SPATIALES sphériques contraintes sur la géométrie prescrite, PAS d'une famille de solutions du problème aux limites physiques final. Les traces externes changent avec Pg. Les contraintes temporelles, rang de Dirac, tertiaires, lapses admissibles, chartes K=0/J=0, dynamique 4D, stabilité et observables restent NON PROUVÉS. Ne pas extrapoler les anciens indicateurs J/K Step54 à un rang Dirac paramétrique.
+
+**GITHUB :** HEAD initial réellement lu `9559ffba454c126ccbc15531860a157c733c4e28`; commit audit `97c9e138efc174cf566b28f71f43ae9cf9372b0f`; commit README `dcc115ae68e667d0ec924bf4a606537905c4eeef`. Branches interdites vérifiées initialement : main=`aead63f4098f0d15a849e579105af034b6317b30`, research/v2-flrw=`dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. **NETTOYAGE LIBRARY :** deux suppressions `libfile_45aa141b5df881918aff37fe431c9c0b` et `libfile_17f52736778c819195709abedd20af01` réellement retentées, deux échecs exacts `401 Unauthorized /uninjest_file`, aucune suppression déclarée.
+
+**ACTIONS PRIORITAIRES :** (1) déterminer conditions aux bords physiquement admissibles, calculer traces de la famille Pg et leur variation sur le tube certifié ; (2) construire véritable crochet Poisson/Dirac non-IBP à six couples sur le profil et variations admises, bords et rang/tertiaires ; (3) K=0/J=0, lapses et dynamique 4D/stabilité/observables ; (4) nettoyage Library seulement lorsque l'autorisation est réparée.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ OCTET POUR OCTET CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b1, COEFFICIENT AFFINE Step46 f SUR UN CONTINUUM (2026-10-27)
 
 **ÉTAPE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b1. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2 — exécuter le véritable G(s,U,Pg) Step45/46/55 avec Pg variable, certifier U et poussière f et bords, puis oracle Poisson/Dirac non-IBP six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
