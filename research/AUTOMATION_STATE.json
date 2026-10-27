@@ -5,7 +5,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "a50deb7d186a66f0aed67a9f9fd6d63f662aab2c",
+  "verified_research_head_before_state_file": "19f780a79a0176faf66f0b505ef5b9b529bdad1f",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2a-EXACT_CENTRAL_PARITY_SHIFT_CHART",
   "next_pending_step": "68ad-C2d2e5b3b2b-constraint_tangent_then_six_pair_physical_functional_Dirac",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -43,7 +43,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Linearized Hg,Hf,C constraint-preserving tangent directions and boundary conditions not yet derived; physical Step55/68o six-pair non-IBP functional Dirac oracle, full rank, tertiaries, J=0, global lapses, 4D, stability and observables NOT proved.",
-  "task_self_update": "2026-10-27 automation prompt successfully updated with 68ad-C2d2e5b3b2 hint, preserving entire permanent instructions, hourly schedule and timezone.",
+  "task_self_update": "2026-10-27: current automation prompt successfully updated with b3b2b next-stage hint; permanent instructions preserved byte-for-byte from OBJECTIF PERMANENT onward, hourly schedule unchanged, enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
@@ -283,14 +283,16 @@
     "date": "2026-10-27",
     "attempted": [
       "/JANUS-e5b3a-EPHEMERAL-publish-bundle-20261027.json",
-      "/JANUS-temporary-github-publish-20261026",
-      "/JANUS-temporary-github-publish-20261026-C2d2d"
+      "/JANUS_C2d2e5b2_EPHEMERAL_publish_bundle_20261026.json"
     ],
     "results": [
-      "401 Unauthorized",
-      "401 Unauthorized",
-      "401 Unauthorized"
+      "401 Unauthorized /uninjest_file",
+      "401 Unauthorized /uninjest_file"
     ],
-    "remaining_bundle_library_file_id": "libfile_c03fc70b65508191b4df733834c5b614"
+    "file_ids": [
+      "libfile_c03fc70b65508191b4df733834c5b614",
+      "libfile_45aa141b5df881918aff37fe431c9c0b"
+    ],
+    "status": "NOT_DELETED"
   }
 }
