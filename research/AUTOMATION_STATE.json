@@ -15,29 +15,29 @@
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2"
+    "next_step_marker": "68ad-C2d2e5b3b2c2b3"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py": "d16150475c4d3ac38162c8be06c07d8734efa4c2",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py": "c608333536783b0c67a1c842b0ba94253939331d",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b1-f-chart-coefficient.json": "24d9f2cefa001b1fabd3634b87556cbab6c90b42",
-    "research/STEP68AD_C2D2E5B3B2C2B1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL.md": "cf2fe91387f667a0792633bf43d39b784cf39865",
-    "README.md": "24a88f2b16f16ff453ad47ca3eff5d97681a5a75",
-    "00_CURRENT_RESTART.md": "950a9afe415cec9784d6b9309709013e79b53c57"
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "180307509ad7992880b99319dbeb6f8662752127",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "ec8e3145b65f902a95648872bfc3e5b554c25046",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2-authentic-Pg-fdust-tube.json": "012e70e49b41cc3180da423c3962d279e3909a26",
+    "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md": "2e388ef7eacf59df7bea0e443486bee72fb38fa3",
+    "README.md": "4c9d01ac30e347b41dfc586d3e85746ddf8300db",
+    "00_CURRENT_RESTART.md": "d5584dfe7cfdbad91c4aaeb74eb712e94b14ffba"
   },
-  "verified_research_head_at_session_start": "c73949877acf4b30d67073f1b8d6a0d8d6641092",
-  "next_priority": "Execute authentic Step45/46/55 G with Pg variable, bound U and rho_f for nonzero lambda and actual boundary conditions; then full six-pair non-IBP Dirac/rank/tertiaires/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "9559ffba454c126ccbc15531860a157c733c4e28",
+  "next_priority": "Specify admissible physical boundary conditions and compute boundary trace map on certified |lambda|<=1/5000 spatial two-dust family; then original six-pair non-IBP Poisson/Dirac functional oracle, rank/tertiaires/lapses/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "94c5d861ea7852daace91b3b1e1ac707db330db5",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2_AUTHENTIC_G_PARAMETER_U_F_DUST",
+  "verified_research_head_before_state_file": "70c54510b227fd5b450e9eb93b9f2b06fca2bf25",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b3_BOUNDARY_TRACE_AND_DIRAC_ORACLE",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
@@ -48,12 +48,16 @@
     "python_unittest": 13,
     "sympy_identities_inside_unittest": 2,
     "additional_independent_symbolic_checks_not_counted": 0,
-    "original_physics_modules_reexecuted": 0,
-    "authentic_G_executed": false,
+    "original_physics_modules_reexecuted": 4,
+    "authentic_G_executed": true,
     "full_dirac_oracle_executed": false,
-    "command": "PYTHONPATH=. python -m unittest discover -s tests -v (isolated two-file test tree)"
+    "command": "cd /mnt/data/janus_run && PYTHONPATH=. python -m unittest discover -s tests -v",
+    "continuum_interval_cells": 256,
+    "independent_revalidation_cells": 512,
+    "noncertified_coarse_cells": 128,
+    "lambda_radius": "1/5000"
   },
-  "github_write_probe": "create_file called 4 times on research branch; three science artifacts SHA blobs match locally tested bytes, audit read back; state/README/restart updated subsequently.",
+  "github_write_probe": "create_file called successfully 4 times on research branch; new code/tests/certificate blob SHAs equal tested bytes; audit read back; README/restart/state updated.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -70,8 +74,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Authentic original G(s,U,Pg) not executed for variable Pg; physical |U|<=1 and rho_f positivity not established, no parameter continuation/boundary or full Dirac rank.",
-  "task_self_update": "2026-10-27: automation prompt repère updated to 68ad-C2d2e5b3b2c1; permanent instructions preserved exactly from OBJECTIF PERMANENT onward; schedule unchanged and enabled.",
+  "current_blocker": "Physical outer boundary conditions for the spatial Pg parameter tube not specified; full functional six-pair Dirac matrix/rank/tertiaries/lapses, K=0/J=0 and 4D/stability/observables remain unproved.",
+  "task_self_update": "2026-10-27: updated JANUS autonomous task marker to 68ad-C2d2e5b3b2c2b3; preserved all text from OBJECTIF PERMANENT verbatim, schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
@@ -79,7 +83,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "950a9afe415cec9784d6b9309709013e79b53c57",
+    "00_CURRENT_RESTART.md": "d5584dfe7cfdbad91c4aaeb74eb712e94b14ffba",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -102,7 +106,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "24a88f2b16f16ff453ad47ca3eff5d97681a5a75",
+    "README.md": "4c9d01ac30e347b41dfc586d3e85746ddf8300db",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -158,9 +162,13 @@
     "numerics/hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py": "d16150475c4d3ac38162c8be06c07d8734efa4c2",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b1_f_chart_coefficient.py": "c608333536783b0c67a1c842b0ba94253939331d",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b1-f-chart-coefficient.json": "24d9f2cefa001b1fabd3634b87556cbab6c90b42",
-    "research/STEP68AD_C2D2E5B3B2C2B1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL.md": "cf2fe91387f667a0792633bf43d39b784cf39865"
+    "research/STEP68AD_C2D2E5B3B2C2B1_EXACT_F_CHART_COEFFICIENT_CONDITIONAL.md": "cf2fe91387f667a0792633bf43d39b784cf39865",
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "180307509ad7992880b99319dbeb6f8662752127",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2_authentic_parameter_tube.py": "ec8e3145b65f902a95648872bfc3e5b554c25046",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2-authentic-Pg-fdust-tube.json": "012e70e49b41cc3180da423c3962d279e3909a26",
+    "research/STEP68AD_C2D2E5B3B2C2B2_AUTHENTIC_G_PARAMETER_TWO_DUST_TUBE.md": "2e388ef7eacf59df7bea0e443486bee72fb38fa3"
   },
-  "current_proven_result": "Conditional Step46 f-secondary ODE chart coefficient: on Step55 geometry 0<=s<=289/400 and any |U|<=1, exact Bernstein T>1/10 and f-dust denominator>3/4 imply C_V/r<-372 for r>0; NOT J temporal. No certified physical U tube, f density, authentic G execution, or Dirac rank.",
+  "current_proven_result": "Authenticated original Step45/46/55 G executed with uniform Pg+lambda interval |lambda|<=1/5000 over 0<=s<=289/400. 256 outward integer cells certify inward Step55 barriers, |U|<1, rho_f>0.109448, rho_g>0.884495, positive denominators and T, subject to Step49 analytic center theorem. Only spherical spatial constrained data; no physical external boundary or temporal Dirac validation.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -361,5 +369,11 @@
   },
   "previous_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT",
   "latest_verified_research_head_before_state_update": "fdc3bc5de5d5a94d5193edd8e2862397132156b8",
-  "last_verified_research_head_after_restart": "fd5690ab03dc8f62fdbb3b87a0291f38b816883a"
+  "last_verified_research_head_after_restart": "fd5690ab03dc8f62fdbb3b87a0291f38b816883a",
+  "latest_session_original_source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  }
 }
