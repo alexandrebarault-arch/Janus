@@ -11,15 +11,19 @@
     "status": "TEMPORARY_LIBRARY_COPIES_NOT_DELETED"
   },
   "latest_session_automation_update": {
-    "success": false,
-    "reason": "not yet attempted; GitHub state authoritative",
+    "success": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
     "next_step_marker": "68ad-C2d2e5b3b2c2b"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "0def484f17d991bca4b482091d4e45711ec8d1b6",
     "tests/test_hr_step68ad_c2d2e5b3b2c2a_gdust_parameter_tube.py": "bff1e9a18a48311ba8cb90502f73ce6b822deb53",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2a-gdust-parameter-tube.json": "9b775de06f6a391c6817fa2bdb184e09d887ea76",
-    "research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md": "675b7826c8fe37d9a8032984f0df51b2edf3dcc5"
+    "research/STEP68AD_C2D2E5B3B2C2A_UNIFORM_G_DUST_PARAMETER_TUBE.md": "675b7826c8fe37d9a8032984f0df51b2edf3dcc5",
+    "README.md": "f719958e8d4bc92b254639ffb7856612bb9c5480",
+    "00_CURRENT_RESTART.md": "cac5961d77eca62148c411f45514279f90515d5d"
   },
   "verified_research_head_at_session_start": "8fdf9c53aa7ba0c0d0f90a19b36e7dd2ee3803ab",
   "next_priority": "Execute authentic Step45/46/55 G with Pg variable; certify f-sector U and f-dust parameter tube plus boundary admissibility; then original six-pair Dirac operator.",
@@ -80,7 +84,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "be9d7a3b8e84f49d65847abdaeeb126c6641187a",
+    "00_CURRENT_RESTART.md": "cac5961d77eca62148c411f45514279f90515d5d",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -103,7 +107,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "c110c9ae90101dd13528e31bf06547df5761a750",
+    "README.md": "f719958e8d4bc92b254639ffb7856612bb9c5480",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -356,5 +360,6 @@
     ],
     "status": "NOT_DELETED"
   },
-  "previous_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT"
+  "previous_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT",
+  "latest_verified_research_head_before_state_update": "fdc3bc5de5d5a94d5193edd8e2862397132156b8"
 }
