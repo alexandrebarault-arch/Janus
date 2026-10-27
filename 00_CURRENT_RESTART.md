@@ -8,7 +8,7 @@
 
 **NOUVEAU CONTRE-EXEMPLE HORS COQUILLE À UNE LINÉARISATION UNIFORME NON RESTREINTE :** la perturbation lisse formelle `pLg_ε=pLg+εr²` (autres variables fixes) impose `∂εD=-2r Lg`, donc `∂εz|0=-2 Lg*w³/(r*k)`, divergent comme 1/r. Pour ε fixé non nul, `z_ε(r)→-sign(ε)` à r→0+, contre `z_0(r)→0`. Cela démontre une obstruction à l'emploi naïf de l'oracle réduit sur toutes les variations lisses off-shell dans la norme sup, **PAS une instabilité physique ni une impossibilité de la formulation non réduite**. Cette perturbation n'est pas certifiée tangentielle aux contraintes ou admissible aux bords.
 
-**TESTS RÉELLEMENT EXÉCUTÉS :** script publié exécuté dans V8, **18 assertions rationnelles BigInt PASS, 0 FAIL** ; wrapper de tests publié rejoué dans V8 avec shim Node (8 assertions de rapport supplémentaires PASS). Rapport JSON reconstitué octet-identique à la publication. Pas d'exécution Node autonome dans un clone, pas d'exécution des moteurs physiques originaux. Témoin exact : r=3/4,a=w=4/5,k=2,κ=3,d=5,Lg=2/5, K=9/8,D=27/32,z=3/5, δz=48/125, δ²F=81/250, ∂εz=-512/1875, δ²F(pLg-r²)=512/3125.
+**TESTS RÉELLEMENT EXÉCUTÉS :** script publié exécuté dans V8, **18 assertions rationnelles BigInt PASS, 0 FAIL** ; wrapper de tests publié rejoué dans V8 avec shim Node (9 assertions de rapport supplémentaires PASS). Rapport JSON reconstitué octet-identique à la publication. Pas d'exécution Node autonome dans un clone, pas d'exécution des moteurs physiques originaux. Témoin exact : r=3/4,a=w=4/5,k=2,κ=3,d=5,Lg=2/5, K=9/8,D=27/32,z=3/5, δz=48/125, δ²F=81/250, ∂εz=-512/1875, δ²F(pLg-r²)=512/3125.
 
 **QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
 - `scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs` — blob `3e47422a3b3f5c4f61cc32bae1588929b5de2ace`.
