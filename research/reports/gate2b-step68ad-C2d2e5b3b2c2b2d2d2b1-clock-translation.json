@@ -1,0 +1,21 @@
+{
+  "assertions_failed": 0,
+  "assertions_passed": 48,
+  "bare_original_boundary_one_form_on_clock_plane": "nonzero in general; at Step55 R with N=M=1,V=0, theta_g(Xg)>0 and theta_f(Xf)<0 if pg,pf>0",
+  "boundary_two_form_on_clock_plane": "0 EXACT; isotropic plane, not full two-form kernel",
+  "not_proved": [
+    "clock translations admissible with center/outer clock Dirichlet",
+    "independence modulo full temporal gauge",
+    "full Dirac lapse solution",
+    "physical non-gauge rank two",
+    "boundary counterterm existence",
+    "4D dynamics/stability/observables"
+  ],
+  "original_physics_reexecuted": false,
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b1",
+  "theorem": "Two independent constant dust-clock canonical translations preserve original bulk primary/shift and every Poisson-descendant constraint algebraically; boundary clock-value trace rank=2 modulo diagonal radial diffeomorphisms on regular Step55 geometry."
+}
