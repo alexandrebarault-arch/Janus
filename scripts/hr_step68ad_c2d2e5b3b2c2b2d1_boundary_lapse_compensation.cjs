@@ -61,7 +61,7 @@ function certificate(){
  exact_lapse_compensation_M1:'N(lambda)=[Cg(Pg,0)+z*q*a*lambda]/[Cg(Pg,0)-z*a*lambda]',
  compensation_slope:'Nprime=z*a*(1+q)*Cg(Pg,0)/[Cg(Pg,0)-z*a*lambda]^2 >0',
  certified_uniform_conditions:['5<H2<6','-4/5<Pg<-16/25','Pg+lambda<0','Cg>Ag>2/3','Cf>Af>0','0<z<1/250','0<a<3/4','1<q<2','999/1000<N(lambda)<1001/1000'],
- counterterm_classification:'On the connected (lambda,N,M) pullback, d(B+C)=0 in all three independent directions iff C=-B+constant. A lapse-independent or momentum-independent C cannot do this.',
+ counterterm_classification:'On the connected (lambda,N,M) pullback, d(B+C)=0 in all three independent directions iff C=-B+constant. No lapse-independent C(lambda), and no momentum-independent C(N,M; fixed geometry/shift and NO explicit lambda dependence), can do this.',
  physical_limits:'Cancels only original-minus-IBP boundary difference on this restricted pullback. Does not certify functional differentiability of either Hamiltonian, six-pair Poisson/Dirac, lapse admissibility, temporal propagation, K=0/J=0, 4D or observables.',
  GATE_2B:'OPEN',JANUS_R:'NOT_VALIDATED'
  };
