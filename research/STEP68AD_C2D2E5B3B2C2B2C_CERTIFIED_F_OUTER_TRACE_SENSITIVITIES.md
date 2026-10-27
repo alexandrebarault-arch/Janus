@@ -36,6 +36,6 @@ Cette preuve ne choisit aucune condition de bord physique, n'établit aucune dif
 
 ## Reproductibilité et verrous
 
-Exécution : `node tests/test_hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs` ou exécution V8 du même fichier avec le module CJS chargé. **PASS 37 exact rational assertions; FAIL 0**. Le certificat `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2c-f-outer-sensitivities.json` est produit par `certificate()` ; chaque fraction affichée est un encadrement rationnel extérieur de la valeur calculée. Le certificat et le programme sont relus après publication pour vérifier leur identité octet par octet et leurs SHA Git.
+Exécution : `node tests/test_hr_step68ad_c2d2e5b3b2c2b2c_f_outer_sensitivities.cjs` ou exécution V8 du même fichier avec le module CJS chargé. **PASS 38 exact rational assertions; FAIL 0**. Le certificat `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2c-f-outer-sensitivities.json` est produit par `certificate()` ; chaque fraction affichée est un encadrement rationnel extérieur de la valeur calculée. Le certificat et le programme sont relus après publication pour vérifier leur identité octet par octet et leurs SHA Git.
 
 **Prochaine étape :** sélectionner et tester des conditions physiques de bord avec variations indépendantes des lapses, déterminer des contretermes autorisés et construire l'oracle fonctionnel original non-IBP à six couples (rang, tertiaires, K=0/J=0), puis dynamique 4D, stabilité et observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
