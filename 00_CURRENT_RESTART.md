@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b2b, DÉRIVÉES PHYSIQUES G ET BARRIÈRE VARIATIONNELLE (2026-10-27)
+
+**ÉTAPE RIGOUREUSE SPATIALE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b2b. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2c — encloser delta V=G_U*v+G_Pg et les quatre dérivées des traces canoniques f à R, puis sélectionner les conditions aux bords/contretermes et construire l'oracle fonctionnel Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT NOUVEAU PHYSIQUE ET LIMITÉ :** les quatre fichiers originaux Step45/46/55 ont été reconstitués depuis GitHub et authentifiés octet-identiques par SHA Git (66aa43841dccfe4a5d586a49be9c10af3a67a10e, bac025c28dbe1561c0c36c56dbfda46dc326f804, a54a6acf2f7ad2f64c500faecfa1406ecbf7b862, a6e7004120d0a166a3a8973c2fbe1487a8eb70fe). Le G normalisé original a été effectivement compilé et évalué en nombres duaux d'intervalles rationnels 10^-28, en différenciant Pg dans Gmom, Gprime, Rhog et Psg0. Sur 256 cellules jointives, s∈[0,289/400], |lambda|≤1/5000, U dans le tube b2 : -1.001099494671<G_U<-0.993939366018 et 0.020435412499<G_Pg<0.020578225856 (fractions exactes dans JSON). Les résidus entrants de la barrière de v sont min(A*0.00681+B)=1024922611588406880813/62500000000000000000000000>0 et max(A*0.00689+B)=-841114594602624479574991/10000000000000000000000000000<0, avec A=G_U-2, B=G_Pg. Sous le théorème analytique Step49 et le tube spatial authentique b2, **0.00681<v(s,lambda)<0.00689 pour tout s et lambda du domaine**, donc aussi v(R²,lambda) ; v(R) n'est pas évalué à une valeur exacte. Aucune dérivée des traces f ni condition aux limites physique certifiée.
+
+**TESTS EXÉCUTÉS :** 17 tests Python unittest PASS, 0 FAIL dans une arborescence locale contenant les quatre sources physiques originales SHA-identiques. Commandes : `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py' -v` et `PYTHONPATH=. python -m numerics.hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational`. Contre-vérification indépendante SymPy des dérivées à s=1/3, primal G identique, 256 et 512 cellules PASS ; barrière plus étroite [0.00682,0.00688] non certifiée, échec attendu testé (pas un contre-exemple physique). Le certificat JSON a été généré localement et publié octet-identique.
+
+**FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- numerics/hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py — blob 285e547658dec8534247faf67fbd26dba15400bf.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b2b_authentic_variational.py — blob f29015a1a2d14edcacfced0643040798cb626d36.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b2b-authentic-variational-barrier.json — blob c8100b22ec0f169af2151f4308eea0bc6ba26c80.
+- research/STEP68AD_C2D2E5B3B2C2B3C2B2B_AUTHENTIC_PHYSICAL_G_VARIATIONAL_BARRIER.md — blob 52937e5388438c0434c92020db667d1c4900cc11.
+- README.md — blob 0334cd9ad38cb698dee6a5918955659eb656d877.
+
+**ÉTAT GITHUB :** HEAD initial vérifié 7097b3d305c7cf9c257861c7f82fb4133fdf80c6 ; seules créations/modifications sur research/gate2b-nonhomothetic-transfer. Les branches main, research/v2-flrw et workflows désactivés ne doivent pas être modifiés. Vérifier le HEAD final après mise à jour de l'index.
+
+**LIMITES ET PRIORITÉS :** preuve de sensibilité radiale dans la famille spatiale sphérique et sous Step49/b2, PAS de condition aux limites externe, ni contreterme, ni matrice complète Dirac, ni tertiaires, ni lapses globaux, ni 4D, stabilité ou observables. Prochain calcul : combiner G_U, G_Pg et v pour delta V, puis Jacobien Step46 des quatre traces f et étude des bords ; ensuite véritable oracle non-IBP six couples.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b3c2b2a, LEMME VARIATIONNEL CENTRAL RÉGULIER (2026-10-27)
 
 **ÉTAPE CONDITIONNELLE PARTIELLE TERMINÉE : 68ad-C2d2e5b3b2c2b3c2b2a. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b3c2b2b — dériver et EXÉCUTER les vrais G_U/G_Pg du moteur original Step45/46/55, encloser leurs coefficients sur le tube, certifier v(R), dérivées des quatre traces f, bords et contretermes, puis oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
