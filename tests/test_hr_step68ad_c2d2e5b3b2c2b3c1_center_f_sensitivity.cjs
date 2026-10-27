@@ -1,0 +1,26 @@
+'use strict';
+const assert=require('assert');
+const {Q,center}=require('../scripts/hr_step68ad_c2d2e5b3b2c2b3c1_center_f_sensitivity.cjs');
+const q=Q.of;let n=0;function t(ok,label){assert.ok(ok,label);n++;}
+const c=center();
+t(c.step.endsWith('b3c1'),'stage');
+t(c.GATE_2B==='OPEN','gate');
+t(c.JANUS_R==='NOT_VALIDATED','status');
+t(q(c.v0).cmp(0)>0,'v0 positive');
+t(q(c.dV0_dlambda).cmp(q(c.v0).mul(2))===0,'V0 slope');
+t(q(c.drho_f0_enclosure[0]).cmp(q('-.020'))>0,'slope lower');
+t(q(c.drho_f0_enclosure[1]).cmp(q('-.019'))<0,'slope upper');
+t(q(c.rho_f0_enclosure[0]).cmp(q('.12'))>0,'density lower');
+t(q(c.rho_f0_enclosure[1]).cmp(q('.13'))<0,'density upper');
+t(q(c.rho_f0_quadratic_lambda_coefficient).cmp(0)>0,'quadratic positive');
+t(q(c.PG_enclosure[0]).cmp(c.PG_enclosure[1])<0,'Pg enclosure');
+t(q(c.U0_enclosure[0]).cmp(c.U0_enclosure[1])<0,'U enclosure');
+t(c.not_proven.includes('outer trace derivatives at R'),'scope');
+t(q('0.001').cmp(q('1/1000'))===0,'decimal parser');
+t(q('-0.001').cmp(q('-1/1000'))===0,'negative parser');
+t(q('1/3').add(q('1/6')).cmp(q('1/2'))===0,'fraction arithmetic');
+t(q('2/3').mul(q('3/4')).cmp(q('1/2'))===0,'multiply');
+t(q('2/3').div(q('4/3')).cmp(q('1/2'))===0,'divide');
+t(q('-1/2').cmp(q('0'))<0,'negative compare');
+t(q('-2').pow(2).cmp(q('4'))===0,'even power');
+console.log(JSON.stringify({passed:n,failed:0,mode:'BigInt exact',step:c.step}));
