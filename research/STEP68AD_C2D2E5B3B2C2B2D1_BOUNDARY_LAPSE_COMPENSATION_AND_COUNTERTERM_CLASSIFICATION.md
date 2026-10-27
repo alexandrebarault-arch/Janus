@@ -12,7 +12,7 @@ L'identité originale non-IBP moins IBP provient de Step37 (blob `005449ade6e358
 
 `B(lambda,N,M)=[Ag-z a(Pg+lambda)]N+[Af-z q a(Pg+lambda)]M=Cg(lambda)N+Cf(lambda)M.`
 
-Les dérivées mixtes `B_lambda,N=-za<0`, `B_lambda,M=-zaq<0` interdisent tout contreterme indépendant des lapses (ou indépendant du moment `pLg`) qui annulerait **toutes** les variations de cette différence sur les trois directions indépendantes `(lambda,N,M)`. Inversement, sur ce tiré-en-arrière connexe, la solution générale de `d(B+C)=0` est **exactement** `C=-B+constante`. Cette classification ne porte que sur la différence original–IBP, pas sur la différentiabilité du Hamiltonien total.
+Les dérivées mixtes `B_lambda,N=-za<0`, `B_lambda,M=-zaq<0` interdisent tout contreterme indépendant des lapses (ou indépendant du moment `pLg` **sans dépendance explicite en lambda**, à géométrie/shift fixés) qui annulerait **toutes** les variations de cette différence sur les trois directions indépendantes `(lambda,N,M)`. Inversement, sur ce tiré-en-arrière connexe, la solution générale de `d(B+C)=0` est **exactement** `C=-B+constante`. Cette classification ne porte que sur la différence original–IBP, pas sur la différentiabilité du Hamiltonien total.
 
 **Contre-exemple constructif à une extrapolation abusive de l'obstruction à lapses fixes.** Fixons `M=1` et imposons `B(lambda,N(lambda),1)=B(0,1,1)`. Alors
 
