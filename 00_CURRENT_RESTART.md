@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2a, FORME DE BORD TOTALE NON-IBP SIX COUPLES (2026-10-27)
+
+**ÉTAPE EXACTE MAIS LIMITÉE À LA FORME DE BORD AMBIANTE TERMINÉE : 68ad-C2d2e5b3b2c2b2d2a. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2b — conditions physiques aux frontières et contretermes, variations tangentes aux contraintes, puis oracle Dirac non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT :** à partir des densités originales Step37/ADM avec le shift diagonal V et les deux poussières indépendantes, les dix coefficients de la forme de bord du Hamiltonien radial nu ont été dérivés par le calcul variationnel du second ordre. En particulier, Θ[δSg']=2 Mg² N Sg/Lg, Θ[δSf']=2 Mf² M Sf/Lf, Θ[δpLg]=-z(N+M Lg/Lf)-V Lg, Θ[δpLf]=-V Lf, Θ[δSg]=-2 Mg² N' Sg/Lg+(zQ+V)pSg, Θ[δSf]=-2 Mf² M' Sf/Lf+V pSf, Q=N/Lg+M/Lf. Les coefficients restants (δLg,δLf,δtg,δtf) figurent dans l'audit et le certificat. Onze identités symboliques exactes vérifient Θ_original−Θ_IBP=δB, y compris la variation δz du shift : δB_z=−pLg(N+M Lg/Lf)δz, compensée par le terme de bord +pLg(N+M Lg/Lf)δz de la densité IBP. Pour la densité originale, F_z=Q(Dg−K z/sqrt(1−z²))=0 au shift réduit, donc δz* ne produit pas de contribution indépendante à sa variation. À lapses positifs et géométrie régulière, Dirichlet sur les six coordonnées seules laisse des variations ambiantes δSg',δSf' de flux strictement non nul : le Hamiltonien radial NU n'est pas différentiable sur cet espace sans restriction/contreterme. Ce résultat ne porte PAS sur l'espace tangent aux contraintes complètes et ne sélectionne aucune condition de bord physique.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 27 assertions exactes SymPy/rationnelles PASS, 0 FAIL (10 coefficients, 1 factorisation shift, 1 δB_z, 3 témoins rationnels, 11 comparaisons originale−IBP, 1 dérivée vraie HR), et 1 cas unittest PASS, 0 FAIL qui réexécute les mêmes 27 assertions. Commandes : `python numerics/hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py` ; `python -m unittest discover -s tests -p 'test_hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py' -v`. Sources physiques originales Step37/ADM/IBP lues et SHA authentifiées, mais moteurs Python originaux NON réexécutés dans cette étape. Les deux fichiers Python publiés correspondent octet pour octet aux fichiers exécutés (SHA Git vérifiés).
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- numerics/hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py — blob 94bd7e089ebb0978569361c03a4f3ab950b950df.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2_boundary_one_form.py — blob 75c7ec89400ecd1abca6d2c709999648381d5f47.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2a-full-nonibp-boundary.json — blob 39aed544c8f7d5e25330de000ec464fd8a0b9bdc.
+- research/STEP68AD_C2D2E5B3B2C2B2D2A_FULL_NONIBP_SIX_PAIR_BOUNDARY_ONE_FORM.md — blob 7f006902c31cfefdc8d94e011359a1b6c0f71101.
+- README.md — blob ef79618c57a560b16d75296f4bb8d0ea3242cf3c.
+
+**ÉTAT GITHUB :** HEAD vérifié au démarrage 1e45dcdb01fc57bc4b8bbdfd8bfc39002252e9a6. Toutes les écritures sont limitées à research/gate2b-nonhomothetic-transfer ; main, research/v2-flrw et workflows désactivés intouchés. Relire HEAD final après index. Historique antérieur conservé intégralement ci-dessous.
+
+**LIMITES :** aucune condition physique de bord ni contreterme sélectionné ; aucune différentiabilité démontrée pour un Hamiltonien amélioré, ni pour les variations tangentes à la surface de contraintes. Aucun rang Dirac, aucune tertiaire, aucun lapse global, aucune charte K=0/J=0, ni dynamique 4D, stabilité ou observable prouvés. Prochaine étape d2b : choisir un espace de variations admissibles et une action améliorée, tester les contraintes de bord et l'algèbre non-IBP complète à six couples. Ne pas fabriquer de rang Dirac à partir de ces dix coefficients.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d1, COMPENSATION DU FLUX DE BORD PAR LES LAPSES (2026-10-27)
 
 **ÉTAPE EXACTE MAIS RESTREINTE TERMINÉE : 68ad-C2d2e5b3b2c2b2d1. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2 — traiter les variations de bord de la fonctionnelle totale originale non-IBP, y compris shift réduit et six couples, puis Dirac/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
