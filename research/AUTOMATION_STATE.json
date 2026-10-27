@@ -10,49 +10,46 @@
     ]
   },
   "latest_session_automation_update": {
-    "success": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b3c2b",
-    "verified_after_update": true
+    "success": false,
+    "status": "PENDING_ATTEMPT",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b3c2b2"
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b3c2a_f_boundary_jacobian.cjs": "7615cdb1624748dac56ab1d969c401b258f8cdaa",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2a_f_boundary_jacobian.cjs": "fdbc28c258cd38d96da602db5992dca10a85bf45",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2a-f-boundary-jacobian.json": "e7966302ed157695df64fc887883a558d24e87ef",
-    "research/STEP68AD_C2D2E5B3B2C2B3C2A_EXACT_F_BOUNDARY_TRACE_JACOBIAN.md": "d40b07eb87bbcb09b8c6b00a03a63152dd5472a4",
-    "README.md": "d40f7b1e87807190312bd61561f61d035576d70c",
-    "00_CURRENT_RESTART.md": "883ce48975e0ed51abab17a2a74adefa72758c13"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b3c2b1_gdust_sensitivity.cjs": "3336afdf3c2a6ecbb0446b682516ca17bdc5390a",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b3c2b1_gdust_sensitivity.cjs": "83c04c69f736714073522a5efebe746a61f50b2b",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b3c2b1-gdust-sensitivity.json": "68d9e728c561ab52ab9c676da63d3c1b3310f052",
+    "research/STEP68AD_C2D2E5B3B2C2B3C2B1_UNIFORM_G_DUST_PARAMETER_SENSITIVITY.md": "002c120fc713054b7c76f5e736c1e3e168907c52",
+    "README.md": "4255a1123ae8fc3e09850c8412922ddda4084c30",
+    "00_CURRENT_RESTART.md": "39ce3d28adc11b3689b0278515726830f7a2ce1f"
   },
-  "verified_research_head_at_session_start": "770bb8e36b1519290748d48bd39c87c926125362",
-  "next_priority": "Execute authentic Step45/46/55 G_U and G_Pg on certified tube, solve variational v(R), compute actual f trace derivatives, physical boundary conditions/counterterms, then six-pair non-IBP Dirac rank/tertiaries.",
+  "verified_research_head_at_session_start": "847995c5c40f0fc91bdc783777ff4b28bfeb7d56",
+  "next_priority": "Differentiate authentic f-sector G_U/G_Pg, rigorously propagate v to R, f trace derivatives, physical boundaries/counterterms and six-pair non-IBP Dirac.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "04a687ad1de7fc999ed5554c56f4866aaa8766ac",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3c2a_EXACT_F_BOUNDARY_TRACE_JACOBIAN",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b3c2b_AUTHENTIC_G_VARIATIONAL_SENSITIVITY_TO_R",
+  "verified_research_head_before_state_file": "50078a097abca9707289e25730db8d5271432ac4",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b3c2b1_EXACT_G_DUST_PARAMETER_SENSITIVITY",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b3c2b2_AUTHENTIC_G_VARIATIONAL_SENSITIVITY_TO_R",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B3C2A_EXACT_F_BOUNDARY_TRACE_JACOBIAN.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B3C2B1_UNIFORM_G_DUST_PARAMETER_SENSITIVITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 24,
+    "passed": 1551,
     "failed": 0,
-    "runtime": "Node.js local and V8 Code Mode, published bytes reexecuted in V8",
-    "method": "exact BigInt rational arithmetic, 5 dual-number directions x2 identities, rational enclosure of chi using prior b2 U tube",
+    "runtime": "V8 Code Mode, original and published bytes",
+    "method": "256 outward rational slabs, six inequalities per slab; center identities and 512-cell sign crosscheck",
     "original_physics_modules_reexecuted": 0,
     "original_sources_authenticated": 1,
     "full_dirac_oracle_executed": false,
     "report_byte_identical": true
   },
-  "github_write_probe": "Four new scientific files published/read back, README and complete journal updated/read back, V8 24 tests rerun on GitHub bytes, JSON byte-identical; all writes restricted to research branch.",
+  "github_write_probe": "Four new scientific files published and reread; V8 1551 assertions rerun from published source/test bytes; README and entire journal updated without truncation; research branch only.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +66,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Authentic G_U/G_Pg and v(R) not computed; exact f boundary trace differential and chi interval are kinematic only. Physical boundary function space and Dirac remain open.",
+  "current_blocker": "True original Step45/46/55 G_U and G_Pg, rigorous variational v(R) and f trace derivatives remain uncomputed; g-dust sensitivity alone does not close boundary/Dirac gates.",
   "task_self_update": "2026-10-27: updated only first dynamic resume marker to 68ad-C2d2e5b3b2c2b3c2b; permanent instructions byte-identical, hourly schedule unchanged and enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
