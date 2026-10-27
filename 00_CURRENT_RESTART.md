@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d1, COMPENSATION DU FLUX DE BORD PAR LES LAPSES (2026-10-27)
+
+**ÉTAPE EXACTE MAIS RESTREINTE TERMINÉE : 68ad-C2d2e5b3b2c2b2d1. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2 — traiter les variations de bord de la fonctionnelle totale originale non-IBP, y compris shift réduit et six couples, puis Dirac/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT PROUVÉ :** sur la famille Step55/68o et à géométrie/shift fixés, la différence originale−IBP au bord extérieur vaut B=[Ag−z a(Pg+lambda)]N+[Af−z q a(Pg+lambda)]M, avec a=∂lambda pLg(R)>0, q=Lg/Lf>0, Ag=2Mg² R Sgr, Af=2Mf² R Sfr. Les dérivées croisées ∂lambda∂N B=−za<0 et ∂lambda∂M B=−zaq<0 sont exactes. Sur le tiré-en-arrière connexe (lambda,N,M), d(B+C)=0 pour toutes les variations indépendantes ssi C=−B+constante ; aucun contreterme indépendant des lapses ou du moment pLg ne peut accomplir cela. Cependant, à M=1, N(lambda)=[Cg(0)+zqa lambda]/[Cg(0)−za lambda] conserve EXACTEMENT B(lambda,N(lambda),1)=B(0,1,1). Pour le vrai Pg Step55, 5<H2<6 implique −4/5<Pg<−16/25 ; sur |lambda|≤1/5000, une preuve rationnelle uniforme donne 999/1000<N(lambda)<1001/1000 et N'>0. Ceci est un contre-exemple à une extrapolation de l'obstruction à lapses FIXES, pas une condition physique de lapse ni une preuve de différentiabilité du Hamiltonien total.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 114 assertions rationnelles BigInt V8 PASS, 0 FAIL ; réexécution depuis octets GitHub relus 114 PASS, 0 FAIL (mêmes cas, pas 228 tests indépendants). Certificat JSON régénéré octet-identique. Modules originaux Step37/ADM/Step55 lus et SHA authentifiés ; moteurs Python originaux NON réexécutés dans cette étape. Aucune preuve nouvelle de poussière, Dirac ou 4D.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS/RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b2d1_boundary_lapse_compensation.cjs — blob ec967f4d5b184d4cd97fca8f5b7fa8d10dc58559.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d1_boundary_lapse_compensation.cjs — blob 9065f20befabc1e06f0a3e0e4e94874f6d34d61e.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d1-boundary-lapse-compensation.json — blob 5525b24958be7dd0b7fcf310a55ac5b0adf0a352.
+- research/STEP68AD_C2D2E5B3B2C2B2D1_BOUNDARY_LAPSE_COMPENSATION_AND_COUNTERTERM_CLASSIFICATION.md — blob 9f6d7357d72238e83c453c942f906b889484c886.
+- README.md — blob fe9f3ea6e68ceda76902542e1eab2f38b4ebd481.
+
+**ÉTAT GITHUB :** HEAD au démarrage 4e74225dc2910031c4f81071b77dfb1c310469a4, seules écritures sur research/gate2b-nonhomothetic-transfer ; main, research/v2-flrw et workflows intouchés. HEAD final à relire après index. L'historique du journal ci-dessous est conservé INTÉGRALEMENT (451126 caractères JavaScript antérieurs).
+
+**LIMITES ET PRIORITÉS :** le flux B n'est que la différence original−IBP ; l'annuler ne suffit PAS à rendre l'un ou l'autre Hamiltonien fonctionnellement différentiable sur l'espace canonique complet. Les variations indépendantes des lapses sont des multiplicateurs, pas des paires canoniques. Priorité : audit de tous les termes de bord de l'action totale et du shift z* éliminé, espace admissible des champs et contretermes, puis oracle original non-IBP six couples, rang et contraintes tertiaires. Ne jamais déclarer JANUS validé sans fermeture temporelle et conditions aux bords, K=0/J=0, 4D, stabilité, observables.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2c, SENSIBILITÉS EXTÉRIEURES DES QUATRE TRACES f (2026-10-27)
 
 **ÉTAPE SPATIALE CERTIFIÉE TERMINÉE : 68ad-C2d2e5b3b2c2b2c. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d — sélectionner/tester des conditions physiques aux limites, les variations indépendantes des lapses et les contretermes admissibles ; puis construire l'oracle Poisson/Dirac original non-IBP à six couples, rang, tertiaires, K=0/J=0, 4D, stabilité, observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
