@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d1, COURBURE MIXTE DES MULTIPLICATEURS SUR LA FAMILLE SPATIALE STEP55 (2026-10-27)
+
+**ÉTAPE d2d1 TERMINÉE, RÉSULTAT EXACT/ENCADRÉ MAIS NON DIRAC. PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2d2 — trouver au moins deux variations CANONIQUES indépendantes tangentes à la secondaire fonctionnelle C(r)=0, primaires, régularité et préservation temporelle ; évaluer le pullback de dTheta, bords/lapses/contretermes puis Dirac original six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT :** sur la famille spatiale authentique Step55/68o, à R=17/20, géométrie et shift HR fixes, a=∂lambda pLg=92730563/128000000>0, 196809/40000000< b=∂lambda pLf <199121/40000000. La forme de bord non-IBP se tire en arrière comme Theta=F d(lambda), F=-z a(N+q M)-V(Lg a+Lf b), z=17/5000, q=Lg/Lf>0. À multiplicateurs fixes, dTheta=0 sur la famille canonique 1D par dimension : aucune obstruction ambiante ne peut en être déduite. Sur l'espace étendu (lambda,N,M,V), dTheta=(-za)dN∧d(lambda)+(-zqa)dM∧d(lambda)-(Lg a+Lf b)dV∧d(lambda), trois coefficients strictement négatifs, les deux premiers EXACTS et le troisième ENCLOS rationnellement. Les multiplicateurs ne sont PAS des paires canoniques. Aucune seconde direction canonique tangentielle complète, ni condition de bord physique, ni fermeture Dirac n'est établie.
+
+**TESTS :** V8 35 assertions BigInt rationnelles PASS, 0 FAIL ; wrapper 4 invariants PASS rejouant le même programme (non indépendant). Sources Step37/45/46/55 SHA authentifiées et certificat b2c f relu ; moteurs Python originaux NON réexécutés. Programme et certificat relus après publication et comparés octet pour octet.
+
+**FICHIERS SCIENTIFIQUES PUBLIÉS ET SHA BLOBS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs — 2d646edb9c571ef75ef0e3d3448ad53a0b59b42a
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs — 103c20deb16c3b6903eecae047ebcc154e8fde03
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json — 5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24
+- research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md — 1ba6d012133a92b69a8c91498d065b22649afbe0
+- README.md — f70eeb0e1cd0caf7329bce12fa55076e4bb5a9a3.
+
+**GITHUB :** HEAD initial 6a69648cb7596ac2ad0ab043593275ffd8a16fa6. Écritures exclusivement sur research/gate2b-nonhomothetic-transfer ; main et research/v2-flrw, workflows désactivés intouchés. Relire HEAD final après index.
+
+**LIMITES ET PRIORITÉS :** (1) Ne pas confondre l'espace spatial 1D, l'espace étendu des multiplicateurs et la vraie surface Dirac. (2) Construire variations canoniques fonctionnelles indépendantes à C(r)=0 avec contraintes temporelles ; tester i*dTheta. (3) Définir polarisation de bord, lapses/shift, contretermes et préservation. (4) Oracle non-IBP six couples, rang/tertiaires, K=0/J=0, 4D, stabilité, observables. Aucune validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2c, TÉMOIN DE COURBURE SUR CONTRAINTES PRIMAIRES PONCTUELLES (2026-10-27)
 
 **ÉTAPE d2c PARTIELLE TERMINÉE ; PROCHAINE ÉTAPE EFFECTIVE : 68ad-C2d2e5b3b2c2b2d2d — imposer la secondaire FONCTIONNELLE C(r)=0, les jets radiaux et les contraintes de préservation temporelle, calculer les véritables variations tangentes Dirac et le pullback de dTheta ; ensuite conditions de bord/lapses/contretermes, oracle original non-IBP six couples, rang, tertiaires, K=0/J=0, dynamique 4D, stabilité et observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
