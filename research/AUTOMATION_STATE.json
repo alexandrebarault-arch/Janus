@@ -5,26 +5,27 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "5988b760c7a5067b34bccb5ae7240cf6cb72f80b",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b1-EXACT_TRANSVERSE_SHIFT_CENTER_DOMAIN",
-  "next_pending_step": "68ad-C2d2e5b3b2-physical-Step55-Step68o-six-pair-functional-Dirac-regular-tangent-boundaries-tertiaries-J0",
+  "verified_research_head_before_state_file": "a50deb7d186a66f0aed67a9f9fd6d63f662aab2c",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2a-EXACT_CENTRAL_PARITY_SHIFT_CHART",
+  "next_pending_step": "68ad-C2d2e5b3b2b-constraint_tangent_then_six_pair_physical_functional_Dirac",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2A_EXACT_CENTRAL_PARITY_SHIFT_CHART.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 18,
+    "passed": 40,
     "failed": 0,
-    "command": "V8 eval of published exact BigInt script (18/18) and published Node wrapper replay in V8 with require/console shim (9/9); no native Node clone run",
-    "wrapper_assertions_passed": 9,
-    "report_byte_identical": true,
+    "command": "V8 reexecution of GitHub-published BigInt core (18) and wrapper (14); independent SymPy scratch 8 identities after correction of an initial failed scratch check; no Node clone run",
+    "core_assertions": 18,
+    "wrapper_assertions": 14,
+    "independent_sympy_identities": 8,
     "original_physics_modules_reexecuted": 0,
     "full_dirac_oracle_executed": false,
-    "notes": "18 exact rational checks plus 8 wrapper checks; no Node clone execution or original physical engine replay"
+    "preliminary_scratch_failure_corrected": true
   },
-  "github_write_probe": "Four genuine GitHub create_file writes to exclusive research branch, then README and full-history checkpoint update_file; published script and wrapper reexecuted in V8; JSON report exactly regenerated; GitHub blob SHA read back; no writes to main, research/v2-flrw or Actions.",
+  "github_write_probe": "Four genuine GitHub create_file writes, then README and full-history checkpoint update_file on exclusive research branch; readback and V8 replay of published JS files; SHA blobs verified. No main/v2-flrw/Actions writes.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -41,7 +42,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Must classify constraint-preserving central tangent variations and boundary conditions before a valid six-pair reduced functional Dirac oracle; physical Step55/68o six-pair bracket matrix, rank, tertiaries, J=0, global lapses, 4D, stability, observables NOT proved.",
+  "current_blocker": "Linearized Hg,Hf,C constraint-preserving tangent directions and boundary conditions not yet derived; physical Step55/68o six-pair non-IBP functional Dirac oracle, full rank, tertiaries, J=0, global lapses, 4D, stability and observables NOT proved.",
   "task_self_update": "2026-10-27 automation prompt successfully updated with 68ad-C2d2e5b3b2 hint, preserving entire permanent instructions, hourly schedule and timezone.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -50,7 +51,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "e7850a730c17b143141af2c5432c07ecb926a723",
+    "00_CURRENT_RESTART.md": "ead75ff87c735ea3a5cbdb02be9b23fbe5889c58",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -73,7 +74,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "f5eb588d2ff45c320151bd3aa949973ee5f062fb",
+    "README.md": "2a7dd6b409a8e5882163984db0fe254874531750",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -105,9 +106,13 @@
     "scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs": "3e47422a3b3f5c4f61cc32bae1588929b5de2ace",
     "tests/test_hr_step68ad_c2d2e5b3b1_shift_tangent.cjs": "d3eafff67b6c47a2002a30dc1e747658249b66d4",
     "research/reports/gate2b-step68ad-C2d2e5b3b1-shift-tangent.json": "05af81e309abac84eda716f1e3081bd486ca0c1d",
-    "research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md": "efab645b92c9bec1ab2a26946d9718431167f100"
+    "research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md": "efab645b92c9bec1ab2a26946d9718431167f100",
+    "scripts/hr_step68ad_c2d2e5b3b2a_center_parity_chart.cjs": "63b84e9fad6051c45961247ac00f5abd23e6a1e8",
+    "tests/test_hr_step68ad_c2d2e5b3b2a_center_parity_chart.cjs": "062e028ac9e88977add283f57775dbab861e07f6",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2a-center-parity.json": "a53cf171a7d5b76a7161e59b34e8c3e646cfd5af",
+    "research/STEP68AD_C2D2E5B3B2A_EXACT_CENTRAL_PARITY_SHIFT_CHART.md": "1a39a677eb82ed0a4576bf0e26482bd46d1b61e0"
   },
-  "current_proven_result": "Exact reduced-shift Hessian rank 1 on (K,D) != (0,0), not Dirac rank. For Step68o K=r²k,D=r³ka/w, δK=r²κ,δD=r³d gives δz=r w²/k(wd-aκ), quadratic Hessian r⁴ w/k(wd-aκ)². Smooth formal off-shell canonical perturbation δpLg=εr² gives ∂εz=-2Lg w³/(r k) and for fixed ε!=0 zε(r)->-sign(ε) while z0(r)->0, so unrestricted reduced-shift linearization not uniform at center. No assertion of constraint tangency or physical obstruction.",
+  "current_proven_result": "Conditional analytic parity-chart iff criterion: D=r C(s), K=r²k(s), k(0)>0, z*=O(r) iff c0=P0H0−2L0G0=0. Linearized tangent delta c0=0 is not sufficient for finite path: Pε=2+ε+ε²,Gε=1+ε/2 gives c0=ε², zε→+1; same nonzero tangent as exact c0=0 path Pε=2+ε. Not a proof of Hamiltonian constraint tangency or full Dirac rank.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
