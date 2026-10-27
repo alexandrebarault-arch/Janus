@@ -6,53 +6,47 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d",
-    "verified_after_update": true
+    "success": false,
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py": "a71df68f58ea49e142e962bb9a5663de290e05b5",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py": "55f736654f8a7087a664ae86b32a8c87b983ca98",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2c-primary-tangent-curvature.json": "d9cd003e79d9cd6e11d96b99941e795d11c9bad5",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md": "b9098cc4c48c5cc380cba0e60af1d6bcf1b6bb64",
-    "README.md": "95b1b5777539192b0fadab86cad1f1e3af3e50cd",
-    "00_CURRENT_RESTART.md": "465efb12bb92d34ab79fc062e6fb57f59c50654f"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "2d646edb9c571ef75ef0e3d3448ad53a0b59b42a",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "103c20deb16c3b6903eecae047ebcc154e8fde03",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json": "5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0",
+    "README.md": "f70eeb0e1cd0caf7329bce12fa55076e4bb5a9a3",
+    "00_CURRENT_RESTART.md": "1390a0efabc3ab57dd6c35ab03aec3d59038c785"
   },
-  "verified_research_head_at_session_start": "28b08c060751b76e45a57c02d3caddd9f936cb57",
-  "next_priority": "Use authentic Step55 parameters and the full functional secondary and time-preservation constraints to compute genuine tangent boundary variations and pullback of dTheta; then admissible boundary conditions/lapses/counterterms, six-pair original non-IBP Dirac rank/tertiaries, K=0/J=0, 4D/stability/observables.",
+  "verified_research_head_at_session_start": "6a69648cb7596ac2ad0ab043593275ffd8a16fa6",
+  "next_priority": "Construct two genuinely independent canonical variations satisfying full functional secondary C(r)=0, primaries, center/boundary regularity and temporal preservation; then evaluate pullback dTheta, boundary polarization, lapses/counterterms and six-pair non-IBP Dirac rank/tertiaries/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-27",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "3bac60acc3dc545d08fd30ee56293d49493c0bfd",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2c_EXACT_POINTWISE_PRIMARY_TANGENT_CURVATURE_WITNESS",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d_FULL_SECONDARY_FUNCTIONAL_TANGENT_BOUNDARY_PULLBACK",
+  "verified_research_head_before_state_file": "840ca1ceb0e11ddebf5fed5f175ff1cdde857fdd",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d1_AUTHENTIC_SPATIAL_SHELL_MULTIPLIER_CURVATURE",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2_FULL_FUNCTIONAL_CANONICAL_TANGENT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 19,
+    "passed": 35,
     "failed": 0,
-    "runtime": "Python SymPy exact symbolic/rational",
-    "unittest_passed": 1,
-    "unittest_failed": 0,
-    "unittest_replays_same_assertions": true,
-    "method": "2D pointwise primary-constraint patch Hg=Hf=Dtotal=Fz=0, exact pullback dTheta=30/(9+(4-2y)^2)^(3/2), positive dust at witness",
+    "runtime": "V8 exact rational BigInt",
+    "wrapper_invariants_passed": 4,
+    "wrapper_replays_same_assertions": true,
     "original_physics_modules_reexecuted": 0,
-    "original_sources_authenticated": 3,
+    "original_sources_authenticated": 4,
     "full_dirac_oracle_executed": false,
-    "source_and_test_byte_identical_to_published": true
+    "method": "Authentic Step55 one-parameter spatial shell; mixed boundary multiplier curvature; f derivative interval certified earlier"
   },
-  "github_write_probe": "Six authorized branch writes (four scientific, README, complete checkpoint) succeeded, read back and checked; source, test and certificate Git blobs match executed local bytes; index updated separately.",
+  "github_write_probe": "Seven authorized branch writes succeeded (four scientific, README, journal, index); all scientific files/README/journal reread byte-identical; no original physics engines rerun.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +63,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The new positive-dust toy interaction witness has nonzero boundary curvature even on a 2D submanifold satisfying pointwise primary constraints. But it is NOT Step55, and the full functional secondary C(r)=0, tertiary/time preservation, and physical boundary conditions are not imposed. No full Dirac tangent or rank.",
+  "current_blocker": "The authentic Step55 spatial secondary shell provides only one canonical parameter lambda, so its fixed-multiplier boundary 2-form pullback vanishes by dimension. Nonzero extended multiplier curvature is not a full Dirac obstruction. Need a second independent canonical functional tangent with temporal preservation and admissible boundary conditions.",
   "task_self_update": "2026-10-27: current automation prompt marker updated to d2d; permanent instruction suffix preserved byte-identically, schedule/timezone/enabled unchanged and re-read.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -78,7 +72,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "465efb12bb92d34ab79fc062e6fb57f59c50654f",
+    "00_CURRENT_RESTART.md": "1390a0efabc3ab57dd6c35ab03aec3d59038c785",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -101,7 +95,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "95b1b5777539192b0fadab86cad1f1e3af3e50cd",
+    "README.md": "f70eeb0e1cd0caf7329bce12fa55076e4bb5a9a3",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -201,7 +195,11 @@
     "numerics/hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py": "a71df68f58ea49e142e962bb9a5663de290e05b5",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2c_primary_tangent.py": "55f736654f8a7087a664ae86b32a8c87b983ca98",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2c-primary-tangent-curvature.json": "d9cd003e79d9cd6e11d96b99941e795d11c9bad5",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md": "b9098cc4c48c5cc380cba0e60af1d6bcf1b6bb64"
+    "research/STEP68AD_C2D2E5B3B2C2B2D2C_PRIMARY_CONSTRAINT_TANGENT_CURVATURE_WITNESS.md": "b9098cc4c48c5cc380cba0e60af1d6bcf1b6bb64",
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "2d646edb9c571ef75ef0e3d3448ad53a0b59b42a",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "103c20deb16c3b6903eecae047ebcc154e8fde03",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json": "5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0"
   },
   "current_proven_result": "Exact ambient boundary one-form for bare original non-IBP Hamiltonian with six canonical pairs and diagonal shift V, 10 coefficients; 11 exact original-minus-IBP delta B identities including delta z* cancellation. Dirichlet canonical coordinates alone leave nonzero delta S' flux for positive lapses in unrestricted ambient variations. No on-shell Dirac closure.",
   "last_original_reports_verified": {
