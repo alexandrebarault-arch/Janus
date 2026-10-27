@@ -38,7 +38,7 @@
     "1<q<2",
     "999/1000<N(lambda)<1001/1000"
   ],
-  "counterterm_classification": "On the connected (lambda,N,M) pullback, d(B+C)=0 in all three independent directions iff C=-B+constant. A lapse-independent or momentum-independent C cannot do this.",
+  "counterterm_classification": "On the connected (lambda,N,M) pullback, d(B+C)=0 in all three independent directions iff C=-B+constant. No lapse-independent C(lambda), and no momentum-independent C(N,M; fixed geometry/shift and NO explicit lambda dependence), can do this.",
   "physical_limits": "Cancels only original-minus-IBP boundary difference on this restricted pullback. Does not certify functional differentiability of either Hamiltonian, six-pair Poisson/Dirac, lapse admissibility, temporal propagation, K=0/J=0, 4D or observables.",
   "GATE_2B": "OPEN",
   "JANUS_R": "NOT_VALIDATED",
