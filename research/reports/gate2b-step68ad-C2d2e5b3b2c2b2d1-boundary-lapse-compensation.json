@@ -1,0 +1,51 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d1",
+  "scope": "EXACT boundary pullback classification on Step55/68o spatial family; not a physical BC or a Dirac proof",
+  "source_blobs": {
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "numerics/hr_spherical_adm_primary.py": "c04aae4cadcefe1dcf6d937b7f3a2d37573f5d41",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "R": "17/20",
+  "lambda_abs_max": "1/5000",
+  "H2": "1111887094969374384953162712427069073394495655204338071814597909773/195312500000000000000000000000000000000000000000000000000000000000",
+  "physical_Pg_rational_enclosure": [
+    "-4/5",
+    "-16/25"
+  ],
+  "z": "17/5000",
+  "a_dlambda_pLg": "92730563/128000000",
+  "q_Lg_over_Lf": "2505421686285156250000000000/1444418923561876775155324829",
+  "Ag": "2190162218713/3200000000000",
+  "Af": "926837868759050015835220018529737001208711893/200000000000000000000000000000000000000000000000",
+  "za": "1576419571/640000000000",
+  "boundary_formula": "B=(Ag-z*a*(Pg+lambda))*N+(Af-z*q*a*(Pg+lambda))*M",
+  "boundary_fixed_lapses_slope_N1_M1": "-6226606039693438177138189375297828359/924428111079601136099407890560000000000",
+  "mixed_derivatives": {
+    "lambda_N": "-1576419571/640000000000",
+    "lambda_M": "-394959577986774259929296875/92442811107960113609940789056"
+  },
+  "exact_lapse_compensation_M1": "N(lambda)=[Cg(Pg,0)+z*q*a*lambda]/[Cg(Pg,0)-z*a*lambda]",
+  "compensation_slope": "Nprime=z*a*(1+q)*Cg(Pg,0)/[Cg(Pg,0)-z*a*lambda]^2 >0",
+  "certified_uniform_conditions": [
+    "5<H2<6",
+    "-4/5<Pg<-16/25",
+    "Pg+lambda<0",
+    "Cg>Ag>2/3",
+    "Cf>Af>0",
+    "0<z<1/250",
+    "0<a<3/4",
+    "1<q<2",
+    "999/1000<N(lambda)<1001/1000"
+  ],
+  "counterterm_classification": "On the connected (lambda,N,M) pullback, d(B+C)=0 in all three independent directions iff C=-B+constant. A lapse-independent or momentum-independent C cannot do this.",
+  "physical_limits": "Cancels only original-minus-IBP boundary difference on this restricted pullback. Does not certify functional differentiability of either Hamiltonian, six-pair Poisson/Dirac, lapse admissibility, temporal propagation, K=0/J=0, 4D or observables.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "tests": {
+    "passed": 114,
+    "failed": 0,
+    "runtime": "V8 exact BigInt rational, rechecked on published bytes",
+    "original_python_modules_executed": 0
+  }
+}
