@@ -1,3 +1,5 @@
+> **JANUS — mise à jour 27/10/2026, 68ad-C2d2e5b3b2c2b3c2b1 (PARTIEL).** Sur le tube spatial authentique Step55, une transcription indépendante de la reconstruction g certifie uniformément pour |lambda|<=1/5000 : -2.88<∂lambda rho_g<-2.85 et 3.74<∂lambda² rho_g<3.77 sur 0<=s<=289/400 (256 cellules, BigInt dirigé, 1551 assertions PASS). Les moteurs physiques originaux n'ont pas été réexécutés dans cette étape. **G_U/G_Pg, v(R), traces f, bords et Dirac restent ouverts ; GATE_2B OPEN, JANUS_R NOT_VALIDATED.** Audit : `research/STEP68AD_C2D2E5B3B2C2B3C2B1_UNIFORM_G_DUST_PARAMETER_SENSITIVITY.md`.
+
 > **JANUS — 27/10/2026, étape 68ad-C2d2e5b3b2c2b3c1 (PARTIELLE)** : sensibilités centrales exactes de la poussière f sous Pg→Pg+λ : ∂λU₀=Mf²b/a>0 ; ∂λρf,0=3U₀/(2a)<0 ; ρf,0(λ) est un polynôme quadratique exact et reste >0,12 pour |λ|≤1/5000. 20 tests BigInt PASS ; moteurs originaux NON réexécutés dans cette étape. Sensibilité au bord R et Dirac toujours ouverts. Voir `research/STEP68AD_C2D2E5B3B2C2B3C1_EXACT_CENTRAL_F_DUST_PARAMETER_SENSITIVITY.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 ## Recherche JANUS — 68ad-C2d2e5b3b2c2b3c2a (27 octobre 2026)
