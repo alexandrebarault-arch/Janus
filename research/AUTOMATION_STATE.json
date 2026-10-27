@@ -6,7 +6,12 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
+    "success": true,
+    "verified_after_update": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b"
   },
   "latest_session_published_blobs": {
