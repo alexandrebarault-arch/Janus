@@ -1,0 +1,22 @@
+{
+  "step": "68ad-C2d2e5b3b2c1",
+  "scope": "Exact conditional boundary traces of Step55 Pg-parameter family; no original G execution",
+  "outer_r": "17/20",
+  "coefficients": {
+    "delta_pLg_over_lambda": "92730563/128000000",
+    "delta_pLg_prime_over_lambda": "2734739/1600000",
+    "delta_U0_over_lambda": "274023815147385251710689588080861/40000000000000000000000000000000000"
+  },
+  "fixed_pLg_outer_boundary": "forces lambda=0 for this one-parameter family",
+  "fixed_pLg_prime_outer_boundary": "forces lambda=0 for this one-parameter family",
+  "fixed_U0_center": "forces lambda=0 for this one-parameter family",
+  "unfixed_momentum_or_mixed_boundary": "NOT_DECIDED; boundary data must be specified",
+  "original_source_git_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step49_analytic_center.py": "d570948912885d45a625fa2db31c6a5435b6a654",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
