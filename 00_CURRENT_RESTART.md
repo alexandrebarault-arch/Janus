@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b1, TRANSLATIONS CANONIQUES DES HORLOGES DE POUSSIÈRE (2026-10-28)
+
+**ÉTAPE d2d2b1 TERMINÉE : SYMÉTRIE EXACTE DE VOLUME, RANG 2 DES TRACES D'HORLOGES MODULO JAUGE RADIALE, MAIS PAS DEUX DIRECTIONS PHYSIQUES DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b2 — classifier les charges de translation face à la jauge TEMPORELLE, aux conditions t_i(0)/t_i(R), aux générateurs améliorés et à la préservation temporelle ; ensuite rechercher deux directions non-jauge admissibles, pullback dTheta, bords/contretermes, oracle original non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT :** Les translations constantes indépendantes Xg: δtg=1, Xf: δtf=1 (toutes autres variations canoniques nulles) sont canoniques. Les densités originales Hg,Hf,Ddiag,Fz, le shift réduit z*, les densités IBP Step45 et tous leurs descendants de Poisson dans le VOLUME ne dépendent pas des valeurs tg,tf ; les deux translations les préservent exactement. Sur la géométrie Step55, Sg',Sf'>0 : ces directions ont rang 2 dans les traces (δtg(R),δtf(R)) modulo les SEULS difféomorphismes radiaux. Les coefficients de la forme de bord originale sont Θ[Xg]=pg[N tg'/(Lg² sqrt(1+(tg'/Lg)²))+z(N/Lg+M/Lf)+V] et Θ[Xf]=pf[M tf'/(Lf² sqrt(1+(tf'/Lf)²))+V]. dΘ(Xg,Xf)=0 EXACT, plan ISOTROPE et non noyau de toute la 2-forme. Sur Step55 à R=17/20, N=M=1,V=0, pg,pf>0, Θ[Xg]>0 et Θ[Xf]<0. La variation totale du Hamiltonien sous translation constante peut rester nulle grâce à la compensation volume/bord. Ne PAS assimiler ce rang 2 radial à un rang physique : la jauge temporelle, les conditions d'horloge au centre/au bord et les lapses complets ne sont pas traités.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** 48 assertions symboliques exactes SymPy PASS, 0 FAIL dans le programme local ; 1 unittest de rejeu PASS (les mêmes 48 assertions, NON indépendant). Les fichiers de code publiés ont les SHA Git identiques aux octets exécutés ; le certificat JSON est identique aux octets générés. Moteurs Python originaux Step45/55/58 NON réexécutés. Sources originales relues/SHA authentifiés : Step37 005449ade6e3582e3b9a5c3374a881a77e73e3f6 ; Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e ; Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f ; Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe ; kernel original 45ccd73177cc1588efaf1d53e3dd0179d41ec30b ; forme de bord d2a 94bd7e089ebb0978569361c03a4f3ab950b950df.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- numerics/hr_step68ad_c2d2e5b3b2c2b2d2d2b1_clock_translation.py — blob 1d973e04f296df9144f6ddef40681dd18342e28e.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b1_clock_translation.py — blob 945b0327c631c131d7e31bda865283283448fc88.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b1-clock-translation.json — blob 50586bd81a9cdf35e966e6a13504bdf28906345f.
+- research/STEP68AD_C2D2E5B3B2C2B2D2D2B1_DUST_CLOCK_TRANSLATIONS_AND_BOUNDARY_ISOTROPY.md — blob b419859f173794471a4eed253d27a6ae1ce0960e.
+
+**GITHUB :** HEAD initial authentifié 103770128d44146a886da1fab713c1ee2f988a42 ; quatre nouveaux livrables + README + journal + index à synchroniser sur research/gate2b-nonhomothetic-transfer UNIQUEMENT. Ne toucher ni main, ni research/v2-flrw, ni workflows désactivés. HEAD final à relire après index.
+
+**VERROUS :** (1) Déterminer si les deux translations sont globales physiques, jauge temporelle, ou exclues par les bords. (2) Déterminer le rang de traces après quotient complet et préservation temporelle ; (3) calculer la courbure sur de véritables directions canoniques admissibles ; (4) Dirac original non-IBP six couples, lapses, rang, tertiaires, K=0/J=0, 4D/stabilité/observables. Aucune validation cosmologique.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2a, NOYAU DE JAUGE DES TANGENTES CANONIQUES (2026-10-27)
 
 **ÉTAPE d2d2a TERMINÉE : LEMME STRUCTUREL EXACT, PAS UNE SOLUTION DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b — chercher des variations CANONIQUES NON-JAUGE à traces de bord indépendantes modulo difféomorphismes, satisfaisant primaires, secondaire C(r)=0 et préservation temporelle ; puis pullback de dTheta, bords/contretermes/lapses, oracle Dirac six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
