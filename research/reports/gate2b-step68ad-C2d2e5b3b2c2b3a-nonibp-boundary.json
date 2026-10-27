@@ -1,0 +1,44 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b3a",
+  "scope": "Exact boundary trace and non-IBP surface variation on the certified Step55/68o spatial Pg tube; fixed lapse and geometry, no physical BC selected.",
+  "r_outer": "17/20",
+  "lambda_interval": [
+    "-1/5000",
+    "1/5000"
+  ],
+  "delta_pLg_outer_per_lambda": "92730563/128000000",
+  "delta_pLg_prime_outer_per_lambda": "2734739/1600000",
+  "delta_U0_center_per_lambda": "274023815147385251710689588080861/40000000000000000000000000000000000",
+  "z_outer": "17/5000",
+  "Lg_over_Lf_outer": "2505421686285156250000000000/1444418923561876775155324829",
+  "delta_B_outer_per_lambda_N1_M1": "-6226606039693438177138189375297828359/924428111079601136099407890560000000000",
+  "delta_B_outer_per_lambda_Nhalf_Mhalf": "-6226606039693438177138189375297828359/1848856222159202272198815781120000000000",
+  "exact_robin_beta_over_alpha_for_zero_trace": "-5454739/12869360",
+  "B_center_for_bounded_lapses": "0",
+  "boundary_difference": "L_original-L_IBP=partial_r B; B=2Mg2*N*Sg*Sgprime/Lg+2Mf2*M*Sf*Sfprime/Lf-z*pLg*(N+M*Lg/Lf)",
+  "boundary_variation": "delta_lambda B(R)=-R*Z1*R^2*(1+5*cg*R^2/2)*(N(R)+M(R)*Lg(R)/Lf(R))*delta_lambda",
+  "exact_sign": "negative for positive fixed N(R),M(R); nonzero even with fixed geometry and fixed dust coordinate fields",
+  "alternatives": "compact lapse; momentum boundary fixing; appropriate boundary counterterm; physical BC selection unresolved",
+  "original_source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step37_original_nonibp_oracle.py": "005449ade6e3582e3b9a5c3374a881a77e73e3f6"
+  },
+  "proven": [
+    "exact injective outer pLg trace for this one-parameter family",
+    "nonzero non-IBP boundary variation for fixed positive lapses",
+    "unique Robin cancellation direction for pLg,pLgprime trace"
+  ],
+  "not_proven": [
+    "physical boundary condition selection",
+    "global f-sector trace derivative",
+    "Dirac rank",
+    "tertiary constraints",
+    "lapses",
+    "K=0/J=0",
+    "4D/stability/observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
