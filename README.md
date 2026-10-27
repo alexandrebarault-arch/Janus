@@ -1,5 +1,8 @@
 # Janus Research
 
+> **CURRENT GATE 2B — Step68ad-C2d2e5b3b1 (27 Oct 2026):** [audit exact des variations transverses du shift au centre](research/STEP68AD_C2D2E5B3B1_SHIFT_REDUCTION_TRANSVERSE_CENTER_DOMAIN.md) → [18 assertions rationnelles](scripts/hr_step68ad_c2d2e5b3b1_shift_tangent.cjs) → [rapport](research/reports/gate2b-step68ad-C2d2e5b3b1-shift-tangent.json). Sur K=r²k,D=r³ka/w, variations δK=r²κ,δD=r³d : δz=O(r), Hessienne quadratique O(r⁴). **Contre-exemple hors coquille** δpLg=εr² : ∂εz~1/r et zε→−sign ε au centre, empêchant une linéarisation uniforme naïve du shift réduit sur cette classe. **18 assertions PASS + 8 contrôles du wrapper PASS en V8**, moteurs physiques originaux non réexécutés. Pas de rang Dirac prouvé. **NEXT 68ad-C2d2e5b3b2 : espace tangent régulier puis véritable oracle fonctionnel six couples Step55/68o, bords/tertiaires/rang/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+
 > **CURRENT GATE 2B — Step68ad-C2d2e5b3a (27 Oct 2026):** [audit exact K=0 et chemin Step68o](research/STEP68AD_C2D2E5B3A_K_ZERO_CHART_AMBIENT_VS_PHYSICAL_PATH.md) → [certificat rationnel](research/reports/gate2b-step68ad-C2d2e5b3a-K0-chart.json) → [15 tests](tests/test_hr_step68ad_c2d2e5b3_k0_chart.py). **K=r²*k, k≥0.221156881156…>0** sur la géométrie prescrite 0≤r≤17/20, mais K=D=0 au centre. Le shift réduit n'a aucune extension continue ambiante en (K,D)=(0,0) (deux rayons exacts 0 vs 4/5 ; dérivée divergente), tandis que le chemin algébrique Step68o a z=rZ1 et une limite radiale régulière. **15 tests PASS, 0 FAIL ; 16 sous-identités SymPy** ; pas d'EDO Step55 réexécutée ni de rang Dirac. **NEXT 68ad-C2d2e5b3b : oracle fonctionnel authentique sur coquille, bords/tertiaires/rang/J=0. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 
