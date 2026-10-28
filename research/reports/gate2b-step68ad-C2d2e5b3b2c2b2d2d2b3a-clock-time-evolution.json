@@ -1,0 +1,31 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3a",
+  "assertions_passed": 37,
+  "assertions_failed": 0,
+  "original_source_shas": {
+    "step37": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "boundary_d2a": "94bd7e089ebb0978569361c03a4f3ab950b950df"
+  },
+  "step55_sign_data": {
+    "R": "17/20",
+    "Lg": "641387951689/1600000000000",
+    "Lf": "1444418923561876775155324829/6250000000000000000000000000",
+    "tg_prime": "32710785536139/80000000000000000",
+    "tf_prime": "-24555121700551905177640522093/78125000000000000000000000000000",
+    "z": "17/5000"
+  },
+  "exact_toy_witness_not_step55": {
+    "V_relative": "-2/5",
+    "common_speed": "5/4",
+    "V_diagonal_flux": "-11/65",
+    "bare_diagonal_flux_at_V_relative": "-15/13"
+  },
+  "proof_scope": "Exact algebra on positive-lapse Step55 signs: no finite V can freeze both clocks at outer boundary; a unique V preserves their relative value with positive common velocity. At regular center time-independent Dirichlet requires zero corresponding lapse. Bulk clock momentum satisfies dot(p_i)=d_r(J_i), conditional integrated flux balance. No improved generator or Dirac temporal gauge quotient.",
+  "original_physics_reexecuted": false,
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
