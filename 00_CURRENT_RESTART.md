@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d3 ANNULATION CUBIQUE DU BORD CENTRAL RÉGULIER (2026-10-28)
+
+**ÉTAPE b3c3d3 TERMINÉE (LEMME CINÉMATIQUE EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d4 : REJEU ORIGINAL STEP45/55/58+b3c2, VARIATIONS TANGENTES AUX PRIMAIRES, C(r)=0, PRÉSERVATION TEMPORELLE STEP58 ET BORD EXTERNE STEP55 R=17/20 ; GÉNÉRATEURS AMÉLIORÉS, CHARGES, QUOTIENT JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT EXACT MAIS RESTREINT :** Dans la classe analytique régulière au centre, avec `Lg,Lf,N,M` pairs, `Sg=r(L0+O(r²))`, `Sf=r(F0+O(r²))`, `pLg,pLf,pg,pf=O(r²)`, `pSg,pSf=O(r)`, `tg',tf',z,V=O(r)`, les dix termes de la forme originale de bord non-IBP sont impairs. Les seuls quatre coefficients potentiellement linéaires, `+2 Mg2 N0 r δSg'`, `-2 Mg2 N0 r δLg`, `+2 Mf2 M0 r δSf'`, `-2 Mf2 M0 r δLf`, s'annulent sous la tangence aux relations géométriques `δSg'(0)=δLg(0)`, `δSf'(0)=δLf(0)`. **Le pullback est Theta_center=O(r³), et dTheta_center=O(r³) sur les familles lisses uniformes**, même en faisant varier les lapses pairs. Ordre optimal : variation `δL2=1` donne `lim Theta/r³=-2 Mg2 N0`. Variation non régulière : `lim Theta/r=2 Mg2 N0(δH0−δL0)`. Cela élimine le terme mixte linéaire libre de lapse de b3c3d2 **sur cette classe centrale**, sans conclure sur le bord externe, la charge physique ou la tangence Dirac. Le shift régulier est **supposé**, pas obtenu des contraintes ; le critère central antérieur b3b2a demeure.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3d3_center_boundary_parity` : **25 assertions exactes SymPy PASS** (10 parités, 10 coefficients linéaires, annulation, témoin cubique, contre-exemple non régulier, 2 contrôles lapse). `python -m unittest -v tests.test_hr_step68ad_b3c3d3_center_boundary_parity` : **4 cas PASS**, non indépendants. Premier unittest échoué sur compteur attendu 24 au lieu de 25, corrigé puis quatre cas PASS ; **0 FAIL final**. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git refs/heads/research/gate2b-nonhomothetic-transfer` : échec DNS `Could not resolve host: github.com`. Les sources Step37/45 et b3c3d2 ont été relues via GitHub, mais **imports originaux Step45/55/58 et test b3c2 NON rejoués**.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS, RELUS, BLOBS IDENTIQUES AUX OCTETS LOCAUX TESTÉS/PRODUITS :**
+- `numerics/hr_step68ad_b3c3d3_center_boundary_parity.py` : `f63f05c6173c473a957fd4e87bbb37e141432a41`.
+- `tests/test_hr_step68ad_b3c3d3_center_boundary_parity.py` : `06d481d5da02b8436acfcf351a615b7b0bd43db5`.
+- `research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json` : `b9acd1a907c056d12a4d34cf6134c7908b32047f`.
+- `research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md` : `e3ee970e68edb60f09c5beb24a3052ad8852a801`.
+- README actualisé : blob `6c7d4a610810bda3a89f457a37c951865f9871ee`.
+
+**GITHUB :** HEAD initial vérifié `aff5a788fb2c64f27b6f952d73e1808be6369e11` ; quatre `create_file` réels et un `update_file` README sur la **seule** branche `research/gate2b-nonhomothetic-transfer`. Dernier commit scientifique/README avant checkpoint : `104d768f66964cf3956f50c8f41e616b47a6b76b`. HEAD `main` observé `aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw` `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; à recontrôler après index. Aucun workflow GitHub Actions modifié.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) Rejouer les moteurs originaux et b3c2 dans un environnement complet ; (2) calculer le pullback de la forme de bord extérieure Step55 sur de vraies variations tangentes aux primaires, secondaire fonctionnelle C(r)=0 et préservation Step58 ; (3) générateurs améliorés/charges, quotient temporel ; (4) Dirac six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. La disparition du bord central n'est **pas** une preuve de différentiabilité globale ni de stabilité JANUS. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d2 FORME NON-IBP COMPLÈTE SUR TRANCHE DIRICHLET (2026-10-28)
 
 **ÉTAPE b3c3d2 TERMINÉE (THÉORÈME CINÉMATIQUE EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d3 : REJEU ORIGINAL STEP45/55/58 ET b3c2, VARIATIONS TANGENTES AUX PRIMAIRES, C(r)=0, PRÉSERVATION TEMPORELLE ET BORDS SUR STEP55 ; GÉNÉRATEURS AMÉLIORÉS, CHARGES, QUOTIENT JAUGE TEMPORELLE, DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
