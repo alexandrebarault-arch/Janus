@@ -1,0 +1,29 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d1",
+  "status": "EXACT_RESTRICTED_BOUNDARY_SECTOR_RANK_ONLY",
+  "date": "2026-10-28",
+  "branch_initial_head": "1a50255f7c458c2ffad4e85482ae2ba6501cdc8f",
+  "source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "code_blob": "ac359aed8e3fadf465c328b2e5a7d7d559665eb5",
+  "test_blob": "de0aa6e3529f4e26e80f9fba44f8dc4f26d90c0a",
+  "tests": {
+    "sympy_exact_assertions_pass": 16,
+    "unittest_pass": 4,
+    "unittest_independent": false,
+    "fail": 0,
+    "original_step45_55_58_import_replay": false,
+    "b3c2_replay": false
+  },
+  "theorem": "On K>0, the Step45 z'-dependent boundary sector alpha=P dZ, P=pLg*(N+M*Lg/Lf), Z=D/sqrt(D^2+K^2), satisfies d alpha=dP wedge dZ. Its pullback is closed iff rank d(P,Z)<=1 on the chosen smooth boundary-data submanifold.",
+  "graph_example": "Z=c0+c1*P+c2*P^2 (|Z|<1), primitive B=c1*P^2/2+2*c2*P^3/3; fixed Z or fixed P also makes the sector integrable.",
+  "realizability": "For K>0 and |Z|<1, D=K*Z/sqrt(1-Z^2), pLgprime=(pSg*Sgprime+pg*tgprime-D)/Lg; algebraic jet condition only.",
+  "counterexample": "Unrestricted (pLg,pLgprime) slice has nonzero curvature; rational non-Step55 witness -32/375.",
+  "blocker": "Full non-IBP boundary one-form, functional/time Dirac tangency, physical boundary admissibility, improved temporal generators and charges not established. Local git cannot resolve github.com DNS, so no original import replay.",
+  "next_step": "b3c3d2 original-import replay of Step45/55/58 and b3c2, plus full boundary one-form and admissible constrained variations.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
