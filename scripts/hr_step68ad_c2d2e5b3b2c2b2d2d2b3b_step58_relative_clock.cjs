@@ -76,7 +76,7 @@ if(typeof module!=="undefined")module.exports={audit,EXPECTED};
 if(typeof require!=="undefined"&&require.main===module){
  const fs=require("fs"),crypto=require("crypto"),path=require("path"),root=path.resolve(__dirname,"..");
  const files={temporal:"research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json",step58:"numerics/hr_step58_temporal_operator.py",step55:"numerics/hr_step55_global_barrier.py",b3a:"scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs"};
- let shas={};for(let [k,v] of Object.entries(files)){let bytes=fs.readFileSync(path.join(root,v));shas[k]=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\\0")).update(bytes).digest("hex");}
+ let shas={};for(let [k,v] of Object.entries(files)){let bytes=fs.readFileSync(path.join(root,v));shas[k]=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\0")).update(bytes).digest("hex");}
  let data=JSON.parse(fs.readFileSync(path.join(root,files.temporal),"utf8"));
- process.stdout.write(JSON.stringify(audit(data,shas),null,2)+"\\n");
+ process.stdout.write(JSON.stringify(audit(data,shas),null,2)+"\n");
 }
