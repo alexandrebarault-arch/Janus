@@ -6,53 +6,47 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 13518,
-    "new_prompt_characters": 14387,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3c"
+    "status": "NOT_ATTEMPTED_THIS_SESSION_YET",
+    "previous_session_update_preserved": true,
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d",
+    "permanent_instructions_to_preserve": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3b_cred_lie_identity.py": "010e5e10c071d4cfb270c32fb1d73ad94e77896f",
-    "tests/test_hr_step68ad_b3c3b_cred_lie_identity.py": "f641e9176ebdafc49742a8786165a1f11db9953f",
-    "research/reports/gate2b-step68ad-b3c3b-cred-exact-lie.json": "b92eec5b1e97134de1d960461483cdf511e2c66b",
-    "research/STEP68AD_B3C3B_EXACT_REDUCED_SECONDARY_RADIAL_LIE_IDENTITY.md": "c8e8414d73ae27f282267208ccaf1bc3ca10f1cc",
-    "README.md": "93342fda6ab0f8cbc72f0de8d700c3940f5a615f",
-    "00_CURRENT_RESTART.md": "05f4dc091f809a97662d344edcfdc6454ed4aa80"
+    "numerics/hr_step68ad_b3c3c_boundary_jet_curvature.py": "173516e616ef950927356b110a71006863db5301",
+    "tests/test_hr_step68ad_b3c3c_boundary_jet_curvature.py": "1663bc360cd7c6da5f3e8947c1ecb6644578ab9a",
+    "research/reports/gate2b-step68ad-b3c3c-restricted-boundary-jet-curvature.json": "15f569d0da59eb33b49c6deec32966c2caa14bd0",
+    "research/STEP68AD_B3C3C_BOUNDARY_JET_CURVATURE_RESTRICTED.md": "80f9f7df2d4c039deb8444c6ea7ec47dc32a3274",
+    "README.md": "b02cbea907f4e204a69769a83a32242540145671",
+    "00_CURRENT_RESTART.md": "07d246a218b974e0b150eb3d6ef7b0616683f029"
   },
-  "verified_research_head_at_session_start": "4aa7e86fde62d4207f115fec0844394985b07403",
-  "next_priority": "Replay b3c2 from original Step45/55/58 Python modules in a full clone; independently test C_red exact Lie identity from original import; construct improved radial/temporal generators, boundary charges and temporal gauge quotient; then six-pair Dirac rank, K=0/J=0, 4D/stability/observables.",
+  "verified_research_head_at_session_start": "0a37234daa8b71ac910b39445aef63b9ca3d2453",
+  "next_priority": "Original-import b3c2 replay with Step45/55/58; determine which endpoint (pLg,pLgprime) variations survive full primary/secondary/time constraints and physical boundary conditions; then compute improved boundary generators/charges, temporal gauge quotient, six-pair Dirac rank/tertiaries, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "07769a7beb5217a9d98f88ad152f7662ebf8fdd2",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3b_EXACT_LOCAL_CRED_RADIAL_LIE_IDENTITY",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3c_ORIGINAL_IMPORT_REPLAY_AND_BOUNDARY_GENERATORS",
+  "verified_research_head_before_state_file": "3e180b1df181d056b552024eb3befa1d6141a6b7",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3c_RESTRICTED_ENDPOINT_JET_CURVATURE",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d_ORIGINAL_IMPORT_REPLAY_AND_ADMISSIBLE_BOUNDARY_SUBMANIFOLDS",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3B_EXACT_REDUCED_SECONDARY_RADIAL_LIE_IDENTITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3C_BOUNDARY_JET_CURVATURE_RESTRICTED.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "source_faithful_sympy_exact_assertions_passed": 34,
-    "unittest_cases_passed": 1,
+    "source_faithful_sympy_exact_assertions_passed": 15,
+    "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
-    "initial_unittest_counter_error": "35 expected vs 34 actual; corrected before publication",
     "original_physics_modules_reexecuted": 0,
     "published_b3c2_unittest_executed": false,
-    "scope": "K00 weight 1, K01 weight 0, C_exact and C_red weight 1 on K>0; radial Lie identity exact locally via chain rule, not boundary/Dirac"
+    "scope": "restricted boundary jet two-form (pLg,pLgprime) after positive-K z* reduction; NOT full Dirac-tangent pullback",
+    "rational_witness_non_step55": "-32/375"
   },
-  "github_write_probe": "Four create_file calls succeeded; program/test blobs identical to executed local files; JSON/audit readback identical; README and 501399-character journal read back at commit SHA with full old suffix preserved.",
+  "github_write_probe": "Four create_file calls succeeded; one test update_file corrected import and passed package-layout rerun; code and test blob SHA equal locally executed bytes; report and audit fetched and checked; README/journal updated with full old suffix preserved.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +63,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step45/55/58 engine replay not executed in full clone due container DNS unavailable; independent original-import validation, improved boundary charges, lapse gauge and Dirac rank remain open.",
+  "current_blocker": "No full original Step45/55/58 import replay: container cannot resolve github.com DNS. Restricted endpoint variations not shown to be Dirac-tangent or physically admissible. Boundary charges and improved generators not yet constructed.",
   "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
