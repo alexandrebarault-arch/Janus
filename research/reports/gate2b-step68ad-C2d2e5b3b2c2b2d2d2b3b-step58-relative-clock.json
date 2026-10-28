@@ -1,0 +1,36 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3b",
+  "assertions_passed": 1147,
+  "assertions_failed": 0,
+  "source_git_blobs": {
+    "temporal": "0c688d6648e16064b1eb4e8ad9c55e7b44a95947",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "b3a": "edf4dd6c8ab3fea9579195c130b096dee7b7353a"
+  },
+  "original_step58_python_reexecuted": false,
+  "archive_leaves_checked": 225,
+  "Step58_lapse_relation": "M/N=-A_N/A_M (conditional on lower lapse jets vanishing on full constrained shell)",
+  "certified_ratio_lt_3_over_4_leaves": 154,
+  "ratio_not_certified_lt_3_over_4_leaves": 71,
+  "certified_closed_spans": [
+    {
+      "leaves": 2,
+      "start": "1/64",
+      "end": "225/14336"
+    },
+    {
+      "leaves": 152,
+      "start": "37/1792",
+      "end": "1/32"
+    }
+  ],
+  "implication_on_spans": "N,M>0 and Step55: Vrel/N < -39880/7; |Lf*Vrel|/M > 31904/21; hence f_tt=-M^2+Lf^2 Vrel^2>0 if ADM f shift is V",
+  "center_necessary_condition": "If tg'=tf'=0 and V finite, dot(tg-tf)(0)=N(0)-M(0); stationary relative clock at center requires M(0)=N(0). No Step58 ratio limit at r=0 certified.",
+  "caution": "f_tt>0 is coordinate-time vector spacelike, NOT loss of Lorentzian signature or physical inconsistency; 71 leaves not certified for rho<3/4, and the entire interval (0,1/64) is not covered.",
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "environment": "V8 BigInt rational audit against GitHub fetched original certificate; no Node CLI or original Python reexecution"
+}
