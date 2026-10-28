@@ -1,0 +1,13 @@
+{
+  "step": "b3c3d4",
+  "symbolic_zero_residuals": 13,
+  "exact_rational_checks": 6,
+  "witness_cN": "3417/5500",
+  "witness_cM": "-7059/11000",
+  "witness_combination": "-2323/2200",
+  "theorem": "c_M-(Lg/Lf)c_N=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0",
+  "scope": "lapse-extended restricted Step55 spatial lambda family, with V=Vrel, not temporal Dirac tangent",
+  "original_python_import_replay": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
