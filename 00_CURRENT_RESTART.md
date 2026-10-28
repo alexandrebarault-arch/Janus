@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, IDENTITÉ GLOBALE CONDITIONNELLE DES LAPSES (2026-10-28)
+
+**b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE INCHANGÉE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20, CERTIFIER B_N/B_M SUR LES CARTES ADMISSIBLES ET LE PROBLÈME GLOBAL DES LAPSES AUX DEUX BORDS ; PUIS VRAI PULLBACK DIRAC, GÉNÉRATEURS/CHARGES, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE MAIS CONDITIONNELLE :** Pour `A_N N+A_M M+B_N N'+B_M M'=0`, sur un intervalle où `B_M≠0`, poser `q=B_N/B_M`, `p=A_M/B_M`, `a=A_N/B_M`, `h=q'+pq-a`, `W=M+qN`. Alors `W'+pW=hN` exactement, et la condition illustrative `M(R)=N(R)` équivaut, pour `N` et `M(0)` prescrits, à `(1+q(R))N(R)=exp(-P(R))(M(0)+q(0)N(0))+∫_0^R exp(-(P(R)-P(s)))h(s)N(s)ds`, `P'=p`. Ce test intégral détecte l'obstruction globale des opérateurs jouets b3c3d6 : `L_bad` a `q=-1,p=h=0` et échoue, `L_good` a `q=-1,p=-κr,h=2κr` et admet le polynôme pair positif déjà certifié. **Ce n'est PAS un résultat physique Step58** : b3c2 indique `B_N,B_M=O(r⁴)` au centre, donc `B_M(0)=0` et la formule ne peut être appliquée à `[0,R]` sans analyse de raccordement ou carte `[ε,R]`. De plus `M(R)=N(R)` n'est pas la vraie condition Step55 des horloges, dépendant du shift.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3d6_integrating_factor_bvp` : **13 résidus exacts SymPy nuls, 4 signes exacts PASS** ; `python -m unittest -v tests.test_hr_step68ad_b3c3d6_integrating_factor_bvp` : **4 unittest PASS, non indépendants**, 0 FAIL final. Premier essai : conversion implicite Python `0/-1=0.0` identifiée puis corrigée par `sympify` ; les tests ont ensuite été rejoués et réussis. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git ...` : **échec DNS `Could not resolve host: github.com`**. **Moteurs originaux Step45/55/58, b3c2 et probe original Step58 R=17/20 NON exécutés.** Sources originales Step58/Step68o/Step55/b3c2 lues via GitHub, blobs respectifs `802c23aebd41780d8c462f1aa1711707fe4ee88f`, `c99caebc17f243784450ddff94fb061767e6d8e7`, `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, `9a77f749a040aaec37e7c3f01368013154fdb562`.
+
+**LIVRABLES SCIENTIFIQUES PUBLIÉS SUR LA SEULE BRANCHE RECHERCHE ET RELUS :**
+- `numerics/hr_step68ad_b3c3d6_integrating_factor_bvp.py` : blob `04643b1ed377840a37303a5c7c5a673241d28ab8` (identique au fichier Python local testé).
+- `tests/test_hr_step68ad_b3c3d6_integrating_factor_bvp.py` : blob `6857cf47a6e7c3817292a4b8a64a1084d1d0e5b2` (identique au test local exécuté).
+- `research/STEP68AD_B3C3D6_CONDITIONAL_INTEGRATING_FACTOR_BVP.md` : blob `fe9b106e57642761991315eaa68f6dee94b7acae`.
+- `research/reports/gate2b-step68ad-b3c3d6-conditional-integrating-factor-bvp.json` : blob `9f01c472354e1feb9fddb55c3df7f678c94eeea1`.
+- `README.md` : blob `a9fddc38f652731a502566764121916a2a07ea18`.
+
+**GITHUB :** HEAD de reprise authentifié `7e3e0844daa4eff3c27b52a9e0a0f6f116f1a4bb` ; commits des quatre livrables `f587ec5e27d65667866c0884230f75ece1c5a122`, `c73a8a33f59aa19019d15d1157a2011698ef6ef1`, `df695695126706961b8853bafabfbc0b6f682e02`, `fa0cf7bce3d11b23ad738c72c241e8bc92bf8455` ; README `c000c80350319f6b4f5cd549987fcddb66e0b799`. HEAD avant ce checkpoint `c000c80350319f6b4f5cd549987fcddb66e0b799`. Branches interdites au départ : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié.
+
+**VERROUS :** (1) DNS clone Git et rejeu original Step58/Step68o, Step45/55/58+b3c2 ; (2) certifier `B_M` non nul ou construire des cartes et raccords, évaluer `B_N/B_M` à `R=17/20` ; (3) résoudre la compatibilité globale des lapses positifs avec **les vraies** conditions d'horloge et les deux bords ; (4) Dirac six couples, charges/générateurs, quotient temporel, K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CONTRE-EXEMPLE AU PASSAGE RANG PONCTUEL → BVP GLOBAL (2026-10-28)
 
 **b3c3d6 NON TERMINÉE — PROCHAINE ACTION : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 SUR CLONE COMPLET, PUIS COMPATIBILITÉ GLOBALE DES LAPSES ET DEUX BORDS ; PULLBACK DIRAC, CHARGES/JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
