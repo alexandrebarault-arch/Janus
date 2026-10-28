@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3b, STEP58 ET HORLOGE RELATIVE (2026-10-28)
+
+**ÉTAPE b3b TERMINÉE : NOUVEAU THÉORÈME CONDITIONNEL DE SOUS-ANNEAU, PAS DE NO-GO PHYSIQUE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c — certifier la limite centrale r→0 du rapport temporel Step58 M/N=-A_N/A_M sur la branche Step55, confronter la condition nécessaire M(0)=N(0) pour préserver t_g−t_f avec shift régulier, puis construire générateurs temporels améliorés et charges, quotient de jauge, oracle Dirac non-IBP six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT PROUVÉ CONDITIONNEL :** Le certificat authentique Step58 `0c688d6648e16064b1eb4e8ad9c55e7b44a95947` a été audité sur 225 feuilles rationnelles couvrant exactement `r∈[1/64,1/32]` ; sous l'hypothèse que les termes de dérivées de lapses s'annulent effectivement sur la coquille complète, `M/N=-A_N/A_M<3/4` est certifié sur **154 feuilles**, en deux bandes `[1/64,225/14336]` (2 feuilles) et `[37/1792,1/32]` (152 feuilles). **71 feuilles sont INCOMPLETE pour cette borne**, sans contre-exemple physique. Avec Step55 et la condition instantanée `dot(tg−tf)=0`, `Vrel/N<−39880/7` et `|Lf Vrel|/M>31904/21` sur ces seules bandes. Pour le shift f diagonal V, `f_tt>0` : le vecteur de coordonnées ∂t est spatial en cette jauge, **pas** une perte de signature ni une incohérence physique. Au centre régulier, `dot(tg−tf)(0)=N(0)−M(0)`, donc stationnarité relative impose `M(0)=N(0)`; la limite du rapport Step58 au centre n'est PAS certifiée.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 1 147 assertions rationnelles exactes BigInt V8 PASS, 0 FAIL ; 4 entrées falsifiées rejetées ; rejeu depuis le programme publié et comparaison du certificat publié aux données recalculées. Le fichier de test Node est publié mais **pas exécuté sous Node CLI** ; les moteurs physiques Python originaux Step58/55 NON réexécutés dans cette session. SHA sources originaux relus : Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, b3a `edf4dd6c8ab3fea9579195c130b096dee7b7353a`.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs` — blob `11b81157ec2acb0f76f087b97da736f2b6fa71d1`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs` — blob `74f9120912d0783cedffdf64217be2b3893fe6b0`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3b-step58-relative-clock.json` — blob `15ffd1369d36d66d5da2ab45655b694c65e37d45`.
+- `research/STEP68AD_C2D2E5B3B2C2B2D2D2B3B_STEP58_RELATIVE_CLOCK_SUBANNULUS.md` — blob `b85d01b3cc74458ccc914111e9a7cbbd04906f08`.
+- `README.md` — blob `7022508dd68df210ee2906d8316e846c77845f44`.
+
+**GITHUB :** HEAD initial authentifié `23671226db65ffec977c1b6b2e7158a96270cf08`; 4 nouveaux fichiers et README publiés exclusivement sur `research/gate2b-nonhomothetic-transfer`. Les blobs du programme et du certificat ont été relus ; le programme exécuté sur octets GitHub produit le certificat attendu. HEAD final à relire après l'index. Branches `main` et `research/v2-flrw` vérifiées inchangées avant synchronisation ; aucun workflow GitHub Actions touché.
+
+**VERROUS / ACTIONS PRIORITAIRES :** (1) Vérifier `M/N` au centre `r=0` avec opérateur Step58 authentique et réduction des jets de lapses, sans extrapoler depuis les bandes. (2) Tester `Vrel` avec la parité/régularité du shift et la différentiabilité du Hamiltonien amélioré. (3) Construire les charges et le quotient temporel Dirac, puis les directions physiques non-jauge et `dTheta`. (4) Poursuivre rang complet, tertiaires, chartes K=0/J=0, dynamique 4D, stabilité et observables ; ne jamais proclamer JANUS-R validé.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3a, PRÉSERVATION TEMPORELLE DES HORLOGES (2026-10-28)
 
 **ÉTAPE b3a TERMINÉE : THÉORÈME EXACT CONDITIONNEL SUR LES SIGNES STEP55, PAS DE GÉNÉRATEUR TEMPOREL AMÉLIORÉ NI QUOTIENT DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3b — confronter Vrel à l'opérateur original Step58 de préservation des lapses et à la régularité, construire les générateurs temporels améliorés, charges et conditions de bord différentiables ; puis deux directions physiques non-jauge, dTheta, Dirac six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
