@@ -1,3 +1,11 @@
+## JANUS research checkpoint — 2026-10-28 / 68ad-C2d2e5b3b2c2b2d2d2b3c1
+
+**Conditional center-to-annulus lapse-ratio curvature necessity, NOT a certified Step58 center limit.** The first SHA-authenticated Step58 certificate leaf yields `rho(1/64)=M/N=-A_N/A_M<17/25` if the full-shell lapse-derivative coefficients vanish. A regular stationary relative dust clock with positive central lapse forces `rho(0)=1`, and smooth spherical parity gives `rho'(0)=0`. Therefore a `C²` ratio satisfying the conditional Step58 endpoint must have some `rho''<-65536/25` and `rho'<-512/25` on `(0,1/64)`. These are necessary sharp-gradient conditions, NOT singularities or physical obstructions. Exact central expansion: `Vrel/N=r*(rho2-ccrit)/d0+O(r³)` for `rho=1+rho2*r²+O(r⁴)`; see [audit](research/STEP68AD_C2D2E5B3B2C2B2D2D2B3C1_CENTER_TO_ANNULUS_LAPSE_CURVATURE_NECESSITY.md).
+
+**Verification:** 921 exact V8 BigInt assertions PASS, 4 adversarial inputs rejected, 3 separate SymPy limit identities PASS, 0 FAIL. Original Step58/Step55 Python engines and Node CLI not rerun. True Step58 center ratio and full lapse-jet cancellation remain OPEN. Next: b3c2 exact center operator asymptotics, temporal charges/gauge, full Dirac. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.**
+
+---
+
 ## JANUS research checkpoint — 2026-10-28 / 68ad-C2d2e5b3b2c2b2d2d2b3b
 
 **Conditional Step58 lapse/relative-clock boundary diagnostic (not a physical no-go).** From the original Step58 continuum certificate, 225 rational cells were audited on r∈[1/64,1/32]. Exactly 154 cells certify M/N=-A_N/A_M<3/4 under the explicitly conditional reduction of the lapse operator. They form two closed bands [1/64,225/14336] and [37/1792,1/32]; 71 cells remain INCOMPLETE for this bound. Step55 geometry and the exact dust-clock equations then imply Vrel/N<-39880/7 and |Lf Vrel|/M>31904/21 on these bands if the relative clock is held fixed. The f coordinate time vector becomes spacelike in this gauge, **not** a loss of Lorentzian signature or a physical inconsistency. At the center, relative-clock stationarity requires M(0)=N(0); the Step58 center ratio is NOT certified.
