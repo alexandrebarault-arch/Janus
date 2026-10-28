@@ -1,3 +1,11 @@
+## JANUS research checkpoint — 2026-10-28 / 68ad-C2d2e5b3b2c2b2d2d2b3b
+
+**Conditional Step58 lapse/relative-clock boundary diagnostic (not a physical no-go).** From the original Step58 continuum certificate, 225 rational cells were audited on r∈[1/64,1/32]. Exactly 154 cells certify M/N=-A_N/A_M<3/4 under the explicitly conditional reduction of the lapse operator. They form two closed bands [1/64,225/14336] and [37/1792,1/32]; 71 cells remain INCOMPLETE for this bound. Step55 geometry and the exact dust-clock equations then imply Vrel/N<-39880/7 and |Lf Vrel|/M>31904/21 on these bands if the relative clock is held fixed. The f coordinate time vector becomes spacelike in this gauge, **not** a loss of Lorentzian signature or a physical inconsistency. At the center, relative-clock stationarity requires M(0)=N(0); the Step58 center ratio is NOT certified.
+
+**Checks:** 1,147 exact BigInt V8 assertions PASS on authentic Step58 certificate bytes, four deliberately corrupted inputs rejected, 0 FAIL; replayed from GitHub-published program. Original Python Step58 and Node CLI were NOT reexecuted. Published script, test, JSON certificate and audit, all read back with byte equality. **GATE_2B OPEN — JANUS_R NOT_VALIDATED.** Next: certify the central limit of the genuine Step58 ratio and test regularity/charges/improved generators before any full Dirac/4D claims.
+
+---
+
 ## JANUS research checkpoint — 2026-10-28 / 68ad-C2d2e5b3b2c2b2d2d2b3a
 
 **Exact conditional Step55 dust-clock temporal boundary preservation theorem (NOT full temporal Dirac gauge).** Original non-IBP Hamilton equations imply dot(tg)=N*sg+(zQ+V)*tg', dot(tf)=M*sf+V*tf'. With Step55 tg'>0,tf'<0,z>0 and positive lapses, no finite diagonal shift can freeze both outer clock values simultaneously. At the regular center, stationary individual clock values require vanishing lapses. A stationary relative clock determines a unique Vrel with positive common clock speed, but this does not imply cancellation of the bare diagonal clock flux. A non-Step55 exact-rational witness gives Vrel=-2/5, Vflux=-11/65 and Jg+Jf=-15/13 at Vrel. Bulk local momentum flux is dot(pi)=d_r Ji; physical charge conservation remains unproved.
