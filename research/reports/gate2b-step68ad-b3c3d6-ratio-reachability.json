@@ -1,0 +1,24 @@
+{
+  "stage": "b3c3d6_PARTIAL",
+  "status": "CONDITIONAL_ANNULAR_RATIO_REACHABILITY_NOT_STEP55",
+  "symbolic": {
+    "algebraic_residuals_passed": 3,
+    "generic_residual": "0"
+  },
+  "example": {
+    "r0": "1/4",
+    "R": "17/20",
+    "k0": "10371/20000",
+    "slope": "9629/12000",
+    "kR": "1",
+    "den0": "71113/20000",
+    "denR": "5",
+    "exponent": "-48887/28887",
+    "exact_example_residuals_passed": 5,
+    "analytic_positive_on_closed_interval": true,
+    "N_at_R_approx": "0.685968777185562552",
+    "M_at_R_approx": "0.685968777185562552"
+  },
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
