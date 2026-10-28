@@ -3,57 +3,49 @@
     "attempted": 0,
     "succeeded": 0,
     "failed": 0,
-    "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
+    "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 21621,
-    "new_prompt_characters": 22856,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
+    "status": "NOT_ATTEMPTED_YET_THIS_SESSION",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_integrating_factor_bvp.py": "04643b1ed377840a37303a5c7c5a673241d28ab8",
-    "tests/test_hr_step68ad_b3c3d6_integrating_factor_bvp.py": "6857cf47a6e7c3817292a4b8a64a1084d1d0e5b2",
-    "research/STEP68AD_B3C3D6_CONDITIONAL_INTEGRATING_FACTOR_BVP.md": "fe9b106e57642761991315eaa68f6dee94b7acae",
-    "research/reports/gate2b-step68ad-b3c3d6-conditional-integrating-factor-bvp.json": "9f01c472354e1feb9fddb55c3df7f678c94eeea1",
-    "README.md": "a9fddc38f652731a502566764121916a2a07ea18",
-    "00_CURRENT_RESTART.md": "b327d03fa486da8d8fdef9f9fa3bebe7c0e7dded"
+    "numerics/hr_step68ad_b3c3d6_center_subleading_jet.py": "340d05c76db1f9ae25fdbc1fc7167e65b4a6867a",
+    "tests/test_hr_step68ad_b3c3d6_center_subleading_jet.py": "70a3376e9f9a173d75a0f214274a0d8094c0625d",
+    "research/STEP68AD_B3C3D6_FORMAL_CENTER_SUBLEADING_LAPSE_JETS.md": "799d6881f74886346b62133ce55db686efbd0127",
+    "research/reports/gate2b-step68ad-b3c3d6-formal-center-subleading-jets.json": "e19106f2718cae5e965bde73609f3a7fcd34a3cd",
+    "README.md": "df7cbecdc916bce5e939d9a2f5c4e59a31477d1b",
+    "00_CURRENT_RESTART.md": "2dff23580801423d21dc2a79d1a5d735c1c91dfc"
   },
-  "verified_research_head_at_session_start": "7e3e0844daa4eff3c27b52a9e0a0f6f116f1a4bb",
-  "next_priority": "b3c3d6 remains PARTIAL: execute original SHA-pinned Step58/Step68o outer probe and Step45/55/58+b3c2; certify B_N/B_M and charts avoiding central B_M=0; test genuine two-boundary positive lapse compatibility and Dirac pullback.",
+  "verified_research_head_at_session_start": "8d0f60aa72d290b7d0f81b9947d77c58065a94b1",
+  "next_priority": "b3c3d6 PARTIAL: execute SHA-pinned original Step58 outer probe and Step45/55/58+b3c2; certify B_N/B_M and center charts; evaluate original A(r4), enforce E=0 on primaries; solve genuine two-boundary positive lapse BVP; then Dirac/charges/temporal gauge/4D.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "f15231bd55227ecb686aec86dea57d12af1473b0",
+  "verified_research_head_before_state_file": "eb29d97f005acca8cec4b0ba1793a9333333cdf5",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CONDITIONAL_INTEGRATING_FACTOR_BVP.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_FORMAL_CENTER_SUBLEADING_LAPSE_JETS.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "last_step_scope": "EXACT_CONDITIONAL_FIRST_ORDER_BVP_IDENTITY_NOT_ORIGINAL_STEP58",
-    "latest_stage": "b3c3d6_PARTIAL"
+    "latest_stage": "b3c3d6_PARTIAL",
+    "last_step_scope": "FORMAL_R4_CENTER_JET_COMPATIBILITY_WITH_SECOND_LAPSE_DERIVATIVES_NOT_STEP58_EVALUATION"
   },
   "last_reported_tests": {
-    "sympy_exact_zero_residuals": 13,
-    "exact_sign_checks": 4,
+    "sympy_exact_zero_residuals": 8,
+    "exact_positive_models": 3,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
     "original_step58_outer_probe_executed": false,
-    "scope": "Integrating-factor global BVP compatibility identity for scalar first-order lapse operator with B_M nonzero. Toy examples only; Step58 center B_M(0)=0."
+    "scope": "Full second-order lapse operator formal central r4 compatibility; coefficients not original Step58 evaluations"
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -77,7 +69,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Local Git DNS cannot resolve github.com. Original Step58 probe and full imports NOT executed. New integrating-factor lemma requires B_M nonzero and does not cover center where b3c2 gives B_M=O(r^4). Physical positive lapse BVP, Dirac tangency, improved generators/charges, temporal gauge quotient and 4D OPEN.",
+  "current_blocker": "Local Git DNS could not resolve github.com; original Step58 outer probe and full source imports not executed. Formal center r4 lemma does not determine original Step58 b,d,e,f, physical positive lapse BVP or Dirac tangency.",
   "task_self_update": "2026-10-28: prefixed conditional b3c3d6 integrating-factor BVP marker; all 21621 prior prompt characters preserved, schedule and activation unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -491,5 +483,6 @@
     "workflows_modified": false,
     "last_pre_final_state_head": "eb6445b98838347cef56bf431ba3457aaa8e35fa",
     "automation_updated": true
-  }
+  },
+  "last_session_new_result": "At order r4 of full lapse operator, E_i=O(r4) contributes 2e_i*L2; B_i L_i'=O(r5) for even C2 lapses. Three exact positive-even toy witnesses have same central ratio but distinct curvature."
 }
