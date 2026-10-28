@@ -6,9 +6,16 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_THIS_SESSION",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6",
-    "schedule_unchanged": true
+    "status": "SUCCESS",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 19331,
+    "new_prompt_characters": 20537,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "85469568e6df7c26920c1ebb87593dbf474deb04",
