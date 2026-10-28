@@ -6,8 +6,16 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET_THIS_SESSION",
-    "schedule_unchanged": true
+    "status": "SUCCESS",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 22856,
+    "new_prompt_characters": 24029,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d6_center_subleading_jet.py": "340d05c76db1f9ae25fdbc1fc7167e65b4a6867a",
@@ -70,7 +78,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Local Git DNS could not resolve github.com; original Step58 outer probe and full source imports not executed. Formal center r4 lemma does not determine original Step58 b,d,e,f, physical positive lapse BVP or Dirac tangency.",
-  "task_self_update": "2026-10-28: prefixed conditional b3c3d6 integrating-factor BVP marker; all 21621 prior prompt characters preserved, schedule and activation unchanged.",
+  "task_self_update": "2026-10-28: prefixed formal r4 center jet marker; all 22856 prior prompt characters preserved, hourly schedule unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
