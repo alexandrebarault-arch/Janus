@@ -16,50 +16,49 @@
     "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "968996282fadaab84c139b119b42c342da6fed3d",
-    "tests/test_hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "766b70dd13734d5aa4e57ab87a078c3b3506a8fa",
-    "research/STEP68AD_B3C3D6_DIVISION_FREE_LAPSE_FRAME.md": "8111bb36e9d29ed13a3d7d8287b2aca4cd77367a",
-    "research/reports/gate2b-step68ad-b3c3d6-division-free-lapse-frame.json": "ef417eb03b9419897fcf45343cfcb6c9c208cdfa",
-    "README.md": "60d4e355e9ac52a40417441a3238a35b2a007975",
-    "00_CURRENT_RESTART.md": "ff82a27ed8fcbad45c6f3883bdfc51eaad1410df"
+    "numerics/hr_step68ad_b3c3d6_positive_cone_growth.py": "86a3299d870b65ce7f862c7d8067d9700e6705ca",
+    "tests/test_hr_step68ad_b3c3d6_positive_cone_growth.py": "672d42648a59f91d71a92a88d220569736ca056e",
+    "research/STEP68AD_B3C3D6_POSITIVE_CONE_GROWTH_SCREEN.md": "b648f63a2cf0fad31af3e5f94b8b0112cb4603a7",
+    "research/reports/gate2b-step68ad-b3c3d6-positive-cone-growth.json": "2e526445d6cad782e029c8b8b6f4c58fa783bebb",
+    "README.md": "1564d8094ec39450e21134097acef0da20242834",
+    "00_CURRENT_RESTART.md": "6ec311a56fb7c6c809ad40ab81e62125bbb8e8af"
   },
-  "verified_research_head_at_session_start": "34f51603d0f36cb46b00a78c3b25e806f856e6fb",
-  "next_priority": "b3c3d6 STILL PARTIAL: run genuine original Step58 outer probe R=17/20 with Step45/55/58+b3c2+Step68o; certify B_N,B_M and derivatives, common zeros, center matching, b,d, positive lapses with true Step55 boundary conditions; then Dirac/charges/gauge/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "0ca8c624d37036370461bb3cc1c09c5ca7ae9ac1",
+  "next_priority": "b3c3d6 STILL PARTIAL: execute original Step58 R=17/20 probe with original Step45/55/58+b3c2/Step68o; certify coefficients, derivatives, zeros and center, positive lapses with actual Step55 boundaries; then Dirac/charges/gauge/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "fdbfd88dd1643794c2f87249367b2728ac246795",
+  "verified_research_head_before_state_file": "97dcc1608456ca7b7d45077e38c52ea73776bc4f",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_SHIFT_JET_CHART_WITNESS.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_POSITIVE_CONE_GROWTH_SCREEN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
     "latest_stage": "b3c3d6_PARTIAL",
-    "last_step_scope": "EXACT_ALGEBRAIC_NONSINGULAR_LAPSE_FRAME_NOT_STEP55_NOT_DIRAC"
+    "last_step_scope": "CONDITIONAL_POSITIVE_CONE_ANNULAR_GROWTH_NOT_STEP55_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "symbolic_exact_residuals": 8,
-    "of_which_definitional": 2,
-    "exact_positive_toy_residuals": 6,
+    "symbolic_exact_residuals": 6,
+    "exact_toy_residuals": 6,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "original_step45_58_reexecuted_this_session": false,
     "original_step55_68o_b3c2_executed": false,
-    "original_step58_outer_R17_20_probe_executed": false,
-    "original_pointwise_witness_values_reused": true
+    "original_step58_outer_R17_20_probe_executed": false
   },
   "github_write_probe": {
     "status": "SUCCESS",
     "method": "mcp__GitHub__create_file and update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 4,
-    "readback_verified": true
+    "readback_verified": true,
+    "source_blob_matches_executed_bytes": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -77,7 +76,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step55 profile + original Step58 outer probe R=17/20 not runnable in this local environment due to git DNS; cannot certify global Delta>0, common zeros, center, actual positive lapse BVP or Dirac.",
+  "current_blocker": "Full original Step55/Step68o/b3c2/Step58 outer R=17/20 probe not executed: local git DNS unresolved; GitHub connector read/write available. No physical coefficient sign atlas, center matching, positive-lapse BVP or Dirac.",
   "task_self_update": "2026-10-28: prepended conditional central curvature checkpoint; all prior 25279 prompt characters preserved; hourly schedule unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -86,7 +85,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "89a81fcf87988e7b90c23057617bb7abf04fc48e",
+    "00_CURRENT_RESTART.md": "6ec311a56fb7c6c809ad40ab81e62125bbb8e8af",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -109,7 +108,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "d8859c8c8190feecf9e8827b33703af774a44bc3",
+    "README.md": "1564d8094ec39450e21134097acef0da20242834",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -237,7 +236,11 @@
     "numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "85469568e6df7c26920c1ebb87593dbf474deb04",
     "tests/test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "419c6785aa1409edcd252694136b6a66ac4669ad",
     "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md": "a7f429fc82c2f7609a961f10d5e175dbd79efaf6",
-    "research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json": "ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec"
+    "research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json": "ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec",
+    "numerics/hr_step68ad_b3c3d6_positive_cone_growth.py": "86a3299d870b65ce7f862c7d8067d9700e6705ca",
+    "tests/test_hr_step68ad_b3c3d6_positive_cone_growth.py": "672d42648a59f91d71a92a88d220569736ca056e",
+    "research/STEP68AD_B3C3D6_POSITIVE_CONE_GROWTH_SCREEN.md": "b648f63a2cf0fad31af3e5f94b8b0112cb4603a7",
+    "research/reports/gate2b-step68ad-b3c3d6-positive-cone-growth.json": "2e526445d6cad782e029c8b8b6f4c58fa783bebb"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
