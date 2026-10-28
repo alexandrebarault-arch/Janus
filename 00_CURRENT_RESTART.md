@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, ATTEIGNABILITÉ CONSTRUCTIVE DU RATIO TERMINAL (2026-10-28)
+
+**PROCHAINE ÉTAPE INCHANGÉE :** exécuter le vrai probe original Step58 sur le profil Step55 à `R=17/20`, en important les vrais Step45/55/58, b3c2 et Step68o ; certifier les coefficients `B_N,B_M` et leurs dérivées, zéros/cartes et raccord central, coefficients `b,d`, existence de lapses strictement positifs avec **toutes** les conditions aux deux bords ; ensuite vrai pullback Dirac, charges/générateurs, jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D, stabilité et observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE MATHÉMATIQUE EXACTE, CONDITIONNELLE ET NON PHYSIQUE :** Pour l'unique équation `A_N N+A_M M+B_N N'+B_M M'=0` sur un anneau `[r0,R]`, `r0>0`, coefficients continus et `B_N,B_M>0` partout, toute donnée initiale `N0,M0>0` peut atteindre n'importe quel ratio final `M(R)/N(R)=kR>0`, si **aucune amplitude finale** n'est prescrite. Prendre une interpolation `k(r)>0` de `M0/N0` à `kR`, puis `N=N0 exp[-int (A_N+A_M k+B_M k')/(B_N+B_M k)]`, `M=kN`. Le dénominateur est strictement positif et les deux lapses le restent. Les coefficients analytiques et `k` analytique donnent des lapses analytiques. Le théorème ne couvre ni les signes opposés/zéros communs, ni le centre dégénéré, ni la présence de `E_N N''+E_M M''`, ni les autres contraintes. Il montre que l'écran de croissance précédent ne peut à lui seul rejeter **une condition de ratio seule** sur cette carte.
+
+**TÉMOIN JOUET EXACT :** `r0=1/4, R=17/20, A_N=1, A_M=-1, B_N=2, B_M=3, N0=1, M0=10371/20000, kR=1`. Avec `k=k0+(9629/12000)(r-r0)`, `D=2+3k`, `D0=71113/20000`, `N=exp((r-r0)/3)*(D/D0)^(-48887/28887)`, `M=kN` : positifs analytiques, équation satisfaite exactement, `N(R)=M(R)≈0.685968777185562552`. **Pas le Step55 physique.**
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS (dans `/mnt/data/janus_session`) :** `PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_ratio_reachability` : 3 résidus algébriques génériques PASS et 5 contrôles exacts du témoin PASS ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_ratio_reachability.py' -v` : 4 tests PASS, non indépendants, 0 FAIL. L'évaluation décimale n'intervient pas dans la preuve. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git HEAD` : `Could not resolve host: github.com` ; le connecteur GitHub, lui, fonctionne en lecture/écriture. **Original Step55/Step68o/b3c2 et probe original Step58 à R=17/20 NON exécutés.**
+
+**QUATRE LIVRABLES PUBLIÉS, RELUS ET HASHÉS (blobs identiques aux fichiers locaux exécutés/produits) :**
+- `numerics/hr_step68ad_b3c3d6_ratio_reachability.py` blob `d5fad9c288ef166bb904a80c4fa68b7b7f452437`, commit `5bf1a53619120f2f9061c9b4f5c8b0898660b01a`.
+- `tests/test_hr_step68ad_b3c3d6_ratio_reachability.py` blob `2a4d2d4c74a5bd75c8c8af2be9b28378e7ccc4ee`, commit `541b64ab94442f8d543d1432cbe6c00c6382da13`.
+- `research/STEP68AD_B3C3D6_POSITIVE_RATIO_REACHABILITY_THEOREM.md` blob `a8b9e807ac970e1b8fe5d4906a4ae2df4582e9b1`, commit `89c75cd227a148b749e232dd90b1cdf26d066f27`.
+- `research/reports/gate2b-step68ad-b3c3d6-ratio-reachability.json` blob `7efa594113164e2d4f5912beb93bc2f55f0b55c0`, commit `e2e21b8d27b0b5d78c301095810403f567226eab`.
+- `README.md` blob `12f13a1c1967d709cd9aef14cd8908c5a2bed18b`, commit `bc3dadbb09a3e401733d062dde5903bb39a40d84`.
+
+**PROVENANCE :** GitHub HEAD au démarrage `5a7d2354089c980ce4858e63b808d62ae357d7e8` (plus récent que le repère utilisateur `a53be6bb...`), HEAD avant checkpoint `bc3dadbb09a3e401733d062dde5903bb39a40d84`. Sources originales lues : Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step68o blob `c99caebc17f243784450ddff94fb061767e6d8e7`. Branches interdites lues inchangées : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. **Revalider les HEAD après mise à jour de l'index.**
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE PRÉEXISTANT EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CÔNE DE POSITIVITÉ ET CROISSANCE ANNULAIRE (2026-10-28)
 
 **PROCHAINE ÉTAPE b3c3d6 INCHANGÉE : exécuter le probe original Step58 sur le vrai profil Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M, leurs dérivées, zéros communs, cartes/raccord central, coefficients b,d, lapses positifs et conditions réelles aux deux bords ; puis Dirac, charges/générateurs, quotient jauge temporelle, six couples, K=0/J=0, dynamique 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
