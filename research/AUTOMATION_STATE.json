@@ -18,41 +18,47 @@
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d3_center_boundary_parity.py": "f63f05c6173c473a957fd4e87bbb37e141432a41",
-    "tests/test_hr_step68ad_b3c3d3_center_boundary_parity.py": "06d481d5da02b8436acfcf351a615b7b0bd43db5",
-    "research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json": "b9acd1a907c056d12a4d34cf6134c7908b32047f",
-    "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801",
-    "README.md": "6c7d4a610810bda3a89f457a37c951865f9871ee",
-    "00_CURRENT_RESTART.md": "1c2ce10c755ffdece758d11fdd521b11711b9951"
+    "numerics/hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py": "02ea2c65ff040ce96f42fd8ecf79eeea9bebee56",
+    "tests/test_hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py": "b2a352f578bdb30565484c734b9da7efc7ee1b0f",
+    "research/STEP68AD_B3C3D4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE.md": "19684bc7ec0994a1348bff5c3ddf24f84a1c55b3",
+    "research/reports/gate2b-step68ad-b3c3d4-relative-clock-lapse-curvature.json": "71ba0d3fee5c53248522c2b5bd80383da934d195",
+    "README.md": "7a929a25ba57621bf25f7435f82cc37fe43701f4",
+    "00_CURRENT_RESTART.md": "71e0cf198b0538b21105790dc2df61fd8a9d5eb8"
   },
-  "verified_research_head_at_session_start": "aff5a788fb2c64f27b6f952d73e1808be6369e11",
-  "next_priority": "b3c3d4: full original Step45/55/58 and b3c2 import replay; genuine variations tangent to primaries, functional C(r)=0, Step58 temporal preservation and outer Step55 R=17/20 boundary; improved generators, charges, temporal gauge quotient, six-pair Dirac, K=0/J=0, 4D/stability/observables.",
+  "verified_research_head_at_session_start": "40d81654c9eecc489448c137977bfa37ab891e4c",
+  "next_priority": "b3c3d5: impose original Step58 lapse relation on Step55 at R=17/20, test full Dirac tangent boundary curvature and both boundaries; replay original Step45/55/58+b3c2, then charges/generators and temporal gauge quotient.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "79ad5418d77cb153ea1971b4677c79506a91b3c5",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3_REGULAR_CENTER_NONIBP_PARITY_LEMMA",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4_STEP55_OUTER_BOUNDARY_DIRAC_TANGENCY_ORIGINAL_IMPORT_REPLAY",
+  "verified_research_head_before_state_file": "0c4e4d2e9bb336d21184e6a13f266ec1a1aecd18",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE_RESTRICTED",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_STEP58_TEMPORAL_LAPSE_TANGENCY_AND_ORIGINAL_REPLAY",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
-    "JANUS_R": "NOT_VALIDATED"
+    "JANUS_R": "NOT_VALIDATED",
+    "last_step_scope": "RESTRICTED_LAPSE_EXTENDED_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "sympy_exact_assertions": 25,
+    "sympy_exact_zero_residuals": 13,
+    "exact_rational_assertions": 6,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
-    "first_unittest_counter_mismatch_corrected": true,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
-    "scope": "all ten original non-IBP boundary terms on regular analytic center parity class; theta and its exterior derivative O(r^3), not Dirac or outer boundary"
+    "scope": "outer Step55 spatial lambda family, lapse-extended, V=Vrel, NOT temporal Dirac tangent"
   },
-  "github_write_probe": "Four authentic create_file calls succeeded; files re-read and Git blob SHA match local git hash-object values; README updated and full-history restart prefixed; only research/gate2b-nonhomothetic-transfer.",
+  "github_write_probe": {
+    "status": "SUCCESS",
+    "method": "mcp__GitHub__create_file and update_file",
+    "branch": "research/gate2b-nonhomothetic-transfer",
+    "scientific_files_created": 4
+  },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +75,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Local Git DNS cannot resolve github.com. Original Step45/55/58 imports and b3c2 unittest not replayed. No tangent Dirac variations at outer Step55 boundary, no temporal Step58 compatibility, no physical charge, improved generator, gauge temporal quotient, full Dirac rank/4D/stability/observables.",
+  "current_blocker": "Original Step45/55/58+b3c2 imports not replayed: local Git DNS cannot resolve github.com. Lapse variations are independent in restricted extended slice; Step58 temporal tangency, full Dirac constraints, charges, gauge quotient and 4D remain open.",
   "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -227,7 +233,7 @@
     "research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json": "b9acd1a907c056d12a4d34cf6134c7908b32047f",
     "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801"
   },
-  "current_proven_result": "On 154 certified leaves of genuine Step58 interval report in two closed subbands of [1/64,1/32], conditional zero-order lapse relation gives M/N<3/4; Step55 clock equations imply Vrel/N<-39880/7 and |Lf Vrel|/M>31904/21 for stationary relative clock, hence f_tt>0 for coordinate ∂t. This is gauge-dependent, not Lorentzian pathology. 71 leaves remain incomplete for this ratio; center Step58 limit not certified.",
+  "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
