@@ -1,0 +1,23 @@
+{
+  "step": "b3c3d6",
+  "scope": "EXACT_TOY_BVP_COUNTEREXAMPLE_NOT_ORIGINAL_STEP58",
+  "R": "17/20",
+  "rho": "10371/20000",
+  "kappa": "7703200/8777219",
+  "B_both": [
+    "1",
+    "-1"
+  ],
+  "pointwise_endpoint_projection_rank_both": 2,
+  "good_operator": "Nprime-Mprime+kappa*r*(N+M)",
+  "bad_operator": "Nprime-Mprime",
+  "N_good": "-(9629*r**2 - 28900)/28900",
+  "M_good": "(1925800*r**2 + 2997219)/5780000",
+  "good_global_positive_even_solution": true,
+  "bad_global_solution_with_same_center_and_equal_outer": false,
+  "symbolic_zero_residuals": 10,
+  "exact_sign_checks": 6,
+  "original_step58_probe_executed": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
