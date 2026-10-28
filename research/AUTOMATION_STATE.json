@@ -6,52 +6,46 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 18159,
-    "new_prompt_characters": 19331,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5"
+    "status": "NOT_ATTEMPTED_THIS_SESSION",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py": "02ea2c65ff040ce96f42fd8ecf79eeea9bebee56",
-    "tests/test_hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py": "b2a352f578bdb30565484c734b9da7efc7ee1b0f",
-    "research/STEP68AD_B3C3D4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE.md": "19684bc7ec0994a1348bff5c3ddf24f84a1c55b3",
-    "research/reports/gate2b-step68ad-b3c3d4-relative-clock-lapse-curvature.json": "71ba0d3fee5c53248522c2b5bd80383da934d195",
-    "README.md": "7a929a25ba57621bf25f7435f82cc37fe43701f4",
-    "00_CURRENT_RESTART.md": "71e0cf198b0538b21105790dc2df61fd8a9d5eb8"
+    "numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "85469568e6df7c26920c1ebb87593dbf474deb04",
+    "tests/test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "419c6785aa1409edcd252694136b6a66ac4669ad",
+    "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md": "a7f429fc82c2f7609a961f10d5e175dbd79efaf6",
+    "research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json": "ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec",
+    "README.md": "d8859c8c8190feecf9e8827b33703af774a44bc3",
+    "00_CURRENT_RESTART.md": "89a81fcf87988e7b90c23057617bb7abf04fc48e"
   },
-  "verified_research_head_at_session_start": "40d81654c9eecc489448c137977bfa37ab891e4c",
-  "next_priority": "b3c3d5: impose original Step58 lapse relation on Step55 at R=17/20, test full Dirac tangent boundary curvature and both boundaries; replay original Step45/55/58+b3c2, then charges/generators and temporal gauge quotient.",
+  "verified_research_head_at_session_start": "2fea0149cf722e0d56ac77f977890588204841f8",
+  "next_priority": "b3c3d6: execute SHA-pinned original Step58 Step68o outer R=17/20 probe, establish first-lapse jet coefficients and global positive-lapse boundary-value compatibility; replay Step45/55/58+b3c2; then genuine Dirac pullback and charges/gauge.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "0c4e4d2e9bb336d21184e6a13f266ec1a1aecd18",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE_RESTRICTED",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_STEP58_TEMPORAL_LAPSE_TANGENCY_AND_ORIGINAL_REPLAY",
+  "verified_research_head_before_state_file": "c05e8cd6f2062d2bef6f0a9eb24527ce2a2df9ae",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "last_step_scope": "RESTRICTED_LAPSE_EXTENDED_NOT_DIRAC"
+    "last_step_scope": "POINTWISE_JET_RANK_AND_CONDITIONAL_CENTER_DRIFT_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "sympy_exact_zero_residuals": 13,
-    "exact_rational_assertions": 6,
+    "sympy_exact_zero_residuals": 12,
+    "exact_classification_checks": 6,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
-    "scope": "outer Step55 spatial lambda family, lapse-extended, V=Vrel, NOT temporal Dirac tangent"
+    "original_step58_outer_probe_executed": false,
+    "scope": "Exact pointwise lapse-jet projection; conditional center drift from prior b3c2 bounds; no global Dirac tangency."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -75,7 +69,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step45/55/58+b3c2 imports not replayed: local Git DNS cannot resolve github.com. Lapse variations are independent in restricted extended slice; Step58 temporal tangency, full Dirac constraints, charges, gauge quotient and 4D remain open.",
+  "current_blocker": "Local Git DNS cannot resolve github.com; original Step58 outer R=17/20 coefficients and b3c2 full replay NOT executed. Step58 global positive-lapse boundary-value problem, Dirac tangency, improved generators/charges, gauge quotient and 4D remain OPEN.",
   "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -84,7 +78,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "1c2ce10c755ffdece758d11fdd521b11711b9951",
+    "00_CURRENT_RESTART.md": "89a81fcf87988e7b90c23057617bb7abf04fc48e",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -107,7 +101,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "6c7d4a610810bda3a89f457a37c951865f9871ee",
+    "README.md": "d8859c8c8190feecf9e8827b33703af774a44bc3",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -231,7 +225,11 @@
     "numerics/hr_step68ad_b3c3d3_center_boundary_parity.py": "f63f05c6173c473a957fd4e87bbb37e141432a41",
     "tests/test_hr_step68ad_b3c3d3_center_boundary_parity.py": "06d481d5da02b8436acfcf351a615b7b0bd43db5",
     "research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json": "b9acd1a907c056d12a4d34cf6134c7908b32047f",
-    "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801"
+    "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801",
+    "numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "85469568e6df7c26920c1ebb87593dbf474deb04",
+    "tests/test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "419c6785aa1409edcd252694136b6a66ac4669ad",
+    "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md": "a7f429fc82c2f7609a961f10d5e175dbd79efaf6",
+    "research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json": "ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
@@ -449,5 +447,27 @@
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research_v2_flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
     "workflow_changes": 0
+  },
+  "previous_session_automation_update": {
+    "status": "SUCCESS",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 18159,
+    "new_prompt_characters": 19331,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5"
+  },
+  "latest_session_source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7"
+  },
+  "latest_session_branch_heads_initial": {
+    "main": "aead63f4098f0d15a849e579105af034b6317b30",
+    "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
   }
 }
