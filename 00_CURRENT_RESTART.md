@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d1 CRITÈRE DE RANG DU SECTEUR DE BORD (2026-10-28)
+
+**ÉTAPE b3c3d1 TERMINÉE (THÉORÈME CINÉMATIQUE RESTREINT) — PROCHAINE ÉTAPE b3c3d2 : REJEU ORIGINAL STEP45/55/58 ET b3c2, FORME DE BORD NON-IBP COMPLÈTE, VARIATIONS ADMISSIBLES TANGENTES AUX CONTRAINTES, GÉNÉRATEURS AMÉLIORÉS/CHARGES/JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**THÉORÈME EXACT LIMITÉ :** À partir des densités Step45 authentifiées, le secteur de la forme de bord associé au terme z' est `alpha_shift=P dZ` avec `P=pLg*(N+M*Lg/Lf)`, `Z=D/sqrt(D²+K²)` sur K>0, `D=pSg*Sg'−Lg*pLg'+pg*tg'`. Il vérifie `d alpha_shift=dP wedge dZ`. Sur une sous-variété lisse de données de bord, le pullback est fermé **ssi** le rang différentiel de (P,Z) est <=1. Les graphes `Z=c0+c1*P+c2*P²` avec |Z|<1 possèdent la primitive explicite `B=c1*P²/2+2*c2*P³/3`; fixer Z ou P fonctionne également **pour ce secteur uniquement**. La tranche libre (pLg,pLg') conserve la courbure négative de b3c3c, témoin rationnel NON Step55 `-32/375`. Ces graphes sont réalisables au niveau des jets par `D=K*Z/sqrt(1-Z²)`, mais **aucune admissibilité physique ni tangence Dirac n'est démontrée**. Le secteur n'est pas la forme non-IBP complète : aucune conclusion sur le pullback physique de dTheta, les charges ou un no-go JANUS.
+
+**TESTS EXÉCUTÉS DANS CETTE SESSION :** `python -m numerics.hr_step68ad_b3c3d_boundary_sector_rank` : 16 assertions exactes SymPy PASS ; `python -m unittest -q tests.test_hr_step68ad_b3c3d_boundary_sector_rank` : 4 tests PASS (rejeu non indépendant), 0 FAIL. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git HEAD` : ECHEC `Could not resolve host: github.com`. Les sources Step45/55/58 ont été relues via le connecteur GitHub et leurs blobs authentifiés, mais **les imports Python originaux et le unittest b3c2 n'ont PAS été rejoués**.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS SUR LA SEULE BRANCHE AUTORISÉE :**
+- `numerics/hr_step68ad_b3c3d_boundary_sector_rank.py` — blob `ac359aed8e3fadf465c328b2e5a7d7d559665eb5`, identique aux octets exécutés.
+- `tests/test_hr_step68ad_b3c3d_boundary_sector_rank.py` — blob `de0aa6e3529f4e26e80f9fba44f8dc4f26d90c0a`, identique aux octets exécutés.
+- `research/reports/gate2b-step68ad-b3c3d1-boundary-sector-rank.json` — blob `2c256bada46fb692d755c11c80342419553632ef`.
+- `research/STEP68AD_B3C3D1_BOUNDARY_SECTOR_RANK_CLASSIFICATION.md` — blob `c982e5f70d190412086ad24943e65bb9b2687205`.
+
+**GITHUB :** HEAD vérifié à l'ouverture `1a50255f7c458c2ffad4e85482ae2ba6501cdc8f`. Quatre create_file authentiques, relus, et README mis à jour (blob `58df9b2639abb796b7117bf3108f9e59d1318ac1`). Journal préfixé sans suppression du suffixe historique. Après mise à jour de l'index, revérifier le HEAD, et confirmer main et research/v2-flrw inchangées. Aucune GitHub Action modifiée.
+
+**VERROUS ET ACTIONS PRIORITAIRES :** (1) Rejouer b3c2 sur les modules Python Step45/55/58 originaux en clone complet, dès accès réseau ; (2) calculer la forme de bord non-IBP intégrale, pas seulement son secteur shift ; (3) imposer primaires, secondaire C(r)=0, préservation temporelle, régularité centrale et conditions aux bords aux variations avant d'examiner le rang physique ; (4) charges/générateurs améliorés, quotient jauge temporelle, Dirac six couples, cartes K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3c COURBURE RESTREINTE DES JETS DE BORD (2026-10-28)
 
 **ÉTAPE b3c3c TERMINÉE (THÉORÈME CINÉMATIQUE RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d : REJEU ORIGINAL b3c2 STEP45/55/58, CLASSIFICATION DES VARIATIONS DE BORD ADMISSIBLES ET GÉNÉRATEURS AMÉLIORÉS, CHARGES/JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
