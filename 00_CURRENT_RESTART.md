@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3c COURBURE RESTREINTE DES JETS DE BORD (2026-10-28)
+
+**ÉTAPE b3c3c TERMINÉE (THÉORÈME CINÉMATIQUE RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d : REJEU ORIGINAL b3c2 STEP45/55/58, CLASSIFICATION DES VARIATIONS DE BORD ADMISSIBLES ET GÉNÉRATEURS AMÉLIORÉS, CHARGES/JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT LIMITÉ :** Sur la carte K>0 de Step45, après élimination algébrique z*=D/sqrt(D²+K²), la forme de bord issue des densités post-IBP, restreinte à deux variations LIBRES indépendantes de jets d'extrémité (pLg,pLg') avec les autres champs et lapses fixes, a la courbure dα=−Lg*(N+M*Lg/Lf)*K²/(D²+K²)^(3/2) d(pLg)∧d(pLg'). Le coefficient est strictement négatif pour Lg,Lf,N,M,K>0 et D fini. Témoin rationnel NON Step55 : Lg=2/5, Lf=3/5, N=M=1, D=3, K=4 : −32/375. Une variation exacte d'un contreterme ne peut annuler cette courbure sur cette tranche libre. **CE N'EST PAS** une obstruction physique générale : les deux variations n'ont pas été certifiées tangentes aux contraintes fonctionnelles, ni compatibles avec les conditions aux bords ; la réduction à une dimension peut supprimer la courbure. Pas de charge ni générateur amélioré ni pullback physique dTheta.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3c_boundary_jet_curvature` : 15 assertions exactes SymPy PASS ; `python -m unittest -v tests.test_hr_step68ad_b3c3c_boundary_jet_curvature` : 4 tests PASS, non indépendants ; 0 FAIL final. Les scripts publiés ont été exécutés en structure de paquets numerics/tests. Une erreur initiale de substitution du témoin rationnel a été corrigée avant publication ; une erreur de chemin d'import du unittest a été corrigée puis rejouée dans la structure du dépôt. Le GitHub source Step45 a été relu, blob authentifié `66aa43841dccfe4a5d586a49be9c10af3a67a10e`. **Les imports originaux Step45/55/58 et b3c2 n'ont PAS été exécutés en clone complet** (DNS Git indisponible localement).
+
+**QUATRE LIVRABLES PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_b3c3c_boundary_jet_curvature.py` — blob `173516e616ef950927356b110a71006863db5301`, octets testés identiques.
+- `tests/test_hr_step68ad_b3c3c_boundary_jet_curvature.py` — blob `1663bc360cd7c6da5f3e8947c1ecb6644578ab9a`, octets testés identiques après correction de l'import.
+- `research/reports/gate2b-step68ad-b3c3c-restricted-boundary-jet-curvature.json` — blob `15f569d0da59eb33b49c6deec32966c2caa14bd0`.
+- `research/STEP68AD_B3C3C_BOUNDARY_JET_CURVATURE_RESTRICTED.md` — blob `80f9f7df2d4c039deb8444c6ea7ec47dc32a3274`.
+
+**GITHUB :** HEAD authentifié à l'ouverture `0a37234daa8b71ac910b39445aef63b9ca3d2453`. Quatre create_file, un update_file correctif du test et README mis à jour, tous exclusivement sur `research/gate2b-nonhomothetic-transfer`. Relire les SHA après journal et index ; ne pas modifier main, research/v2-flrw, ni workflows désactivés.
+
+**PRIORITÉS :** (1) Rejouer b3c2 avec les vrais imports Step45/55/58 dans un environnement complet ; (2) imposer primaires, secondaire C(r)=0, préservation temporelle et conditions aux bords aux variations (pLg,pLg') avant toute conclusion physique ; (3) calculer la forme de bord complète non-IBP et les charges/générateurs améliorés ; (4) jauge temporelle, rang/tertiaires Dirac, chartes K=0/J=0, 4D, stabilité et observables. Aucune validation ni no-go JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3b IDENTITÉ DE LIE EXACTE DE C_red (2026-10-28)
 
 **ÉTAPE b3c3b TERMINÉE (COVARIANCE LOCALE CINÉMATIQUE EXACTE) — PROCHAINE ÉTAPE b3c3c : REJEU b3c2 AVEC IMPORTS ORIGINAUX STEP45/55/58, VÉRIFICATION INDÉPENDANTE DE C_red, GÉNÉRATEURS AMÉLIORÉS ET CHARGES AUX BORDS, JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES, K=0/J=0, 4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
