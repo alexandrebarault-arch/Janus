@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-28",
+  "stage": "b3c3d6_PARTIAL",
+  "kind": "SHARP_CONDITIONAL_SCALAR_TWO_ENDPOINT_REACHABILITY",
+  "hypotheses": [
+    "single first-order lapse equation",
+    "E_N=E_M=0 exactly",
+    "B_N,B_M positive C1",
+    "A_N,A_M continuous",
+    "all four lapse endpoint values positive"
+  ],
+  "result": "if sN!=sM somewhere: L<log(uR/u0)<U iff positive C1 lapse solution; if identical slopes equality iff",
+  "tests": {
+    "symbolic_residuals": 5,
+    "exact_toy_residuals": 11,
+    "strict_boundary_checks": 2,
+    "unittest_passed": 4,
+    "unittest_independent": false,
+    "fail": 0
+  },
+  "original_step58_outer_probe_executed": false,
+  "original_sources": {
+    "Step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "Step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "original_probe": "85469568e6df7c26920c1ebb87593dbf474deb04"
+  },
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
