@@ -17,43 +17,42 @@
     "new_prompt_characters": 8136
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b2_clock_boundary_flux.cjs": "006ad7eca13d70c872b3972c9eb137b94d12a7c1",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b2_clock_boundary_flux.cjs": "9f488f3c8850fdc69a81b6c98d94d83b5f806c18",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b2-clock-boundary-flux.json": "8c0c6aa44d60ac8afd9514f0f34157fe7ee2a072",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B2_CLOCK_BOUNDARY_FLUX_AND_TEMPORAL_GAUGE_LIMITS.md": "0b7fd3858863a13c33b37a5aa8f27a6417bfc724",
-    "README.md": "7da32e6cc9d92934784969b92d2b601470f62e18",
-    "00_CURRENT_RESTART.md": "148af5f8673ad2fbfbef6a2a2f4f87421f1ea8c7"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs": "edf4dd6c8ab3fea9579195c130b096dee7b7353a",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs": "ab314845598539a289f16d26b7df5fbc31bb5143",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3a-clock-time-evolution.json": "e9905838241f8d6e50c35753221bbfeb361066b4",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3A_CLOCK_TIME_EVOLUTION_BOUNDARY_PRESERVATION.md": "f0756adb6b98574700591ae8cb8a1b10bbc60eb9",
+    "README.md": "254f0ea6d3f9c1e2dc2cdee3bc1004950684596c",
+    "00_CURRENT_RESTART.md": "a7e250aa0f7bb4cb7a51e289d5423720b3928080"
   },
-  "verified_research_head_at_session_start": "08dfd449a1c8c6d72a9d1da5fe1076703804d99d",
-  "next_priority": "Construct improved temporal generators and clock charges, classify temporal gauge and preserved center/outer boundary clock conditions, then two admissible physical Dirac tangents, dTheta, boundary counterterms, full six-pair Dirac rank/tertiaries/lapses/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "fafe66a498518deeb93241e783449b49886385d5",
+  "next_priority": "Reexecute/authenticate original Step58 temporal preservation operator; test whether Vrel preserving relative dust-clock boundary is compatible with regular positive lapses, secondary/tertiaries and improved temporal generators; then physical gauge quotient, two non-gauge tangents, dTheta, six-pair Dirac rank/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "3f2c5c10cadde2863a4524e433e3229e23fa51b1",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b2_EXACT_STEP55_BARE_CLOCK_FLUX_INCOMPATIBILITY_PARTIAL_TEMPORAL_GAUGE",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3_IMPROVED_TEMPORAL_GENERATORS_CLOCK_CHARGES",
+  "verified_research_head_before_state_file": "abb75373e4144f0c56d24ce94ca43c4d09512b4f",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3a_EXACT_CONDITIONAL_CLOCK_TEMPORAL_BOUNDARY_PRESERVATION",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3b_STEP58_LAPSE_AND_IMPROVED_TEMPORAL_GENERATORS",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2B2_CLOCK_BOUNDARY_FLUX_AND_TEMPORAL_GAUGE_LIMITS.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3A_CLOCK_TIME_EVOLUTION_BOUNDARY_PRESERVATION.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 57,
+    "passed": 37,
     "failed": 0,
     "runtime": "V8 exact rational BigInt",
-    "replayed_from_github": 57,
-    "wrapper_guards": 10,
-    "wrapper_runtime": "V8 CommonJS shim (not Node CLI)",
-    "wrapper_unittests": 0,
+    "replayed_from_github": 37,
+    "wrapper_guards": 6,
+    "wrapper_runtime": "V8 CommonJS shim, not Node CLI",
     "original_physics_modules_reexecuted": 0,
     "full_dirac_oracle_executed": false,
-    "scope": "Strict bare original non-IBP outer clock-flux incompatibility on Step55 for positive lapses, exact N/M rank2, constant-translation boundary condition rank classification; temporal gauge and improved Hamiltonian unresolved."
+    "scope": "Conditional Step55 clock time-preservation theorem and formal local charge flux; exact non-Step55 witness separates relative-clock preservation from bare diagonal flux cancellation."
   },
-  "github_write_probe": "Four scientific create_file calls succeeded and files read back with Git blob SHAs; 57 exact rational assertions replayed from GitHub bytes; README and 00_CURRENT_RESTART.md prepended with complete old history preserved; state updated last.",
+  "github_write_probe": "Four create_file calls succeeded on research branch, four readback SHA and byte equality checks; 37 exact BigInt assertions rerun from published code, 6 non-independent guards, certificate JSON byte-identical; README and full restart journal prefixed without history loss; state update succeeded.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -70,8 +69,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Clock translations are exact bulk canonical symmetries but temporal gauge quotient and improved generator boundary domain remain unknown; bare Step55 clock fluxes cannot both vanish for positive lapses and any V without counterterm. Full Dirac temporal preservation and boundary counterterms not certified.",
-  "task_self_update": "2026-10-28: prepended d2d2b2 marker, all 7180 prior prompt characters preserved verbatim, hourly schedule/timezone/enabled verified unchanged.",
+  "current_blocker": "Original non-IBP temporal clock evolution shows positive-lapse stationary outer/center individual Dirichlet clock values are incompatible on Step55, while stationary relative clock fixes Vrel instantaneously. It is unproved that Vrel satisfies full Step58 lapse preservation, boundary differentiability, temporal gauge quotient, or charge conservation. Full Dirac rank/tertiaries and 4D physics remain open.",
+  "task_self_update": "Pending: attempt to prepend new b3a checkpoint marker to existing automation while preserving its full prompt, schedule, timezone and activation.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
