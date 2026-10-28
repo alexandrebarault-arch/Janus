@@ -1,0 +1,20 @@
+{
+  "exact_assertions": 10,
+  "bad": {
+    "lower": "-17/10",
+    "upper": "-4/5",
+    "target": "0",
+    "excluded": "True",
+    "status": "NECESSARY_ONLY_NOT_SUFFICIENT_FOR_POSITIVE_M_OR_DIRAC"
+  },
+  "good": {
+    "lower": "-1/5",
+    "upper": "7/10",
+    "target": "0",
+    "excluded": "False",
+    "status": "NECESSARY_ONLY_NOT_SUFFICIENT_FOR_POSITIVE_M_OR_DIRAC"
+  },
+  "scope": "CONDITIONAL_ANNULAR_INTERVAL_NECESSARY_SCREEN_NOT_ORIGINAL_STEP58",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
