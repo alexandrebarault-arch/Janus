@@ -1,0 +1,13 @@
+{
+  "stage": "b3c3d6_PARTIAL",
+  "result": "CONDITIONAL_POSITIVE_CONE_AND_NECESSARY_GROWTH_SCREEN",
+  "symbolic_exact_residuals": 6,
+  "exact_toy_residuals": 6,
+  "unittest_pass": 4,
+  "unittest_independent": false,
+  "failed": 0,
+  "original_step58_outer_probe_executed": false,
+  "original_step55_step68o_b3c2_replayed": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
