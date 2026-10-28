@@ -3,7 +3,7 @@ const assert=require("assert"),fs=require("fs"),path=require("path"),crypto=requ
 const {audit,EXPECTED}=require("../scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs");
 const root=path.resolve(__dirname,"..");
 const files={temporal:"research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json",step58:"numerics/hr_step58_temporal_operator.py",step55:"numerics/hr_step55_global_barrier.py",b3a:"scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs"};
-const shas={};for(const [k,v] of Object.entries(files)){let bytes=fs.readFileSync(path.join(root,v));shas[k]=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\\0")).update(bytes).digest("hex");}
+const shas={};for(const [k,v] of Object.entries(files)){let bytes=fs.readFileSync(path.join(root,v));shas[k]=crypto.createHash("sha1").update(Buffer.from("blob "+bytes.length+"\0")).update(bytes).digest("hex");}
 const data=JSON.parse(fs.readFileSync(path.join(root,files.temporal),"utf8"));
 const cert=audit(data,shas);let tests=0;function ok(v){assert(v);tests++;}
 ok(cert.archive_leaves_checked===225);ok(cert.certified_ratio_lt_3_over_4_leaves===154);
