@@ -1,0 +1,21 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c3c",
+  "scope": "RESTRICTED_UNCONSTRAINED_ENDPOINT_JET_CURVATURE_NOT_PHYSICAL_DIRAC",
+  "original_step45_blob": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+  "result": "d alpha|_(pLg,pLgprime)=-Lg*(N+M*Lg/Lf)*K^2/(D^2+K^2)^(3/2) dpLg wedge dpLgprime",
+  "rational_witness_not_step55": "-32/375",
+  "sign_conditions": "Lg,Lf,N,M,K>0 and finite D",
+  "tests": {
+    "symbolic_assertions": 15,
+    "unittest_cases": 4,
+    "unittest_independent": false,
+    "failures_final": 0
+  },
+  "original_import_replay": false,
+  "dirac_tangent": false,
+  "improved_generator_constructed": false,
+  "boundary_conditions_certified": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "next_step": "b3c3d_ORIGINAL_IMPORT_REPLAY_AND_ADMISSIBLE_BOUNDARY_SUBMANIFOLDS"
+}
