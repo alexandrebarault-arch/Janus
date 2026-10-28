@@ -1,0 +1,127 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b2",
+  "assertions_passed": 57,
+  "assertions_failed": 0,
+  "input_source_blobs": {
+    "step37": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "original_boundary": "94bd7e089ebb0978569361c03a4f3ab950b950df",
+    "clock_translation": "1d973e04f296df9144f6ddef40681dd18342e28e"
+  },
+  "exact_rational_enclosures": {
+    "A_g_N": [
+      "4419999469396/400867469805625",
+      "7072000000/641387951689"
+    ],
+    "B_g_M": "21250000000000000000000000/1444418923561876775155324829",
+    "D_f_M": [
+      "-8500000000000000000000000/1444418923561876775155324829",
+      "-8499992139200000000000000/1444418923561876775155324829"
+    ],
+    "r": "17/20",
+    "z": "17/5000"
+  },
+  "proved": "At Step55 outer boundary with pg,pf,N,M positive, Jg=Jf=0 is impossible for any common diagonal V; independent lapse N,M clock-flux coefficient matrix has rank 2, so no nonzero fixed clock variation cancels flux for all lapse choices. Exact boundary-condition rank classification on constant-shift plane.",
+  "restrictions": "Original bare non-IBP Hamiltonian, no clock counterterm, Step55 outer dust slopes and z>0, positive lapses and dust momenta. Not a complete Dirac temporal gauge quotient.",
+  "not_proved": [
+    "physical temporal gauge classification",
+    "Hamiltonian improved differentiability",
+    "allowed counterterm under full variations",
+    "time preservation of clock boundary conditions",
+    "full Dirac rank/tertiaries/lapses",
+    "4D/stability/observables"
+  ],
+  "original_physics_reexecuted": false,
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "boundary_cases": [
+    {
+      "name": "no fixed clock values",
+      "matrix": [],
+      "rank": 0,
+      "remaining": 2
+    },
+    {
+      "name": "fix tg at center",
+      "matrix": [
+        [
+          1,
+          0
+        ]
+      ],
+      "rank": 1,
+      "remaining": 1
+    },
+    {
+      "name": "fix tf at outer",
+      "matrix": [
+        [
+          0,
+          1
+        ]
+      ],
+      "rank": 1,
+      "remaining": 1
+    },
+    {
+      "name": "fix both at center",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "rank": 2,
+      "remaining": 0
+    },
+    {
+      "name": "fix tg-tf at either boundary",
+      "matrix": [
+        [
+          1,
+          -1
+        ]
+      ],
+      "rank": 1,
+      "remaining": 1
+    },
+    {
+      "name": "fix tg-tf and tg+tf",
+      "matrix": [
+        [
+          1,
+          -1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "rank": 2,
+      "remaining": 0
+    },
+    {
+      "name": "fix tg at center and tf at outer",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "rank": 2,
+      "remaining": 0
+    }
+  ]
+}
