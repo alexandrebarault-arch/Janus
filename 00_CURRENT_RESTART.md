@@ -1,3 +1,27 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3a, PRÉSERVATION TEMPORELLE DES HORLOGES (2026-10-28)
+
+**ÉTAPE b3a TERMINÉE : THÉORÈME EXACT CONDITIONNEL SUR LES SIGNES STEP55, PAS DE GÉNÉRATEUR TEMPOREL AMÉLIORÉ NI QUOTIENT DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3b — confronter Vrel à l'opérateur original Step58 de préservation des lapses et à la régularité, construire les générateurs temporels améliorés, charges et conditions de bord différentiables ; puis deux directions physiques non-jauge, dTheta, Dirac six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT PROUVÉ :** À partir du Hamiltonien non-IBP original, dot(tg)=N*sqrt(1+(tg'/Lg)^2)+(z*(N/Lg+M/Lf)+V)*tg' et dot(tf)=M*sqrt(1+(tf'/Lf)^2)+V*tf'. Sur Step55 R=17/20, tg'>0, tf'<0, z>0 et N,M>0 : aucun V fini ne permet dot(tg)=dot(tf)=0 au bord extérieur. Au centre régulier tg'=tf'=0, des Dirichlet individuels CONSTANTS DANS LE TEMPS imposent N(0)=M(0)=0, incompatibles avec des lapses strictement positifs. Fixer seulement la différence tg-tf permet un unique Vrel=(M*sf-N*sg-z*Q*tg')/(tg'-tf') et une vitesse commune strictement positive. Il s'agit d'une condition de compatibilité INSTANTANÉE, pas d'une solution globale Dirac.
+
+**CHARGES :** Le calcul de volume donne dot(pg)=d_r Jg, dot(pf)=d_r Jf et formellement dot(Qi)=Ji(R)-Ji(0), Qi=int pi dr. Ceci NE démontre PAS la conservation des charges, ni la différentiabilité du générateur. Un témoin rationnel NON Step55 distingue Vrel=-2/5 et Vflux=-11/65 : au premier, Jg+Jf=-15/13. Préserver la différence des horloges ne supprime donc pas automatiquement le flux diagonal nu.
+
+**TESTS :** 37 assertions BigInt exactes V8 PASS, 0 FAIL ; réexécutées depuis les octets publiés GitHub ; 6 gardes de wrapper PASS, NON indépendants, via shim V8 et non Node CLI ; certificat JSON régénéré identique. Sources originales Step37/45/55 et forme d2a relues avec SHA Git authentifiés ; moteurs Python originaux NON réexécutés.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs — blob edf4dd6c8ab3fea9579195c130b096dee7b7353a.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs — blob ab314845598539a289f16d26b7df5fbc31bb5143.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3a-clock-time-evolution.json — blob e9905838241f8d6e50c35753221bbfeb361066b4.
+- research/STEP68AD_C2D2E5B3B2C2B2D2D2B3A_CLOCK_TIME_EVOLUTION_BOUNDARY_PRESERVATION.md — blob f0756adb6b98574700591ae8cb8a1b10bbc60eb9.
+
+**GITHUB :** HEAD initial relu fafe66a498518deeb93241e783449b49886385d5 ; quatre create_file réels sur research/gate2b-nonhomothetic-transfer, fichiers relus et comparés aux octets testés. HEAD final à relire après index. main et research/v2-flrw protégées ; ne toucher aucun workflow GitHub Actions.
+
+**LIMITES :** Pas de quotient temporel Dirac, de charges physiques certifiées, de contreterme global admissible, de lapses préservant simultanément la secondaire et les bords, de rang/tertiaires six couples, de chartes K=0/J=0, de dynamique 4D, stabilité ou observables.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b2, FLUX DE BORD DES HORLOGES ET CONDITIONS ADMISSIBLES (2026-10-28)
 
 **ÉTAPE d2d2b2 TERMINÉE : THÉORÈME EXACT RESTRICTION STEP55/BARE NON-IBP, PAS DE QUOTIENT DE JAUGE TEMPORELLE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3 — générateurs temporels améliorés, charges d'horloges, conditions au centre et à R préservées dans le temps, quotient par la jauge temporelle ; ensuite directions canoniques physiques, pullback dTheta, bords/contretermes, oracle Dirac original six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
