@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, COURBURE CENTRALE DU RATIO DES LAPSES (2026-10-28)
+
+**ÉTAPE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ACTION : exécuter réellement le probe original Step58 à R=17/20 et les imports Step45/55/58+b3c2 ; certifier B_N/B_M, b,d et les cartes de raccordement au centre ; résoudre le vrai problème global des lapses positifs et les conditions Step55 ; puis pullback Dirac, charges/générateurs, quotient jauge temporelle, six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU LEMME EXACT, STRICTEMENT CONDITIONNEL, NON DIRAC :** Pour A_N=a r²+b r⁴+o(r⁴), A_M=c r²+d r⁴+o(r⁴), B_i=O(r⁴), lapses pairs C² N=N0+N2 r²+o(r²), M=M0+M2 r²+o(r²), N0>0, c≠0, sur la coquille où E_N=E_M=0 EXACTEMENT dans un voisinage, rho=M/N satisfait rho0=-a/c et **rho''(0)=-2(b+d rho0)/c**, indépendamment de N2. Si E_N=e r⁴+o(r⁴), E_M=f r⁴+o(r⁴) sans annulation exacte et c+2f≠0, rho2=-[(b+d rho0)+2(e+f rho0)N2/N0]/(c+2f) : la courbure peut dépendre de N2. Cas c+2f=0 non résolu par division. Deux familles d'opérateurs JOUETS positifs, u=0 et u=1 chacune, vérifient exactement cette distinction. **Coefficients physiques b,d et l'identité E=0 sur Step55 non certifiés : aucune courbure physique Step58 n'est affirmée.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_run11 && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_center_ratio_curvature` : 11 résidus symboliques SymPy exacts PASS et 2 familles jouets positives (u=0,1) ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_center_ratio_curvature.py' -v` : 4 unittest PASS non indépendants ; 0 FAIL final. Import des tests corrigé vers le chemin canonique du dépôt avant publication finale. `git ls-remote` : `Could not resolve host: github.com`. Moteurs originaux Step45/55/58, b3c2 et probe Step58 R=17/20 NON exécutés.
+
+**LIVRABLES PUBLIÉS SUR research/gate2b-nonhomothetic-transfer ET RELUS, BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_step68ad_b3c3d6_center_ratio_curvature.py` : blob `3ecd9f7a166834e851e6b34e23130642e7479bf1` ; commit `b79cd6d9e8c3c8ebb612785ba080f064d8ff264c`.
+- `tests/test_hr_step68ad_b3c3d6_center_ratio_curvature.py` : blob `bdcf750390d33bf1bd4422d420abe3e4e39dc50d` ; commit correctif `f529a42ea6b92da907166f517d27e85e9aed0a5e`.
+- `research/STEP68AD_B3C3D6_FORMAL_CENTER_LAPSE_RATIO_CURVATURE.md` : blob `e8f02659827a4931654864f8d8204e99c612f0aa` ; commit correctif `e9bb304b41b8013f576ebc695b9b57da1287d219`.
+- `research/reports/gate2b-step68ad-b3c3d6-formal-center-ratio-curvature.json` : blob `82f40c37a6baa56b119e4c301067a66295c8e1f1` ; commit `4e85ef97690270a7b1cf18f131cb924fafb251c9`.
+- `README.md` index mis à jour : blob `4fb6feee7b94b84dcf01af7a31e4e4dc34739120`, commit `505bf54900e9c1ce2e6ee7a75ffeffe9319105bb`.
+
+**PROVENANCE ET LIMITES :** original `numerics/hr_step58_temporal_operator.py` lu sur GitHub, blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` ; `numerics/hr_step68o_temporal_interval_annulus.py` lu, blob `c99caebc17f243784450ddff94fb061767e6d8e7`. Aucune substitution des jouets aux coefficients authentiques. Branche initiale comparée à `c03c80e9289fc81fb77549a0991b834fac9a749f` : 1 commit d'index plus récent ; branches interdites initialement inchangées `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Vérifier HEAD final et ces branches après index.
+
+**CHECKPOINT PRÉFIXÉ, HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, ÉCRAN INTÉGRAL NÉCESSAIRE DES LAPSES SUR ANNEAU (2026-10-28)
 
 **b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 ET REJOUER STEP45/55/58+b3c2 ; CERTIFIER B_N/B_M SUR DES ANNEAUX, RACCORDER AU CENTRE DÉGÉNÉRÉ ET ÉTABLIR LES VRAIES CONDITIONS DE BORD DES LAPSES POSITIFS. PUIS PULLBACK DIRAC, GÉNÉRATEURS/CHARGES, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
