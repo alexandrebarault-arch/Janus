@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CONTRE-EXEMPLE AU PASSAGE RANG PONCTUEL → BVP GLOBAL (2026-10-28)
+
+**b3c3d6 NON TERMINÉE — PROCHAINE ACTION : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 SUR CLONE COMPLET, PUIS COMPATIBILITÉ GLOBALE DES LAPSES ET DEUX BORDS ; PULLBACK DIRAC, CHARGES/JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT NOUVEAU, STRICTEMENT MATHÉMATIQUE :** deux opérateurs jouets linéaires scalaires ont le même symbole principal `(B_N,B_M)=(1,-1)`, donc la même projection ponctuelle de rang 2 sur `(N,M)` partout, mais leurs problèmes aux limites sont respectivement impossible et possible. Avec `R=17/20`, `rho=10371/20000` dans l'intervalle central b3c2, `N(0)=1,M(0)=rho,N'(0)=M'(0)=0,N(R)=M(R)`, l'opérateur `L_bad=N'-M'` est impossible par conservation de `N-M=1-rho>0`. L'opérateur `L_good=N'-M'+kappa*r*(N+M)` avec `kappa=7703200/8777219` admet la solution paire analytique strictement positive `N=(S+D*(1-(r/R)^2))/2,M=(S-D*(1-(r/R)^2))/2`, `S=1+rho,D=1-rho`. **Ceci ne teste PAS l'opérateur physique Step58 ni les vraies conditions d'horloge Step55.** Cela interdit de déduire un verdict global du seul rang ponctuel, même si les B sont connus exactement sur tout l'intervalle.
+
+**EXÉCUTÉ :** `python -m numerics.hr_step68ad_b3c3d6_bvp_counterexample` : 10 résidus SymPy exactement nuls, 6 contrôles exacts de signes, 2 identités supplémentaires de positivité PASS ; `python -m unittest -v tests.test_hr_step68ad_b3c3d6_bvp_counterexample` : 4 tests PASS, non indépendants, 0 FAIL. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git refs/heads/research/gate2b-nonhomothetic-transfer` : échec DNS `Could not resolve host: github.com`. **Probe original Step58, moteurs originaux Step45/55/58 et unittest b3c2 NON exécutés.** Les fichiers Step58, Step68o et b3c3d5 ont été lus via le connecteur et leurs blobs vérifiés, sans les exécuter.
+
+**QUATRE LIVRABLES SCIENTIFIQUES CRÉÉS SUR LA SEULE BRANCHE RECHERCHE ET RELUS (SHA Git blobs = octets locaux) :**
+- `numerics/hr_step68ad_b3c3d6_bvp_counterexample.py` — `54cad42ea5804a7f72b460fd5810cd2e64aded5a`.
+- `tests/test_hr_step68ad_b3c3d6_bvp_counterexample.py` — `f905c9ee823f08d2031def13925bac959910ecb7`.
+- `research/STEP68AD_B3C3D6_POINTWISE_RANK_NOT_GLOBAL_BVP.md` — `09261bac0e704ae4714cbac51a03fa10af360fbb`.
+- `research/reports/gate2b-step68ad-b3c3d6-bvp-counterexample.json` — `f7083967792e7c1027ff2a1953d8cc0ae2ce8b70`.
+- `README.md` — `53aff81a882b94250e642b1629e1cab91736f89e`.
+
+**GITHUB :** HEAD de reprise initial `da8dbfd5b7b431f8d04c08dc98e0df67cfbbbfea` ; commits scientifiques `71ba23009d6c1f4c0f93d25e0c0dc93d742fab1a`, `3da58e9418f42599c659e25438a7c2c6382b282e`, `ed6d145e43e6bb96aab46b7908caef9da6afe4c1`, `d85eebbe08d7a3193a27ba9f6fc8a91b85e30f37`, README `f9c817f0caac0ff1a582c17f69e73f04d846c3c2`. Les branches interdites `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` sont inchangées à la lecture avant checkpoint ; revérifier après l'index. Aucun workflow modifié.
+
+**VERROUS / ACTIONS PRIORITAIRES :** (1) réparer l'accès clone Git et exécuter `python -m numerics.hr_step68ad_b3c3d5_temporal_boundary_jet_rank --probe-original` avec authentification SHA ; certifier les enclosures des coefficients `A_N,A_M,B_N,B_M,E_N,E_M` au bord externe, sans convertir une enclosure contenant zéro en signe ; (2) étudier l'équation différentielle complète des lapses et la régularité centrale / conditions d'horloge réelles aux deux bords ; (3) rejouer Step45/55/58+b3c2 ; (4) véritable pullback Dirac, charges/générateurs et quotient temporel, six couples, rang/tertiaires, K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d5 PROJECTION DES JETS TEMPORELS ET DÉRIVE CENTRALE (2026-10-28)
 
 **ÉTAPE b3c3d5 TERMINÉE (THÉORÈME ALGÉBRIQUE PONCTUEL EXACT, COROLLAIRE CENTRAL CONDITIONNEL, NON DIRAC) — PROCHAINE ÉTAPE b3c3d6 : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20, TESTER B_N/B_M ET LA TANGENCE GLOBALE DES LAPSES AVEC LES DEUX BORDS, REJOUER STEP45/55/58+b3c2, PUIS PULLBACK DIRAC/CHARGES/QUOTIENT TEMPOREL/SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
