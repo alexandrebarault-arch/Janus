@@ -1,7 +1,7 @@
 """Restricted endpoint-jet curvature regression, not a Dirac constraint test."""
 import unittest
 import sympy as s
-from hr_step68ad_b3c3c_boundary_jet_curvature import (
+from numerics.hr_step68ad_b3c3c_boundary_jet_curvature import (
     run, curvature, expected, alpha_pLgr, alpha_pLg,
     Lg, Lf, N, M, K, D, pLg
 )
