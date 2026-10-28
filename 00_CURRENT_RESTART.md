@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3c2, COEFFICIENTS CENTRAUX EXACTS STEP58 (2026-10-28)
+
+**ÉTAPE b3c2 TERMINÉE — RÉSULTAT LOCAL EXACT SUR STEP55, INCOMPATIBILITÉ CONDITIONNELLE D'UNE HORLOGE RELATIVE STATIONNAIRE, PAS DE NO-GO JANUS. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c3 — REJOUER DANS CLONE COMPLET LES SOURCES PYTHON ORIGINALES ET LE TEST PUBLIÉ ; AUDITER LES TERMES DE JAUGE/SHIFT ET LA PRÉSERVATION FONCTIONNELLE, PUIS GÉNÉRATEURS TEMPORELS AMÉLIORÉS, CHARGES, QUOTIENT DIRAC, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT MATHÉMATIQUE :** Sur le centre analytique authentique Step55, l'opérateur original Step58 donne `A_N(r)=a_N r²+O(r⁴)`, `A_M(r)=a_M r²+O(r⁴)`. Les coefficients de `N',M',N'',M''` n'ont aucun terme d'ordre <=3 dans la série formelle exacte ; pour lapses sphériques lisses, ils n'affectent pas l'ordre r². Les coefficients `a_N,a_M` sont des éléments explicites de `Q(sqrt(H2))` donnés exactement dans le JSON. Inégalités rationnelles strictes : `3507<a_N<3508`, `-6765<a_M<-6764`, `1037/2000<-a_N/a_M<2593/5000` (affichage ~0.518543059543765887). Sous préservation temporelle Step58 et `N(0)>0`, le rapport central requis est `M(0)/N(0)=-a_N/a_M`, incompatible avec `M(0)=N(0)` exigé pour une différence d'horloges stationnaire au centre. Ceci exclut **cette combinaison de conditions**, pas le modèle JANUS. Les coefficients libres u1..u7 ont été gardés symboliques ; les 28 dérivées du coefficient dominant par rapport à ces jets sont exactement nulles ; contrôle de valuation pour la queue analytique.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 190 comparaisons symboliques/algébriques exactes sur une reconstruction locale source-fidèle Step45/58, 0 FAIL ; 6 comparaisons de signes exactes BigInt V8 sur les fractions publiées, 0 FAIL ; sonde numérique haute précision à huit rayons exploratoire. Sources Step45 SHA `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step58 SHA `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 SHA `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe` authentifiées directement sur GitHub. **Moteurs Python originaux et unittest publié NON réexécutés dans un clone complet** ; ne pas compter des tests historiques.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS/RELUS :**
+- `numerics/hr_step68ad_c2d2e5b3b2c2b2d2d2b3c2_center_operator.py` — blob `9a77f749a040aaec37e7c3f01368013154fdb562`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3c2_center_operator.py` — blob `d0174425b2f43d6a7572e05cbd44bcb303cd78a3`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3c2-center-operator.json` — blob `4daa3b6ae9e6447eb380e512419ae4e7eaf2fedf`.
+- `research/STEP68AD_C2D2E5B3B2C2B2D2D2B3C2_EXACT_STEP58_CENTRAL_OPERATOR_RATIO.md` — blob `40f5decd8fb3ac082808376496ae8b4054cf391e`.
+
+**GITHUB :** HEAD initial authentifié `bbaba5aaec55d266ffc02467615ea2df9737642e`. Quatre create_file effectifs sur la seule branche `research/gate2b-nonhomothetic-transfer`, fichiers relus et SHA authentifiés ; README actualisé. HEAD avant ce checkpoint `cc05a7341267a1562fa6a2a7f2de4cbe0716e41e`. Vérifier HEAD final après index ; ne jamais modifier `main`, `research/v2-flrw` ni GitHub Actions.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** (1) Rejouer le nouveau script et unittest dans un clone complet avec les modules originaux et vérifier les 4 fractions exactes ; (2) vérifier séparément la réduction du shift diagonal et les bords des générateurs temporels, les charges et la jauge ; (3) résoudre ou réfuter l'existence de lapses globaux pour des données de bord physiquement admissibles ; (4) compléter l'oracle fonctionnel Dirac non-IBP six couples, rang, tertiaires, chartes K=0/J=0, 4D, stabilité, observables. Aucun verdict JANUS-R ne peut être changé à ce stade.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3c1, COURBURE NÉCESSAIRE DES LAPSES ENTRE CENTRE ET ANNEAU (2026-10-28)
 
 **ÉTAPE b3c1 TERMINÉE : THÉORÈME CONDITIONNEL DE COUCHE CENTRALE, PAS DE LIMITE CENTRALE STEP58 CERTIFIÉE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c2 — développer les coefficients originaux Step58 A_N,A_M et les jets N',M' au centre sur Step55, vérifier la réduction fonctionnelle, déterminer la limite réelle M/N et borner sa dérivée seconde avant toute conclusion de régularité ; ensuite générateurs temporels améliorés/charges, quotient jauge, Dirac non-IBP six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
