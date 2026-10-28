@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d4 COURBURE DES LAPSES APRÈS SHIFT D'HORLOGE RELATIVE (2026-10-28)
+
+**ÉTAPE b3c3d4 TERMINÉE (THÉORÈME EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d5 : IMPOSER LE VRAI OPÉRATEUR TEMPOREL STEP58 SUR STEP55 R=17/20, REJOUER LES IMPORTS ORIGINAUX STEP45/55/58 ET b3c2, CONTRÔLER LES DEUX BORDS ET LES VARIATIONS DIRAC, PUIS GÉNÉRATEURS/CHARGES/QUOTIENT TEMPOREL, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT RESTREINT :** Sur la famille spatiale Step55 à R=17/20, avec a=∂lambda pLg=92730563/128000000>0, b=∂lambda pLf>0 (enclosure antérieure), q=Lg/Lf>0, T=tg'>0, U=−tf'>0, sg=sqrt(1+(T/Lg)^2)>0, sf=sqrt(1+(U/Lf)^2)>0, H=Lg*a+Lf*b>0, le pullback non-IBP Theta=[−z*a*(N+q*M)−H*V]d(lambda). Le shift qui préserve instantanément tg−tf est Vrel=[M*sf−N*sg−z*(N/Lg+M/Lf)*T]/(T+U). Sur la tranche étendue (lambda,N,M) à lapses **indépendants**, Theta=(cN*N+cM*M)d(lambda), avec cN=−z*a+H*(sg+z*T/Lg)/(T+U) et cM=−z*q*a−H*(sf−z*T/Lf)/(T+U). **cM−q*cN=−H*(sf+q*sg)/(T+U)<0**, exactement et indépendamment de z. Les deux composantes dN∧d(lambda) et dM∧d(lambda) ne peuvent donc s'annuler ensemble. **Ce n'est PAS** une courbure physique sur le sous-espace Step58/Dirac : les lapses sont des multiplicateurs et leurs variations admissibles sont inconnues.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** python -m numerics.hr_step68ad_b3c3d4_relative_clock_lapse_curvature : 13 résidus symboliques exacts nuls + 6 contrôles rationnels (dont 2 identités géométriques de racines et contrôle négatif) PASS ; python -m unittest -v tests.test_hr_step68ad_b3c3d4_relative_clock_lapse_curvature : 4 cas PASS, non indépendants ; 0 FAIL. Témoin rationnel NON Step55 : cN=3417/5500, cM=−7059/11000, cM−q*cN=−2323/2200. git ls-remote : ECHEC DNS Could not resolve host: github.com ; les moteurs originaux Step45/55/58 et b3c2 ne sont PAS rejoués. Sources Step45 et Step55 relues par connecteur, SHA authentifiés.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS, SHA BLOBS IDENTIQUES AUX OCTETS LOCAUX :**
+- numerics/hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py : 02ea2c65ff040ce96f42fd8ecf79eeea9bebee56.
+- tests/test_hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py : b2a352f578bdb30565484c734b9da7efc7ee1b0f.
+- research/STEP68AD_B3C3D4_RELATIVE_CLOCK_OUTER_LAPSE_CURVATURE.md : 19684bc7ec0994a1348bff5c3ddf24f84a1c55b3.
+- research/reports/gate2b-step68ad-b3c3d4-relative-clock-lapse-curvature.json : 71ba0d3fee5c53248522c2b5bd80383da934d195.
+
+**GITHUB :** HEAD initial lu 40d81654c9eecc489448c137977bfa37ab891e4c. Quatre create_file réels exclusivement sur research/gate2b-nonhomothetic-transfer, derniers commits des livrables 4d1cbe535ee6e5a504e72b063bd55f143584cae0, 59462d30f0f07020a593217deece8f21f8a74ac9, d2effd99c49f5ab643d44c8dae9611c8c88f70e4 et 6a5c0fcd9e0de05c0d03e9adcd2f12535013836b. main initial aead63f4098f0d15a849e579105af034b6317b30 ; research/v2-flrw initial dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb. Aucun workflow modifié.
+
+**VERROUS ET PRIORITÉS :** (1) obtenir la restriction temporelle originale Step58 sur N,M et sa tangence avec la variation lambda ; (2) réexécuter Step45/55/58+b3c2 dans clone complet ; (3) calculer la forme de bord complète sur la vraie surface de Dirac et bords conservés, les charges/générateurs et le quotient temporel ; (4) six couples, rang/tertiaires, cartes K=0/J=0, 4D, stabilité, observables. Aucune preuve générale pour JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d3 ANNULATION CUBIQUE DU BORD CENTRAL RÉGULIER (2026-10-28)
 
 **ÉTAPE b3c3d3 TERMINÉE (LEMME CINÉMATIQUE EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d4 : REJEU ORIGINAL STEP45/55/58+b3c2, VARIATIONS TANGENTES AUX PRIMAIRES, C(r)=0, PRÉSERVATION TEMPORELLE STEP58 ET BORD EXTERNE STEP55 R=17/20 ; GÉNÉRATEURS AMÉLIORÉS, CHARGES, QUOTIENT JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
