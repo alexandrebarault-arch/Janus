@@ -1,0 +1,17 @@
+{
+  "step": "b3c3d5",
+  "symbolic_zero_residuals": 12,
+  "exact_classification_checks": 6,
+  "clock_drift": {
+    "center_clock_rate_over_N0_strict": [
+      "2407/5000",
+      "963/2000"
+    ],
+    "some_radial_derivative_over_N0_strict_upper": "-2407/4250",
+    "assumptions": "b3c2 central Step58 coefficient, N0>0, regular clocks/shift; w(R)=0 and w C1 for MVT"
+  },
+  "scope": "POINTWISE_TEMPORAL_JET_RANK_AND_CONDITIONAL_CENTER_DRIFT_NOT_GLOBAL_DIRAC",
+  "original_step58_probe_executed": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
