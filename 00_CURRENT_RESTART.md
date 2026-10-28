@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, TÉMOIN AUTHENTIQUE STEP58 B_M=0 (2026-10-28)
+
+**ÉTAPE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ÉTAPE : exécuter le probe original Step58 sur le VRAI profil Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M, zéros, cartes et raccord centre, coefficients b,d et lapses positifs aux vrais bords ; ensuite pullback Dirac, charges/générateurs, jauge temporelle, six couples/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE SCIENTIFIQUE RÉELLE, MAIS PONCTUELLE NON-DIRAC :** Rejeu local des sources originales Step45 (Git blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`) et Step58 (Git blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`), authentifiées octet par octet ; import Step57 remplacé LOCALEMENT par un shim minimal de vérification SHA Step45, et NON par le vrai Step57. Un jet rationnel exact satisfait `Fz=Hg=Hf=C_exact=Fz'=Fz''=Fz'''=0` avec `K=1,z=3/5,pg=3/4,pf=311/100,Lg=Lf=Sg=Sf=1` et `sqrt(1-z²)=4/5`. Sur cet opérateur original, `A_N=1293/250, B_N=224/125, E_N=0 ; A_M=-79093/12500, B_M=0, E_M=0`. Ainsi `B_M != 0` NE découle PAS des contraintes ponctuelles, de la positivité du secteur K,z,poussières ni des trois jets de shift. **Ce n'est PAS un zéro prouvé sur Step55 : les dérivées de Hg,Hf,C, le profil spatial global, la tangence Dirac et les vrais bords restent non imposés.**
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_original_replay && python -m numerics.hr_step58_temporal_operator` PASS (~4,01 s), certificat original des seconds jets ; `exact_certificate_summary()` Step45 PASS (9 résidus Ward exacts) ; `python -m numerics.hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness` PASS (7 résidus exacts, 6 coefficients exacts, signes positifs) (~9,44 s) ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py' -v` 4 PASS non indépendants (~8,56 s), 0 FAIL. Git direct : DNS `Could not resolve host: github.com`. **Step55/Step68o/b3c2 et probe original Step58 à R=17/20 NON exécutés.**
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS SUR LA SEULE BRANCHE RECHERCHE :**
+- `numerics/hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py` blob `0144e44cd65fd69390776c1bb2d2b6120ffd74b4` (égal au fichier local testé), commit `ef938feba974273750f44b91b5cd24448284da80`.
+- `tests/test_hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py` blob `b3a2aba30b6f9e02cc056a2bde9a718668eaf27c` (égal au fichier local exécuté), commit `4d1ca324f26c3df171a16268ce4f41b468df848d`.
+- `research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_SHIFT_JET_CHART_WITNESS.md` blob `84a22100c83f0d568c765b15c7b2ada7b9b26c84`, commit `1074574ae4dc2a52aa4e7f88116dca22ce8514c8`.
+- `research/reports/gate2b-step68ad-b3c3d6-authentic-Step58-shift-jet-chart-witness.json` blob `96e12a77ba3a8e8b977e87783f97824a6deb67ec`, commit `2ee0e2ab735c06e8712d1c3890f86ae61154b840`.
+- `README.md` blob `e9aba61ad3084cc856349bc7c79b91c29d6e23c6`, commit `de5bfab205ca05cb764ece4ad007d875e6de00c2`.
+
+**ÉTAT GITHUB :** HEAD initial authentifié `51def2c42b3b983c00553c0c219cb8aeacb6376a`. Branches interdites au départ `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow ni branche interdite modifié. Vérifier HEAD final et branches après index. **VERROUS :** full original Step55/Step68o/b3c2 et rayon R ; couverture B_M/zéros et raccord central ; vrais lapses positifs/bords ; Dirac six couples et quotient temporel ; 4D/stabilité/observables.
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, COURBURE CENTRALE DU RATIO DES LAPSES (2026-10-28)
 
 **ÉTAPE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ACTION : exécuter réellement le probe original Step58 à R=17/20 et les imports Step45/55/58+b3c2 ; certifier B_N/B_M, b,d et les cartes de raccordement au centre ; résoudre le vrai problème global des lapses positifs et les conditions Step55 ; puis pullback Dirac, charges/générateurs, quotient jauge temporelle, six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
