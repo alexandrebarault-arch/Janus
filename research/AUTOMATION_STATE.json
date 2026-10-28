@@ -6,10 +6,16 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_THIS_SESSION_YET",
-    "previous_session_update_preserved": true,
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d2",
-    "permanent_instructions_to_preserve": true
+    "status": "SUCCESS",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 15269,
+    "new_prompt_characters": 16220,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d2"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d_boundary_sector_rank.py": "ac359aed8e3fadf465c328b2e5a7d7d559665eb5",
@@ -27,7 +33,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "83caa8fb4de3b4b1e990f34c63affab698b7c8d3",
+  "verified_research_head_before_state_file": "dfb949b9f74e192e1bdb456627c8ec817e08e71f",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d1_RESTRICTED_SHIFT_BOUNDARY_SECTOR_RANK",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d2_ORIGINAL_IMPORT_REPLAY_FULL_BOUNDARY_FORM_AND_DIRAC_ADMISSIBILITY",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
