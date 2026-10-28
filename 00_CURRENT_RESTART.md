@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d2 FORME NON-IBP COMPLÈTE SUR TRANCHE DIRICHLET (2026-10-28)
+
+**ÉTAPE b3c3d2 TERMINÉE (THÉORÈME CINÉMATIQUE EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d3 : REJEU ORIGINAL STEP45/55/58 ET b3c2, VARIATIONS TANGENTES AUX PRIMAIRES, C(r)=0, PRÉSERVATION TEMPORELLE ET BORDS SUR STEP55 ; GÉNÉRATEURS AMÉLIORÉS, CHARGES, QUOTIENT JAUGE TEMPORELLE, DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT RESTREINT :** Sur K>0 et à une extrémité régulière, les six coordonnées canoniques (Lg,Sg,tg,Lf,Sf,tf) et les multiplicateurs N,M,V étant fixés, la forme de bord originale non-IBP **complète restreinte à cette tranche** vaut `Theta_D=dC−Z dP`, avec `P=pLg*(N+M Lg/Lf)`, `Z=D/sqrt(D²+K²)`, `D=pSg*Sg'−Lg*pLg'+pg*tg'`, `C=2 Mg2 N Sg Sg'/Lg+2 Mf2 M Sf Sf'/Lf−V Lg pLg−V Lf pLf`. La dérivation directe des dix coefficients de bord, à partir des densités originales, vérifie `dTheta_D=dP∧dZ` ; donc la fermeture sur une sous-variété lisse de cette tranche équivaut au rang <=1 de (P,Z). Sur `Z=F(P)`, primitive locale `C−∫F(P)dP`. La forme complète restreinte et le secteur IBP de b3c3d1 diffèrent exactement de `d(C−PZ)`. Sur les deux jets libres (pLg,pLg'), courbure négative `−Lg*(N+M Lg/Lf)*K²/(D²+K²)^(3/2)`, témoin rationnel **NON Step55** `−32/375`. **L'extension à lapses variables est fausse en général :** `dTheta(dN,dSg')=2 Mg2 Sg/Lg` (témoin 2), terme non inclus dans dP∧dZ. Les lapses ne sont pas des paires canoniques ; aucune obstruction physique générale n'en découle.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3d2_full_dirichlet_boundary` : **29 résidus symboliques SymPy exactement nuls + 2 témoins rationnels PASS**. `python -m unittest -v tests.test_hr_step68ad_b3c3d2_full_dirichlet_boundary` : **4 cas PASS**, rejouant les mêmes calculs (non indépendants), **0 FAIL final**. Premier unittest : simple erreur de compteur attendu 28 au lieu de 29, corrigée avant publication, puis quatre tests réussis. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git HEAD` : **ECHEC DNS** `Could not resolve host: github.com`. Sources originales Step37/45/55/58 consultées via connecteur et SHA authentifiés ; **imports Python originaux Step45/55/58 et test b3c2 NON réexécutés**.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS, SHA GIT BLOB ÉGAUX AUX OCTETS TESTÉS / PRODUITS :**
+- `numerics/hr_step68ad_b3c3d2_full_dirichlet_boundary.py` : `6898c88760cc0766e949f9bade4908b9bc176c58`.
+- `tests/test_hr_step68ad_b3c3d2_full_dirichlet_boundary.py` : `724f06569fa2de8368e94b28eebea06f56dc81ea`.
+- `research/reports/gate2b-step68ad-b3c3d2-full-nonibp-dirichlet.json` : `d24f28d9854bd159e798bc3eac9139e943e48c55`.
+- `research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md` : `dd0eea2ed83a162acae8ebf251872c541b4884be`.
+
+**GITHUB :** HEAD à l'ouverture `72123a1d08b8f0ccb26d3a51473e0e9d6103feec` ; HEAD après publication des quatre fichiers et README `9d6b69e7e6ea8926f038a71b45702ad52e312f6a` ; README blob `43c3d8e2249317b876b346cfe4629c00f298885f`. Les fichiers ont été créés réellement sur la seule branche `research/gate2b-nonhomothetic-transfer` et relus avec leurs blobs. Aucun workflow modifié. Contrôler à la fin les HEAD de main et research/v2-flrw.
+
+**LIMITES ET PRIORITÉS :** Les conditions Dirichlet étudiées ne sont **pas** certifiées tangentes aux primaires, secondaire fonctionnelle C(r)=0, opérateur temporel Step58, régularité centrale ou bords conservés. Aucun générateur amélioré/charge ni rang physique n'est établi. (1) Rejouer Step45/55/58+b3c2 en clone si DNS disponible ; (2) construire les variations Dirac admissibles et tester les graphes Z=F(P) sur Step55 ; (3) charges, jauge temporelle, rang/tertiaires Dirac, cartes K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d1 CRITÈRE DE RANG DU SECTEUR DE BORD (2026-10-28)
 
 **ÉTAPE b3c3d1 TERMINÉE (THÉORÈME CINÉMATIQUE RESTREINT) — PROCHAINE ÉTAPE b3c3d2 : REJEU ORIGINAL STEP45/55/58 ET b3c2, FORME DE BORD NON-IBP COMPLÈTE, VARIATIONS ADMISSIBLES TANGENTES AUX CONTRAINTES, GÉNÉRATEURS AMÉLIORÉS/CHARGES/JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
