@@ -1,3 +1,9 @@
+## JANUS b3c3d3 — bord central régulier (28 octobre 2026)
+
+Sur la classe de parité analytique régulière au centre, le pullback de la **forme de bord originale non-IBP à dix coefficients** est exactement `Theta_center=O(r³)` (et `dTheta_center=O(r³)` pour des familles paramétriques lisses). Les termes potentiellement linéaires des secteurs g/f s'annulent par `δSg'(0)=δLg(0)` et `δSf'(0)=δLf(0)`. Un témoin montre que l'ordre cubique est optimal ; un témoin non régulier rétablit le terme linéaire. **25 assertions SymPy et 4 unittest PASS**, tests non indépendants. Voir `research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md`, le programme et le certificat JSON. **Aucune tangence Dirac ni admissibilité du bord externe prouvée ; Step45/55/58+b3c2 originaux non rejoués.** Prochaine étape b3c3d4 : bord externe Step55, contraintes et générateurs/charges. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+---
+
 > **JANUS b3c3d2 (2026-10-28) — théorème exact sur tranche Dirichlet, non Dirac.** La forme de bord originale non-IBP complète, restreinte aux six coordonnées canoniques fixées et aux multiplicateurs N,M,V fixés, vaut \(\Theta_D=dC-Z\,dP\), d'où \(d\Theta_D=dP\wedge dZ\). Le critère de rang <=1 de b3c3d1 s'étend à **cette tranche seulement**, pas aux variations libres de lapse : \(d\Theta(dN,dS_g')=2M_g^2S_g/L_g\). 29 résidus SymPy exacts, 2 témoins rationnels, 4 tests unittest PASS (non indépendants), 0 FAIL final. Imports originaux Step45/55/58 et b3c2 non rejoués en clone complet. [Audit](research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md) ; [code](numerics/hr_step68ad_b3c3d2_full_dirichlet_boundary.py) ; [tests](tests/test_hr_step68ad_b3c3d2_full_dirichlet_boundary.py). **Prochaine étape b3c3d3** : tangence Dirac des variations et rejeu original. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 ## JANUS b3c3d1 — critère exact de rang du secteur de bord lié au shift (28 octobre 2026)
