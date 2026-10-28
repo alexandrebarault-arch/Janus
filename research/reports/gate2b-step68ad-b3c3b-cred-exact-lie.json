@@ -1,0 +1,36 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c3b",
+  "date": "2026-10-28",
+  "classification": "EXACT_KINEMATIC_LIE_COVARIANCE_SOURCE_FAITHFUL_TRANSCRIPTION",
+  "original_sources": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f"
+  },
+  "executed_parent_source_blob": "e7f068a7c4063a27af2456515b58f8732b3b3343",
+  "executed_script_blob": "010e5e10c071d4cfb270c32fb1d73ad94e77896f",
+  "executed_unittest_blob": "f641e9176ebdafc49742a8786165a1f11db9953f",
+  "exact_assertions_passed": 34,
+  "unittest_cases_passed": 1,
+  "unittest_independent": false,
+  "initial_unittest_failure": "expected 35 instead of actual 34; corrected before publication; final run PASS",
+  "results": {
+    "K00_weight": 1,
+    "K01_weight": 0,
+    "C_exact_weight": 1,
+    "q_second_jet_partial_derivatives_zero": 12,
+    "C_zprime_original_formula": "-(K*sqrt(1-z**2)+Dg*z)/(Lg*Lf)",
+    "zstar_weight": 0,
+    "zstar_radial_derivative_weight": 1,
+    "C_red_weight": 1,
+    "Lie_identity": "delta_V C_red = V*C_red' + V'*C_red = (V*C_red)'",
+    "validity": "formal local smooth jets on K>0 and Lg,Lf nonzero; shift stationary z=Dg/sqrt(Dg**2+K**2)",
+    "boundary_and_dirac": "not certified"
+  },
+  "original_step45_step55_step58_python_engines_executed": 0,
+  "full_clone_replay": false,
+  "gate_2b": "OPEN",
+  "janus_r": "NOT_VALIDATED",
+  "next": "Original imports b3c2 replay; independent original Step45/58 identity check; improved boundary generators/charges; temporal gauge quotient and full Dirac."
+}
