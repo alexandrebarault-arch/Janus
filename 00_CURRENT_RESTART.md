@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3c1, COURBURE NÉCESSAIRE DES LAPSES ENTRE CENTRE ET ANNEAU (2026-10-28)
+
+**ÉTAPE b3c1 TERMINÉE : THÉORÈME CONDITIONNEL DE COUCHE CENTRALE, PAS DE LIMITE CENTRALE STEP58 CERTIFIÉE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c2 — développer les coefficients originaux Step58 A_N,A_M et les jets N',M' au centre sur Step55, vérifier la réduction fonctionnelle, déterminer la limite réelle M/N et borner sa dérivée seconde avant toute conclusion de régularité ; ensuite générateurs temporels améliorés/charges, quotient jauge, Dirac non-IBP six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVEAU RÉSULTAT EXACT CONDITIONNEL :** La première feuille authentique du certificat original Step58 (SHA `0c688d6648e16064b1eb4e8ad9c55e7b44a95947`) certifie au point r=1/64 `rho=M/N=-A_N/A_M<17/25`, sous l'hypothèse toujours ouverte que les jets de lapses disparaissent sur la coquille complète. Sur Step55, avec N(0)>0 et une différence d'horloges stationnaire jusqu'au centre, un shift Vrel fini impose rho(0)=1 ; la parité des lapses lisses impose rho'(0)=0. Si rho est C² jusqu'à r=1/64 et satisfait aussi la relation réduite Step58 à cette borne, il existe `eta,xi∈(0,1/64)` avec `rho'(eta)<-512/25` et `rho''(xi)<-65536/25`. Ceci n'est PAS une singularité ni un no-go : aucune borne physique sur rho'' n'est disponible. Les coefficients centraux exacts sont `d0=3321926807006261/3906250000000000000` et `ccrit=226687120771331833/18086585087578262500000` ; si `rho=1+rho2*r²+O(r⁴)`, alors `Vrel/N=r*(rho2-ccrit)/d0+O(r³)`.
+
+**TESTS EXÉCUTÉS :** 921 assertions exactes BigInt V8 PASS, 0 FAIL ; quatre falsifications rejetées ; trois identités asymptotiques vérifiées séparément par SymPy, 0 FAIL. Le programme a été relu depuis GitHub et réexécuté sur le certificat authentifié. Test Node CLI publié mais NON exécuté ; moteurs Python originaux Step58/Step55 NON réexécutés. Aucune preuve de la limite Step58 à r=0, de la réduction complète des jets de lapses, de l'existence globale de lapses, de la différentiabilité améliorée, du quotient de jauge temporelle ou du rang Dirac.
+
+**LIVRABLES SCIENTIFIQUES PUBLIÉS/RELUS :**
+- `scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3c1_center_boundary_layer.cjs` — blob `7735e10a798a038cd56a0f6de189bcff92d7c118`.
+- `tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3c1_center_boundary_layer.cjs` — blob `cbe7d24553a8b47a4a399549cd95157c32ead52b`.
+- `research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3c1-center-boundary-layer.json` — blob `29f09b76877160157637cafce5719804f1b0c6cc`.
+- `research/STEP68AD_C2D2E5B3B2C2B2D2D2B3C1_CENTER_TO_ANNULUS_LAPSE_CURVATURE_NECESSITY.md` — blob `82ba0e4303897f3cbecc6128eb8d5b5146c7cf08`.
+- Sources originales SHA authentifiées : Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, certificat `0c688d6648e16064b1eb4e8ad9c55e7b44a95947`.
+
+**GITHUB :** HEAD initial authentifié `5637ae49dd42e1b85be81f12fc36307a40d7b4a9`. Quatre fichiers scientifiques créés et relus uniquement sur `research/gate2b-nonhomothetic-transfer`. HEAD de pré-checkpoint `92af7be656f85fe16b9fb6245ff62e51b743144d`. Vérifier HEAD final après index. Branches main et research/v2-flrw protégées, aucun workflow GitHub Actions touché.
+
+**ACTIONS PRIORITAIRES :** (1) Étudier l'opérateur Step58 original sur la parité centrale et calculer le quotient des coefficients d'ordre dominant ; (2) vérifier les coefficients N',M' sur la coquille de Dirac, non les supprimer par hypothèse ; (3) tenter une borne indépendante sur rho'' et vérifier la régularité de Vrel ; (4) reprendre générateurs temporels améliorés/charges, quotient de jauge, matrice Dirac et problèmes 4D/stabilité/observables.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3b, STEP58 ET HORLOGE RELATIVE (2026-10-28)
 
 **ÉTAPE b3b TERMINÉE : NOUVEAU THÉORÈME CONDITIONNEL DE SOUS-ANNEAU, PAS DE NO-GO PHYSIQUE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c — certifier la limite centrale r→0 du rapport temporel Step58 M/N=-A_N/A_M sur la branche Step55, confronter la condition nécessaire M(0)=N(0) pour préserver t_g−t_f avec shift régulier, puis construire générateurs temporels améliorés et charges, quotient de jauge, oracle Dirac non-IBP six couples/rang/tertiaires/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
