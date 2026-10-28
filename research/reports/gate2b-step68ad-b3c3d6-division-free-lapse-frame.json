@@ -1,0 +1,16 @@
+{
+  "stage": "b3c3d6_PARTIAL",
+  "symbolic_residuals": 8,
+  "toy_residuals": 6,
+  "original_pointwise_witness": {
+    "B_N": "224/125",
+    "B_M": "0",
+    "delta": "50176/15625",
+    "A_N_over_B_N": "1293/448",
+    "A_M_over_B_N": "-11299/3200",
+    "unknown": "B_N_prime and B_M_prime, hence alpha and beta at the witness"
+  },
+  "scope": "ALGEBRAIC_FRAME_THEOREM_AND_TOY_NOT_STEP55_NOT_DIRAC",
+  "gate": "OPEN",
+  "janus": "NOT_VALIDATED"
+}
