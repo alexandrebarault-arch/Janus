@@ -1,0 +1,11 @@
+"use strict";
+const assert=require("node:assert/strict");
+const {certificate}=require("../scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs");
+const c=certificate();
+assert.equal(c.assertions_failed,0);
+assert.ok(c.assertions_passed>=30);
+assert.equal(c.scientific_status.GATE_2B,"OPEN");
+assert.equal(c.scientific_status.JANUS_R,"NOT_VALIDATED");
+assert.equal(c.exact_toy_witness_not_step55.common_speed,"5/4");
+assert.equal(c.exact_toy_witness_not_step55.bare_diagonal_flux_at_V_relative,"-15/13");
+console.log("PASS "+c.assertions_passed+" exact BigInt assertions, 6 non-independent guards.");
