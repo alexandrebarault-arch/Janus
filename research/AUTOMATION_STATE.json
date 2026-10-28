@@ -6,7 +6,14 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_YET_ATTEMPTED_THIS_RUN",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 12666,
+    "new_prompt_characters": 13518,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3b"
   },
   "latest_session_published_blobs": {
@@ -14,7 +21,8 @@
     "tests/test_hr_step68ad_b3c3a_diagonal_shift_covariance.py": "c82a474173f931f18881344489fd30e426d1a6de",
     "research/reports/gate2b-step68ad-b3c3a-diagonal-shift-covariance.json": "4934626b47262fa2bb7f94007258571eddb61008",
     "research/STEP68AD_B3C3A_DIAGONAL_SHIFT_COVARIANCE_PARTIAL_AUDIT.md": "0643a5e4adb6a88c497f06783c814032a995441a",
-    "00_CURRENT_RESTART.md": "15fac0a9e1cbf7d449f65a53a814e7059afbd35f"
+    "00_CURRENT_RESTART.md": "15fac0a9e1cbf7d449f65a53a814e7059afbd35f",
+    "README.md": "00911d60f0c2f798a472dd34b2cf9322902c8377"
   },
   "verified_research_head_at_session_start": "9b995e203955be609812232922176571f3050751",
   "next_priority": "Replay b3c2 using original Step45/55/58 imports in full clone; directly verify C_red radial Lie transformation, diagonal shift on temporal constraints and boundary improved generators/charges; then Dirac six pairs and 4D/stability/observables.",
@@ -24,7 +32,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "83269508023199479ca3b304dab9cdc7084eddb7",
+  "verified_research_head_before_state_file": "700625916730c4c1cb0613f199fee978e3a436c1",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3a_PARTIAL_DIAGONAL_SHIFT_COVARIANCE",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3b_FULL_ORIGINAL_SOURCE_REPLAY_AND_EXPLICIT_CRED_LIE_IDENTITY",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
