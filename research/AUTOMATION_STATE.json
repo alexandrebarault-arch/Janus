@@ -17,42 +17,42 @@
     "new_prompt_characters": 9308
   },
   "latest_session_published_blobs": {
-    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs": "edf4dd6c8ab3fea9579195c130b096dee7b7353a",
-    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3a_clock_time_evolution.cjs": "ab314845598539a289f16d26b7df5fbc31bb5143",
-    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3a-clock-time-evolution.json": "e9905838241f8d6e50c35753221bbfeb361066b4",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3A_CLOCK_TIME_EVOLUTION_BOUNDARY_PRESERVATION.md": "f0756adb6b98574700591ae8cb8a1b10bbc60eb9",
-    "README.md": "254f0ea6d3f9c1e2dc2cdee3bc1004950684596c",
-    "00_CURRENT_RESTART.md": "a7e250aa0f7bb4cb7a51e289d5423720b3928080"
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs": "11b81157ec2acb0f76f087b97da736f2b6fa71d1",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs": "74f9120912d0783cedffdf64217be2b3893fe6b0",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3b-step58-relative-clock.json": "15ffd1369d36d66d5da2ab45655b694c65e37d45",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3B_STEP58_RELATIVE_CLOCK_SUBANNULUS.md": "b85d01b3cc74458ccc914111e9a7cbbd04906f08",
+    "README.md": "7022508dd68df210ee2906d8316e846c77845f44",
+    "00_CURRENT_RESTART.md": "5284063f04df4840d0b5ec45d1a537cbd8691a66"
   },
-  "verified_research_head_at_session_start": "fafe66a498518deeb93241e783449b49886385d5",
-  "next_priority": "Reexecute/authenticate original Step58 temporal preservation operator; test whether Vrel preserving relative dust-clock boundary is compatible with regular positive lapses, secondary/tertiaries and improved temporal generators; then physical gauge quotient, two non-gauge tangents, dTheta, six-pair Dirac rank/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "23671226db65ffec977c1b6b2e7158a96270cf08",
+  "next_priority": "Certify genuine Step58 lapse ratio M/N as r->0 on Step55 with full shift response and lower-lapse-jet cancellation; test necessary M(0)=N(0) for stationary relative clock and smooth V, then improved generators, charges, temporal gauge quotient, complete non-IBP six-pair Dirac rank/tertiaries, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "18f52439bc90728642a001a0922210e22dc92aa4",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3a_EXACT_CONDITIONAL_CLOCK_TEMPORAL_BOUNDARY_PRESERVATION",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3b_STEP58_LAPSE_AND_IMPROVED_TEMPORAL_GENERATORS",
+  "verified_research_head_before_state_file": "47830aa29a8dfdfc54db1ffee6dbb3849dd55fe2",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3b_CONDITIONAL_STEP58_RELATIVE_CLOCK_SUBANNULUS",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c_STEP58_CENTER_RATIO_AND_REGULAR_SHIFT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3A_CLOCK_TIME_EVOLUTION_BOUNDARY_PRESERVATION.md",
+  "latest_scientific_audit": "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3B_STEP58_RELATIVE_CLOCK_SUBANNULUS.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "passed": 37,
+    "passed": 1147,
     "failed": 0,
-    "runtime": "V8 exact rational BigInt",
-    "replayed_from_github": 37,
-    "wrapper_guards": 6,
-    "wrapper_runtime": "V8 CommonJS shim, not Node CLI",
+    "runtime": "V8 BigInt exact rational on connector-fetched SHA-authenticated original Step58 certificate",
+    "negative_inputs_rejected": 4,
+    "replayed_from_github": 1147,
     "original_physics_modules_reexecuted": 0,
+    "node_cli_executed": false,
     "full_dirac_oracle_executed": false,
-    "scope": "Conditional Step55 clock time-preservation theorem and formal local charge flux; exact non-Step55 witness separates relative-clock preservation from bare diagonal flux cancellation."
+    "scope": "154/225 Step58 leaves certify M/N<3/4 on two subannuli under conditional lapse derivative cancellation; quantitative Vrel/N and f-coordinate time spacelike in that gauge, not a physical no-go."
   },
-  "github_write_probe": "Four create_file calls succeeded on research branch, four readback SHA and byte equality checks; 37 exact BigInt assertions rerun from published code, 6 non-independent guards, certificate JSON byte-identical; README and full restart journal prefixed without history loss; state update succeeded.",
+  "github_write_probe": "Four create_file + two corrective update_file + README update_file + restart update_file succeeded on authorized research branch. Four scientific files, README, restart read back with blob SHA and byte equality; 1147 V8 exact assertions replayed on published program and 4 negative tests. Node CLI not executed; original Python physics modules not reexecuted.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -69,7 +69,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original non-IBP temporal clock evolution shows positive-lapse stationary outer/center individual Dirichlet clock values are incompatible on Step55, while stationary relative clock fixes Vrel instantaneously. It is unproved that Vrel satisfies full Step58 lapse preservation, boundary differentiability, temporal gauge quotient, or charge conservation. Full Dirac rank/tertiaries and 4D physics remain open.",
+  "current_blocker": "Need genuine Step58 central ratio r->0 and validation that derivative lapse coefficients vanish on full constrained shell; no certified regular Vrel and physical improved generator/temporal gauge quotient. Full six-pair Dirac rank, tertiaries, K=0/J=0, 4D, stability, observables remain open.",
   "task_self_update": "2026-10-28: prepended b3a marker; all 8136 previous prompt characters preserved verbatim; new prompt 9308 characters; hourly schedule, timezone Europe/Paris and enabled=true verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -78,7 +78,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "1390a0efabc3ab57dd6c35ab03aec3d59038c785",
+    "00_CURRENT_RESTART.md": "5284063f04df4840d0b5ec45d1a537cbd8691a66",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -101,7 +101,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "f70eeb0e1cd0caf7329bce12fa55076e4bb5a9a3",
+    "README.md": "7022508dd68df210ee2906d8316e846c77845f44",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -205,9 +205,13 @@
     "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "2d646edb9c571ef75ef0e3d3448ad53a0b59b42a",
     "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d1_step55_multiplier_curvature.cjs": "103c20deb16c3b6903eecae047ebcc154e8fde03",
     "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d1-step55-multiplier-curvature.json": "5bdfe6a7297a4d0e1296d3f4abe250d3e0c8ca24",
-    "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0"
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D1_STEP55_SPATIAL_SHELL_MULTIPLIER_CURVATURE.md": "1ba6d012133a92b69a8c91498d065b22649afbe0",
+    "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs": "11b81157ec2acb0f76f087b97da736f2b6fa71d1",
+    "tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b3b_step58_relative_clock.cjs": "74f9120912d0783cedffdf64217be2b3893fe6b0",
+    "research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b3b-step58-relative-clock.json": "15ffd1369d36d66d5da2ab45655b694c65e37d45",
+    "research/STEP68AD_C2D2E5B3B2C2B2D2D2B3B_STEP58_RELATIVE_CLOCK_SUBANNULUS.md": "b85d01b3cc74458ccc914111e9a7cbbd04906f08"
   },
-  "current_proven_result": "Exact independent constant dust-clock translations preserve the six-pair original bulk primaries/shift and all Poisson descendants algebraically; rank 2 in boundary clock-value traces modulo diagonal radial diffeomorphisms on Step55, but dTheta on their plane is zero and bare boundary one-form generally nonzero. This does not certify full Dirac physical independence or boundary admissibility.",
+  "current_proven_result": "On 154 certified leaves of genuine Step58 interval report in two closed subbands of [1/64,1/32], conditional zero-order lapse relation gives M/N<3/4; Step55 clock equations imply Vrel/N<-39880/7 and |Lf Vrel|/M>31904/21 for stationary relative clock, hence f_tt>0 for coordinate ∂t. This is gauge-dependent, not Lorentzian pathology. 71 leaves remain incomplete for this ratio; center Step58 limit not certified.",
   "last_original_reports_verified": {
     "68v": "d83a3b80862a2e990a4c4879ec8745a4e91c8b34",
     "68ac": "16ae8dab3563c17134e4e20f886fb7306dc2e4ba",
@@ -219,7 +223,7 @@
     "60": "9693f0dbbea7e08b4c1a0a89a9b4617f4b6a9509"
   },
   "scope": "Exact rational conditional f-secondary affine coefficient nondegeneracy for |U|<=1; no full f sector continuation.",
-  "source_authentication_this_session": "Connector fetched Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e; Step46 bac025c28dbe1561c0c36c56dbfda46dc326f804; Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe; Step37 original non-IBP 005449ade6e3582e3b9a5c3374a881a77e73e3f6. SHA verified, not reexecuted.",
+  "source_authentication_this_session": "GitHub connector fetched and authenticated Step58 report 0c688d6648e16064b1eb4e8ad9c55e7b44a95947, original Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f, Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe, b3a edf4dd6c8ab3fea9579195c130b096dee7b7353a; read only, no Python engine execution.",
   "latest_tested_safety_patch": "68ad-C2d2b-sign-enclosure-integrity",
   "last_read_branch_head_at_session_start": "5f2612ea9aa3106fc730a2777de37a6b2b4eb5a3",
   "latest_tested_conditional_lemma": "68ad-C2d2b-exact-Step68o-shift-shell",
