@@ -6,46 +6,40 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "old_prompt_characters": 31058,
-    "new_prompt_characters": 32176,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
+    "status": "NOT_ATTEMPTED_THIS_SESSION",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_sharp_amplitude_reachability.py": "957f6f364eee5fc5f24eaca12de9373886ad098d",
-    "tests/test_hr_step68ad_b3c3d6_sharp_amplitude_reachability.py": "9cde2037e13c55f440af9e653d00bf7bdc053b93",
-    "research/STEP68AD_B3C3D6_SHARP_POSITIVE_AMPLITUDE_REACHABILITY.md": "3efb2633df0e394ebace9f0a0b53db1e6bcc271b",
-    "research/reports/gate2b-step68ad-b3c3d6-sharp-positive-amplitude-reachability.json": "574eb38c01f8bb5117551532f7175f4bc293d0ae",
-    "README.md": "9445daf6691078f0a353d825d27fcb30bc096314",
-    "00_CURRENT_RESTART.md": "259c3a675a466fe4a1df26bde48ff2cab797fb09"
+    "numerics/hr_step68ad_b3c3d6_endpoint_jet_reachability.py": "802fc250f854fc71c6ed7486db29fad9206abc9c",
+    "tests/test_hr_step68ad_b3c3d6_endpoint_jet_reachability.py": "19d2ef606d182db1139e1ecf8ee389f7faae298a",
+    "research/STEP68AD_B3C3D6_ENDPOINT_JET_REACHABILITY.md": "ead41a5f16378944bd70f8e65f08c6f5f09f2d6b",
+    "research/reports/gate2b-step68ad-b3c3d6-endpoint-jet-reachability.json": "a893c7e5cfb242151e123579545e6f947135869b",
+    "README.md": "4c34edb7bf12ff9a3e5dd7193a595eb62b40ab55",
+    "00_CURRENT_RESTART.md": "c9244f12d0c614ea6d305622903ba0f12190b9ce"
   },
-  "verified_research_head_at_session_start": "92591ab6b68e69a3007a03bdbb4384f57e0cc649",
-  "next_priority": "b3c3d6 STILL PARTIAL: execute original Step58 R=17/20 probe with original Step45/55/58+b3c2/Step68o; certify B_N/B_M and derivatives, zeros and center, positive lapses with actual Step55 boundary data; then Dirac/charges/gauge/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "5805344a22285df9ed79ab792899c557568ffa4f",
+  "next_priority": "b3c3d6 STILL PARTIAL: execute original Step58 R=17/20 probe with Step45/55/58+b3c2/Step68o; certify physical B_N/B_M, derivative jets, zeros and center matching, positive lapses satisfying actual two-end boundary data; then Dirac/gauge/charges/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
-  "verified_session_date": "2026-10-28",
+  "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2f31b25916713aa06f74220d5029d05d563f1d8b",
+  "verified_research_head_before_state_file": "d001d8b3ce58e0abf66b8df95f4ec53af9363cbc",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_SHARP_POSITIVE_AMPLITUDE_REACHABILITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ENDPOINT_JET_REACHABILITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
     "latest_stage": "b3c3d6_PARTIAL",
-    "last_step_scope": "SHARP_CONDITIONAL_SCALAR_TWO_ENDPOINT_POSITIVE_AMPLITUDE_REACHABILITY_NOT_STEP55_NOT_DIRAC"
+    "last_step_scope": "CONDITIONAL_SCALAR_EIGHT_ENDPOINT_C1_JET_REACHABILITY_NOT_STEP55_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "symbolic_exact_residuals": 5,
-    "exact_toy_residuals": 11,
-    "strict_boundary_checks": 2,
+    "symbolic_exact_residuals": 10,
+    "exact_toy_and_guard_checks": 12,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
@@ -77,7 +71,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Real Step58 outer probe R=17/20 on Step55 not executed; local GitHub DNS unresolved despite functional authenticated GitHub connector. B_N/B_M physical sign atlas, zero crossings, central matching, complete positive-lapse BVP and Dirac/4D remain unproved.",
+  "current_blocker": "Original Step58 outer R=17/20 probe not run; local git DNS cannot resolve github.com, though authenticated GitHub connector supports read/write. Physical B coefficient atlas, center matching, actual Step55 boundary jets and full Dirac remain unproved.",
   "task_self_update": "2026-10-28: prepended sharp conditional four-amplitude reachability checkpoint to recurring prompt, preserved all 31058 previous characters, hourly schedule and enabled status unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
