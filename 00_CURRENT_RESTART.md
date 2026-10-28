@@ -1,3 +1,28 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d5 PROJECTION DES JETS TEMPORELS ET DÉRIVE CENTRALE (2026-10-28)
+
+**ÉTAPE b3c3d5 TERMINÉE (THÉORÈME ALGÉBRIQUE PONCTUEL EXACT, COROLLAIRE CENTRAL CONDITIONNEL, NON DIRAC) — PROCHAINE ÉTAPE b3c3d6 : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20, TESTER B_N/B_M ET LA TANGENCE GLOBALE DES LAPSES AVEC LES DEUX BORDS, REJOUER STEP45/55/58+b3c2, PUIS PULLBACK DIRAC/CHARGES/QUOTIENT TEMPOREL/SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT PONCTUEL :** Après réduction des jets de lapses d'ordre 2 sur la coquille Step58 `Fz=0,Hg=0,K>0` (résultat original Step58, non rejoué ici), la condition temporelle à un point est `A_N N+A_M M+B_N N'+B_M M'=0`. Si `(B_N,B_M)≠(0,0)`, les valeurs de bord `(N,M)` restent libres au niveau des jets ponctuels : projection de rang 2 ; si les deux `B` sont nuls mais un `A` non nul, rang 1, tangente `(A_M,-A_N)`, et courbure de la forme b3c3d4 nulle sur cette tangente ssi `c_N A_M-c_M A_N=0`. **AUCUNE** implication de tangence globale Dirac, charges physiques, différentiabilité du générateur ni admissibilité aux deux bords. Les coefficients `B_N,B_M` authentiques à R=17/20 ne sont pas encore évalués.
+
+**COROLLAIRE CENTRAL CONDITIONNEL :** Le rapport exact b3c2 `1037/2000<M(0)/N(0)<2593/5000`, avec `N(0)>0`, impose `2407/5000<∂t(tg−tf)(0)/N(0)<963/2000`. Si la vitesse relative est `C¹` et annulée à `R=17/20`, le théorème des accroissements finis impose `∃ξ∈(0,17/20): ∂r∂t(tg−tf)(ξ)/N(0)<−2407/4250`. **Ce n'est ni une singularité ni un no-go JANUS**, et le certificat b3c2 n'a pas été rejoué sur les imports originaux cette session.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3d5_temporal_boundary_jet_rank` : 12 résidus SymPy nuls + 6 contrôles de classification exacts PASS ; `python -m unittest -v tests.test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank` : 4 unittest PASS non indépendants ; 0 FAIL final. Premier essai : test Python utilisant `is False` sur `sympy.BooleanFalse` corrigé par `bool()` avant publication. `git ls-remote` : échec DNS `Could not resolve host: github.com`. Le probe `--probe-original` n'a **PAS** été exécuté, ni Step45/55/58+b3c2 en clone complet. Les sources Step45/55/58/Step68o et le certificat b3c2 ont été lus via GitHub.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS, BLOBS ÉGAUX AUX OCTETS LOCAUX :**
+- `numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py` : `85469568e6df7c26920c1ebb87593dbf474deb04`.
+- `tests/test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py` : `419c6785aa1409edcd252694136b6a66ac4669ad`.
+- `research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md` : `a7f429fc82c2f7609a961f10d5e175dbd79efaf6`.
+- `research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json` : `ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec`.
+- README mis à jour : `d8859c8c8190feecf9e8827b33703af774a44bc3`.
+
+**GITHUB :** HEAD de reprise lu `2fea0149cf722e0d56ac77f977890588204841f8`. Quatre appels réels `create_file` et un `update_file` README exclusivement sur `research/gate2b-nonhomothetic-transfer`, commits `a8dd36628bb76bc885df9275262c0e0a0310f7a6`, `3d567284f6fd13c3546919a2073405c24b6e43e9`, `86b59f30b8736414ac1f7d0317827f8b65ef830b`, `21a704bc30437add7f9dd4e435ab7c696d9d08cf`, `b7037c7eb0539be6bf1ceb21d4b89f8ff3745c98`. Les branches interdites observées au départ : main `aead63f4098f0d15a849e579105af034b6317b30`, research/v2-flrw `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Vérification finale des HEAD à faire après l'index. Aucun workflow modifié.
+
+**VERROUS PRIORITAIRES :** (1) exécuter l'évaluateur original Step58 des coefficients `A,B,E` au bord externe et contrôler la réduction par les primaires ; (2) résoudre l'équation différentielle des lapses avec conditions au centre et au bord externe, pas seulement un jet ponctuel ; (3) rejouer b3c2 et les moteurs originaux ; (4) générateurs améliorés/charges et quotient de jauge temporelle ; (5) Dirac six couples/rang/tertiaires, cartes K=0/J=0, dynamique 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d4 COURBURE DES LAPSES APRÈS SHIFT D'HORLOGE RELATIVE (2026-10-28)
 
 **ÉTAPE b3c3d4 TERMINÉE (THÉORÈME EXACT RESTREINT, NON DIRAC) — PROCHAINE ÉTAPE b3c3d5 : IMPOSER LE VRAI OPÉRATEUR TEMPOREL STEP58 SUR STEP55 R=17/20, REJOUER LES IMPORTS ORIGINAUX STEP45/55/58 ET b3c2, CONTRÔLER LES DEUX BORDS ET LES VARIATIONS DIRAC, PUIS GÉNÉRATEURS/CHARGES/QUOTIENT TEMPOREL, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
