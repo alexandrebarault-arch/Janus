@@ -1,7 +1,7 @@
 """Non-independent regression checks for the formal b3c3d6 center lemma."""
 import unittest
 import sympy as s
-from center_ratio_curvature import check, rho2_shell, rho2_full, a,b,c,d,e,f,n0,n2
+from numerics.hr_step68ad_b3c3d6_center_ratio_curvature import check, rho2_shell, rho2_full, a,b,c,d,e,f,n0,n2
 
 class CenterRatioTests(unittest.TestCase):
     def test_all_exact_residuals_and_toys(self):
