@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : AMPLITUDES POSITIVES AUX DEUX BORDS (2026-10-28)
+
+**STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE : b3c3d6, exécuter réellement le probe original Step58 sur Step55 R=17/20, Step45/55/58+b3c2/Step68o, certifier B_N/B_M, leurs dérivées, zéros/cartes/raccord centre, b,d, lapses positifs et les deux bords physiques ; puis Dirac, générateurs/charges, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables.**
+
+**AVANCÉE EXACTE CONDITIONNELLE NON PHYSIQUE :** Le problème à quatre valeurs aux deux bords pour **une seule** équation du premier ordre `A_N N+A_M M+B_N N'+B_M M'=0`, avec `E_N=E_M=0`, `B_N,B_M>0`, est maintenant caractérisé exactement. En posant `u=B_N N+B_M M`, `s_i=(B_i'-A_i)/B_i`, `L=int min(s_N,s_M)`, `U=int max(s_N,s_M)`, `T=log(u_R/u_0)`, et si `s_N-s_M` n'est pas identiquement nul, il existe une paire de lapses strictement positifs C1 avec les **quatre valeurs terminales prescrites** si et seulement si `L<T<U` ; les égalités sont impossibles. Si `s_N=s_M` partout, `T=int s_N` est nécessaire et suffisant. Preuve constructive par le poids libre `w=B_M M/u in (0,1)`, `u'/u=(1-w)s_N+w s_M`, approximation des sélecteurs min/max, puis combinaison convexe pour atteindre toute amplitude intérieure. **Ceci améliore l'écran précédent de nécessité en condition suffisante stricte, mais n'est PAS une preuve Step55, Step58 complet ou Dirac.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_28 && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_sharp_amplitude_reachability` : 5 résidus symboliques exacts, 11 résidus jouets exacts, 2 contrôles de bornes PASS ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_sharp_amplitude_reachability.py' -v` : 4 tests PASS non indépendants, 0 FAIL. Familles jouets B constants et B variables, toutes deux strictement positives ; aucune substitution au vrai profil Step55.
+
+**LIVRABLES PUBLIÉS SUR LA SEULE BRANCHE AUTORISÉE, RELUS ET HASHÉS :**
+- `numerics/hr_step68ad_b3c3d6_sharp_amplitude_reachability.py` blob `957f6f364eee5fc5f24eaca12de9373886ad098d` ; commit `20b9fbf4aa6897a72ca5c7c1d2ffbacea8849640` (octets exécutés = blob).
+- `tests/test_hr_step68ad_b3c3d6_sharp_amplitude_reachability.py` blob `9cde2037e13c55f440af9e653d00bf7bdc053b93` ; commit `10a37695408ea00195eb730cc6c1d891d85e6abd` (octets exécutés = blob).
+- `research/STEP68AD_B3C3D6_SHARP_POSITIVE_AMPLITUDE_REACHABILITY.md` blob `3efb2633df0e394ebace9f0a0b53db1e6bcc271b` ; commit `f62c5885c0d558b763ebe3d98e8db1d121b0f05a`.
+- `research/reports/gate2b-step68ad-b3c3d6-sharp-positive-amplitude-reachability.json` blob `574eb38c01f8bb5117551532f7175f4bc293d0ae` ; commit `9ef3ac99538f169b60b78670a129e0b6a83fac99`.
+
+**PROVENANCE ET LIMITES :** HEAD GitHub au démarrage `92591ab6b68e69a3007a03bdbb4384f57e0cc649`. Sources authentiques lues via connecteur : Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, probe Step58 publié dans b3c3d5 blob `85469568e6df7c26920c1ebb87593dbf474deb04`. DNS local `api.github.com`/`raw.githubusercontent.com` non résolu ; **vrai probe Step58 R=17/20 et Step55/Step68o/b3c2 NON exécutés**. Aucune information physique sur les signes de B_N/B_M ni les bords déduite du théorème. Branches interdites au démarrage `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. Recontrôler HEAD et branches après index.
+
+**HISTORIQUE INTÉGRAL PRÉEXISTANT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, ATTEIGNABILITÉ CONSTRUCTIVE DU RATIO TERMINAL (2026-10-28)
 
 **PROCHAINE ÉTAPE INCHANGÉE :** exécuter le vrai probe original Step58 sur le profil Step55 à `R=17/20`, en important les vrais Step45/55/58, b3c2 et Step68o ; certifier les coefficients `B_N,B_M` et leurs dérivées, zéros/cartes et raccord central, coefficients `b,d`, existence de lapses strictement positifs avec **toutes** les conditions aux deux bords ; ensuite vrai pullback Dirac, charges/générateurs, jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D, stabilité et observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
