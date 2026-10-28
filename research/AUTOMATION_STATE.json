@@ -6,52 +6,46 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 12666,
-    "new_prompt_characters": 13518,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3b"
+    "status": "NOT_UPDATED_YET_THIS_SESSION",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3c",
+    "permanent_instructions_to_preserve": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3a_diagonal_shift_covariance.py": "e7f068a7c4063a27af2456515b58f8732b3b3343",
-    "tests/test_hr_step68ad_b3c3a_diagonal_shift_covariance.py": "c82a474173f931f18881344489fd30e426d1a6de",
-    "research/reports/gate2b-step68ad-b3c3a-diagonal-shift-covariance.json": "4934626b47262fa2bb7f94007258571eddb61008",
-    "research/STEP68AD_B3C3A_DIAGONAL_SHIFT_COVARIANCE_PARTIAL_AUDIT.md": "0643a5e4adb6a88c497f06783c814032a995441a",
-    "00_CURRENT_RESTART.md": "15fac0a9e1cbf7d449f65a53a814e7059afbd35f",
-    "README.md": "00911d60f0c2f798a472dd34b2cf9322902c8377"
+    "numerics/hr_step68ad_b3c3b_cred_lie_identity.py": "010e5e10c071d4cfb270c32fb1d73ad94e77896f",
+    "tests/test_hr_step68ad_b3c3b_cred_lie_identity.py": "f641e9176ebdafc49742a8786165a1f11db9953f",
+    "research/reports/gate2b-step68ad-b3c3b-cred-exact-lie.json": "b92eec5b1e97134de1d960461483cdf511e2c66b",
+    "research/STEP68AD_B3C3B_EXACT_REDUCED_SECONDARY_RADIAL_LIE_IDENTITY.md": "c8e8414d73ae27f282267208ccaf1bc3ca10f1cc",
+    "README.md": "93342fda6ab0f8cbc72f0de8d700c3940f5a615f",
+    "00_CURRENT_RESTART.md": "05f4dc091f809a97662d344edcfdc6454ed4aa80"
   },
-  "verified_research_head_at_session_start": "9b995e203955be609812232922176571f3050751",
-  "next_priority": "Replay b3c2 using original Step45/55/58 imports in full clone; directly verify C_red radial Lie transformation, diagonal shift on temporal constraints and boundary improved generators/charges; then Dirac six pairs and 4D/stability/observables.",
+  "verified_research_head_at_session_start": "4aa7e86fde62d4207f115fec0844394985b07403",
+  "next_priority": "Replay b3c2 from original Step45/55/58 Python modules in a full clone; independently test C_red exact Lie identity from original import; construct improved radial/temporal generators, boundary charges and temporal gauge quotient; then six-pair Dirac rank, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "700625916730c4c1cb0613f199fee978e3a436c1",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3a_PARTIAL_DIAGONAL_SHIFT_COVARIANCE",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3b_FULL_ORIGINAL_SOURCE_REPLAY_AND_EXPLICIT_CRED_LIE_IDENTITY",
+  "verified_research_head_before_state_file": "0ff6b502a8f8ebdf0cb1ff830b7cbcb2e4f79c4d",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3b_EXACT_LOCAL_CRED_RADIAL_LIE_IDENTITY",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3c_ORIGINAL_IMPORT_REPLAY_AND_BOUNDARY_GENERATORS",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3A_DIAGONAL_SHIFT_COVARIANCE_PARTIAL_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3B_EXACT_REDUCED_SECONDARY_RADIAL_LIE_IDENTITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "source_faithful_sympy_exact_equalities_passed": 16,
+    "source_faithful_sympy_exact_assertions_passed": 34,
     "unittest_cases_passed": 1,
     "unittest_independent": false,
-    "independent_v8_rational_checks_passed": 7,
-    "failed": 0,
+    "failed_final": 0,
+    "initial_unittest_counter_error": "35 expected vs 34 actual; corrected before publication",
     "original_physics_modules_reexecuted": 0,
     "published_b3c2_unittest_executed": false,
-    "scope": "Original Step45 radial-weight identities for Ag,Bg,Af,Bf,Dg,K,Fz,C_zprime; conditional diagonal shift action on C_red; no full Dirac or boundary charge."
+    "scope": "K00 weight 1, K01 weight 0, C_exact and C_red weight 1 on K>0; radial Lie identity exact locally via chain rule, not boundary/Dirac"
   },
-  "github_write_probe": "Four real GitHub create_file calls succeeded and files read back, including exact Git blobs for executed code and unittest; checkpoint prepended with full old suffix preserved. Research branch only. Original modules not executed in complete clone because container Git DNS unavailable.",
+  "github_write_probe": "Four create_file calls succeeded; program/test blobs identical to executed local files; JSON/audit readback identical; README and 501399-character journal read back at commit SHA with full old suffix preserved.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -68,7 +62,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full original-source Python replay in a complete clone remains unavailable in this runtime (git ls-remote: Could not resolve host github.com); connector read/write works. Formal C_red density proof not yet explicitly computed, boundary generator not improved.",
+  "current_blocker": "Original Step45/55/58 engine replay not executed in full clone due container DNS unavailable; independent original-import validation, improved boundary charges, lapse gauge and Dirac rank remain open.",
   "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
