@@ -1,3 +1,26 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, ÉCRAN INTÉGRAL NÉCESSAIRE DES LAPSES SUR ANNEAU (2026-10-28)
+
+**b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 ET REJOUER STEP45/55/58+b3c2 ; CERTIFIER B_N/B_M SUR DES ANNEAUX, RACCORDER AU CENTRE DÉGÉNÉRÉ ET ÉTABLIR LES VRAIES CONDITIONS DE BORD DES LAPSES POSITIFS. PUIS PULLBACK DIRAC, GÉNÉRATEURS/CHARGES, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE, CONDITIONNELLE ET NON PHYSIQUE :** Sur `[epsilon,R]`, `epsilon>0`, `B_M != 0`, l'identité antérieure `W=M+qN`, `W'+pW=hN` fournit une nouvelle *exclusion par encadrement intégral* : si `0<nlo<=N<=nhi`, le membre droit de la condition terminale `(1+q(R))N(R)=exp(-P(R))W(epsilon)+int K hN` est entre `L=exp(-P(R))W(epsilon)+int K(hplus*nlo+hminus*nhi)` et `U=exp(-P(R))W(epsilon)+int K(hplus*nhi+hminus*nlo)`, `K=exp(P(s)-P(R))>0`. Un terminal hors de `[L,U]` est impossible ; un terminal dedans ne prouve RIEN sur l'existence physique. Témoins rationnels JOUETS sur `[1/4,17/20]` : `p=0,q=-1,W0=-1/2,1/2<=N<=2` ; `h=-1` exclut `M(R)=N(R)` car `[L,U]=[-17/10,-4/5]` et `T=0`. Avec `h=1`, `[L,U]=[-1/5,7/10]` et une solution positive explicite existe : `N=5/6,M=1/3+(5/6)(r-1/4)`. Contrôle d'un `h` changeant de signe exact. **Ce ne sont PAS les coefficients Step58 et `M(R)=N(R)` est illustratif, pas la vraie condition d'horloge Step55.**
+
+**TESTS EXÉCUTÉS :** `PYTHONPATH=/mnt/data/janus_b3c3d6 python -m numerics.hr_step68ad_b3c3d6_annular_interval_screen` : 10 assertions exactes PASS ; `PYTHONPATH=/mnt/data/janus_b3c3d6 python -m unittest discover -s /mnt/data/janus_b3c3d6/tests -p 'test_hr_step68ad_b3c3d6_annular_interval_screen.py' -v` : 4 unittest PASS, non indépendants ; 0 FAIL final. Un premier témoin avait une pente `M'=1` incorrecte ; corrigé en `M'=5/6`, tous les tests rejoués. `git ls-remote` : `Could not resolve host: github.com`. **Probe original Step58 R=17/20, imports Step45/55/58+b3c2 NON exécutés.**
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS SUR LA SEULE BRANCHE RECHERCHE (BLOBS IDENTIQUES AUX OCTETS TESTÉS) :**
+- `numerics/hr_step68ad_b3c3d6_annular_interval_screen.py` blob `ec8cc8b744b61305d20af77c84461c2a037c42d7`, commit `d3b33de10f2cf689ad6381089e9b9cdb82b1478e`.
+- `tests/test_hr_step68ad_b3c3d6_annular_interval_screen.py` blob `add6a6bc7f41052dbe861f0549389ba273f2648e`, commit `4142c9cabf15686751c908fd90401784b88a8cbe`.
+- `research/STEP68AD_B3C3D6_ANNULAR_POSITIVE_LAPSE_INTERVAL_SCREEN.md` blob `edb54bc560de0f38d004435e400d884ca9ffd183`, commit `1795a236ac85faa3fc153ed0bd3cd70bda03af1a`.
+- `research/reports/gate2b-step68ad-b3c3d6-annular-positive-lapse-screen.json` blob `a9864033e2fc6f6fe9a5855d2080766bad5fed68`, commit `78c1515c13e2c68d5756ed1316e0a82de5aea7a6`.
+- `README.md` mis à jour, blob `3a566c9ad1c2f5a3ac2227a986527a5e5fb737b1`, commit `8f38292a383fdabd7ec83817ecf7fed47617b374`.
+
+**GITHUB :** HEAD initial authentifié `534d0453d1cb7adb3f491f26c82f8399b06c9d6b` ; avant ce checkpoint `8f38292a383fdabd7ec83817ecf7fed47617b374`. Branches interdites relues : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. Vérifier HEAD final après index.
+
+**VERROUS :** (1) exécution des sources originales impossible via clone local DNS ; (2) évaluer `B_M` et ses zéros, `B_N/B_M` sur anneaux originaux avec certificats ; (3) raccord central `B_M(0)=0` et vrais bords/positivité ; (4) charges/générateurs, quotient jauge temporelle, Dirac six couples, K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, JETS CENTRAUX r⁴ (2026-10-28)
 
 **b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE INCHANGÉE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 ET LES IMPORTS STEP45/55/58+b3c2 ; CERTIFIER B_N/B_M ET LES CARTES CENTRALES ; RÉSOUDRE LES VRAIS LAPSES POSITIFS ET LES DEUX BORDS ; PUIS PULLBACK DIRAC, CHARGES/GÉNÉRATEURS, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
