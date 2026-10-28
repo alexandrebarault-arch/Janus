@@ -1,0 +1,34 @@
+{
+  "step": "b3c3d6_PARTIAL",
+  "result": "EXACT_CONDITIONAL_FIRST_ORDER_LAPSE_BVP_INTEGRATING_FACTOR_IDENTITY",
+  "original_step58_evaluated": false,
+  "pointwise_rank_to_global_solution_inference": "INVALID",
+  "original_step58_probe_executed": false,
+  "source_blobs_read": {
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step68ad_c2d2e5b3b2c2b2d2d2b3c2_center_operator.py": "9a77f749a040aaec37e7c3f01368013154fdb562"
+  },
+  "assumptions": [
+    "B_M nonzero on chosen closed interval",
+    "C1 coefficients",
+    "N,M C1",
+    "external M(b)=N(b) is illustrative, not authenticated Step55 clock boundary condition"
+  ],
+  "identity": "W=M+q*N, q=B_N/B_M, p=A_M/B_M, a=A_N/B_M, h=qprime+p*q-a, Wprime+pW=hN",
+  "global_endpoint": "(1+q(b))*N(b)=exp(-P(b))*(M(a)+q(a)*N(a))+integral_a^b exp(-(P(b)-P(s)))*h(s)*N(s) ds",
+  "center_chart_caveat": "b3c2 indicates B_N,B_M=O(r^4); cannot divide by B_M at r=0 without separate limit",
+  "executed": {
+    "sympy_exact_zero_residuals": 13,
+    "exact_sign_checks": 4,
+    "unittest_passed": 4,
+    "unittest_independent": false,
+    "final_failures": 0
+  },
+  "original_replay": "NOT_EXECUTED_DNS_GITHUB_UNRESOLVED",
+  "local_git_probe": "fatal: unable to access https://github.com/alexandrebarault-arch/Janus.git/: Could not resolve host: github.com",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "next": "b3c3d6: run original Step58 outer probe and original Step45/55/58+b3c2, certify coefficient chart and global positive lapses with authentic boundary conditions; then Dirac pullback, charges, temporal gauge quotient, six pairs, K=0/J=0, 4D stability observables"
+}
