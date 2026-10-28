@@ -1,0 +1,25 @@
+{
+  "symbolic_assertions_passed": 25,
+  "theorem": "Theta_center=O(r^3) on regular parity-preserving families, including variable even lapses",
+  "sharp_witness": "dL2=1, all other tangent coefficients zero: lim Theta/r^3=-2*mg*N0",
+  "adversarial_nonregular": "lim Theta/r=2*mg*N0*(dH0-dL0)",
+  "scope": "Original non-IBP endpoint one-form; regular center only, not outer boundary or Dirac",
+  "original_step45_55_58_import_replay": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3",
+  "date": "2026-10-28",
+  "status": "EXACT_REGULAR_CENTER_BOUNDARY_PARITY_LEMMA_ONLY",
+  "sympy_assertions": 25,
+  "unittest_cases_passed": 4,
+  "unittest_independent": false,
+  "failed_final": 0,
+  "first_test_counter_error_corrected": true,
+  "git_dns_replay": "FAILED_COULD_NOT_RESOLVE_GITHUB_COM",
+  "original_sources": {
+    "Step37": "005449ade6e3582e3b9a5c3374a881a77e73e3f6",
+    "Step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "b3c3d2": "6898c88760cc0766e949f9bade4908b9bc176c58"
+  },
+  "next_step": "b3c3d4: replay original Step45/55/58+b3c2, outer boundary tangent Dirac and improved generator/charges, gauge temporal quotient; no general validation."
+}
