@@ -1,0 +1,11 @@
+{
+  "exact_symbolic_zero_residuals": 29,
+  "rational_witnesses": 2,
+  "theta_dirichlet": "dC-Z dP; C=A Sgprime+B Sfprime-V Lg pLg-V Lf pLf",
+  "curvature_dirichlet": "dP wedge dZ",
+  "closed_iff": "rank(d(P,Z)) <=1 on fixed-q, fixed-lapse endpoint submanifold",
+  "lapse_variation_caveat": "dTheta(dN,dSgprime)=2 mg Sg/Lg, not covered by rank criterion",
+  "original_step45_55_58_import_replay": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
