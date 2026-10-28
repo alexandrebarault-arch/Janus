@@ -1,0 +1,41 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c1",
+  "kind": "CONDITIONAL_CENTER_TO_STEP58_ANNULUS_BOUNDARY_LAYER_NECESSITY",
+  "assertions_passed": 921,
+  "assertions_failed": 0,
+  "source_git_blobs": {
+    "temporal": "0c688d6648e16064b1eb4e8ad9c55e7b44a95947",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+  },
+  "original_step58_python_reexecuted": false,
+  "original_step55_python_reexecuted": false,
+  "certified_step58_center_limit": false,
+  "physical_full_lapse_jet_reduction_certified": false,
+  "first_leaf": {
+    "r": [
+      "1/64",
+      "449/28672"
+    ],
+    "M": [
+      "-878743233447359005358306307/500000000000000000000000000",
+      "-485206742232178880604010481/312500000000000000000000000"
+    ],
+    "N": [
+      "1332559084055674358770291931/2000000000000000000000000000",
+      "5250888804515248471768038219/5000000000000000000000000000"
+    ]
+  },
+  "exact_first_leaf_ratio_upper": "5250888804515248471768038219/7763307875714862089664167696",
+  "strict_ratio_at_r_1_over_64": "0<M/N<17/25, conditional on zero first-lapse-jet terms on full shell",
+  "center_regular_relative_clock_conditions": "If N(0)>0, M/N is C2, and stationary relative clock admits finite V at r=0, then rho(0)=1. Smooth spherical scalar lapses imply rho'(0)=0.",
+  "exact_center_denominator_d0": "3321926807006261/3906250000000000000",
+  "exact_center_quadratic_ratio_critical_ccrit": "226687120771331833/18086585087578262500000",
+  "center_shift_slope_identity": "If rho=1+rho2*r^2+O(r^4), N=N0+O(r^2), Vrel/N=r*(rho2-ccrit)/d0+O(r^3). A regular odd radial V is compatible for finite rho2.",
+  "mean_value_consequences": "If rho(0)=1, rho'(0)=0, rho is C2 on [0,1/64] and conditional Step58 ratio holds at 1/64, there exist xi,eta in (0,1/64) with rho''(xi)<-65536/25 and rho'(eta)<-512/25.",
+  "blocker": "Original Step58 coefficient ratio at r=0 not evaluated; lapse first-derivative terms not shown to vanish on full Dirac shell; no bound on rho'' from original operator; no full temporal gauge/Dirac result.",
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
