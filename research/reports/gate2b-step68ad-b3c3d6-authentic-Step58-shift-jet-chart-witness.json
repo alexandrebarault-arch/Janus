@@ -1,0 +1,107 @@
+{
+  "step": "b3c3d6_PARTIAL",
+  "date": "2026-10-28",
+  "scope": "ORIGINAL_STEP45_STEP58_POINTWISE_RATIONAL_SHIFT_JET_NOT_STEP55_NOT_DIRAC",
+  "original_source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "local_step57": "MINIMAL_AUTHENTICATED_STEP45_IMPORT_SHIM_NOT_ORIGINAL_STEP57",
+  "exact_witness": {
+    "q": {
+      "Lg": "1",
+      "Lf": "1",
+      "Sg": "1",
+      "Sf": "1",
+      "pg": "3/4",
+      "pf": "311/100",
+      "other_q": "0"
+    },
+    "qprime": {
+      "Sg": "1",
+      "Sf": "4/5",
+      "pLg": "-3/4",
+      "other_qprime": "0"
+    },
+    "qsecond": {
+      "Lf": "42/25",
+      "other_qsecond": "0"
+    },
+    "qthird": {
+      "Lf": "4476/625",
+      "other_qthird": "0"
+    },
+    "qfourth": "all zero",
+    "z": "3/5",
+    "zprime": "-96/125",
+    "zsecond": "0",
+    "zthird": "0",
+    "Mg2": "1",
+    "Mf2": "1",
+    "m2": "1",
+    "betas": [
+      "-4",
+      "1",
+      "0",
+      "0",
+      "-4"
+    ]
+  },
+  "exact_residuals_zero": [
+    "Fz",
+    "Fz_r",
+    "Fz_rr",
+    "Fz_rrr",
+    "Hg",
+    "Hf",
+    "C_exact"
+  ],
+  "positive_chart": {
+    "K": "1",
+    "z": "3/5",
+    "sqrt_1_minus_z2": "4/5",
+    "pg": "3/4",
+    "pf": "311/100"
+  },
+  "original_step58_lapse_coefficients": {
+    "N": {
+      "A": "1293/250",
+      "B": "224/125",
+      "E": "0"
+    },
+    "M": {
+      "A": "-79093/12500",
+      "B": "0",
+      "E": "0"
+    }
+  },
+  "conclusion": "B_M!=0 does not follow from pointwise Fz,Hg,Hf,C, positive K,z,dust and Fz radial jets up to 3. Does not show a zero on Step55.",
+  "tests_executed": {
+    "original_step45_ward_exact_residuals": 9,
+    "original_step58_highest_lapse_certificate": "PASS",
+    "pointwise_constraint_shift_residuals": 7,
+    "exact_lapse_coefficients": 6,
+    "unittest_cases": 4,
+    "unittest_independent": false,
+    "failures": 0
+  },
+  "not_executed": [
+    "original_step55_global_profile",
+    "original_step68o_annulus",
+    "b3c2_regression",
+    "original_step58_R_17_over_20_probe",
+    "full_original_step57",
+    "temporal_Dirac_tangency",
+    "global_positive_lapse_BVP"
+  ],
+  "limits": [
+    "Hg,Hf,C radial derivatives and higher spatial constraints not imposed",
+    "not a Step55 solution",
+    "not a global lapse result",
+    "not a physical Dirac rank"
+  ],
+  "status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
