@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3b IDENTITÉ DE LIE EXACTE DE C_red (2026-10-28)
+
+**ÉTAPE b3c3b TERMINÉE (COVARIANCE LOCALE CINÉMATIQUE EXACTE) — PROCHAINE ÉTAPE b3c3c : REJEU b3c2 AVEC IMPORTS ORIGINAUX STEP45/55/58, VÉRIFICATION INDÉPENDANTE DE C_red, GÉNÉRATEURS AMÉLIORÉS ET CHARGES AUX BORDS, JAUGE TEMPORELLE, PUIS DIRAC SIX COUPLES, K=0/J=0, 4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVELLE PREUVE :** À partir de la transcription Step45 b3c3a dont les octets correspondent au blob Git authentifié, les coefficients exacts du crochet à six couples vérifient K00 poids 1, K01 poids 0, et C_exact=K00−∂rK01 poids 1, par annulation exacte des coefficients de V',V'',V''' (9 identités). Les 12 dérivées de C_exact par rapport aux seconds jets canoniques sont nulles ; ∂C_exact/∂z'=−(K sqrt(1−z²)+Dg z)/(Lg Lf). Sur K>0, z*=Dg/sqrt(Dg²+K²) est scalaire et son vrai gradient radial a poids 1 (3 identités exactes). Par composition, **δ_V C_red=(V C_red)' exactement sur les jets lisses de la carte K>0**, sans supposer C_red=0. Sur C_red(r)=0, la contribution radiale est nulle dans le volume. Ceci lève l'hypothèse cinématique de covariance de b3c3a ; cela ne construit ni générateur différentiable au bord ni charge de bord.
+
+**TESTS EXÉCUTÉS :** 34 assertions symboliques exactes SymPy PASS, 1 unittest de rejeu PASS, 0 échec final. Un premier unittest avait échoué uniquement sur le compteur attendu 35 au lieu de 34, corrigé avant publication ; le code scientifique n'a pas échoué. Le unittest n'est pas indépendant. Le fichier parent b3c3a original publié a été recopié localement avec Git blob identique `e7f068a7c4063a27af2456515b58f8732b3b3343`. Sources physiques originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` et Step57 `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f` authentifiées sur GitHub. Les moteurs Python Step45/55/58 originaux et le unittest b3c2 n'ont PAS été exécutés en clone complet.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- `numerics/hr_step68ad_b3c3b_cred_lie_identity.py` — blob `010e5e10c071d4cfb270c32fb1d73ad94e77896f`, identique aux octets exécutés.
+- `tests/test_hr_step68ad_b3c3b_cred_lie_identity.py` — blob `f641e9176ebdafc49742a8786165a1f11db9953f`, identique aux octets exécutés.
+- `research/reports/gate2b-step68ad-b3c3b-cred-exact-lie.json` — blob `b92eec5b1e97134de1d960461483cdf511e2c66b`.
+- `research/STEP68AD_B3C3B_EXACT_REDUCED_SECONDARY_RADIAL_LIE_IDENTITY.md` — blob `c8e8414d73ae27f282267208ccaf1bc3ca10f1cc`.
+
+**GITHUB :** HEAD authentifié à l'ouverture `4aa7e86fde62d4207f115fec0844394985b07403`. Quatre create_file effectifs, relus et comparés ; README mis à jour au blob `93342fda6ab0f8cbc72f0de8d700c3940f5a615f`, commit `d9c0bff9f33db13e941dfc690931153b6df76788`. La branche `research/gate2b-nonhomothetic-transfer` est la seule cible ; `main` et `research/v2-flrw` doivent rester inchangées ; GitHub Actions désactivées non touchées.
+
+**LIMITES ET PRIORITÉS :** (1) rejeu indépendant b3c2 sur les imports originaux et comparaison des quatre coefficients exacts ; (2) vérification indépendante de la formule complète C_red et des conditions de bord avec un générateur amélioré ; (3) charges, jauge temporelle, lapses et rang Dirac à six couples ; (4) chartes K=0/J=0, dynamique 4D, stabilité et observables. Aucun no-go général ni validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3a AUDIT COVARIANCE DU SHIFT DIAGONAL (2026-10-28)
 
 **ÉTAPE b3c3a PARTIELLE TERMINÉE — 16 IDENTITÉS EXACTES SYMPY PASS, 1 UNITTEST DE REJEU PASS, 7 SIGNES RATIONNELS BIGINT PASS, 0 FAIL. PROCHAINE ÉTAPE : b3c3b — REJOUER b3c2 DANS UN CLONE COMPLET AVEC LES MODULES STEP45/55/58 ORIGINAUX, VÉRIFIER L'IDENTITÉ DE LIE DE LA SECONDAIRE RÉDUITE, GÉNÉRATEURS AMÉLIORÉS/CHARGES/JAUGE, PUIS DIRAC SIX COUPLES, K=0/J=0, 4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
