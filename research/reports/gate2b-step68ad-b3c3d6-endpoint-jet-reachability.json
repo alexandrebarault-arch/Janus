@@ -1,0 +1,24 @@
+{
+  "step": "b3c3d6",
+  "date": "2026-10-29",
+  "result": "CONDITIONAL_EIGHT_ENDPOINT_JET_REACHABILITY_FOR_ONE_SCALAR_FIRST_ORDER_LAPSE_EQUATION",
+  "assumptions": [
+    "B_N,B_M C1 strictly positive on compact annulus",
+    "A_N,A_M continuous",
+    "E_N=E_M=0 exactly",
+    "only one scalar lapse equation"
+  ],
+  "criterion": "endpoint scalar equation at both endpoints AND (L<T<U if s_N!=s_M somewhere; T=int s_N otherwise)",
+  "checks": {
+    "sympy_exact_zero_residuals": 10,
+    "exact_toy_and_guard_checks": 12,
+    "unittest_passed": 4,
+    "unittest_independent": false,
+    "failures": 0
+  },
+  "original_step58_outer_probe_executed": false,
+  "original_step55_executed": false,
+  "github_dns": "Could not resolve host: github.com",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
