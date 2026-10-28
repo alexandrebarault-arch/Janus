@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CÔNE DE POSITIVITÉ ET CROISSANCE ANNULAIRE (2026-10-28)
+
+**PROCHAINE ÉTAPE b3c3d6 INCHANGÉE : exécuter le probe original Step58 sur le vrai profil Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M, leurs dérivées, zéros communs, cartes/raccord central, coefficients b,d, lapses positifs et conditions réelles aux deux bords ; puis Dirac, charges/générateurs, quotient jauge temporelle, six couples, K=0/J=0, dynamique 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE CONDITIONNELLE, NON PHYSIQUE :** Sur la coquille du premier ordre `A_N N+A_M M+B_N N'+B_M M'=0`, avec `B_N,B_M>0` et `N,M>0`, la carte sans division `u=B_N N+B_M M`, `v=-B_M N+B_N M` impose `-B_M/B_N<v/u<B_N/B_M`. L'identité exacte `u'=alpha*u+beta*v` donne un écran intégral nécessaire `u(r0)*exp(int ell)<=u(R)<=u(r0)*exp(int ups)` où `ell=alpha+min(-beta B_M/B_N,beta B_N/B_M)`, `ups=alpha+max(...)`. Une borne violée exclut des lapses positifs avec amplitudes aux deux bords prescrites ; une borne respectée ne prouve aucune existence. **Ne décide PAS une seule condition de ratio M(R)=N(R) sans amplitude ; ne traverse PAS les zéros B_N ou B_M ; ne prouve pas le raccord au centre Delta=0.** Témoin JOUET `B_N=B_M=1,A_N=-1,A_M=1`, `N(0)=M(0)=1` : `N(R)=M(R)=3` exclu, `N=M=1` admissible.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_work && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_positive_cone_growth` : 6 résidus SymPy algébriques exacts PASS, 6 résidus jouets exacts PASS ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_positive_cone_growth.py' -v` : 4 unittest PASS non indépendants, 0 FAIL. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git HEAD` : `Could not resolve host: github.com`. Le probe original Step58 R=17/20 et les moteurs complets Step45/55/58+b3c2/Step68o n'ont PAS été exécutés. Les sources originales ont été inspectées directement via GitHub : Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7`.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS SUR LA SEULE BRANCHE AUTORISÉE ET RELUS (BLOBS ÉGAUX AUX OCTETS TESTÉS) :**
+- `numerics/hr_step68ad_b3c3d6_positive_cone_growth.py` blob `86a3299d870b65ce7f862c7d8067d9700e6705ca`, commit `428dda1a8c4f662a1d6a1c069078e339a9d59cd2`.
+- `tests/test_hr_step68ad_b3c3d6_positive_cone_growth.py` blob `672d42648a59f91d71a92a88d220569736ca056e`, commit `ada3716d4fc6ecfcbdcf416c88a790d5a2dda1db`.
+- `research/STEP68AD_B3C3D6_POSITIVE_CONE_GROWTH_SCREEN.md` blob `b648f63a2cf0fad31af3e5f94b8b0112cb4603a7`, commit `21f423b7c5b92ef19d2560e7dec7efb6b4238c23`.
+- `research/reports/gate2b-step68ad-b3c3d6-positive-cone-growth.json` blob `2e526445d6cad782e029c8b8b6f4c58fa783bebb`, commit `df9e8dbcf126263ee8a7510bb323e6658491c636`.
+- `README.md` blob `1564d8094ec39450e21134097acef0da20242834`, commit `ffbdd3afba025a3eb92a8beaa202dedd68086607`.
+
+**PROVENANCE :** HEAD GitHub vérifié au démarrage `0ca8c624d37036370461bb3cc1c09c5ca7ae9ac1` (plus récent que le repère `a4e40c98...`). Branches interdites avant écriture : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucune GitHub Action ni branche interdite touchée. Vérifier à nouveau HEAD et branches après mise à jour de l'index.
+
+**CHECKPOINT PRÉFIXÉ ; TOUT L'HISTORIQUE PRÉEXISTANT EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CADRE RÉGULIER SANS DIVISION PAR B_M (2026-10-28)
 
 **PROCHAINE ÉTAPE b3c3d6 INCHANGÉE : exécuter le vrai probe Step58 sur Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M et leurs dérivées, les zéros communs, cartes et raccord central, coefficients b,d, lapses strictement positifs et conditions réelles de bord. Puis Dirac, charges/générateurs, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
