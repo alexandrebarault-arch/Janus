@@ -9,13 +9,13 @@
     "status": "SUCCESS",
     "success": true,
     "verified_after_update": true,
-    "old_prompt_characters": 19331,
-    "new_prompt_characters": 20537,
+    "old_prompt_characters": 20537,
+    "new_prompt_characters": 21621,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6"
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "85469568e6df7c26920c1ebb87593dbf474deb04",
@@ -493,6 +493,8 @@
     "updated_files": 2,
     "original_source_clone_dns": "Could not resolve host: github.com",
     "prohibited_branches_modified": false,
-    "workflows_modified": false
+    "workflows_modified": false,
+    "last_pre_final_state_head": "eb6445b98838347cef56bf431ba3457aaa8e35fa",
+    "automation_updated": true
   }
 }
