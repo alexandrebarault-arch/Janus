@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, JETS CENTRAUX r⁴ (2026-10-28)
+
+**b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE INCHANGÉE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20 ET LES IMPORTS STEP45/55/58+b3c2 ; CERTIFIER B_N/B_M ET LES CARTES CENTRALES ; RÉSOUDRE LES VRAIS LAPSES POSITIFS ET LES DEUX BORDS ; PUIS PULLBACK DIRAC, CHARGES/GÉNÉRATEURS, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**NOUVELLE IDENTITÉ EXACTE MAIS FORMELLE, NON PHYSIQUE :** Si `A_N=a r²+b r⁴+o(r⁴)`, `A_M=c r²+d r⁴+o(r⁴)`, `B_N,B_M=O(r⁴)`, `E_N=e r⁴+o(r⁴)`, `E_M=f r⁴+o(r⁴)`, et `N=N0+N2 r²+o(r²)`, `M=M0+M2 r²+o(r²)` sont pairs C², l'opérateur complet `A_N N+A_M M+B_N N'+B_M M'+E_N N''+E_M M''` impose `aN0+cM0=0` à l'ordre r² et `(a+2e)N2+(c+2f)M2+bN0+dM0=0` à l'ordre r⁴. Les termes `B_i L_i'` commencent à O(r⁵), MAIS `E_i L_i''` contribuent à r⁴ : `E=O(r⁴)` ne signifie pas `E=0`. Sur la coquille primaire exacte Step58, si `E=0` est réimposé, prendre `e=f=0`. Les coefficients physiques `b,d,e,f` ne sont PAS calculés. Trois opérateurs JOUETS avec mêmes `a=2,c=-4,N0=1,M0=1/2` et lapses analytiques positifs donnent `M2=0,3/4,3/2` : le seul ratio central ne détermine pas la courbure des lapses.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `python -m numerics.hr_step68ad_b3c3d6_center_subleading_jet` : 8 résidus SymPy nuls (certains élémentaires/non indépendants), 3 modèles exacts positifs ; `python -m unittest -v tests.test_hr_step68ad_b3c3d6_center_subleading_jet` : 4 tests PASS, non indépendants, 0 FAIL. `git ls-remote https://github.com/alexandrebarault-arch/Janus.git refs/heads/research/gate2b-nonhomothetic-transfer` : échec DNS `Could not resolve host: github.com`. **Probe original Step58 R=17/20, Step45/55/58+b3c2 NON exécutés.**
+
+**LIVRABLES SCIENTIFIQUES PUBLIÉS SUR LA SEULE BRANCHE RECHERCHE, RELUS OCTET POUR OCTET :**
+- `numerics/hr_step68ad_b3c3d6_center_subleading_jet.py` blob `340d05c76db1f9ae25fdbc1fc7167e65b4a6867a`, commit `49517aee7e6ddfb4eafe09339cd58bda1d9c8ffc` ; blob égal aux octets Python locaux testés.
+- `tests/test_hr_step68ad_b3c3d6_center_subleading_jet.py` blob `70a3376e9f9a173d75a0f214274a0d8094c0625d`, commit `b55331826573f48c41a3824296743e24aef7882c` ; blob égal aux octets du test local.
+- `research/STEP68AD_B3C3D6_FORMAL_CENTER_SUBLEADING_LAPSE_JETS.md` blob `799d6881f74886346b62133ce55db686efbd0127`, commit `ecbed137bd817ad8376617eb5b6fde9fb8f30c02`.
+- `research/reports/gate2b-step68ad-b3c3d6-formal-center-subleading-jets.json` blob `e19106f2718cae5e965bde73609f3a7fcd34a3cd`, commit `09ee941091d52d82578c5320b4f292250fedb64b`.
+
+**GITHUB :** HEAD initial authentifié `8d0f60aa72d290b7d0f81b9947d77c58065a94b1`. Branches interdites lues avant écriture : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucune action GitHub Actions ni modification des branches interdites. Vérifier HEAD final après index.
+
+**LIMITES / PRIORITÉS :** (1) DNS Git local bloque les imports originaux, mais connecteur GitHub lecture/écriture fonctionnel ; (2) b3c2 authentifié seulement par lecture de sources et audit antérieur, pas rejoué ; (3) vérifier Step58 sur la vraie coquille `F_z=H_g=0`, évaluer `b,d` et annulation exacte des `E` ; (4) exécuter probe externe pour `B_N,B_M`, cartes et raccord central ; (5) BVP lapses positifs et vrais bords Step55 ; (6) Dirac, charges/générateurs, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, IDENTITÉ GLOBALE CONDITIONNELLE DES LAPSES (2026-10-28)
 
 **b3c3d6 RESTE PARTIELLE — PROCHAINE ÉTAPE INCHANGÉE : EXÉCUTER LE PROBE ORIGINAL STEP58 À R=17/20, CERTIFIER B_N/B_M SUR LES CARTES ADMISSIBLES ET LE PROBLÈME GLOBAL DES LAPSES AUX DEUX BORDS ; PUIS VRAI PULLBACK DIRAC, GÉNÉRATEURS/CHARGES, QUOTIENT JAUGE TEMPORELLE, SIX COUPLES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
