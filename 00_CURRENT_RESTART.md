@@ -1,3 +1,25 @@
+# JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b2, FLUX DE BORD DES HORLOGES ET CONDITIONS ADMISSIBLES (2026-10-28)
+
+**ÉTAPE d2d2b2 TERMINÉE : THÉORÈME EXACT RESTRICTION STEP55/BARE NON-IBP, PAS DE QUOTIENT DE JAUGE TEMPORELLE. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3 — générateurs temporels améliorés, charges d'horloges, conditions au centre et à R préservées dans le temps, quotient par la jauge temporelle ; ensuite directions canoniques physiques, pullback dTheta, bords/contretermes, oracle Dirac original six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT RESTREINT :** Sur la frontière Step55 R=17/20, avec pg,pf>0, N,M>0, Lg,Lf>0, z=17/5000>0, tg'>0 et tf'<0, les coefficients de bord du Hamiltonien original nu sont Jg/pg=N*A+M*B+V et Jf/pf=M*D+V, où A=tg'/(Lg²sqrt(1+(tg'/Lg)²))+z/Lg>0, B=z/Lf>0 et D=tf'/(Lf²sqrt(1+(tf'/Lf)²))<0. Pour Jg=0 il faut V<0 ; pour Jf=0 il faut V>0. Aucun V réel ne rend simultanément les deux flux nuls à lapses positifs, SANS contreterme ni restriction des variations. La matrice des coefficients (N,M) a déterminant pg*pf*A*D<0, donc rang 2 pour des lapses indépendants. La forme sur le plan des horloges à autres variables fixées est exacte et admet une primitive ; cela ne produit PAS un contreterme sur l'espace canonique/multiplicateur étendu, dont la courbure mixte est non nulle. Les conditions Dirichlet au centre peuvent éliminer les translations constantes même si le bord extérieur est libre ; fixer seulement tg-tf laisse une translation diagonale. Aucune classification de jauge TEMPORELLE ni préservation temporelle des conditions n'est obtenue.
+
+**TESTS EXÉCUTÉS :** 57 assertions rationnelles exactes BigInt V8 PASS, 0 FAIL, réexécutées depuis le code relu sur GitHub ; 10 gardes de test supplémentaires PASS via shim CommonJS V8 (NON indépendants, pas une exécution Node CLI). Certificat JSON régénéré identique octet pour octet à GitHub. Aucun moteur physique original Python réexécuté ; sources Step37/45/55/58 et formes de bord SHA authentifiées.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS ET RELUS :**
+- scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b2_clock_boundary_flux.cjs — blob 006ad7eca13d70c872b3972c9eb137b94d12a7c1.
+- tests/test_hr_step68ad_c2d2e5b3b2c2b2d2d2b2_clock_boundary_flux.cjs — blob 9f488f3c8850fdc69a81b6c98d94d83b5f806c18.
+- research/reports/gate2b-step68ad-C2d2e5b3b2c2b2d2d2b2-clock-boundary-flux.json — blob 8c0c6aa44d60ac8afd9514f0f34157fe7ee2a072.
+- research/STEP68AD_C2D2E5B3B2C2B2D2D2B2_CLOCK_BOUNDARY_FLUX_AND_TEMPORAL_GAUGE_LIMITS.md — blob 0b7fd3858863a13c33b37a5aa8f27a6417bfc724.
+
+**GITHUB :** HEAD initial authentifié 08dfd449a1c8c6d72a9d1da5fe1076703804d99d. Écritures sur research/gate2b-nonhomothetic-transfer UNIQUEMENT. Vérifier HEAD final après mise à jour de l'index ; protéger main, research/v2-flrw, workflows désactivés.
+
+**VERROUS :** Le résultat ne prouve pas qu'une condition de bord donnée est compatible avec le problème de Dirac ni que les translations sont des charges physiques plutôt qu'une jauge temporelle. Aucun rang de Dirac complet, contreterme global admissible, équation de lapses temporelle, K=0/J=0, dynamique 4D, stabilité ou observable validé.
+
+**CHECKPOINT PRÉFIXÉ — TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b1, TRANSLATIONS CANONIQUES DES HORLOGES DE POUSSIÈRE (2026-10-28)
 
 **ÉTAPE d2d2b1 TERMINÉE : SYMÉTRIE EXACTE DE VOLUME, RANG 2 DES TRACES D'HORLOGES MODULO JAUGE RADIALE, MAIS PAS DEUX DIRECTIONS PHYSIQUES DIRAC. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b2 — classifier les charges de translation face à la jauge TEMPORELLE, aux conditions t_i(0)/t_i(R), aux générateurs améliorés et à la préservation temporelle ; ensuite rechercher deux directions non-jauge admissibles, pullback dTheta, bords/contretermes, oracle original non-IBP six couples/rang/tertiaires/lapses/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
