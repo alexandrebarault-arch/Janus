@@ -9,13 +9,13 @@
     "status": "SUCCESS",
     "success": true,
     "verified_after_update": true,
-    "old_prompt_characters": 20537,
-    "new_prompt_characters": 21621,
+    "old_prompt_characters": 21621,
+    "new_prompt_characters": 22856,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d6_integrating_factor_bvp.py": "04643b1ed377840a37303a5c7c5a673241d28ab8",
@@ -33,7 +33,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "891fbf206a1573706f1588e156bd3e69bca5a6a3",
+  "verified_research_head_before_state_file": "f15231bd55227ecb686aec86dea57d12af1473b0",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -78,7 +78,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Local Git DNS cannot resolve github.com. Original Step58 probe and full imports NOT executed. New integrating-factor lemma requires B_M nonzero and does not cover center where b3c2 gives B_M=O(r^4). Physical positive lapse BVP, Dirac tangency, improved generators/charges, temporal gauge quotient and 4D OPEN.",
-  "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
+  "task_self_update": "2026-10-28: prefixed conditional b3c3d6 integrating-factor BVP marker; all 21621 prior prompt characters preserved, schedule and activation unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
