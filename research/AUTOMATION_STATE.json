@@ -6,54 +6,46 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 16220,
-    "new_prompt_characters": 17173,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3"
+    "status": "PENDING_CHECK",
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d2_full_dirichlet_boundary.py": "6898c88760cc0766e949f9bade4908b9bc176c58",
-    "tests/test_hr_step68ad_b3c3d2_full_dirichlet_boundary.py": "724f06569fa2de8368e94b28eebea06f56dc81ea",
-    "research/reports/gate2b-step68ad-b3c3d2-full-nonibp-dirichlet.json": "d24f28d9854bd159e798bc3eac9139e943e48c55",
-    "research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md": "dd0eea2ed83a162acae8ebf251872c541b4884be",
-    "README.md": "43c3d8e2249317b876b346cfe4629c00f298885f",
-    "00_CURRENT_RESTART.md": "fff33290d0d0b77feed0354c8c2786007545c73d"
+    "numerics/hr_step68ad_b3c3d3_center_boundary_parity.py": "f63f05c6173c473a957fd4e87bbb37e141432a41",
+    "tests/test_hr_step68ad_b3c3d3_center_boundary_parity.py": "06d481d5da02b8436acfcf351a615b7b0bd43db5",
+    "research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json": "b9acd1a907c056d12a4d34cf6134c7908b32047f",
+    "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801",
+    "README.md": "6c7d4a610810bda3a89f457a37c951865f9871ee",
+    "00_CURRENT_RESTART.md": "1c2ce10c755ffdece758d11fdd521b11711b9951"
   },
-  "verified_research_head_at_session_start": "72123a1d08b8f0ccb26d3a51473e0e9d6103feec",
-  "next_priority": "b3c3d3: replay authentic Step45/55/58 and b3c2 on full imports when clone available; classify variations tangent to primary constraints, functional C(r)=0, Step58 temporal preservation and boundary conditions on Step55; test graph Z=F(P), then improved generators/charges, temporal gauge quotient, six-pair Dirac, K=0/J=0, 4D/stability/observables.",
+  "verified_research_head_at_session_start": "aff5a788fb2c64f27b6f952d73e1808be6369e11",
+  "next_priority": "b3c3d4: full original Step45/55/58 and b3c2 import replay; genuine variations tangent to primaries, functional C(r)=0, Step58 temporal preservation and outer Step55 R=17/20 boundary; improved generators, charges, temporal gauge quotient, six-pair Dirac, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "62f68eea795b4ea917d3a9fa820366bc4d74a6d4",
-  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d2_FULL_NONIBP_FIXED_DIRICHLET_RANK",
-  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3_STEP55_CONSTRAINED_BOUNDARY_TANGENCY_AND_ORIGINAL_IMPORT_REPLAY",
+  "verified_research_head_before_state_file": "79ad5418d77cb153ea1971b4677c79506a91b3c5",
+  "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3_REGULAR_CENTER_NONIBP_PARITY_LEMMA",
+  "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4_STEP55_OUTER_BOUNDARY_DIRAC_TANGENCY_ORIGINAL_IMPORT_REPLAY",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
   },
   "last_reported_tests": {
-    "sympy_exact_zero_residuals": 29,
-    "rational_witnesses": 2,
+    "sympy_exact_assertions": 25,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "first_unittest_counter_mismatch_corrected": true,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
-    "scope": "complete original non-IBP boundary one-form restricted to fixed six canonical configuration fields and fixed N,M,V, not Dirac physical boundary"
+    "scope": "all ten original non-IBP boundary terms on regular analytic center parity class; theta and its exterior derivative O(r^3), not Dirac or outer boundary"
   },
-  "github_write_probe": "Four actual GitHub create_file writes succeeded, all four scientific files re-read and blobs matched tested/generated local git hashes; README updated and full-history restart prefixed; exclusively research/gate2b-nonhomothetic-transfer.",
+  "github_write_probe": "Four authentic create_file calls succeeded; files re-read and Git blob SHA match local git hash-object values; README updated and full-history restart prefixed; only research/gate2b-nonhomothetic-transfer.",
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
     "Read this state; resolve divergence in favor of newest authenticated checkpoint",
@@ -70,7 +62,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Container git DNS github.com still unavailable. Original Step45/55/58 imports and b3c2 unittest not replayed. Dirichlet endpoint slice not certified tangent to primaries, functional secondary C(r)=0, temporal Step58, central and preserved boundary conditions. Physical charges/temporal gauge quotient/Dirac rank/4D/stability/observables unresolved.",
+  "current_blocker": "Local Git DNS cannot resolve github.com. Original Step45/55/58 imports and b3c2 unittest not replayed. No tangent Dirac variations at outer Step55 boundary, no temporal Step58 compatibility, no physical charge, improved generator, gauge temporal quotient, full Dirac rank/4D/stability/observables.",
   "task_self_update": "2026-10-28: prepended b3c2 marker to automation; all 11482 previous prompt characters preserved verbatim, schedule/timezone/activation verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -79,7 +71,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "fff33290d0d0b77feed0354c8c2786007545c73d",
+    "00_CURRENT_RESTART.md": "1c2ce10c755ffdece758d11fdd521b11711b9951",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -102,7 +94,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "43c3d8e2249317b876b346cfe4629c00f298885f",
+    "README.md": "6c7d4a610810bda3a89f457a37c951865f9871ee",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -222,7 +214,11 @@
     "numerics/hr_step68ad_b3c3d2_full_dirichlet_boundary.py": "6898c88760cc0766e949f9bade4908b9bc176c58",
     "tests/test_hr_step68ad_b3c3d2_full_dirichlet_boundary.py": "724f06569fa2de8368e94b28eebea06f56dc81ea",
     "research/reports/gate2b-step68ad-b3c3d2-full-nonibp-dirichlet.json": "d24f28d9854bd159e798bc3eac9139e943e48c55",
-    "research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md": "dd0eea2ed83a162acae8ebf251872c541b4884be"
+    "research/STEP68AD_B3C3D2_FULL_NONIBP_DIRICHLET_RANK.md": "dd0eea2ed83a162acae8ebf251872c541b4884be",
+    "numerics/hr_step68ad_b3c3d3_center_boundary_parity.py": "f63f05c6173c473a957fd4e87bbb37e141432a41",
+    "tests/test_hr_step68ad_b3c3d3_center_boundary_parity.py": "06d481d5da02b8436acfcf351a615b7b0bd43db5",
+    "research/reports/gate2b-step68ad-b3c3d3-regular-center-boundary-parity.json": "b9acd1a907c056d12a4d34cf6134c7908b32047f",
+    "research/STEP68AD_B3C3D3_REGULAR_CENTER_NONIBP_BOUNDARY_PARITY.md": "e3ee970e68edb60f09c5beb24a3052ad8852a801"
   },
   "current_proven_result": "On 154 certified leaves of genuine Step58 interval report in two closed subbands of [1/64,1/32], conditional zero-order lapse relation gives M/N<3/4; Step55 clock equations imply Vrel/N<-39880/7 and |Lf Vrel|/M>31904/21 for stationary relative clock, hence f_tt>0 for coordinate ∂t. This is gauge-dependent, not Lorentzian pathology. 71 leaves remain incomplete for this ratio; center Step58 limit not certified.",
   "last_original_reports_verified": {
@@ -435,5 +431,10 @@
   "forbidden_branch_heads_verified": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "last_verified_branch_protection": {
+    "main": "aead63f4098f0d15a849e579105af034b6317b30",
+    "research_v2_flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "workflow_changes": 0
   }
 }
