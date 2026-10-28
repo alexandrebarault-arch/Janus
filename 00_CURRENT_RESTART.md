@@ -1,3 +1,23 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3a AUDIT COVARIANCE DU SHIFT DIAGONAL (2026-10-28)
+
+**ÉTAPE b3c3a PARTIELLE TERMINÉE — 16 IDENTITÉS EXACTES SYMPY PASS, 1 UNITTEST DE REJEU PASS, 7 SIGNES RATIONNELS BIGINT PASS, 0 FAIL. PROCHAINE ÉTAPE : b3c3b — REJOUER b3c2 DANS UN CLONE COMPLET AVEC LES MODULES STEP45/55/58 ORIGINAUX, VÉRIFIER L'IDENTITÉ DE LIE DE LA SECONDAIRE RÉDUITE, GÉNÉRATEURS AMÉLIORÉS/CHARGES/JAUGE, PUIS DIRAC SIX COUPLES, K=0/J=0, 4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**RÉSULTAT EXACT :** La transcription algébrique des densités originales Step45 a été soumise aux prolongations infinitésimales du difféomorphisme radial diagonal. Pour Ag,Bg,Af,Bf,Dg,K,Fz,C_zprime, les deux identités exactes de covariance sont vérifiées (poids respectifs 1,0,1,0,2,2,2,0), soit 16 égalités symboliques PASS. Dg et K sont de poids 2, le shift relatif réduit z*(Dg,K) est scalaire sur K>0. Sous l'hypothèse d'un générateur radial différentiable et d'une secondaire C_red covariante de poids 1, son terme de shift diagonal en volume est (V C_red)' et disparaît sur C_red(r)=0. L'identité complète sur C_red n'a PAS été directement vérifiée : ce dernier point reste conditionnel, en particulier aux bords. Le rapport central b3c2 implique conditionnellement 2407/5000 < dot(tg-tf)(0)/N(0) < 963/2000.
+
+**TESTS EXÉCUTÉS :** 16 identités SymPy exactes PASS, 1 unittest PASS (rejeu des mêmes identités), 7 contrôles rationnels BigInt V8 indépendants sur le certificat b3c2 PASS, 0 FAIL. Les moteurs originaux Step45/55/58 et le unittest b3c2 n'ont pas été rejoués en clone complet : accès réseau Git indisponible dans le conteneur. Sources SHA authentifiées : Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e ; Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f ; Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe ; Step57 bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f.
+
+**FICHIERS PUBLIÉS/RELUS :**
+- numerics/hr_step68ad_b3c3a_diagonal_shift_covariance.py — e7f068a7c4063a27af2456515b58f8732b3b3343 (identique aux octets exécutés).
+- tests/test_hr_step68ad_b3c3a_diagonal_shift_covariance.py — c82a474173f931f18881344489fd30e426d1a6de (identique aux octets exécutés).
+- research/reports/gate2b-step68ad-b3c3a-diagonal-shift-covariance.json — 4934626b47262fa2bb7f94007258571eddb61008.
+- research/STEP68AD_B3C3A_DIAGONAL_SHIFT_COVARIANCE_PARTIAL_AUDIT.md — 0643a5e4adb6a88c497f06783c814032a995441a.
+
+**GITHUB :** HEAD initial 9b995e203955be609812232922176571f3050751, HEAD après quatre livrables 8e09450e3df3dd085861615c671f7ccc4c92b50a ; vérifier le HEAD final après journal/index/README. Branche autorisée research/gate2b-nonhomothetic-transfer seulement ; ne modifier ni main, ni research/v2-flrw, ni workflows. Aucun résultat de rang physique Dirac, charge temporelle, stabilité 4D ou validation JANUS.
+
+**CHECKPOINT PRÉFIXÉ — HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : 68ad-C2d2e5b3b2c2b2d2d2b3c2, COEFFICIENTS CENTRAUX EXACTS STEP58 (2026-10-28)
 
 **ÉTAPE b3c2 TERMINÉE — RÉSULTAT LOCAL EXACT SUR STEP55, INCOMPATIBILITÉ CONDITIONNELLE D'UNE HORLOGE RELATIVE STATIONNAIRE, PAS DE NO-GO JANUS. PROCHAINE ÉTAPE : 68ad-C2d2e5b3b2c2b2d2d2b3c3 — REJOUER DANS CLONE COMPLET LES SOURCES PYTHON ORIGINALES ET LE TEST PUBLIÉ ; AUDITER LES TERMES DE JAUGE/SHIFT ET LA PRÉSERVATION FONCTIONNELLE, PUIS GÉNÉRATEURS TEMPORELS AMÉLIORÉS, CHARGES, QUOTIENT DIRAC, SIX COUPLES/RANG/TERTIAIRES/K=0/J=0/4D/STABILITÉ/OBSERVABLES. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
