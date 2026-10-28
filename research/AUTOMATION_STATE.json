@@ -17,22 +17,22 @@
     "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py": "0144e44cd65fd69390776c1bb2d2b6120ffd74b4",
-    "tests/test_hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py": "b3a2aba30b6f9e02cc056a2bde9a718668eaf27c",
-    "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_SHIFT_JET_CHART_WITNESS.md": "84a22100c83f0d568c765b15c7b2ada7b9b26c84",
-    "research/reports/gate2b-step68ad-b3c3d6-authentic-Step58-shift-jet-chart-witness.json": "96e12a77ba3a8e8b977e87783f97824a6deb67ec",
-    "README.md": "e9aba61ad3084cc856349bc7c79b91c29d6e23c6",
-    "00_CURRENT_RESTART.md": "0af43a05ece36a50d083c5b32a017b04205a03ce"
+    "numerics/hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "968996282fadaab84c139b119b42c342da6fed3d",
+    "tests/test_hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "766b70dd13734d5aa4e57ab87a078c3b3506a8fa",
+    "research/STEP68AD_B3C3D6_DIVISION_FREE_LAPSE_FRAME.md": "8111bb36e9d29ed13a3d7d8287b2aca4cd77367a",
+    "research/reports/gate2b-step68ad-b3c3d6-division-free-lapse-frame.json": "ef417eb03b9419897fcf45343cfcb6c9c208cdfa",
+    "README.md": "60d4e355e9ac52a40417441a3238a35b2a007975",
+    "00_CURRENT_RESTART.md": "ff82a27ed8fcbad45c6f3883bdfc51eaad1410df"
   },
-  "verified_research_head_at_session_start": "51def2c42b3b983c00553c0c219cb8aeacb6376a",
-  "next_priority": "b3c3d6 PARTIAL: execute genuine original Step58 R=17/20 Step55 profile and Step45/55/58+b3c2+Step68o imports; certify B_M zero/nonzero and chart switching, b,d and central matching; positive lapse global BVP with true Step55 clocks; then Dirac/charges/temporal gauge/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "34f51603d0f36cb46b00a78c3b25e806f856e6fb",
+  "next_priority": "b3c3d6 STILL PARTIAL: run genuine original Step58 outer probe R=17/20 with Step45/55/58+b3c2+Step68o; certify B_N,B_M and derivatives, common zeros, center matching, b,d, positive lapses with true Step55 boundary conditions; then Dirac/charges/gauge/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "b914f7eaa6b6cd50061bfb8925693fa0a56ceeeb",
+  "verified_research_head_before_state_file": "fdbfd88dd1643794c2f87249367b2728ac246795",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -41,22 +41,19 @@
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
     "latest_stage": "b3c3d6_PARTIAL",
-    "last_step_scope": "ORIGINAL_STEP45_STEP58_EXACT_POINTWISE_SHIFT_JET_BM_ZERO_NOT_STEP55_NOT_DIRAC"
+    "last_step_scope": "EXACT_ALGEBRAIC_NONSINGULAR_LAPSE_FRAME_NOT_STEP55_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "original_step45_ward_exact_residuals": 9,
-    "original_step58_highest_lapse_certificate": "PASS",
-    "exact_pointwise_constraint_and_shift_jet_residuals": 7,
-    "exact_lapse_coefficients": 6,
+    "symbolic_exact_residuals": 8,
+    "of_which_definitional": 2,
+    "exact_positive_toy_residuals": 6,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
-    "original_step45_58_executed": true,
-    "original_step57_reexecuted": false,
+    "original_step45_58_reexecuted_this_session": false,
     "original_step55_68o_b3c2_executed": false,
     "original_step58_outer_R17_20_probe_executed": false,
-    "local_import_step57": "MINIMAL_AUTHENTICATED_STEP45_SHIM",
-    "source_blobs_SHA_verified": true
+    "original_pointwise_witness_values_reused": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -81,7 +78,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step45/58 now replayed from SHA-verified exact files, but full Step57/55/68o/b3c2 and original R=17/20 outer probe remain unexecuted (git DNS). The pointwise original Step58 B_M=0 witness is not a Step55 solution or Dirac tangent.",
+  "current_blocker": "Original Step55 profile + original Step58 outer probe R=17/20 not runnable in this local environment due to git DNS; cannot certify global Delta>0, common zeros, center, actual positive lapse BVP or Dirac.",
   "task_self_update": "2026-10-28: prepended conditional central curvature checkpoint; all prior 25279 prompt characters preserved; hourly schedule unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -325,36 +322,12 @@
     "source_blobs_verified": 24
   },
   "latest_verified_published_blobs": {
-    "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
-    "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
-    "numerics/hr_step68ad_c2d2a_temporal_replay.py": "e5a6c34ba95548527bc26d946f1e210d77355ee6",
-    "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
-    "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
-    "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "da207123de541e4f8b3b507cd9df8f8ca429c882",
-    "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
-    "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
-    "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
-    "tests/test_hr_step68ad_c2d2b_shift_second_jet.py": "c3fb478715587c02bad49f95093e9d4b06a0cae1",
-    "research/STEP68AD_C2D2B_EXACT_SHIFT_SECOND_JET_CENTER_LEMMA.md": "a364d1d8c4660903951e96db68e0750d5c376be4",
-    "research/reports/gate2b-step68ad-C2d2b-conditional-shift-second-jet.json": "33e39f996abb54b8c943ac4a07645ece863eafba",
-    "numerics/hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "3a996c87fd832d927066e0a68f17279df50ac84c",
-    "tests/test_hr_step68ad_c2d2b_exact_step68o_shift_shell.py": "7746ca04e8c46c34f17a8bf35c4f90cdd71b251b",
-    "research/STEP68AD_C2D2B_EXACT_STEP68O_SHIFT_SHELL_AUDIT.md": "a7a0fef0cd05519fa1830314489bc43c20a79498",
-    "research/reports/gate2b-step68ad-C2d2b-exact-Step68o-shift-shell.json": "5e7abde6bbd0265874fca2cecad47ed2689ddfdf",
-    "numerics/hr_step68ad_c2d2b_executed_temporal_probe.py": "c81c08502bdd50f6c13fbe09d1fcecf853036ffd",
-    "tests/test_hr_step68ad_c2d2b_executed_temporal_probe.py": "1b2ac08636874501a800d0ce61608bec8274cf08",
-    "research/reports/gate2b-step68ad-C2d2b-executed-physical-temporal.json": "a369c2e65205d228a734817df3d3a02cf0e41c3d",
-    "research/STEP68AD_C2D2B_AUTHENTIC_STEP58_EXECUTION_AND_INTERVAL_DEPENDENCY.md": "188df51cc5d81ba690eb10806a4f99a36a215d9c",
-    "numerics/hr_step68ad_c2d2c_step60_lower_quotient_replay.py": "96196aa02050a274d055831ef0e9091141aeed2e",
-    "tests/test_hr_step68ad_c2d2c_step60_lower_quotient_replay.py": "54d872c2b74169f4d8976341d1c05fea76c18aaa",
-    "research/reports/gate2b-step68ad-C2d2c-original-Step60-lower-quotient.json": "e1b1eadabe99ffa49ea070caaaffb35981a4b5d2",
-    "research/STEP68AD_C2D2C_AUTHENTIC_STEP60_LOWER_JET_SEVEN_CELL_REPLAY.md": "c7eb3be98ea269900f4729a76ed8712765e12e24",
-    "numerics/hr_step68ad_c2d2d_correlated_mean_value.py": "534a7b57294ccbcfcdaa0708c63db415d644fc5f",
-    "tests/test_hr_step68ad_c2d2d_correlated_mean_value.py": "9a44c876a6e319b759a126ae7cf83a579e6850d6",
-    "research/reports/gate2b-step68ad-C2d2d-Step60-AM-mean-value-compact.json": "d4c81ec912ec6cdfce19585f79d06a2e6761ea12",
-    "research/STEP68AD_C2D2D_CORRELATED_MEAN_VALUE_STEP60_AM_CONTINUUM.md": "37fad77c7db391ecb73fd15a3d872f5fe0195c24",
-    "README.md": "298ac002b81f0d4e03125c60480e4c8f9561572a"
+    "numerics/hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "968996282fadaab84c139b119b42c342da6fed3d",
+    "tests/test_hr_step68ad_b3c3d6_nonsingular_lapse_frame.py": "766b70dd13734d5aa4e57ab87a078c3b3506a8fa",
+    "research/STEP68AD_B3C3D6_DIVISION_FREE_LAPSE_FRAME.md": "8111bb36e9d29ed13a3d7d8287b2aca4cd77367a",
+    "research/reports/gate2b-step68ad-b3c3d6-division-free-lapse-frame.json": "ef417eb03b9419897fcf45343cfcb6c9c208cdfa",
+    "README.md": "60d4e355e9ac52a40417441a3238a35b2a007975",
+    "00_CURRENT_RESTART.md": "ff82a27ed8fcbad45c6f3883bdfc51eaad1410df"
   },
   "latest_conditional_composition": {
     "step": "68ad-C2d2e2",
@@ -443,13 +416,12 @@
     "status": "NOT_DELETED"
   },
   "previous_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT",
-  "latest_verified_research_head_before_state_update": "fdc3bc5de5d5a94d5193edd8e2862397132156b8",
+  "latest_verified_research_head_before_state_update": "fdbfd88dd1643794c2f87249367b2728ac246795",
   "last_verified_research_head_after_restart": "fd5690ab03dc8f62fdbb3b87a0291f38b816883a",
   "latest_session_original_source_blobs": {
-    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
-    "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
-    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
-    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step68o_temporal_interval_annulus.py": "c99caebc17f243784450ddff94fb061767e6d8e7",
+    "numerics/hr_step68ad_b3c3d6_authentic_shift_jet_chart_witness.py": "0144e44cd65fd69390776c1bb2d2b6120ffd74b4"
   },
   "forbidden_branch_heads_verified": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
@@ -482,17 +454,17 @@
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
   },
-  "latest_partial_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_EXACT_TOY_BVP_COUNTEREXAMPLE_ORIGINAL_STEP58_NOT_RUN",
+  "latest_partial_step": "b3c3d6_DIVISION_FREE_LAPSE_FRAME_PARTIAL",
   "latest_session_github_write": {
     "status": "SUCCESS",
     "branch": "research/gate2b-nonhomothetic-transfer",
-    "initial_head": "534d0453d1cb7adb3f491f26c82f8399b06c9d6b",
-    "latest_pre_state_head": "1b42518431f18d73a87ca392617a287c11a3b6c7",
+    "initial_head": "34f51603d0f36cb46b00a78c3b25e806f856e6fb",
+    "latest_pre_state_head": "fdbfd88dd1643794c2f87249367b2728ac246795",
     "created_files": 4,
     "updated_files": 2,
     "original_source_clone_dns": "Could not resolve host: github.com",
     "prohibited_branches_modified": false,
     "workflows_modified": false
   },
-  "last_session_new_result": "At order r4 of full lapse operator, E_i=O(r4) contributes 2e_i*L2; B_i L_i'=O(r5) for even C2 lapses. Three exact positive-even toy witnesses have same central ratio but distinct curvature."
+  "last_session_new_result": "Exact algebraic nonsingular lapse frame for Delta=B_N^2+B_M^2>0: u=B_N*N+B_M*M, v=-B_M*N+B_N*M, u'-alpha*u=beta*v, valid across B_M=0 if B_N nonzero; no Step55 or Dirac conclusion."
 }
