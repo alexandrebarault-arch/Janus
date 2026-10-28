@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : JETS POSITIFS AUX DEUX BORDS (2026-10-29)
+
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE TOUJOURS b3c3d6 : exécuter réellement le probe original Step58 sur Step55 R=17/20 avec Step45/55/58+b3c2/Step68o ; certifier B_N/B_M, dérivées, zéros/cartes/raccord centre, b,d, vrais lapses positifs et les deux bords physiques ; puis pullback Dirac, générateurs/charges, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables.**
+
+**AVANCÉE EXACTE CONDITIONNELLE (NON PHYSIQUE) :** extension du théorème de faisabilité des quatre amplitudes aux **huit valeurs et dérivées de N,M aux deux bords** pour UNE équation scalaire `A_N N+A_M M+B_N N'+B_M M'=0`, `E_N=E_M=0` exactement, `B_N,B_M>0` C1 sur anneau compact et `A_N,A_M` continus. Avec `u=B_N N+B_M M`, `s_i=(B_i'-A_i)/B_i`, `T=log(u_R/u_0)`, `L=∫min(s_N,s_M)`, `U=∫max(s_N,s_M)`, la solution C1 positive aux **huit jets prescrits** existe ssi : (i) l'équation scalaire est satisfaite aux deux bords par les jets imposés ; (ii) `L<T<U` si les pentes diffèrent quelque part, sinon `T=∫s_N`. Preuve par `w=B_M M/u` strictement entre 0 et 1, avec **valeurs ET dérivées de w** prescrites aux deux extrémités, interpolation de Hermite en couches de bord, sélecteurs min/max et combinaison convexe. Aucune contrainte additionnelle de jets finis n'apparaît pour ce problème scalaire ; **ceci n'est ni Step55, ni Step58 complet, ni Dirac.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_derivative && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_endpoint_jet_reachability` : 10 résidus SymPy exacts nuls (dont définitionnels), 12 contrôles jouets/gardes exacts PASS. `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_endpoint_jet_reachability.py' -v` : 4 tests PASS, non indépendants, 0 FAIL. Jouet analytique `B_N=B_M=1,A_N=0,A_M=-1,N=M=exp(r/2)` ; témoin d'incompatibilité des dérivées `N'(0)=M'(0)=0` malgré quatre amplitudes compatibles. Tests ne remplacent pas la preuve générale.
+
+**QUATRE LIVRABLES SCIENTIFIQUES PUBLIÉS, RELUS, SHAS :**
+- `numerics/hr_step68ad_b3c3d6_endpoint_jet_reachability.py` blob `802fc250f854fc71c6ed7486db29fad9206abc9c`, identique aux octets exécutés ; commit `8c8065895988f3d7a5cd14dde6cc4f40b94d70e1`.
+- `tests/test_hr_step68ad_b3c3d6_endpoint_jet_reachability.py` blob `19d2ef606d182db1139e1ecf8ee389f7faae298a`, identique aux octets exécutés ; commit `22da5d3229963c7e4a768df34f6550b96e91090c`.
+- `research/STEP68AD_B3C3D6_ENDPOINT_JET_REACHABILITY.md` blob `ead41a5f16378944bd70f8e65f08c6f5f09f2d6b` ; commit `8ccb63910224ddfc66a551fcb633465e1658f653`.
+- `research/reports/gate2b-step68ad-b3c3d6-endpoint-jet-reachability.json` blob `a893c7e5cfb242151e123579545e6f947135869b` ; commit `948936da7576a0db1c2c1098d66448c828298253`.
+- `README.md` blob `4c34edb7bf12ff9a3e5dd7193a595eb62b40ab55` ; commit `d581eb0c77dd64deb6c5f6b020f53eb9512c0762`.
+
+**PROVENANCE ET VERROUS :** HEAD GitHub au démarrage `5805344a22285df9ed79ab792899c557568ffa4f` (plus récent que le repère utilisateur `3172febd...`). Sources authentiques lues via connecteur : Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step68o `c99caebc17f243784450ddff94fb061767e6d8e7`, probe b3c3d5 `85469568e6df7c26920c1ebb87593dbf474deb04`. `git ls-remote` local : `Could not resolve host: github.com`. **Vrai probe original Step58 R=17/20 et moteurs complets Step55/Step68o/b3c2 NON exécutés** ; aucun signe physique B_N/B_M ni BVP Dirac certifié. Branches interdites au démarrage : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` (à recontrôler en fin de session). Aucun workflow modifié.
+
+**HISTORIQUE INTÉGRAL PRÉEXISTANT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : AMPLITUDES POSITIVES AUX DEUX BORDS (2026-10-28)
 
 **STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE : b3c3d6, exécuter réellement le probe original Step58 sur Step55 R=17/20, Step45/55/58+b3c2/Step68o, certifier B_N/B_M, leurs dérivées, zéros/cartes/raccord centre, b,d, lapses positifs et les deux bords physiques ; puis Dirac, générateurs/charges, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables.**
