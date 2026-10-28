@@ -6,9 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_THIS_SESSION",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING",
-    "schedule_unchanged": true
+    "status": "SUCCESS",
+    "old_prompt_characters": 32176,
+    "new_prompt_characters": 32679,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d6_endpoint_jet_reachability.py": "802fc250f854fc71c6ed7486db29fad9206abc9c",
@@ -26,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "d001d8b3ce58e0abf66b8df95f4ec53af9363cbc",
+  "verified_research_head_before_state_file": "331c244f897c0be016ee00d27d7760d6a3c0166d",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -72,7 +77,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Original Step58 outer R=17/20 probe not run; local git DNS cannot resolve github.com, though authenticated GitHub connector supports read/write. Physical B coefficient atlas, center matching, actual Step55 boundary jets and full Dirac remain unproved.",
-  "task_self_update": "2026-10-28: prepended sharp conditional four-amplitude reachability checkpoint to recurring prompt, preserved all 31058 previous characters, hourly schedule and enabled status unchanged.",
+  "task_self_update": "2026-10-29: prepended conditional eight-endpoint-jet reachability marker to existing automation prompt; all previous 32176 characters preserved, hourly schedule and enabled state unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
