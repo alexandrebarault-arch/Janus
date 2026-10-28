@@ -22,37 +22,43 @@
     "tests/test_hr_step68ad_b3c3d5_temporal_boundary_jet_rank.py": "419c6785aa1409edcd252694136b6a66ac4669ad",
     "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md": "a7f429fc82c2f7609a961f10d5e175dbd79efaf6",
     "research/reports/gate2b-step68ad-b3c3d5-temporal-jet-rank.json": "ef8fe6c789ed7a5bd519620574966b5e3c3ff2ec",
-    "README.md": "d8859c8c8190feecf9e8827b33703af774a44bc3",
-    "00_CURRENT_RESTART.md": "89a81fcf87988e7b90c23057617bb7abf04fc48e"
+    "README.md": "53aff81a882b94250e642b1629e1cab91736f89e",
+    "00_CURRENT_RESTART.md": "d1e8587b2d00ae3258b42a411f33376006a567e5",
+    "numerics/hr_step68ad_b3c3d6_bvp_counterexample.py": "54cad42ea5804a7f72b460fd5810cd2e64aded5a",
+    "tests/test_hr_step68ad_b3c3d6_bvp_counterexample.py": "f905c9ee823f08d2031def13925bac959910ecb7",
+    "research/STEP68AD_B3C3D6_POINTWISE_RANK_NOT_GLOBAL_BVP.md": "09261bac0e704ae4714cbac51a03fa10af360fbb",
+    "research/reports/gate2b-step68ad-b3c3d6-bvp-counterexample.json": "f7083967792e7c1027ff2a1953d8cc0ae2ce8b70"
   },
-  "verified_research_head_at_session_start": "2fea0149cf722e0d56ac77f977890588204841f8",
-  "next_priority": "b3c3d6: execute SHA-pinned original Step58 Step68o outer R=17/20 probe, establish first-lapse jet coefficients and global positive-lapse boundary-value compatibility; replay Step45/55/58+b3c2; then genuine Dirac pullback and charges/gauge.",
+  "verified_research_head_at_session_start": "da8dbfd5b7b431f8d04c08dc98e0df67cfbbbfea",
+  "next_priority": "b3c3d6 remains PARTIAL: execute SHA-pinned original Step58/Step68o probe R=17/20 and Step45/55/58+b3c2; establish B_N/B_M and global positive-lapse two-boundary compatibility; then genuine Dirac pullback, charges and temporal gauge quotient.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "c05e8cd6f2062d2bef6f0a9eb24527ce2a2df9ae",
+  "verified_research_head_before_state_file": "4c25a2c3589c0a9127dfc71818ac79c122280955",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D5_TEMPORAL_JET_PROJECTION_AND_CLOCK_DRIFT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_POINTWISE_RANK_NOT_GLOBAL_BVP.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "last_step_scope": "POINTWISE_JET_RANK_AND_CONDITIONAL_CENTER_DRIFT_NOT_DIRAC"
+    "last_step_scope": "EXACT_TOY_BVP_COUNTEREXAMPLE_NOT_ORIGINAL_STEP58",
+    "latest_stage": "b3c3d6_PARTIAL"
   },
   "last_reported_tests": {
-    "sympy_exact_zero_residuals": 12,
-    "exact_classification_checks": 6,
+    "sympy_exact_zero_residuals": 10,
+    "exact_sign_checks": 6,
+    "extra_positivity_identities": 2,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
     "original_step58_outer_probe_executed": false,
-    "scope": "Exact pointwise lapse-jet projection; conditional center drift from prior b3c2 bounds; no global Dirac tangency."
+    "scope": "Two exact toy operators with identical nonzero first-jet coefficients but opposite global positive even BVP outcomes. Not a Step58 result."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -476,5 +482,17 @@
   "latest_session_branch_heads_initial": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "latest_partial_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_EXACT_TOY_BVP_COUNTEREXAMPLE_ORIGINAL_STEP58_NOT_RUN",
+  "latest_session_github_write": {
+    "status": "SUCCESS",
+    "branch": "research/gate2b-nonhomothetic-transfer",
+    "initial_head": "da8dbfd5b7b431f8d04c08dc98e0df67cfbbbfea",
+    "latest_pre_state_head": "4c25a2c3589c0a9127dfc71818ac79c122280955",
+    "created_files": 4,
+    "updated_files": 2,
+    "original_source_clone_dns": "Could not resolve host: github.com",
+    "prohibited_branches_modified": false,
+    "workflows_modified": false
   }
 }
