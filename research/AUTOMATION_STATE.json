@@ -6,7 +6,15 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "status": "PENDING_ATTEMPT",
+    "status": "SUCCESS",
+    "success": true,
+    "verified_after_update": true,
+    "old_prompt_characters": 16220,
+    "new_prompt_characters": 17173,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d3"
   },
   "latest_session_published_blobs": {
