@@ -6,14 +6,15 @@
     "status": "NOT_RETRIED_THIS_SESSION; PRIOR_401_UNAUTHORIZED"
   },
   "latest_session_automation_update": {
-    "success": false,
-    "verified_after_update": false,
-    "permanent_instructions_preserved": null,
-    "schedule_unchanged": null,
-    "enabled": null,
+    "success": true,
+    "verified_after_update": true,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
     "timezone": "Europe/Paris",
     "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3",
-    "status": "PENDING_SEPARATE_AUTOMATION_TOOL"
+    "old_prompt_characters": 7180,
+    "new_prompt_characters": 8136
   },
   "latest_session_published_blobs": {
     "scripts/hr_step68ad_c2d2e5b3b2c2b2d2d2b2_clock_boundary_flux.cjs": "006ad7eca13d70c872b3972c9eb137b94d12a7c1",
@@ -70,7 +71,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Clock translations are exact bulk canonical symmetries but temporal gauge quotient and improved generator boundary domain remain unknown; bare Step55 clock fluxes cannot both vanish for positive lapses and any V without counterterm. Full Dirac temporal preservation and boundary counterterms not certified.",
-  "task_self_update": "2026-10-28: prepended d2d2b1 marker; prior 6206-character prompt preserved, schedule/timezone/enabled verified unchanged.",
+  "task_self_update": "2026-10-28: prepended d2d2b2 marker, all 7180 prior prompt characters preserved verbatim, hourly schedule/timezone/enabled verified unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
