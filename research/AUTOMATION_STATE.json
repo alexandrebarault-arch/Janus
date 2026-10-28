@@ -6,59 +6,54 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "success": true,
-    "verified_after_update": true,
-    "old_prompt_characters": 24029,
-    "new_prompt_characters": 25279,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_annular_interval_screen.py": "ec8cc8b744b61305d20af77c84461c2a037c42d7",
-    "tests/test_hr_step68ad_b3c3d6_annular_interval_screen.py": "add6a6bc7f41052dbe861f0549389ba273f2648e",
-    "research/STEP68AD_B3C3D6_ANNULAR_POSITIVE_LAPSE_INTERVAL_SCREEN.md": "edb54bc560de0f38d004435e400d884ca9ffd183",
-    "research/reports/gate2b-step68ad-b3c3d6-annular-positive-lapse-screen.json": "a9864033e2fc6f6fe9a5855d2080766bad5fed68",
-    "README.md": "3a566c9ad1c2f5a3ac2227a986527a5e5fb737b1",
-    "00_CURRENT_RESTART.md": "42d8cdeaf22f1d645927936dd0235f78f29d2fa6"
+    "numerics/hr_step68ad_b3c3d6_center_ratio_curvature.py": "3ecd9f7a166834e851e6b34e23130642e7479bf1",
+    "tests/test_hr_step68ad_b3c3d6_center_ratio_curvature.py": "bdcf750390d33bf1bd4422d420abe3e4e39dc50d",
+    "research/STEP68AD_B3C3D6_FORMAL_CENTER_LAPSE_RATIO_CURVATURE.md": "e8f02659827a4931654864f8d8204e99c612f0aa",
+    "research/reports/gate2b-step68ad-b3c3d6-formal-center-ratio-curvature.json": "82f40c37a6baa56b119e4c301067a66295c8e1f1",
+    "README.md": "4fb6feee7b94b84dcf01af7a31e4e4dc34739120",
+    "00_CURRENT_RESTART.md": "0fc48dbb34afa041dc161b47a623e584cbef3104"
   },
   "verified_research_head_at_session_start": "534d0453d1cb7adb3f491f26c82f8399b06c9d6b",
-  "next_priority": "b3c3d6 PARTIAL: execute SHA-pinned original Step58 outer probe and Step45/55/58+b3c2; certify B_M nonzero annuli, B_N/B_M and center matching; apply exact interval feasibility screen to genuine positive lapses and true Step55 boundary conditions; then Dirac, charges, temporal gauge, 4D.",
+  "next_priority": "b3c3d6 PARTIAL: execute SHA-pinned original Step58 outer probe at R=17/20, Step45/55/58+b3c2; compute original B_N/B_M and r^4 A_N/A_M coefficients b,d on true E=0 shell; center matching and positive lapse BVP with true Step55 clock boundary conditions; then Dirac, charges, temporal gauge, 4D.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-28",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "1b42518431f18d73a87ca392617a287c11a3b6c7",
+  "verified_research_head_before_state_file": "aeddf0cc2c24453e9a82d60861bbfd11a74786fb",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ANNULAR_POSITIVE_LAPSE_INTERVAL_SCREEN.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_FORMAL_CENTER_LAPSE_RATIO_CURVATURE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
     "latest_stage": "b3c3d6_PARTIAL",
-    "last_step_scope": "CONDITIONAL_ANNULAR_INTEGRAL_INTERVAL_NECESSARY_SCREEN_NOT_ORIGINAL_STEP58"
+    "last_step_scope": "CONDITIONAL_FORMAL_CENTER_RATIO_CURVATURE_NOT_ORIGINAL_STEP58"
   },
   "last_reported_tests": {
-    "sympy_exact_assertions": 10,
+    "sympy_exact_residuals": 11,
+    "positive_exact_toy_families": 2,
     "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
     "original_step45_55_58_imports_reexecuted": false,
     "b3c2_unittest_executed": false,
     "original_step58_outer_probe_executed": false,
-    "scope": "Conditional annular positive-lapse interval exclusion; rational toy examples, no original Step58 coefficients"
+    "scope": "Formal ratio curvature on exact E=0 shell, and E!=0 counterexamples; not Step58 coefficients"
   },
   "github_write_probe": {
     "status": "SUCCESS",
     "method": "mcp__GitHub__create_file and update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
-    "scientific_files_created": 4
+    "scientific_files_created": 4,
+    "readback_verified": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -76,7 +71,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Git DNS Could not resolve host github.com; original Step58 outer probe and full imports not executed. New interval screen applies only to conditional W'+pW=hN and toy rational coefficients, not Step58.",
+  "current_blocker": "Git local DNS Could not resolve host github.com; original Step58 probe and full imports not executed. New center curvature theorem is formal conditional and toy-verified; authentic coefficients b,d unknown.",
   "task_self_update": "2026-10-28: prepended annular interval screen checkpoint; all 24029 prior prompt characters preserved, hourly schedule unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
