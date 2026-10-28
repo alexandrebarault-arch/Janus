@@ -1,0 +1,43 @@
+{
+  "step": "68ad-C2d2e5b3b2c2b2d2d2b3c3a",
+  "scope": "PARTIAL_EXACT_ORIGINAL_STEP45_RADIAL_SHIFT_COVARIANCE; NOT_FULL_STEP58_REPLAY",
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "original_sha": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f"
+  },
+  "executed": {
+    "sympy_exact_equalities": 16,
+    "unittest_cases": 1,
+    "unittest_replays_same_16": true,
+    "independent_v8_exact_sign_checks": 7,
+    "failures": 0,
+    "original_python_modules_reexecuted": false,
+    "original_step58_full_clone_replay": false
+  },
+  "verified_objects": {
+    "Ag": 1,
+    "Bg": 0,
+    "Af": 1,
+    "Bf": 0,
+    "Dg": 2,
+    "K": 2,
+    "Fz": 2,
+    "C_zprime": 0
+  },
+  "identity": "For each listed expression X of radial density weight w: coefficient of V'' in delta_V X vanishes and coefficient of V' in delta_V X equals w*X; the V coefficient equals X' by the prolongation chain rule.",
+  "conditional_consequence": "If the full reduced secondary C_red is a radial scalar density of weight one and the diagonal diffeomorphism generator is differentiable on the selected domain, delta_V C_red=(V*C_red)' so the diagonal shift cannot alter the bulk preservation equation on C_red(r)=0. This is NOT a proven boundary charge statement and C_red's full Lie identity was not independently expanded here.",
+  "central_clock_corollary": "Assuming b3c2 central Step58 ratio, 2407/5000 < dot(tg-tf)(0)/N(0) < 963/2000; this is conditional and not a no-go JANUS.",
+  "source_faithfulness": "Ag,Bg,Af,Bf,Dg,K,Fz copied algebraically from byte-authenticated original Step45; C_zprime formula cross-checked against Step57; code published and Git blobs match executed local bytes.",
+  "limitations": [
+    "No execution of original Step45/55/58 Python engines in complete clone",
+    "No independent explicit full C_red radial-density identity test",
+    "No improved boundary generator or charge",
+    "No Dirac matrix rank, tertiary constraints, K=0/J=0, 4D, stability or observables"
+  ]
+}
