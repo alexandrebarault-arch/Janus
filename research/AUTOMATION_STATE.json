@@ -9,13 +9,13 @@
     "status": "SUCCESS",
     "success": true,
     "verified_after_update": true,
-    "old_prompt_characters": 17173,
-    "new_prompt_characters": 18159,
+    "old_prompt_characters": 18159,
+    "new_prompt_characters": 19331,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d4"
+    "next_step_marker": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5"
   },
   "latest_session_published_blobs": {
     "numerics/hr_step68ad_b3c3d4_relative_clock_lapse_curvature.py": "02ea2c65ff040ce96f42fd8ecf79eeea9bebee56",
