@@ -1,3 +1,24 @@
+# JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, CADRE RÉGULIER SANS DIVISION PAR B_M (2026-10-28)
+
+**PROCHAINE ÉTAPE b3c3d6 INCHANGÉE : exécuter le vrai probe Step58 sur Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M et leurs dérivées, les zéros communs, cartes et raccord central, coefficients b,d, lapses strictement positifs et conditions réelles de bord. Puis Dirac, charges/générateurs, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+**AVANCÉE EXACTE MAIS CONDITIONNELLE, NON PHYSIQUE :** Pour A_N N+A_M M+B_N N'+B_M M'=0 sur un intervalle où B_i sont C1 et Delta=B_N²+B_M²>0, poser u=B_N N+B_M M et v=-B_M N+B_N M. En notant X=B_N'-A_N, Y=B_M'-A_M, alpha=(X B_N+Y B_M)/Delta, beta=(-X B_M+Y B_N)/Delta, on a exactement u'-alpha*u=beta*v ; N=(B_N u-B_M v)/Delta et M=(B_M u+B_N v)/Delta. Facteur intégrant I=exp(-int alpha) et terminal illustratif M(R)=N(R) disponibles dans la note. La carte reste régulière aux zéros de B_M quand B_N!=0 ; elle ne résout PAS Delta=0, notamment le centre b3c2 où B_i=O(r^4). Positivité et vraies conditions Step55 ne suivent PAS de cette identité.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_atlas && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_nonsingular_lapse_frame` : 8 résidus SymPy exacts (2 définitionnels) PASS, 6 résidus rationnels jouets PASS, témoin ponctuel précédent repris (NON recalculé par Step58). `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_nonsingular_lapse_frame.py' -v` : 4 unittest PASS non indépendants, 0 FAIL. Exemple jouet positif N=M=1+r², B_N=1, B_M=r-1/2, traversant B_M=0 à r=1/2. Sur le témoin original publié : B_N=224/125, B_M=0, Delta=50176/15625>0 ; les dérivées B_N',B_M' et alpha,beta demeurent inconnues. **Step55/Step68o/b3c2 et probe original Step58 R=17/20 NON rejoués.** `git ls-remote` local : `Could not resolve host: github.com`.
+
+**LIVRABLES PUBLIÉS SUR research/gate2b-nonhomothetic-transfer ET RELUS :**
+- `numerics/hr_step68ad_b3c3d6_nonsingular_lapse_frame.py` blob `968996282fadaab84c139b119b42c342da6fed3d`, identique aux octets testés.
+- `tests/test_hr_step68ad_b3c3d6_nonsingular_lapse_frame.py` blob `766b70dd13734d5aa4e57ab87a078c3b3506a8fa`, identique aux octets exécutés.
+- `research/STEP68AD_B3C3D6_DIVISION_FREE_LAPSE_FRAME.md` blob `8111bb36e9d29ed13a3d7d8287b2aca4cd77367a`.
+- `research/reports/gate2b-step68ad-b3c3d6-division-free-lapse-frame.json` blob `ef417eb03b9419897fcf45343cfcb6c9c208cdfa`.
+- `README.md` blob `60d4e355e9ac52a40417441a3238a35b2a007975`.
+
+**PROVENANCE ET SÉCURITÉ :** GitHub HEAD initial `34f51603d0f36cb46b00a78c3b25e806f856e6fb`, HEAD après publication des quatre livrables `ae30d9dce1b0d415c0b77a55631f23c737ec1336`, puis README `35f4d83d7c891676b32c68920fb8f0607c56ab31`. Sources originales consultées en direct : Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, Step68o blob `c99caebc17f243784450ddff94fb061767e6d8e7`, témoin original blob `0144e44cd65fd69390776c1bb2d2b6120ffd74b4`. Branches interdites initiales `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. **Vérifier le HEAD final et les deux branches après index.**
+
+**CHECKPOINT PRÉFIXÉ ; HISTORIQUE PRÉEXISTANT CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — REPRISE PRIORITAIRE : b3c3d6 PARTIEL, TÉMOIN AUTHENTIQUE STEP58 B_M=0 (2026-10-28)
 
 **ÉTAPE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ÉTAPE : exécuter le probe original Step58 sur le VRAI profil Step55 à R=17/20 avec Step45/55/58+b3c2 et Step68o ; certifier B_N/B_M, zéros, cartes et raccord centre, coefficients b,d et lapses positifs aux vrais bords ; ensuite pullback Dirac, charges/générateurs, jauge temporelle, six couples/K=0/J=0/4D/stabilité/observables. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
