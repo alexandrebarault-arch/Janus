@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CERTIFICAT DUAL FAIBLE GLOBAL (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD lu en direct à la reprise : `7d11204a033abd89062612b21ef08a8862b1f372`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Avancée **EXACTE mais CONDITIONNELLE**, avec témoin **JOUET NON PHYSIQUE** ; aucune validation du Step58 réel ni de Dirac.
+
+**THÉORÈME GLOBAL :** pour `T=A_N N+A_M M+B_N N'+B_M M'+E_N N''+E_M M''` et `N,M>0` de classe C², si `φ≥0`, `φ=φ'=0` aux deux bords, alors `∫φT=∫(Q_N N+Q_M M)`, `Q_i=φ A_i-(φ B_i)'+(φ E_i)''`. Si `Q_N,Q_M≥0` partout et `Q_N+Q_M>0` sur un ouvert, le BVP positif est **impossible**, **sans borne de jets** et même avec E non nuls. Témoin polynomial à `R=17/20, ε=1/100` : `Q_N,Q_M≥9467/10000*x⁴(1-x)²>0` sur `0<x<1`, donc impossibilité exacte dans ce **JOUET**. Contrôle négatif `A_M=-A_N`, `N=M=1` solution : la petitesse de B/E ne suffit jamais seule.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_dual_weak && PYTHONPATH=. python -m unittest discover -s tests -v` : **5 unittest SymPy PASS, 0 FAIL**, non indépendants ; `python -m compileall -q numerics tests` PASS. Contre-vérification SymPy séparée `python /mnt/data/janus_dual_weak/independent_sympy_check.py` : **9 identités/conditions de bord et 6 inégalités ponctuelles rationnelles PASS** ; la preuve uniforme est analytique, non fondée sur un maillage. Aucun moteur original Step45/46/55/58 exécuté pendant cette session, aucun coefficient physique corrigé certifié.
+
+**LIVRABLES GITHUB PUBLIÉS ET RELUS (octets code/tests identiques aux octets exécutés) :**
+- `numerics/hr_b3c3d6_weak_dual_lapse_certificate.py` — blob `5f13737e3d13b4eb2a49377d570407ccebe42414`.
+- `tests/test_hr_b3c3d6_weak_dual_lapse_certificate.py` — blob `c382be0f84cab7a5d5cf1adb5e0182c1ab13e312`.
+- `research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md` — blob `985bf6626f409d89609c9f780adfe2257eb5a5fc`.
+- `README.md` — blob `93f6d6a59e6f42b01511f008e81048bba0035f5a`.
+Commits des trois livrables : `7a1f25aab454142b3a2324e6eed0d85560f96b83`, `72d612d3310274e34b363bcfca8ed238ab47f492`, `23ed877393a0f09f7d06dfceaf5991c3f5f24099`. README : `f646c740930462f88665ab1572eef526248563f7`. GitHub DNS local indisponible mais connecteur GitHub lecture/écriture fonctionnel.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : rejouer les cinq originaux SHA-authentifiés et le candidat cubique à `1/4,1/2,7/10,17/20` ; comparer les six coefficients affine/cubique et les coquilles, factoriser/enclore A/B/E et leurs dérivées, tenter le dual **seulement si les vrais coefficients le permettent**, raccorder le centre et le BVP positif à deux vrais bords, puis Dirac/charges/jauge/six couples/K=0/J=0/4D/stabilité/observables. **Ne modifier ni main, ni research/v2-flrw, ni workflows. HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTRE-EXEMPLE ANALYTIQUE PAIR À DEUX LAPSES (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au début de la session : `f7ae485bfd63ad5683c2dfa24940fc9407aa46c7`. Nouvelle avancée : un opérateur JOUET de type Step58 admet deux lapses strictement positifs, analytiques pairs, avec ratio central `10371/20000` dans la bande b3c2 et égalité `N(R)=M(R)=1` à `R=17/20`, alors que `B_N=-epsilon*r^5` tend uniformément vers zéro et que l'opérateur `epsilon=0` interdit le terminal. La pente terminale `N'(R)=-8000/(4913*epsilon)` et l'amplitude centrale `N(0)=exp(200/(289*epsilon))` divergent. **L'analyticité seule des deux lapses ne suffit donc pas à exclure cette singularité ; une borne quantitative d'amplitude et/ou de jets est indispensable.** Aucun résultat physique Step58/Dirac n'en découle.
