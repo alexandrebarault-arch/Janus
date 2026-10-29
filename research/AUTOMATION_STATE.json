@@ -8,8 +8,8 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 49862,
-    "new_prompt_characters": 51072,
+    "old_prompt_characters": 51072,
+    "new_prompt_characters": 51967,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
@@ -17,46 +17,42 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_weak_dual_lapse_certificate.py": "5f13737e3d13b4eb2a49377d570407ccebe42414",
-    "tests/test_hr_b3c3d6_weak_dual_lapse_certificate.py": "c382be0f84cab7a5d5cf1adb5e0182c1ab13e312",
-    "research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md": "985bf6626f409d89609c9f780adfe2257eb5a5fc",
-    "README.md": "93f6d6a59e6f42b01511f008e81048bba0035f5a",
-    "00_CURRENT_RESTART.md": "e734c7097c22f0058659b56b9006912dc964f412"
+    "numerics/hr_b3c3d6_dual_sign_feasibility.py": "58237b11545c75ff1b9877052f86869866dd7936",
+    "tests/test_hr_b3c3d6_dual_sign_feasibility.py": "fbdcde781c2f8ac22947ff689945a2f558c5f97f",
+    "research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md": "c50768fa98827aa05ae2125527373240827dc5bc",
+    "00_CURRENT_RESTART.md": "104c96b952ab4a90a343c2e425f66d3021c66d21"
   },
-  "verified_research_head_at_session_start": "7d11204a033abd89062612b21ef08a8862b1f372",
-  "next_priority": "Execute five SHA-authenticated Step45/46/55/58 originals plus cubic Step58 candidate at four radii; compare six affine/cubic coefficients and shells; certify physical A/B/E derivative enclosures and only then attempt dual positivity screen; center and positive two-boundary BVP; Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "9f70b866e5b62480e97dde632ac8e428e5bb9e0f",
+  "next_priority": "Replay SHA-authenticated original Step45/46/55/58 plus corrected cubic candidate at 1/4,1/2,7/10,17/20; compare six coefficients affine/cubic, shell residuals; enclose signs/zeros/derivatives A/B/E and assess integrated dual sign viability; center and positive two-boundary BVP; Dirac six pairs, charges/gauge, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "a21334e667d45fb85a83eece242f6120e151f1c9",
+  "verified_research_head_before_state_file": "1cc58f4193d634bcc8c89559fbb2d3bb19f97a7a",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_WEAK_DUAL_POSITIVITY_SCREEN_NONPHYSICAL",
-    "last_step_scope": "Exact conditional global weak-dual obstruction for positive C2 lapse pairs using phi A-(phi B)'+(phi E)'' with phi=phi'=0 at endpoints. Nonphysical polynomial witness with nonzero B/E and uniform Q_i>=9467/10000*x^4*(1-x)^2. No original physical Step58 cubic replay or Dirac."
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_INTEGRATED_DUAL_SIGN_NECESSITY_NONPHYSICAL",
+    "last_step_scope": "Exact necessary integrated sign screen for weak dual: phi=phi'=0 implies integral Q_i=integral phi*A_i; Q_i>=0 needs nonnegative weighted A_i integral. If A_M<0 on positive support of phi, componentwise nonnegative dual impossible regardless B/E. Toy integral -8/105; no physical uniform sign proof, no original cubic Step58 replay."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 5,
     "unittest_independent": false,
     "failed_final": 0,
+    "initial_syntax_only_test_failure_corrected": true,
     "python_compileall_pass": true,
-    "independent_sympy_separate_checks": {
-      "symbolic_and_boundary": 9,
-      "rational_point_inequalities": 6,
-      "scope": "Separate transcription; not independent validation of physical Step58; uniform inequality proved analytically."
-    },
+    "exact_toy_integral": "-8/105",
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "notes": "Exact SymPy code/test blob SHAs match executed local bytes. Full physical original modules read via connector, NOT executed. Four-radius cubic candidate NOT executed."
+    "notes": "SymPy exact test module and code SHA match local tested bytes; independent original physical integration not performed."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -68,7 +64,7 @@
     "original_full_step58_integration_executed": false,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "README_updated": true
+    "README_updated": false
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -86,8 +82,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical corrected cubic Step58 original full six-coefficient probe at 1/4,1/2,7/10,17/20 still not executed. Local container GitHub DNS fails, connector GitHub read/write works. The new weak-dual certificate is conditional and its polynomial example is nonphysical; no physical dual multiplier or physical coefficient derivative enclosures certified.",
-  "task_self_update": "2026-10-29: prepended weak-dual exact conditional theorem marker to 49862-character automation prompt, preserved entire previous prompt (new 51072 chars), hourly schedule, timezone Europe/Paris, enabled state.",
+  "current_blocker": "Original physical Step58 with corrected cubic jets at four radii NOT replayed this session: GitHub connector read/write works, but container GitHub DNS fails, so original Python modules were not downloaded into local runtime. New sign obstruction is purely mathematical and conditional; A_M sign not uniformly certified on physical Step55.",
+  "task_self_update": "2026-10-29: appended-only dual integrated sign marker to 51072-character automation prompt, preserving previous 51072 characters, schedule, timezone, enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
