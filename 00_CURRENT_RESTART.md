@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ALIGNEMENT DES RAYONS DÉCIMAUX STEP55/58 (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise authentifié `ec29a842ccc4bd5402b9e2e4d1d2eeefce3c11b1` ; branche unique `research/gate2b-nonhomothetic-transfer`. Correction de reproductibilité **NUMÉRIQUE**, sans nouvelle preuve physique ni rejeu original complet.
+
+**DÉFAUT DÉMONTRÉ EXACTEMENT :** le candidat cubique Step58 intégrait l'EDO Step55 jusqu'à `sf=radius**2` (produit float), puis évaluait les jets à `sr=mp.mpf(str(radius))**2`. Aux quatre rayons `1/4,1/2,7/10,17/20`, l'erreur rationnelle exacte `sf-r²_decimal` vaut respectivement `0,0,-29/450359962737049600,-9/112589990684262400` (≈ `-6.44e-17`, `-7.99e-17` pour les deux derniers). Le nouveau helper `endpoint_s(radius)` calcule le carré en Decimal puis arrondit une seule fois en float ; garde `abs(F(sf)-F(radius)**2)<1e-40` compatible avec l'arrondi mpmath à 45 chiffres. Les valeurs numériques précédentes ne sont ni invalidées ni certifiées.
+
+**EXÉCUTION RÉELLE :** `cd /mnt/data/janus_endpoint_radius && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 unittest PASS, 0 FAIL**, arithmétique Fraction/Decimal et garde mpmath ; `python -m compileall -q numerics tests` PASS. **AUCUN** moteur original Step45/46/55/58, candidat cubique complet ou test d'intégration exécuté. Cinq sources originales relues via GitHub et leurs blobs SHA correspondent au manifeste : Step45 `66aa4384...`, Step46 `bac025c2...`, Step55-normalized `a54a6acf...`, Step55-barrier `a6e70041...`, Step58 `802c23ae...`. Container DNS/connexion directe GitHub indisponibles ; connecteur lecture/écriture opérationnel.
+
+**PUBLIÉ ET RELU :** `numerics/hr_b3c3d6_decimal_radius_endpoint.py` blob `db129eb0fad5357e686710e3d3f2ee911b85c939` ; `tests/test_hr_b3c3d6_decimal_radius_endpoint.py` blob `d32b016f356f79259b2be62326b3945207ebf348` ; candidat `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob corrigé `8162e35deed964a5ec2cbca53bc32cc5c875e420` (non exécuté) ; audit `research/STEP68AD_B3C3D6_STEP55_DECIMAL_RADIUS_ENDPOINT_REPLAY_GUARD.md` blob `6ce2e9bef362d864c47c02290047cbae2d1dfeae` ; README préfixé blob `95404d390a126bc9b7f5d366846b174268485c4a`. Octets du helper/tests concordants avec les tests locaux ; les fichiers GitHub ont été relus.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : exécuter les cinq sources SHA-authentifiées, ancien affine et nouveau cubique aux quatre rayons ; comparer les six coefficients, coquilles, convergences d'intégration et jets, puis factorisation/enclosures A/B/E, centre et BVP positif à deux vrais bords, Dirac six couples/charges/jauge temporelle/K=0/J=0/4D/stabilité/observables. `main`, `research/v2-flrw`, workflows intacts. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : DUAL FAIBLE ADAPTÉ À UN CÔNE DE RATIOS (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub lu au démarrage `a009f3e67f6389f790c0255963954b0f64f58574` ; branche autorisée `research/gate2b-nonhomothetic-transfer`. Avancée mathématique **EXACTE mais CONDITIONNELLE**, non physique : la négativité de `A_M` empêche éventuellement le certificat dual `Q_N,Q_M>=0` composante par composante, mais **n'interdit pas** un certificat adapté à un cône global de ratios.
