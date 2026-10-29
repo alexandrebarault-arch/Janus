@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : BORNE UNIFORME STEP57 CORRIGÉE (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Étape b3c3d6 toujours PARTIELLE ; prochaine action prioritaire inchangée : **exécuter le probe original Step58 sur Step55 R=17/20**, avec Step45/55/57/58/Step68o/b3c2 SHA-authentifiés, certifier les six coefficients A_N,A_M,B_N,B_M,E_N,E_M, dérivées, zéros, cartes et raccord au centre, lapses strictement positifs et les deux véritables bords ; ensuite Dirac six couples/rang/tertiaires, charges/générateurs, quotient de jauge temporelle, K=0/J=0, dynamique 4D, stabilité et observables.
+
+**AVANCÉE EXACTE MAIS STRICTEMENT RESTREINTE :** après correction de l'omission historique de `1/Lf` dans le coefficient `eta''*N'` original Step57, et relecture de `Sg=r*Lg` sur Step55, on démontre pour `0<r<=17/20` : `c_Nprime(r)<-(17/2)r`. Identité exacte : avec `s=r²`, `B=(2/5)*(5787707228025044/10^16)`, `ug=1+3s/2000`, `uf=1-3s/2500`, `-c_Nprime/r=2(1+15s/2000)(1-s/62500)/(B*ug*uf²)`. Les bornes rationnelles `B<7/30`, `ug<501/500`, `uf²<=1`, `1-s/62500>9999/10000` donnent `-c_Nprime/r>1666500/195223>17/2`. Limite centrale exacte `-12500000000000000/1446926807006261` contre `-2` dans les anciens scripts. La borne faible ancienne `c_Nprime<-(19999/10000)r` reste vraie, mais son ancienne formule et son certificat dérivé ne sont PAS valides. L'ancienne borne de ratio `M(0)/N(0)<804/2249` reste INVALIDÉE. Le terme `eta''*N` n'est pas évalué : ce n'est ni le symbole complet, ni Step58, ni Dirac, ni un no-go JANUS.
+
+**EXÉCUTÉ LOCAL :** `cd /mnt/data/janus_20261029 && PYTHONPATH=. python -m numerics.hr_b3c3d6_step57_corrected_uniform_bound` : 5 résidus SymPy exacts nuls, 10 gardes rationnelles PASS, 0 FAIL ; `PYTHONPATH=. python -m unittest discover -s tests -v` : 5 unittest PASS, non indépendants, 0 FAIL. Une erreur de reconstruction intermédiaire `Sg/r=A*ug` a été détectée et corrigée en `Sg/r=Lg=A*ug²` avant publication scientifique finale. Les expressions originales Step57 (blob bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f) et Step55 (blob a6e7004120d0a166a3a8973c2fbe1487a8eb70fe) ont été lues en direct. **Moteurs originaux Step45/55/57/58 et vrai probe Step58 R=17/20 NON exécutés** : `git ls-remote` échoue par DNS local, malgré GitHub connector opérationnel.
+
+**QUATRE FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS, SHA BLOBS ÉGAUX AUX OCTETS LOCAUX :**
+- `numerics/hr_b3c3d6_step57_corrected_uniform_bound.py` : `cac0932de7c3ac35a3866963334e2daee6a85b0b`.
+- `tests/test_hr_b3c3d6_step57_corrected_uniform_bound.py` : `3ed48cd774a154a40f8418f6f35661bc6ca86a64`.
+- `research/STEP68AD_B3C3D6_STEP57_CORRECTED_UNIFORM_SIGN.md` : `deda3eb7d6839c6a89ac4ebe05621a68a9ac47ca`.
+- `research/reports/gate2b-b3c3d6-step57-corrected-uniform-sign.json` : `7bffa9b29e0721035a7dda6098d7c4f96cd561e6`.
+- `README.md` préfixé, blob `47d60eacc2314b66ed963219c214f6d7584d2000`.
+
+**PROVENANCE :** HEAD GitHub de reprise `daa5b5c9d43f171c96ef26b408c4dce3cf332a7c` ; HEAD après README `3c91d13bf46cae5bdd336290cae5120c2c4a2d37`. Branches interdites vérifiées inchangées avant checkpoint : `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow modifié. L'intégralité de l'historique est conservée ci-dessous.
+
+---
+
 # JANUS — CHECKPOINT CORRECTIF b3c3d6 PARTIEL : ERREUR FACTEUR 1/Lf STEP57 (2026-10-29)
 
 **STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 TOUJOURS PARTIELLE.** PRIORITÉ INCHANGÉE : vrai probe original Step58 sur Step55 R=17/20, avec Step45/55/57/58/Step68o/b3c2, A_N/A_M/B_N/B_M/E_N/E_M et dérivées/zéros/cartes/raccord centre, lapses positifs avec les deux vrais bords ; ensuite vrai Dirac/charges/générateurs/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.
