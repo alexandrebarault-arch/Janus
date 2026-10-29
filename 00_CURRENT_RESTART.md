@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : JETS MIXTES ODE ET CHAMPS DE POUSSIÈRE (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu `6f697c915677e07ed16405729b152cde1b059e29`. Avancée scientifique locale : garde formelle exacte des jets mixtes `F(r,U,rG)` d'ordre radial 0 à 3. Prochaine étape INCHANGÉE : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**THÉORÈME RESTREINT :** si `2sU_s=G(s,U)-2U` et `Uc` est le jet cubique exact en `s0=r0²>0`, les jets 0/1/2/3 de `F(r,U(r²),rG(r²,U(r²)))` sont reproduits par `Uc` pour F lisse. Remplacer `rG` par `d(r²Uc)/dr` modifie en général le troisième jet de F de `-16r0^6 U_ssss F_v`. Témoin rationnel JOUET : `U=3+2s+s³+s⁴`, `G=2u+2s(2+3s²+4s³)`, `r0=1/2`, défaut `D'''=-6`. Le candidat Step58 corrigé déjà publié utilise bien `pLfr=rG` pour les champs dépendants `pf,pSf` : conserver ce choix. Cela ne certifie A/B/E physiques ni le BVP.
+
+**TESTS LOCAUX EXÉCUTÉS :** `cd /mnt/data/janus_b3c3d6_mixedjets && PYTHONPATH=. python -m unittest discover -s tests -v` : **5 PASS, 0 FAIL**, SymPy exact, témoins non indépendants ; `python -m compileall -q numerics tests` PASS. Aucun moteur original Step45/46/55/58 exécuté dans cette session ; sources et blobs lus via connecteur. DNS raw.githubusercontent.com du container échoue. Les quatre rayons et les six coefficients physiques restent NON REJOUÉS.
+
+**LIVRABLES PUBLIÉS ET RELUS :**
+- `numerics/hr_b3c3d6_mixed_ode_jet_guard.py` blob `fc14fa8b401699d37d2f2e530cb54925aad33898`.
+- `tests/test_hr_b3c3d6_mixed_ode_jet_guard.py` blob `61ba4b0d35753cbfc1217878f642ffbb30810918`.
+- `research/STEP68AD_B3C3D6_MIXED_ODE_JET_DEPENDENCY_AUDIT.md` blob `b9f4367413bb3115098f42a0dddf55749c3f58e1`.
+Les blobs code/tests relus sont identiques aux octets testés localement.
+
+**PRIORITÉS :** (1) rejeu authentique des cinq sources Step45/46/55/58 avec candidat cubique aux rayons 1/4, 1/2, 7/10, 17/20 ; comparer six coefficients affine/cubique et contrôles de coquille ; (2) factorisation/enclosures, raccord analytique/C∞ centre, budgets de jets, BVP positif deux vrais bords ; (3) Dirac six couples, charges/jauge, K=0/J=0, dynamique 4D, stabilité, observables. **Ne toucher ni main, ni research/v2-flrw, ni workflows. HISTORIQUE INTÉGRAL CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : BUDGET EXACT DES JETS DE LAPSES AU BORD (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à cette reprise : `f91328dad757e383f69f899628cebb476e8be3eb`. HEAD après trois livrables scientifiques : `765a5a44e09e5d56caa954ba5e831e0fb066d578`. Étape effective `b3c3d6_PARTIAL_FULL_OPERATOR_ENDPOINT_JET_BUDGET`. Prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
