@@ -15,6 +15,7 @@ import sympy as sp
 from .hr_step55_normalized_secondary import normalized_symbolic, check_original_source_blobs
 from .hr_step58_temporal_operator import physical_operator
 from .hr_b3c3d6_ode_consistent_jet_map import endpoint_jets, cubic_U
+from .hr_b3c3d6_decimal_radius_endpoint import endpoint_s
 
 SOURCE_SHA={
  'hr_step45_exact_physical_ward.py':'66aa43841dccfe4a5d586a49be9c10af3a67a10e',
@@ -73,7 +74,8 @@ def G(s,u):
  return FN(*[data[str(v)] for v in SYMS])
 
 def u_solution(radius):
- s0=1e-4;sf=radius**2
+ s0=1e-4;sf,s_exact=endpoint_s(radius)
+ assert F(sf)==F(radius)**2, ('decimal-radius endpoint mismatch',radius,sf,s_exact)
  def rhs(s,y):return [float((G(F(s),F(y[0]))-2*F(y[0]))/(2*F(s)))]
  init=float(U0+U1*F(s0)+U2*F(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
