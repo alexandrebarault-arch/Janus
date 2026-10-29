@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : COEFFICIENT ETA''*N STEP57 SUR STEP55 (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** b3c3d6 reste PARTIELLE. **PROCHAINE ÉTAPE PRIORITAIRE INCHANGÉE :** exécuter réellement le probe original Step58 sur Step55 à `R=17/20`, sources originales Step45/55/57/58/Step68o/b3c2 SHA-authentifiées ; certifier `A_N,A_M,B_N,B_M,E_N,E_M`, leurs dérivées, signes/zéros, cartes, raccord centre, vrais lapses strictement positifs et DEUX bords physiques. Ensuite pullback Dirac, charges/générateurs, quotient de jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables.
+
+**AVANCÉE SCIENTIFIQUE EXACTE, RESTREINTE :** le terme manquant `eta''*N` du symbole fonctionnel smeared Step57 a été réduit à `c_N=-(1-z²)/(Lg*Lf)*T_N0` sur `Fz=0,K>0`, avec `T_N0=kg+pg/sqrt(1+tg'^2/Lg²)-Mg2*Lg+Mg2*Sg'^2/Lg+m2*Mg2*Lg*(beta0*Sg²+2*beta1*Sg*Sf+beta2*Sf²)` et `kg=Lg*pLg²/(4*Mg2*Sg²)-pLg*pSg/(2*Mg2*Sg)`. Les termes explicites en z s'annulent dans T_N0 ; le facteur global `1-z²` reste. En transcrivant exactement la géométrie Step55 et en appliquant 256 cellules rationnelles sortantes de `s=r² in [0,289/400]` (grille `10^-28`), on certifie `6<c_N/r²<7`, `c_M/r²<-10`, `c_Nprime/r<-17/2` sur `0<r<=17/20`, avec `1/Lf` CORRECT dans `c_Nprime`. Les bornes et leurs fractions exactes figurent dans le JSON.
+
+**POINT CRITIQUE DE LOGIQUE :** pour lapses pairs C² `N=N0+N2*r²+o(r²)`, `M=M0+M2_lapse*r²+o(r²)`, la seule annulation formelle du coefficient de `eta''` impose `cN2*N0+cM2*M0+2*cNp1*N2=0` au premier ordre non nul. Le terme `c_Nprime*N'` contribue au MÊME ordre `r²`. Si on ajoute conditionnellement la bande centrale b3c2 Step58 `1037/2000<M0/N0<2593/5000`, la courbure requise est `1/25<N2/N0<1/20`, sans contradiction au premier ordre. Ne JAMAIS imposer séparément cette annulation smeared comme une équation physique Dirac sans les intégrations par parties et le vrai opérateur local Step58. L'ancien écran de deux termes et son ratio `M0/N0<804/2249` sont INVALIDES ; le correctif antérieur `1/Lf` reste obligatoire. Le résultat actuel n'établit ni un no-go ni un lapse global.
+
+**TESTS RÉELLEMENT EXÉCUTÉS LOCAL :** `cd /mnt/data/janus_eta2_n && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_step57_full_eta2_N` : 3 résidus SymPy exacts nuls, 1795 gardes rationnelles (256 cellules, 3 au centre), 0 FAIL. `PYTHONPATH=. python -m unittest discover -s tests -v` : 5 unittest PASS, non indépendants, 0 FAIL. Sources Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step57 `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` lues en direct via connecteur GitHub. **Moteurs originaux Step45/55/57/58 et probe Step58 R=17/20 NON exécutés** (DNS Git local indisponible). Preuve à partir d'une transcription algébrique et de données Step55 prescrites ; tests non indépendants.
+
+**QUATRE FICHIERS SCIENTIFIQUES CRÉÉS SUR LA SEULE BRANCHE AUTORISÉE, PUBLIÉS ET RELUS (BLOBS IDENTIQUES AUX OCTETS LOCAUX POUR CODE/TEST/JSON) :**
+- `numerics/hr_step68ad_b3c3d6_step57_full_eta2_N.py` blob `1ae6a933f9389afc57bb2ecc1c28bdf611b14eb9`, commit `7b633b175b8aeaed2d321c3eec90d4d6b3720139`.
+- `tests/test_hr_step68ad_b3c3d6_step57_full_eta2_N.py` blob `e2ac46f34b736694a38898b81aa5008ea8cfafa6`, commit `90a7273d7f7c0b53acbbf37398cce1b11d5ebe03`.
+- `research/reports/gate2b-step68ad-b3c3d6-step57-full-eta2-N.json` blob `3403cef30d7741fab11d83c195a73f0f379dcdc9`, commit `daf29a76b43aaff61225edcc7c0b886fecd2e02f`.
+- `research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md` blob `a117beda9ebd939958fce1bd1bda04952d2a91d4`, commit `aaa168cffb6821612bd39c117a3dda4c0f80b648`.
+- `README.md` préfixé, blob `c912dbd7aa925a0ddb7f88aeecce78bc5ca1e9b9`, commit `e04cff86fe24b9b8063ca3d88b530f66cb0b8f9b`.
+
+**PROVENANCE :** HEAD branche au démarrage `6b31fcc5c82e387f5d63070d0d70d44f0dfe2b7d`; HEAD après README `e04cff86fe24b9b8063ca3d88b530f66cb0b8f9b`. Branches interdites au démarrage `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; revérifier après mise à jour de l'index. Aucun workflow modifié. **HISTORIQUE INTÉGRAL PRÉEXISTANT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : BORNE UNIFORME STEP57 CORRIGÉE (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Étape b3c3d6 toujours PARTIELLE ; prochaine action prioritaire inchangée : **exécuter le probe original Step58 sur Step55 R=17/20**, avec Step45/55/57/58/Step68o/b3c2 SHA-authentifiés, certifier les six coefficients A_N,A_M,B_N,B_M,E_N,E_M, dérivées, zéros, cartes et raccord au centre, lapses strictement positifs et les deux véritables bords ; ensuite Dirac six couples/rang/tertiaires, charges/générateurs, quotient de jauge temporelle, K=0/J=0, dynamique 4D, stabilité et observables.
