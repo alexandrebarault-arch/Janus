@@ -17,41 +17,46 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py": "aabffd4c642ae600707d86302324a9e6c6345c80",
-    "tests/test_hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py": "48b0d5244367e05c47319df19e9f19ae1fa5f7a7",
-    "research/STEP68AD_B3C3D6_ANALYTIC_EVEN_TWO_LAPSE_SINGULAR_LIMIT_COUNTEREXAMPLE.md": "ca9e05b59e6b3d2fa7465394b5880d3b3d61bc47",
-    "00_CURRENT_RESTART.md": "bca2676656ba2c9dfc2d00d92ee6e39deaa4b781",
-    "README.md": "5691b2506054766aa3ee77816828c55a669e2cc5"
+    "numerics/hr_b3c3d6_weak_dual_lapse_certificate.py": "5f13737e3d13b4eb2a49377d570407ccebe42414",
+    "tests/test_hr_b3c3d6_weak_dual_lapse_certificate.py": "c382be0f84cab7a5d5cf1adb5e0182c1ab13e312",
+    "research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md": "985bf6626f409d89609c9f780adfe2257eb5a5fc",
+    "README.md": "93f6d6a59e6f42b01511f008e81048bba0035f5a",
+    "00_CURRENT_RESTART.md": "e734c7097c22f0058659b56b9006912dc964f412"
   },
-  "verified_research_head_at_session_start": "f7ae485bfd63ad5683c2dfa24940fc9407aa46c7",
-  "next_priority": "Run five SHA-authenticated original Step45/46/55/58 Python modules plus cubic candidate at four radii; compare affine/cubic six coefficients; certify factorization/enclosures, center and positive two-boundary lapse BVP; then Dirac, 4D, stability and observables.",
+  "verified_research_head_at_session_start": "7d11204a033abd89062612b21ef08a8862b1f372",
+  "next_priority": "Execute five SHA-authenticated Step45/46/55/58 originals plus cubic Step58 candidate at four radii; compare six affine/cubic coefficients and shells; certify physical A/B/E derivative enclosures and only then attempt dual positivity screen; center and positive two-boundary BVP; Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "e5133f43d120a90464040e2d452ee0ecdd14020c",
+  "verified_research_head_before_state_file": "ca3f9acab04dc96c71c609a3836ce3479ce92b3b",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ANALYTIC_EVEN_TWO_LAPSE_SINGULAR_LIMIT_COUNTEREXAMPLE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_ANALYTIC_EVEN_TWO_LAPSE_SMALL_B_COUNTEREXAMPLE",
-    "last_step_scope": "Exact nonphysical two-lapse toy with both lapses positive analytic even, center ratio 10371/20000 and terminal N=M=1 at R=17/20, while B_N=-epsilon*r^5 tends to zero and endpoint slope/center amplitude diverge. Original physical Step58 cubic four-radius integration NOT executed."
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_WEAK_DUAL_POSITIVITY_SCREEN_NONPHYSICAL",
+    "last_step_scope": "Exact conditional global weak-dual obstruction for positive C2 lapse pairs using phi A-(phi B)'+(phi E)'' with phi=phi'=0 at endpoints. Nonphysical polynomial witness with nonzero B/E and uniform Q_i>=9467/10000*x^4*(1-x)^2. No original physical Step58 cubic replay or Dirac."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 6,
+    "unittest_cases_passed": 5,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
+    "independent_sympy_separate_checks": {
+      "symbolic_and_boundary": 9,
+      "rational_point_inequalities": 6,
+      "scope": "Separate transcription; not independent validation of physical Step58; uniform inequality proved analytically."
+    },
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "notes": "Six exact SymPy unittest on local code, Git blob SHAs identical to executed code and tests. Original five source SHA read via GitHub connector but NOT executed; container GitHub DNS failed."
+    "notes": "Exact SymPy code/test blob SHAs match executed local bytes. Full physical original modules read via connector, NOT executed. Four-radius cubic candidate NOT executed."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -62,7 +67,8 @@
     "local_executed_source_blob_matches": true,
     "original_full_step58_integration_executed": false,
     "full_restart_prefix_written": true,
-    "full_restart_history_preserved": true
+    "full_restart_history_preserved": true,
+    "README_updated": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -80,7 +86,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The physical corrected cubic Step58 candidate has not been run on all five authenticated originals at four radii. Local GitHub DNS unavailable; connector read/write works. The new exact two-lapse example is a toy and cannot determine physical B/E cancellations, positive two-boundary BVP or Dirac.",
+  "current_blocker": "Physical corrected cubic Step58 original full six-coefficient probe at 1/4,1/2,7/10,17/20 still not executed. Local container GitHub DNS fails, connector GitHub read/write works. The new weak-dual certificate is conditional and its polynomial example is nonphysical; no physical dual multiplier or physical coefficient derivative enclosures certified.",
   "task_self_update": "2026-10-29: prepended analytic-even two-lapse small-B counterexample marker to 49050-character automation prompt; retained all previous 49050 characters, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -89,7 +95,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "bca2676656ba2c9dfc2d00d92ee6e39deaa4b781",
+    "00_CURRENT_RESTART.md": "e734c7097c22f0058659b56b9006912dc964f412",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -112,7 +118,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "5691b2506054766aa3ee77816828c55a669e2cc5",
+    "README.md": "93f6d6a59e6f42b01511f008e81048bba0035f5a",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -266,7 +272,10 @@
     "research/STEP68AD_B3C3D6_CUBIC_QUARTIC_STEP58_JET_ORDER_INVARIANCE.md": "eaf1fe08a4ba600e2307854c7bf0f8dd1ab65a5a",
     "numerics/hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py": "aabffd4c642ae600707d86302324a9e6c6345c80",
     "tests/test_hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py": "48b0d5244367e05c47319df19e9f19ae1fa5f7a7",
-    "research/STEP68AD_B3C3D6_ANALYTIC_EVEN_TWO_LAPSE_SINGULAR_LIMIT_COUNTEREXAMPLE.md": "ca9e05b59e6b3d2fa7465394b5880d3b3d61bc47"
+    "research/STEP68AD_B3C3D6_ANALYTIC_EVEN_TWO_LAPSE_SINGULAR_LIMIT_COUNTEREXAMPLE.md": "ca9e05b59e6b3d2fa7465394b5880d3b3d61bc47",
+    "numerics/hr_b3c3d6_weak_dual_lapse_certificate.py": "5f13737e3d13b4eb2a49377d570407ccebe42414",
+    "tests/test_hr_b3c3d6_weak_dual_lapse_certificate.py": "c382be0f84cab7a5d5cf1adb5e0182c1ab13e312",
+    "research/STEP68AD_B3C3D6_WEAK_DUAL_POSITIVITY_NO_GO_SCREEN.md": "985bf6626f409d89609c9f780adfe2257eb5a5fc"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
