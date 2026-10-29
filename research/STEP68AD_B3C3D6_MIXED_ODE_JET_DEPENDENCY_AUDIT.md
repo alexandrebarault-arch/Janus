@@ -1,0 +1,11 @@
+# JANUS b3c3d6 — audit exact des jets mixtes Step55→Step58 (29/10/2026)
+
+**Statut : résultat algébrique local et témoin JOUET, non rejeu des coefficients physiques. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+Les sources originales Step55 normalisée (blob `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`) et Step58 (blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`) ainsi que le candidat corrigé (blob `9eb5167bec74fc427307a262faaa6a1f785785a8`) ont été lus via le connecteur GitHub. Le candidat définit `pLf=r² U(r²)` et calcule les champs dépendants `pf,pSf` avec `pLfr=r G(r²,U)` ; ce choix est important.
+
+**Théorème local conditionnel.** Si `U` résout `2s U_s=G(s,U)-2U` avec `G` suffisamment différentiable, `r0>0`, et `Uc` est le Taylor cubique de `U` en `s0=r0²`, alors les jets radiaux d'ordre 0 à 3 de `U(r²)` et `r G(r²,U(r²))` coïncident avec ceux construits à partir de `Uc`. Par composition, c'est aussi vrai pour toute fonction lisse `F(r,U,rG)` (par exemple les champs de poussière éliminés algébriquement) **si** toutes ses autres entrées géométriques sont correctement différentiées. En revanche, remplacer `rG(s,Uc)` par `d[r² Uc(r²)]/dr` change en général le troisième jet de `F` : le défaut est `-16 r0^6 U_ssss F_v` à `r0`, où `v=rG`. Les jets 0,1,2 ne changent pas. Ceci suit du défaut `D'''=-16 r0^6 U_ssss` pour `D=d[r²Uc]/dr-rG(s,Uc)`.
+
+**Témoin rationnel exact indépendant des paramètres JANUS :** `U=3+2s+s³+s⁴`, `G(s,u)=2u+2s(2+3s²+4s³)`, `r0=1/2`. L'EDO est satisfaite ; `U_ssss=24`, donc `D'''=-6`. Pour `F(r,x,v)=r²+3x-2v+5xv+7v²`, la construction cubique avec `v=rG` reproduit les jets 0 à 3 de la solution vraie, alors que la substitution naïve `v=d[r²Uc]/dr` produit un défaut non nul d'ordre 3. Les cinq tests SymPy vérifient ces égalités, sans aucune inférence physique.
+
+**Conséquence pratique :** le candidat publié emploie déjà `pLfr=rG`, ce qui est la bonne construction pour `pf,pSf` ; préserver ce choix et ajouter ce test de non-régression. Il reste impératif d'exécuter les cinq sources originales SHA-authentifiées et le candidat aux rayons 1/4, 1/2, 7/10 et 17/20, de comparer les six coefficients affine/cubique, puis factorisation/enclosures, centre, BVP deux bords, Dirac/4D/stabilité/observables. Aucun coefficient Step58 physique, lapse positif ou rang Dirac n'est établi ici.
