@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : SENSIBILITÉ EXACTE DES JETS CUBIQUES (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu en direct : `610875ecc3715a6efeeb7f5c7ace2c9ea37f3e9f`. Étape effective : `b3c3d6_PARTIAL_ENDPOINT_JET_SENSITIVITY` ; prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`. Cette session a exécuté des preuves SymPy sur les sensibilités des jets, **PAS** le moteur Step58 original ni la solution numérique Step55.
+
+**NOUVEAU RÉSULTAT EXACT RESTREINT :** les prolongements affine et cubique de U(s) ont les mêmes jets d'ordre 0/1 au point, mais les différences cubique-affine des jets radiaux sont `Delta pLf''=4r^4 U_ss`, `Delta pLf'''=36r^3 U_ss+8r^5 U_sss`, `Delta pLfr''=4r^3 G_U U_ss`, `Delta pLfr'''=24r² G_U U_ss+24r^4(G_sU+G_UU U_s)U_ss+8r^4 G_U U_sss`, avec `pLfr=rG(s,U)`. Pour `H=F(s,U)`, `Delta H''=4r² F_U U_ss`. L'opérateur Step58 original contient `Dt(X)` et `Dt(deltaZ)` ; aucune invariance de ses coefficients d'ordre inférieur ne découle des seuls jets 0/1 identiques. Ces formules **ne prouvent pas** des écarts physiques non nuls sur Step55.
+
+**EXÉCUTION LOCALE :** `PYTHONPATH=. python -m unittest tests.test_hr_b3c3d6_endpoint_jet_sensitivity_audit -v` : **5 PASS, 0 FAIL**, non indépendants ; **9 résidus SymPy exacts nuls**, `compileall` PASS. Témoin rationnel jouet hors coquille : `Delta pLf''=1/14`, `Delta pLf'''=389/308`, `Delta pLfr''=15/14`, `Delta pLfr'''=21387/1540`. Sources Python publiées identiques aux octets testés, SHA Git vérifiés localement et via relecture connecteur.
+
+**FICHIERS PUBLIÉS/RELUS :**
+- `numerics/hr_b3c3d6_endpoint_jet_sensitivity_audit.py` blob `aa530d224e305bc8b23bd415be25f67a585d7328`.
+- `tests/test_hr_b3c3d6_endpoint_jet_sensitivity_audit.py` blob `35b7d67e293687abdeda5dbadcaf3dc750856721`.
+- `research/STEP68AD_B3C3D6_ENDPOINT_JET_SENSITIVITY_AUDIT.md` blob `62b4cb556534be45d7e3bd2625747159d86a53d2`.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** DNS réseau local vers GitHub bloqué ; connecteur GitHub lecture/écriture opérationnel. **Aucun** rejeu original Step45/46/55/58 dans cette session, aucune nouvelle valeur physique U_ss/U_sss, aucun résultat sur les six coefficients ni les lapses. Exécuter ensuite le candidat corrigé sur les cinq blobs originaux SHA-authentifiés aux quatre rayons ; comparer ancien affine/cubique, puis factorisation exacte et enclosures, raccord centre, BVP lapses positifs aux DEUX vrais bords, Dirac/charges/générateurs/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables. Branches `main`, `research/v2-flrw` et workflows intacts. **TOUT L'HISTORIQUE EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CANDIDAT DE JETS ODE STEP55 CUBIQUES CORRIGÉS (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD au début de session `4831ad91b2120bc0ab5dbfbcd47d4d4b8e11ba60`. La prochaine étape effective reste `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` ; le candidat est PUBLIÉ mais son intégration originale n'est PAS exécutée.
