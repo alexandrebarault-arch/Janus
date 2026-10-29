@@ -8,8 +8,8 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 49050,
-    "new_prompt_characters": 49862,
+    "old_prompt_characters": 49862,
+    "new_prompt_characters": 51072,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
@@ -31,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ca3f9acab04dc96c71c609a3836ce3479ce92b3b",
+  "verified_research_head_before_state_file": "a21334e667d45fb85a83eece242f6120e151f1c9",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -87,7 +87,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Physical corrected cubic Step58 original full six-coefficient probe at 1/4,1/2,7/10,17/20 still not executed. Local container GitHub DNS fails, connector GitHub read/write works. The new weak-dual certificate is conditional and its polynomial example is nonphysical; no physical dual multiplier or physical coefficient derivative enclosures certified.",
-  "task_self_update": "2026-10-29: prepended analytic-even two-lapse small-B counterexample marker to 49050-character automation prompt; retained all previous 49050 characters, hourly schedule, timezone and enabled state.",
+  "task_self_update": "2026-10-29: prepended weak-dual exact conditional theorem marker to 49862-character automation prompt, preserved entire previous prompt (new 51072 chars), hourly schedule, timezone Europe/Paris, enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
