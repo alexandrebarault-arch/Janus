@@ -17,14 +17,12 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_cubic_quartic_step58_jet_invariance.py": "2e6df2e83cfb25d46b48d39a6e24176ac6db346c",
-    "tests/test_hr_b3c3d6_cubic_quartic_step58_jet_invariance.py": "0312ebdabeb2f0f12dc9d81f7bb13d8e9848690b",
-    "research/STEP68AD_B3C3D6_CUBIC_QUARTIC_STEP58_JET_ORDER_INVARIANCE.md": "eaf1fe08a4ba600e2307854c7bf0f8dd1ab65a5a",
-    "00_CURRENT_RESTART.md": "024f9a1b095c8ba1273bc02a65e0644721b85576",
-    "README.md": "e0bab83dae98fa426ad3e60b3c9a3dce54dff2cf"
+    "numerics/hr_b3c3d6_small_B_boundary_layer_counterexample.py": "dd13df454a7aafd22b82e900b04fdc6ee932f212",
+    "tests/test_hr_b3c3d6_small_B_boundary_layer_counterexample.py": "759e483a38b8b4c28c9805da49a77e4cf261492c",
+    "research/STEP68AD_B3C3D6_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER.md": "8a1f7d0750ccbad8ef791ce1496a7d65a0dc5f1e"
   },
-  "verified_research_head_at_session_start": "8b7a0f1e0d2246eff8bcc14ea6c5d88f6dda74a6",
-  "next_priority": "Run SHA-authenticated original Step45/46/55/58 with cubic Step55 ODE-consistent jets at r=1/4,1/2,7/10,17/20; compare affine/cubic six coefficients and primary/secondary residuals; then factor/enclosures, center, positive-lapse two-boundary BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "3cf48679e5b570e029fdd7b14295d7623813b819",
+  "next_priority": "Execute SHA-authenticated original Step45/46/55/58 with cubic ODE jets at four radii, compare six coefficients affine/cubic; exact factorization B or enclosures plus independent derivative bounds; analytic center and positive two-boundary BVP, then Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -35,26 +33,23 @@
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CUBIC_QUARTIC_STEP58_JET_ORDER_INVARIANCE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_CUBIC_QUARTIC_JET_ORDER_INVARIANCE",
-    "last_step_scope": "Exact formal invariance of all radial jets <=3 under cubic-to-quartic Step55 endpoint extension; source-structure conditional on original Step58 jet order; no physical six-coefficient replay."
+    "latest_stage": "b3c3d6_PARTIAL_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER_TOY",
+    "last_step_scope": "Exact nonphysical C-infinity (nonanalytic) singular perturbation counterexample: arbitrarily small B_N can support positive two-boundary lapses via unbounded terminal slope; not Step55/58 replay."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 6,
+    "unittest_cases_passed": 5,
     "unittest_independent": false,
     "failed_final": 0,
-    "exact_sympy_divided_differences": 5,
-    "exact_direct_fourth_jet_checks": 2,
     "python_compileall_pass": true,
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "corrected_step58_integration_tests_executed": false,
-    "notes": "First overexpansion attempt timed out; optimized exact divided-difference proof passed 6 unittest in 0.457 s."
+    "notes": "Exact SymPy toy proof, terminal slope and six central derivatives checked. Original physical source blobs read through connector, not run."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -81,7 +76,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Container network DNS cannot resolve github.com; connector read/write works. Original Step58 corrected cubic candidate not executed on authentic modules this session. Exact jet-order invariance is formal and does not certify six physical coefficients or lapse BVP.",
+  "current_blocker": "Original Step58 cubic integration still not executed; GitHub connector works, local DNS cannot reach GitHub. Checkpoint is 611629 characters; attempted full-history prefix update blocked by safety checks; standalone checkpoint and state used instead.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
