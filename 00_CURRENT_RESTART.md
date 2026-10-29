@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CARTE K>0 STEP55 CERTIFIÉE PAR BERNSTEIN (2026-10-29)
+
+**STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE TOUJOURS b3c3d6 : exécuter le vrai probe original Step58 sur Step55 R=17/20 avec imports Step45/55/58/Step68o/b3c2 ; évaluer A_N/A_M/B_N/B_M/E_N/E_M, dérivées, zéros/cartes/raccord centre, puis compatibilité des lapses positifs et vrais bords ; ensuite Dirac/charges/générateurs/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.**
+
+**NOUVEAU CERTIFICAT EXACT, DE PORTÉE LIMITÉE :** En reprenant les constantes rationnelles du vrai profil géométrique Step55 (source GitHub blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`) et la définition de `K` dans Step58 (blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`), le polynôme quartique `T(s)` possède cinq coefficients de Bernstein strictement positifs et quatre différences consécutives strictement négatives sur `s∈[0,289/400]`. Donc `53/500<T(s)<109/1000`, `K(r)/r²>9/40` sur `0<r<=17/20`, `z(r)=r/250` et `z(17/20)=17/5000<1`. Sur la coquille stationnaire `Fz=0`, `K~c r²`, `D~c' r³` avec `c,c'>0`. **Cela élimine K=0 sur l'anneau Step55 hors centre, mais pas la dégénérescence centrale ; ne dit RIEN sur les zéros de B_N/B_M, la résolution des lapses ni Dirac.** Le signe K>0 était déjà établi par Step54/55 ; valeur ajoutée : borne rationnelle explicite et certificat Bernstein indépendant.
+
+**TESTS RÉELLEMENT EXÉCUTÉS DANS `/mnt/data/janus29` :** `PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_step55_k_chart` : 14 assertions groupées exactes PASS (dont 5 signes Bernstein et 4 différences) ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_step55_k_chart.py' -v` : 4 cas PASS non indépendants, 0 FAIL. Aucun moteur original Step45/55/58/Step68o/b3c2 ni le probe Step58 R=17/20 n'a été exécuté ; `git ls-remote` échoue toujours localement par DNS. Les quatre blobs publiés sont identiques aux octets locaux exécutés/produits, après relecture GitHub.
+
+**LIVRABLES SUR LA SEULE BRANCHE AUTORISÉE :**
+- `numerics/hr_step68ad_b3c3d6_step55_k_chart.py` blob `ff53c9ffd813a429dbf2e2c8b772f40dca8c893f`, commit `f2e2227899862f37acb49a4aa601e36918585dc2`.
+- `tests/test_hr_step68ad_b3c3d6_step55_k_chart.py` blob `9d9c09fec2e1db6213d11e7d0224766a83639b5d`, commit `9a698dbe7b80f43c46dcaeda665e4b200c06148b`.
+- `research/STEP68AD_B3C3D6_STEP55_K_CHART_EXACT_CERTIFICATE.md` blob `10b3e3b6c19cf67cd698c6880448f15cf749eab9`, commit `cf1e4f1149a82cb27b7dd53ed2f68f68f64e8dad`.
+- `research/reports/gate2b-step68ad-b3c3d6-step55-k-chart.json` blob `16b6a014943fb56173b9afd2a611e1cb25ac66c6`, commit `dac18bf3280c607f78cb32a8bd9b4d7a6dc03282`.
+- `README.md` nouveau blob `cf529a9f4babc28d0bed5b11eff60f4696edd2a5`, commit `73a2609947f400fc37a010887f407d2649471ea9`.
+
+**PROVENANCE :** HEAD de la branche au démarrage `b47ec5325c6f3c50e8b49fea7b593e76cffae3a6`, HEAD avant ce checkpoint `73a2609947f400fc37a010887f407d2649471ea9`. Branches interdites au démarrage `main=aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; recontrôler en fin de session. Aucun workflow modifié.
+
+**HISTORIQUE INTÉGRAL PRÉEXISTANT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : JETS POSITIFS AUX DEUX BORDS (2026-10-29)
 
 **STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE TOUJOURS b3c3d6 : exécuter réellement le probe original Step58 sur Step55 R=17/20 avec Step45/55/58+b3c2/Step68o ; certifier B_N/B_M, dérivées, zéros/cartes/raccord centre, b,d, vrais lapses positifs et les deux bords physiques ; puis pullback Dirac, générateurs/charges, quotient jauge temporelle, six couples, K=0/J=0, 4D/stabilité/observables.**
