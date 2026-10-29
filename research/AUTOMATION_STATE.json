@@ -17,28 +17,30 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_small_B_boundary_layer_counterexample.py": "dd13df454a7aafd22b82e900b04fdc6ee932f212",
-    "tests/test_hr_b3c3d6_small_B_boundary_layer_counterexample.py": "759e483a38b8b4c28c9805da49a77e4cf261492c",
-    "research/STEP68AD_B3C3D6_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER.md": "8a1f7d0750ccbad8ef791ce1496a7d65a0dc5f1e"
+    "numerics/hr_b3c3d6_analytic_center_small_B_guard.py": "9b16a93e258c7600d215f4c7eef23c69fbd76e74",
+    "tests/test_hr_b3c3d6_analytic_center_small_B_guard.py": "5b63928c33ea5cbaa4a7e5e9891fe77b65c17fc2",
+    "research/STEP68AD_B3C3D6_ANALYTIC_CENTER_SMALL_B_TOY_GUARD.md": "35b2f7770febc67965e3597322781f0f34d7bcfa",
+    "00_CURRENT_RESTART.md": "b97aff107ca440cb2f4d885e8aa110802886bcce",
+    "README.md": "db88996e5bdbb95576379dd446c79debafded6ac"
   },
-  "verified_research_head_at_session_start": "3cf48679e5b570e029fdd7b14295d7623813b819",
-  "next_priority": "Execute SHA-authenticated original Step45/46/55/58 with cubic ODE jets at four radii, compare six coefficients affine/cubic; exact factorization B or enclosures plus independent derivative bounds; analytic center and positive two-boundary BVP, then Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "32d2a2fe047efcaf2cb27d7efe378595d9fd7085",
+  "next_priority": "Run original SHA-authenticated Step45/46/55/58 on corrected cubic jets at 1/4,1/2,7/10,17/20; compare six coefficients affine/cubic; prove factorization or intervals and physically admissible center lapse class, then two-boundary positive BVP and Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "0603c9eb24f3ce84b2c038a49a5906ab4a54909a",
+  "verified_research_head_before_state_file": "0ec319265fb3f2cd1533ec0a7433ac4def3f81c2",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ANALYTIC_CENTER_SMALL_B_TOY_GUARD.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER_TOY",
-    "last_step_scope": "Exact nonphysical C-infinity (nonanalytic) singular perturbation counterexample: arbitrarily small B_N can support positive two-boundary lapses via unbounded terminal slope; not Step55/58 replay."
+    "latest_stage": "b3c3d6_PARTIAL_ANALYTIC_CENTER_SMALL_B_TOY_GUARD",
+    "last_step_scope": "Exact nonphysical toy theorem: C-infinity flat singular boundary-layer lapse is excluded by analytic central regularity, but smooth even parity does not exclude it; no analytic physical Step55/58 lapse assumption established."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 5,
@@ -49,7 +51,7 @@
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "notes": "Exact SymPy toy proof, terminal slope and six central derivatives checked. Original physical source blobs read through connector, not run."
+    "notes": "5 SymPy toy tests and compileall executed in /mnt/data/janus_analytic_center. No original physical engine execution. Analytic center theorem applies only to toy model."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -76,7 +78,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step58 cubic integration still not executed; GitHub connector works, local DNS cannot reach GitHub. Checkpoint is 611629 characters; attempted full-history prefix update blocked by safety checks; standalone checkpoint and state used instead.",
+  "current_blocker": "Physical corrected cubic Step58 integration not executed: GitHub connector can read/write, but container cannot resolve GitHub DNS; need source materialization/execution. Analyticity of Step55/58 lapses and exact B coefficient factorization unknown.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
