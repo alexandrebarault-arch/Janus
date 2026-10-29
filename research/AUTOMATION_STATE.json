@@ -7,53 +7,66 @@
   },
   "latest_session_automation_update": {
     "status": "SUCCESS",
-    "old_prompt_characters": 39392,
-    "new_prompt_characters": 40184,
+    "old_prompt_characters": 40184,
+    "new_prompt_characters": 41184,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING",
+    "next_step_marker": "b3c3d6_EXACT_FACTORIZE_BN_BM_ON_STEP55_AND_INTERVAL_PROVE",
     "automation_id": "6ade8d316f108191a3537bced5363a3b"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step55_primary_shell_audit.py": "fb12fd707314682faf430d214ab7d805532b1a8b",
-    "tests/test_hr_b3c3d6_step55_primary_shell_audit.py": "a661afed0a7dbb1a6519597405c736363e67036a",
-    "research/reports/gate2b-b3c3d6-step55-primary-shell.json": "c758db69390d93b8e5b63c2caa789d35bca80233",
-    "research/STEP68AD_B3C3D6_STEP55_PRIMARY_SHELL_AUDIT.md": "fe25ff7a8aa0c1aa7f94015f19c390efc38bfe35",
-    "README.md": "e54a0e9924124942eb44ef18b2b9118fa38bed4c",
-    "00_CURRENT_RESTART.md": "e9d3dd573d95e76f2e62fb596a69eadafc9733a3"
+    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "4e3c78bbdd09831416bf8699c8e24e99253f955d",
+    "tests/test_hr_b3c3d6_full_original_step58_point_probe.py": "c74526a18cdae02ba56da19bd45e77fdd5f355b3",
+    "research/reports/gate2b-b3c3d6-original-step58-numeric-summary.json": "4f1ca600a29cd6d8d029d4435a984a2e2120772f",
+    "research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md": "890498d02e07b6ee2981e20aa1fb6f4dcd6af0aa",
+    "README.md": "9cda72a733daf4823595f0b03e05b733e4a110bf",
+    "00_CURRENT_RESTART.md": "cbcc572a615cf2b4518b7d37ad70e3242695ad44"
   },
-  "verified_research_head_at_session_start": "7f6ed649bd9bba5d2362f41b091a836e3851e32f",
-  "next_priority": "b3c3d6 PARTIAL: execute full byte-original Step58 on exact Step55 including pLf ODE jets, A_N/A_M/B_N/B_M/E_N/E_M derivatives, zeros, center and two physical boundaries, positive lapses; then Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "5e024cf16d967a7517180fe65bacf09bf0cbebbe",
+  "next_priority": "b3c3d6: prove/falsify exact B_N=B_M=0 on full Step55 physical shell and interval-certify A_N,A_M and their signs/derivatives/zeros on 0<r<=17/20, center, positive lapses and two real boundaries; then Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "4da5e4a64c4b1b00bf02c3ac4b5e4ae777b5bfcd",
+  "verified_research_head_before_state_file": "32a66fcf98f4195093569cfaf48febe6a93b6a78",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_PRIMARY_SHELL_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_STEP55_PRIMARY_SHELL_TRANSCRIPTION",
-    "last_step_scope": "Fz=Hg=0 on prescribed Step55, E_N=E_M=0 by previously replayed Step58 highjet identity; NOT original full Step58 probe, NOT Dirac"
+    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_STEP58_FOUR_POINT_NUMERICAL_PROBE",
+    "last_step_scope": "Byte-original Step58 six coefficients at four numerically integrated Step55 points, original Step55 barrier replayed; numerical near-zero lapse derivative coefficients, NOT exact uniform proof or positive lapse BVP/Dirac"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 4,
+    "unittest_cases_passed": 5,
     "unittest_independent": false,
     "failed_final": 0,
-    "sympy_zero_residuals": 9,
-    "negative_controls": 2,
-    "original_step45_executed_this_session": false,
-    "original_step55_executed_this_session": false,
-    "original_step58_executed_this_session": false,
-    "original_step58_outer_R17_20_full_probe_executed": false,
-    "source_formula_sha_read_from_github": true
+    "original_step45_executed_this_session": true,
+    "original_step46_executed_this_session": true,
+    "original_step55_normalized_ODE_executed_this_session": true,
+    "original_step55_global_barrier_cells": 256,
+    "original_step58_executed_this_session": true,
+    "original_step58_full_six_coefficients_on_Step55_four_numeric_points": true,
+    "original_step58_outer_R17_20_full_probe_executed": true,
+    "original_step58_outer_R17_20_exact_interval_certificate": false,
+    "original_step57_full_executed": false,
+    "step57_import": "minimal_shim",
+    "numeric_radii": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "outer_conditional_ratio_M_over_N": 0.5211199122657623,
+    "precision_sensitivity_digits": 70,
+    "original_source_blobs_verified": 5,
+    "negative_controls_off_shell_nonzero": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -79,7 +92,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Full authentic Step58 A_N,A_M,B_N,B_M and derivatives on exact Step55 pLf radial ODE jets not executed. This session proved prescribed Fz=Hg=0 via independent transcription, hence E_N=E_M=0 using previous original Step58 highjet theorem. Global positive lapse/two-boundary/Dirac still open.",
+  "current_blocker": "Full Step58 original was numerically evaluated at four authentic Step55 ODE points, but exact B_N/B_M vanishing on shell and A_N/A_M signs over the continuum, derivatives, center, two physical boundaries and Dirac time gauge remain unproved. DOP853 double is not an interval certificate.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -88,7 +101,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "0a507c6a308d3486aa803b49ad5e5f42c2eb843e",
+    "00_CURRENT_RESTART.md": "cbcc572a615cf2b4518b7d37ad70e3242695ad44",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -111,7 +124,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "c912dbd7aa925a0ddb7f88aeecce78bc5ca1e9b9",
+    "README.md": "9cda72a733daf4823595f0b03e05b733e4a110bf",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -255,7 +268,11 @@
     "numerics/hr_step68ad_b3c3d6_step57_full_eta2_N.py": "1ae6a933f9389afc57bb2ecc1c28bdf611b14eb9",
     "tests/test_hr_step68ad_b3c3d6_step57_full_eta2_N.py": "e2ac46f34b736694a38898b81aa5008ea8cfafa6",
     "research/reports/gate2b-step68ad-b3c3d6-step57-full-eta2-N.json": "3403cef30d7741fab11d83c195a73f0f379dcdc9",
-    "research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md": "a117beda9ebd939958fce1bd1bda04952d2a91d4"
+    "research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md": "a117beda9ebd939958fce1bd1bda04952d2a91d4",
+    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "4e3c78bbdd09831416bf8699c8e24e99253f955d",
+    "tests/test_hr_b3c3d6_full_original_step58_point_probe.py": "c74526a18cdae02ba56da19bd45e77fdd5f355b3",
+    "research/reports/gate2b-b3c3d6-original-step58-numeric-summary.json": "4f1ca600a29cd6d8d029d4435a984a2e2120772f",
+    "research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md": "890498d02e07b6ee2981e20aa1fb6f4dcd6af0aa"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
@@ -499,5 +516,27 @@
     "README.md": "08b3ad759575f19065df1c4ee705810a61cb885e"
   },
   "latest_session_date": "2026-10-29",
-  "latest_session_verified_pre_state_head": "b6b8e16284a6a7918d424a05741d2d977924947e"
+  "latest_session_verified_pre_state_head": "b6b8e16284a6a7918d424a05741d2d977924947e",
+  "latest_session_full_original_probe": {
+    "radii": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "ratio_M_over_N_conditional": [
+      0.5187745215864035,
+      0.5194593948797908,
+      0.5203147498804485,
+      0.5211199122657623
+    ],
+    "outer_AN": 2437.0939963676437,
+    "outer_AM": -4676.647234168184,
+    "outer_BN": 1.8257933702169638e-44,
+    "outer_BM": -1.0049937423829547e-44,
+    "outer_EN": 1.401298464324817e-45,
+    "outer_EM": 5.605193857299268e-45,
+    "interpretation": "NUMERICAL_ONLY_NOT_EXACT_OR_INTERVAL",
+    "lapse_boundary_equal_at_R": "CONDITIONAL_INCOMPATIBILITY_IF_JETS_VANISH_EXACTLY"
+  }
 }
