@@ -8,8 +8,8 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 42644,
-    "new_prompt_characters": 43388,
+    "old_prompt_characters": 43388,
+    "new_prompt_characters": 44179,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
@@ -20,7 +20,8 @@
     "numerics/hr_b3c3d6_cubic_jet_order_certificate.py": "a149e0c81af460b9d8dcea40546331e167d079e5",
     "tests/test_hr_b3c3d6_cubic_jet_order_certificate.py": "4b10f69301b4ff90e97adb5c186d8f296f1b19c0",
     "research/STEP68AD_B3C3D6_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE.md": "62e24c4365ebbaef79ced9e64546f809f1463622",
-    "00_CURRENT_RESTART.md": "dd98b89a4cc22ab0d3d51d25c50ddb04a6b47099"
+    "00_CURRENT_RESTART.md": "dd98b89a4cc22ab0d3d51d25c50ddb04a6b47099",
+    "README.md": "7fe6717a51d8855d391a8b4a5e77fe5c0439721d"
   },
   "verified_research_head_at_session_start": "f06d8e8a61738760c60227c71a7e1a23778f67a9",
   "next_priority": "Execute SHA-authenticated original Step45/46/55/58 corrected cubic Step55 candidate at four radii, compare all six affine/cubic coefficients and physical shell residuals; then exact factor/enclosures, center, positive-lapse two-boundary BVP, Dirac/4D/stability/observables.",
@@ -30,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "9b3a5c90649faa30b22556183ecf5b9d2b6c7c90",
+  "verified_research_head_before_state_file": "5542b286bab04c4dcef10250e7bf9cfcf83615a2",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
