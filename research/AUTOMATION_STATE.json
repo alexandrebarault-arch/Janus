@@ -6,9 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
-    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING",
-    "schedule_unchanged": true
+    "status": "SUCCESS",
+    "old_prompt_characters": 38460,
+    "new_prompt_characters": 39392,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_authentic_step58_highjet_replay.py": "f1f69b857eef98edbdcde60bbd12b1412ecc5998",
