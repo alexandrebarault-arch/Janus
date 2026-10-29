@@ -6,8 +6,10 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_THIS_SESSION",
-    "reason": "Preserve existing long prompt and schedule; GitHub checkpoint is authoritative.",
+    "status": "SUCCESS",
+    "old_prompt_characters": 32679,
+    "new_prompt_characters": 33304,
+    "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
@@ -29,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "cee324d46d31d420148fc291592101fd057cc131",
+  "verified_research_head_before_state_file": "21e9ef77e385ec508391a213f0c6ca1a47b97756",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -76,7 +78,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Original Step58 R=17/20 outer probe NOT executed: local git cannot resolve github.com; authenticated GitHub connector read/write works. The new exact rational Bernstein certificate covers only prescribed Step55 geometry K>0 for r>0, not B_N/B_M or Dirac.",
-  "task_self_update": "2026-10-29: prepended conditional eight-endpoint-jet reachability marker to existing automation prompt; all previous 32176 characters preserved, hourly schedule and enabled state unchanged.",
+  "task_self_update": "2026-10-29: prepended exact Step55 K chart marker to existing automation prompt; all 32679 prior characters preserved, hourly schedule and enabled state unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
