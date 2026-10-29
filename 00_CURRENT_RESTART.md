@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : REJEU ORIGINAL STEP45+STEP58 DES PLUS HAUTS JETS (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED. b3c3d6 reste PARTIELLE. PROCHAINE ÉTAPE :** vrai probe ORIGINAL Step58 sur le profil complet Step55 à R=17/20, coefficients A_N/A_M/B_N/B_M/E_N/E_M et dérivées, zéros, cartes et raccord centre, lapses positifs et les deux vrais bords ; ensuite Dirac/charges/générateurs/quotient jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.
+
+**AVANCÉE RÉELLEMENT EXÉCUTÉE :** octets originaux Step45 (Git blob 66aa43841dccfe4a5d586a49be9c10af3a67a10e, 5657 octets) et Step58 (Git blob 802c23aebd41780d8c462f1aa1711707fe4ee88f, 7314 octets) reconstruits et SHA Git vérifiés localement. Le module Step58 ORIGINAL a été exécuté avec SymPy (physical_operator + highest_lapse_certificate) via shim MINIMAL d'import Step57, PAS Step57 complet. Sur Fz=0, E_M=0 et E_N=(z²-1)Hg/(Lg Lf) ; donc E_N=E_M=0 sur Fz=Hg=0. Les coefficients d'ordres 0,1 ne sont PAS certifiés sur Step55. Le facteur géométrique Step55 TRANSCRIT à R=17/20 vaut exactement -9999884400000000000000000000000000000000/926432894764182404865494596893754186181, compris entre -11 et -10. Ceci est le FACTEUR de Hg, non une évaluation de E_N hors coquille.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `PYTHONPATH=. python -m numerics.hr_step58_temporal_operator` PASS (manifest original Step58, deux secteurs, ordres 0/1/2, certificat haut jet) ; `PYTHONPATH=. python -m numerics.hr_b3c3d6_authentic_step58_highjet_replay` PASS ; `PYTHONPATH=. python -m unittest discover -s tests -v` : 4 unittest PASS non indépendants, 0 FAIL. Test exécuté sur les octets identiques au code publié, SHA Git du code et du test contrôlés localement et via relecture connecteur. Le réseau Git local échoue par DNS ; connecteur GitHub lecture/écriture fonctionne.
+
+**FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS SUR LA SEULE BRANCHE AUTORISÉE :**
+- `numerics/hr_b3c3d6_authentic_step58_highjet_replay.py` blob f1f69b857eef98edbdcde60bbd12b1412ecc5998, commit 5a77e81fc9494993a97d3c75654000808e0008d7.
+- `tests/test_hr_b3c3d6_authentic_step58_highjet_replay.py` blob 89abf9355b6e07d05ab206e194eedef5c2f2f7f8, commit a7dc77dfd2edab0109c15585b4822094619cc590.
+- `research/reports/gate2b-b3c3d6-authentic-step58-highjet-replay.json` blob ea50fbbb9ee4535780f8d33a93f6d1861562f06b, commit 9014ae61258bd815314416a58713287ad290bdc3.
+- `research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_HIGHJET_REPLAY.md` blob a626483d8e7afa07417ecf37d1af8aecbdfdc2ce, commit 2d31b328c68ec2c26c60ae1e29a31b1a0cc91035.
+
+**PROVENANCE :** HEAD de reprise 7f6ed649bd9bba5d2362f41b091a836e3851e32f ; HEAD après quatre livrables 2d31b328c68ec2c26c60ae1e29a31b1a0cc91035. Branches interdites au début main=aead63f4098f0d15a849e579105af034b6317b30 et research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb. AUCUN workflow touché. Le vrai probe Step58 R=17/20 sur Step55 COMPLET, les six coefficients et leurs dérivées, la preuve de lapses positifs et la tangence Dirac restent NON EXÉCUTÉS. Ce rejeu partiel ne doit PAS être annoncé comme résolution de b3c3d6.
+
+**HISTORIQUE INTÉGRAL ANTÉRIEUR CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : COEFFICIENT ETA''*N STEP57 SUR STEP55 (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** b3c3d6 reste PARTIELLE. **PROCHAINE ÉTAPE PRIORITAIRE INCHANGÉE :** exécuter réellement le probe original Step58 sur Step55 à `R=17/20`, sources originales Step45/55/57/58/Step68o/b3c2 SHA-authentifiées ; certifier `A_N,A_M,B_N,B_M,E_N,E_M`, leurs dérivées, signes/zéros, cartes, raccord centre, vrais lapses strictement positifs et DEUX bords physiques. Ensuite pullback Dirac, charges/générateurs, quotient de jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables.
