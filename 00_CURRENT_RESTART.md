@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : BUDGET EXACT DES JETS DE LAPSES AU BORD (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à cette reprise : `f91328dad757e383f69f899628cebb476e8be3eb`. HEAD après trois livrables scientifiques : `765a5a44e09e5d56caa954ba5e831e0fb066d578`. Étape effective `b3c3d6_PARTIAL_FULL_OPERATOR_ENDPOINT_JET_BUDGET`. Prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**LEMME EXACT CONDITIONNEL (forme Step58 complète) :** à un bord `N(R)=M(R)=u>0`, si `T=(A_N+A_M)u+B_NN'+B_MM'+E_NN''+E_MM''`, `|T|<=tau`, `P=max(|N'|,|M'|)` et `Q=max(|N''|,|M''|)`, alors `|A_N+A_M|u<=tau+(|B_N|+|B_M|)P+(|E_N|+|E_M|)Q`. Avec budget commun `H>=P,Q`, `H>=max(0,|A_N+A_M|u-tau)/(sum|B|+sum|E|)` si le dénominateur est non nul ; si tous B/E sont exactement nuls et le défaut est supérieur à tau, terminal impossible. Saturation EXACTE sur le contre-exemple JOUET à `R=17/20,epsilon=10^-8` : `H=40000000000/289`. **Aucune borne de jets physique ni enclosures Step58 établies**. Les anciennes valeurs numériques ponctuelles suggèrent seulement, sous hypothèses NON certifiées, une échelle `H>2.79e46` au bord.
+
+**EXÉCUTION LOCALE RÉELLE :** `PYTHONPATH=/mnt/data/janus_endpoint_guard python -m unittest discover -s /mnt/data/janus_endpoint_guard/tests -v` : **5 PASS, 0 FAIL**, arithmétique rationnelle exacte, tests non indépendants ; `python -m compileall -q` PASS. Sources originales Step45/46/55/58 **LUES** avec SHA GitHub, **NON EXÉCUTÉES** dans cette session ; candidat cubique aux quatre rayons NON REJOUÉ.
+
+**FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_b3c3d6_endpoint_jet_budget.py` — blob `c8684993db94ca0a186427d9d0921942f5b82cc3`, octets identiques aux tests locaux.
+- `tests/test_hr_b3c3d6_endpoint_jet_budget.py` — blob `926ff2c0d6f4750ea92cf76d4a40baa493a7bf01`, octets identiques aux tests locaux.
+- `research/STEP68AD_B3C3D6_FULL_OPERATOR_ENDPOINT_JET_BUDGET.md` — blob `6a587932c546d4a0539acbe73f181b90f578d502`.
+
+**PRIORITÉS :** (1) rejeu SHA-authentifié Step45/46/55/58 avec jets cubiques à `r=1/4,1/2,7/10,17/20` et comparaison des six coefficients affine/cubique ; (2) factorisation exacte ou enclosures, régularité et borne des jets, raccord centre et vrai BVP positif aux deux bords ; (3) Dirac six couples, charges/jauge temporelle, K=0/J=0, 4D/stabilité/observables. `main`, `research/v2-flrw` et workflows interdits de modification. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : MODE PLAT C∞ EXCLU PAR ANALYTICITÉ CENTRALE (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD initial authentifié `32d2a2fe047efcaf2cb27d7efe378595d9fd7085`. Étape effective : `b3c3d6_PARTIAL_ANALYTIC_CENTER_SMALL_B_TOY_GUARD`. Prochaine étape inchangée : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
