@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ERREUR BINARY64 DE L'INITIALISATION STEP55 (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à la reprise `3230792817c9388920d1c34ac69600706d3ccf2a` ; seule branche modifiée `research/gate2b-nonhomothetic-transfer`. Avancée de **métrologie numérique spécifique au candidat physique**, pas de preuve Dirac ni de rejeu complet.
+
+**FAIT REPRODUIT :** le candidat cubique Step58 blob `8162e35deed964a5ec2cbca53bc32cc5c875e420` construit à `s0=1e-4` une valeur initiale quadratiquement tronquée `-0.005252347922344801514364923472998400505989718191313428996077244359492678…`, puis la convertit en `float` pour `solve_ivp`. L'erreur d'arrondi binary64 exacte relativement à cette valeur haute précision est `1.92639229918244511758e-19` (relative `3.66767839386e-17`). `mp.mpf(str(float_value))` diffère du binary64 exact de `3.21725693555e-19`. **Ceci NE borne PAS l'erreur sur les coefficients Step58 B/E : sensibilité inconnue, annulations structurelles possibles.** Les coefficients antérieurs `~1e-44` restent non certifiés.
+
+**TESTS EXÉCUTÉS :** `cd /mnt/data/janus_b3c3d6_precision && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` PASS ; diagnostics mpmath à 100 chiffres, contrôle de stabilité 90/120 chiffres, contrôle négatif. Tests isolés, non indépendants, sans original Step45/46/55/58 ni BVP.
+
+**FICHIERS PUBLIÉS ET RELUS :** `numerics/hr_b3c3d6_step55_float_initialization_audit.py` blob `760f7c47ee50a12f3625d05ea6c6043cfe8040c4` ; `tests/test_hr_b3c3d6_step55_float_initialization_audit.py` blob `bc5f715ee05363070e958f4afdf9e1ec19ac5e2f` ; `research/STEP68AD_B3C3D6_STEP55_BINARY64_INITIALIZATION_PRECISION_AUDIT.md` blob `a2185291391fd5e12729cb789ca617c111e9238d`. Code/tests correspondent exactement aux octets locaux exécutés. Commits respectifs `c30f8341bfa87cae032bc901b747ad197a8e3f1f`, `464da05ac0b0c16781cd579649d6594369bd9d25`, `8990555a1e2ef670a58140279e0008802e211106`. README préfixé commit `0d98edd3ba47fbcddc1f97ba0aae89463e9319f0` ; historique conservé.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`. Matérialiser cinq originaux SHA-authentifiés ; exécuter vrai Step58 cubique et affine à 1/4,1/2,7/10,17/20 ; comparer six coefficients et convergence ODE (s0, rtol/atol, précision), puis factorisation/enclosures, centre et BVP lapses positifs deux vrais bords, Dirac six couples/charges/jauge temporelle/K=0/J=0/4D/stabilité/observables. Container DNS GitHub toujours indisponible, mais connecteur GitHub lecture/écriture opérationnel. `main`, `research/v2-flrw`, workflows intacts. **HISTORIQUE INTÉGRAL CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ALIGNEMENT DES RAYONS DÉCIMAUX STEP55/58 (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise authentifié `ec29a842ccc4bd5402b9e2e4d1d2eeefce3c11b1` ; branche unique `research/gate2b-nonhomothetic-transfer`. Correction de reproductibilité **NUMÉRIQUE**, sans nouvelle preuve physique ni rejeu original complet.
