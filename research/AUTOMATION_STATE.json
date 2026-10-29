@@ -6,7 +6,13 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
+    "status": "SUCCESS",
+    "old_prompt_characters": 35426,
+    "new_prompt_characters": 36541,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_STEP57_LF_ERRATUM_ORIGINAL_STEP58_PROBE_PENDING"
   },
   "latest_session_published_blobs": {
@@ -72,7 +78,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Original Step58 outer R=17/20 probe unexecuted due local Git DNS. Critical correction: derived Step57 eta2 Nprime transcription omitted 1/Lf. Old center -2 and q>1000r/201 and rho<804/2249 invalid. Corrected restricted M=1,N(R)=1 two-term rho>2/3, still incompatible with conditional Step58 central rho<2593/5000 but opposite direction; eta2*N remains; no Dirac or physical no-go.",
-  "task_self_update": "2026-10-29: prepended restricted Step57 two-term cancellation marker to existing automation prompt; all 34345 prior characters preserved, hourly schedule and enabled state unchanged.",
+  "task_self_update": "2026-10-29: prefixed verified Step57 Nprime 1/Lf erratum to automation prompt, all 35426 prior characters preserved; hourly schedule and enabled state unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
