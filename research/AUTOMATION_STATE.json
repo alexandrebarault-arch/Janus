@@ -6,52 +6,49 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "old_prompt_characters": 35426,
-    "new_prompt_characters": 36541,
-    "permanent_instructions_preserved": true,
+    "status": "UNCHANGED_THIS_SESSION",
+    "previous_status": "SUCCESS",
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_STEP57_LF_ERRATUM_ORIGINAL_STEP58_PROBE_PENDING"
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_PROBE_PENDING_AFTER_CORRECTED_STEP57_UNIFORM_SIGN"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_step57_lf_erratum.py": "6306a80963ca2091558cc15f41977b7489a897b8",
-    "tests/test_hr_step68ad_b3c3d6_step57_lf_erratum.py": "27c177ac5d0202726c018f581a6fd41145f9928f",
-    "research/STEP68AD_B3C3D6_STEP57_NPRIME_LF_ERRATUM.md": "37b2bbd00007fc730c1a6de4eb005c193b2d68dd",
-    "research/reports/gate2b-step68ad-b3c3d6-step57-lf-erratum.json": "99ed5030c00c8e778daaaf385e8feea525439fff",
-    "README.md": "90db49bfb8d1accf3573ddc3b4e2e7d3f97a4007",
-    "00_CURRENT_RESTART.md": "93592c24b674323f617dccff13d52057390184cc"
+    "numerics/hr_b3c3d6_step57_corrected_uniform_bound.py": "cac0932de7c3ac35a3866963334e2daee6a85b0b",
+    "tests/test_hr_b3c3d6_step57_corrected_uniform_bound.py": "3ed48cd774a154a40f8418f6f35661bc6ca86a64",
+    "research/STEP68AD_B3C3D6_STEP57_CORRECTED_UNIFORM_SIGN.md": "deda3eb7d6839c6a89ac4ebe05621a68a9ac47ca",
+    "research/reports/gate2b-b3c3d6-step57-corrected-uniform-sign.json": "7bffa9b29e0721035a7dda6098d7c4f96cd561e6",
+    "README.md": "47d60eacc2314b66ed963219c214f6d7584d2000",
+    "00_CURRENT_RESTART.md": "a075abd0f76b4554f157adf82b3156d69ad14773"
   },
-  "verified_research_head_at_session_start": "744be4b5cb867807b75d80ed61d442fdf02b53ad",
-  "next_priority": "b3c3d6 STILL PARTIAL: original Step58 R=17/20 on authentic Step55/Step45/Step57/Step68o/b3c2; certify A_N/A_M/B_N/B_M/E_N/E_M, zeros/center and actual positive-lapse two-boundary BVP; audit downstream Step57 derived scripts for omitted 1/Lf; then full Dirac/gauge/charges/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "daa5b5c9d43f171c96ef26b408c4dce3cf332a7c",
+  "next_priority": "b3c3d6 STILL PARTIAL: execute genuine original Step58 R=17/20 on SHA-authenticated Step45/55/57/58/Step68o/b3c2; certify A_N/A_M/B_N/B_M/E_N/E_M, zeros/center, real positive-lapse two-boundary BVP; then full Dirac/gauge/charges/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "001cc0ac943ec27e69a656794d8dbf4b503fe44b",
+  "verified_research_head_before_state_file": "180142d01bd56469b22707c6d494893f8aee806b",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP57_NPRIME_LF_ERRATUM.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP57_CORRECTED_UNIFORM_SIGN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_CORRECTIVE_ERRATUM",
-    "last_step_scope": "ORIGINAL_STEP57_NPRIME_LF_TRANSCRIPTION_ERROR_CORRECTED_TWO_TERM_ONLY_NOT_FULL_SYMBOL_NOT_STEP58_NOT_DIRAC"
+    "latest_stage": "b3c3d6_PARTIAL_CORRECTED_STEP57_NPRIME_UNIFORM_SIGN",
+    "last_step_scope": "EXACT_CORRECTED_STEP57_ETA2_NPRIME_SIGN_ON_PRESCRIBED_STEP55_NOT_FULL_ETA2_NOT_STEP58_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "symbolic_zero_residuals": 10,
-    "python_exact_assert_statements": 15,
+    "symbolic_zero_residuals": 5,
+    "rational_guard_assertions": 10,
     "unittest_cases_passed": 5,
     "unittest_independent": false,
     "failed_final": 0,
-    "development_failures_corrected": 2,
     "original_step45_55_57_58_executed_this_session": false,
     "original_step58_outer_R17_20_probe_executed": false,
-    "original_source_Step57_read_live": true
+    "original_step57_and_step55_read_live": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -77,7 +74,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step58 outer R=17/20 probe unexecuted due local Git DNS. Critical correction: derived Step57 eta2 Nprime transcription omitted 1/Lf. Old center -2 and q>1000r/201 and rho<804/2249 invalid. Corrected restricted M=1,N(R)=1 two-term rho>2/3, still incompatible with conditional Step58 central rho<2593/5000 but opposite direction; eta2*N remains; no Dirac or physical no-go.",
+  "current_blocker": "Original Step58 R=17/20 probe still not executed: local git DNS failure. Corrected Step57 c_eta2_Nprime(r)<-17r/2 on prescribed Step55, 0<r<=17/20, with factor 1/Lf and Sg=r Lg; 5 SymPy exact residuals + 10 rational guards + 5 non-independent unittest PASS. Original eta2*N unassessed; physical Dirac/lapses/two boundaries remain open. Historical Step57 derived scripts without 1/Lf invalid.",
   "task_self_update": "2026-10-29: prefixed verified Step57 Nprime 1/Lf erratum to automation prompt, all 35426 prior characters preserved; hourly schedule and enabled state unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -86,7 +83,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "09b08d8bcdf3f0adec94f240be5f28162f202f18",
+    "00_CURRENT_RESTART.md": "a075abd0f76b4554f157adf82b3156d69ad14773",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -109,7 +106,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "12f13a1c1967d709cd9aef14cd8908c5a2bed18b",
+    "README.md": "47d60eacc2314b66ed963219c214f6d7584d2000",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -245,7 +242,11 @@
     "numerics/hr_step68ad_b3c3d6_ratio_reachability.py": "d5fad9c288ef166bb904a80c4fa68b7b7f452437",
     "tests/test_hr_step68ad_b3c3d6_ratio_reachability.py": "2a4d2d4c74a5bd75c8c8af2be9b28378e7ccc4ee",
     "research/STEP68AD_B3C3D6_POSITIVE_RATIO_REACHABILITY_THEOREM.md": "a8b9e807ac970e1b8fe5d4906a4ae2df4582e9b1",
-    "research/reports/gate2b-step68ad-b3c3d6-ratio-reachability.json": "7efa594113164e2d4f5912beb93bc2f55f0b55c0"
+    "research/reports/gate2b-step68ad-b3c3d6-ratio-reachability.json": "7efa594113164e2d4f5912beb93bc2f55f0b55c0",
+    "numerics/hr_b3c3d6_step57_corrected_uniform_bound.py": "cac0932de7c3ac35a3866963334e2daee6a85b0b",
+    "tests/test_hr_b3c3d6_step57_corrected_uniform_bound.py": "3ed48cd774a154a40f8418f6f35661bc6ca86a64",
+    "research/STEP68AD_B3C3D6_STEP57_CORRECTED_UNIFORM_SIGN.md": "deda3eb7d6839c6a89ac4ebe05621a68a9ac47ca",
+    "research/reports/gate2b-b3c3d6-step57-corrected-uniform-sign.json": "7bffa9b29e0721035a7dda6098d7c4f96cd561e6"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
@@ -473,5 +474,9 @@
     "prohibited_branches_modified": false,
     "workflows_modified": false
   },
-  "last_session_new_result": "Exact algebraic nonsingular lapse frame for Delta=B_N^2+B_M^2>0: u=B_N*N+B_M*M, v=-B_M*N+B_N*M, u'-alpha*u=beta*v, valid across B_M=0 if B_N nonzero; no Step55 or Dirac conclusion."
+  "last_session_new_result": "Exact algebraic nonsingular lapse frame for Delta=B_N^2+B_M^2>0: u=B_N*N+B_M*M, v=-B_M*N+B_N*M, u'-alpha*u=beta*v, valid across B_M=0 if B_N nonzero; no Step55 or Dirac conclusion.",
+  "verified_forbidden_branch_heads": {
+    "main": "aead63f4098f0d15a849e579105af034b6317b30",
+    "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  }
 }
