@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CERTIFICAT EXACT D'ORDRE DU JET CUBIQUE (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à cette reprise : `f06d8e8a61738760c60227c71a7e1a23778f67a9`. HEAD juste avant ce checkpoint : `9b08ff22069ab260b03f5cd69a6247cb6f6dc800`. Étape effective `b3c3d6_PARTIAL_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE`; prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU RÉSULTAT EXACT, LOCAL ET LIMITÉ :** pour `2sU_s=G(s,U)-2U`, le prolongement cubique construit avec U_s/U_ss/U_sss de l'EDO annule les coefficients d'ordre 0,1,2 du résidu `H=2U_c+2sU_c'-G(s,U_c)`. Le coefficient cubique est `-s0 U_ssss/3`, avec `U_ssss=[G_sss+3G_ssU U_s+3G_sUU U_s²+G_UUU U_s³+3G_sU U_ss+3G_UU U_s U_ss+(G_U-8)U_sss]/(2s0)`. Pour `D(r)=d(r²U_c(r²))/dr-rG(r²,U_c(r²))`, `D=D'=D''=0` au rayon de contact, mais `D'''=-16r0^6 U_ssss` peut être non nul. Témoin analytique **JOUET** exact `r0=1/2, U_ssss=24/13, D'''=-6/13`. Cela établit la limite d'ordre du jet cubique, **aucun résultat numérique Step55/Step58 physique**.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_preflight && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL** non indépendants, 5 identités formelles exactes et un témoin analytique ; `python -m compileall -q numerics tests` PASS. Une erreur intermédiaire de substitution s0=r0² a été corrigée avant publication.
+
+**FICHIERS PUBLIÉS ET RELUS SUR GITHUB :**
+- `numerics/hr_b3c3d6_cubic_jet_order_certificate.py` blob `a149e0c81af460b9d8dcea40546331e167d079e5` (octets testés identiques).
+- `tests/test_hr_b3c3d6_cubic_jet_order_certificate.py` blob `4b10f69301b4ff90e97adb5c186d8f296f1b19c0` (octets testés identiques).
+- `research/STEP68AD_B3C3D6_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE.md` blob `62e24c4365ebbaef79ced9e64546f809f1463622`.
+
+**LIMITES ET ACTIONS PRIORITAIRES :** clone réseau GitHub impossible (DNS local), connecteur GitHub lecture/écriture opérationnel. Aucun moteur original Step45/46/55/58 exécuté dans cette session ; six coefficients corrigés aux quatre rayons, U_ss/U_sss/U_ssss physiques, factorisation/enclosures, raccord centre, lapses positifs/deux vrais bords et Dirac/4D/stabilité/observables **NON TESTÉS**. Prochaine action : rejeu original SHA-authentifié du candidat corrigé aux quatre rayons et comparaison affine/cubique ; puis seulement les certificats globaux. `main`, `research/v2-flrw`, workflows désactivés : ne pas modifier. **TOUT L'HISTORIQUE CI-DESSOUS EST CONSERVÉ.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : SENSIBILITÉ EXACTE DES JETS CUBIQUES (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu en direct : `610875ecc3715a6efeeb7f5c7ace2c9ea37f3e9f`. Étape effective : `b3c3d6_PARTIAL_ENDPOINT_JET_SENSITIVITY` ; prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`. Cette session a exécuté des preuves SymPy sur les sensibilités des jets, **PAS** le moteur Step58 original ni la solution numérique Step55.
