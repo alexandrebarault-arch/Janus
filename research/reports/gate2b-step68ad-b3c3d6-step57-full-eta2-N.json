@@ -1,0 +1,49 @@
+{
+  "conditional_step58_center_ratio_bounds": [
+    "1037/2000",
+    "2593/5000"
+  ],
+  "eta2_required_N2_over_N0_bounds": [
+    "1/25",
+    "1/20"
+  ],
+  "eta2_center_residual_without_N2": [
+    "1900052168459294248801659389/2500000000000000000000000000",
+    "761111685048024426806843253/1000000000000000000000000000"
+  ],
+  "scope": "Step57_eta2_N_coefficient_on_prescribed_Step55_not_original_Step58",
+  "radius": "0<r<=17/20",
+  "cells": 256,
+  "outward_integer_scale": "1e-28",
+  "symbolic_residuals": 3,
+  "rational_cell_sign_guards": 1795,
+  "uniform_enclosures": {
+    "cN_over_s": [
+      "31368160802458321801214531607/5000000000000000000000000000",
+      "4012205757806882889885031099/625000000000000000000000000"
+    ],
+    "cM_over_s": [
+      "-13636324444620491118259095077/1250000000000000000000000000",
+      "-107056955787003774245564225757/10000000000000000000000000000"
+    ],
+    "cNprime_over_r": [
+      "-86914469562065774284904072037/10000000000000000000000000000",
+      "-17277851983578167002492112353/2000000000000000000000000000"
+    ],
+    "T_N0_over_s": [
+      "-1188931326763924421059355961/2000000000000000000000000000",
+      "-145305144858700057670735477/250000000000000000000000000"
+    ]
+  },
+  "uniform_signs": {
+    "cN_over_r2": ">6",
+    "cM_over_r2": "<-10",
+    "cNprime_over_r": "<-17/2"
+  },
+  "full_eta2_central_relation": "cN2*N0+cM2*M0+2*cNprime1*N2=0 (for even C2 N,M)",
+  "full_eta2_N2_dependence": "NONZERO; no forced central M0/N0 from this eta2 coefficient alone",
+  "original_Step58_outer_probe_executed": false,
+  "Dirac_rank": "NOT_COMPUTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
