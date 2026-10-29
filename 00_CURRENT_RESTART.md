@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : INVARIANCE EXACTE CUBIQUE→QUARTIQUE DES JETS STEP58 (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD lu au début : `8b7a0f1e0d2246eff8bcc14ea6c5d88f6dda74a6`. Dernier commit scientifique avant ce checkpoint : `c455646c053ce48c82d6469a869fd79a8b29c4fb`. Étape effective **b3c3d6_PARTIAL_CUBIC_QUARTIC_JET_ORDER_INVARIANCE**, prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**AVANCÉE EXACTE MAIS FORMELLE :** sur `r0>0`, les prolongements cubique `Uc` et quartique `Uq=Uc+U4(r²-r0²)^4/24` donnent les mêmes jets radiaux 0,1,2,3 de toute composition lisse `F(r,U)`. Premier écart `ΔF''''=16 r0^4 U4 F_U(r0,U0)` ; pour `pLf=r²U`, `ΔpLf''''=16 r0^6 U4`. Lecture du moteur Step58 original blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` : ses coefficients retournés utilisent `q,q',q'',q'''` et `z,z',z'',z'''` (pas `q''''` effectivement atteint). **Conséquence CONDITIONNELLE : les six coefficients Step58 cubiques et quartiques doivent être identiques au point**, sans rien affirmer sur leurs valeurs physiques. Ce n'est PAS un rejeu de l'original ni une preuve de Dirac.
+
+**TESTS EXÉCUTÉS :** `cd /mnt/data/janus_run11 && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL** (non indépendants), cinq différences divisées SymPy exactes et deux calculs directs du saut de quatrième dérivée ; `python -m compileall -q numerics tests` PASS. Première tentative d'expansion symbolique rationnelle expirée, méthode finale par différences divisées PASS en 0,457 s. **Original Step45/46/55/58 NON exécuté**, candidat corrigé aux quatre rayons NON rejoué, six coefficients physiques NON calculés dans cette session. GitHub consulté via connecteur ; clone réseau DNS local impossible.
+
+**NOUVEAUX FICHIERS GITHUB CRÉÉS ET RELUS, OCTETS IDENTIQUES AUX FICHIERS TESTÉS :**
+- `numerics/hr_b3c3d6_cubic_quartic_step58_jet_invariance.py` blob `2e6df2e83cfb25d46b48d39a6e24176ac6db346c`.
+- `tests/test_hr_b3c3d6_cubic_quartic_step58_jet_invariance.py` blob `0312ebdabeb2f0f12dc9d81f7bb13d8e9848690b`.
+- `research/STEP68AD_B3C3D6_CUBIC_QUARTIC_STEP58_JET_ORDER_INVARIANCE.md` blob `eaf1fe08a4ba600e2307854c7bf0f8dd1ab65a5a`.
+
+**PROCHAINES ACTIONS PRIORITAIRES :** (1) rejeu original SHA-authentifié Step45/46/55/58 avec candidat cubique à `r=1/4,1/2,7/10,17/20`, comparaison des six coefficients affine/cubique et résidus ; (2) factorisation/enclosures, raccord centre et BVP des lapses positifs aux DEUX bords ; (3) Dirac six couples, charges/jauge temporelle, K=0/J=0, dynamique 4D, stabilité et observables. **Ne modifier ni `main`, ni `research/v2-flrw`, ni les workflows désactivés.** Historique intégral ci-dessous.
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CERTIFICAT EXACT D'ORDRE DU JET CUBIQUE (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à cette reprise : `f06d8e8a61738760c60227c71a7e1a23778f67a9`. HEAD juste avant ce checkpoint : `9b08ff22069ab260b03f5cd69a6247cb6f6dc800`. Étape effective `b3c3d6_PARTIAL_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE`; prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
