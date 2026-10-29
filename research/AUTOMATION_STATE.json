@@ -7,13 +7,14 @@
   },
   "latest_session_automation_update": {
     "status": "SUCCESS",
-    "old_prompt_characters": 38460,
-    "new_prompt_characters": 39392,
+    "old_prompt_characters": 39392,
+    "new_prompt_characters": 40184,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING"
+    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_step55_primary_shell_audit.py": "fb12fd707314682faf430d214ab7d805532b1a8b",
