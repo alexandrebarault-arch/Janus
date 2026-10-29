@@ -1,0 +1,24 @@
+{
+  "identities": [
+    "Sgprime",
+    "pLgprime",
+    "radial_curvature",
+    "D_shift",
+    "K_shift",
+    "Fz",
+    "Hg",
+    "Hg_div_s"
+  ],
+  "exact_residuals_zero": 9,
+  "negative_controls": 2,
+  "outer_factor": "-9999884400000000000000000000000000000000/926432894764182404865494596893754186181",
+  "outer_factor_sign": "-11<factor<-10",
+  "physical_scope": "Fz=Hg=0 exact on transcribed Step55 prescribed geometry; E_N=E_M=0 follows from authentic Step58 highjet certificate; no original full Step58 execution this run",
+  "source_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
