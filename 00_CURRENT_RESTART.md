@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ÉCRAN DE COMPATIBILITÉ CENTRALE D'UNE ANNULATION PARTIELLE STEP57 (2026-10-29)
+
+**ÉTAT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. Étape b3c3d6 PARTIELLE.** Prochaine étape prioritaire INCHANGÉE : vrai probe original Step58 sur Step55 à R=17/20 (sources Step45/55/57/58/Step68o/b3c2 authentifiées), A_N,A_M,B_N,B_M,E_N,E_M, signes/zéros/dérivées et raccord central, lapses strictement positifs avec les deux vrais bords, puis pullback Dirac, charges/générateurs, jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D/stabilité/observables.
+
+**NOUVEAU RÉSULTAT EXACT MAIS TRÈS RESTREINT :** sur le profil géométrique prescrit Step55, K>0 pour 0<r<=17/20, les deux contributions du symbole smeared Step57 `eta''*M` et `eta''*N'` ont coefficients négatifs c_M<-10r² et |c_Nprime|<201r/100. Leur quotient q=c_M/c_Nprime >1000r/201. Dans la SOUS-FAMILLE M(r)=1, N(R)=M(R)=1, l'annulation des **deux seules contributions** c_M M+c_Nprime N'=0 impose N(r)=1+int_r^R q(t)dt, donc N(0)>2249/804 et M(0)/N(0)<804/2249<1037/2000. Cela contredit le ratio central b3c2 >1037/2000 **si l'on impose simultanément les hypothèses Step58 de ce ratio**. La construction N,M est positive, régulière, paire, mais NE satisfait PAS le ratio Step58. **CRUCIAL : le coefficient eta''*N original Step57 reste présent et non évalué ; il ne s'agit PAS de l'annulation du symbole complet, ni d'un no-go physique, ni d'un probe Step58.** Quadrature illustrative (non utilisée dans la preuve) : int q≈1.94788402529054, ratio≈0.33922637099.
+
+**TESTS RÉELLEMENT EXÉCUTÉS EN LOCAL :** dans /mnt/data/janus_b3c3d6_bridge : `PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_two_term_cancellation` (6 résidus SymPy exacts nuls et 7 assertions de garde rationnelle PASS) ; `PYTHONPATH=. python -m unittest discover -s tests -v` (4 cas PASS, non indépendants, 0 FAIL) ; une quadrature mpmath informative. **Aucun moteur original Step45/55/57/58/Step68o/b3c2 ni probe Step58 R=17/20 exécuté.** Git local `git ls-remote` et curl échouent faute de réseau/DNS ; connecteur GitHub lecture/écriture fonctionne.
+
+**LIVRABLES PUBLIÉS ET RELUS (4/4 SHA blob identiques aux octets locaux) :**
+- `numerics/hr_step68ad_b3c3d6_two_term_cancellation.py` blob `461509a67b04eab4481e7411117b92ee1072ba38`, commit `bc6da1caee65b86d3b74dffa3ad08ce95207d58c`.
+- `tests/test_hr_step68ad_b3c3d6_two_term_cancellation.py` blob `66951e464736c53a114d6d36d74d54c4993ef309`, commit `c23b10450330d4d3b5b76edbbc8ed0359a53a6d8`.
+- `research/STEP68AD_B3C3D6_STEP57_TWO_TERM_CANCELLATION_CENTER_SCREEN.md` blob `96cbfdf10c657a2c6eed9068b384bba907c076fc`, commit `dbc90a1ab1460a176f28f1e5fbf1e9491ab2567f`.
+- `research/reports/gate2b-step68ad-b3c3d6-two-term-cancellation.json` blob `2d225047cce91622bb8943661a945f26a03769d6`, commit `da5c27adb88f45dc9c6bb8cdb030d82722f301e2`.
+- `README.md` blob `b3021e6e7b6f3b3d4ce324561445f2975330a2b6`, commit `b8cdc3c96775620325f832f928c524b1eae0d2a1`.
+
+**PROVENANCE :** branche au démarrage `bed90a2f1493aee42737cd5856b8471ba41d8271`. Sources Step55 blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step57 `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`. Branches interdites au démarrage main=`aead63f4098f0d15a849e579105af034b6317b30`, research/v2-flrw=`dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; recontrôler après mise à jour de l'état. Aucun workflow modifié. Le présent checkpoint est préfixé ; tout l'historique précédent reste intact.
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : SIGNE UNIFORME DU SYMBOLE FONCTIONNEL STEP57 SUR STEP55 (2026-10-29)
 
 **STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. ÉTAPE EFFECTIVE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ÉTAPE b3c3d6 : exécuter le vrai probe original Step58 à R=17/20 sur Step55 avec les sources Step45/55/57/58/Step68o/b3c2, certifier A_N,A_M,B_N,B_M,E_N,E_M, dérivées/zéros/cartes/raccord centre, lapses positifs et les deux vrais bords ; ensuite pullback Dirac, générateurs/charges, quotient jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D/stabilité/observables.**
