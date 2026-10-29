@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : COQUILLE PRIMAIRE STEP55 VÉRIFIÉE ALGÉBRIQUEMENT (2026-10-29)
+
+**STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 PARTIELLE.** PROCHAINE ÉTAPE : exécuter le vrai probe original Step58 sur la solution radiale complète Step55 à R=17/20, avec jets pLf de l'EDO, les six coefficients A_N/A_M/B_N/B_M/E_N/E_M et leurs dérivées/zéros/cartes/raccord centre, lapses strictement positifs et DEUX bords physiques ; ensuite vrai pullback Dirac, charges/générateurs, quotient jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables.
+
+**AVANCÉE EXACTE MAIS RESTREINTE :** transcription indépendante des définitions Step45 et Step55 (blobs originaux authentifiés par lecture GitHub) : pLg'=r Gprime ; Dg=r*s*Dbar ; K=s*m2*Mg2*Lg*Lf*T ; Fz=0 ; identité de courbure -Lg-Sg'^2/Lg+2(Sg*Sg'/Lg)'=-s*Lg^3*Rg/2 ; la densité rho_g prescrite annule exactement Hg=Ag-Bg'=0 pour r>0. Combinée avec le certificat Step58 des plus hauts jets REJOUÉ PRÉCÉDEMMENT, E_M=0 sur Fz=0 et E_N=(z²-1)*Hg/(Lg*Lf), cette vérification établit E_N=E_M=0 sur la géométrie prescrite Step55 régulière. Au bord R=17/20, facteur (z²-1)/(Lg*Lf)=-9999884400000000000000000000000000000000/926432894764182404865494596893754186181 entre -11 et -10 ; ce n'est PAS un E_N non nul. La vérification ne dépend pas de la solution pLf, et ne prouve ni Hf, ni C=0, ni la préservation temporelle complète.
+
+**TESTS RÉELLEMENT EXÉCUTÉS DANS CETTE SESSION :** `cd /mnt/data/janus_shell_audit && PYTHONPATH=. python -m unittest discover -s tests -v` : 4 unittest PASS non indépendants, 0 FAIL final ; `python step55_primary_shell_audit.py` : 9 résidus SymPy nuls, 2 contrôles négatifs, facteur extérieur rationnel exact. Un test négatif intermédiaire a échoué à cause d'une simplification de racines SymPy et a été corrigé avant la publication finale ; ne pas confondre ce problème de simplification avec une violation physique. **Les moteurs Python originaux Step45/55/58 n'ont PAS été exécutés dans cette session**, seules leurs formules transcrites ont été évaluées. Le rejeu original des hauts jets est celui du checkpoint antérieur, et ne doit pas être compté comme test nouveau.
+
+**FICHIERS PUBLIÉS ET RELUS, BLOBS EXACTS :**
+- `numerics/hr_b3c3d6_step55_primary_shell_audit.py` : fb12fd707314682faf430d214ab7d805532b1a8b.
+- `tests/test_hr_b3c3d6_step55_primary_shell_audit.py` : a661afed0a7dbb1a6519597405c736363e67036a.
+- `research/reports/gate2b-b3c3d6-step55-primary-shell.json` : c758db69390d93b8e5b63c2caa789d35bca80233.
+- `research/STEP68AD_B3C3D6_STEP55_PRIMARY_SHELL_AUDIT.md` : fe25ff7a8aa0c1aa7f94015f19c390efc38bfe35.
+- `README.md` préfixé sans perte, blob e54a0e9924124942eb44ef18b2b9118fa38bed4c.
+
+**PROVENANCE :** HEAD initial branche autorisée 8a9f844136d9cee85788daac6bec86bd33afd525 ; sources originales Step45 66aa43841dccfe4a5d586a49be9c10af3a67a10e, Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe, Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f. main initial aead63f4098f0d15a849e579105af034b6317b30 ; research/v2-flrw initial dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb. Aucun workflow modifié. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : REJEU ORIGINAL STEP45+STEP58 DES PLUS HAUTS JETS (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED. b3c3d6 reste PARTIELLE. PROCHAINE ÉTAPE :** vrai probe ORIGINAL Step58 sur le profil complet Step55 à R=17/20, coefficients A_N/A_M/B_N/B_M/E_N/E_M et dérivées, zéros, cartes et raccord centre, lapses positifs et les deux vrais bords ; ensuite Dirac/charges/générateurs/quotient jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.
