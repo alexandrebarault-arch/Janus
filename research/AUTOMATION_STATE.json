@@ -6,62 +6,59 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "old_prompt_characters": 41184,
-    "new_prompt_characters": 41981,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_CORRECT_TRUE_STEP55_ODE_JETS_ORDER3_AND_RERUN_ORIGINAL_STEP58",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b"
+    "status": "NOT_YET_ATTEMPTED_THIS_SESSION",
+    "previous_update_preserved_in_checkpoint": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step55_jet_holonomicity.py": "22fea2970d22027e2a8a8531f22bb87a4f7af2e5",
-    "tests/test_hr_b3c3d6_step55_jet_holonomicity.py": "d607c1fcc4954982ffd30b47f088c461220ec351",
-    "research/STEP68AD_B3C3D6_STEP55_ODE_HIGHER_JET_CONSISTENCY_AUDIT.md": "27a0539a2eebbcd0a538fe0188d6ff914c477e2b",
-    "research/reports/gate2b-b3c3d6-step55-ode-higher-jet-consistency.json": "5474b12802dfdfda6c54c8f841698ca2326b9ac4",
-    "00_CURRENT_RESTART.md": "3ee54bb6cb60215f1b15ae5ce7198bde1daf562c",
-    "README.md": "17d2dfd54d0577647fe1f75c96850ca1b3faebaa"
+    "numerics/hr_b3c3d6_ode_consistent_jet_map.py": "c66534cab7da29cf9c214f08c965def3b99b4e63",
+    "tests/test_hr_b3c3d6_ode_consistent_jet_map.py": "6ed35dffb7f9c1f61d6ed0edc7106f990e912d32",
+    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "9eb5167bec74fc427307a262faaa6a1f785785a8",
+    "tests/test_hr_b3c3d6_corrected_step58_point_probe_candidate.py": "625304d17c903a7e8311c72030224a19d6f7e217",
+    "research/STEP68AD_B3C3D6_CORRECTED_CUBIC_ODE_JET_REPAIR.md": "bbb5bc5240373867e1dc9c8fc3bc5eef87048ac4",
+    "research/reports/gate2b-b3c3d6-corrected-cubic-ode-jet-candidate.json": "9dbe7ef0a64fb28ec0a4eb3e9d0e1cbd3b95f043",
+    "README.md": "e00a0fb04ea79004e692fceb9b97e755b66f9581",
+    "00_CURRENT_RESTART.md": "a8d45ac5351af7155294a3a00534c6c28f100b3f"
   },
-  "verified_research_head_at_session_start": "f906010be8789180dccb2ccf389ef2ee0c472fdc",
-  "next_priority": "Build ODE-consistent U_s,U_ss,U_sss and independently verify pLf',pLf'',pLf''' at all four Step55 points; rerun byte-original Step58 and perturb high jets; then exact B_N/B_M factorization and uniform interval signs, center and positive-lapse two-boundary BVP; Dirac/time gauge/six pairs/K=0/J=0/4D/stability/observables remain open.",
+  "verified_research_head_at_session_start": "4831ad91b2120bc0ab5dbfbcd47d4d4b8e11ba60",
+  "next_priority": "Run byte-original Step45/46/55/58 with corrected cubic U(s) jets at r=1/4,1/2,7/10,17/20; measure actual Uss/Usss, affine defects and six coefficients vs old probe. Then exact factorization/enclosures, center and two-boundary positive lapse BVP; Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables remain open.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "c8b05acd91d630bea69717a2a1cae7eac882ca6e",
+  "verified_research_head_before_state_file": "623788306e7f7f3fd30440212a20507e3a24da8e",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_CORRECT_TRUE_STEP55_ODE_JETS_ORDER3_AND_RERUN_ORIGINAL_STEP58",
+  "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_ODE_HIGHER_JET_CONSISTENCY_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CORRECTED_CUBIC_ODE_JET_REPAIR.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_ODE_JET_HOLONOMICITY_AUDIT",
-    "last_step_scope": "Exact symbolic proof that affine endpoint U(s) in prior original Step58 point probe omits Uss/Usss contributions to pLf second/third radial jets; original Step58 six coefficients NOT reevaluated this session; impact UNKNOWN"
+    "latest_stage": "b3c3d6_PARTIAL_CUBIC_ODE_JET_MAP_TESTED_ORIGINAL_STEP58_CANDIDATE_UNEXECUTED",
+    "last_step_scope": "ODE-consistent U_s,U_ss,U_sss formulas and radial pLf jet chain-rule; corrected original Step58 candidate published, but not integration-executed or certified"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 5,
+    "unittest_cases_passed": 6,
     "unittest_independent": false,
     "failed_final": 0,
-    "formal_exact_ode_jet_identities": true,
-    "toy_nonzero_defect": true,
-    "toy_affine_zero_defect": true,
+    "independent_sympy_radial_jet_identities_passed": 3,
+    "python_compileall_pass": true,
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
-    "original_step58_executed_this_session": false
+    "original_step58_executed_this_session": false,
+    "corrected_step58_integration_tests_published_not_executed": 3,
+    "intermediate_toy_test_expectation_failures_corrected": 2
   },
   "github_write_probe": {
     "status": "SUCCESS",
     "method": "mcp__GitHub__create_file/update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
-    "scientific_files_created": 4,
+    "scientific_files_created": 6,
     "readback_verified": true,
-    "source_blob_matches_executed_bytes": true
+    "local_executed_source_blob_matches": true,
+    "original_full_step58_integration_executed": false
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -79,7 +76,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original four-point Step58 probe used affine U(s) continuation and has not certified ODE-consistent pLf''/pLf''' jets; exact algebraic defect proven but actual Step55 Uss/Usss and Step58 coefficient sensitivity not yet measured. Prior near-zero B/E remains heuristic. DOP853 global integration is not interval-certified.",
+  "current_blocker": "Local container DNS cannot resolve raw.githubusercontent.com; complete original Step45/46/55/58 module tree not available for integration replay. Corrected cubic-jet candidate has not been run; actual six Step58 coefficients, physical Uss/Usss and uniform signs remain unknown. Existing DOP853 global integration not interval certified.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
