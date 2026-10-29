@@ -16,7 +16,7 @@ ug=1+cg*s
 uf=1+cf*s
 Lg=A*ug**2
 Lf=B*uf**2
-Sg_over_r=A*ug
+Sg_over_r=Lg
 Sgprime=A*ug*(1+5*cg*s)
 z2=s/62500
 # Original Step57 eta2 N' on Fz=0, K>0: -2 Mg2 Sg Sg' (1-z²)/(Lg² Lf).
@@ -26,7 +26,7 @@ legacy_over_r=sp.factor(correct_over_r*Lf)
 
 def certificate():
     checks={
-        'original_formula_reduction':correct_over_r+2*(1+5*cg*s)*(1-z2)/(B*ug**2*uf**2),
+        'original_formula_reduction':correct_over_r+2*(1+5*cg*s)*(1-z2)/(B*ug*uf**2),
         'legacy_omitted_factor':legacy_over_r-Lf*correct_over_r,
         'center_correct':correct_over_r.subs(s,0)+2/B,
         'center_legacy':legacy_over_r.subs(s,0)+2,
