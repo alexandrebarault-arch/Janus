@@ -1,0 +1,11 @@
+# JANUS — checkpoint autonome b3c3d6 (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD initial authentifié : `3cf48679e5b570e029fdd7b14295d7623813b819`. Étape partielle `b3c3d6_PARTIAL_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER_TOY`. Prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**Résultat exact non physique :** l'équation `r²N-2r²M-εr⁴N'=0` admet pour tout `ε>0,R>0` la solution positive `M=1`, `N=2-exp((1/R-1/r)/ε)`, `N(0)=2`, `N(R)=M(R)=1`. Elle est C∞ plate mais non analytique au centre. `sup|B_N|=εR⁴→0` et `N'(R)=-1/(εR²)` diverge ; à `ε=0`, l'équation algébrique `N=2M` exclut le terminal positif égal. Ainsi des coefficients Step58 numériquement ~10^-44 ne peuvent être posés égaux à zéro sans certificat exact ou borne de pente. Au bord `N=M=u>0`, si `|N'|,|M'|≤Lu`, condition nécessaire : `|A_N+A_M|≤L(|B_N|+|B_M|)`. AUCUNE conclusion sur le Step55 physique.
+
+**Exécution :** 5 unittest SymPy PASS, 0 FAIL, non indépendants ; compileall PASS. Original Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` et candidat cubique `9eb5167bec74fc427307a262faaa6a1f785785a8` lus par GitHub, NON exécutés. Nouveaux fichiers lus et SHA octets testés identiques : `numerics/hr_b3c3d6_small_B_boundary_layer_counterexample.py` `dd13df454a7aafd22b82e900b04fdc6ee932f212`, `tests/test_hr_b3c3d6_small_B_boundary_layer_counterexample.py` `759e483a38b8b4c28c9805da49a77e4cf261492c`, `research/STEP68AD_B3C3D6_SMALL_B_SINGULAR_LAPSE_BOUNDARY_LAYER.md` `8a1f7d0750ccbad8ef791ce1496a7d65a0dc5f1e`.
+
+**BLOCAGE DOCUMENTAIRE :** la tentative de préfixer `00_CURRENT_RESTART.md` (611629 caractères) a été refusée par les contrôles de sécurité de l'outil. Aucun historique n'a été supprimé : fichier historique intact, ce checkpoint autonome et `research/AUTOMATION_STATE.json` servent de complément. **Ne pas remplacer l'historique par un résumé.**
+
+**Priorités :** vrai rejeu original SHA-authentifié à r=1/4,1/2,7/10,17/20 ; six coefficients affine/cubique, factorisation exacte ou enclosures+bornes de pentes, centre analytique, lapses positifs/deux bords, Dirac/charges/jauge/six couples/K=0/J=0/4D/stabilité/observables. Ne toucher ni main, ni research/v2-flrw, ni workflows.
