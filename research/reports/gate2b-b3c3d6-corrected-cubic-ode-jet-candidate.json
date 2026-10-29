@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-29",
+  "stage": "b3c3d6_PARTIAL_CORRECTED_CUBIC_ODE_JET_CANDIDATE",
+  "scope": "Exact radial jet chain-rule map and unexecuted corrected full-original Step58 integration candidate",
+  "initial_verified_head": "4831ad91b2120bc0ab5dbfbcd47d4d4b8e11ba60",
+  "original_sources_read": {
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "643d90183367e74a28ed453d93f5489074b75b08"
+  },
+  "published_files": {
+    "numerics/hr_b3c3d6_ode_consistent_jet_map.py": "c66534cab7da29cf9c214f08c965def3b99b4e63",
+    "tests/test_hr_b3c3d6_ode_consistent_jet_map.py": "6ed35dffb7f9c1f61d6ed0edc7106f990e912d32",
+    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "9eb5167bec74fc427307a262faaa6a1f785785a8",
+    "tests/test_hr_b3c3d6_corrected_step58_point_probe_candidate.py": "625304d17c903a7e8311c72030224a19d6f7e217"
+  },
+  "executed_tests": {
+    "local_unittest_pass": 6,
+    "local_unittest_fail_final": 0,
+    "local_unittest_independent": false,
+    "independent_symbolic_radial_jet_identities_pass": 3,
+    "python_compileall_pass": true,
+    "full_original_step55_58_integration_executed": false,
+    "pending_integration_test_cases": 3,
+    "intermediate_test_failures_corrected_before_publication": 2
+  },
+  "mathematics": {
+    "ODE": "2s U_s=G(s,U)-2U",
+    "Uss": "[G_s+(G_U-4)U_s]/(2s)",
+    "Usss": "[G_ss+2G_sU U_s+G_UU U_s^2+(G_U-6)U_ss]/(2s)",
+    "pLf_second": "G+2s(G_s+G_U U_s)",
+    "pLf_third": "6r(G_s+G_U U_s)+4rs(G_ss+2G_sU U_s+G_UU U_s^2+G_U U_ss)",
+    "center": "s=0 singular in this formula; separate regular series required"
+  },
+  "physical_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED",
+    "corrected_six_coefficients": "NOT_EXECUTED",
+    "original_step58_rerun": "NOT_EXECUTED",
+    "uniform_interval_certificate": "NOT_PROVED",
+    "positive_lapse_two_boundary_BVP": "NOT_SOLVED",
+    "Dirac": "OPEN"
+  },
+  "next": "Execute pending corrected original Step58 four-radii integration with authenticated sources, compare old affine vs corrected six coefficients, then exact factorization/enclosures, center and physical two-boundary positive-lapse BVP, Dirac/charges/4D/stability/observables"
+}
