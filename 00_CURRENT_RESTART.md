@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT CORRECTIF b3c3d6 PARTIEL : ERREUR FACTEUR 1/Lf STEP57 (2026-10-29)
+
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 TOUJOURS PARTIELLE.** PRIORITÉ INCHANGÉE : vrai probe original Step58 sur Step55 R=17/20, avec Step45/55/57/58/Step68o/b3c2, A_N/A_M/B_N/B_M/E_N/E_M et dérivées/zéros/cartes/raccord centre, lapses positifs avec les deux vrais bords ; ensuite vrai Dirac/charges/générateurs/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.
+
+**ERRATUM SCIENTIFIQUE MAJEUR, PROUVÉ SUR LES EXPRESSIONS ORIGINALES :** le moteur original Step57 (blob `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`) donne le coefficient `eta''*N'` égal à `-2*Mg2*Sg*Sg'*(1-z²)/(Lg²*Lf)` sur Fz=0,K>0. Deux scripts dérivés b3c3d6 avaient OMIS `1/Lf`. Le coefficient `eta''*M` précédent était correct. Donc `lim c_Nprime/r=-2/Lf(0)≈-8.63899952608`, PAS `-2` ; l'ancien `q=c_M/c_Nprime` est trop grand d'un facteur `1/Lf` ; l'ancienne borne `q>1000r/201` est FAUSSE. Les anciennes valeurs centrales et l'ancien écran `M(0)/N(0)<804/2249` sont INVALIDÉS, bien que la borne de signe grossière `c_Nprime<-(19999/10000)r` reste vraie.
+
+**PREUVE CORRIGÉE STRICTEMENT RESTREINTE :** `q_correct=Lf*q_ancien=m2*r*T(r²)*(1+cg*r²)/(2*(1+5cg*r²)*sqrt(1-r²/62500))`. Bernstein exact `53/500<T<109/1000`, `m2<24`, `sqrt(1-r²/62500)>99999/100000` donnent `int_0^(17/20) q<1/2`. Pour `M=1,N(R)=1` et annulation des DEUX termes `c_M*M+c_Nprime*N'=0`, `M(0)/N(0)>2/3>2593/5000` : incompatibilité avec le ratio central conditionnel b3c2, **DANS LE SENS OPPOSÉ** à la conclusion antérieure. Quadrature illustrative `M(0)/N(0)≈0.68938800746505`. Le coefficient `eta''*N` RESTE présent, non annulé : ce n'est PAS le symbole complet, PAS Step58, PAS Dirac, PAS un no-go JANUS. Source Step55 `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 contexte `802c23aebd41780d8c462f1aa1711707fe4ee88f`.
+
+**TESTS LOCAUX RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_erratum && PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_step57_lf_erratum` : 10 résidus exacts nuls, 15 assertions Python exactes (dont cinq coefficients Bernstein et leurs quatre différences), 0 échec final ; `PYTHONPATH=. python -m unittest discover -s tests -v` : 5 unittest PASS, non indépendants, 0 FAIL final. Un premier échec de simplification de racines et un échec de comparaison structurelle ont été corrigés avant publication. Moteurs originaux et probe Step58 R=17/20 NON exécutés (DNS local Git inaccessible) ; code original Step57 inspecté en direct via GitHub.
+
+**LIVRABLES NOUVEAUX PUBLIÉS SUR LA SEULE BRANCHE AUTORISÉE, 4/4 BLOBS RELUS ET IDENTIQUES AUX OCTETS LOCAUX :**
+- `numerics/hr_step68ad_b3c3d6_step57_lf_erratum.py` blob `6306a80963ca2091558cc15f41977b7489a897b8`, commit `a42f6448cee04b23f2f6cf23aee2d9e412ce423b`.
+- `tests/test_hr_step68ad_b3c3d6_step57_lf_erratum.py` blob `27c177ac5d0202726c018f581a6fd41145f9928f`, commit `46a686b5241ed90b08d61a9d270efd9ea2673ae6`.
+- `research/STEP68AD_B3C3D6_STEP57_NPRIME_LF_ERRATUM.md` blob `37b2bbd00007fc730c1a6de4eb005c193b2d68dd`, commit `7cfac810572cfafebb4998de29e6b1bbc7b72c33`.
+- `research/reports/gate2b-step68ad-b3c3d6-step57-lf-erratum.json` blob `99ed5030c00c8e778daaaf385e8feea525439fff`, commit `300edd93c6d73f0746644453ba2381d28be3d064`.
+- `README.md` préfixé avec avertissement, blob `90db49bfb8d1accf3573ddc3b4e2e7d3f97a4007`, commit `1bf2735174ca48cfba9b573c472a8106ca0f07cb`.
+
+**PROVENANCE :** HEAD initial GitHub `744be4b5cb867807b75d80ed61d442fdf02b53ad`. Les fichiers historiques erronés sont conservés intacts pour audit, mais leur interprétation est explicitement remplacée par cet erratum. Aucun workflow GitHub modifié. Branches interdites au démarrage main=`aead63f4098f0d15a849e579105af034b6317b30`, research/v2-flrw=`dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; à revérifier en fin de session. Historique intégral conservé ci-dessous.
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ÉCRAN DE COMPATIBILITÉ CENTRALE D'UNE ANNULATION PARTIELLE STEP57 (2026-10-29)
 
 **ÉTAT SCIENTIFIQUE INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. Étape b3c3d6 PARTIELLE.** Prochaine étape prioritaire INCHANGÉE : vrai probe original Step58 sur Step55 à R=17/20 (sources Step45/55/57/58/Step68o/b3c2 authentifiées), A_N,A_M,B_N,B_M,E_N,E_M, signes/zéros/dérivées et raccord central, lapses strictement positifs avec les deux vrais bords, puis pullback Dirac, charges/générateurs, jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D/stabilité/observables.
