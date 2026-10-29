@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : PREMIER REJEU NUMÉRIQUE COMPLET STEP58 ORIGINAL SUR STEP55 (2026-10-29)
+
+**STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 RESTE PARTIELLE.** Prochaine étape prioritaire : transformer le nouveau signal numérique en **certificat exact/intervalle** de B_N,B_M,E_N,E_M et des signes A_N,A_M sur la véritable solution Step55 pour tout 0<r<=17/20 ; vérifier les dérivées/zéros, le raccord central, les lapses strictement positifs et les DEUX vrais bords. Puis pullback Dirac, générateurs/charges, quotient de jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables. Aucune validation physique globale.
+
+**AVANCÉE RÉELLE :** moteurs originaux Step45/46/Step55-normalized/Step55-barrier/Step58 exécutés après reconstruction des octets SHA-authentifiés ; Step57 seulement shim minimal d'import, PAS moteur complet. Le vrai Step58 `physical_operator()` complet (six coefficients A_N,A_M,B_N,B_M,E_N,E_M) a été évalué sur la solution numérique de l'EDO Step55 aux quatre rayons r=1/4,1/2,7/10,17/20. L'original Step55 `certify_global_barrier(cells=256)` a aussi été REJOUÉ : PASS. Les primaires Fz,Hg,Hf et la secondaire C évaluées sur les jets construits ont des résidus <9e-45 (45 décimales). À R=17/20 : A_N≈2437.093996367644 ; A_M≈-4676.647234168184 ; B_N≈1.83e-44 ; B_M≈-1.00e-44 ; E_N≈1.40e-45 ; E_M≈5.61e-45. Aux trois autres points, les quatre coefficients de jets sont également compatibles avec zéro à ~10^-44. Ratios CONDITIONNELS -A_N/A_M ≈ 0.51877452, 0.51945939, 0.52031475, 0.52111991. Un contrôle hors coquille pSg' +0.01 donne B_N≈-0.08798, B_M≈-0.001918. À R, N=M implique numériquement A_N+A_M≈-2239.55324, mais **l'incompatibilité de cette condition de bord reste CONDITIONNELLE à une annulation exacte des jets**, NON démontrée.
+
+**EXÉCUTÉ ET LIMITES :** `PYTHONPATH=. OPENBLAS_NUM_THREADS=1 python -m unittest tests.test_hr_b3c3d6_full_original_step58_point_probe -v` : **5 unittest PASS, 0 FAIL**, non indépendants, ~13.078 s. Quatre rayons + contrôle négatif + sensibilité à 70 décimales (résidus <1e-60). EDO DOP853 double précision rtol=1e-12, atol=1e-14 ; mpmath 45/70 chiffres pour l'évaluation algébrique. **PAS** de preuve uniforme par intervalle des six coefficients, ni des zéros, dérivées, bords ou Dirac. Le test à 70 décimales n'améliore PAS l'erreur globale du solveur double. Aucun no-go JANUS.
+
+**FICHIERS PUBLIÉS ET RELUS, BLOBS :**
+- `numerics/hr_b3c3d6_full_original_step58_point_probe.py` : `4e3c78bbdd09831416bf8699c8e24e99253f955d` (octets identiques au script testé).
+- `tests/test_hr_b3c3d6_full_original_step58_point_probe.py` : `c74526a18cdae02ba56da19bd45e77fdd5f355b3` (octets identiques au test exécuté).
+- `research/reports/gate2b-b3c3d6-original-step58-numeric-summary.json` : `4f1ca600a29cd6d8d029d4435a984a2e2120772f` (identique au résumé local).
+- `research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md` : `890498d02e07b6ee2981e20aa1fb6f4dcd6af0aa`.
+- `README.md` : `9cda72a733daf4823595f0b03e05b733e4a110bf`.
+
+**SOURCES ORIGINALES GIT BLOBS :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55-normalized `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step55-barrier `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`. HEAD de reprise `5e024cf16d967a7517180fe65bacf09bf0cbebbe`. main initial `aead63f4098f0d15a849e579105af034b6317b30` ; research/v2-flrw initial `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb`. Aucun workflow touché. **TOUT L'HISTORIQUE ANTÉRIEUR CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : COQUILLE PRIMAIRE STEP55 VÉRIFIÉE ALGÉBRIQUEMENT (2026-10-29)
 
 **STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 PARTIELLE.** PROCHAINE ÉTAPE : exécuter le vrai probe original Step58 sur la solution radiale complète Step55 à R=17/20, avec jets pLf de l'EDO, les six coefficients A_N/A_M/B_N/B_M/E_N/E_M et leurs dérivées/zéros/cartes/raccord centre, lapses strictement positifs et DEUX bords physiques ; ensuite vrai pullback Dirac, charges/générateurs, quotient jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables.
