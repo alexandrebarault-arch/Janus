@@ -1,0 +1,28 @@
+{
+  "scope": "STEP55_PRESCRIBED_GEOMETRY_STEP57_SMEARED_ETA2_PRINCIPAL_SYMBOL_NOT_STEP58_OR_DIRAC_RANK",
+  "source_blobs": {
+    "Step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "Step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "Step58_reference_only": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "domain": "0<r<=17/20",
+  "original_step55_K_over_r2_lower": "9/40 (prior Bernstein certificate)",
+  "eta2_M": "-K*sqrt(1-z^2)/(Lg*Lf^2)",
+  "eta2_Nprime": "-2*Mg2*Sg*Sgprime*(1-z^2)/Lg^2",
+  "eta2_M_strict_bound": "eta2_M < -10*r^2",
+  "eta2_Nprime_strict_bound": "eta2_Nprime < -(19999/10000)*r",
+  "center_limits": {
+    "eta2_M_over_r2": "-7383670097498879070952948034390626481769176679837/676893154475234375000000000000000000000000000000",
+    "eta2_Nprime_over_r": "-2"
+  },
+  "rational_lower_bounds": {
+    "abs_eta2_M_over_r2": "14062359375000000000000000000000000000000000/1342808010042108617191355369854696156954369",
+    "abs_eta2_Nprime_over_r": "24999711/12500000"
+  },
+  "exact_assert_statements": 14,
+  "original_step58_outer_probe_executed": false,
+  "original_step55_57_executed": false,
+  "Dirac_rank_certified": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
