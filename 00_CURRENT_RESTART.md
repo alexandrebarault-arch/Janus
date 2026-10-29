@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : MODE PLAT C∞ EXCLU PAR ANALYTICITÉ CENTRALE (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD initial authentifié `32d2a2fe047efcaf2cb27d7efe378595d9fd7085`. Étape effective : `b3c3d6_PARTIAL_ANALYTIC_CENTER_SMALL_B_TOY_GUARD`. Prochaine étape inchangée : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**THÉORÈME EXACT MAIS JOUET :** pour `r²(N-2)-εr⁴N'=0`, `ε>0`, `M=1`, toutes les solutions sur `r>0` sont `N=2+C exp(-1/(εr))`. Le terminal `N(R)=1` sélectionne une solution C∞ strictement positive et plate au centre, avec `N'(R)=-1/(εR²)`, mais **non analytique au centre**. Si N est analytique en r au centre, sa série formelle impose `N≡2` et exclut `N(R)=1`. La parité C∞ ne suffit pas. **Aucune analyticitė des lapses Step55/58 n'est établie.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_analytic_center && PYTHONPATH=. python -m unittest discover -s tests -v` : **5 PASS, 0 FAIL**, non indépendants ; `python -m compileall -q numerics tests` PASS. Aucun moteur original Step45/46/55/58 exécuté cette session ; candidat cubique Step58 aux quatre rayons NON rejoué.
+
+**LIVRABLES GITHUB PUBLIÉS ET RELUS :** `numerics/hr_b3c3d6_analytic_center_small_B_guard.py` blob `9b16a93e258c7600d215f4c7eef23c69fbd76e74` ; `tests/test_hr_b3c3d6_analytic_center_small_B_guard.py` blob `5b63928c33ea5cbaa4a7e5e9891fe77b65c17fc2` ; `research/STEP68AD_B3C3D6_ANALYTIC_CENTER_SMALL_B_TOY_GUARD.md` blob `35b2f7770febc67965e3597322781f0f34d7bcfa`. Code/tests identiques aux octets locaux testés. Branches `main`, `research/v2-flrw` et workflows : ne pas modifier.
+
+**ACTIONS PRIORITAIRES :** (1) rejeu original SHA-authentifié Step45/46/55/58 avec jets cubiques à `r=1/4,1/2,7/10,17/20`, comparaison six coefficients affine/cubique ; (2) factorisation exacte/enclosures et véritable analyticitė ou régularité centrale des lapses, puis BVP positif à deux vrais bords ; (3) Dirac six couples, charges/jauge temporelle, K=0/J=0, dynamique 4D, stabilité et observables. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : INVARIANCE EXACTE CUBIQUE→QUARTIQUE DES JETS STEP58 (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD lu au début : `8b7a0f1e0d2246eff8bcc14ea6c5d88f6dda74a6`. Dernier commit scientifique avant ce checkpoint : `c455646c053ce48c82d6469a869fd79a8b29c4fb`. Étape effective **b3c3d6_PARTIAL_CUBIC_QUARTIC_JET_ORDER_INVARIANCE**, prochaine étape **inchangée** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
