@@ -17,43 +17,43 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_endpoint_jet_sensitivity_audit.py": "aa530d224e305bc8b23bd415be25f67a585d7328",
-    "tests/test_hr_b3c3d6_endpoint_jet_sensitivity_audit.py": "35b7d67e293687abdeda5dbadcaf3dc750856721",
-    "research/STEP68AD_B3C3D6_ENDPOINT_JET_SENSITIVITY_AUDIT.md": "62b4cb556534be45d7e3bd2625747159d86a53d2",
-    "00_CURRENT_RESTART.md": "7009d8dbf3b8fa9c1a95c62fa49589e2d3c4186c",
-    "README.md": "7d6c28591c33040af637177b0c92451c81415c01"
+    "numerics/hr_b3c3d6_cubic_jet_order_certificate.py": "a149e0c81af460b9d8dcea40546331e167d079e5",
+    "tests/test_hr_b3c3d6_cubic_jet_order_certificate.py": "4b10f69301b4ff90e97adb5c186d8f296f1b19c0",
+    "research/STEP68AD_B3C3D6_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE.md": "62e24c4365ebbaef79ced9e64546f809f1463622",
+    "00_CURRENT_RESTART.md": "dd98b89a4cc22ab0d3d51d25c50ddb04a6b47099"
   },
-  "verified_research_head_at_session_start": "610875ecc3715a6efeeb7f5c7ace2c9ea37f3e9f",
-  "next_priority": "Run original SHA-authenticated Step45/46/55/58 corrected cubic Step55 candidate at 4 radii; compare affine/cubic six coefficients and shell residuals, certify exact factors/enclosures, center and two positive-lapse boundaries, then Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "f06d8e8a61738760c60227c71a7e1a23778f67a9",
+  "next_priority": "Execute SHA-authenticated original Step45/46/55/58 corrected cubic Step55 candidate at four radii, compare all six affine/cubic coefficients and physical shell residuals; then exact factor/enclosures, center, positive-lapse two-boundary BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "db65ed02765bae21f3a4231200451e9736fbb8c9",
+  "verified_research_head_before_state_file": "9b3a5c90649faa30b22556183ecf5b9d2b6c7c90",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ENDPOINT_JET_SENSITIVITY_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CUBIC_HOLONOMICITY_ORDER_CERTIFICATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_ENDPOINT_JET_SENSITIVITY_NO_ORIGINAL_REPLAY",
-    "last_step_scope": "Exact endpoint cubic-minus-affine sensitivity of pLf and pLfr through third radial jet, plus generic second jet; no original Step58 physical coefficient rerun"
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_CUBIC_HOLONOMICITY_ORDER_NO_ORIGINAL_REPLAY",
+    "last_step_scope": "Exact formal cubic endpoint ODE residual order and first fourth-jet defect, analytic nonphysical witness; no original Step58 physical coefficients"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 5,
+    "unittest_cases_passed": 6,
     "unittest_independent": false,
     "failed_final": 0,
-    "exact_sympy_zero_residuals": 9,
+    "exact_sympy_zero_residuals": 5,
+    "analytic_exact_witnesses": 1,
     "python_compileall_pass": true,
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "corrected_step58_integration_tests_executed": false,
-    "notes": "5 local tests on published identical source bytes; toy witness, not physical Step55"
+    "notes": "Exact local formal jet order and toy ODE witness; no physical Step55/Step58 replay"
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -80,7 +80,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Local container cannot resolve/connect to GitHub raw; connector works. Corrected cubic original Step58 integration not executed; actual physical U_ss/U_sss and all six corrected coefficients unknown; no interval/global lapse BVP or Dirac result.",
+  "current_blocker": "GitHub DNS inaccessible from local container; GitHub connector read/write works. Corrected original Step58 physical replay still not run. Exact formal cubic local certificate does not determine physical coefficients, uniform enclosures or lapse BVP.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
