@@ -74,7 +74,7 @@ def u_solution(radius):
  init=float(U0+U1*F(s0)+U2*F(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
  assert sol.success,sol.message
- ur=F(sol.y[0,-1]);gr=G(F(sf),ur)
+ ur=F(sol.y[0,-1]);gr=G(F(radius)**2,ur)
  return ur,gr,sol
 
 def physical_fields(r,U,Gr):
@@ -119,6 +119,8 @@ def main(radius=0.85):
   elif k in ('tg','tf'):
    raise AssertionError('clock derivative missing')
   else:subs[x]=mp.diff(lambda t:fields_at(t)[k],R,1)
+ # Enforce the Step55 radial ODE at the same decimal radius as the jet map.
+ assert abs(subs[der[qkeys.index('pLf')]]-R*G(sr,ur))<F('1e-35')
  for k,x in zip(qkeys,sec):
   if k in ('tg','tf'):
    subs[x]=mp.diff(lambda t:t*geometry(t*t)['tg0' if k=='tg' else 'tf0'],R,1)
