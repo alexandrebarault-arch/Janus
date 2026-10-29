@@ -1,0 +1,29 @@
+{
+  "scope": "AUTHENTIC_STEP45_STEP58_HIGH_LAPSE_JETS_ONLY",
+  "source_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "Step57_import": "minimal_shim_in_isolated_run_not_original_Step57",
+  "original_Step58_executed": true,
+  "original_Step55_executed": false,
+  "original_Step58_full_six_coefficients_on_Step55_executed": false,
+  "highest_jet_identity": "E_M=0 on Fz=0; E_N=-(1-z^2)*Hg/(Lg*Lf) on Fz=0",
+  "outer_geometric_factor_r17_20": "-9999884400000000000000000000000000000000/926432894764182404865494596893754186181",
+  "outer_geometric_factor_sign": "-11 < factor < -10",
+  "lapse_BVP": "NOT_TESTED",
+  "Dirac": "NOT_TESTED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED",
+  "local_execution": {
+    "command": "PYTHONPATH=. python -m numerics.hr_b3c3d6_authentic_step58_highjet_replay",
+    "tests": "PYTHONPATH=. python -m unittest discover -s tests -v",
+    "unittest_passed": 4,
+    "unittest_independent": false,
+    "failed": 0,
+    "original_Step45_blob_verified": true,
+    "original_Step58_blob_verified": true,
+    "Step57_shim_in_isolated_run": true,
+    "original_Step55_not_executed": true
+  }
+}
