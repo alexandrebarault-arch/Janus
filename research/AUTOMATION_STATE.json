@@ -17,43 +17,43 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_dual_sign_feasibility.py": "58237b11545c75ff1b9877052f86869866dd7936",
-    "tests/test_hr_b3c3d6_dual_sign_feasibility.py": "fbdcde781c2f8ac22947ff689945a2f558c5f97f",
-    "research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md": "c50768fa98827aa05ae2125527373240827dc5bc",
-    "00_CURRENT_RESTART.md": "104c96b952ab4a90a343c2e425f66d3021c66d21",
-    "README.md": "be848feb2753256dfcf086478d7e19c9728889c6"
+    "numerics/hr_b3c3d6_cone_adapted_dual.py": "9f4b8634c51a3d05523e9c14d75e5f621cf73c85",
+    "tests/test_hr_b3c3d6_cone_adapted_dual.py": "fcc42811eee9eda475ab2bc7c2d33cf7e4ff4f86",
+    "research/STEP68AD_B3C3D6_RATIO_CONE_ADAPTED_WEAK_DUAL.md": "688a5ba16b43ee24c0dc121e676875c0bf3993c4",
+    "README.md": "5634a9775e7534b05b401ce89d3a38bee1bfb8ff",
+    "00_CURRENT_RESTART.md": "148359d25ebcd4236a11d5ea0e5082ac841ce0f7"
   },
-  "verified_research_head_at_session_start": "9f70b866e5b62480e97dde632ac8e428e5bb9e0f",
-  "next_priority": "Replay SHA-authenticated original Step45/46/55/58 plus corrected cubic candidate at 1/4,1/2,7/10,17/20; compare six coefficients affine/cubic, shell residuals; enclose signs/zeros/derivatives A/B/E and assess integrated dual sign viability; center and positive two-boundary BVP; Dirac six pairs, charges/gauge, K=0/J=0, 4D/stability/observables.",
+  "verified_research_head_at_session_start": "a009f3e67f6389f790c0255963954b0f64f58574",
+  "next_priority": "Replay SHA-authenticated original Step45/46/55/58 and corrected cubic candidate at r=1/4,1/2,7/10,17/20; compare six coefficients affine/cubic and shell residuals; enclose signs/zeros/derivatives A/B/E; assess globally justified ratio cone only if established; center/positive two-boundary lapse BVP; then Dirac six pairs, charges/time gauge, K=0/J=0, 4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "6168fefced5dd946c1a4cdb9495957b34b55d60a",
+  "verified_research_head_before_state_file": "f698d5d9131d9fbb7a8aa344fbc7913ee16b6c33",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_RATIO_CONE_ADAPTED_WEAK_DUAL.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_INTEGRATED_DUAL_SIGN_NECESSITY_NONPHYSICAL",
-    "last_step_scope": "Exact necessary integrated sign screen for weak dual: phi=phi'=0 implies integral Q_i=integral phi*A_i; Q_i>=0 needs nonnegative weighted A_i integral. If A_M<0 on positive support of phi, componentwise nonnegative dual impossible regardless B/E. Toy integral -8/105; no physical uniform sign proof, no original cubic Step58 replay."
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_RATIO_CONE_ADAPTED_WEAK_DUAL_NONPHYSICAL",
+    "last_step_scope": "Exact conditional weak dual theorem for globally bounded positive lapse ratio lo<=M/N<=hi: if min(Q_N+lo Q_M,Q_N+hi Q_M)>=0 everywhere and >0 on an open set, no positive BVP inside cone. Toy with nonzero B/E, integral Q_M=-1/10 (componentwise certificate impossible), but cone margin >=318401/640000 phi for ratio [1/4,1/2]; positive exact solution exists outside cone. No Step55 global ratio bounds, no original corrected Step58 replay."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 5,
+    "unittest_cases_passed": 7,
     "unittest_independent": false,
     "failed_final": 0,
-    "initial_syntax_only_test_failure_corrected": true,
     "python_compileall_pass": true,
-    "exact_toy_integral": "-8/105",
+    "exact_toy_integral": "-1/10",
+    "exact_uniform_cone_margin": "318401/640000",
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "notes": "SymPy exact test module and code SHA match local tested bytes; independent original physical integration not performed."
+    "notes": "SymPy exact rational tests (7 PASS), independent of physical Step58; mathematical uniform inequality proved analytically with |d(phi B)|<=5eps/16 phi and |d²(phi E)|<=33eps²/16 phi, not by spot checks alone. Published code/tests Git blob SHA matches local git hash-object."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -83,8 +83,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical Step58 with corrected cubic jets at four radii NOT replayed this session: GitHub connector read/write works, but container GitHub DNS fails, so original Python modules were not downloaded into local runtime. New sign obstruction is purely mathematical and conditional; A_M sign not uniformly certified on physical Step55.",
-  "task_self_update": "2026-10-29: appended-only dual integrated sign marker to 51072-character automation prompt, preserving previous 51072 characters, schedule, timezone, enabled state.",
+  "current_blocker": "Original Step58 with corrected cubic Step55 ODE jets at four radii NOT executed this session. Container GitHub DNS and direct IP connections unavailable; connector can read/write but not materialize original Python modules in local runtime. No global physical ratio bounds or A/B/E sign enclosures. New theorem is conditional and toy-tested only.",
+  "task_self_update": "Pending optional automation description update; GitHub checkpoint/state remain authoritative. Existing hourly schedule and restrictions unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
@@ -610,5 +610,12 @@
       "4D stability",
       "observables"
     ]
-  }
+  },
+  "last_science_commits": [
+    "e1996ce1a3011aa331ee135bb6760341cf9a6d31",
+    "eb524db58df0c7a9e2ae583b4fcd36a4d82b0a0d",
+    "b35394f8796c265331b730ec5d7ce1f6f5e0c7fa",
+    "a634c06f6321ab4c94b8f86081e60bbc4a758190",
+    "f698d5d9131d9fbb7a8aa344fbc7913ee16b6c33"
+  ]
 }
