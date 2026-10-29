@@ -27,7 +27,7 @@ def certificate():
     assert sp.simplify((sp.Abs(B_N)*(-sp.diff(N,r))).subs(r,R))==R**2
     return {'residual':residual,'center_N':2,'terminal_N':1,
             'terminal_derivative':-1/(eps*R**2),
-            'max_abs_BN':R**4*eps,
+            'max_abs_BN':eps*R**4,
             'center_regular_Cinfty':True,'center_analytic':False,
             'scope':'EXACT_TOY_COUNTEREXAMPLE_NOT_STEP55_NOT_DIRAC'}
 
