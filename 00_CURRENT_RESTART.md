@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : SIGNE UNIFORME DU SYMBOLE FONCTIONNEL STEP57 SUR STEP55 (2026-10-29)
+
+**STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. ÉTAPE EFFECTIVE b3c3d6 TOUJOURS PARTIELLE. PROCHAINE ÉTAPE b3c3d6 : exécuter le vrai probe original Step58 à R=17/20 sur Step55 avec les sources Step45/55/57/58/Step68o/b3c2, certifier A_N,A_M,B_N,B_M,E_N,E_M, dérivées/zéros/cartes/raccord centre, lapses positifs et les deux vrais bords ; ensuite pullback Dirac, générateurs/charges, quotient jauge temporelle, six couples/rang/tertiaires, K=0/J=0, dynamique 4D/stabilité/observables.**
+
+**AVANCÉE EXACTE RESTREINTE (NON DIRAC) :** sur la coquille stationnaire Fz=0, K>0 de la géométrie Step55 prescrite et pour 0<r<=17/20, les coefficients originaux du **symbole fonctionnel smeared Step57** de eta''*M et eta''*N' sont c_M=-K*sqrt(1-z²)/(Lg*Lf²) et c_Nprime=-2*Mg2*Sg*Sg'*(1-z²)/Lg². En combinant la borne Bernstein précédente K/r²>9/40 avec les inégalités rationnelles Step55, **c_M < -10*r²** et **c_Nprime < -(19999/10000)*r** partout hors centre. Limites centrales : c_M/r²≈-10.90817664306727 (fraction exacte dans JSON), c_Nprime/r=-2. Les deux coefficients s'annulent au centre, donc aucun rang uniforme jusqu'à r=0. **Ce ne sont PAS les coefficients B_N,B_M de l'opérateur local Step58 : aucune conclusion sur lapses, tangence Dirac ou rang physique.** Résultat dérivé de formules originales inspectées, non un rejeu indépendant de Step57.
+
+**TESTS RÉELLEMENT EXÉCUTÉS dans /mnt/data/janus_b3c3d6_20261029 :** PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_step55_dirac_principal_sign : 14 assertions exactes PASS, 0 FAIL final. PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_step55_dirac_principal_sign.py' -v : 5 tests PASS non indépendants, dont garde négative de SHA. Une erreur initiale de transcription locale s=r² a été détectée et corrigée avant publication et tests finaux. **Moteurs originaux Step45/55/57/58/Step68o/b3c2 et vrai probe Step58 R=17/20 NON exécutés** ; git ls-remote échoue par DNS github.com, tandis que connecteur GitHub lit et écrit correctement.
+
+**QUATRE LIVRABLES SCIENTIFIQUES CRÉÉS SUR LA SEULE BRANCHE AUTORISÉE, RELUS :**
+- numerics/hr_step68ad_b3c3d6_step55_dirac_principal_sign.py — blob 43095132bd334a820e56b987ad196841433dcef0, commit c802c708c94704ee79d9d4cdc9f77492134c0a3f.
+- tests/test_hr_step68ad_b3c3d6_step55_dirac_principal_sign.py — blob 21f3af2775efe21df1e65611722d1c1820b725fe, commit 791a68fa7d27519601ee3b5f59d9a1121868a58a.
+- research/STEP68AD_B3C3D6_STEP55_STEP57_UNIFORM_PRINCIPAL_SYMBOL_SIGN.md — blob fc32d8c66f882bd16c6a2a3341e41f743390f339, commit 0beaf08f3ca688b06a0e70cecfd698a723044086.
+- research/reports/gate2b-step68ad-b3c3d6-step55-step57-principal-sign.json — blob 09e1ac20c0aa97358fa3b9be661722958b30c344, commit 2f1aac45a25a15cd98bbb830092fbc9745faddf3.
+- README.md index préfixé — blob 4223e5ccc2d666a6ab8d381a447a869207b28358, commit cac7ac3f865c4735df35d39fd7c4183ecdc290bc.
+Les quatre SHA blobs publiés ont été relus via GitHub et comparés aux SHA des octets exécutés/produits localement : 4/4 MATCH. Sources originales inspectées en direct : Step55 a6e7004120d0a166a3a8973c2fbe1487a8eb70fe ; Step57 bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f ; Step58 802c23aebd41780d8c462f1aa1711707fe4ee88f. HEAD de branche au démarrage 95dd5d3f817329c049cf15504f53897e01a159aa ; avant ce checkpoint cac7ac3f865c4735df35d39fd7c4183ecdc290bc. Branches interdites au démarrage main=aead63f4098f0d15a849e579105af034b6317b30, research/v2-flrw=dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb ; recontrôler après écriture d'état. Aucun workflow modifié.
+
+**HISTORIQUE INTÉGRAL ANTÉRIEUR CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CARTE K>0 STEP55 CERTIFIÉE PAR BERNSTEIN (2026-10-29)
 
 **STATUT INCHANGÉ : GATE_2B OPEN ; JANUS_R NOT_VALIDATED. PROCHAINE ÉTAPE TOUJOURS b3c3d6 : exécuter le vrai probe original Step58 sur Step55 R=17/20 avec imports Step45/55/58/Step68o/b3c2 ; évaluer A_N/A_M/B_N/B_M/E_N/E_M, dérivées, zéros/cartes/raccord centre, puis compatibilité des lapses positifs et vrais bords ; ensuite Dirac/charges/générateurs/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables.**
