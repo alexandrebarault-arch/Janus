@@ -6,8 +6,10 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "UNCHANGED_THIS_SESSION",
-    "previous_status": "SUCCESS",
+    "status": "SUCCESS",
+    "old_prompt_characters": 36541,
+    "new_prompt_characters": 37435,
+    "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
@@ -75,7 +77,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Original Step58 R=17/20 probe still not executed: local git DNS failure. Corrected Step57 c_eta2_Nprime(r)<-17r/2 on prescribed Step55, 0<r<=17/20, with factor 1/Lf and Sg=r Lg; 5 SymPy exact residuals + 10 rational guards + 5 non-independent unittest PASS. Original eta2*N unassessed; physical Dirac/lapses/two boundaries remain open. Historical Step57 derived scripts without 1/Lf invalid.",
-  "task_self_update": "2026-10-29: prefixed verified Step57 Nprime 1/Lf erratum to automation prompt, all 35426 prior characters preserved; hourly schedule and enabled state unchanged.",
+  "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
