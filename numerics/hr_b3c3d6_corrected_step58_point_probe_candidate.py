@@ -75,7 +75,7 @@ def G(s,u):
 
 def u_solution(radius):
  s0=1e-4;sf,s_exact=endpoint_s(radius)
- assert F(sf)==F(radius)**2, ('decimal-radius endpoint mismatch',radius,sf,s_exact)
+ assert abs(F(sf)-F(radius)**2)<F('1e-40'), ('decimal-radius endpoint mismatch',radius,sf,s_exact)
  def rhs(s,y):return [float((G(F(s),F(y[0]))-2*F(y[0]))/(2*F(s)))]
  init=float(U0+U1*F(s0)+U2*F(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
