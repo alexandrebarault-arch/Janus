@@ -1,3 +1,9 @@
+## JANUS — b3c3d6 : réparation des jets Step55 (29/10/2026, PARTIELLE)
+
+Calcul exact des jets `U_s,U_ss,U_sss` de l'EDO Step55 et candidat cubique corrigé pour le probe Step58 original : [audit](research/STEP68AD_B3C3D6_CORRECTED_CUBIC_ODE_JET_REPAIR.md), [code](numerics/hr_b3c3d6_ode_consistent_jet_map.py), [candidat non rejoué](numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py). **6 unittest locaux PASS + 3 identités SymPy**, mais **Step58 original NON réexécuté avec ces jets** ; les anciens `B/E≈0` restent non certifiés. Prochaine étape : vrai rejeu aux quatre rayons, coefficients corrigés, enclosures, centre, lapses positifs/deux bords, puis Dirac/4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+---
+
 > **JANUS — audit de cohérence des jets, 29/10/2026 (b3c3d6 partielle).** Une identité algébrique exacte montre que le prolongement affine de `U(s)` dans le probe Step58 à quatre rayons omet potentiellement `4s²U_ss` dans `pLf''` et `36rsU_ss+8rs²U_sss` dans `pLf'''`. 5 unittest formels PASS (non indépendants) ; impact sur les six coefficients Step58 originaux **non testé**. Voir `research/STEP68AD_B3C3D6_STEP55_ODE_HIGHER_JET_CONSISTENCY_AUDIT.md`. Prochaine étape : vraie prolongation EDO d'ordre 3, rejeu original Step58, puis preuve exacte/intervalle et BVP. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 ## JANUS b3c3d6 — vrai Step58 original sur Step55, quatre points numériques (29/10/2026)
