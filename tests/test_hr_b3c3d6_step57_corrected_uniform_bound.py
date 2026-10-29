@@ -4,7 +4,7 @@ from numerics import hr_b3c3d6_step57_corrected_uniform_bound as c
 
 class TestCorrectedStep57UniformBound(unittest.TestCase):
     def test_formula_from_original(self):
-        self.assertEqual(sp.cancel(c.correct_over_r+2*(1+5*c.cg*c.s)*(1-c.z2)/(c.B*c.ug**2*c.uf**2)),0)
+        self.assertEqual(sp.cancel(c.correct_over_r+2*(1+5*c.cg*c.s)*(1-c.z2)/(c.B*c.ug*c.uf**2)),0)
     def test_missing_lf_detected(self):
         self.assertEqual(sp.cancel(c.legacy_over_r-c.Lf*c.correct_over_r),0)
         self.assertNotEqual(c.correct_over_r.subs(c.s,0),c.legacy_over_r.subs(c.s,0))
