@@ -1,0 +1,41 @@
+{
+  "scope": "EXACT_RATIONAL_STEP55_PRESCRIBED_GEOMETRY_ONLY_NOT_STEP58_NOT_DIRAC",
+  "step55_original_blob": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+  "r_interval": [
+    "0",
+    "17/20"
+  ],
+  "s_interval": [
+    "0",
+    "289/400"
+  ],
+  "T_polynomial_degree": 4,
+  "T_bernstein_signs": [
+    "POS",
+    "POS",
+    "POS",
+    "POS",
+    "POS"
+  ],
+  "T_bernstein_adjacent_differences": [
+    "NEG",
+    "NEG",
+    "NEG",
+    "NEG"
+  ],
+  "T_bounds_simple": [
+    "53/500",
+    "109/1000"
+  ],
+  "K_over_r2_strict_lower": "9/40",
+  "K_outer_positive": true,
+  "z_outer": "17/5000",
+  "center_orders": {
+    "K": "r^2 times positive smooth coefficient",
+    "D": "r^3 times positive smooth coefficient"
+  },
+  "symbolic_assert_statements": 14,
+  "critical_limit": "Does NOT certify B_N,B_M of Step58, lapse positivity, Dirac or physical boundary data",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
