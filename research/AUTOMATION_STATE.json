@@ -17,12 +17,12 @@
     "automation_id": "6ade8d316f108191a3537bced5363a3b"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "4e3c78bbdd09831416bf8699c8e24e99253f955d",
+    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "643d90183367e74a28ed453d93f5489074b75b08",
     "tests/test_hr_b3c3d6_full_original_step58_point_probe.py": "c74526a18cdae02ba56da19bd45e77fdd5f355b3",
     "research/reports/gate2b-b3c3d6-original-step58-numeric-summary.json": "4f1ca600a29cd6d8d029d4435a984a2e2120772f",
     "research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md": "890498d02e07b6ee2981e20aa1fb6f4dcd6af0aa",
     "README.md": "9cda72a733daf4823595f0b03e05b733e4a110bf",
-    "00_CURRENT_RESTART.md": "cbcc572a615cf2b4518b7d37ad70e3242695ad44"
+    "00_CURRENT_RESTART.md": "77adb223ba7caf39afdb403c4dc5ec854ad26f70"
   },
   "verified_research_head_at_session_start": "5e024cf16d967a7517180fe65bacf09bf0cbebbe",
   "next_priority": "b3c3d6: prove/falsify exact B_N=B_M=0 on full Step55 physical shell and interval-certify A_N,A_M and their signs/derivatives/zeros on 0<r<=17/20, center, positive lapses and two real boundaries; then Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables.",
@@ -32,7 +32,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "32a66fcf98f4195093569cfaf48febe6a93b6a78",
+  "verified_research_head_before_state_file": "9b14fd8f33eb6fd2ae6b488b8d6b18bceaac46db",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -101,7 +101,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "cbcc572a615cf2b4518b7d37ad70e3242695ad44",
+    "00_CURRENT_RESTART.md": "77adb223ba7caf39afdb403c4dc5ec854ad26f70",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -269,7 +269,7 @@
     "tests/test_hr_step68ad_b3c3d6_step57_full_eta2_N.py": "e2ac46f34b736694a38898b81aa5008ea8cfafa6",
     "research/reports/gate2b-step68ad-b3c3d6-step57-full-eta2-N.json": "3403cef30d7741fab11d83c195a73f0f379dcdc9",
     "research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md": "a117beda9ebd939958fce1bd1bda04952d2a91d4",
-    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "4e3c78bbdd09831416bf8699c8e24e99253f955d",
+    "numerics/hr_b3c3d6_full_original_step58_point_probe.py": "643d90183367e74a28ed453d93f5489074b75b08",
     "tests/test_hr_b3c3d6_full_original_step58_point_probe.py": "c74526a18cdae02ba56da19bd45e77fdd5f355b3",
     "research/reports/gate2b-b3c3d6-original-step58-numeric-summary.json": "4f1ca600a29cd6d8d029d4435a984a2e2120772f",
     "research/STEP68AD_B3C3D6_ORIGINAL_STEP58_FOUR_POINT_NUMERICAL_PROBE.md": "890498d02e07b6ee2981e20aa1fb6f4dcd6af0aa"
@@ -538,5 +538,12 @@
     "outer_EM": 5.605193857299268e-45,
     "interpretation": "NUMERICAL_ONLY_NOT_EXACT_OR_INTERVAL",
     "lapse_boundary_equal_at_R": "CONDITIONAL_INCOMPATIBILITY_IF_JETS_VANISH_EXACTLY"
+  },
+  "latest_session_jet_alignment_fix": {
+    "issue": "SciPy float radius**2 vs decimal mpmath radius**2 introduced ~3.3e-19 inconsistency in pLf derivative at outer point",
+    "fix": "evaluate G at F(radius)**2; assert |pLf_prime_jet-r*G|<1e-35",
+    "new_code_blob": "643d90183367e74a28ed453d93f5489074b75b08",
+    "unittest_after_fix": "5 PASS 0 FAIL",
+    "numeric_coefficients_changed_at_float_precision": false
   }
 }
