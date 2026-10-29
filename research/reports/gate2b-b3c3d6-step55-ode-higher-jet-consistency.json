@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-29",
+  "stage": "b3c3d6_PARTIAL_STEP55_ODE_HIGHER_JET_CONSISTENCY_AUDIT",
+  "status": "EXACT_FORMAL_JET_DEFECT_PROVED_IMPACT_ON_ORIGINAL_STEP58_NOT_TESTED",
+  "source_probe_blob": "643d90183367e74a28ed453d93f5489074b75b08",
+  "tested_blobs": {
+    "numerics/hr_b3c3d6_step55_jet_holonomicity.py": "22fea2970d22027e2a8a8531f22bb87a4f7af2e5",
+    "tests/test_hr_b3c3d6_step55_jet_holonomicity.py": "d607c1fcc4954982ffd30b47f088c461220ec351"
+  },
+  "identities": {
+    "Uss": "(G_s+(G_U-4)*Us)/(2*s)",
+    "Usss": "(G_ss+2*G_sU*Us+G_UU*Us^2+(G_U-6)*Uss)/(2*s)",
+    "delta_pLf_rr": "4*s^2*Uss",
+    "delta_pLf_rrr": "36*r*s*Uss+8*r*s^2*Usss"
+  },
+  "toy_not_step55": {
+    "G": "s^2+u^2",
+    "s": "1/4",
+    "u": "1/2",
+    "Us": "-11/8",
+    "Uss": "37/4",
+    "Usss": "-1295/16",
+    "delta_pLf_rr": "37/16",
+    "delta_pLf_rrr": "1369/64"
+  },
+  "tests": {
+    "unittest_pass": 5,
+    "unittest_fail": 0,
+    "independent": false,
+    "original_step55_step58_run": false
+  },
+  "not_proved": [
+    "nonzero Uss on actual Step55 points",
+    "change of original Step58 six coefficients",
+    "uniform lapse B coefficient cancellation",
+    "positive-lapse boundary value problem",
+    "Dirac/4D/stability/observables"
+  ],
+  "next": "rebuild true ODE jets to order 3 and rerun original Step58; only then exact factorization/interval BVP",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
