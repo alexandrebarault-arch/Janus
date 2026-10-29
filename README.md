@@ -1,3 +1,7 @@
+## 2026-10-29 — b3c3d6 : borne rationnelle de la carte K>0 sur Step55 (non-Dirac)
+
+Certificat Bernstein exact de la géométrie prescrite Step55 : pour `0<r<=17/20`, `K(r)/r²>9/40`, `z(r)=r/250` et `0<z<=17/5000`. Au centre `K=O(r²)`, `D=O(r³)` : la carte stationnaire K>0 est valide hors centre mais y dégénère. Voir `research/STEP68AD_B3C3D6_STEP55_K_CHART_EXACT_CERTIFICATE.md`, `numerics/hr_step68ad_b3c3d6_step55_k_chart.py`, son test et le JSON. 14 assertions exactes, 4 unittest non indépendants PASS. **Ce certificat géométrique recoupe un signe déjà connu de Step54/55 ; le vrai probe temporel Step58 R=17/20 n'a pas été exécuté. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
 > **29/10/2026 — b3c3d6 toujours PARTIEL.** Théorème conditionnel exact de faisabilité des **huit jets de lapse aux deux bords** pour UNE équation scalaire du premier ordre sur la carte `B_N,B_M>0` : en plus du critère intégral strict `L<T<U` (ou cas des pentes égales), les équations locales aux deux extrémités sont nécessaires et suffisantes pour imposer aussi `N',M'` aux deux bords. 10 résidus SymPy exacts, 12 contrôles jouets/gardes, 4 unittest non indépendants PASS. [Note](research/STEP68AD_B3C3D6_ENDPOINT_JET_REACHABILITY.md) · [Code](numerics/hr_step68ad_b3c3d6_endpoint_jet_reachability.py). **Aucun probe Step58 physique à R=17/20 ni preuve Dirac ; GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 
