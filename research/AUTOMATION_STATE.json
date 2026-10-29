@@ -20,7 +20,8 @@
     "numerics/hr_b3c3d6_dual_sign_feasibility.py": "58237b11545c75ff1b9877052f86869866dd7936",
     "tests/test_hr_b3c3d6_dual_sign_feasibility.py": "fbdcde781c2f8ac22947ff689945a2f558c5f97f",
     "research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md": "c50768fa98827aa05ae2125527373240827dc5bc",
-    "00_CURRENT_RESTART.md": "104c96b952ab4a90a343c2e425f66d3021c66d21"
+    "00_CURRENT_RESTART.md": "104c96b952ab4a90a343c2e425f66d3021c66d21",
+    "README.md": "be848feb2753256dfcf086478d7e19c9728889c6"
   },
   "verified_research_head_at_session_start": "9f70b866e5b62480e97dde632ac8e428e5bb9e0f",
   "next_priority": "Replay SHA-authenticated original Step45/46/55/58 plus corrected cubic candidate at 1/4,1/2,7/10,17/20; compare six coefficients affine/cubic, shell residuals; enclose signs/zeros/derivatives A/B/E and assess integrated dual sign viability; center and positive two-boundary BVP; Dirac six pairs, charges/gauge, K=0/J=0, 4D/stability/observables.",
@@ -30,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "1cc58f4193d634bcc8c89559fbb2d3bb19f97a7a",
+  "verified_research_head_before_state_file": "6168fefced5dd946c1a4cdb9495957b34b55d60a",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -64,7 +65,7 @@
     "original_full_step58_integration_executed": false,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "README_updated": false
+    "README_updated": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
