@@ -1,0 +1,19 @@
+# JANUS b3c3d6 — ERRATUM scientifique : facteur `1/Lf` omis dans la transcription Step57 (29/10/2026)
+
+**Verdict : erreur de transcription des travaux dérivés b3c3d6, pas une erreur démontrée du moteur original Step57.** Le code original `numerics/hr_step57_secondary_principal_symbol.py`, blob Git `bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f`, donne explicitement `actual_eta2_Nprime=-2*mg*Sg*Sg'*K**2/(Lg**2*Lf*Rshift**2)` (avec `Rshift=sqrt(D²+K²)`). Sur la coquille `Fz=0,K>0`, `K²/Rshift²=1-z²`, donc le coefficient correct est
+
+`c_Nprime=-2*Mg2*Sg*Sgprime*(1-z²)/(Lg²*Lf)`.
+
+Les scripts et notes dérivés `hr_step68ad_b3c3d6_step55_dirac_principal_sign.py` et `hr_step68ad_b3c3d6_two_term_cancellation.py` avaient écrit **à tort** la même expression **sans `/Lf`**. Le coefficient `c_M=-K*sqrt(1-z²)/(Lg*Lf²)` était correct. Par conséquent, la limite centrale publiée `c_Nprime/r=-2` est **fausse** : la vraie limite vaut `-2/Lf(0)≈-8.63899952608` sur Step55. La borne uniforme précédente `c_Nprime<-(19999/10000)*r` reste vraie (même renforcée), mais sa justification et les valeurs centrales doivent être corrigées. Les tests précédents n'étaient pas indépendants de la transcription erronée.
+
+Le quotient exact de l'annulation **des deux seuls termes** `c_M M+c_Nprime N'=0` est désormais
+
+`q=c_M/c_Nprime=m2*r*T(r²)*(1+cg*r²)/(2*(1+5cg*r²)*sqrt(1-r²/62500))`,
+
+soit `q_correct=Lf*q_ancien`. En particulier, `lim(q_correct/r)≈1.26266665603<2`, ce qui **réfute** la borne ancienne `q>1000*r/201`. Pour `M=1` et `N(R)=M(R)=1`, `N(r)=1+int_r^R q(t)dt`. Les cinq coefficients Bernstein exacts de `T` sur `s∈[0,289/400]` vérifient `53/500<T<109/1000`. Avec `m2<24`, `(1+cg*s)/(1+5cg*s)<1`, `sqrt(1-r²/62500)>99999/100000`, on obtient `0<q(r)<[24*(109/1000)/(2*(99999/100000))]*r`, d'où `int_0^R q<1/2`, puis **`M(0)/N(0)>2/3>2593/5000`**. La condition centrale Step58 b3c2 était `1037/2000<M(0)/N(0)<2593/5000` sous ses hypothèses : incompatibilité **dans cette sous-famille** toujours démontrée, mais dans le **sens opposé** à l'argument publié (`<804/2249`). Quadrature informative indépendante de la preuve : `int q≈0.45056193199109854`, `M(0)/N(0)≈0.68938800746505`, contre la valeur antérieure erronée ≈0.339226.
+
+**Portée :** la preuve est exacte pour les expressions Step57 transcrites à partir de la source authentifiée et la géométrie Step55 prescrite. Elle n'annule **pas** le terme restant `eta''*N`, ne rejoue pas le moteur original Step57, n'exécute pas le probe temporel original Step58 `R=17/20`, ne démontre ni les vrais bords/lapses positifs ni une obstruction Dirac. Ne pas considérer les anciennes conclusions quantitatives b3c3d6 comme valides avant réaudit de toutes les occurrences du coefficient `eta''*N'`. Les résultats Step58 indépendants ne sont pas invalidés par ce seul erratum.
+
+**Vérifications réellement exécutées :** `PYTHONPATH=. python -m numerics.hr_step68ad_b3c3d6_step57_lf_erratum` : 10 résidus algébriques exacts nuls, 15 assertions Python exactes incluant Bernstein, 0 échec final ; `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_step68ad_b3c3d6_step57_lf_erratum.py' -v` : 5 tests PASS, non indépendants. Une erreur de simplification de racines et une comparaison structurelle SymPy ont été corrigées durant le développement avant les tests finaux. Sources originales Step55 blob `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step57 blob ci-dessus, Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, inspectées via connecteur GitHub ; pas d'exécution des moteurs originaux.
+
+**Statut inchangé : b3c3d6 PARTIELLE ; GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Priorité : exécuter enfin le probe original Step58 sur Step55 avec imports authentifiés, certifier `A_N,A_M,B_N,B_M,E_N,E_M`, raccord centre, signes et zéros, et résoudre le BVP positif avec vrais bords, puis Dirac/charges/gauge/4D/stabilité/observables.
