@@ -6,52 +6,50 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "old_prompt_characters": 32679,
-    "new_prompt_characters": 33304,
+    "status": "PENDING_IF_ACCESSIBLE",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING",
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_PENDING"
+    "timezone": "Europe/Paris"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_step55_k_chart.py": "ff53c9ffd813a429dbf2e2c8b772f40dca8c893f",
-    "tests/test_hr_step68ad_b3c3d6_step55_k_chart.py": "9d9c09fec2e1db6213d11e7d0224766a83639b5d",
-    "research/STEP68AD_B3C3D6_STEP55_K_CHART_EXACT_CERTIFICATE.md": "10b3e3b6c19cf67cd698c6880448f15cf749eab9",
-    "research/reports/gate2b-step68ad-b3c3d6-step55-k-chart.json": "16b6a014943fb56173b9afd2a611e1cb25ac66c6",
-    "README.md": "cf529a9f4babc28d0bed5b11eff60f4696edd2a5",
-    "00_CURRENT_RESTART.md": "31afb1e4b4e9d0903e633ed6ca670cbad024a516"
+    "numerics/hr_step68ad_b3c3d6_step55_dirac_principal_sign.py": "43095132bd334a820e56b987ad196841433dcef0",
+    "tests/test_hr_step68ad_b3c3d6_step55_dirac_principal_sign.py": "21f3af2775efe21df1e65611722d1c1820b725fe",
+    "research/STEP68AD_B3C3D6_STEP55_STEP57_UNIFORM_PRINCIPAL_SYMBOL_SIGN.md": "fc32d8c66f882bd16c6a2a3341e41f743390f339",
+    "research/reports/gate2b-step68ad-b3c3d6-step55-step57-principal-sign.json": "09e1ac20c0aa97358fa3b9be661722958b30c344",
+    "README.md": "4223e5ccc2d666a6ab8d381a447a869207b28358",
+    "00_CURRENT_RESTART.md": "50642875756c5f1d9b63164a09de6cb3b5ca0da9"
   },
-  "verified_research_head_at_session_start": "b47ec5325c6f3c50e8b49fea7b593e76cffae3a6",
-  "next_priority": "b3c3d6 STILL PARTIAL: run original Step58 outer R=17/20 probe with Step45/55/58+b3c2/Step68o; certify physical B_N/B_M signs and derivative jets, zeros and center matching, positive lapses with actual two-end boundary data; then Dirac/gauge/charges/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "95dd5d3f817329c049cf15504f53897e01a159aa",
+  "next_priority": "b3c3d6 STILL PARTIAL: run original Step58 outer R=17/20 probe with authentic Step45/55/57/58+b3c2/Step68o; certify B_N/B_M and derivative jets, zeros/center matching, actual two-end positive lapse BVP; then Dirac/gauge/charges/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "21e9ef77e385ec508391a213f0c6ca1a47b97756",
+  "verified_research_head_before_state_file": "94a649ca6809a1d886d3e7d8faaeccc2ea24900d",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_K_CHART_EXACT_CERTIFICATE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_STEP57_UNIFORM_PRINCIPAL_SYMBOL_SIGN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
     "latest_stage": "b3c3d6_PARTIAL",
-    "last_step_scope": "EXACT_STEP55_PRESCRIBED_GEOMETRY_K_POSITIVE_ANNULUS_BERNSTEIN_NOT_TEMPORAL_DIRAC"
+    "last_step_scope": "EXACT_STEP55_GEOMETRY_STEP57_SMEARED_FUNCTIONAL_PRINCIPAL_SIGN_NOT_STEP58_NOT_DIRAC"
   },
   "last_reported_tests": {
     "symbolic_assert_statements": 14,
-    "bernstein_positive_coefficients": 5,
-    "bernstein_negative_adjacent_differences": 4,
-    "unittest_cases_passed": 4,
+    "unittest_cases_passed": 5,
     "unittest_independent": false,
+    "negative_blob_guard_passed": 1,
     "failed_final": 0,
-    "original_step45_58_reexecuted_this_session": false,
+    "original_step45_55_57_58_executed_this_session": false,
     "original_step55_68o_b3c2_executed": false,
-    "original_step58_outer_R17_20_probe_executed": false
+    "original_step58_outer_R17_20_probe_executed": false,
+    "local_prepublication_error_corrected": "s=r^2 substitution in K; final published bytes pass"
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -77,7 +75,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step58 R=17/20 outer probe NOT executed: local git cannot resolve github.com; authenticated GitHub connector read/write works. The new exact rational Bernstein certificate covers only prescribed Step55 geometry K>0 for r>0, not B_N/B_M or Dirac.",
+  "current_blocker": "Original Step58 outer R=17/20 probe still NOT executed: local git DNS cannot resolve github.com, authenticated GitHub connector read/write works. New exact result bounds only original Step57 smeared eta'' coefficients on Step55 geometry (c_M<-10r², c_Nprime<-(19999/10000)r), NOT Step58 B_N/B_M, Dirac rank or lapse BVP.",
   "task_self_update": "2026-10-29: prepended exact Step55 K chart marker to existing automation prompt; all 32679 prior characters preserved, hourly schedule and enabled state unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
