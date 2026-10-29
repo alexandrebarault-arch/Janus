@@ -1,3 +1,9 @@
+# JANUS — ADDENDUM DE COHÉRENCE DES JETS STEP55/STEP58 (2026-10-29)
+
+Le script numérique Step58 a été corrigé pour évaluer `G(s,U)` au **même rayon décimal exact** que les jets `pLf'`, plutôt qu'au carré flottant de `radius` : ancien écart `pLf'` ~3,3e-19 à R=17/20. Une assertion `|pLf'_jet-r*G(s,U)|<1e-35` est ajoutée. **5 unittest PASS, 0 FAIL après correction**, y compris le rejeu original Step55 256 cellules et la sensibilité 70 décimales ; les six valeurs de coefficients publiées restent inchangées au format float. **NOUVEAU BLOB DU CODE TESTÉ : `643d90183367e74a28ed453d93f5489074b75b08`**, remplace `4e3c78bbdd09831416bf8699c8e24e99253f955d` dans le checkpoint immédiatement ci-dessous ; test blob `c74526a18cdae02ba56da19bd45e77fdd5f355b3` inchangé. Aucune preuve uniforme ajoutée. GATE_2B OPEN ; JANUS_R NOT_VALIDATED.
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : PREMIER REJEU NUMÉRIQUE COMPLET STEP58 ORIGINAL SUR STEP55 (2026-10-29)
 
 **STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 RESTE PARTIELLE.** Prochaine étape prioritaire : transformer le nouveau signal numérique en **certificat exact/intervalle** de B_N,B_M,E_N,E_M et des signes A_N,A_M sur la véritable solution Step55 pour tout 0<r<=17/20 ; vérifier les dérivées/zéros, le raccord central, les lapses strictement positifs et les DEUX vrais bords. Puis pullback Dirac, générateurs/charges, quotient de jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables. Aucune validation physique globale.
