@@ -1,3 +1,18 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ÉCRAN DE SIGNE INTÉGRÉ DU DUAL (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD réel lu au démarrage `9f70b866e5b62480e97dde632ac8e428e5bb9e0f`. Branche unique `research/gate2b-nonhomothetic-transfer`. Avancée mathématique **EXACTE mais CONDITIONNELLE**, non physique : pour le dual faible `Q_i=phi*A_i-(phi*B_i)'+(phi*E_i)''` avec `phi>=0`, `phi=phi'=0` aux deux bords, `integral Q_i=integral phi*A_i`. Donc le certificat composante par composante `Q_N,Q_M>=0` exige `integral phi*A_N>=0` et `integral phi*A_M>=0`. Si `A_M<0` partout où `phi>0`, **aucun tel certificat n'existe**, indépendamment des `B/E` ; cela **n'exclut PAS** un BVP positif. Exemple exact JOUET avec `B_M,E_M` non nuls : `integral Q_M=-8/105`. Les anciens quatre points Step58 suggèrent `A_M<0` mais aucun signe physique uniforme n'est certifié.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_dual_sign && PYTHONPATH=. python -m unittest discover -s tests -v` : **5 PASS, 0 FAIL** après correction d'une comparaison syntaxique SymPy ; `python -m compileall -q numerics tests` PASS. Arithmétique SymPy exacte, tests non indépendants. Originaux Step45/46/55/58 et candidat cubique **NON EXÉCUTÉS** dans cette session : connecteur GitHub opérationnel en lecture/écriture ; DNS GitHub du container indisponible. Sources GitHub examinées : Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f`, ancien probe `643d90183367e74a28ed453d93f5489074b75b08`, candidat cubique `9eb5167bec74fc427307a262faaa6a1f785785a8`.
+
+**FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_b3c3d6_dual_sign_feasibility.py` — blob `58237b11545c75ff1b9877052f86869866dd7936`, identique aux octets exécutés.
+- `tests/test_hr_b3c3d6_dual_sign_feasibility.py` — blob `fbdcde781c2f8ac22947ff689945a2f558c5f97f`, identique aux octets exécutés.
+- `research/STEP68AD_B3C3D6_DUAL_INTEGRATED_SIGN_NECESSITY.md` — blob `c50768fa98827aa05ae2125527373240827dc5bc`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : exécuter cinq originaux SHA-authentifiés et le candidat cubique aux rayons `1/4,1/2,7/10,17/20`, comparer les six coefficients affine/cubique et coquilles, certifier signes/zéros/enclosures des `A/B/E`, vérifier si le dual reste admissible, puis centre et BVP positif deux bords ; enfin Dirac six couples, charges/jauge temporelle, `K=0/J=0`, dynamique 4D, stabilité et observables. `main`, `research/v2-flrw`, workflows inchangés. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CERTIFICAT DUAL FAIBLE GLOBAL (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD lu en direct à la reprise : `7d11204a033abd89062612b21ef08a8862b1f372`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Avancée **EXACTE mais CONDITIONNELLE**, avec témoin **JOUET NON PHYSIQUE** ; aucune validation du Step58 réel ni de Dirac.
