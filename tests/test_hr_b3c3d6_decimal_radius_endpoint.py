@@ -24,6 +24,15 @@ class DecimalEndpointTests(unittest.TestCase):
         for r in (0.25,0.5,0.7,0.85):
             self.assertLessEqual(abs(new_endpoint_error(r)),abs(old_endpoint_error(r)))
 
+    def test_mpmath_45_digit_guard(self):
+        import mpmath as mp
+        mp.mp.dps = 45
+        F = lambda v: mp.mpf(str(v))
+        for r in (0.25,0.5,0.7,0.85):
+            sf, _ = endpoint_s(r)
+            self.assertLess(abs(F(sf)-F(r)**2),F('1e-40'))
+        self.assertNotEqual(F(endpoint_s(0.7)[0]),F(0.7)**2)
+
     def test_invalid_radii_rejected(self):
         for r in (0,-1,float('nan'),float('inf')):
             with self.subTest(r=r),self.assertRaises(ValueError):
