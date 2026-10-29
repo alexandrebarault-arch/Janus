@@ -17,30 +17,29 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_endpoint_jet_budget.py": "c8684993db94ca0a186427d9d0921942f5b82cc3",
-    "tests/test_hr_b3c3d6_endpoint_jet_budget.py": "926ff2c0d6f4750ea92cf76d4a40baa493a7bf01",
-    "research/STEP68AD_B3C3D6_FULL_OPERATOR_ENDPOINT_JET_BUDGET.md": "6a587932c546d4a0539acbe73f181b90f578d502",
-    "00_CURRENT_RESTART.md": "a45f48bf47542f28f262ff51f1a61ea6999705e5",
-    "README.md": "ebfa8e49ae639172bf895090bcf19a1a8827e6dc"
+    "numerics/hr_b3c3d6_mixed_ode_jet_guard.py": "fc14fa8b401699d37d2f2e530cb54925aad33898",
+    "tests/test_hr_b3c3d6_mixed_ode_jet_guard.py": "61ba4b0d35753cbfc1217878f642ffbb30810918",
+    "research/STEP68AD_B3C3D6_MIXED_ODE_JET_DEPENDENCY_AUDIT.md": "b9f4367413bb3115098f42a0dddf55749c3f58e1",
+    "00_CURRENT_RESTART.md": "1f087e738695ae2cf658663a052175f356bc7730"
   },
-  "verified_research_head_at_session_start": "f91328dad757e383f69f899628cebb476e8be3eb",
-  "next_priority": "Execute original five SHA-authenticated Step45/46/55/58 source modules and corrected cubic Step58 at four radii, compare all six affine/cubic coefficients; prove factorization or interval enclosures and physical lapse jet bounds, then positive two-boundary BVP, Dirac, 4D, stability, observables.",
+  "verified_research_head_at_session_start": "6f697c915677e07ed16405729b152cde1b059e29",
+  "next_priority": "Run five SHA-authenticated original Step45/46/55/58 Python modules plus cubic candidate at four radii; compare affine/cubic six coefficients; certify factorization/enclosures, center and positive two-boundary lapse BVP; then Dirac, 4D, stability and observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "8a7206a9c5be3e84f8c711b6901b1dbb3accdb69",
+  "verified_research_head_before_state_file": "0227e6a3e9233e297ff160d8af93ff0c40bf97a5",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_FULL_OPERATOR_ENDPOINT_JET_BUDGET.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_MIXED_ODE_JET_DEPENDENCY_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_FULL_OPERATOR_ENDPOINT_JET_BUDGET",
-    "last_step_scope": "Exact rational conditional endpoint jet-budget inequality for full six-coefficient Step58 form; toy saturation; no physical coefficient enclosures, no lapse derivative budget, no cubic original Step58 rerun."
+    "latest_stage": "b3c3d6_PARTIAL_MIXED_ODE_DEPENDENT_FIELD_JET_GUARD",
+    "last_step_scope": "Exact conditional mixed F(r,U,rG) third-jet preservation with cubic Step55 U; rational toy exposes nonholonomic third-jet defect if rG is replaced by derivative of cubic pLf; original physical six coefficients NOT replayed."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 5,
@@ -51,7 +50,7 @@
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
-    "notes": "Five exact rational unittest cases locally passed on identical published source bytes. Original Step45/46/55/58 read and SHA verified through connector, not executed. Conditional toy endpoint saturation, not a physical BVP."
+    "notes": "Five exact local SymPy tests pass on identical GitHub-published code bytes. The corrected Step58 candidate was read, not executed. Local container GitHub DNS fails; connector read/write works."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -78,7 +77,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original corrected cubic Step58 four-radius integration remains unexecuted: GitHub connector reads/writes, local container cannot resolve raw.githubusercontent.com; original source bytes not available locally. No certified physical B/E enclosures or a priori lapse jet bounds. Next priority unchanged.",
+  "current_blocker": "No physical corrected cubic Step58 original four-radius integration executed: local raw.githubusercontent.com DNS unavailable, connector cannot directly materialize Python sources into local container. Five exact formal tests do not certify physical six coefficients, B/E factorization, global positive lapse BVP, or Dirac.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -559,5 +558,26 @@
     "precision_sensitivity_digits": 70,
     "original_source_blobs_verified": 5,
     "negative_controls_off_shell_nonzero": true
+  },
+  "previous_session_snapshot": {
+    "scientific_status": {
+      "GATE_2B": "OPEN",
+      "JANUS_R": "NOT_VALIDATED",
+      "latest_stage": "b3c3d6_PARTIAL_FULL_OPERATOR_ENDPOINT_JET_BUDGET",
+      "last_step_scope": "Exact rational conditional endpoint jet-budget inequality for full six-coefficient Step58 form; toy saturation; no physical coefficient enclosures, no lapse derivative budget, no cubic original Step58 rerun."
+    },
+    "last_reported_tests": {
+      "unittest_cases_passed": 5,
+      "unittest_independent": false,
+      "failed_final": 0,
+      "python_compileall_pass": true,
+      "original_step45_executed_this_session": false,
+      "original_step46_executed_this_session": false,
+      "original_step55_executed_this_session": false,
+      "original_step58_executed_this_session": false,
+      "notes": "Five exact rational unittest cases locally passed on identical published source bytes. Original Step45/46/55/58 read and SHA verified through connector, not executed. Conditional toy endpoint saturation, not a physical BVP."
+    },
+    "verified_research_head_before_state_file": "8a7206a9c5be3e84f8c711b6901b1dbb3accdb69",
+    "latest_scientific_audit": "research/STEP68AD_B3C3D6_FULL_OPERATOR_ENDPOINT_JET_BUDGET.md"
   }
 }
