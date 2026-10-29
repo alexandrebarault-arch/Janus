@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CANDIDAT DE JETS ODE STEP55 CUBIQUES CORRIGÉS (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD au début de session `4831ad91b2120bc0ab5dbfbcd47d4d4b8e11ba60`. La prochaine étape effective reste `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` ; le candidat est PUBLIÉ mais son intégration originale n'est PAS exécutée.
+
+**RÉSULTAT EXACT RESTREINT :** pour `2sU_s=G(s,U)-2U`, dérivées `U_ss=[G_s+(G_U-4)U_s]/(2s)` et `U_sss=[G_ss+2G_sU U_s+G_UU U_s²+(G_U-6)U_ss]/(2s)`, vérifiées par 3 identités radiales SymPy indépendantes. Le nouvel outil calcule les jets d'ordre 1/2/3 et contrôle `pLf',pLf'',pLf'''` par deux voies. Témoin jouet `G=s²+U²,s=1/4,U=1/2` : `U_s=-11/8,U_ss=37/4`, défaut affine `pLf''=37/16`, `pLf'''=1369/64`. Ceci n'établit PAS de défaut non nul sur Step55 physique.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `cd /mnt/data/janus_ode_repair && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL final**, non indépendants ; `python -m compileall -q numerics tests` PASS ; 3 identités exactes SymPy PASS. Deux erreurs initiales d'attente dans les tests jouets corrigées avant publication. **Step45/46/55/58 originaux et 3 tests d'intégration du candidat NON exécutés cette session** (DNS local indisponible). Le probe ancien et ses six coefficients numériques NE SONT PAS réévalués ni invalidés par ces tests. Aucune preuve uniforme, aucun BVP de lapses, aucun rang Dirac.
+
+**NOUVEAUX LIVRABLES PUBLIÉS ET RELUS :**
+- `numerics/hr_b3c3d6_ode_consistent_jet_map.py` blob `c66534cab7da29cf9c214f08c965def3b99b4e63` (octets localement testés).
+- `tests/test_hr_b3c3d6_ode_consistent_jet_map.py` blob `6ed35dffb7f9c1f61d6ed0edc7106f990e912d32` (octets localement testés).
+- `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob `9eb5167bec74fc427307a262faaa6a1f785785a8` (NON exécuté).
+- `tests/test_hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob `625304d17c903a7e8311c72030224a19d6f7e217` (3 tests NON exécutés).
+- `research/STEP68AD_B3C3D6_CORRECTED_CUBIC_ODE_JET_REPAIR.md` blob `bbb5bc5240373867e1dc9c8fc3bc5eef87048ac4`.
+- `research/reports/gate2b-b3c3d6-corrected-cubic-ode-jet-candidate.json` blob `9dbe7ef0a64fb28ec0a4eb3e9d0e1cbd3b95f043`.
+- `README.md` préfixé, blob `e00a0fb04ea79004e692fceb9b97e755b66f9581`.
+
+**PROCHAINES ACTIONS PRIORITAIRES :** 1) exécuter avec imports originaux SHA-authentifiés le nouveau candidat Step58 aux quatre rayons ; mesurer vrais `U_ss,U_sss`, défauts affines, les six coefficients et leur différence au probe ancien ; 2) factorisation exacte et enclosures sur `0<r<=17/20`, raccord centre ; 3) vrai BVP lapses strictement positifs et DEUX bords Step55 ; 4) pullback Dirac, charges/générateurs, quotient de jauge temporelle, six couples/rang/tertiaires, K=0/J=0, 4D/stabilité/observables. `main`, `research/v2-flrw` et workflows intacts. **HISTORIQUE COMPLET CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : AUDIT EXACT DE COHÉRENCE DES JETS STEP55/STEP58 (2026-10-29)
 
 **STATUT : GATE_2B OPEN ; JANUS_R NOT_VALIDATED ; b3c3d6 PARTIELLE.** Une incohérence méthodologique du probe numérique Step58 original a été identifiée et démontrée **formellement**, sans conclure à une erreur des coefficients observés : le script source `numerics/hr_b3c3d6_full_original_step58_point_probe.py` (blob `643d90183367e74a28ed453d93f5489074b75b08`) prolonge localement `U(s)` par une fonction affine alors que l'EDO Step55 `2sU_s=G(s,U)-2U` impose en général des dérivées `U_ss,U_sss`. Les jets `pLf''` et `pLf'''` du prolongement manquent respectivement `4s² U_ss` et `36rs U_ss+8rs² U_sss`. Identités exactes `U_ss=[G_s+(G_U-4)U_s]/(2s)` et `U_sss=[G_ss+2G_sU U_s+G_UU U_s²+(G_U-6)U_ss]/(2s)`.
