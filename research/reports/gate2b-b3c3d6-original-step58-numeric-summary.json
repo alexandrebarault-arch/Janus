@@ -1,0 +1,78 @@
+{
+  "stage": "b3c3d6_PARTIAL",
+  "date": "2026-10-29",
+  "scope": "original Step58 full six coefficients on numerical Step55 radial ODE at four points, not certified continuum",
+  "original_source_blobs": {
+    "Step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "Step46": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+    "Step55_normalized": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+    "Step55_barrier": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "Step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "Step57": "minimal import shim, NOT original full Step57",
+  "original_Step55_barrier_replay_cells": 256,
+  "numerical_method": "DOP853 rtol 1e-12 atol 1e-14; mpmath 45 digits, 70-digit outer sensitivity",
+  "points": [
+    {
+      "r": "0.25",
+      "A_N": 218.48557629596343,
+      "A_M": -421.15710622765033,
+      "B_N": -3.438586636945492e-45,
+      "B_M": -5.74614477705069e-45,
+      "E_N": -2.2333194275176772e-45,
+      "E_M": 2.0143665424669245e-45,
+      "rho_if_B_exact_zero": 0.5187745215864035,
+      "max_shell_residual": 5.68644065666031e-46
+    },
+    {
+      "r": "0.5",
+      "A_N": 865.1666034238656,
+      "A_M": -1665.5134394557938,
+      "B_N": -1.624459350135139e-44,
+      "B_M": 1.0400262039910752e-46,
+      "E_N": -2.1019476964872256e-45,
+      "E_M": 5.254869241218064e-45,
+      "rho_if_B_exact_zero": 0.5194593948797908,
+      "max_shell_residual": 2.273810197457447e-45
+    },
+    {
+      "r": "0.7",
+      "A_N": 1673.8606391302787,
+      "A_M": -3217.015545907315,
+      "B_N": -2.0951054188293896e-45,
+      "B_M": 2.5371165555255965e-44,
+      "E_N": 2.1019476964872256e-45,
+      "E_M": 3.5032461608120427e-45,
+      "rho_if_B_exact_zero": 0.5203147498804485,
+      "max_shell_residual": 2.3665478876406392e-45
+    },
+    {
+      "r": "0.85",
+      "A_N": 2437.0939963676437,
+      "A_M": -4676.647234168184,
+      "B_N": 1.8257933702169638e-44,
+      "B_M": -1.0049937423829547e-44,
+      "E_N": 1.401298464324817e-45,
+      "E_M": 5.605193857299268e-45,
+      "rho_if_B_exact_zero": 0.5211199122657623,
+      "max_shell_residual": 8.704450177742339e-45
+    }
+  ],
+  "negative_control_at_R": {
+    "pSgr_plus_0.01_B_N": -0.08797975936796415,
+    "pSgr_plus_0.01_B_M": -0.001917985922254269,
+    "pSf_plus_0.01_B_N": -0.03260588872932775
+  },
+  "unittest_cases_passed": 5,
+  "unittest_independent": false,
+  "failed": 0,
+  "interpretation": "B_N,B_M,E_N,E_M numerically consistent with zero on four Step55 points; A_N positive, A_M negative; if B exactly zero, M/N approximately 0.519 to 0.521. N=M at R gives A_N+A_M=-2239.55323780054 (numeric). No exact sign/zero certificate or positive lapse BVP.",
+  "pending": [
+    "interval-certified full coefficients and derivatives on 0<r<=17/20",
+    "center raccord",
+    "two real boundary positive lapses",
+    "Dirac gauge six pairs K=0 J=0 4D stability observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
