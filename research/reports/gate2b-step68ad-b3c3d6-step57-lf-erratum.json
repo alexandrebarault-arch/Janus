@@ -1,0 +1,33 @@
+{
+  "step": "b3c3d6_PARTIAL_CORRECTIVE_ERRATUM",
+  "scope": "ORIGINAL_STEP57_ETA2_NPRIME_LF_FACTOR_CORRECTION_TWO_TERM_ONLY_NOT_FULL_ETA2_NOT_STEP58_NOT_DIRAC",
+  "original_source_blobs": {
+    "Step55": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "Step57": "bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f",
+    "Step58_context": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "correct_eta2_Nprime": "-2*Mg2*Sg*Sgprime*(1-z^2)/(Lg^2*Lf)",
+  "previous_eta2_Nprime": "-2*Mg2*Sg*Sgprime*(1-z^2)/Lg^2",
+  "correct_eta2_M": "-K*sqrt(1-z^2)/(Lg*Lf^2)",
+  "correct_ratio_q": "m2*r*T*(1+cg*r^2)/(2*(1+5cg*r^2)*sqrt(1-r^2/62500))",
+  "previous_q": "correct_q/Lf",
+  "correct_center_eta2_Nprime_over_r": "-12500000000000000/1446926807006261",
+  "correct_center_q_over_r": "1233072906282312804849142321743234622455452505532779/976562500000000000000000000000000000000000000000000",
+  "Bernstein_T_coefficients": [
+    "10568489488216307024971913040693908331123/97656250000000000000000000000000000000000",
+    "10515036614238926313728214881377157962599916359/97656250000000000000000000000000000000000000000",
+    "10461679323609004236873424256412481710747904731516747/97656250000000000000000000000000000000000000000000000",
+    "10408417597357584759596819315503711466528583407489521980351/97656250000000000000000000000000000000000000000000000000000",
+    "10355251416510044669009717954240457619089845930253158252294035683/97656250000000000000000000000000000000000000000000000000000000000"
+  ],
+  "T_bound": "53/500 < T(r^2) < 109/1000 on [0,17/20]",
+  "two_term_M1_NR1_center_ratio_lower": "66666/98167",
+  "two_term_M1_NR1_center_ratio_conclusion": "M(0)/N(0) > 2/3 > 2593/5000; incompatible with conditional Step58 central ratio, opposite direction to prior erroneous bound",
+  "previous_claim_q_gt_1000r_over_201": "FALSE: corrected q/r at center < 2",
+  "exact_zero_residuals": 10,
+  "rational_inequality_guards": 15,
+  "original_engine_reexecuted": false,
+  "original_step58_outer_probe_executed": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
