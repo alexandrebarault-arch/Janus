@@ -1,3 +1,9 @@
+## JANUS — b3c3d6 : sensibilité exacte des jets au candidat cubique (29/10/2026, PARTIELLE)
+
+[Audit de sensibilité](research/STEP68AD_B3C3D6_ENDPOINT_JET_SENSITIVITY_AUDIT.md) : 9 identités SymPy exactes et 5 unittest locaux PASS démontrent que la correction cubique laisse inchangés les jets 0/1 de `pLf` et `pLfr=rG(s,U)`, mais peut modifier leurs jets 2/3, ainsi que les champs composés. C'est un résultat **algébrique**, non une nouvelle valeur physique Step55. **Le candidat Step58 original corrigé n'a toujours pas été rejoué** ; priorité aux quatre rayons et aux six coefficients, puis enclosures, centre, BVP lapses positifs/deux bords, Dirac/4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
+---
+
 ## JANUS — b3c3d6 : réparation des jets Step55 (29/10/2026, PARTIELLE)
 
 Calcul exact des jets `U_s,U_ss,U_sss` de l'EDO Step55 et candidat cubique corrigé pour le probe Step58 original : [audit](research/STEP68AD_B3C3D6_CORRECTED_CUBIC_ODE_JET_REPAIR.md), [code](numerics/hr_b3c3d6_ode_consistent_jet_map.py), [candidat non rejoué](numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py). **6 unittest locaux PASS + 3 identités SymPy**, mais **Step58 original NON réexécuté avec ces jets** ; les anciens `B/E≈0` restent non certifiés. Prochaine étape : vrai rejeu aux quatre rayons, coefficients corrigés, enclosures, centre, lapses positifs/deux bords, puis Dirac/4D/stabilité/observables. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
