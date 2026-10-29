@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : DUAL FAIBLE ADAPTÉ À UN CÔNE DE RATIOS (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub lu au démarrage `a009f3e67f6389f790c0255963954b0f64f58574` ; branche autorisée `research/gate2b-nonhomothetic-transfer`. Avancée mathématique **EXACTE mais CONDITIONNELLE**, non physique : la négativité de `A_M` empêche éventuellement le certificat dual `Q_N,Q_M>=0` composante par composante, mais **n'interdit pas** un certificat adapté à un cône global de ratios.
+
+**THÉORÈME DE CÔNE :** pour `T=A_N N+A_M M+B_N N'+B_M M'+E_N N''+E_M M''`, `N,M>0` C², `phi>=0` avec `phi=phi'=0` aux bords, et `Q_i=phi*A_i-(phi*B_i)'+(phi*E_i)''`, si des bornes **globales** `0<lo<=M/N<=hi` sont imposées et `min(Q_N+lo*Q_M,Q_N+hi*Q_M)>=0` partout avec stricte positivité sur un ouvert, alors **aucun BVP positif dans ce cône** ne résout `T=0`. Preuve par intégration par parties et affinité en `M/N`. Aucun ratio physique global Step55/58 n'est démontré.
+
+**TÉMOIN JOUET EXACT** sur `[0,1]` : `phi=x²(1-x)²`, `A_N=2,A_M=-3`, `B_N=eps*x³(1-x)³,B_M=-B_N,E_N=eps²*x⁴(1-x)⁴,E_M=-E_N,eps=1/100`. Le dual composante par composante est impossible (`integral Q_M=-1/10`), mais sur `1/4<=M/N<=1/2` la marge cône est `>=318401/640000*phi>0` à l'intérieur. Contrôle négatif : `N=1,M=2/3` est solution positive exacte **hors cône**. Ne jamais transformer cet exemple en no-go JANUS.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_cone_dual && PYTHONPATH=. python -m unittest discover -s tests -v` : **7 PASS, 0 FAIL**, SymPy rationnel exact, tests non indépendants ; `python -m compileall -q numerics tests` PASS. Preuve uniforme donnée analytiquement par les majorants `5eps/16` et `33eps²/16`, non par échantillonnage. **Aucun** des cinq moteurs originaux Step45/46/55/58 ni le candidat cubique exécuté pendant cette session : connecteur GitHub lecture/écriture fonctionne, mais container DNS et connexions directes GitHub indisponibles. Sources originales Step45/58 inspectées via GitHub, SHA source Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` et candidat `9eb5167bec74fc427307a262faaa6a1f785785a8`.
+
+**FICHIERS SCIENTIFIQUES PUBLIÉS ET RELUS (Git blob SHA identique aux octets locaux testés) :**
+- `numerics/hr_b3c3d6_cone_adapted_dual.py` — `9f4b8634c51a3d05523e9c14d75e5f621cf73c85`.
+- `tests/test_hr_b3c3d6_cone_adapted_dual.py` — `fcc42811eee9eda475ab2bc7c2d33cf7e4ff4f86`.
+- `research/STEP68AD_B3C3D6_RATIO_CONE_ADAPTED_WEAK_DUAL.md` — `688a5ba16b43ee24c0dc121e676875c0bf3993c4`.
+- `README.md` préfixé sans perte, blob `5634a9775e7534b05b401ce89d3a38bee1bfb8ff`.
+Commits des trois livrables `e1996ce1a3011aa331ee135bb6760341cf9a6d31`, `eb524db58df0c7a9e2ae583b4fcd36a4d82b0a0d`, `b35394f8796c265331b730ec5d7ce1f6f5e0c7fa`; README `a634c06f6321ab4c94b8f86081e60bbc4a758190`. Branches `main` et `research/v2-flrw` non modifiées ; workflows non touchés.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : exécuter les cinq originaux SHA-authentifiés et le candidat cubique aux rayons `1/4,1/2,7/10,17/20`, comparer les six coefficients affine/cubique et résidus, factoriser/enclore `A/B/E` et dérivées/zéros, chercher des bornes **globales** de ratio seulement si justifiées, centre et vrai BVP positif deux bords ; puis Dirac six couples, charges/jauge temporelle, K=0/J=0, 4D/stabilité/observables. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ÉCRAN DE SIGNE INTÉGRÉ DU DUAL (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD réel lu au démarrage `9f70b866e5b62480e97dde632ac8e428e5bb9e0f`. Branche unique `research/gate2b-nonhomothetic-transfer`. Avancée mathématique **EXACTE mais CONDITIONNELLE**, non physique : pour le dual faible `Q_i=phi*A_i-(phi*B_i)'+(phi*E_i)''` avec `phi>=0`, `phi=phi'=0` aux deux bords, `integral Q_i=integral phi*A_i`. Donc le certificat composante par composante `Q_N,Q_M>=0` exige `integral phi*A_N>=0` et `integral phi*A_M>=0`. Si `A_M<0` partout où `phi>0`, **aucun tel certificat n'existe**, indépendamment des `B/E` ; cela **n'exclut PAS** un BVP positif. Exemple exact JOUET avec `B_M,E_M` non nuls : `integral Q_M=-8/105`. Les anciens quatre points Step58 suggèrent `A_M<0` mais aucun signe physique uniforme n'est certifié.
