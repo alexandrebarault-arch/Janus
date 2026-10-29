@@ -6,52 +6,48 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "old_prompt_characters": 37435,
-    "new_prompt_characters": 38460,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_PROBE_PENDING_AFTER_FULL_STEP57_ETA2_COEFFICIENT"
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "b3c3d6_FULL_ORIGINAL_STEP58_ON_STEP55_STILL_PENDING",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_step68ad_b3c3d6_step57_full_eta2_N.py": "1ae6a933f9389afc57bb2ecc1c28bdf611b14eb9",
-    "tests/test_hr_step68ad_b3c3d6_step57_full_eta2_N.py": "e2ac46f34b736694a38898b81aa5008ea8cfafa6",
-    "research/reports/gate2b-step68ad-b3c3d6-step57-full-eta2-N.json": "3403cef30d7741fab11d83c195a73f0f379dcdc9",
-    "research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md": "a117beda9ebd939958fce1bd1bda04952d2a91d4",
-    "README.md": "c912dbd7aa925a0ddb7f88aeecce78bc5ca1e9b9",
-    "00_CURRENT_RESTART.md": "0a507c6a308d3486aa803b49ad5e5f42c2eb843e"
+    "numerics/hr_b3c3d6_authentic_step58_highjet_replay.py": "f1f69b857eef98edbdcde60bbd12b1412ecc5998",
+    "tests/test_hr_b3c3d6_authentic_step58_highjet_replay.py": "89abf9355b6e07d05ab206e194eedef5c2f2f7f8",
+    "research/reports/gate2b-b3c3d6-authentic-step58-highjet-replay.json": "ea50fbbb9ee4535780f8d33a93f6d1861562f06b",
+    "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_HIGHJET_REPLAY.md": "a626483d8e7afa07417ecf37d1af8aecbdfdc2ce",
+    "00_CURRENT_RESTART.md": "bf64066f758408e61d0cc3eb2c1206ea9286fde8",
+    "README.md": "08b3ad759575f19065df1c4ee705810a61cb885e"
   },
-  "verified_research_head_at_session_start": "6b31fcc5c82e387f5d63070d0d70d44f0dfe2b7d",
-  "next_priority": "b3c3d6 PARTIAL: genuinely execute SHA-authenticated original Step58 on Step55 at R=17/20; six A_N/A_M/B_N/B_M/E_N/E_M coefficients, derivative and zero maps, center matching, positive lapses and actual two-boundary conditions; then Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "7f6ed649bd9bba5d2362f41b091a836e3851e32f",
+  "next_priority": "b3c3d6 PARTIAL: execute FULL byte-authentic original Step58 on exact Step55 at R=17/20 including pLf radial ODE jets; certify A_N/A_M/B_N/B_M/E_N/E_M, derivatives/zeros/center, positive lapses and two physical boundaries; then Dirac/charges/time gauge/six pairs/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-29",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "f801d30a78c339e3464c2015ceb5ed03f00af3f6",
+  "verified_research_head_before_state_file": "4da5e4a64c4b1b00bf02c3ac4b5e4ae777b5bfcd",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d6_ORIGINAL_STEP58_OUTER_PROBE_AND_GLOBAL_LAPSE_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP57_FULL_ETA2_N_COEFFICIENT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_HIGHJET_REPLAY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_STEP57_FULL_ETA2_N_COEFFICIENT_CERTIFIED_ON_STEP55",
-    "last_step_scope": "EXACT_SMEARED_ETA2_COEFFICIENT_ONLY_NOT_FULL_STEP58_NOT_DIRAC"
+    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_STEP58_HIGHJET_REPLAY",
+    "last_step_scope": "ORIGINAL_STEP45_STEP58_HIGH_JET_CERTIFICATE_ONLY_NOT_FULL_STEP55_PROBE_NOT_DIRAC"
   },
   "last_reported_tests": {
-    "symbolic_zero_residuals": 3,
-    "rational_guard_assertions": 1795,
-    "interval_cells": 256,
-    "unittest_cases_passed": 5,
+    "unittest_cases_passed": 4,
     "unittest_independent": false,
     "failed_final": 0,
-    "original_step45_55_57_58_executed_this_session": false,
-    "original_step58_outer_R17_20_probe_executed": false,
-    "original_step45_55_57_58_read_live": true
+    "original_step45_executed": true,
+    "original_step58_executed": true,
+    "original_step57_executed": false,
+    "original_step55_executed": false,
+    "original_step58_outer_R17_20_full_probe_executed": false,
+    "original_source_SHA_verified": true,
+    "exact_rational_outer_factor": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -77,7 +73,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step58 R=17/20 probe not executed: local Git DNS failure; connector GitHub reads/writes succeed. New exact but restricted Step57 eta2*N coefficient cN/r²>6 on prescribed Step55; with corrected cM/r²<-10 and cNprime/r<-17/2. Conditional Step58 center ratio gives required lapse curvature 1/25<N2/N0<1/20 for formal eta2 cancellation, not a physical solution or no-go. Full temporal Step58/Dirac/two boundaries remain unverified.",
+  "current_blocker": "Original Step58 highest-lapse-jet certificate now authentically replayed on byte-identical Step45+Step58 with minimal Step57 import shim, but full original Step58 on exact Step55 R=17/20 (six coefficients and radial jets) NOT executed. Local git DNS blocked; connector works. No global positive lapse/two-boundary/Dirac conclusion.",
   "task_self_update": "2026-10-29: prepended corrected uniform Step57 Nprime sign marker to 36541-character automation prompt; preserved prior prompt, hourly schedule, timezone and enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
