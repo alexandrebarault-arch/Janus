@@ -1,3 +1,18 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTRE-EXEMPLE ANALYTIQUE PAIR À DEUX LAPSES (2026-10-29)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au début de la session : `f7ae485bfd63ad5683c2dfa24940fc9407aa46c7`. Nouvelle avancée : un opérateur JOUET de type Step58 admet deux lapses strictement positifs, analytiques pairs, avec ratio central `10371/20000` dans la bande b3c2 et égalité `N(R)=M(R)=1` à `R=17/20`, alors que `B_N=-epsilon*r^5` tend uniformément vers zéro et que l'opérateur `epsilon=0` interdit le terminal. La pente terminale `N'(R)=-8000/(4913*epsilon)` et l'amplitude centrale `N(0)=exp(200/(289*epsilon))` divergent. **L'analyticité seule des deux lapses ne suffit donc pas à exclure cette singularité ; une borne quantitative d'amplitude et/ou de jets est indispensable.** Aucun résultat physique Step58/Dirac n'en découle.
+
+**EXÉCUTION RÉELLE :** `cd /mnt/data/janus_analytic_two_lapse && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 tests SymPy exacts PASS, 0 FAIL**, non indépendants ; `python -m compileall -q numerics tests` PASS. Aucune des cinq sources originales Step45/46/55/58 ni le candidat cubique rejoués ; DNS local GitHub indisponible, connecteur GitHub lecture/écriture opérationnel.
+
+**LIVRABLES GITHUB PUBLIÉS ET RELUS, BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py` — `aabffd4c642ae600707d86302324a9e6c6345c80`.
+- `tests/test_hr_b3c3d6_analytic_even_two_lapse_boundary_layer.py` — `48b0d5244367e05c47319df19e9f19ae1fa5f7a7`.
+- `research/STEP68AD_B3C3D6_ANALYTIC_EVEN_TWO_LAPSE_SINGULAR_LIMIT_COUNTEREXAMPLE.md` — `ca9e05b59e6b3d2fa7465394b5880d3b3d61bc47`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : cinq sources originales SHA-authentifiées et candidat cubique aux rayons `1/4,1/2,7/10,17/20`, comparer six coefficients affine/cubique, factoriser/enclore `B/E`, puis centre et véritable BVP positif à deux bords, charges/jauge/Dirac six couples, K=0/J=0, 4D/stabilité/observables. **Ne modifier ni main, ni research/v2-flrw, ni workflows. HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : JETS MIXTES ODE ET CHAMPS DE POUSSIÈRE (2026-10-29)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu `6f697c915677e07ed16405729b152cde1b059e29`. Avancée scientifique locale : garde formelle exacte des jets mixtes `F(r,U,rG)` d'ordre radial 0 à 3. Prochaine étape INCHANGÉE : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
