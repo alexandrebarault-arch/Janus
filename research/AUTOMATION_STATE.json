@@ -8,8 +8,8 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 54876,
-    "new_prompt_characters": 55781,
+    "old_prompt_characters": 55781,
+    "new_prompt_characters": 56653,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
@@ -31,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ad309fe2b9e5256301f525f152669999f7801b8b",
+  "verified_research_head_before_state_file": "7e470f1c225dd3cf63b7762ab4c345ac1da3ea92",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -84,7 +84,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Five SHA-authenticated original sources not available in local runtime because container DNS/direct GitHub unavailable; connector read/write operational. New binary64 helper is isolated and not integrated; need rerun original Step58 cubic/affine four radii, convergence, A/B/E, global BVP, Dirac/4D.",
-  "task_self_update": "2026-10-30: appended 905-character binary64 solver abscissa marker; preserved entire 54876-character prompt, hourly schedule/timezone/enabled.",
+  "task_self_update": "2026-10-30: appended 872-character binary64 RHS/endpoint transport marker; preserved entire prior 55781-character prompt and hourly schedule/timezone/enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
