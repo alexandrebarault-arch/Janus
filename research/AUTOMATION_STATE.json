@@ -17,51 +17,50 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step55_float_initialization_audit.py": "760f7c47ee50a12f3625d05ea6c6043cfe8040c4",
-    "tests/test_hr_b3c3d6_step55_float_initialization_audit.py": "bc5f715ee05363070e958f4afdf9e1ec19ac5e2f",
-    "research/STEP68AD_B3C3D6_STEP55_BINARY64_INITIALIZATION_PRECISION_AUDIT.md": "a2185291391fd5e12729cb789ca617c111e9238d",
-    "README.md": "b9be61696861c71368c8d639ff17b2cdfb6f647e",
-    "00_CURRENT_RESTART.md": "78721be5cc174cdcc372c41b8c2b4af2bbeabf9e"
+    "numerics/hr_b3c3d6_binary_endpoint_gap_audit.py": "ba2ebe9b048a7242e6f96d412013f42979c6dce3",
+    "tests/test_hr_b3c3d6_binary_endpoint_gap_audit.py": "da2b6ca67a2a1332e7451d61650ddef3eb36dc21",
+    "research/STEP68AD_B3C3D6_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT.md": "fab3a46397abecd6802d59c302cd9919cfcf9222",
+    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "c27bc130c0698e16eeb525ffe0edaa9f92ccb718",
+    "README.md": "d5f1dd19f868a052d47c92c6b9529d230d35f8cf",
+    "00_CURRENT_RESTART.md": "95f893a05627e8991adce3d637dce5a344f85b7a"
   },
-  "verified_research_head_at_session_start": "3230792817c9388920d1c34ac69600706d3ccf2a",
-  "next_priority": "Execute five SHA-authenticated original modules plus corrected cubic Step58 and old affine at r=1/4,1/2,7/10,17/20; test convergence in s0, rtol/atol and precision; compare six coefficients, certify exact factorization/enclosures, center and positive two-boundary lapse BVP, then Dirac six pairs/charges/time gauge/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "546f0bc140da6204421a52ab7b612742c9ea9dd3",
+  "next_priority": "Execute SHA-authenticated original Step45/46/55/58 and corrected cubic vs affine at 1/4,1/2,7/10,17/20, reporting binary64 abscissa gaps; validate convergence s0/rtol/atol/precision, six coefficients, factorization/enclosures, center/two-boundary positive lapse BVP, then Dirac six pairs/charges/time gauge/K=0/J=0/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2e7ebeb276d0232b4bdff951ccd0a5b4a5d01e05",
+  "verified_research_head_before_state_file": "8b02b6fdded77d162c722104c7513f3e1925b1e2",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_BINARY64_INITIALIZATION_PRECISION_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_STEP55_BINARY64_INITIAL_CONDITION_PRECISION_AUDIT",
-    "last_step_scope": "Reproduced actual candidate Step55 truncated initial condition at s0=1e-4 using 100-digit mpmath. Conversion to float adds absolute error 1.926392299182445e-19 (relative 3.667678393861e-17); mpmath(str(float)) differs from exact binary64 by 3.217256935548e-19. This is not a bound on Step58 coefficient error; no original full execution."
+    "latest_stage": "b3c3d6_PARTIAL_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT",
+    "last_step_scope": "Exact rational IEEE-754 mismatch between actual solve_ivp binary64 integration times and shortest-decimal mpmath(str(float)) guard; two non-dyadic endpoints differ by 8.88e-18 and 3.11e-17, initial s0 differs by 4.79e-21. Corrected candidate reports gaps; original Step58 not rerun; no physical coefficient error bound."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 6,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
-    "high_precision_dps": [
-      90,
-      100,
-      110,
-      120
-    ],
-    "initial_value_binary64_rounding_error": "1.9263922991824451175833486294000117313670224435949e-19",
-    "initial_value_relative_rounding_error": "3.6676783938609446351575340939492870411317941185341e-17",
-    "float_vs_mpmath_shortest_decimal": "3.21725693554753888747654855251312255859375e-19",
+    "exact_binary_endpoint_gaps": {
+      "1/4": "0",
+      "1/2": "0",
+      "7/10": "-1/112589990684262400",
+      "17/20": "7/225179981368524800"
+    },
+    "binary_start_gap": "221/46116860184273879040000",
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "cubic_candidate_integration_executed_this_session": false,
-    "notes": "Six isolated numerical audit unittest cases PASS locally; original physical candidate and source modules read via GitHub but not executed in local container due DNS. No Step58 coefficient error bound."
+    "notes": "Six standalone rational Python unittest PASS, source/test bytes match published blobs; candidate edited by connector, readback pending; no full candidate syntax or integration test."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -74,7 +73,7 @@
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
     "README_updated": true,
-    "source_candidate_updated": false
+    "source_candidate_updated": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -92,7 +91,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step45/46/55/58 source modules cannot be imported into the local Python runtime from GitHub due container DNS; connector read/write succeeds. Double-precision solve_ivp initialization adds measured 1.93e-19 error to truncated y0; unknown center Taylor remainder and integration error, no six-coefficient enclosure, positive lapse BVP, Dirac/4D/stability/observables.",
+  "current_blocker": "Original Step45/46/55/58 cannot be imported locally due DNS container; GitHub connector read/write works. Corrected candidate not integrated. Need physical six-coefficient precision, exact cancellations/enclosures, center and positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
   "task_self_update": "2026-10-30: appended 1011-character binary64 initialization precision marker to the existing prompt without altering hourly schedule/timezone/enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -640,5 +639,10 @@
   "latest_session_forbidden_branch_heads": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "latest_session_branch_guard": {
+    "main_sha": "aead63f4098f0d15a849e579105af034b6317b30",
+    "v2_flrw_sha": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "research_branch_only": true
   }
 }
