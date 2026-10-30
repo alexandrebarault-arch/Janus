@@ -1,3 +1,7 @@
+## 30 octobre 2026 — b3c3d6 : correction des jets holonomes (partielle)
+
+Défaut exact du candidat cubique Step58 : `rG(r²,U_c)` n'est pas la dérivée hors point de `r²U_c` au troisième jet ; défaut `16r_*^6 U_{ssss}`. `fields_at` utilise maintenant la dérivée du même cubique pour `pLfr`. **6 tests SymPy jouets PASS**, pas de rejeu physique Step58, ni BVP/Dirac. Voir `research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
 **JANUS b3c3d6 (2026-10-30) — garde de précision :** le carré de rayon décimal des helpers Step55→Step58 est désormais exact et indépendant du contexte `Decimal` ; 6 tests locaux PASS, aucune exécution physique Step58 nouvelle. Audit : `research/STEP68AD_B3C3D6_DECIMAL_CONTEXT_EXACT_SQUARE_REGRESSION.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 > **JANUS b3c3d6 — 30/10/2026 : câblage binary64 du candidat cubique Step58 (NUMÉRIQUE UNIQUEMENT).** Le candidat `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` utilise désormais les floats binary64 exacts du RHS et transporte l'état final vers `r²` décimal. **5 tests jouets AST/SciPy PASS, 0 FAIL** sur copie minimale du corps candidat, sans exécution du vrai Step58 ni validation des six coefficients physiques. Audit : `research/STEP68AD_B3C3D6_BINARY64_RHS_CANDIDATE_WIRING_TOY_INTEGRATION.md` ; reprise : `00_CURRENT_RESTART.md`. Prochaine étape : cinq originaux SHA + rejeu affine/cubique aux quatre rayons, enclosures, centre/BVP/Dirac. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
