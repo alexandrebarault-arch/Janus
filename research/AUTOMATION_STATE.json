@@ -6,41 +6,35 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 58469,
-    "new_prompt_characters": 59193,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
+    "status": "NOT_YET_ATTEMPTED",
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "84ed9fe05f2f1f9c10c994ae7408784e87ab6791",
-    "tests/test_b3c3d6_holonomic_cubic_transport.py": "1bee3f1f70dd7ba12463705ff7978b08d1b26249",
-    "research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md": "9d09b16df2c535b5500f1af197aa4c61ade06b7a",
-    "00_CURRENT_RESTART.md": "3081975e0fd9ac5026d43fd8b03f0f39cce6f4ba",
-    "README.md": "eedf6c3004570381502c48c7c774b464875601b0"
+    "numerics/hr_b3c3d6_exact_binary_rhs_transport.py": "052f4949f15ef620aa672e70c7df93f22f955979",
+    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "43a140cacfca81aaf41073facea3da4e47e64f5e",
+    "tests/test_b3c3d6_second_order_endpoint_transport.py": "9133325fece76fa91adf57acb586b68cc3fa1ab7",
+    "research/STEP68AD_B3C3D6_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT_AUDIT.md": "3df943cc475791c801ddcb4be1dd0e8512b90e99",
+    "00_CURRENT_RESTART.md": "2d350391f564ee4c1184dfde6b251f98de9472bf",
+    "README.md": "e531afefb35651b3121d0ab850c35083cd47c9bb"
   },
-  "verified_research_head_at_session_start": "08ea9de944d11b8e7d09c8c370c56fccdcbde473",
-  "next_priority": "Execute five SHA-authenticated original sources and real Step58 affine/cubic four-radius six-coefficient comparison with ODE convergence and enclosures; then positive lapse BVP at both boundaries, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "5dcec865dd4c4d44de00b5b1ea11a3bc9959c098",
+  "next_priority": "Execute SHA-authenticated Step45/46/55/58 original physical affine/cubic four-radius replay with ODE convergence, six coefficients and error enclosures, then positive-lapse BVP and Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "45722d0e468d463d47e753df6f74ec5c68f02071",
+  "verified_research_head_before_state_file": "3bf8adde9a508ba0913d57661309499e19aecc80",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_HOLONOMIC_CUBIC_THIRD_JET_REPAIR",
-    "last_step_scope": "Exact toy proof of third-jet mismatch in cubic Step55 off-point extension and patch to candidate; physical original Step58 and positive-lapse BVP not rerun."
+    "latest_stage": "b3c3d6_PARTIAL_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT",
+    "last_step_scope": "Conditional O(delta^3) holonomic binary64 endpoint transport implemented and six toy regression tests run; original physical Step58 not rerun and no coefficient error bound."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 6,
@@ -52,9 +46,10 @@
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "cubic_candidate_integration_executed_this_session": false,
-    "original_source_blobs_sha_read": 5,
-    "toy_third_jet_defect": "6 at r=1/2 for U=s^4",
-    "note": "SymPy exact toy tests; no physical A/B/E coefficient comparison"
+    "original_source_blobs_sha_read": 2,
+    "toy_quadratic_first_order_gap": "delta_squared_exact",
+    "toy_cubic_second_order_remainder": "delta_cubed_exact",
+    "note": "6 local toy tests PASS after fixing old float-square test setup; original Step58 source and Step55 normalized source read live, but five original physical engines not executed."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -67,8 +62,8 @@
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
     "README_updated": true,
-    "source_candidate_updated": false,
-    "modified_helpers": 2
+    "source_candidate_updated": true,
+    "modified_helpers": 1
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -86,7 +81,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Direct GitHub DNS unavailable from container; connector SHA-authenticated all five originals and wrote/read files. Original Step58 affine/cubic four-radius physical replay, convergence, global positive lapse BVP and Dirac not executed.",
+  "current_blocker": "Direct GitHub DNS inaccessible to container, though GitHub connector read/write works. Original Step58 affine/cubic four-radius physical replay, convergence, six coefficient enclosures, positive lapse BVP, Dirac/4D/stability/observables remain undone.",
   "task_self_update": "2026-10-30: prefixed 724-character holonomic third-jet correction marker to prior 58469-character prompt, preserving full previous instructions and hourly schedule/timezone/enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
