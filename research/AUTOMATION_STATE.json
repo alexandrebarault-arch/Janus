@@ -6,9 +6,15 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET_THIS_SESSION",
-    "previous_automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "schedule_unchanged": true
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 59924,
+    "new_prompt_characters": 60729,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_step55_transport_error_budget.py": "3079e0b3b6025b49a583e5d004dcba62dbe4d437",
@@ -80,7 +86,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Container direct GitHub DNS fails, GitHub connector read/write succeeds. Physical original Step58 and candidate cubic not executed; no certified solver-state epsilon, f partial derivative envelopes, third derivative bound, coefficient sensitivities, or global lapse BVP.",
-  "task_self_update": "2026-10-30: prefixed 731-character second-order endpoint transport marker to prior 59193-character automation prompt, preserving all previous instructions, schedule, timezone and enabled state.",
+  "task_self_update": "2026-10-30: prefixed 805-character conditional error budget marker to existing 59924-character automation prompt; original instructions preserved, hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
