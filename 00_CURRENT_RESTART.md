@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ENCLOSURE RATIONNELLE DU DÉFAUT CONTINU D'EDO (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Reprise HEAD authentifié : `1b796faca25c812b2162e5fc12e9f8c97fbe9714` ; branche unique `research/gate2b-nonhomothetic-transfer`. Dernière étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU THÉORÈME EXACT CONDITIONNEL :** pour U'=f(s,U), approximation v, défaut d=v'-f(s,v), borne initiale e, borne continue D sur |d| et Lipschitz L certifié sur un tube contenant la solution exacte, toute cellule h=b-a>0 avec Lh<1 satisfait |U(b)-v(b)|<=(e+hD)/(1-Lh). Le certificat utilise uniquement des rationnels. Enclosure exacte du défaut polynomial par les coefficients de Bernstein sur [a,b], puis chaînage rationnel ; échantillonner trois points ne suffit PAS (témoin d=2s-6s²+4s³ nul en 0,1/2,1 mais non nul ailleurs). **Le tube, l'erreur initiale, les bornes L/D et le défaut continu du dense output DOP853 Step55 physique ne sont PAS certifiés.** Le RHS Step55 n'est pas polynomial : le helper Bernstein ne peut s'y appliquer directement sans enveloppe rigoureuse préalable.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_defect && PYTHONPATH=. python -m unittest discover -s tests -v` : **8 PASS, 0 FAIL final** ; `python -m compileall -q numerics tests` PASS. Test de chaînage corrigé avant le PASS final (résultat exact 5/18, non 1/4). Tests rationnels jouets non indépendants. Les originaux Step45/46/55/58 et le candidat cubique ont été lus via GitHub mais **NON EXÉCUTÉS** physiquement (DNS direct conteneur indisponible).
+
+**PUBLIÉ ET RELU :**
+- `numerics/hr_b3c3d6_rational_defect_certificate.py` blob `d6dbf489d2a924b176fc7eae31319aff1835ebc5`, commit `6f39f8abeffc995c2b279a0633b85a4de7ca12e7`.
+- `tests/test_hr_b3c3d6_rational_defect_certificate.py` blob `d61ef488b97a9c309aa8d52dc7969fdd177138e4`, commit `479afdf6ef67c2d5762bd558514e66b1ee1f445a`.
+- `research/STEP68AD_B3C3D6_RATIONAL_ODE_DEFECT_CERTIFICATE.md` blob `43ef27e50964a1d7b3b406ddf9a025962375245a`, commit `f9a0dabd5159679c58c2e1b7d92afce108805f74`.
+
+**PRIORITÉ INCHANGÉE :** cinq originaux SHA, rejeu affine/cubique aux quatre rayons 1/4,1/2,7/10,17/20, six coefficients et convergence, enclosures physiques DOP853/Step58, centre/BVP lapses positifs deux bords, Dirac/4D/stabilité/observables. `main`, `research/v2-flrw` et workflows non touchés. **HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : BUDGET EXACT D'ERREUR DU TRANSPORT STEP55→STEP58 (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Reprise authentifiée : HEAD `b13829d4c8d58da4b7da8d0f4ffa98693a1d9ef5` ; branche autorisée `research/gate2b-nonhomothetic-transfer`. Dernière étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
