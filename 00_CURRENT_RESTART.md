@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTEXTE DÉCIMAL, CARRÉ EXACT (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié à la reprise : `2eaeb3fae28f896321746a253da3f64393887415`. Branche unique autorisée : `research/gate2b-nonhomothetic-transfer`. Les cinq blobs originaux Step45/46/55/58 ont été relus par GitHub (SHA conformes au manifeste), **mais les moteurs physiques originaux et le candidat cubique Step58 n'ont pas été exécutés localement**.
+
+**CORRECTION RÉELLE DE REPRODUCTIBILITÉ :** `Decimal(str(r))**2` utilisait la précision décimale ambiante (28 par défaut) et n'était pas un carré rationnel exact pour les rayons décimaux longs. Contre-exemple `r=0.1234567890123456` : ancien carré moins carré exact `=1/1562500000000000000000000000000`. Le carré `endpoint_s` est maintenant calculé avec précision locale suffisante et le transport `decimal_square_target` via `Fraction(Decimal(str(r)))**2`. Aux quatre rayons historiques, les valeurs restent identiques ; **aucun coefficient physique A/B/E recalculé, aucune conclusion physique nouvelle**.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_decimal && PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL**, incluant cinq précisions décimales et contre-exemple négatif ; `python -m compileall -q numerics tests` PASS. Tests locaux isolés non indépendants ; aucun original physique rejoué.
+
+**PUBLIÉ ET RELU :**
+- `numerics/hr_b3c3d6_decimal_radius_endpoint.py` — blob `28ded430d6140c26beb5c4040cfed3241a9cf086`.
+- `numerics/hr_b3c3d6_exact_binary_rhs_transport.py` — blob `61b35afbef4a7939bb15481b2ec92487a47b7c37`.
+- `tests/test_decimal_context_invariance.py` — blob `df083975e2b5fe31fda7983208b9e2dce39943d7`.
+- `research/STEP68AD_B3C3D6_DECIMAL_CONTEXT_EXACT_SQUARE_REGRESSION.md` — audit de reproduction et limites. Commits de code/test/audit : `2d88ee2de35210fed9539a8da3377367744f08b8`, `cb9e890336423573ddffe9cde9b5928d3643fc78`, `8470847ce04fa5978a3a72e3b8751276c2e90b7c`, `ab81dd5e17d5c6e90b87eed94aba8cec2c56715c`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` — matérialiser les cinq sources originales SHA-authentifiées ; exécuter Step58 affine/cubique aux quatre rayons, convergence ODE et six coefficients, factorisation/enclosures, centre/BVP lapses positifs deux vrais bords, puis Dirac/charges/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables. DNS et accès direct GitHub du conteneur indisponibles, connecteur GitHub lecture/écriture fonctionnel. `main`, `research/v2-flrw`, workflows intacts. **HISTORIQUE COMPLET CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CANDIDAT CUBIQUE CÂBLÉ BINARY64, TESTS JOUETS (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu en direct : `aeb494b7251e69a21ae36df3f5d1f4e8f768e4e9` ; HEAD avant ce checkpoint : `67ba5348a635536ad584a9b77c1ad44e32789f21`. Branche de travail unique : `research/gate2b-nonhomothetic-transfer`.
