@@ -1,3 +1,22 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ABSCISSES BINARY64 RÉELLES DU SOLVEUR STEP55 (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise authentifié `546f0bc140da6204421a52ab7b612742c9ea9dd3`. Branche modifiée exclusivement : `research/gate2b-nonhomothetic-transfer`. Avancée : correction d'une **garde numérique trompeuse**, pas de nouvelle preuve physique, pas de rejeu original complet.
+
+**FAIT EXACT :** le candidat `solve_ivp` intègre sur des temps `float` binary64 ; sa garde `abs(mpmath(str(sf))-r_decimal²)<1e-40` compare seulement des *chaînes décimales courtes* et masque les différences de temps binaires. Pour `r=1/4`, `1/2`, les écarts sont nuls ; pour `r=7/10`, `sf_binary-r²=-1/112589990684262400` (~-8.88e-18) ; pour `r=17/20`, `+7/225179981368524800` (~+3.11e-17). Au départ, `float(1e-4)-1/10000=221/46116860184273879040000` (~4.79e-21). Ces écarts sont inférieurs à 1/2 ulp et normaux ; seule l'affirmation de précision `1e-40` était incorrecte. Aucune erreur de coefficients Step58 n'en découle sans analyse de sensibilité.
+
+**EXÉCUTÉ :** `cd /mnt/data/janus_binary_endpoint && python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : PASS. Tests rationnels isolés, non indépendants des définitions ; aucun moteur original Step45/46/55/58, aucun BVP, aucun Dirac exécuté. DNS container GitHub indisponible ; connecteur GitHub lecture/écriture fonctionnel.
+
+**PUBLIÉ ET RELU :**
+- `numerics/hr_b3c3d6_binary_endpoint_gap_audit.py` — blob `ba2ebe9b048a7242e6f96d412013f42979c6dce3`, octets identiques au code local testé.
+- `tests/test_hr_b3c3d6_binary_endpoint_gap_audit.py` — blob `da2b6ca67a2a1332e7451d61650ddef3eb36dc21`, octets identiques aux tests locaux.
+- `research/STEP68AD_B3C3D6_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT.md` — blob `fab3a46397abecd6802d59c302cd9919cfcf9222`.
+- Candidat `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` instrumenté pour exposer l'écart réel et supprimer la fausse garde, blob `c27bc130c0698e16eeb525ffe0edaa9f92ccb718` ; **nouveau candidat NON testé en intégration**, donc ne pas le considérer validé.
+- `README.md` préfixé, blob `d5f1dd19f868a052d47c92c6b9529d230d35f8cf`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : matérialiser cinq originaux SHA-authentifiés ; exécuter original Step58 affine/cubique aux quatre rayons, avec comparaison des temps binary64/décimaux et convergence ODE (`s0`, tolérances, précision) ; comparer six coefficients A/B/E, factoriser/enclore, puis centre/BVP positif deux vrais bords, Dirac six couples/charges/jauge temporelle/K=0/J=0/4D/stabilité/observables. `main`, `research/v2-flrw`, workflows inchangés. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ERREUR BINARY64 DE L'INITIALISATION STEP55 (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à la reprise `3230792817c9388920d1c34ac69600706d3ccf2a` ; seule branche modifiée `research/gate2b-nonhomothetic-transfer`. Avancée de **métrologie numérique spécifique au candidat physique**, pas de preuve Dirac ni de rejeu complet.
