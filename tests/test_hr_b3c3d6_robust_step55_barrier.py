@@ -4,7 +4,7 @@ from fractions import Fraction as Q
 from numerics.hr_b3c3d6_robust_step55_barrier import (
     FUPPER_MAX, FLOWER_MIN, R_MAX, S_MAX, TUBE_HALF,
     global_residual_threshold, boundary_slacks, candidate_tube_sufficient,
-    conditional_endpoint_error,
+    conditional_endpoint_error, normalized_defect_sufficient,
 )
 
 class RobustBarrier(unittest.TestCase):
@@ -68,5 +68,21 @@ class RobustBarrier(unittest.TestCase):
         # v(s)=d/2*(s-sa²/s), v(1)=9/64>H: small D matters.
         sa,sb,d,H=Q(1,4),Q(1),Q(3,10),Q(1,10)
         self.assertGreater(d/2*(sb-sa*sa/sb),H)
+
+class NormalizedResidual(unittest.TestCase):
+    def test_zero_passes(self):
+        self.assertGreater(normalized_defect_sufficient(Q(1,100),R_MAX,0,0)['lower_slack'],0)
+
+    def test_half_margin_passes(self):
+        x=normalized_defect_sufficient(Q(1,100),R_MAX,0,FLOWER_MIN/2)
+        self.assertEqual(x['lower_slack'],FLOWER_MIN/2)
+
+    def test_equality_fails(self):
+        with self.assertRaises(ValueError):
+            normalized_defect_sufficient(Q(1,100),R_MAX,0,FLOWER_MIN)
+
+    def test_negative_fails(self):
+        with self.assertRaises(ValueError):
+            normalized_defect_sufficient(Q(1,100),R_MAX,0,-1)
 
 if __name__=='__main__': unittest.main()
