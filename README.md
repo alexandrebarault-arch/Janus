@@ -1,3 +1,5 @@
+**JANUS b3c3d6 (30/10/2026) — transport d'extrémité d'ordre 2 (conditionnel) :** helper binary64 `transport_endpoint_second_order` branché au candidat Step58, six tests jouets PASS, aucun rejeu physique original ni certification des coefficients. Audit : `research/STEP68AD_B3C3D6_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT_AUDIT.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
 ## 30 octobre 2026 — b3c3d6 : correction des jets holonomes (partielle)
 
 Défaut exact du candidat cubique Step58 : `rG(r²,U_c)` n'est pas la dérivée hors point de `r²U_c` au troisième jet ; défaut `16r_*^6 U_{ssss}`. `fields_at` utilise maintenant la dérivée du même cubique pour `pLfr`. **6 tests SymPy jouets PASS**, pas de rejeu physique Step58, ni BVP/Dirac. Voir `research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
