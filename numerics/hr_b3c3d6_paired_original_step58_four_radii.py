@@ -6,7 +6,8 @@ original SHA-guarded Step45/46/55/58 modules in the JANUS repository.
 No independent per-mode integrations, no claims about Dirac or BVP.
 """
 import json
-from contextlib import contextmanager
+import io
+from contextlib import contextmanager, redirect_stdout
 from copy import copy
 
 RADII = (0.25, 0.5, 0.7, 0.85)
@@ -87,13 +88,19 @@ def run_radius(radius, affine_module, cubic_module, mp):
             augmented = dict(jets, U_value=u)
             return truncate_jets(augmented, s0, mode, mp)
         return evaluate
+    def captured_main(module):
+        log = io.StringIO()
+        with redirect_stdout(log):
+            report = module.main(radius)
+        report['original_probe_stdout'] = log.getvalue()
+        return report
     reports = {}
     with temporarily(affine_module, u_solution=common_solution):
-        reports['historical_mixed_affine'] = affine_module.main(radius)
+        reports['historical_mixed_affine'] = captured_main(affine_module)
     with temporarily(cubic_module, u_solution=common_solution):
         for mode in MODES[1:]:
             with temporarily(cubic_module, endpoint_jets=make_jets(mode)):
-                reports[mode] = cubic_module.main(radius)
+                reports[mode] = captured_main(cubic_module)
     for mode, report in reports.items():
         report['paired_jet_mode'] = mode
         report['paired_state_from_one_DOP853'] = True
