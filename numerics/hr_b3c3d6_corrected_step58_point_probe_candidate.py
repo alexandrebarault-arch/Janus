@@ -7,6 +7,7 @@ This script is NOT a global positive-lapse BVP or Dirac proof.
 This corrected candidate has NOT been integration-tested against Step58 in its publication session.
 """
 import json, hashlib, math, time
+from fractions import Fraction
 from pathlib import Path
 import numpy as np
 from scipy.integrate import solve_ivp
@@ -16,6 +17,7 @@ from .hr_step55_normalized_secondary import normalized_symbolic, check_original_
 from .hr_step58_temporal_operator import physical_operator
 from .hr_b3c3d6_ode_consistent_jet_map import endpoint_jets, cubic_U
 from .hr_b3c3d6_decimal_radius_endpoint import endpoint_s
+from .hr_b3c3d6_binary_endpoint_gap_audit import endpoint_record, start_record
 
 SOURCE_SHA={
  'hr_step45_exact_physical_ward.py':'66aa43841dccfe4a5d586a49be9c10af3a67a10e',
@@ -75,7 +77,10 @@ def G(s,u):
 
 def u_solution(radius):
  s0=1e-4;sf,s_exact=endpoint_s(radius)
- assert abs(F(sf)-F(radius)**2)<F('1e-40'), ('decimal-radius endpoint mismatch',radius,sf,s_exact)
+ # SciPy integrates to exact binary64 sf, NOT to mpmath(str(sf)).
+ # The old 1e-40 decimal-string guard concealed a real binary abscissa gap.
+ endpoint_gap=endpoint_record(radius)
+ assert abs(Fraction(endpoint_gap['binary_gap'])) <= Fraction(endpoint_gap['half_ulp'])
  def rhs(s,y):return [float((G(F(s),F(y[0]))-2*F(y[0]))/(2*F(s)))]
  init=float(U0+U1*F(s0)+U2*F(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
@@ -166,6 +171,8 @@ def main(radius=0.85):
  print('offshell_B',offshell,flush=True)
  report={'scope':'NUMERICAL_POINT_PROBE_ONLY_ORIGINAL_STEP58_ON_STEP55_ODE',
          'r':str(radius),'U_at_R':str(ur),'G_at_R':str(gr),
+         'solver_binary64_endpoint_gap':endpoint_record(radius),
+         'solver_binary64_start_gap':start_record(),
          'source_blobs':SOURCE_SHA,'original_step58_executed':True,
          'original_step55_global_interval_barrier_executed':False,
          'original_step55_geometry_pointwise_enclosure_pass':True,
