@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : BUDGET EXACT D'ERREUR DU TRANSPORT STEP55→STEP58 (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Reprise authentifiée : HEAD `b13829d4c8d58da4b7da8d0f4ffa98693a1d9ef5` ; branche autorisée `research/gate2b-nonhomothetic-transfer`. Dernière étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVELLE IDENTITÉ EXACTE CONDITIONNELLE :** pour `U'=f(s,U)`, transport `T2(y)=y+h f+h²/2(f_s+f_y f)`, sa dérivée d'état est `T2_y=1+h f_y+h²/2(f_sy+f_yy f+f_y²)`. Si `|U(sf)-y_num|<=eps`, enveloppes `Ly,Lsy,Lyy,F` sur le segment d'états et `|U'''|<=M3` sur l'intervalle, alors `|U(s*)-T2(y_num)|<=eps[1+|h|Ly+h²(Lsy+Lyy F+Ly²)/2]+M3|h|³/6`. À `h=0`, l'erreur `eps` demeure. Spécialisation Step55 `f=(G-2U)/(2s)` : `f_y=(G_U-2)/(2s)`, `f_sy=G_sU/(2s)-(G_U-2)/(2s²)`, `f_yy=G_UU/(2s)` ; non uniforme au centre sans étude spécifique. **AUCUNE des enveloppes physiques ni l'erreur DOP853 n'est certifiée.** Ceci ne constitue PAS une enclosure des six coefficients Step58.
+
+**TESTS LOCAUX RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_error_budget && PYTHONPATH=. python -m unittest discover -s tests -v` : **8 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` PASS. Jouets rationnels, tests non indépendants. Cinq sources originales Step45/46/55/58 lues et blobs SHA contrôlés via GitHub (`66aa4384`, `bac025c2`, `a54a6acf`, `a6e70041`, `802c23ae`) ; **AUCUN ORIGINAL PHYSIQUE NI CANDIDAT CUBIQUE COMPLET EXÉCUTÉ** (DNS direct du conteneur indisponible). Source du candidat inspectée, aucune modification de sa physique.
+
+**PUBLIÉ ET RELU :**
+- `numerics/hr_b3c3d6_step55_transport_error_budget.py` blob `3079e0b3b6025b49a583e5d004dcba62dbe4d437`, commit `f424c481854f413ea7d2cf2c570c3bde086c7dfb`.
+- `tests/test_hr_b3c3d6_step55_transport_error_budget.py` blob `ce6106e2ae7fc615645cd2cec471bd8ad202c7dc`, commit `75d26e3655da895dce152ddc6bba48fa1e8e4363`.
+- `research/STEP68AD_B3C3D6_STEP55_SECOND_ORDER_TRANSPORT_ERROR_BUDGET.md` blob `18d62d86b3a12b242f6661513d0c5e41c7d3f3e7`, commit `c4251682768f05c1e4be8d9581819a442f752b7e`.
+
+**PRIORITÉ :** cinq originaux SHA, affine/cubique aux quatre rayons 1/4,1/2,7/10,17/20, convergence et six coefficients A/B/E, enveloppes d'erreur et centre/BVP lapses positifs deux vrais bords ; puis Dirac/4D/stabilité/observables. `main`, `research/v2-flrw` et workflows intacts. **HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANSPORT BINARY64 D'ORDRE DEUX (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Branche unique : `research/gate2b-nonhomothetic-transfer`. HEAD vérifié avant ce checkpoint : `a913951b4efc5b8aa5c3a3b37bc54d20fe2c7c90`. Le dernier état scientifique reste **b3c3d6 PARTIEL**, prochaine étape inchangée : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
