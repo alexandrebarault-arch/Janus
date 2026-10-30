@@ -71,7 +71,8 @@ def physical_step55_dense_ledger(sol, subcells=256):
     error. Raises if any piece fails tube/interval verification.
     """
     from .hr_b3c3d6_dop853_dense_rational_defect import (
-        dense_exact_domain,dense_boundary_jump,physical_step55_dense_defect)
+        dense_exact_domain,dense_boundary_jump)
+    from .hr_b3c3d6_correlated_tube_guard import physical_step55_dense_defect_correlated
     if not getattr(sol,'success',False) or getattr(sol,'sol',None) is None:
         raise ValueError('successful solve_ivp dense_output required')
     ds=sol.sol.interpolants
@@ -79,12 +80,13 @@ def physical_step55_dense_ledger(sol, subcells=256):
     ps=[]
     for i,d in enumerate(ds):
         a,b,_,_=dense_exact_domain(d)
-        cert=physical_step55_dense_defect(d,subcells)
+        cert=physical_step55_dense_defect_correlated(d,subcells)
         jump=dense_boundary_jump(d,ds[i+1]) if i+1<len(ds) else Q(0)
         ps.append(Piece(a,b,_q(cert['bound']),jump))
     result=ledger(ps)
     result.update({'source':'SHA_GUARDED_ORIGINAL_STEP55_OUTWARD_G',
         'continuous_defect':'ATTEMPTED_ON_ALL_DENSE_PIECES',
+        'correlated_center_tube':'REQUIRED_FOR_EVERY_DENSE_SUBCELL',
         'GU_LE_ZERO':'REQUIRES_SEPARATE_PHYSICAL_TUBE_CERTIFICATE',
         'true_center_initial_error':'NOT_CERTIFIED',
         'binary64_initialization_error':'NOT_CERTIFIED',
