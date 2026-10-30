@@ -8,12 +8,12 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 73450,
-    "new_prompt_characters": 74426,
+    "old_prompt_characters": 74426,
+    "new_prompt_characters": 75374,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_CORRELATED_TUBE_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
+    "next_step_marker": "b3c3d6_RUN_PHYSICAL_CORRELATED_DOP853_WITH_BARRIER_E0_DEFECTS_JUMPS_GU_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_barrier_initial_bootstrap.py": "924082d7ff32c623357988210c6b0967111b30c5",
