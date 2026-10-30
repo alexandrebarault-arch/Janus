@@ -6,10 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_YET_ATTEMPTED_THIS_SESSION",
+    "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 63457,
+    "new_prompt_characters": 64408,
+    "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
@@ -27,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "37bddc466853d890a16515ddce07f5ab75753733",
+  "verified_research_head_before_state_file": "ea25dad9491b1a11bd6111caf6119485af0ecf5b",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -84,7 +88,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Archived Step55 barrier margins and Step63 G_U are certified historically; the actual candidate's continuous DOP853 normalized residual R (or D), its initial offset/error, full original Step58 four-radius replay, six coefficient enclosures and positive lapse BVP remain unverified. Container direct DNS GitHub failed, but GitHub connector read/write worked.",
-  "task_self_update": "2026-10-30: prefixed 874-character authenticated physical Step63 G_U marker to existing 62583-character automation prompt; all original instructions preserved, hourly schedule/timezone/enabled unchanged.",
+  "task_self_update": "2026-10-30: prefixed 951-character robust Step55/Step63 residual gate marker to existing 63457-character automation prompt; original instructions, hourly schedule/timezone and enabled state verified preserved.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
