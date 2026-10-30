@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : FIDÉLITÉ BINARY64 DU RHS ET TRANSPORT D'EXTRÉMITÉ (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise scientifique vérifié `561f1262636dfd845c05c3cf7db4ff0760583602` ; HEAD après trois livrables `d736e862c1a61ee97cc92910e2db877adbcd6455`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`.
+
+**DÉFAUT RÉEL DU CANDIDAT STEP58 :** `rhs(s,y)` évalue `G(mpmath(str(s)),mpmath(str(y[0])))` et `ur=mpmath(str(sol.y[0,-1]))` ; ces conversions ne conservent pas la valeur binary64 que SciPy a effectivement passée. Le solveur intègre aux temps binary64, mais le RHS reçoit leurs décimales courtes. De plus, `G(r_decimal²,ur_binary)` mélange deux abscisses distinctes. Ceci n'est **PAS** une borne d'erreur sur les six coefficients physiques, ni une invalidation de leurs annulations potentielles.
+
+**AVANCÉE EXACTE ET TESTÉE, NON PHYSIQUE :** helper `exact_binary(x)=mp.mpf(x)` (float seulement) et transport `y(s*)≈y(sf)+(s*-sf)f(sf,y(sf))` avec `s*=r_decimal²`, `sf` le vrai float, `delta` rationnel exact. Sous régularité C² et borne de dérivée seconde, le défaut de transport est `O(delta²)`, mais cette borne n'est PAS établie pour Step55 et ne contrôle pas l'erreur d'intégration SciPy. Jouet `y'=3y` vérifié. `sf-s*` vaut `-1/112589990684262400` à `7/10` et `+7/225179981368524800` à `17/20`, nul à `1/4` et `1/2`.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_endpoint_transport && python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` PASS. Tests isolés rationnels/jouets, non indépendants ; cinq originaux Step45/46/55/58, candidat cubique complet et BVP/Dirac **NON EXÉCUTÉS**. DNS GitHub direct container inaccessible, connecteur GitHub lecture/écriture opérationnel.
+
+**PUBLIÉ ET RELU (blobs code/tests égaux aux octets locaux testés) :**
+- `numerics/hr_b3c3d6_exact_binary_rhs_transport.py` blob `f0e3c3ab45b65d1c0509e674dae2891e7d42c67a`.
+- `tests/test_hr_b3c3d6_exact_binary_rhs_transport.py` blob `c00d9886b93d90b23bf046563ed90d7d9ec6357d`.
+- `research/STEP68AD_B3C3D6_BINARY64_RHS_FIDELITY_AND_ENDPOINT_TRANSPORT.md` blob `dbf38fbe0e38b98f0b17c3750d56dbe4e78fbde5`.
+- Commits successifs `6cd1ec6b6287a8c0d9078a5903aeb97fafa81c57`, `bf6067b6aef7f9bdd782e8f715d9ae28ffdc963b`, `d736e862c1a61ee97cc92910e2db877adbcd6455`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : matérialiser les cinq originaux SHA-authentifiés ; intégrer et tester la fidélité binary64 du RHS et le transport terminal dans le candidat ; exécuter affine/cubique aux quatre rayons, convergence `s0/rtol/atol`, six coefficients `A/B/E`, factorisation/enclosures, centre et BVP positif à deux vrais bords, Dirac six couples/charges/jauge temporelle/K=0/J=0/4D/stabilité/observables. **Candidat actuel NON modifié et NON validé en intégration.** `main`, `research/v2-flrw`, workflows intacts. **HISTORIQUE INTÉGRAL CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ABSCISSES BINARY64 RÉELLES DU SOLVEUR STEP55 (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise authentifié `546f0bc140da6204421a52ab7b612742c9ea9dd3`. Branche modifiée exclusivement : `research/gate2b-nonhomothetic-transfer`. Avancée : correction d'une **garde numérique trompeuse**, pas de nouvelle preuve physique, pas de rejeu original complet.
