@@ -18,6 +18,7 @@ from .hr_step58_temporal_operator import physical_operator
 from .hr_b3c3d6_ode_consistent_jet_map import endpoint_jets, cubic_U
 from .hr_b3c3d6_decimal_radius_endpoint import endpoint_s
 from .hr_b3c3d6_binary_endpoint_gap_audit import endpoint_record, start_record
+from .hr_b3c3d6_exact_binary_rhs_transport import exact_binary, transport_endpoint
 
 SOURCE_SHA={
  'hr_step45_exact_physical_ward.py':'66aa43841dccfe4a5d586a49be9c10af3a67a10e',
@@ -81,11 +82,13 @@ def u_solution(radius):
  # The old 1e-40 decimal-string guard concealed a real binary abscissa gap.
  endpoint_gap=endpoint_record(radius)
  assert abs(Fraction(endpoint_gap['binary_gap'])) <= Fraction(endpoint_gap['half_ulp'])
- def rhs(s,y):return [float((G(F(s),F(y[0]))-2*F(y[0]))/(2*F(s)))]
- init=float(U0+U1*F(s0)+U2*F(s0)**2)
+ def rhs_mp(s,u):return (G(s,u)-2*u)/(2*s)
+ def rhs(s,y):return [float(rhs_mp(exact_binary(s),exact_binary(float(y[0]))))]
+ init=float(U0+U1*exact_binary(s0)+U2*exact_binary(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
  assert sol.success,sol.message
- ur=F(sol.y[0,-1]);gr=G(F(radius)**2,ur)
+ transported=transport_endpoint(radius,sf,float(sol.y[0,-1]),rhs_mp,dps=80)
+ ur=transported['value'];gr=G(F(radius)**2,ur)
  return ur,gr,sol
 
 def physical_fields(r,U,Gr):
@@ -173,6 +176,8 @@ def main(radius=0.85):
          'r':str(radius),'U_at_R':str(ur),'G_at_R':str(gr),
          'solver_binary64_endpoint_gap':endpoint_record(radius),
          'solver_binary64_start_gap':start_record(),
+         'rhs_binary64_fidelity':'EXACT_FLOAT_INPUTS',
+         'endpoint_state_transport':'FIRST_ORDER_TO_EXACT_DECIMAL_RADIUS_SQUARED',
          'source_blobs':SOURCE_SHA,'original_step58_executed':True,
          'original_step55_global_interval_barrier_executed':False,
          'original_step55_geometry_pointwise_enclosure_pass':True,
