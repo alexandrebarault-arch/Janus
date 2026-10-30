@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : COMPARATEUR STEP58 APPARIÉ QUATRE RAYONS (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié à la reprise : `bd5c5ea1490316cab03303a956b8e1d032a610e2`. Étape scientifique b3c3d6 toujours PARTIELLE. Prochaine étape INCHANGÉE : `b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL`.
+
+**AVANCÉE REPRODUCTIBLE, NON PHYSIQUE :** runner `numerics/hr_b3c3d6_paired_original_step58_four_radii.py` (blob Git `bfb428de15d0d093d626f9b0f86fb42fa1f9442f`) qui calcule UNE SEULE intégration Step55 candidate par rayon et injecte le MÊME état terminal dans le vrai probe Step58 historique mixte et le candidat holonome, en quatre variantes : affine mixte historique, affine holonome (contrôle négatif), quadratique holonome et cubique holonome. Différences des six coefficients enregistrées ; stdout des probes capturé pour sortie JSON valide ; monkeypatchs restaurés en exception. Prédiction algébrique historique : affine mixte/quadratique/cubique doivent donner les mêmes six coefficients sur mêmes données, affine strictement holonome peut différer uniquement sur A_M. **Prédiction NON encore mesurée sur l'opérateur physique original.**
+
+**TESTS LOCAUX EFFECTIFS :** `cd /mnt/data/janus_paired && PYTHONPATH=. python -m unittest discover -s tests -v` : **7 PASS, 0 FAIL final**, doublures uniquement ; `python -m compileall -q numerics tests` : **PASS**. Première exécution : une attente arithmétique erronée dans un test (51 vs 37,5), corrigée et rerun final PASS. **0** Step45/46/55/58 original exécuté, **0** DOP853 physique, **0** coefficient physique A/B/E recalculé, **0** enclosure et **0** BVP. DNS conteneur indisponible ; connecteur GitHub authentifié fonctionnel en lecture/écriture. Aucune prétention de validation JANUS.
+
+**FICHIERS PUBLIÉS ET RELUS :** runner `numerics/hr_b3c3d6_paired_original_step58_four_radii.py` blob `bfb428de15d0d093d626f9b0f86fb42fa1f9442f` ; tests `tests/test_hr_b3c3d6_paired_original_step58_four_radii.py` blob `9331aca56cd0b845047c13cc3da4546044b2d510` ; audit `research/STEP68AD_B3C3D6_PAIRED_ORIGINAL_STEP58_FOUR_RADIUS_RUNNER_AUDIT.md` ; README mis à jour blob `5c6208dd2c4f641d9082a4fb0c49ca9700fe1e32`. Les blobs code/tests correspondent aux octets locaux réellement testés. `main` vérifiée `aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw` vérifiée `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; workflows inchangés.
+
+**PRIORITÉS :** sur clone avec les cinq originaux SHA-authentifiés, lancer `PYTHONPATH=. python -m numerics.hr_b3c3d6_paired_original_step58_four_radii > research/reports/b3c3d6_paired_original_step58_four_radii.json` ; examiner les six différences sur r=1/4,1/2,7/10,17/20, la convergence et les éventuelles divergences de jets/abscisses. Certifier ensuite défaut DOP853 CONTINU, erreur initiale, enclosures A/B/E, centre et BVP lapses strictement positifs aux deux vrais bords, Dirac six couples/rang/tertiaires/K=0/J=0, dynamique 4D, stabilité et observables. **TOUT L'HISTORIQUE PRÉCÉDENT EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : SECOND JET HORS POINT DE L'AFFINE MIXTE (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `dab80b4d8efc149763666043da8e155e2069dcf9`. Étape b3c3d6 toujours PARTIELLE ; prochaine expérience **INCHANGÉE** : `b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL`.
