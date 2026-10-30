@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : BARRIÈRE PHYSIQUE ROBUSTE AU DÉFAUT NUMÉRIQUE (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub vérifié avant ce checkpoint : `607b5185e6bd581dafc4dcfbab0fdfea71fd7c95`. Branche autorisée : `research/gate2b-nonhomothetic-transfer`. Étape **b3c3d6 PARTIELLE** ; prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU CERTIFICAT EXACT CONDITIONNEL À APPLICATION PHYSIQUE :** la barrière Step55/Step63 historique (rapport blob `8a6ff87fdde3efbf26fa81d20ddb2623c161c9c1`) donne `Fplus_max=-1480966474499367232302129/10^28<0` et `Fminus_min=295653233337826329055403/(2*10^27)>0`, sur 256 cellules `0<=s<=289/400` et `Ustar±1/10000`. Si une approximation continue C1 par morceaux démarre strictement dans le tube à `r_a>0` et si son défaut **continu** `|v_s-(G-2v)/(2s)|<=D`, alors elle reste dans le tube si `2r_b² D<min(-Fplus_max,Fminus_min)`. Au rayon final `17/20`, seuil exact `D<295653233337826329055403/2890000000000000000000000000≈1.02302156864e-4`. Forme PLUS DIRECTE : résidu normalisé `|2s v_s-G(s,v)+2v|<=R<295653233337826329055403/2000000000000000000000000000`, sans division par `s`. Preuve par premier contact aux deux frontières ; résultat **suffisant**, pas un défaut DOP853 mesuré. La solution exacte est séparément confinée par le Step55 historique ; la borne Step63 `G_U<-99/100` devient applicable au candidat seulement après ce contrôle.
+
+**ORIGINAUX LUS VIA CONNECTEUR ET SHA BLOBS VÉRIFIÉS (NON EXÉCUTÉS) :** Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step46 `bac025c28dbe1561c0c36c56dbfda46dc326f804`, Step55 normalisé `a54a6acf2f7ad2f64c500faecfa1406ecbf7b862`, Step55 barrière `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`. Candidat cubique `43a140cacfca81aaf41073facea3da4e47e64f5e` lu mais NON REJOUÉ. Réseau direct GitHub du conteneur : erreur DNS ; connecteur GitHub lecture/écriture FONCTIONNEL.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_b3c3d6_barrier && PYTHONPATH=. python -m unittest discover -s tests -v` : **19 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : **PASS**. Tests exacts rationnels/jouets, non indépendants ; aucune exécution du vrai solveur DOP853, ni de Step58 physique.
+
+**PUBLIÉS SUR LA BRANCHE ET RELUS (BLOBS IDENTIQUES AUX OCTETS LOCAUX TESTÉS) :**
+- `numerics/hr_b3c3d6_robust_step55_barrier.py` blob `4b6a3c4ad71463d78b433596477d76e355da399c`.
+- `tests/test_hr_b3c3d6_robust_step55_barrier.py` blob `2fa9a793fd230a942947206f9d82cc09705c50fb`.
+- `research/STEP68AD_B3C3D6_ROBUST_PHYSICAL_BARRIER_FOR_NUMERICAL_DEFECT.md` blob `d99d49bb12156b81ec4eb867d4a953f9809e2840`.
+- `README.md` mis à jour, blob `bb0662e12472441b0c43ba6971ceb7d391b9a120`.
+
+**VERROUS / PROCHAINE ACTION :** aucun résidu CONTINU DOP853 réel `D` ou `R` certifié ; aucune erreur initiale physique enclose ; aucun original Step58 affine/cubique aux quatre rayons rejoué, aucun des six coefficients A/B/E certifié, ni BVP lapses positifs aux deux vrais bords. Exécuter les cinq originaux SHA-authentifiés et candidat cubique aux rayons 1/4,1/2,7/10,17/20 ; encloser résidu normalisé continu puis appliquer le seuil ci-dessus, comparer six coefficients et convergence ; ensuite centre/BVP, Dirac six couples, 4D/stabilité/observables. `main` HEAD `aead63f4098f0d15a849e579105af034b6317b30` et `research/v2-flrw` HEAD `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` vérifiés sans modification. Aucun workflow activé. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : G_U PHYSIQUE DÉJÀ CERTIFIÉ PAR STEP63, CONTRACTION RENFORCÉE (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub lu au démarrage : `aa323c046514ee6537b0a619236c39522b057963`. Branche de recherche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
