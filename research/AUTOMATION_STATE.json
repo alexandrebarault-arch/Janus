@@ -6,58 +6,54 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
+    "status": "PENDING_THIS_SESSION",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 66199,
-    "new_prompt_characters": 67391,
     "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_CORRECTED_AFFINE_QUADRATIC_CUBIC_RERUN_ORIGINAL_STEP58_FOUR_RADII"
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_original_step58_minimum_jet.py": "8d81fc1bc7823774e6304e25a52653d32e36c4ee",
-    "tests/test_hr_b3c3d6_original_step58_minimum_jet.py": "923b012ea6220ecf7649a0587600fea6f5afdc0e",
-    "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_MINIMUM_ODE_JET_AND_AFFINE_SENSITIVITY.md": "6aea44288ff9330ffbf740247b288f69a8c72472",
-    "README.md": "0e8a9050ce5dc24eac32ef8cb8c2c15b527678b3",
-    "00_CURRENT_RESTART.md": "69287f25de7f8ab25ac3d62404b56ba776d61f94"
+    "numerics/hr_b3c3d6_mixed_affine_ode_jet_equivalence.py": "49c5a7e0720fe3a8b41adbceab86d3c14ec5b1cc",
+    "tests/test_hr_b3c3d6_mixed_affine_ode_jet_equivalence.py": "9414b399b59b6826e2428aa1db732d62cb2efede",
+    "research/STEP68AD_B3C3D6_HISTORICAL_MIXED_AFFINE_ODE_JET_EQUIVALENCE.md": "9548a8a86d496c96869aaeb59f6dfebf27d12a38",
+    "README.md": "200ea383e0755876fde0dd95634f9820d5d1d91f",
+    "00_CURRENT_RESTART.md": "94788f2585ff9c40a301b04e67ede9d679e75a57"
   },
-  "verified_research_head_at_session_start": "8f034d6dd01cab94bdcb24634115eb864a11fa27",
-  "next_priority": "Run five SHA-authenticated original Step45/46/55/58 modules and physical Step58 at 1/4,1/2,7/10,17/20 with affine/quadratic/cubic U(s); verify only A_M differs affine vs quadratic and quadratic=cubic for all six; certify continuous DOP853 residual and initial error, physical A/B/E enclosures, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "2651c51b2d1347830e43bce8ec3d76150660a7c4",
+  "next_priority": "Re-run five SHA-authenticated original Step45/46/55/58 sources, original historical mixed-affine and quadratic/cubic probes at 1/4,1/2,7/10,17/20 with identical binary64 endpoints; expect six point coefficients equal; negative control truly holonomic affine isolates A_M and -4r^4 U_ss. Then certify continuous DOP853 residual/initial error, A/B/E physical enclosures, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "f3d310537081439aea2e9c7d6c83323e4a0f4625",
+  "verified_research_head_before_state_file": "8b56a5a896bb27a200cda737b23222f97d898753",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_CORRECTED_AFFINE_QUADRATIC_CUBIC_RERUN_ORIGINAL_STEP58_FOUR_RADII",
+  "next_pending_step": "b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_MINIMUM_ODE_JET_AND_AFFINE_SENSITIVITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_HISTORICAL_MIXED_AFFINE_ODE_JET_EQUIVALENCE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_STEP58_MINIMUM_JET",
-    "last_step_scope": "Exact original Step45+Step58 structural dependency: among prescribed U-dependent canonical fields pLf,pSf,pf only radial orders 0/1 occur in six coefficients; A_M alone uses pSf' and thus U_ss. Quadratic in s sufficient for point coefficients; affine may differ only A_M. Original Step55 physical DOP853/four-radius numerical replay not executed."
+    "latest_stage": "b3c3d6_PARTIAL_HISTORICAL_MIXED_AFFINE_CORRECTION",
+    "last_step_scope": "Exact algebraic correction to original affine probe interpretation: its pLfr=rG off-point extension is nonholonomic but matches quadratic/cubic physical ODE 0/1 jets; all six original Step58 point coefficients predicted identical for same state. Nonzero A_M U_ss sensitivity applies to genuinely holonomic affine vs quadratic, not historical mixed-affine. No original physical numerical replay this session."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 6,
+    "unittest_cases_passed": 10,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
-    "original_step45_executed_this_session": true,
+    "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
-    "original_step58_executed_this_session": true,
+    "original_step58_executed_this_session": false,
     "original_step57_full_executed_this_session": false,
-    "original_step57_import": "minimal_shim",
+    "original_step57_import": "not_attempted",
     "physical_step58_six_coefficients_numerically_evaluated": false,
     "physical_coefficients_certified": 0,
     "source_bytes_match_published_blobs": true,
-    "original_step58_structural_jet_dependence_verified": true,
-    "affine_quadratic_analytic_sensitivity_verified": true
+    "original_step58_structural_jet_dependence": "reused authenticated preceding audit; inspected source this session",
+    "mixed_affine_ode_first_jet_equivalence_verified": true,
+    "nonholonomic_affine_negative_control_verified": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -88,7 +84,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step46/55 and physical four-radius Step58 coefficients not numerically replayed this session. Continuous DOP853 residual/initial error, A/B/E enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables missing. Structural original Step58 analysis now proves quadratic U(s) suffices for six point coefficients, and isolates affine sensitivity to A_M.",
+  "current_blocker": "Five original physical modules and original Step58 at four radii not numerically executed this session; original historical affine mixed extension is predicted to match quadratic/cubic six point coefficients exactly, so numerical comparison must test invariance and use a truly holonomic affine as negative control. Continuous DOP853 defect/initial error, A/B/E enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables missing.",
   "task_self_update": "2026-10-30: prepended 1192-character original Step58 minimum-jet result to 66199-character automation prompt; prior prompt preserved byte-for-byte; hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
