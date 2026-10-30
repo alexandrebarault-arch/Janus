@@ -46,3 +46,28 @@ def transport_endpoint(radius, solver_s, solver_y, rhs, dps=80):
         corrected = yf + exact_fraction_mp(delta) * slope
         return {'value': +corrected, 'delta': delta,
                 'slope': +slope, 'raw': +yf}
+
+
+def transport_endpoint_second_order(radius, solver_s, solver_y, rhs, dps=80):
+    """Holonomic second-order transport from a binary64 endpoint.
+
+    y''=f_s+f_y*f for y'=f(s,y). For a C3 exact solution, the Taylor
+    remainder is bounded by |delta|**3/6 * sup|y'''| on the short interval.
+    No bound on y''' or SciPy's accumulated state error is provided here.
+    """
+    if dps < 30:
+        raise ValueError('second-order transport requires dps >= 30')
+    with mp.workdps(dps):
+        sf = exact_binary(solver_s)
+        yf = exact_binary(solver_y)
+        delta = decimal_square_target(radius) - Fraction.from_float(solver_s)
+        h = exact_fraction_mp(delta)
+        slope = rhs(sf, yf)
+        fs = mp.diff(lambda s: rhs(s, yf), sf)
+        fy = mp.diff(lambda y: rhs(sf, y), yf)
+        acceleration = fs + fy * slope
+        corrected = yf + h*slope + h*h*acceleration/2
+        return {'value': +corrected, 'delta': delta, 'slope': +slope,
+                'acceleration': +acceleration, 'raw': +yf,
+                'remainder': 'CONDITIONAL_C3_SUP_Y3_TIMES_ABS_DELTA_CUBED_OVER_6',
+                'solver_state_error_enclosed': False}
