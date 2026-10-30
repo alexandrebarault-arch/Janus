@@ -6,7 +6,13 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "PENDING_IF_ACCESSIBLE",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 71466,
+    "new_prompt_characters": 72571,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
     "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
   },
   "latest_session_published_blobs": {
@@ -24,7 +30,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "e4f589d2815f1a8c48736386a3eb618ebc466ee3",
+  "verified_research_head_before_state_file": "e4ea91dc1b50d3e8706cef09395a818f0b14f4a6",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -80,7 +86,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Physical Step55 dense-output F arrays were not available in the local run. Exact rational DOP853 dense reconstruction and interval interface now tested; physical continuous defect, center initial C and binary64 initialization, jump budget, Step58 six-coefficient enclosures, positive two-boundary lapse BVP and Dirac/4D remain unproved.",
-  "task_self_update": "2026-10-30: prepended physical Step58 four-radius replay marker to 70,322-character prompt; all original text preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
+  "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
