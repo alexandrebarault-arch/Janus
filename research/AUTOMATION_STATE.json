@@ -17,33 +17,33 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step55_center_contraction.py": "ba19ee67387534e5ae5021e2c0e360fd16f37d13",
-    "tests/test_hr_b3c3d6_step55_center_contraction.py": "2698930c84efcfd61c489f286f0323c42dc873ce",
-    "research/STEP68AD_B3C3D6_CENTER_ADAPTED_ONE_SIDED_ODE_ERROR_BOUND.md": "7a77f4f13431edd60ff5ca9ea8e7616f3c7f0a13",
-    "00_CURRENT_RESTART.md": "44d05dde2c31647e067da21f7088d6b053042f2b",
-    "README.md": "46f9b33e6ea142a9a73af89cba39d9f9169664df"
+    "numerics/hr_b3c3d6_archived_physical_gu_bridge.py": "53c97dad79e7948912bc53cfb9bea840c6dfd261",
+    "tests/test_hr_b3c3d6_archived_physical_gu_bridge.py": "a0ef5f1038f54091b0d3cfadb4ad61282526e9da",
+    "research/STEP68AD_B3C3D6_AUTHENTIC_ARCHIVED_PHYSICAL_GU_CONTRACTION_BRIDGE.md": "d7d8c06188fd8b5b8e06bfb6d710317320dc64bf",
+    "README.md": "69378663f726abe22af4577cddcacec3e574b6e9",
+    "00_CURRENT_RESTART.md": "4829872b57c9c49156770c96acd515be26845f7c"
   },
-  "verified_research_head_at_session_start": "f6f3c1d59ef93a7868846212a485b749f6a94323",
-  "next_priority": "Reproduce five SHA-authenticated original sources in executable environment; run corrected Step58 affine/cubic four radii with ODE convergence; certify continuous DOP853 defect, initial error, and G_U<=1 (or use absolute Lipschitz fallback); rigorously enclose six physical A/B/E coefficients; then positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "aa323c046514ee6537b0a619236c39522b057963",
+  "next_priority": "Execute five SHA-authenticated original Step45/46/55/58 sources and corrected Step58 affine/cubic at four radii; archive Step63 ALREADY certifies physical G_U<-99/100 on exact Step55 tube, so now certify candidate tube membership, continuous DOP853 defect, initial error, six A/B/E coefficients and lapse BVP; then Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "be1ab98b0c725cfb13dad4dedfe363b118d05250",
+  "verified_research_head_before_state_file": "d53b2255b14464eee84840c4a4e543579c0cca31",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CENTER_ADAPTED_ONE_SIDED_ODE_ERROR_BOUND.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_ARCHIVED_PHYSICAL_GU_CONTRACTION_BRIDGE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_CONDITIONAL_CENTER_ADAPTED_ONE_SIDED_STEP55_ERROR_BOUND",
-    "last_step_scope": "Exact rational half-power center-adapted defect-to-error bound for Step55, conditional on G_U<=1 and certified continuous residual/initial error/tube; 10 rational toy tests; no physical slope certificate, no Step58 physical rerun."
+    "latest_stage": "b3c3d6_PARTIAL_ARCHIVED_PHYSICAL_GU_CONTRACTION_BRIDGE",
+    "last_step_scope": "Authenticated archived Step63 256-cell physical G_U enclosure (<-99/100) and new conditional exact rational and stronger radical Step55 defect-to-error bounds; no fresh original physical replay, candidate-tube/residual/initial error not certified."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 10,
+    "unittest_cases_passed": 15,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
@@ -54,7 +54,9 @@
     "cubic_candidate_integration_executed_this_session": false,
     "physical_coefficients_certified": 0,
     "exact_rational_toy_tests": true,
-    "source_bytes_match_published_blobs": true
+    "source_bytes_match_published_blobs": true,
+    "authentic_archived_step63_report_blob_verified": true,
+    "authentic_archived_step63_report_blob": "8a6ff87fdde3efbf26fa81d20ddb2623c161c9c1"
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -84,8 +86,8 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "GitHub connector read/write operational; container DNS direct GitHub unavailable. No full original Step58 physical replay. New one-sided error theorem requires physical G_U<=1 on the exact/approximate tube, DOP853 continuous residual D and initial error, none certified.",
-  "task_self_update": "2026-10-30: prefixed 1006-character rational ODE defect marker to existing 60729-character automation prompt; all original instructions preserved, hourly schedule/timezone/enabled unchanged.",
+  "current_blocker": "Physical G_U bound is NOT missing on the Step55 historical tube (Step63 certified G_U<-99/100); remaining unverified hypotheses are numerical candidate staying in that tube, continuous DOP853 residual D, initial error, full original Step58 four-radius rerun, and six physical coefficient enclosures; direct container DNS to GitHub unavailable but GitHub connector read/write operational.",
+  "task_self_update": "Current automation prompt/schedule not yet changed in this session; GitHub checkpoint and state authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
