@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTRACTION UNILATÉRALE RATIONNELLE ADAPTÉE AU CENTRE (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié au début de cette session : `f6f3c1d59ef93a7868846212a485b749f6a94323`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Étape scientifique **b3c3d6 PARTIELLE** ; prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU THÉORÈME EXACT CONDITIONNEL SUR L'EDO STEP55 :** pour `2sU_s=G(s,U)-2U` et `s=r²>0`, si `G_U<=1` sur tous les segments reliant la solution exacte à l'approximation C1, si le défaut continu est borné par D et l'erreur initiale par e, alors `e_b <= (r_a/r_b)e + (2D/3)(r_b²-r_a³/r_b)`. La pente unilatérale `f_U<=-1/(2s)` donne une contraction pondérée par `sqrt(s)`, sans condition `Lh<1` ; résultat rationnel exact sur les rayons 1/100,1/4,1/2,7/10,17/20. Témoin JOUET `G=U`, solution `U=0`, approximation `v=c*s` : borne exactement saturée. **AUCUNE borne physique `G_U<=1`, aucun défaut DOP853 continu, aucune erreur initiale certifiés.** Ce n'est pas un rejeu Step58 ni une enclosure des coefficients A/B/E.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_center_contraction && PYTHONPATH=. python -m unittest discover -s tests -v` : **10 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : **PASS**. Tests rationnels jouets non indépendants. Les cinq sources originales Step45/46/55/58 ont été relues via GitHub avec blobs conformes `66aa4384`, `bac025c2`, `a54a6acf`, `a6e70041`, `802c23ae`, mais les moteurs originaux et le candidat cubique **NON EXÉCUTÉS** dans le conteneur (DNS GitHub direct indisponible).
+
+**PUBLIÉ ET RELU, BLOB GIT IDENTIQUE AUX OCTETS TESTÉS :**
+- `numerics/hr_b3c3d6_step55_center_contraction.py` : `ba19ee67387534e5ae5021e2c0e360fd16f37d13`, commit `d6fc6295150a8e0fa893f68d340325c55b6695ef`.
+- `tests/test_hr_b3c3d6_step55_center_contraction.py` : `2698930c84efcfd61c489f286f0323c42dc873ce`, commit `02f13b2d531721b3543d17fd9f3abf8e96f3651d`.
+- `research/STEP68AD_B3C3D6_CENTER_ADAPTED_ONE_SIDED_ODE_ERROR_BOUND.md` : `7a77f4f13431edd60ff5ca9ea8e7616f3c7f0a13`, commit `14b4a1b78745f752ae9f63025696cee055201ece`.
+
+**PRIORITÉ INCHANGÉE :** cinq originaux SHA en environnement exécutable, affine/cubique aux quatre rayons, convergence et six coefficients Step58 ; enclosures physiques de G_U, défaut DOP853, erreur initiale, A/B/E ; centre et BVP lapses positifs aux deux vrais bords ; puis Dirac/4D/stabilité/observables. Aucune modification de `main`, `research/v2-flrw` ou workflows. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ENCLOSURE RATIONNELLE DU DÉFAUT CONTINU D'EDO (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Reprise HEAD authentifié : `1b796faca25c812b2162e5fc12e9f8c97fbe9714` ; branche unique `research/gate2b-nonhomothetic-transfer`. Dernière étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
