@@ -6,8 +6,11 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_YET_ATTEMPTED",
+    "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 60729,
+    "new_prompt_characters": 61735,
+    "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
@@ -82,7 +85,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "GitHub connector reads/writes succeed, but direct container GitHub DNS fails; no full original Step58 physical replay. Polynomial Bernstein defect certificate does not enclose non-polynomial physical Step55 RHS, nor supply DOP853 initial error/tube/Lipschitz bounds.",
-  "task_self_update": "2026-10-30: prefixed 805-character conditional error budget marker to existing 59924-character automation prompt; original instructions preserved, hourly schedule/timezone/enabled unchanged.",
+  "task_self_update": "2026-10-30: prefixed 1006-character rational ODE defect marker to existing 60729-character automation prompt; all original instructions preserved, hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
