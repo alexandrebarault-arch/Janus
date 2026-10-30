@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANSPORT BINARY64 D'ORDRE DEUX (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Branche unique : `research/gate2b-nonhomothetic-transfer`. HEAD vérifié avant ce checkpoint : `a913951b4efc5b8aa5c3a3b37bc54d20fe2c7c90`. Le dernier état scientifique reste **b3c3d6 PARTIEL**, prochaine étape inchangée : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**AMÉLIORATION REPRODUCTIBLE :** le transport d'abscisse finale du candidat Step58 était seulement d'ordre 1 et laissait un reste `O(delta²)`. Nouveau transport holonome d'ordre 2 `yf+delta*f+delta²/2*(f_s+f_y*f)`, reste `O(delta³)` sous hypothèse C3 et borne de troisième dérivée NON ÉTABLIE pour la solution physique. Aux rayons 7/10 et 17/20, les carrés exacts de l'écart valent environ `7.89e-35` et `9.66e-34`, tandis que `|delta|³/6` vaut environ `1.17e-52` et `5.01e-51`. Ce sont des facteurs de Taylor, **PAS des bornes d'erreur des six coefficients physiques**. Le solveur DOP853 reste binary64, sans enclosure de l'erreur d'intégration.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL final** ; `python -m compileall -q numerics tests` PASS. Jouets exacts `y=s²`, `y=s³`, `f=3y+s`, quatre rayons et garde de précision. Un test initial mal configuré utilisait l'ancienne abscisse `float(r)**2` ; corrigé avant publication. **AUCUN moteur original Step45/46/55/58 ni candidat physique complet rejoué** ; cinq originaux SHA authentifiés historiquement, pas exécutés ici (DNS conteneur GitHub indisponible).
+
+**PUBLIÉ ET RELU SUR GITHUB :**
+- `numerics/hr_b3c3d6_exact_binary_rhs_transport.py` blob `052f4949f15ef620aa672e70c7df93f22f955979`, commit `c7ce34d2904d8e6511e9cf925f25922ad4c30e3b`.
+- `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob `43a140cacfca81aaf41073facea3da4e47e64f5e`, commit `3bf8ae11428fc88027bf7b1dcd65b9c5459a8524`.
+- `tests/test_b3c3d6_second_order_endpoint_transport.py` blob `9133325fece76fa91adf57acb586b68cc3fa1ab7`, commit `75f70741fe6b6c3ed1a1b0a12ad041deb5ebb2a0`.
+- `research/STEP68AD_B3C3D6_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT_AUDIT.md` blob `3df943cc475791c801ddcb4be1dd0e8512b90e99`, commit `a913951b4efc5b8aa5c3a3b37bc54d20fe2c7c90`.
+
+**PROCHAINE ÉTAPE PRIORITAIRE INCHANGÉE :** exécuter cinq originaux SHA-authentifiés et Step58 affine/cubique à `1/4,1/2,7/10,17/20`, convergence ODE et six coefficients, puis enclosures, centre/BVP lapses positifs deux bords, Dirac/4D/stabilité/observables. `main`, `research/v2-flrw` et workflows interdits non modifiés. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANSPORT HOLONOME DES JETS CUBIQUES (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié au démarrage : `08ea9de944d11b8e7d09c8c370c56fccdcbde473`. Branche autorisée : `research/gate2b-nonhomothetic-transfer`. Cinq originaux Step45/46/55/58 relus via le connecteur et blobs SHA conformes : `66aa4384`, `bac025c2`, `a54a6acf`, `a6e70041`, `802c23ae`. Originaux NON exécutés localement (DNS GitHub direct conteneur indisponible).
