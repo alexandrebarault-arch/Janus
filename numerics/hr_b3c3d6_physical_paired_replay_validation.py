@@ -88,6 +88,8 @@ def validate(result):
                 'r':row['radius'], 'solver_nfev':row['nfev'],
                 'U':row['shared_U'],
                 'A_N':mp.nstr(base['N0'],22), 'A_M':mp.nstr(base['M0'],22),
+                'B_N':mp.nstr(base['N1'],22), 'E_N':mp.nstr(base['N2'],22),
+                'B_M':mp.nstr(base['M1'],22), 'E_M':mp.nstr(base['M2'],22),
                 'B_E_max_abs':mp.nstr(max(abs(base[k]) for k in ('N1','N2','M1','M2')),8),
                 'minus_A_N_over_A_M':mp.nstr(-base['N0']/base['M0'],17),
                 'holonomic_affine_delta_M0':mp.nstr(observed,22),
