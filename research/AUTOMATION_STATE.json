@@ -6,44 +6,37 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 63457,
-    "new_prompt_characters": 64408,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
+    "status": "NOT_YET_ATTEMPTED",
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_robust_step55_barrier.py": "4b6a3c4ad71463d78b433596477d76e355da399c",
-    "tests/test_hr_b3c3d6_robust_step55_barrier.py": "2fa9a793fd230a942947206f9d82cc09705c50fb",
-    "research/STEP68AD_B3C3D6_ROBUST_PHYSICAL_BARRIER_FOR_NUMERICAL_DEFECT.md": "d99d49bb12156b81ec4eb867d4a953f9809e2840",
-    "README.md": "bb0662e12472441b0c43ba6971ceb7d391b9a120",
-    "00_CURRENT_RESTART.md": "0c7e28341eac40f9a056159143ee2603d721d5e1"
+    "numerics/hr_b3c3d6_normalized_residual_error.py": "0c763bca0ded925c1549ab2ebcedc36ae023ec8f",
+    "tests/test_hr_b3c3d6_normalized_residual_error.py": "b339e2a78ddbe838707f44398b7823fc302d1478",
+    "research/STEP68AD_B3C3D6_NORMALIZED_RESIDUAL_ENDPOINT_ERROR.md": "3c8dbc2fd89dbd7029a95706dfcbdf81d8689d57",
+    "README.md": "9f61522d72a4dad0037d8ea691b5dd1a4f6a73bb",
+    "00_CURRENT_RESTART.md": "537e8d070c629c81949e4d2af10edbd7d0c81f6d"
   },
-  "verified_research_head_at_session_start": "fe5cf026226eb7bb922a0ada2a96567fb2cb5fa0",
-  "next_priority": "Run five SHA-authenticated Step45/46/55/58 originals plus corrected cubic Step58 at four radii; first certify continuous normalized DOP853 residual R<295653233337826329055403/2000000000000000000000000000 (or derivative defect D<295653233337826329055403/2890000000000000000000000000) to establish candidate tube, then initial error and six physical A/B/E coefficients with enclosures, lapse BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "7c26f4ebe24f8ec9d9f180ab1b913986ddeb23b3",
+  "next_priority": "Run five SHA-authenticated Step45/46/55/58 originals and corrected cubic Step58 at 1/4,1/2,7/10,17/20; certify continuous normalized DOP853 residual below historical strict threshold and initial error, then apply conditional endpoint error theorem and enclose six physical A/B/E coefficients; positive lapse two-boundary BVP, Dirac/4D/stability/observables remain open.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ea25dad9491b1a11bd6111caf6119485af0ecf5b",
+  "verified_research_head_before_state_file": "43aeb21417adf22d4e71d32acca137d33eab4742",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ROBUST_PHYSICAL_BARRIER_FOR_NUMERICAL_DEFECT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_NORMALIZED_RESIDUAL_ENDPOINT_ERROR.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_ROBUST_ARCHIVED_PHYSICAL_STEP55_TUBE_GATE",
-    "last_step_scope": "Archived physical Step55 barrier margins give exact conditional continuous-residual threshold for candidate tube confinement, including normalized defect without division by s; no DOP853 continuous residual, initial error or Step58 six coefficients certified."
+    "latest_stage": "b3c3d6_PARTIAL_NORMALIZED_RESIDUAL_CONDITIONAL_ENDPOINT_ERROR",
+    "last_step_scope": "Exact conditional a posteriori endpoint error under archived Step63 G_U bound and continuous normalized residual: e_b<=E+max(e_a-E,0)*(ra/rb)^2, E=100R/299. R physical, e_a, candidate tube and six Step58 coefficients NOT certified."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 19,
+    "unittest_cases_passed": 11,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
@@ -55,8 +48,7 @@
     "physical_coefficients_certified": 0,
     "exact_rational_toy_tests": true,
     "source_bytes_match_published_blobs": true,
-    "authentic_archived_step63_report_blob_verified": true,
-    "authentic_archived_step63_report_blob": "8a6ff87fdde3efbf26fa81d20ddb2623c161c9c1"
+    "archived_step63_report_reexecuted_this_session": false
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -87,7 +79,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Archived Step55 barrier margins and Step63 G_U are certified historically; the actual candidate's continuous DOP853 normalized residual R (or D), its initial offset/error, full original Step58 four-radius replay, six coefficient enclosures and positive lapse BVP remain unverified. Container direct DNS GitHub failed, but GitHub connector read/write worked.",
+  "current_blocker": "No continuous normalized DOP853 residual R, no initial physical error or candidate tube certificate; original five physical sources and Step58 affine/cubic four-radius numerical probe not rerun (container GitHub DNS fails, connector read/write succeeds). No A/B/E physical enclosures, positive lapse BVP, Dirac or 4D proof.",
   "task_self_update": "2026-10-30: prefixed 951-character robust Step55/Step63 residual gate marker to existing 63457-character automation prompt; original instructions, hourly schedule/timezone and enabled state verified preserved.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
