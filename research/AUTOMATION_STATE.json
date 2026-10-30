@@ -6,9 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_YET_ATTEMPTED_THIS_SESSION",
-    "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_CORRELATED_TUBE_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES",
-    "previous_automation_id": "6ade8d316f108191a3537bced5363a3b"
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 73450,
+    "new_prompt_characters": 74426,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_CORRELATED_TUBE_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_correlated_tube_guard.py": "3801625ac5cb0a7681ade369f4c28b761bab73eb",
@@ -26,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "a04db1ce6806bcdf803c6e89a6884f3a735583eb",
+  "verified_research_head_before_state_file": "8f295b1b9dcc77e4574297cfe74376c57c0239b5",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_CORRELATED_TUBE_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
