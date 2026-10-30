@@ -6,41 +6,34 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 64408,
-    "new_prompt_characters": 65331,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
+    "status": "NOT_ATTEMPTED_YET",
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_normalized_residual_error.py": "0c763bca0ded925c1549ab2ebcedc36ae023ec8f",
-    "tests/test_hr_b3c3d6_normalized_residual_error.py": "b339e2a78ddbe838707f44398b7823fc302d1478",
-    "research/STEP68AD_B3C3D6_NORMALIZED_RESIDUAL_ENDPOINT_ERROR.md": "3c8dbc2fd89dbd7029a95706dfcbdf81d8689d57",
-    "README.md": "9f61522d72a4dad0037d8ea691b5dd1a4f6a73bb",
-    "00_CURRENT_RESTART.md": "537e8d070c629c81949e4d2af10edbd7d0c81f6d"
+    "numerics/hr_b3c3d6_fourth_jet_holonomic_guard.py": "de8a44e698386edc17eabc28ec9339160fcad58f",
+    "tests/test_hr_b3c3d6_fourth_jet_holonomic_guard.py": "59a6632c7d838f5acca30ba4d3bf3b38d696b8a0",
+    "research/STEP68AD_B3C3D6_FOURTH_ODE_JET_AND_DERIVATIVE_DEPENDENCE_GUARD.md": "616623c8dc79709d976e1d129490171fd77bb1a8",
+    "00_CURRENT_RESTART.md": "772549ccb6265f4d4616fdd94b872b5b0fb79130",
+    "README.md": "c8d8dd24ee64c4a69d33952bfcb90227f9fc607c"
   },
-  "verified_research_head_at_session_start": "7c26f4ebe24f8ec9d9f180ab1b913986ddeb23b3",
-  "next_priority": "Run five SHA-authenticated Step45/46/55/58 originals and corrected cubic Step58 at 1/4,1/2,7/10,17/20; certify continuous normalized DOP853 residual below historical strict threshold and initial error, then apply conditional endpoint error theorem and enclose six physical A/B/E coefficients; positive lapse two-boundary BVP, Dirac/4D/stability/observables remain open.",
+  "verified_research_head_at_session_start": "7f3c885e612881f047e738549d55306b210dbadb",
+  "next_priority": "Execute five SHA-authenticated Step45/46/55/58 originals and corrected affine/cubic four-radius Step58; inspect whether original six coefficients depend on third jets of derivative-dependent fields and compare quartic only if necessary; certify continuous DOP853 normalized residual, initial error, six physical A/B/E enclosures; positive lapse two-boundary BVP, Dirac/4D/stability/observables remain open.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "5c456bd8f0643f0cd326925b552cf21ab237d408",
+  "verified_research_head_before_state_file": "53df37f940ab382ed494c1dd733006ccec07fd32",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_NORMALIZED_RESIDUAL_ENDPOINT_ERROR.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_FOURTH_ODE_JET_AND_DERIVATIVE_DEPENDENCE_GUARD.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_NORMALIZED_RESIDUAL_CONDITIONAL_ENDPOINT_ERROR",
-    "last_step_scope": "Exact conditional a posteriori endpoint error under archived Step63 G_U bound and continuous normalized residual: e_b<=E+max(e_a-E,0)*(ra/rb)^2, E=100R/299. R physical, e_a, candidate tube and six Step58 coefficients NOT certified."
+    "latest_stage": "b3c3d6_PARTIAL_FOURTH_ODE_JET_DERIVATIVE_DEPENDENCE_GUARD",
+    "last_step_scope": "Exact fourth Step55 ODE jet and derivative-dependent field caution: cubic/quartic radial jets 0..3 agree for F(r,U) but pLf'=d(r²U)/dr third jet differs by 16r0^6 U_ssss. Formal toy result; original Step58 dependence/cancellation not certified."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 11,
@@ -55,7 +48,7 @@
     "physical_coefficients_certified": 0,
     "exact_rational_toy_tests": true,
     "source_bytes_match_published_blobs": true,
-    "archived_step63_report_reexecuted_this_session": false
+    "physical_step58_third_jet_dependence_verified": false
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -86,7 +79,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "No continuous normalized DOP853 residual R, no initial physical error or candidate tube certificate; original five physical sources and Step58 affine/cubic four-radius numerical probe not rerun (container GitHub DNS fails, connector read/write succeeds). No A/B/E physical enclosures, positive lapse BVP, Dirac or 4D proof.",
+  "current_blocker": "Five physical original sources and affine/cubic Step58 not executed in this session (container direct GitHub DNS unavailable). Whether derivative-dependent third jets enter six physical Step58 coefficients is unverified. Continuous DOP853 residual, initial error, physical A/B/E enclosures, positive lapse BVP, Dirac and 4D proof missing.",
   "task_self_update": "2026-10-30: prefixed 951-character robust Step55/Step63 residual gate marker to existing 63457-character automation prompt; original instructions, hourly schedule/timezone and enabled state verified preserved.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
