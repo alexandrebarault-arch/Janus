@@ -8,12 +8,12 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 75374,
-    "new_prompt_characters": 76699,
+    "old_prompt_characters": 76699,
+    "new_prompt_characters": 77719,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "b3c3d6_PROPAGATE_CERTIFIED_STEP55_U_US_USS_TO_SIX_STEP58_COEFFICIENT_ENCLOSURES_THEN_POSITIVE_TWO_BOUNDARY_LAPSE_BVP"
+    "next_step_marker": "b3c3d6_CERTIFY_PHYSICAL_G_SU_G_UU_SECOND_ODE_JET_AND_BINARY64_TO_EXACT_RADIUS_THEN_SIX_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_endpoint_ode_jet_transfer.py": "06bc2eaf9bce60e70f0e05b85cce3b8f385e04ea",
