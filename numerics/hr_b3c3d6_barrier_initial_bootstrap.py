@@ -41,7 +41,7 @@ def propagated_initial_contribution(s0, sR, E0, upper_Gu=0):
     For 2s U_s=G(s,U)-2U, d|e|/ds <=
     -(2-upper_Gu)/(2s)|e| + |H|/(2s).  The initial contribution is
     (s0/sR)**((2-upper_Gu)/2) * E0.  This routine restricts the exponent
-    to an integer or half-integer yielding a rational result; the default
+    to an integer so the result is rational; the default
     upper_Gu=0 yields the basic exact ledger multiplier s0/sR.
     """
     a,b,E,g=map(_q,(s0,sR,E0,upper_Gu))
