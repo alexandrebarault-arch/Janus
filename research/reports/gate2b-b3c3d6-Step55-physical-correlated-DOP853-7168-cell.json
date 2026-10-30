@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-30",
+  "stage": "b3c3d6_PARTIAL",
+  "scientific_scope": "CERTIFIED_STEP55_SPATIAL_ODE_ERROR_RELATIVE_TO_EXACT_REGULAR_CENTER_BRANCH",
+  "provenance": {
+    "original_sha": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "numerics/hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe"
+    }
+  },
+  "step55_barrier_cells": 256,
+  "step55_barrier_strict_Fupper_max": "-1480966474499367232302129/10000000000000000000000000000",
+  "step55_barrier_strict_Flower_min": "295653233337826329055403/2000000000000000000000000000",
+  "gu_interval_exact": [
+    "-10010994328099382599714479353/10000000000000000000000000000",
+    "-4969858031286385533119896427/5000000000000000000000000000"
+  ],
+  "DOP853": {
+    "method": "DOP853",
+    "rtol": 1e-12,
+    "atol": 1e-15,
+    "steps": 28,
+    "nfev": 482,
+    "rhs": "midpoint of original outward interval G at binary64 solver arguments",
+    "same_as_prior_original_script": false
+  },
+  "correlated_subcells": 7168,
+  "initial_E0_exact": "5444517870735025903485243327742866201270407163729562725577373537/54445178707350154154139937189082913832960000000000000000000000000000",
+  "initial_contribution_float": 1.3840830449827016e-8,
+  "continuous_defect_contribution_float": 0.000004835706173052662,
+  "jump_contribution_float": 3.0056739039330554e-26,
+  "nonzero_dense_jumps": 1,
+  "max_dense_jump_float": 3.2108574423042794e-23,
+  "max_continuous_defect_float": 0.000015728684136820158,
+  "terminal_error_bound_exact": "2010134566357187513066947637443797853361850377220243123469020769798153468286503950710034790543827551251967223091638315397441252240354892553973625681393806408354412514537636449051257335533/414499450135323481331783822401740206151893861049810836432975178207163857161147268339490666228626723872819113159860205818972043445535476713878151048061262816356597760000000000000000000000000000",
+  "terminal_error_bound_float": 0.000004849547003502489,
+  "terminal_strict_rational_comparison": "<1/200000",
+  "tests": {
+    "unittest_passed": 3,
+    "failed": 0,
+    "compileall_pass": true,
+    "full_physical_run": true
+  },
+  "not_certified": [
+    "Step58 six coefficient enclosures",
+    "positive two-boundary lapse BVP",
+    "Dirac six-pair constraint rank",
+    "4D evolution",
+    "stability",
+    "observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
