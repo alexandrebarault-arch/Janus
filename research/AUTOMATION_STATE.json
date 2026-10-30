@@ -8,13 +8,13 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 65331,
-    "new_prompt_characters": 66199,
+    "old_prompt_characters": 66199,
+    "new_prompt_characters": 67391,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
+    "next_step_marker": "b3c3d6_CORRECTED_AFFINE_QUADRATIC_CUBIC_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_original_step58_minimum_jet.py": "8d81fc1bc7823774e6304e25a52653d32e36c4ee",
@@ -89,7 +89,7 @@
   ],
   "workflows": "user-disabled; do not reactivate",
   "current_blocker": "Original Step46/55 and physical four-radius Step58 coefficients not numerically replayed this session. Continuous DOP853 residual/initial error, A/B/E enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables missing. Structural original Step58 analysis now proves quadratic U(s) suffices for six point coefficients, and isolates affine sensitivity to A_M.",
-  "task_self_update": "2026-10-30: prepended 868-character fourth-jet guard to 65331-character automation prompt, preserved old prompt verbatim and unchanged hourly schedule/timezone/enabled state.",
+  "task_self_update": "2026-10-30: prepended 1192-character original Step58 minimum-jet result to 66199-character automation prompt; prior prompt preserved byte-for-byte; hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
     "tests/test_hr_step68ad_c2d2b_guard.py": "cf8532bfc15ef2ebc0c2ec71a46985d8f6f866f1",
