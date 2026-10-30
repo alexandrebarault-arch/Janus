@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : G_U PHYSIQUE DÉJÀ CERTIFIÉ PAR STEP63, CONTRACTION RENFORCÉE (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub lu au démarrage : `aa323c046514ee6537b0a619236c39522b057963`. Branche de recherche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Étape scientifique **b3c3d6 PARTIELLE**, prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVELLE SYNTHÈSE PHYSIQUE AUTHENTIFIÉE (PAS DE REJEU ORIGINAL) :** le rapport historique Step63 `research/reports/gate2b-step63-original-interval-report.json`, blob exact `8a6ff87fdde3efbf26fa81d20ddb2623c161c9c1`, relu intégralement et reproduit localement avec SHA IDENTIQUE, avait déjà certifié sur 256 cellules continues de `0<=s<=289/400`, `U∈[Ustar−1/10000,Ustar+1/10000]` la borne rationnelle `G_U <= -2482092799488383772425301393/2500000000000000000000000000 < -99/100 < 0`. Quatre sources physiques Step45/46/55 sont épinglées par le rapport : `66aa4384`, `bac025c2`, `a54a6acf`, `a6e70041`. **CORRECTION DU VERROU ANTÉRIEUR : G_U physique est DÉJÀ certifié sur le tube historique, pas sur tout candidat numérique extérieur au tube.**
+
+**NOUVEAU COROLLAIRE EXACT CONDITIONNEL :** si la solution physique exacte ET l'approximation restent dans le tube Step55, si l'erreur initiale est `e_a` et le défaut CONTINU de l'approximation est `<=D`, alors `e_b <= (r_a/r_b)^2 e_a + (D/2)(r_b²−r_a⁴/r_b²)`, sans `Lh<1`. Avec `G_U<-99/100`, version renforcée `e_b <= (r_a/r_b)^(299/100)e_a + (200D/499)(r_b²−r_a^(499/100)/r_b^(299/100))`. Facteur d'amortissement initial de `r=1/100` à `17/20` : `1/7225` rationnel ou environ `1.7023051464e-6` renforcé. **Ces valeurs ne sont PAS des erreurs DOP853 physiques mesurées.** Il manque la certification du confinement du candidat, du défaut continu DOP853, de l'erreur initiale et de l'enclosure des six coefficients A/B/E.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_bridge && PYTHONPATH=. python -m unittest discover -s tests -v` : **15 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : **PASS**. Tests exacts d'archive/algèbre/jouets non indépendants ; **aucun des cinq originaux ni le candidat physique Step58 exécuté** pendant cette session.
+
+**FICHIERS PUBLIÉS ET RELUS, BLOBS IDENTIQUES AUX OCTETS LOCAUX :**
+- `numerics/hr_b3c3d6_archived_physical_gu_bridge.py` : `53c97dad79e7948912bc53cfb9bea840c6dfd261`.
+- `tests/test_hr_b3c3d6_archived_physical_gu_bridge.py` : `a0ef5f1038f54091b0d3cfadb4ad61282526e9da`.
+- `research/STEP68AD_B3C3D6_AUTHENTIC_ARCHIVED_PHYSICAL_GU_CONTRACTION_BRIDGE.md` : `d7d8c06188fd8b5b8e06bfb6d710317320dc64bf`.
+- `README.md` mis à jour, blob `69378663f726abe22af4577cddcacec3e574b6e9`.
+
+**PROCHAINE PRIORITÉ INCHANGÉE :** exécuter les cinq originaux SHA-authentifiés et affine/cubique Step58 aux quatre rayons, convergence ODE, défaut continu DOP853/tube numérique/erreur initiale, six coefficients physiques avec enclosures, puis centre/BVP positif deux vrais bords, Dirac six couples, 4D, stabilité, observables. `main`, `research/v2-flrw` et workflows désactivés NON touchés. **TOUT L'HISTORIQUE PRÉCÉDENT EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTRACTION UNILATÉRALE RATIONNELLE ADAPTÉE AU CENTRE (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié au début de cette session : `f6f3c1d59ef93a7868846212a485b749f6a94323`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`. Étape scientifique **b3c3d6 PARTIELLE** ; prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
