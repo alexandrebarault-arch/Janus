@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : QUATRIÈME JET ODE / GARDE SUR CHAMPS DÉRIVÉS (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Reprise authentifiée HEAD `7f3c885e612881f047e738549d55306b210dbadb`. Étape b3c3d6 PARTIELLE ; prochaine étape INCHANGÉE : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU RÉSULTAT EXACT MAIS FORMEL :** pour `2s U_s=G(s,U)-2U`, le quatrième jet est `2s U_ssss=G_sss+3G_ssU U_s+3G_sUU U_s²+G_UUU U_s³+3(G_sU+G_UU U_s)U_ss+(G_U-8)U_sss`. Le cubique et le quartique ont les mêmes jets radiaux 0–3 pour les champs `F(r,U)`, mais PAS pour un champ dépendant de `U_s` : `d³/dr³(pLf'_quartique-pLf'_cubique)=16r0^6 U_ssss` à l'extrémité. Résidu normalisé cubique `H'''_r=-16r0^5 U_ssss` ; quartique `H,H',H'',H'''_r=0` au point. Il faut vérifier les dépendances exactes des six coefficients Step58 avant de conclure que cet écart affecte le résultat physique.
+
+**TESTS LOCAUX :** 11 unittest SymPy rationnels PASS, 0 FAIL final, `python -m compileall -q numerics tests` PASS. Témoin jouet `G=s²+u²+s*u` à `s0=1/4,u0=1/2` : `(U_s,U_ss,U_sss,U_ssss)=(-9/8,131/16,-2343/32,59331/64)`. AUCUN moteur original Step45/46/55/58 exécuté ni résidu continu DOP853 ou coefficient physique certifié. Les sources originales ont été inspectées par GitHub, le réseau direct du conteneur reste inaccessible.
+
+**PUBLIÉS ET RELUS SUR LA BRANCHE RECHERCHE UNIQUEMENT :** `numerics/hr_b3c3d6_fourth_jet_holonomic_guard.py` blob `de8a44e698386edc17eabc28ec9339160fcad58f` ; `tests/test_hr_b3c3d6_fourth_jet_holonomic_guard.py` blob `59a6632c7d838f5acca30ba4d3bf3b38d696b8a0` (identiques aux octets locaux testés) ; `research/STEP68AD_B3C3D6_FOURTH_ODE_JET_AND_DERIVATIVE_DEPENDENCE_GUARD.md` blob `616623c8dc79709d976e1d129490171fd77bb1a8`. Ces travaux ne prouvent NI la nécessité physique du quartique NI une obstruction JANUS.
+
+**PROCHAINES ACTIONS :** cinq originaux SHA-authentifiés, affine/cubique aux quatre rayons `1/4,1/2,7/10,17/20`, comparer les dépendances aux jets d'ordre 3 et éventuellement quartique, résidu DOP853 continu/erreur initiale, six coefficients A/B/E et enclosures, centre/BVP lapses positifs aux deux bords, puis Dirac six couples, 4D, stabilité, observables. `main` et `research/v2-flrw` inchangées, workflows non touchés. **TOUT L'HISTORIQUE PRÉCÉDENT EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ERREUR TERMINALE PAR RÉSIDU NORMALISÉ (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à la reprise : `7c26f4ebe24f8ec9d9f180ab1b913986ddeb23b3`. Étape b3c3d6 PARTIELLE ; prochaine étape INCHANGÉE : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
