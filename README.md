@@ -1,3 +1,5 @@
+**JANUS b3c3d6 (30/10/2026) — budget conditionnel d'erreur du transport Step55→Step58 :** dérivée exacte de sensibilité de l'application Taylor d'ordre deux et majoration séparant erreur DOP853 préexistante et reste d'extrémité. 8 tests rationnels PASS ; **aucune borne physique des coefficients, aucun original Step58 rejoué**. Audit : `research/STEP68AD_B3C3D6_STEP55_SECOND_ORDER_TRANSPORT_ERROR_BUDGET.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
+
 **JANUS b3c3d6 (30/10/2026) — transport d'extrémité d'ordre 2 (conditionnel) :** helper binary64 `transport_endpoint_second_order` branché au candidat Step58, six tests jouets PASS, aucun rejeu physique original ni certification des coefficients. Audit : `research/STEP68AD_B3C3D6_SECOND_ORDER_BINARY_ENDPOINT_TRANSPORT_AUDIT.md`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 ## 30 octobre 2026 — b3c3d6 : correction des jets holonomes (partielle)
