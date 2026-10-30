@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : CANDIDAT CUBIQUE CÂBLÉ BINARY64, TESTS JOUETS (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu en direct : `aeb494b7251e69a21ae36df3f5d1f4e8f768e4e9` ; HEAD avant ce checkpoint : `67ba5348a635536ad584a9b77c1ad44e32789f21`. Branche de travail unique : `research/gate2b-nonhomothetic-transfer`.
+
+**AVANCÉE RÉELLE MAIS NUMÉRIQUE :** le candidat `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` intègre maintenant le helper déjà testé `exact_binary` dans le RHS de `solve_ivp` et l'initialisation, puis `transport_endpoint` d'ordre 1 de l'état binary64 final au carré décimal exact du rayon avant de calculer les jets. La correction remplace les conversions `mp.mpf(str(float))` trompeuses. Le décalage rationnel `s*=r²_decimal-sf` vaut `0,0,+1/112589990684262400,-7/225179981368524800` à `r=1/4,1/2,7/10,17/20`. **Aucune borne globale d'erreur Step55, ni preuve d'annulation des coefficients B/E.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_rhs_integration && python -m unittest discover -s tests -p 'test_hr_b3c3d6_candidate_rhs_binary_wiring.py' -v` : **5 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` PASS. Corps `u_solution` extrait par AST depuis une **copie locale minimale** correspondant textuellement au corps publié (hors commentaires) ; SciPy DOP853 sur jouet `U'=3U` à quatre rayons, transport exact et conversions binary64. **Ni les cinq originaux Step45/46/55/58 ni le candidat physique complet ne sont exécutés ; tests non indépendants, non physiques.** DNS direct du conteneur vers GitHub toujours indisponible, connecteur GitHub lecture/écriture opérationnel.
+
+**FICHIERS PUBLIÉS ET RELUS :**
+- `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob `bc9180b6f273239e9916fe72c628923eea2ad497`, commit `d32f52e2d0224ac91ec581e8900c1a23c3c40298`.
+- `tests/test_hr_b3c3d6_candidate_rhs_binary_wiring.py` blob `cc3976c86fcba00352d52db5ab554704e39bb83b`, commit `fe47c4cc90b89b32ce0d127f4e4b53e0cda6e4b8` ; octets du test identiques au test local exécuté.
+- `research/STEP68AD_B3C3D6_BINARY64_RHS_CANDIDATE_WIRING_TOY_INTEGRATION.md` blob `81fc58097a8b77c6bddfc7753ced7b602ce1d8ee`, commit final `67ba5348a635536ad584a9b77c1ad44e32789f21`.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : matérialiser cinq sources originales SHA-authentifiées ; exécuter vrai Step58 affine/cubique aux quatre rayons et convergence `s0/rtol/atol` ; comparer six coefficients `A_N/A_M/B_N/B_M/E_N/E_M`, tenter factorisation/enclosures, centre/BVP lapses positifs deux vrais bords, puis Dirac/charges/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables. `main`, `research/v2-flrw`, workflows inchangés. **TOUT L'HISTORIQUE ORIGINAL EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : FIDÉLITÉ BINARY64 DU RHS ET TRANSPORT D'EXTRÉMITÉ (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise scientifique vérifié `561f1262636dfd845c05c3cf7db4ff0760583602` ; HEAD après trois livrables `d736e862c1a61ee97cc92910e2db877adbcd6455`. Branche autorisée uniquement : `research/gate2b-nonhomothetic-transfer`.
