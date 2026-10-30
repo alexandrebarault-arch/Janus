@@ -84,3 +84,18 @@ def conditional_endpoint_error(e0, defect, ra, rb):
     if not 0 < a < b <= R_MAX or e < 0 or d < 0:
         raise ValueError('invalid error parameters')
     return (a/b)**2*e + d/2*(b*b-a**4/b**2)
+
+
+def normalized_defect_sufficient(ra, rb, initial_offset, normalized_defect):
+    """Sharper gate: |2s*v_s-G(s,v)+2v|<=R < min archived margins.
+
+    This avoids dividing by 2s near the center. A bound on R must hold
+    CONTINUOUSLY on all dense-output cells, not just at sampled nodes.
+    """
+    a, b, off, d = map(Q, (ra, rb, initial_offset, normalized_defect))
+    if not 0 < a < b <= R_MAX or not -TUBE_HALF < off < TUBE_HALF:
+        raise ValueError('invalid radius or initial tube offset')
+    if d < 0 or d >= min(-FUPPER_MAX, FLOWER_MIN):
+        raise ValueError('normalized continuous residual lacks strict margin')
+    return {'upper_slack': -FUPPER_MAX-d, 'lower_slack': FLOWER_MIN-d,
+            'normalized_D_strict': min(-FUPPER_MAX, FLOWER_MIN)}
