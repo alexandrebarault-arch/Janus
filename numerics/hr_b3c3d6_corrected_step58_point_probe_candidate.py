@@ -121,7 +121,12 @@ def main(radius=0.85):
   st=t*t
   # Cubic Taylor in s matches the actual Step55 ODE jets through U_sss.
   ut=cubic_U(t,sr,ur,jets)
-  return physical_fields(t,ut,G(st,ut))
+  # Off-endpoint ODE G(st,ut) is NOT the derivative of the cubic interpolant.
+  # All canonical q jets must come from the SAME holonomic cubic through r-order 3.
+  delta=st-sr
+  us_c=jets['U_s']+jets['U_ss']*delta+jets['U_sss']*delta**2/2
+  gr_holonomic=2*ut+2*st*us_c
+  return physical_fields(t,ut,gr_holonomic)
  fields=fields_at(R)
  o=physical_operator(); names=o['q'];der=o['qp'];sec=o['qpp'];third=o['qppp']
  qkeys=['Lg','pLg','Sg','pSg','tg','pg','Lf','pLf','Sf','pSf','tf','pf']
@@ -183,6 +188,7 @@ def main(radius=0.85):
          'original_step55_geometry_pointwise_enclosure_pass':True,
          'step57_import':'minimal_shim',
          'ode_jet_map':'CUBIC_STEP55_ODE_CONSISTENT_THROUGH_ORDER_3',
+         'pLfr_off_endpoint_extension':'HOLONOMIC_DERIVATIVE_OF_CUBIC_U_NOT_G',
          'affine_jet_defects':{'second':mp.nstr(jets['affine_defect_second'],30),'third':mp.nstr(jets['affine_defect_third'],30)},
          'holonomic_residuals':[mp.nstr(v,15) for v in jets['holonomic_residuals']],
          'shell_residuals':{k:float(v) for k,v in shell.items()},
