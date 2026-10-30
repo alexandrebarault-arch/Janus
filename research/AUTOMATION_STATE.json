@@ -6,53 +6,50 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
+    "status": "NOT_YET_ATTEMPTED",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 59924,
-    "new_prompt_characters": 60729,
-    "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step55_transport_error_budget.py": "3079e0b3b6025b49a583e5d004dcba62dbe4d437",
-    "tests/test_hr_b3c3d6_step55_transport_error_budget.py": "ce6106e2ae7fc615645cd2cec471bd8ad202c7dc",
-    "research/STEP68AD_B3C3D6_STEP55_SECOND_ORDER_TRANSPORT_ERROR_BUDGET.md": "18d62d86b3a12b242f6661513d0c5e41c7d3f3e7",
-    "00_CURRENT_RESTART.md": "3bb610e5c82f5cca07e290b3f73fcae40ec45497",
-    "README.md": "965dfca94b1f666af9242456c6867e70e48907e5"
+    "numerics/hr_b3c3d6_rational_defect_certificate.py": "d6dbf489d2a924b176fc7eae31319aff1835ebc5",
+    "tests/test_hr_b3c3d6_rational_defect_certificate.py": "d61ef488b97a9c309aa8d52dc7969fdd177138e4",
+    "research/STEP68AD_B3C3D6_RATIONAL_ODE_DEFECT_CERTIFICATE.md": "43ef27e50964a1d7b3b406ddf9a025962375245a",
+    "00_CURRENT_RESTART.md": "e73b31cd0e69782e606b9d66a93c1947281a3040",
+    "README.md": "8c231004ce3f41646f8d9b3cf62fa1a4ceada6e7"
   },
-  "verified_research_head_at_session_start": "b13829d4c8d58da4b7da8d0f4ffa98693a1d9ef5",
-  "next_priority": "Rerun five SHA-authenticated Step45/46/55/58 physical originals and affine/cubic Step58 at four radii; obtain DOP853 initial/truncation/derivative enclosures and six coefficients; positive lapse BVP two boundaries; Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "1b796faca25c812b2162e5fc12e9f8c97fbe9714",
+  "next_priority": "Obtain five SHA-authenticated original source files in executable environment; run Step58 affine/cubic at four radii and convergence; rigorously enclose continuous DOP853 defect and initial error and physical Lipschitz tubes; certify six coefficients; then positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "6df831109909a323ac05c7cec409a8a57cbb7503",
+  "verified_research_head_before_state_file": "bb9a8a255904c82ac745735d4aadc7b990866759",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_STEP55_SECOND_ORDER_TRANSPORT_ERROR_BUDGET.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_RATIONAL_ODE_DEFECT_CERTIFICATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_CONDITIONAL_ENDPOINT_ERROR_BUDGET",
-    "last_step_scope": "Exact conditional sensitivity and state-error propagation for second-order Step55 endpoint Taylor map, 8 toy tests; no physical coefficient enclosures, no original Step58 rerun."
+    "latest_stage": "b3c3d6_PARTIAL_CONDITIONAL_RATIONAL_ODE_DEFECT_CERTIFICATE",
+    "last_step_scope": "Exact rational Bernstein polynomial defect enclosure and cellwise residual-to-error inequality under independently certified tube/Lipschitz/initial error; 8 toy tests, no physical Step55 residual or Step58 coefficients."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 8,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
+    "initial_test_failure_corrected_before_final": true,
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "cubic_candidate_integration_executed_this_session": false,
-    "original_source_blobs_sha_read": 5,
     "physical_coefficients_certified": 0,
     "exact_rational_toy_tests": true
   },
@@ -66,8 +63,7 @@
     "original_full_step58_integration_executed": false,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "README_updated": true,
-    "source_candidate_updated": false
+    "README_updated": true
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -85,7 +81,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Container direct GitHub DNS fails, GitHub connector read/write succeeds. Physical original Step58 and candidate cubic not executed; no certified solver-state epsilon, f partial derivative envelopes, third derivative bound, coefficient sensitivities, or global lapse BVP.",
+  "current_blocker": "GitHub connector reads/writes succeed, but direct container GitHub DNS fails; no full original Step58 physical replay. Polynomial Bernstein defect certificate does not enclose non-polynomial physical Step55 RHS, nor supply DOP853 initial error/tube/Lipschitz bounds.",
   "task_self_update": "2026-10-30: prefixed 805-character conditional error budget marker to existing 59924-character automation prompt; original instructions preserved, hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
