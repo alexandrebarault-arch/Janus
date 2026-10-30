@@ -17,50 +17,42 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_binary_endpoint_gap_audit.py": "ba2ebe9b048a7242e6f96d412013f42979c6dce3",
-    "tests/test_hr_b3c3d6_binary_endpoint_gap_audit.py": "da2b6ca67a2a1332e7451d61650ddef3eb36dc21",
-    "research/STEP68AD_B3C3D6_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT.md": "fab3a46397abecd6802d59c302cd9919cfcf9222",
-    "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "c27bc130c0698e16eeb525ffe0edaa9f92ccb718",
-    "README.md": "d5f1dd19f868a052d47c92c6b9529d230d35f8cf",
-    "00_CURRENT_RESTART.md": "95f893a05627e8991adce3d637dce5a344f85b7a"
+    "numerics/hr_b3c3d6_exact_binary_rhs_transport.py": "f0e3c3ab45b65d1c0509e674dae2891e7d42c67a",
+    "tests/test_hr_b3c3d6_exact_binary_rhs_transport.py": "c00d9886b93d90b23bf046563ed90d7d9ec6357d",
+    "research/STEP68AD_B3C3D6_BINARY64_RHS_FIDELITY_AND_ENDPOINT_TRANSPORT.md": "dbf38fbe0e38b98f0b17c3750d56dbe4e78fbde5",
+    "00_CURRENT_RESTART.md": "9857da2941e2c550dc267c349e1407833f2d4d62",
+    "README.md": "d54ca923ac403a8654bdda90c777d38856221a2d"
   },
-  "verified_research_head_at_session_start": "546f0bc140da6204421a52ab7b612742c9ea9dd3",
-  "next_priority": "Execute SHA-authenticated original Step45/46/55/58 and corrected cubic vs affine at 1/4,1/2,7/10,17/20, reporting binary64 abscissa gaps; validate convergence s0/rtol/atol/precision, six coefficients, factorization/enclosures, center/two-boundary positive lapse BVP, then Dirac six pairs/charges/time gauge/K=0/J=0/4D/stability/observables.",
+  "verified_research_head_at_session_start": "561f1262636dfd845c05c3cf7db4ff0760583602",
+  "next_priority": "Materialize five original SHA-authenticated sources; integrate/test exact binary64 RHS and first-order endpoint transport, execute original Step58 cubic vs affine at 1/4,1/2,7/10,17/20; six coefficients and convergence/enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "8b02b6fdded77d162c722104c7513f3e1925b1e2",
+  "verified_research_head_before_state_file": "ad309fe2b9e5256301f525f152669999f7801b8b",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BINARY64_RHS_FIDELITY_AND_ENDPOINT_TRANSPORT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_BINARY64_SOLVER_ABSCISSA_GUARD_AUDIT",
-    "last_step_scope": "Exact rational IEEE-754 mismatch between actual solve_ivp binary64 integration times and shortest-decimal mpmath(str(float)) guard; two non-dyadic endpoints differ by 8.88e-18 and 3.11e-17, initial s0 differs by 4.79e-21. Corrected candidate reports gaps; original Step58 not rerun; no physical coefficient error bound."
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_BINARY64_RHS_FIDELITY_ENDPOINT_TRANSPORT",
+    "last_step_scope": "Exact audit of mp.mpf(str(float)) RHS/terminal state inconsistency in unexecuted corrected Step58 candidate; isolated mp.mpf(float) and first-order exact-rational endpoint transport; toy tests only; no Step55 error bounds or original Step58 execution."
   },
   "last_reported_tests": {
     "unittest_cases_passed": 6,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
-    "exact_binary_endpoint_gaps": {
-      "1/4": "0",
-      "1/2": "0",
-      "7/10": "-1/112589990684262400",
-      "17/20": "7/225179981368524800"
-    },
-    "binary_start_gap": "221/46116860184273879040000",
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "cubic_candidate_integration_executed_this_session": false,
-    "notes": "Six isolated rational Python unittest PASS; exact local source/test blob hashes equal GitHub readback. Corrected candidate static readback confirms new guard and report, but full candidate not compiled or integration-tested."
+    "notes": "Six local unit tests of binary64 fidelity and toy y'=3y transport; source/test SHA equals local tested Git blob SHA. No original sources executed; candidate unchanged."
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -73,7 +65,7 @@
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
     "README_updated": true,
-    "source_candidate_updated": true
+    "source_candidate_updated": false
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -91,7 +83,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step45/46/55/58 cannot be imported locally due DNS container; GitHub connector read/write works. Corrected candidate not integrated. Need physical six-coefficient precision, exact cancellations/enclosures, center and positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
+  "current_blocker": "Five SHA-authenticated original sources not available in local runtime because container DNS/direct GitHub unavailable; connector read/write operational. New binary64 helper is isolated and not integrated; need rerun original Step58 cubic/affine four radii, convergence, A/B/E, global BVP, Dirac/4D.",
   "task_self_update": "2026-10-30: appended 905-character binary64 solver abscissa marker; preserved entire 54876-character prompt, hourly schedule/timezone/enabled.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
