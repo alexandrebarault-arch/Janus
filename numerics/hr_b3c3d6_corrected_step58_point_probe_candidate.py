@@ -18,7 +18,7 @@ from .hr_step58_temporal_operator import physical_operator
 from .hr_b3c3d6_ode_consistent_jet_map import endpoint_jets, cubic_U
 from .hr_b3c3d6_decimal_radius_endpoint import endpoint_s
 from .hr_b3c3d6_binary_endpoint_gap_audit import endpoint_record, start_record
-from .hr_b3c3d6_exact_binary_rhs_transport import exact_binary, transport_endpoint
+from .hr_b3c3d6_exact_binary_rhs_transport import exact_binary, transport_endpoint_second_order
 
 SOURCE_SHA={
  'hr_step45_exact_physical_ward.py':'66aa43841dccfe4a5d586a49be9c10af3a67a10e',
@@ -87,7 +87,7 @@ def u_solution(radius):
  init=float(U0+U1*exact_binary(s0)+U2*exact_binary(s0)**2)
  sol=solve_ivp(rhs,(s0,sf),[init],rtol=1e-12,atol=1e-14,method='DOP853',dense_output=True)
  assert sol.success,sol.message
- transported=transport_endpoint(radius,sf,float(sol.y[0,-1]),rhs_mp,dps=80)
+ transported=transport_endpoint_second_order(radius,sf,float(sol.y[0,-1]),rhs_mp,dps=80)
  ur=transported['value'];gr=G(F(radius)**2,ur)
  return ur,gr,sol
 
@@ -182,11 +182,12 @@ def main(radius=0.85):
          'solver_binary64_endpoint_gap':endpoint_record(radius),
          'solver_binary64_start_gap':start_record(),
          'rhs_binary64_fidelity':'EXACT_FLOAT_INPUTS',
-         'endpoint_state_transport':'FIRST_ORDER_TO_EXACT_DECIMAL_RADIUS_SQUARED',
+         'endpoint_state_transport':'SECOND_ORDER_TO_EXACT_DECIMAL_RADIUS_SQUARED_UNCERTIFIED',
          'source_blobs':SOURCE_SHA,'original_step58_executed':True,
          'original_step55_global_interval_barrier_executed':False,
          'original_step55_geometry_pointwise_enclosure_pass':True,
          'step57_import':'minimal_shim',
+         'endpoint_transport_acceleration':'computed_from_rhs_partials_no_global_bound',
          'ode_jet_map':'CUBIC_STEP55_ODE_CONSISTENT_THROUGH_ORDER_3',
          'pLfr_off_endpoint_extension':'HOLONOMIC_DERIVATIVE_OF_CUBIC_U_NOT_G',
          'affine_jet_defects':{'second':mp.nstr(jets['affine_defect_second'],30),'third':mp.nstr(jets['affine_defect_third'],30)},
