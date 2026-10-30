@@ -16,15 +16,14 @@
     "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_CORRELATED_TUBE_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_correlated_tube_guard.py": "3801625ac5cb0a7681ade369f4c28b761bab73eb",
-    "tests/test_hr_b3c3d6_correlated_tube_guard.py": "1a7a2a9d38d3be79e381f4c81ead38143dbcd23d",
-    "numerics/hr_b3c3d6_global_piecewise_defect_budget.py": "5fc0572021a98d6d5fe3127293baf023c286d9f4",
-    "research/STEP68AD_B3C3D6_CORRELATED_DOP853_TUBE_GUARD_FALSE_POSITIVE_AUDIT.md": "3f64c87e7152f135d6c93298c1238721aaf24e04",
-    "README.md": "893e471e9f496b7dfa8aaed4327e8b2503b909e1",
-    "00_CURRENT_RESTART.md": "45e917fa3934aa0a03ea23a13aa92768c0a75ba0"
+    "numerics/hr_b3c3d6_barrier_initial_bootstrap.py": "924082d7ff32c623357988210c6b0967111b30c5",
+    "tests/test_hr_b3c3d6_barrier_initial_bootstrap.py": "8103f06993aaac12817aefa1b649f27216b0271c",
+    "research/STEP68AD_B3C3D6_STEP55_GLOBAL_BARRIER_BOOTSTRAPS_DOP853_INITIAL_ERROR.md": "8d3bf6f938d3f498dd67a81343ae7198b38e4147",
+    "README.md": "138da8e02f0c2b3035525966886551df544289a2",
+    "00_CURRENT_RESTART.md": "262a40f8b8c0418514bdf16ad4fa0a7c8258429c"
   },
   "verified_research_head_at_session_start": "71b274865c0114c941c834450adce6093021c864",
-  "next_priority": "Execute SHA-verified original Step55 DOP853 dense pieces through CORRELATED polynomial-center tube guard on every true binary64 subcell; only then continuous residual R_i and jumps J_i, certify center E0, shared Step63 G_U<=0, decimal Step58 endpoint and six A/B/E enclosures; positive two-boundary lapse BVP and Dirac/4D/stability/observables remain open.",
+  "next_priority": "Run authentic Step55 global barrier and original physical DOP853 with correlated tube guard on all true binary64 subcells; compute candidate-specific E0 from barrier (without unknown center C), certify continuous Ri/jumps Ji and shared Step63 Gu<=0; then Step58 six coefficient enclosures and positive lapse BVP at both true boundaries, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -504,11 +503,9 @@
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_changed": 3,
     "readback_verified": true,
-    "test_blob_equals_local_executed_bytes": true,
-    "checkpoint_prefix_exact_suffix_preserved": true,
-    "README_prefix_exact_suffix_preserved": true,
-    "initial_head": "08ea9de944d11b8e7d09c8c370c56fccdcbde473",
-    "pre_state_head": "45722d0e468d463d47e753df6f74ec5c68f02071",
+    "checkpoint_prefix_preserves_exact_prior_suffix": true,
+    "original_branch_head_at_start": "055fd4869b3d181550c01fc0a8106beb62eef19a",
+    "verified_pre_state_head": "68c239371b1302336dc264130b655a5005037cd2",
     "forbidden_branches_modified": false,
     "workflows_modified": false
   },
@@ -526,7 +523,7 @@
     "README.md": "08b3ad759575f19065df1c4ee705810a61cb885e"
   },
   "latest_session_date": "2026-10-30",
-  "latest_session_verified_pre_state_head": "3bd69a9251d6be8fbcbb27eafb231e1505695657",
+  "latest_session_verified_pre_state_head": "68c239371b1302336dc264130b655a5005037cd2",
   "latest_session_full_original_probe": {
     "radii": [
       "1/4",
@@ -689,15 +686,26 @@
     "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
   },
   "latest_session_scientific_result": {
-    "type": "EXACT_RATIONAL_NUMERICAL_CERTIFICATION_INFRASTRUCTURE_PLUS_CONDITIONAL_CENTER_LEMMA",
-    "scope": "SCIPY_DOP853_TOY_AND_FORMAL_STEP55_ADAPTER_NOT_PHYSICAL_CERTIFICATE",
-    "toy_steps": 8,
-    "toy_nonzero_exact_step_domain_gaps": 1,
-    "toy_nonzero_dense_jumps": 1,
-    "toy_exact_step_gap": "45/73786976294838206464",
-    "toy_max_abs_jump_approx": "1.2781027279428647e-20",
-    "center_error_formula": "C*s0^p/(2*p+2-upper_Gu)",
-    "center_error_step55_conditional_factor": "(100/899)*C*10^-12",
-    "physical_C_certified": false
-  }
+    "stage": "b3c3d6_PARTIAL_BARRIER_BOOTSTRAP_INITIAL_DOP853_ERROR",
+    "kind": "EXACT_RATIONAL_CONDITIONAL_INITIAL_ERROR_FROM_INDEPENDENT_STEP55_GLOBAL_BARRIER",
+    "theorem": "E0 <= delta + max(abs(lo),abs(hi)); if candidate correlated tube at binary64 s0 passes, E0<=2delta=1/5000",
+    "true_binary64_initial_contribution_upper": "819855292164869/29617272429455892480000",
+    "center_taylor_C_required_for_this_coarse_bound": false,
+    "original_step55_barrier_replayed_this_session": false,
+    "original_DOP853_replayed_this_session": false,
+    "original_Step58_replayed_this_session": false,
+    "physical_Ri_Ji_Gu_certified_this_session": false,
+    "physical_six_ABE_enclosures_certified": 0,
+    "positive_lapse_BVP": "NOT_CERTIFIED",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  },
+  "latest_session_tests": {
+    "unittest_passed": 11,
+    "unittest_failed": 0,
+    "compileall": "PASS",
+    "tested_bytes_equal_github_blobs": true,
+    "physical_originals_executed": 0
+  },
+  "latest_session_checkpoint_suffix_exact_preserved": true
 }
