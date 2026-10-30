@@ -17,45 +17,47 @@
     "next_step_marker": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_fourth_jet_holonomic_guard.py": "de8a44e698386edc17eabc28ec9339160fcad58f",
-    "tests/test_hr_b3c3d6_fourth_jet_holonomic_guard.py": "59a6632c7d838f5acca30ba4d3bf3b38d696b8a0",
-    "research/STEP68AD_B3C3D6_FOURTH_ODE_JET_AND_DERIVATIVE_DEPENDENCE_GUARD.md": "616623c8dc79709d976e1d129490171fd77bb1a8",
-    "00_CURRENT_RESTART.md": "772549ccb6265f4d4616fdd94b872b5b0fb79130",
-    "README.md": "c8d8dd24ee64c4a69d33952bfcb90227f9fc607c"
+    "numerics/hr_b3c3d6_original_step58_minimum_jet.py": "8d81fc1bc7823774e6304e25a52653d32e36c4ee",
+    "tests/test_hr_b3c3d6_original_step58_minimum_jet.py": "923b012ea6220ecf7649a0587600fea6f5afdc0e",
+    "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_MINIMUM_ODE_JET_AND_AFFINE_SENSITIVITY.md": "6aea44288ff9330ffbf740247b288f69a8c72472",
+    "README.md": "0e8a9050ce5dc24eac32ef8cb8c2c15b527678b3",
+    "00_CURRENT_RESTART.md": "69287f25de7f8ab25ac3d62404b56ba776d61f94"
   },
-  "verified_research_head_at_session_start": "7f3c885e612881f047e738549d55306b210dbadb",
-  "next_priority": "Execute five SHA-authenticated Step45/46/55/58 originals and corrected affine/cubic four-radius Step58; inspect whether original six coefficients depend on third jets of derivative-dependent fields and compare quartic only if necessary; certify continuous DOP853 normalized residual, initial error, six physical A/B/E enclosures; positive lapse two-boundary BVP, Dirac/4D/stability/observables remain open.",
+  "verified_research_head_at_session_start": "8f034d6dd01cab94bdcb24634115eb864a11fa27",
+  "next_priority": "Run five SHA-authenticated original Step45/46/55/58 modules and physical Step58 at 1/4,1/2,7/10,17/20 with affine/quadratic/cubic U(s); verify only A_M differs affine vs quadratic and quadratic=cubic for all six; certify continuous DOP853 residual and initial error, physical A/B/E enclosures, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "53df37f940ab382ed494c1dd733006ccec07fd32",
+  "verified_research_head_before_state_file": "f3d310537081439aea2e9c7d6c83323e4a0f4625",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII",
+  "next_pending_step": "b3c3d6_CORRECTED_AFFINE_QUADRATIC_CUBIC_RERUN_ORIGINAL_STEP58_FOUR_RADII",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_FOURTH_ODE_JET_AND_DERIVATIVE_DEPENDENCE_GUARD.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_STEP58_MINIMUM_ODE_JET_AND_AFFINE_SENSITIVITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_FOURTH_ODE_JET_DERIVATIVE_DEPENDENCE_GUARD",
-    "last_step_scope": "Exact fourth Step55 ODE jet and derivative-dependent field caution: cubic/quartic radial jets 0..3 agree for F(r,U) but pLf'=d(r²U)/dr third jet differs by 16r0^6 U_ssss. Formal toy result; original Step58 dependence/cancellation not certified."
+    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_STEP58_MINIMUM_JET",
+    "last_step_scope": "Exact original Step45+Step58 structural dependency: among prescribed U-dependent canonical fields pLf,pSf,pf only radial orders 0/1 occur in six coefficients; A_M alone uses pSf' and thus U_ss. Quadratic in s sufficient for point coefficients; affine may differ only A_M. Original Step55 physical DOP853/four-radius numerical replay not executed."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 11,
+    "unittest_cases_passed": 6,
     "unittest_independent": false,
     "failed_final": 0,
     "python_compileall_pass": true,
-    "original_step45_executed_this_session": false,
+    "original_step45_executed_this_session": true,
     "original_step46_executed_this_session": false,
     "original_step55_executed_this_session": false,
-    "original_step58_executed_this_session": false,
-    "cubic_candidate_integration_executed_this_session": false,
+    "original_step58_executed_this_session": true,
+    "original_step57_full_executed_this_session": false,
+    "original_step57_import": "minimal_shim",
+    "physical_step58_six_coefficients_numerically_evaluated": false,
     "physical_coefficients_certified": 0,
-    "exact_rational_toy_tests": true,
     "source_bytes_match_published_blobs": true,
-    "physical_step58_third_jet_dependence_verified": false
+    "original_step58_structural_jet_dependence_verified": true,
+    "affine_quadratic_analytic_sensitivity_verified": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -65,10 +67,10 @@
     "scientific_files_updated": 3,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
-    "original_full_step58_integration_executed": false,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "README_updated": true
+    "README_updated": true,
+    "full_physical_four_radius_replay": false
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -86,7 +88,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Five physical original sources and affine/cubic Step58 not executed in this session (container direct GitHub DNS unavailable). Whether derivative-dependent third jets enter six physical Step58 coefficients is unverified. Continuous DOP853 residual, initial error, physical A/B/E enclosures, positive lapse BVP, Dirac and 4D proof missing.",
+  "current_blocker": "Original Step46/55 and physical four-radius Step58 coefficients not numerically replayed this session. Continuous DOP853 residual/initial error, A/B/E enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables missing. Structural original Step58 analysis now proves quadratic U(s) suffices for six point coefficients, and isolates affine sensitivity to A_M.",
   "task_self_update": "2026-10-30: prepended 868-character fourth-jet guard to 65331-character automation prompt, preserved old prompt verbatim and unchanged hourly schedule/timezone/enabled state.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -498,7 +500,7 @@
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
   },
-  "latest_partial_step": "b3c3d6_DIVISION_FREE_LAPSE_FRAME_PARTIAL",
+  "latest_partial_step": "b3c3d6_AUTHENTIC_ORIGINAL_STEP58_MINIMUM_ODE_JET_EXACT",
   "latest_session_github_write": {
     "status": "SUCCESS",
     "branch": "research/gate2b-nonhomothetic-transfer",
@@ -620,9 +622,6 @@
   ],
   "latest_session_original_source_sha_checks": {
     "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
-    "hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
-    "hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
-    "hr_step55_global_barrier.py": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
     "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
   },
   "latest_session_forbidden_branch_heads": {
