@@ -6,64 +6,47 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 70322,
-    "new_prompt_characters": 71466,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "next_step_marker": "b3c3d6_CONTINUOUS_DOP853_DEFECT_AND_SIX_COEFFICIENT_INTERVAL_ENCLOSURES_THEN_POSITIVE_LAPSE_TWO_BOUNDARY_BVP"
+    "status": "PENDING_IF_ACCESSIBLE",
+    "next_step_marker": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_physical_paired_replay_validation.py": "9fb0836b5ba41c3909d5103ac57bbc2eba1f9c3f",
-    "tests/test_hr_b3c3d6_physical_paired_replay_validation.py": "58ec80e470a1c18a80b58a1f56f7bf8a697843b6",
-    "research/reports/b3c3d6_original_step58_four_radius_physical_replay_summary.json": "ae221dab8e9f4eb0550fee617ba57f4850cff911",
-    "research/STEP68AD_B3C3D6_ORIGINAL_FOUR_RADIUS_PAIRED_PHYSICAL_REPLAY_AUDIT.md": "6b27475b45fc840d785f69214bd094a58069e250",
-    "README.md": "cdaafd094627d2ad6cda37bb4c6125465c54c620",
-    "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
+    "numerics/hr_b3c3d6_dop853_dense_rational_defect.py": "b1c8909983171b7161b28e68ca442d9a17c21cfc",
+    "tests/test_hr_b3c3d6_dop853_dense_rational_defect.py": "23e38ce06e5d596cd48ce1c12923c0902837238a",
+    "research/STEP68AD_B3C3D6_DOP853_DENSE_RATIONAL_DOMAIN_JUMP_AND_CENTER_ERROR_AUDIT.md": "d5d6fd76e31b6e5f587c34b6810930d64b1b9b93",
+    "README.md": "3e213b5f896943019b73b62044ec3cb4c2b9c125",
+    "00_CURRENT_RESTART.md": "f9ce2e389691aa42791628e47bdde55b1158c51f"
   },
-  "verified_research_head_at_session_start": "ec27b94018523788f386a9a928bf32c2cc71e7da",
-  "next_priority": "Certify a continuous DOP853 dense-output residual and center initial error for Step55, propagate rigorous error into all six physical Step58 A/B/E coefficients, factorize exact B/E on the constrained shell, then solve positive lapse N,M with two genuine boundary conditions; Dirac six pairs/rank/tertiaries, gauge/charges, K=0/J=0, 4D, stability and observables remain open.",
+  "verified_research_head_at_session_start": "cead29825bfce907f33a30b34decdb21cf347002",
+  "next_priority": "Re-run SHA-authenticated original Step55 DOP853 retaining all dense pieces; outward-enclose continuous H=2sP_s-G(s,P)+2P on true binary64 step domains, add exact inter-piece jumps and certify center Taylor residual C/float initialization; propagate through U jets to six original Step58 A/B/E enclosures, factorize B/E, solve positive N,M two genuine boundaries; Dirac/4D/stability/observables remain open.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "8db85391b362d7c7f4b17600e05c545fcd80a552",
+  "verified_research_head_before_state_file": "e4f589d2815f1a8c48736386a3eb618ebc466ee3",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_CONTINUOUS_DOP853_DEFECT_AND_SIX_COEFFICIENT_INTERVAL_ENCLOSURES_THEN_POSITIVE_LAPSE_TWO_BOUNDARY_BVP",
+  "next_pending_step": "b3c3d6_PHYSICAL_CONTINUOUS_DOP853_DEFECT_WITH_INITIAL_AND_JUMP_BUDGET_THEN_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_LAPSES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_ORIGINAL_FOUR_RADIUS_PAIRED_PHYSICAL_REPLAY_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_DOP853_DENSE_RATIONAL_DOMAIN_JUMP_AND_CENTER_ERROR_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_ORIGINAL_STEP58_FOUR_RADIUS_NUMERICAL_REPLAY_EXECUTED",
-    "last_step_scope": "Five original SHA-authenticated physical Step45/46/55/58 sources executed with minimal Step57 import shim. One DOP853 endpoint shared per radius across historical mixed affine, true holonomic affine, quadratic, cubic. Six coefficients match at printed 22 digits for mixed/quadratic/cubic; negative control changes only A_M. No continuous numerical enclosure, no lapse BVP or Dirac proof."
+    "latest_stage": "b3c3d6_PARTIAL_DOP853_DENSE_RATIONAL_CERTIFICATION_INFRASTRUCTURE_TESTED_PHYSICAL_RESIDUAL_OPEN",
+    "last_step_scope": "Physical original Step58 four-radius replay from prior session retained. New exact binary64 DOP853 dense polynomial reconstruction, true step-domain endpoint correction, inter-piece jump calculation, conditional weighted center error lemma, Step55 interval adapter; tested on SciPy toy only. No physical continuous defect, initial error, coefficient enclosure, BVP, Dirac or 4D certificate."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 6,
-    "unittest_independent": false,
+    "unittest_cases_passed": 9,
     "failed_final": 0,
-    "physical_four_radius_runner_executed": true,
-    "physical_four_radius_runner_executions": 2,
-    "original_step45_executed_this_session": true,
-    "original_step46_executed_this_session": true,
-    "original_step55_executed_this_session": true,
-    "original_step58_executed_this_session": true,
-    "original_step55_barrier_256_cells_executed": true,
-    "original_step57_full_executed_this_session": false,
-    "step57_import": "minimal_shim",
-    "physical_step58_six_coefficients_numerically_evaluated": true,
-    "physical_coefficients_certified": 0,
-    "physical_coefficients_printed_22digit": true,
-    "paired_state_one_DOP853_per_radius": true,
-    "physical_sensitivity_negative_control_verified_four_radii": true,
-    "solver_refinement_runs": 12,
-    "solver_refinement_certified": false,
     "python_compileall_pass": true,
-    "source_bytes_match_published_blobs": true
+    "actual_scipy_DOP853_dense_toy_executed": true,
+    "exact_binary_step_gap_found": true,
+    "exact_interpiece_jump_found": true,
+    "physical_originals_executed_this_session": false,
+    "physical_Step55_dense_defect_certified": false,
+    "physical_Step58_coefficients_certified": 0,
+    "source_bytes_match_published_blobs": true,
+    "prior_physical_replay_retained": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -96,7 +79,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical five-source four-radius replay COMPLETED; DNS was bypassed by byte-for-byte materialization from authenticated GitHub connector. Current scientific blocker is missing continuous DOP853 defect and initial error certificates, physical six-coefficient interval enclosures/exact B/E factorization, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
+  "current_blocker": "Physical Step55 dense-output F arrays were not available in the local run. Exact rational DOP853 dense reconstruction and interval interface now tested; physical continuous defect, center initial C and binary64 initialization, jump budget, Step58 six-coefficient enclosures, positive two-boundary lapse BVP and Dirac/4D remain unproved.",
   "task_self_update": "2026-10-30: prepended physical Step58 four-radius replay marker to 70,322-character prompt; all original text preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -666,5 +649,48 @@
   "verified_forbidden_heads": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "prior_session_tests": {
+    "unittest_cases_passed": 6,
+    "unittest_independent": false,
+    "failed_final": 0,
+    "physical_four_radius_runner_executed": true,
+    "physical_four_radius_runner_executions": 2,
+    "original_step45_executed_this_session": true,
+    "original_step46_executed_this_session": true,
+    "original_step55_executed_this_session": true,
+    "original_step58_executed_this_session": true,
+    "original_step55_barrier_256_cells_executed": true,
+    "original_step57_full_executed_this_session": false,
+    "step57_import": "minimal_shim",
+    "physical_step58_six_coefficients_numerically_evaluated": true,
+    "physical_coefficients_certified": 0,
+    "physical_coefficients_printed_22digit": true,
+    "paired_state_one_DOP853_per_radius": true,
+    "physical_sensitivity_negative_control_verified_four_radii": true,
+    "solver_refinement_runs": 12,
+    "solver_refinement_certified": false,
+    "python_compileall_pass": true,
+    "source_bytes_match_published_blobs": true
+  },
+  "prior_session_published_blobs": {
+    "numerics/hr_b3c3d6_physical_paired_replay_validation.py": "9fb0836b5ba41c3909d5103ac57bbc2eba1f9c3f",
+    "tests/test_hr_b3c3d6_physical_paired_replay_validation.py": "58ec80e470a1c18a80b58a1f56f7bf8a697843b6",
+    "research/reports/b3c3d6_original_step58_four_radius_physical_replay_summary.json": "ae221dab8e9f4eb0550fee617ba57f4850cff911",
+    "research/STEP68AD_B3C3D6_ORIGINAL_FOUR_RADIUS_PAIRED_PHYSICAL_REPLAY_AUDIT.md": "6b27475b45fc840d785f69214bd094a58069e250",
+    "README.md": "cdaafd094627d2ad6cda37bb4c6125465c54c620",
+    "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
+  },
+  "latest_session_scientific_result": {
+    "type": "EXACT_RATIONAL_NUMERICAL_CERTIFICATION_INFRASTRUCTURE_PLUS_CONDITIONAL_CENTER_LEMMA",
+    "scope": "SCIPY_DOP853_TOY_AND_FORMAL_STEP55_ADAPTER_NOT_PHYSICAL_CERTIFICATE",
+    "toy_steps": 8,
+    "toy_nonzero_exact_step_domain_gaps": 1,
+    "toy_nonzero_dense_jumps": 1,
+    "toy_exact_step_gap": "45/73786976294838206464",
+    "toy_max_abs_jump_approx": "1.2781027279428647e-20",
+    "center_error_formula": "C*s0^p/(2*p+2-upper_Gu)",
+    "center_error_step55_conditional_factor": "(100/899)*C*10^-12",
+    "physical_C_certified": false
   }
 }
