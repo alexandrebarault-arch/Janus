@@ -6,46 +6,41 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 68458,
-    "new_prompt_characters": 69381,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL"
+    "status": "PENDING_OR_SKIPPED",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL",
+    "permanent_instructions_preserved": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_mixed_affine_second_jet.py": "b615d1996b4fbcd9e5d641b84b42ce6a5befc7f1",
-    "tests/test_hr_b3c3d6_mixed_affine_second_jet.py": "c4e7529c9c1d2f90c15db5c9d569b496be1a7551",
-    "README.md": "720e25c77caf65e2af09ea5f0eba630a75aeef6c",
-    "00_CURRENT_RESTART.md": "65a5f5ddad64e3ac5e08f81cd6fc52c1fe9c0954",
-    "research/STEP68AD_B3C3D6_MIXED_AFFINE_SECOND_JET_OFFPOINT_GUARD.md": "08adc9af6c1b188525a51cca285ff7b1e81e9604"
+    "numerics/hr_b3c3d6_paired_original_step58_four_radii.py": "bfb428de15d0d093d626f9b0f86fb42fa1f9442f",
+    "tests/test_hr_b3c3d6_paired_original_step58_four_radii.py": "9331aca56cd0b845047c13cc3da4546044b2d510",
+    "research/STEP68AD_B3C3D6_PAIRED_ORIGINAL_STEP58_FOUR_RADIUS_RUNNER_AUDIT.md": "09fb919c4a6aaa1652b18bf74ccf68434b0f7858",
+    "README.md": "5c6208dd2c4f641d9082a4fb0c49ca9700fe1e32",
+    "00_CURRENT_RESTART.md": "70285918faaffd5eef2d0a19e20d67a4dce7e4a8"
   },
-  "verified_research_head_at_session_start": "dab80b4d8efc149763666043da8e155e2069dcf9",
-  "next_priority": "Materialize five SHA-authenticated originals, run historical mixed-affine and quadratic/cubic on same terminal U and exact decimal radius at 1/4,1/2,7/10,17/20, compare six Step58 coefficients; use genuinely holonomic affine as negative control. Then continuous DOP853 residual, initial error, A/B/E physical enclosures, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "bd5c5ea1490316cab03303a956b8e1d032a610e2",
+  "next_priority": "Execute the new SHA-guarded paired runner on a complete local clone, one DOP853 terminal state per radius at 1/4,1/2,7/10,17/20; compare historical mixed affine, truly holonomic affine negative control, holonomic quadratic and cubic, six original Step58 coefficients; then certify continuous DOP853 residual, initial error, physical A/B/E enclosures, positive lapse two-boundary BVP, Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-30",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "45b421a4d7723251eb2382dbde6e068a0a97b803",
+  "verified_research_head_before_state_file": "45d494d7ec68486d60269e388c578accee394131",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_MIXED_AFFINE_SECOND_JET_OFFPOINT_GUARD.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_PAIRED_ORIGINAL_STEP58_FOUR_RADIUS_RUNNER_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_MIXED_AFFINE_OFFPOINT_SECOND_JET_GUARD",
-    "last_step_scope": "Exact local second-jet difference of historical mixed-affine pLfr=rG and ODE-consistent cubic holonomic pLfr; same 0/1 jets, second radial jet gap -4*r0^3*G_U*U_ss; six original Step58 point coefficients unaffected under prior authenticated jet-dependency audit. Not a physical four-radius replay."
+    "latest_stage": "b3c3d6_PARTIAL_PAIRED_STEP58_RUNNER_READY_NOT_EXECUTED",
+    "last_step_scope": "Instrumental reproducibility advance: one candidate Step55 endpoint per radius shared by four Step58 jet modes; no physical original executed, no numerical six-coefficient comparison or proof."
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 9,
+    "unittest_cases_passed": 7,
     "unittest_independent": false,
     "failed_final": 0,
+    "initial_failed_then_corrected": 1,
     "python_compileall_pass": true,
     "original_step45_executed_this_session": false,
     "original_step46_executed_this_session": false,
@@ -55,20 +50,22 @@
     "physical_step58_six_coefficients_numerically_evaluated": false,
     "physical_coefficients_certified": 0,
     "source_bytes_match_published_blobs": true,
-    "local_second_jet_formal_proof": true,
-    "original_step58_structural_jet_dependence": "reused authenticated earlier audit; not re-executed"
+    "paired_orchestration_with_toy_doubles": true,
+    "physical_four_radius_runner_executed": false
   },
   "github_write_probe": {
     "status": "SUCCESS",
     "method": "mcp__GitHub__create_file/update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 3,
-    "scientific_files_updated": 3,
+    "scientific_files_updated": 0,
+    "checkpoint_updated": true,
+    "state_updated": true,
+    "README_updated": true,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "README_updated": true,
     "full_physical_four_radius_replay": false
   },
   "required_per_run": [
@@ -87,7 +84,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original physical Step45/46/55/58 and DOP853 not executed this session; GitHub connector can read/write, but container DNS prevents fetching full originals for local execution. Only exact off-point second-jet lemma and 9 local symbolic tests. Still need paired-state four-radius six-coefficient replay, continuous DOP853 residual, A/B/E enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
+  "current_blocker": "Physical five originals Step45/46/55/58 and DOP853 not executed: container DNS unavailable (github.com/raw.githubusercontent.com), though GitHub connector read/write works. New paired runner is tested only with toy doubles; original operator six coefficients, continuous residual, enclosures, lapse BVP and Dirac remain unverified.",
   "task_self_update": "2026-10-30: prepended exact off-point mixed-affine second-jet marker to 68458-character prompt, previous prompt preserved, hourly schedule/timezone/enabled unchanged.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
