@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANSPORT HOLONOME DES JETS CUBIQUES (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié au démarrage : `08ea9de944d11b8e7d09c8c370c56fccdcbde473`. Branche autorisée : `research/gate2b-nonhomothetic-transfer`. Cinq originaux Step45/46/55/58 relus via le connecteur et blobs SHA conformes : `66aa4384`, `bac025c2`, `a54a6acf`, `a6e70041`, `802c23ae`. Originaux NON exécutés localement (DNS GitHub direct conteneur indisponible).
+
+**NOUVEAU DÉFAUT DÉMONTRÉ :** le candidat Step58 cubique construisait `pLf=r² U_c(r²)` mais utilisait hors point `pLfr=r G(r²,U_c)`, qui n'est PAS la dérivée de ce même `pLf`. À `r_*>0`, les deux coïncident aux jets radiaux 0–2, mais leur différence `rG-d(r²U_c)/dr` a un jet 3 égal à `+16 r_*^6 U_{ssss}`. Cette différence se propage aux jets 3 de `pf` et `pSf` via les coefficients explicites de `physical_fields`. Cela révèle une incohérence réelle du candidat, **sans démontrer d'effet sur les six coefficients physiques Step58**.
+
+**CORRECTION PUBLIÉE :** `fields_at(t)` dérive désormais le MÊME polynôme cubique `U_c` : `U_{c,s}=U_s+U_{ss}Δ+U_{sss}Δ²/2` et `pLfr=t(2U_c+2t²U_{c,s})`. Source `numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py` blob `84ed9fe05f2f1f9c10c994ae7408784e87ab6791`, commit `dd4420febe5a395246852b5b395bdb330be1cbbd`. Tests `tests/test_b3c3d6_holonomic_cubic_transport.py` blob `1bee3f1f70dd7ba12463705ff7978b08d1b26249`, commit `97f0cc273713c699a24cc46b44a4e817827de243` ; audit `research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md` blob `9d09b16df2c535b5500f1af197aa4c61ade06b7a`, commit `6386b0be4bb5045bc651db8d26226d77189b8a40`. Tous relus ; SHA test égal aux octets locaux exécutés.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `python -m unittest discover -s /mnt/data/janus_holonomic/tests -v` : **6 PASS, 0 FAIL** ; `python -m compileall -q /mnt/data/janus_holonomic/tests` PASS. SymPy rationnel, jouet `U=s⁴, G=2U+8s⁴, r_*=1/2` : troisième défaut exact `6`, propagation vérifiée vers `pf'''` et `pSf'''`, contrôles négatifs. Tests isolés non indépendants, **pas de rejeu physique ni de borne d'erreur A/B/E**.
+
+**PROCHAINE ÉTAPE INCHANGÉE :** `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII` : exécuter cinq sources originales SHA-authentifiées et comparer affine/cubique aux quatre rayons `1/4,1/2,7/10,17/20` avec convergence ODE et six coefficients ; factorisation/enclosures, centre et BVP positif deux vrais bords ; ensuite Dirac/charges/jauge temporelle/six couples/K=0/J=0/4D/stabilité/observables. Aucune validation de JANUS, ni modification de `main`, `research/v2-flrw` ou workflows. **TOUT L'HISTORIQUE ORIGINAL EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : CONTEXTE DÉCIMAL, CARRÉ EXACT (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié à la reprise : `2eaeb3fae28f896321746a253da3f64393887415`. Branche unique autorisée : `research/gate2b-nonhomothetic-transfer`. Les cinq blobs originaux Step45/46/55/58 ont été relus par GitHub (SHA conformes au manifeste), **mais les moteurs physiques originaux et le candidat cubique Step58 n'ont pas été exécutés localement**.
