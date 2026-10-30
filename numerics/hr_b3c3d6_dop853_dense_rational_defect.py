@@ -77,6 +77,31 @@ def dop853_dense_coefficients(dense):
     return add(p,[rat(float(dense.y_old[0]))])
 
 
+def dense_exact_domain(dense):
+    """True binary64 step interval mapped to polynomial coordinate x.
+
+    SciPy stores h=fl(t-t_old). In exact rational arithmetic
+    t_old+h need NOT equal t. The correct right coordinate is
+    (t-t_old)/h, potentially different from 1.
+    """
+    t0,t1,h=map(lambda v:rat(float(v)),(dense.t_old,dense.t,dense.h))
+    if not (t0<t1 and h>0):raise ValueError('invalid dense step')
+    return t0,t1,h,(t1-t0)/h
+
+
+def dense_boundary_jump(left,right):
+    """Exact rational mismatch between adjacent dense polynomial pieces.
+
+    This jump must enter any global error propagation; bounding continuous
+    defects alone cannot certify a discontinuous reconstructed interpolant.
+    """
+    a,b,h,xmax=dense_exact_domain(left)
+    c,d,hr,xr=dense_exact_domain(right)
+    if b!=c:raise ValueError('non-adjacent DOP853 steps')
+    return value(dop853_dense_coefficients(right),Q(0))-value(
+        dop853_dense_coefficients(left),xmax)
+
+
 def residual_polynomial(p, t_old, h, g_monomials):
     """H=2s*p_s-G(s,p)+2p, polynomial G=sum c_ij*s**i*u**j.
 
@@ -144,10 +169,10 @@ def interval_step_defect(dense, g_interval, interval_type, subcells=256,
     if not isinstance(subcells,int) or subcells<1:raise ValueError('subcells>=1')
     p=dop853_dense_coefficients(dense)
     dp=diff(p)
-    t0,h=rat(float(dense.t_old)),rat(float(dense.h))
+    t0,t1,h,xmax=dense_exact_domain(dense)
     bounds=[]
     for i in range(subcells):
-        a,b=Q(i,subcells),Q(i+1,subcells)
+        a,b=xmax*Q(i,subcells),xmax*Q(i+1,subcells)
         slo,shi=t0+h*a,t0+h*b
         plo,phi=bernstein_enclosure(p,a,b)
         dlo,dhi=bernstein_enclosure(dp,a,b)
