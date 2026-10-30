@@ -4,7 +4,7 @@ import numpy as np
 from scipy.integrate import solve_ivp
 from numerics.hr_b3c3d6_dop853_dense_rational_defect import (
     add, mul, value, dop853_dense_coefficients, residual_polynomial,
-    bernstein_enclosure, polynomial_defect_certificate, center_initial_error_bound, interval_step_defect)
+    bernstein_enclosure, polynomial_defect_certificate, center_initial_error_bound, interval_step_defect, dense_exact_domain, dense_boundary_jump)
 
 
 class TestDop853RationalDefect(unittest.TestCase):
@@ -92,6 +92,25 @@ class TestDop853RationalDefect(unittest.TestCase):
         with self.assertRaises(ArithmeticError):
             interval_step_defect(dense,g,Interval,1,
                                  tube_guard=lambda s,p:(_ for _ in ()).throw(ArithmeticError()))
+
+    def test_exact_binary_step_gap_and_jump_budget(self):
+        import math
+        sol=solve_ivp(lambda s,y:[(math.sin(s)+y[0])/(1+s)],
+                      (1e-4,.7225),[.01],method='DOP853',
+                      rtol=1e-12,atol=1e-14,dense_output=True)
+        pieces=sol.sol.interpolants
+        gaps=[]
+        for dense in pieces:
+            t0,t1,h,xmax=dense_exact_domain(dense)
+            self.assertEqual(t0+h*xmax,t1)
+            gaps.append(xmax-Q(1))
+        self.assertTrue(any(g!=0 for g in gaps),
+                        'fixture should exercise non-exact h=t-t_old')
+        jumps=[dense_boundary_jump(a,b) for a,b in zip(pieces,pieces[1:])]
+        self.assertEqual(len(jumps),len(pieces)-1)
+        # The rational jumps may be small but cannot be silently discarded.
+        self.assertTrue(any(j!=0 for j in jumps))
+        with self.assertRaises(ValueError):dense_boundary_jump(pieces[0],pieces[-1])
 
     def test_binary_float_exactness_and_input_guards(self):
         sol=solve_ivp(lambda s,y:[0],(0.,1.),[1.],method='DOP853',dense_output=True)
