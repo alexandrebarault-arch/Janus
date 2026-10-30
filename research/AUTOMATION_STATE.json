@@ -6,10 +6,10 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "PENDING_THIS_SESSION",
+    "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 60729,
-    "new_prompt_characters": 61735,
+    "old_prompt_characters": 61735,
+    "new_prompt_characters": 62583,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
