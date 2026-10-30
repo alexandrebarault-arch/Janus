@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : SECOND JET HORS POINT DE L'AFFINE MIXTE (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `dab80b4d8efc149763666043da8e155e2069dcf9`. Étape b3c3d6 toujours PARTIELLE ; prochaine expérience **INCHANGÉE** : `b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL`.
+
+**NOUVEAU LEMME EXACT, LOCAL ET NON PHYSIQUE :** pour `s=r²`, `2sU_s=G-2U`, l'affine historique mixte `pLfr=rG(s,Ua)` et le cubique holonome `pLfr=d(r²Uc)/dr` ont les mêmes jets radiaux 0/1 au rayon commun. Le premier défaut hors point est `pLfr_mixed/r-pLfr_cubic/r=-(G_U U_ss/2)(s-s0)²+O((s-s0)³)`, donc `(pLfr_mixed-pLfr_cubic)''(r0)=-4r0³ G_U U_ss`. Pour `pLf`, écart de deuxième jet `-4r0⁴ U_ss`. Le contrôle rationnel jouet donne `U_ss=-5/21`, `G_U=-3/2`, `delta pLfr''=-5/28`, `delta pLf''=5/84`. **Cela ne modifie PAS l'identité précédente des six coefficients Step58**, car les sources originales inspectées n'utilisent que les jets 0/1 des champs dépendant de U. Attention : deux exécutions indépendantes de `main()` n'assurent pas le même état terminal U ni la même abscisse.
+
+**TESTS EXÉCUTÉS LOCALEMENT :** `cd /mnt/data/janus_new && PYTHONPATH=. python -m unittest discover -s tests -v` : **9 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : **PASS**. Tests SymPy rationnels et différentiation directe, non indépendants. Les cinq sources originales Step45/46/55/58 et les deux probes ont été LUES par connecteur, avec blobs vérifiés, mais **aucun original physique Step58 ni DOP853 n'a été exécuté** ; DNS GitHub direct conteneur indisponible. Pas de six coefficients physiques nouveaux, pas d'enclosure, pas de BVP.
+
+**FICHIERS PUBLIÉS SUR LA SEULE BRANCHE RECHERCHE, RELUS :** `numerics/hr_b3c3d6_mixed_affine_second_jet.py` blob `b615d1996b4fbcd9e5d641b84b42ce6a5befc7f1` ; `tests/test_hr_b3c3d6_mixed_affine_second_jet.py` blob `c4e7529c9c1d2f90c15db5c9d569b496be1a7551` ; audit `research/STEP68AD_B3C3D6_MIXED_AFFINE_SECOND_JET_OFFPOINT_GUARD.md` ; README blob `720e25c77caf65e2af09ea5f0eba630a75aeef6c`. Les deux blobs Python correspondent aux octets locaux testés. `main` initial `aead63f4098f0d15a849e579105af034b6317b30`, `research/v2-flrw` initial `dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb` ; vérification finale à refaire. Aucun workflow modifié.
+
+**PRIORITÉS :** matérialiser les cinq originaux SHA, rejeu apparié sur un seul état `U(r0)` à `1/4,1/2,7/10,17/20`, six coefficients affine historique mixte/quadratique/cubique et contrôle négatif affine réellement holonome ; défaut DOP853 continu, erreur initiale, enclosures physiques A/B/E, centre et BVP lapses positifs deux vrais bords, puis Dirac six couples, 4D, stabilité et observables. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : ERRATUM DU PROBE AFFINE MIXTE ET ÉQUIVALENCE DES SIX COEFFICIENTS STEP58 (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `2651c51b2d1347830e43bce8ec3d76150660a7c4`. Étape b3c3d6 PARTIELLE ; prochaine expérience : `b3c3d6_ORIGINAL_STEP58_FOUR_RADIUS_NUMERIC_INVARIANCE_AND_HOLONOMIC_AFFINE_NEGATIVE_CONTROL`.
