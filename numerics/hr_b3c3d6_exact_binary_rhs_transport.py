@@ -22,7 +22,7 @@ def decimal_square_target(radius):
     r = Decimal(str(radius))
     if not r.is_finite() or r <= 0:
         raise ValueError('radius must be finite and positive')
-    return Fraction(r * r)
+    return Fraction(r)**2
 
 
 def exact_fraction_mp(q):
