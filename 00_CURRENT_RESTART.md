@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ERREUR TERMINALE PAR RÉSIDU NORMALISÉ (2026-10-30)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à la reprise : `7c26f4ebe24f8ec9d9f180ab1b913986ddeb23b3`. Étape b3c3d6 PARTIELLE ; prochaine étape INCHANGÉE : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
+
+**NOUVEAU THÉORÈME CONDITIONNEL EXACT :** si solution physique et candidat restent dans le tube Step55, si `G_U<=-99/100` (certificat historique Step63), si l'erreur initiale est `e_a` et le résidu normalisé `|2s v_s-G(s,v)+2v|<=R` est certifié CONTINÛMENT, alors `e_b <= (r_a/r_b)^(299/100)*e_a + (100R/299)*(1-(r_a/r_b)^(299/100))`. Borne purement rationnelle `e_b <= E+max(e_a-E,0)*(r_a/r_b)²`, `E=100R/299`. Sous le seuil historique strict `R<295653233337826329055403/2000000000000000000000000000`, `E<4.944034003e-5`. Ce N'EST PAS une erreur DOP853 mesurée ; certification du résidu continu, confinement candidat et erreur initiale toujours absente. La substitution de la puissance par le carré n'est correcte qu'avec le traitement du signe `max`.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_normalized_gate && PYTHONPATH=. python -m unittest discover -s tests -v` : **11 PASS, 0 FAIL** ; `python -m compileall -q numerics tests` : **PASS**. Jouets et calcul rationnel non indépendants ; aucun original Step45/46/55/58 ni candidat cubique exécuté cette session. Réseau direct GitHub du conteneur : DNS indisponible ; connecteur GitHub opérationnel.
+
+**PUBLIÉS ET RELUS SUR LA SEULE BRANCHE RECHERCHE :** `numerics/hr_b3c3d6_normalized_residual_error.py` blob `0c763bca0ded925c1549ab2ebcedc36ae023ec8f` ; `tests/test_hr_b3c3d6_normalized_residual_error.py` blob `b339e2a78ddbe838707f44398b7823fc302d1478` ; `research/STEP68AD_B3C3D6_NORMALIZED_RESIDUAL_ENDPOINT_ERROR.md` blob `3c8dbc2fd89dbd7029a95706dfcbdf81d8689d57` ; README synchronisé. Les deux blobs Python concordent avec les octets locaux exécutés. Rapport physique historique Step63 `8a6ff87fdde3efbf26fa81d20ddb2623c161c9c1` non rejoué.
+
+**VERROUS ET PRIORITÉS :** matérialiser cinq originaux SHA-authentifiés et rejouer Step58 affine/cubique aux rayons 1/4, 1/2, 7/10, 17/20 ; certifier résidu CONTINU DOP853, erreur initiale, six coefficients A/B/E et enclosures ; centre/BVP lapses positifs aux deux vrais bords, puis Dirac six couples, 4D, stabilité et observables. `main` et `research/v2-flrw` non modifiées ; workflows désactivés non touchés. **HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : BARRIÈRE PHYSIQUE ROBUSTE AU DÉFAUT NUMÉRIQUE (2026-10-30)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub vérifié avant ce checkpoint : `607b5185e6bd581dafc4dcfbab0fdfea71fd7c95`. Branche autorisée : `research/gate2b-nonhomothetic-transfer`. Étape **b3c3d6 PARTIELLE** ; prochaine étape **INCHANGÉE** : `b3c3d6_CORRECTED_CUBIC_JETS_RERUN_ORIGINAL_STEP58_FOUR_RADII`.
