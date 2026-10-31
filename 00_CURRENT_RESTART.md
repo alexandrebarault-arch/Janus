@@ -1,3 +1,15 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : ENTRÉES PHYSIQUES pLf 0/1/2 POUR STEP58, QUATRE RAYONS EXACTS (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de branche lu au démarrage : `629c6a8d63214df0b37f56d4326efce45b0e3425`. Avancée limitée mais effective : certification par fractions des trois jets radiaux `pLf, pLf_r, pLf_rr` aux vrais rayons `1/4,1/2,7/10,17/20`, à partir des boîtes physiques Step55 précédemment certifiées. Ces **douze jets sont strictement négatifs**. Archive physique `research/reports/gate2b-b3c3d6-physical-monotone-G-four-exact-radii.json`, 4 640 octets, blob `e74057dcf741bcdb655c7d9be48c6a9650d7ff3f` relu et copié octet pour octet ; vérificateur rationnel antérieur `numerics/hr_b3c3d6_independent_uss_archive.py` blob `801ca6c384d1b12f8443e5b8624f416f6954c618` effectivement réexécuté. Identités : `pLf=sU`, `pLf_r=rG`, `pLf_rr=G+2sG_s+G_U(G-2U)`. **Aucun** moteur physique Step45/46/55/58 ou DOP853 nouveau rejoué.
+
+**NOUVEAU ÉCRAN FORMEL DE LIMITATION :** les données ponctuelles `G,G_s,G_U` ne bornent pas `U_sss` ; `G -> G+lambda(s-s0)^2` conserve ces trois jets au point `s0>0`, mais modifie `U_sss` de `lambda/s0`. C'est un témoin jouet et non une variation physique autorisée. Il ne réfute pas la suffisance des jets inférieurs pour les six coefficients ponctuels Step58.
+
+**TESTS EXÉCUTÉS :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_step58_plf_input_certificate.py' -v` : **2 PASS, 0 FAIL, 0 SKIP** ; `python -m compileall -q numerics tests` : **PASS**. Sources locales antérieures et archive physiques égales aux blobs GitHub. Nouveaux fichiers publiés/relus : `numerics/hr_b3c3d6_step58_plf_input_certificate.py` blob `274ec8798751623e065b55222f36eb1d4121a2c1` ; `tests/test_hr_b3c3d6_step58_plf_input_certificate.py` blob `7c8590e622b9ac02f8d882817d97fb06e7764f7e` ; `research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md` blob `9b012d934c408225dca5b0afcc887795b7ccb3c2`.
+
+**PROCHAINE ÉTAPE EFFECTIVE INCHANGÉE :** `b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP`. Certifier les **six** coefficients Step58 originaux, factoriser les annulations, resserrer DOP853 au besoin, puis BVP strictement positif aux deux vrais bords, Dirac/charges/jauge temporelle/4D/stabilité/observables. Aucune enclosure A/B/E ni BVP réalisée cette session. `main` et `research/v2-flrw` inchangées, workflows intouchés. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : AUDIT RATIONNEL INDÉPENDANT DES BORNES U_ss STEP55 AUX QUATRE VRAIS RAYONS (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD au démarrage : `d6758b93b7294fda5f147c3a26c23df0bfeaea3d`. Avancée réelle **restreinte** : recombinaison exacte des boîtes physiques Step55 déjà publiées, **sans** rejeu des moteurs originaux Step45/46/55/58, sans DOP853 nouveau, sans enclosure des six A/B/E et sans BVP de lapses.
