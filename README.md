@@ -1,3 +1,9 @@
+## JANUS — b3c3d6 : deux branches locales secondaires et test d'holonomie (31/10/2026)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Sur une tranche algébrique non physique du vrai Step45/58 SHA-authentifié, `Fz=Fz_r=Hg=Hg_r=Hf=C=0` donne deux points : `(z_r,Sf_r)=(-36/25,1)` avec `A_N=451/50,A_M=-919/250` et ratio ponctuel positif `M/N=2255/919`, ou `(12/25,-1)` avec `A_N=-149/50,A_M=-547/250`, incompatible avec deux lapses positifs **au seul point**. **Contrôle négatif crucial :** `Fz_rr,Hf_r,C_r` sont non nuls sur les deux points ; ce ne sont pas des solutions radiales ni le Step55. 10 tests PASS ; original Step57 complet non exécuté. [Audit exact](research/STEP68AD_B3C3D6_TWO_BRANCH_SECONDARY_LAPSE_AND_HOLONOMIC_AUDIT.md), [source](numerics/hr_b3c3d6_step58_two_branch_secondary_lapse.py), [tests](tests/test_hr_b3c3d6_step58_two_branch_secondary_lapse.py), [rapport](research/reports/gate2b-b3c3d6-Step58-two-branch-secondary-lapse.json). La factorisation universelle de `B_N`, les six enclosures physiques Step55, BVP positif, Dirac/4D/stabilité/observables restent ouverts.
+
+---
+
 ## JANUS b3c3d6 — tranche exacte Step58 à deux paramètres (31/10/2026)
 
 Résultat **local non physique** : sur `Fz=Fz_r=Hg=Hg_r=0`, deux paramètres `a=z_r,b=Sf_r`, `K=1`, poussières positives, `C=-(25a+24b+12)/20`, `B_N=3C/5`, `B_M=E_N=E_M=0`. **Pas de factorisation universelle**, pas de Step55/BVP/Dirac validé. 9 unittest PASS ; sources Step45/58 authentifiées. Voir `research/STEP68AD_B3C3D6_TWO_PARAMETER_PRIMARY_SHELL_AUDIT.md`, `numerics/hr_b3c3d6_step58_two_parameter_primary_shell.py` et `tests/test_hr_b3c3d6_step58_two_parameter_primary_shell.py`. **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
