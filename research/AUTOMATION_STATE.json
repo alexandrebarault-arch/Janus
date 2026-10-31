@@ -6,7 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 78812,
+    "new_prompt_characters": 79797,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DOP853_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_THEN_U_SS_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
@@ -24,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "22d99865c737f0dd704a5552b344568dda5f15d3",
+  "verified_research_head_before_state_file": "737c375143148a1aae8bc1c137085eaca264c089",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_REPLAY_PHYSICAL_DOP853_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_THEN_U_SS_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
