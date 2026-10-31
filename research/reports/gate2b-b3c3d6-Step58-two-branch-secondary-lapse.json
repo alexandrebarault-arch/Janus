@@ -1,0 +1,45 @@
+{
+  "source_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "step57": "MINIMAL_IMPORT_SHIM",
+  "scope": "NONPHYSICAL LOCAL FROZEN-JET SLICE; NOT FULL HOLONOMIC SHELL",
+  "two_parameter_polynomials": {
+    "C": "-(25*a + 24*b + 12)/20",
+    "Hf": "(b - 1)*(b + 1)",
+    "A_N": "(1200*a*b - 3775*a - 2048*b**2 + 2952*b + 4408)/1000",
+    "A_M": "(625*a**2 - 9600*a*b + 3600*a + 2400*b**2 - 4704*b - 22336)/4000",
+    "B_N": "-3*(25*a + 24*b + 12)/100"
+  },
+  "two_pointwise_branches": [
+    {
+      "b": "1",
+      "a": "-36/25",
+      "A_N": "451/50",
+      "A_M": "-919/250",
+      "formal_M_over_N": "2255/919",
+      "positive_lapses_pointwise": true,
+      "Fz_rr": "65/64",
+      "Hf_r": "-51/16",
+      "C_r": "349/100"
+    },
+    {
+      "b": "-1",
+      "a": "12/25",
+      "A_N": "-149/50",
+      "A_M": "-547/250",
+      "formal_M_over_N": "-745/547",
+      "positive_lapses_pointwise": false,
+      "Fz_rr": "-191/64",
+      "Hf_r": "113/16",
+      "C_r": "-59/100"
+    }
+  ],
+  "caution": "Fz_rr, Hf_r and C_r nonzero on BOTH branches: not a full radial solution or Step55.",
+  "universal_BN_factorization": "NOT_PROVED",
+  "physical_step55_six_coefficients": "NOT_CERTIFIED",
+  "two_boundary_positive_lapse_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
