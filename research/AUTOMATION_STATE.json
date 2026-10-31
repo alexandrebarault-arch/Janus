@@ -19,9 +19,9 @@
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "d7530900082696d7b4fc6f1bd720010da71c37f0",
     "tests/test_hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "70b8052d89d1c49318a43222b2a287aa6ffdd3eb",
-    "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md": "da7cd2cef8735c1a1d767ded7ad69519ce2e99d1",
+    "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md": "baf16b21608e33cb7353d3b79bf43660838f78fb",
     "README.md": "3022b5c52c8fb880b8be6a6260302099ded55ae4",
-    "00_CURRENT_RESTART.md": "27ed122f6dcb9add0083c78d94101b2d5870f71c"
+    "00_CURRENT_RESTART.md": "d522e8f8f880159c89beb00f1bdf854bacc2d3cb"
   },
   "verified_research_head_at_session_start": "1602e797879f8df99e984582c5f7627f3610d82b",
   "next_priority": "Execute SHA-authenticated original Step58 on exact Step55 pointwise U/U_s/U_ss jets at four exact radii, certify all six A/B/E coefficient enclosures and exact cancellations, refine with exact-radius DOP853 as needed, then global positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
@@ -31,7 +31,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "20ddaf09420011c88cf40a9178f016bde85127cf",
+  "verified_research_head_before_state_file": "7ab6d1763c7524f0e1d7a686055b5092b407ebb1",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
