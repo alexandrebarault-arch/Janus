@@ -17,13 +17,13 @@
     "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step58_plf_input_certificate.py": "274ec8798751623e065b55222f36eb1d4121a2c1",
-    "tests/test_hr_b3c3d6_step58_plf_input_certificate.py": "7c8590e622b9ac02f8d882817d97fb06e7764f7e",
-    "research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md": "9b012d934c408225dca5b0afcc887795b7ccb3c2",
-    "README.md": "bbee6dbb7a36e76a79624ed896e30b828d2c61e5",
-    "00_CURRENT_RESTART.md": "e2b72021800f1ba3f2dac86d2362a52df1c2ab78"
+    "numerics/hr_b3c3d6_step58_plf_input_certificate.py": "7655039bcfb9878262f8d63051f53f17836619a7",
+    "tests/test_hr_b3c3d6_step58_plf_input_certificate.py": "32f5b11cbab16fd31b0a02de2fa89e9efca38d2f",
+    "research/STEP68AD_B3C3D6_CORRELATED_G_RADIAL_GROWTH_AND_GLOBAL_U_SIGN.md": "43fd8fe2690c94dccf768cc4b54994573ab73ebb",
+    "README.md": "d73ca823a8306d40cb2aa2b237dd29229c050ea5",
+    "00_CURRENT_RESTART.md": "6fbb58f62526f453aedcf33eb0495ccfce0a00b1"
   },
-  "verified_research_head_at_session_start": "629c6a8d63214df0b37f56d4326efce45b0e3425",
+  "verified_research_head_at_session_start": "06ee13dd991b38c53919107ac107a6c8d3fcd2d7",
   "next_priority": "Execute SHA-authenticated original Step58 on exact Step55 pointwise U/U_s/U_ss jets at four exact radii, certify all six A/B/E coefficient enclosures and exact cancellations, refine with exact-radius DOP853 as needed, then global positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
@@ -31,15 +31,15 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "6ffd05bf471e9747b64993fccc7dd151a993a019",
+  "verified_research_head_before_state_file": "2fc4f86bf878f37a4d56d07faeb33926461b0330",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CORRELATED_G_RADIAL_GROWTH_AND_GLOBAL_U_SIGN.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_CERTIFIED_POINTWISE_PLF_RADIAL_0_1_2_JETS_FROM_AUTHENTIC_STEP55_BOXES",
+    "latest_stage": "b3c3d6_PARTIAL_GLOBAL_U_SIGN_AND_FOUR_POINT_CORRELATED_G_GROWTH",
     "last_step_scope": "Exact-rational pLf,pLf_r,pLf_rr interval enclosures, all strictly negative at r=1/4,1/2,7/10,17/20, using byte-identical SHA-authenticated archived Step55 physical boxes and previous independently verified rational U_ss module. Formal toy counterexample shows G,G_s,G_U pointwise do not bound U_sss. Original Step58 six A/B/E coefficients and positive two-boundary BVP not certified; original physical engines not replayed this run.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
@@ -71,10 +71,15 @@
     "physical_U_ss_four_radii_sign": "UNRESOLVED",
     "physical_pLf_second_negative_independently_recombined_from_archive": true,
     "physical_pLf_radial_jets_0_1_2_negative_at_four_exact_radii": true,
-    "physical_third_jet_from_first_partials": "NOT_IDENTIFIABLE_WITHOUT_SECOND_PARTIALS"
+    "physical_third_jet_from_first_partials": "NOT_IDENTIFIABLE_WITHOUT_SECOND_PARTIALS",
+    "global_U_strict_bounds": [
+      "-67/12500",
+      "-229/50000"
+    ],
+    "total_dG_ds_strict_lower_four_radii": "1/2000"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 2,
+    "unittest_cases_passed": 7,
     "failed_final": 0,
     "skipped_final": 0,
     "python_compileall_pass": true,
