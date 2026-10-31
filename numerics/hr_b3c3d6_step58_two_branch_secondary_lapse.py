@@ -66,33 +66,6 @@ def exact_family():
     }.items()}
     return a, b, solved, results
 
-def certificate():
-    a, b, solved, r = exact_family()
-    assert all(r[k] == 0 for k in ('Fz', 'Fz_r', 'Hg', 'Hg_r', 'B_M', 'E_N', 'E_M'))
-    assert r['K'] == 1
-    assert solved[next(k for k in solved if str(k) == 'pLgr')] == S.Rational(1, 4)
-    assert S.cancel(r['C'] + (25*a + 24*b + 12)/20) == 0
-    assert S.cancel(r['B_N'] + 3*(25*a + 24*b + 12)/100) == 0
-    assert S.cancel(r['B_N'] - S.Rational(3, 5)*r['C']) == 0
-    assert S.cancel(r['C'].subs(b, -(25*a+12)/24)) == 0
-    assert r['C'].subs({a: 0, b: 1}) == -S.Rational(9, 5)
-    return {
-        'original_git_blobs': ORIGINAL_BLOBS,
-        'scope': 'EXACT TWO-PARAMETER NONPHYSICAL LOCAL SLICE, NOT UNIVERSAL',
-        'parameters': ['a=z_r', 'b=Sf_r'], 'K': '1', 'z': '3/5',
-        'positive_dust': ['pg=7/4', 'pf=1'],
-        'solved_jets': {str(k): str(S.factor(v)) for k, v in solved.items()},
-        'full_primary_and_first_jet': 'Fz=Fz_r=Hg=Hg_r=0',
-        'C': str(r['C']), 'B_N': str(r['B_N']),
-        'B_M_E_N_E_M': 'EXACT_ZERO',
-        'C_zero_curve': 'b=-(25*a+12)/24',
-        'identity_on_slice': 'B_N=3*C/5',
-        'universal_B_N_factorization': 'NOT_PROVED',
-        'physical_step55_six_coefficients': 'NOT_CERTIFIED',
-        'two_boundary_positive_lapse_BVP': 'NOT_CERTIFIED',
-        'GATE_2B': 'OPEN', 'JANUS_R': 'NOT_VALIDATED',
-    }
-
 
 def certificate():
     a,b,solved,r=exact_family()
