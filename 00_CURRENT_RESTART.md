@@ -1,3 +1,15 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : MARGE UNIFORME DE NON-FERMETURE SUR TRANCHE GELÉE (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise authentifié : `2cc4e429391ada2fd11ab67cb1b512fd137c8736`. Sources originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` lues via GitHub, **NON exécutées** cette session (DNS conteneur indisponible). Calcul indépendant sur les polynômes exacts de la tranche gelée à trois paramètres déjà publiés.
+
+**NOUVEAU THÉORÈME EXACT MAIS STRICTEMENT RESTREINT :** après `Fz=Fz_r=Hg=Hg_r=C=Hf=0` et avec les jets restants gelés comme dans l'audit précédent, `b=Sf_r≠0`, `Fz_rr=−P(b)/(64b)`, `C_r=T(b)/(100b)`, on démontre pour **tout b réel non nul** `max(|Fz_rr|,|C_r|)>7/8`. Preuve : `0<b≤1/2` donne `|Fz_rr|>7/4`, `b≥1/2` donne `C_r≥109/100`, et `b<0` donne `Fz_rr<−7/8` par positivité Bernstein rationnelle de `204x³+72x²−197x+56` sur six cellules couvrant `[0,2]`, plus preuve élémentaire sur `x≥2`. **C'est une marge uniforme sur une tranche NON PHYSIQUE, pas une obstruction universelle ni un no-go Step55.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 8 unittest PASS, 0 FAIL/0 SKIP au rejeu final ; `compileall` PASS ; CLI JSON PASS. Deux échecs de tests initiaux (comparaison structurelle SymPy et coefficient de dérivée attendu) ont été corrigés et entièrement rejoués. Source `numerics/hr_b3c3d6_uniform_frozen_slice_gap.py` blob `a553c251bb1a2c35ce6383d2f694b282362ec99f`, tests `tests/test_hr_b3c3d6_uniform_frozen_slice_gap.py` blob `70421a2002336ecdd4bd3f1e46733b150fe2e8d3`, rapport `research/reports/gate2b-b3c3d6-uniform-frozen-slice-gap.json` blob `b109f9b9cb8dbeb7c9e02ff1f996819651ec4a88`, audit `research/STEP68AD_B3C3D6_UNIFORM_FROZEN_SLICE_RADIAL_GAP.md` blob `e845e0089e00664ad087593e379b51499f6353c0`. Code/test/rapport relus sur GitHub, SHA blobs égaux aux octets locaux testés. Les autres branches et workflows restent interdits à la modification.
+
+**PROCHAINE ÉTAPE b3c3d6 INCHANGÉE :** exécuter originaux Step45/58 authentifiés, prouver/réfuter universellement le résidu inférieur `B_N−z*C/Lg−beta*Hg_r` sur `Fz=Fz_r=Hg=Hg_r=0` avec jets holonomes libres ; encloser les six coefficients physiques Step58 aux rayons exacts `1/4,1/2,7/10,17/20`, BVP de deux lapses strictement positifs aux deux vrais bords, puis Dirac/4D/stabilité/observables. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : OBSTRUCTION DE BÉZOUT DE FERMETURE RADIALE SUR TRANCHE À TROIS PARAMÈTRES (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD recherche vérifié avant préfixage : `3293f554ae2400b680a1cab0856bb1631a8db482`. Step45 original blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 original blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` lus via connecteur GitHub. **Originaux non exécutés localement** : les tests ont exécuté une reconstruction indépendante fidèle aux formules publiées ; les tests publiés importent les originaux pour le rejeu futur.
