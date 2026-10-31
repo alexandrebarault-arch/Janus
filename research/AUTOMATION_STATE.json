@@ -13,7 +13,7 @@
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_bn_full_ideal.py": "bc9b371c3d66f6b2491009e631fa4ed4a29a676f",
-    "tests/test_hr_b3c3d6_bn_full_ideal.py": "69fb0eebac239e2c34e837a240cb6aa60f4f8c9f",
+    "tests/test_hr_b3c3d6_bn_full_ideal.py": "5862735ecc5c7c43e71ee3f6fec558fbab71a6a5",
     "research/reports/gate2b-b3c3d6-BN-first-jet-ideal-transcription.json": "7e021effb37d2ee7e1774f4d381c9535b5f535cf",
     "research/STEP68AD_B3C3D6_BN_FIRST_JET_IDEAL_TRANSCRIPTION_AUDIT.md": "d868ed9775314693022a2611503b3103f333b587"
   },

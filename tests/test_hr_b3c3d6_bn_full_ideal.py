@@ -1,7 +1,10 @@
 """Original engines by default; offline mode is an independent transcription."""
 import hashlib,os,unittest
 from pathlib import Path
-from hr_b3c3d6_bn_full_ideal import certify
+try:
+    from numerics.hr_b3c3d6_bn_full_ideal import certify
+except ModuleNotFoundError:
+    from hr_b3c3d6_bn_full_ideal import certify
 OFFLINE=os.getenv('JANUS_TRANSCRIPTION_ONLY')=='1'
 if OFFLINE:
     from step45clone import exact_physical_ward

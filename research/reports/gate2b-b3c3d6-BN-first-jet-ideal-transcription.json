@@ -27,7 +27,7 @@
     "mode": "JANUS_TRANSCRIPTION_ONLY=1"
   },
   "source_blob": "bc9b371c3d66f6b2491009e631fa4ed4a29a676f",
-  "test_blob": "69fb0eebac239e2c34e837a240cb6aa60f4f8c9f",
+  "test_blob": "5862735ecc5c7c43e71ee3f6fec558fbab71a6a5",
   "physical_step55_six_enclosures": "NOT_CERTIFIED",
   "positive_two_boundary_BVP": "NOT_CERTIFIED",
   "dirac_4D_stability_observables": "OPEN",

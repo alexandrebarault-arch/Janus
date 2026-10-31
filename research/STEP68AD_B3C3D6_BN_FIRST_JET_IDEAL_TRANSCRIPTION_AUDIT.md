@@ -33,7 +33,7 @@ Contrôle négatif exact, sur transcription : `Fz=0`, `Hg=2`, `R=244/125 ≠0`. 
 
 Les sources originales Step45 et Step58 ont été **lues via le connecteur GitHub**, blobs `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et `802c23aebd41780d8c462f1aa1711707fe4ee88f`. Le conteneur n'a pas pu résoudre `raw.githubusercontent.com` ni `api.github.com` : **les octets originaux n'ont PAS été exécutés localement**. Le rejeu utilise les mêmes formules dans une transcription indépendante. Le test publié importe les originaux par défaut et vérifie leurs SHA ; `JANUS_TRANSCRIPTION_ONLY=1` ne doit jamais être décrit comme un rejeu original.
 
-**Exécuté :** `JANUS_TRANSCRIPTION_ONLY=1 python -m unittest -v test_hr_b3c3d6_bn_full_ideal` : **6 PASS, 1 SKIP, 0 FAIL** ; `python -m compileall -q` : PASS. Source blob `bc9b371c3d66f6b2491009e631fa4ed4a29a676f` ; test blob `69fb0eebac239e2c34e837a240cb6aa60f4f8c9f` (octets exécutés). Le certificat est une preuve algébrique de la transcription, **pas encore une preuve d'identité sur moteur original exécuté**.
+**Exécuté :** `JANUS_TRANSCRIPTION_ONLY=1 python -m unittest -v test_hr_b3c3d6_bn_full_ideal` : **6 PASS, 1 SKIP, 0 FAIL** ; `python -m compileall -q` : PASS. Source blob `bc9b371c3d66f6b2491009e631fa4ed4a29a676f` ; test blob `5862735ecc5c7c43e71ee3f6fec558fbab71a6a5` (octets exécutés). Le certificat est une preuve algébrique de la transcription, **pas encore une preuve d'identité sur moteur original exécuté**.
 
 ## Suite
 
