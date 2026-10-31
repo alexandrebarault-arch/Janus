@@ -1,6 +1,6 @@
 import unittest
 import sympy as S
-from hr_b3c3d6_uniform_frozen_slice_gap import (
+from numerics.hr_b3c3d6_uniform_frozen_slice_gap import (
     b,x,P,T,FZ_RR,C_R,GAP,NEGATIVE_H,CELLS,bernstein_cubic,certificate)
 
 class UniformFrozenSliceGap(unittest.TestCase):
