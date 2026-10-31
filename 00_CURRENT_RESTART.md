@@ -1,3 +1,24 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : AUDIT RATIONNEL INDÉPENDANT DES BORNES U_ss STEP55 AUX QUATRE VRAIS RAYONS (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD au démarrage : `d6758b93b7294fda5f147c3a26c23df0bfeaea3d`. Avancée réelle **restreinte** : recombinaison exacte des boîtes physiques Step55 déjà publiées, **sans** rejeu des moteurs originaux Step45/46/55/58, sans DOP853 nouveau, sans enclosure des six A/B/E et sans BVP de lapses.
+
+**ENTRÉES ET SHA :** archive physique quatre rayons `research/reports/gate2b-b3c3d6-physical-monotone-G-four-exact-radii.json` SHA blob `e74057dcf741bcdb655c7d9be48c6a9650d7ff3f` vérifiée par restitution octet pour octet (4 640 octets). Constantes originales Step55 (barrière SHA `a6e7004120d0a166a3a8973c2fbe1487a8eb70fe`) reconstruites en fractions, y compris `sqrt(H2)` encadrée exactement par `isqrt` à `10^-40`. Pour `2sU_s=G-2U`, `U_ss=[G_s+(G_U-4)(G-2U)/(2s)]/(2s)` avec boîtes sortantes archivées `U,G,G_s,G_U`.
+
+**NOUVEAUX BUDGETS PONCTUELS EXACTS :** à `r=1/4,1/2,7/10,17/20`, respectivement `|U_ss|<1/10,1/160,1/590,1/1200`. Les quatre intervalles traversent zéro : **signe de U_ss indéterminé**. Vérification indépendante par fractions que `pLf''=G+2sG_s+G_U(G-2U)` est incluse dans les quatre boîtes originales et strictement négative. Aucune extension de ces signes à un intervalle radial ni à Step58.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `cd /mnt/data/janus_b3c3d6_uss && PYTHONPATH=. python -m unittest discover -s tests -v` : **7 PASS, 0 FAIL, 0 SKIP** avec archive SHA-identique à GitHub ; `python -m compileall -q numerics tests` : **PASS**. Quatre négatifs (G_U, rayon, pLf'', enregistrement manquant). Première passe sur fixture locale partielle 6 PASS/1 SKIP, corrigée par restauration exacte de l'archive, puis 7 PASS.
+
+**FICHIERS PUBLIÉS ET RELUS SUR CETTE BRANCHE UNIQUEMENT :**
+- `numerics/hr_b3c3d6_independent_uss_archive.py` blob `801ca6c384d1b12f8443e5b8624f416f6954c618` = octets testés ;
+- `tests/test_hr_b3c3d6_independent_uss_archive.py` blob `118dbaaf8e2493679fd1c4460d736e95c8088ed6` = octets testés ;
+- `research/reports/gate2b-b3c3d6-Uss-pointwise-independent-audit.json` blob `f07733027344a93fb67e32853672b1ebb2099836` ;
+- `research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md` blob `ae2d66326d0e829492c90b7ce01338194153048b`.
+La preuve physique initiale Step55 n'est **pas** indépendante : seul le transfert rationnel depuis ses boîtes est audité ici.
+
+**PROCHAINE ÉTAPE EFFECTIVE :** `b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP`. Exécuter Step58 original SHA `802c23aebd41780d8c462f1aa1711707fe4ee88f` aux quatre vrais rayons, encloser A_N/A_M/B_N/B_M/E_N/E_M et factoriser les annulations exactes ; si besoin, resserrer U par DOP853 au rayon exact. Puis BVP strictement positif aux deux vrais bords, Dirac six couples, charges, jauge temporelle, dynamique 4D, stabilité et observables. **TOUT L'HISTORIQUE PRÉCÉDENT EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : PREMIER CERTIFICAT PHYSIQUE G_s COMPOSÉ / G_U / pLf'' AUX QUATRE RAYONS EXACTS (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `b38ef125ed8fadb5b48c76a19ce8694d3413120b`. Nouvelle avancée **PHYSIQUE effectivement exécutée** sur la seule branche `research/gate2b-nonhomothetic-transfer` ; b3c3d6 demeure **PARTIELLE**.
