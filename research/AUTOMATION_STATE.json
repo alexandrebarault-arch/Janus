@@ -6,16 +6,23 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
-    "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 97205,
+    "new_prompt_characters": 98362,
     "permanent_instructions_preserved": true,
-    "schedule_unchanged": true
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_bn_full_ideal.py": "bc9b371c3d66f6b2491009e631fa4ed4a29a676f",
     "tests/test_hr_b3c3d6_bn_full_ideal.py": "5862735ecc5c7c43e71ee3f6fec558fbab71a6a5",
-    "research/reports/gate2b-b3c3d6-BN-first-jet-ideal-transcription.json": "7e021effb37d2ee7e1774f4d381c9535b5f535cf",
-    "research/STEP68AD_B3C3D6_BN_FIRST_JET_IDEAL_TRANSCRIPTION_AUDIT.md": "d868ed9775314693022a2611503b3103f333b587"
+    "research/reports/gate2b-b3c3d6-BN-first-jet-ideal-transcription.json": "a6147cd0684e32cefaae40f7c1a9561df74cd4b1",
+    "research/STEP68AD_B3C3D6_BN_FIRST_JET_IDEAL_TRANSCRIPTION_AUDIT.md": "cb6ada0136c5ff24218736b7339bef7353177142",
+    "00_CURRENT_RESTART.md": "94a9b1fae4b88c6ca798c60f3c2b6dccbf90eeef",
+    "README.md": "1a21f15457365720986cf8bbc0c4a829647df9b2"
   },
   "verified_research_head_at_session_start": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
   "next_priority": "Run byte-authentic Step45/58 original with new ideal-zero test; certify A_N,A_M,B_N,B_M,E_N,E_M on true Step55 four exact radii and A_N+A_M at outer boundary; positive two-boundary lapse BVP; Dirac/4D/stability/observables.",
@@ -121,19 +128,21 @@
     "physical_Step58_coefficients_certified": 0
   },
   "github_write_probe": {
-    "status": "PREPARED_AT_RESTART_CHECKPOINT",
+    "status": "SUCCESS",
     "method": "mcp__GitHub__create_blob/create_tree/create_commit/update_ref",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 4,
     "checkpoint_updated": true,
     "state_updated": true,
     "README_updated": true,
-    "readback_verified": false,
+    "readback_verified": true,
     "local_executed_source_blob_matches": true,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
     "physical_step58_enclosures_certified": 0,
-    "verified_research_head_at_session_start": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503"
+    "verified_research_head_at_session_start": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
+    "branch_commit_verified": "65a788816f988886d3ae162491214b4a59ddca5f",
+    "originals_executed": false
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
