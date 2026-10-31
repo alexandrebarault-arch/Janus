@@ -6,58 +6,56 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 77719,
-    "new_prompt_characters": 78812,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DENSE_AT_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_AND_U_SS_THEN_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
+    "status": "NOT_ATTEMPTED_YET",
+    "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DOP853_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_THEN_U_SS_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_exact_radius_prefix_ledger.py": "bb88b8eb407ca4b2c05f43d5bc1862544ceb4391",
-    "tests/test_hr_b3c3d6_exact_radius_prefix_ledger.py": "28e22099c95931b5e7c74fe0a6d340008abaf7b7",
-    "research/STEP68AD_B3C3D6_BINARY64_OVERSHOOT_AND_EXACT_RADIUS_PREFIX_CERTIFICATE.md": "e26556cc057322561a8bc2c90ef915785250c06f"
+    "numerics/hr_b3c3d6_radial_second_jet_budget.py": "9c6489cb156cde6df0eadfd569f862b366d6fe92",
+    "tests/test_hr_b3c3d6_radial_second_jet_budget.py": "524d9e5400f8c89f6e08a0e11303fd03bdd9a5da",
+    "research/STEP68AD_B3C3D6_EXACT_RADIUS_RADIAL_SECOND_JET_SENSITIVITY_AND_MISSING_DERIVATIVE_CERTIFICATES.md": "7635a1ae53ef6e49b56649f3b9c34bab0a0f572a",
+    "README.md": "bb85930529cccc3c45091561d58b85b85155cc42",
+    "00_CURRENT_RESTART.md": "aae739c6f79dbb3b075be37709862512c0008b62"
   },
-  "verified_research_head_at_session_start": "62976a37358229f13a4139afc3bafae6705aa2f9",
-  "next_priority": "Replay physical DOP853 dense partition and evaluate P at exact r=17/20 and four Step58 radii; certify G_sU/G_UU/F on original tube, U_ss, six original Step58 A/B/E enclosures and strictly positive two-boundary lapse BVP, then Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "3ba344df56f81d239b11b1514da3b2aa92fab6a2",
+  "next_priority": "Physical DOP853 replay at four exact radii; independently certify G_sU/G_UU/F/G_s on the original common Step55 tube, propagate physical U_ss and pLf'' into six original Step58 coefficient enclosures, then strictly positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "62976a37358229f13a4139afc3bafae6705aa2f9",
+  "verified_research_head_before_state_file": "22d99865c737f0dd704a5552b344568dda5f15d3",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_REPLAY_PHYSICAL_DENSE_AT_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_AND_U_SS_THEN_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
+  "next_pending_step": "b3c3d6_REPLAY_PHYSICAL_DOP853_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_THEN_U_SS_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BINARY64_OVERSHOOT_AND_EXACT_RADIUS_PREFIX_CERTIFICATE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_EXACT_RADIUS_RADIAL_SECOND_JET_SENSITIVITY_AND_MISSING_DERIVATIVE_CERTIFICATES.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_RADIUS_PREFIX_LEDGER_CORRECTS_BINARY64_OVERSHOOT",
-    "last_step_scope": "Identified binary64 endpoint beyond Step55 certified tube; physical error at binary endpoint NOT certified. Exact nonnegative ledger prefix at s*=289/400 gives conditional U and first ODE jet errors at true r=17/20. No original physics rerun or U_ss/Step58 coefficient/BVP proof.",
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_RADIAL_SECOND_JET_SENSITIVITY_NOT_PHYSICAL_ENCLOSURE",
+    "last_step_scope": "Exact ODE-consistent pLf'' and D_U identities; conditional bound with known term ~9.715095122174026e-6 and unknown factor ~7.007595420061098e-6*(Lsu+Luu*Mf); Chebyshev toy shows G_U alone insufficient. No physical G_sU/G_UU/F enclosures or original runner replay.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
     "binary64_s_end": "6507701461550367/9007199254740992",
     "physical_r_exact_transport": "CONDITIONAL_FIRST_ODE_JETS_CERTIFIED_AT_17_OVER_20_BY_PREFIX_LEDGER",
     "binary64_terminal_physical_error": "NOT_CERTIFIED_OUTSIDE_ORIGINAL_TUBE",
-    "second_ode_jet_physical_enclosure": "NOT_CERTIFIED"
+    "second_ode_jet_physical_enclosure": "NOT_CERTIFIED",
+    "radial_second_jet_known_term_float": 0.000009715095122174026,
+    "radial_second_jet_unknown_multiplier_float": 0.000007007595420061098,
+    "physical_radial_second_jet_error": "NOT_CERTIFIED",
+    "physical_step58_coefficients": "NOT_CERTIFIED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 7,
+    "unittest_cases_passed": 8,
     "failed_final": 0,
     "python_compileall_pass": true,
     "new_source_module_executed": true,
-    "physical_originals_executed_this_session": false,
-    "original_step55_barrier_reexecuted_this_session": false,
+    "original_step45_46_55_58_executed_this_session": false,
     "physical_DOP853_candidate_executed_this_session": false,
-    "original_Step58_executed_this_session": false,
     "physical_Step58_coefficients_certified": 0,
-    "second_ode_jet_physical_enclosure_certified": false,
-    "published_source_git_blobs_equal_local_tested_bytes": true
+    "physical_G_sU_G_UU_F_certified": false,
+    "github_source_and_test_blobs_equal_local_tested_bytes": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -90,7 +88,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical G_sU/G_UU/F on common Step55 tube, exact dense P(s*) extraction, U_ss and six Step58 enclosures/BVP. Corrected scope: no physical error certificate at binary64 s_b outside original tube; exact-radius prefix ledger valid conditionally at s*=289/400.",
+  "current_blocker": "Need independent physical Step55 G_sU/G_UU/F/G_s interval enclosures and exact-radius P from replay; conditional radial pLf'' sensitivity now derived but six Step58 A/B/E and positive two-boundary lapse BVP remain open.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -506,13 +504,15 @@
   "latest_session_github_write": {
     "status": "SUCCESS",
     "branch": "research/gate2b-nonhomothetic-transfer",
-    "scientific_files_changed": 3,
+    "scientific_files_created": 3,
+    "scientific_files_updated": 0,
+    "checkpoint_updated": true,
+    "state_updated": true,
+    "README_updated": true,
     "readback_verified": true,
-    "checkpoint_prefix_preserves_exact_prior_suffix": true,
-    "original_branch_head_at_start": "055fd4869b3d181550c01fc0a8106beb62eef19a",
-    "verified_pre_state_head": "68c239371b1302336dc264130b655a5005037cd2",
-    "forbidden_branches_modified": false,
-    "workflows_modified": false
+    "full_restart_prefix_written": true,
+    "full_restart_history_preserved": true,
+    "original_physics_rerun_this_session": false
   },
   "last_session_new_result": "Cubic candidate had nonholonomic third derivative of pLfr away from endpoint; exact toy third-jet mismatch 16*r0^6*U_ssss and downstream pf/pSf sensitivity; candidate now differentiates the same cubic U(s).",
   "verified_forbidden_branch_heads": {
