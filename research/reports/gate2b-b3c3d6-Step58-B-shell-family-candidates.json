@@ -1,0 +1,32 @@
+{
+  "source_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "algebraic_family_probes": [
+    {
+      "kind": "z_rational",
+      "symbolic_variables": 6,
+      "shell_zero": true,
+      "BM_zero": true,
+      "BN_minus_zC_over_Lg_zero": true,
+      "C_nonzero_as_expression": true,
+      "C_operations": 155
+    },
+    {
+      "kind": "fixed_z",
+      "symbolic_variables": 20,
+      "shell_zero": true,
+      "BM_zero": true,
+      "BN_minus_zC_over_Lg_zero": true,
+      "C_nonzero_as_expression": true,
+      "C_operations": 433
+    }
+  ],
+  "E_N_E_M": "EXACT_ZERO_ON_Fz_Hg_FROM_ORIGINAL_STEP58",
+  "B_N_B_M": "CANDIDATE_SHELL_FACTOR_NOT_UNIVERSALLY_PROVED",
+  "physical_Step55_four_radii_B_enclosures": "NOT_CERTIFIED",
+  "lapse_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
