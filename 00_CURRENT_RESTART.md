@@ -1,3 +1,20 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : FACTEURS CANDIDATS B DU STEP58 ORIGINAL SUR FAMILLES EXACTES (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub authentifié au démarrage : `2af8222a5f94e87d3a138e45ab7938d46fb7d28d`. **Avancée algébrique ciblée, NON preuve physique globale :** les sources originales Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` ont été reconstruites localement **octet pour octet**, puis le vrai `physical_operator()` Step58 et `highest_lapse_certificate()` ont été exécutés avec un **shim Step57 minimal** (Step57 complet NON rejoué). Sur deux familles algébriques exactes non triviales du vrai opérateur — 6 variables symboliques avec `z=2tau/(1+tau²)`, et 20 variables symboliques avec `z=3/5` — les quatre contraintes de jets `Fz=Fz'=Hg=Hg'=0` donnent `B_M=0` et `B_N=z*C/Lg` par simplification exacte ; `C` reste non identiquement nul. Les deux contrôles négatifs démontrent que les jets dérivés ne sont pas facultatifs. Le résultat antérieur `E_N=E_M=0` sur `Fz=Hg=0` est rejoué. **Attention : aucune factorisation universelle B, aucune application démontrée à Step55, aucun des six A/B/E physiques certifié.**
+
+**EXÉCUTION RÉELLE :** `PYTHONHASHSEED=0 PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_step58_B_shell_family_probe.py' -q` : **6 PASS, 0 FAIL, 0 SKIP** ; `python -m compileall -q numerics/hr_b3c3d6_step58_B_shell_family_probe.py tests/test_hr_b3c3d6_step58_B_shell_family_probe.py` : **PASS** ; CLI `PYTHONHASHSEED=0 PYTHONPATH=. python -m numerics.hr_b3c3d6_step58_B_shell_family_probe` : **PASS**, rapport JSON conservé. Tests exacts sur tranches algébriques, non indépendants des sources originales. Original Step46/55, DOP853, BVP et Dirac NON exécutés cette session.
+
+**FICHIERS GITHUB PUBLIÉS ET RELUS, BLOBS IDENTIQUES AUX OCTETS TESTÉS :**
+- `numerics/hr_b3c3d6_step58_B_shell_family_probe.py` : `1115f4dfb1e1ae13744cbb4f016441e83438a366` ;
+- `tests/test_hr_b3c3d6_step58_B_shell_family_probe.py` : `9340d1f3b9b3ca72a2a20914ff5f98d9a1acec21` ;
+- `research/reports/gate2b-b3c3d6-Step58-B-shell-family-candidates.json` : `cc214f9d30c941b04a5f50ed503abe2118eeb670` ;
+- `research/STEP68AD_B3C3D6_ORIGINAL_STEP58_B_SHELL_FACTOR_FAMILY_AUDIT.md` : `cfe155c5600c9b5633991dab53ca0860cbb1cad6` ;
+- `README.md` indexé et préfixé : `77c0910089bfe0dbb94a80f1f02f0ddbc6739cc3`.
+
+**PROCHAINE ÉTAPE b3c3d6 :** prouver ou réfuter sur le vrai opérateur complet les identités B proposées sous `Fz,Fz',Hg,Hg'` (avec hypothèses de carte explicites), puis imposer `C=0` sur Step55, encloser **les SIX A_N,A_M,B_N,B_M,E_N,E_M aux quatre vrais rayons** `1/4,1/2,7/10,17/20`, factoriser rigoureusement, raffiner DOP853 au besoin ; ensuite BVP de lapses strictement positifs aux deux vrais bords, Dirac six couples/charges/jauge temporelle, 4D/stabilité/observables. Aucune modification de `main`, `research/v2-flrw` ou workflows. **HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉSIDU TAYLOR STEP55 CORRÉLÉ AUX QUATRE RAYONS (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub lu au démarrage : `c235176a63fb5cc13ed6e61183bea6bc0cfad161`. Nouvelle **enclosure rationnelle ponctuelle** obtenue en exploitant les deux évaluations aux extrémités du tube physique Step55 et `G_U<0` : pour `δ=1/10000`, `glo<=G(s,Ustar+δ)`, `G(s,Ustar−δ)<=ghi`, `G_U<=gu_hi<0`, donc `glo−gu_hi δ <= G(s,Ustar) <= ghi+gu_hi δ`. La largeur des boîtes de `G(s,Ustar)` diminue de **plus de 900 fois** aux quatre rayons exacts `1/4,1/2,7/10,17/20`.
