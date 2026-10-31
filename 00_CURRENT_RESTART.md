@@ -1,3 +1,15 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉSIDU UNIVERSEL B_N ANNULÉ SUR TRANSCRIPTION (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de départ lu : `b5ffb830228c21624ce2d54909a0d4ad7d1fe503`. Original Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` lus via connecteur, **NON exécutés localement** (DNS conteneur). Le calcul exact a été exécuté sur une **transcription indépendante des formules originales**.
+
+**NOUVEAU RÉSULTAT ALGÉBRIQUE EXACT SUR TRANSCRIPTION, NON ENCORE REJOUÉ SUR ORIGINAUX :** `R=B_N-z*C/Lg+(1-z²)/(Lg*Lf)*D_r(Hg)` a ses quatre coefficients de hauts jets canoniques exactement multiples de `Fz` ; les jets shift `zrr,zrrr` sont absents. Sur `Fz=0`, éliminer `pLg_r=(pSg*Sg_r+pg*tg_r-K*z/sqrt(1-z²))/Lg`, puis éliminer `Sg_rr` par `Hg=0` (formule explicite dans l'audit). Le résidu exact `sympy.cancel(together(R_substitué))` vaut **0** avec tous les autres jets de premier ordre libres. Ainsi, sur `Fz=Hg=0`, **`B_N=z*C/Lg-(1-z²)/(Lg*Lf)*D_r(Hg)`** ; si en outre `Hg_r=C=0`, `B_N=0`. Ce n'est **PAS** une validation de Step55, du BVP, du rang Dirac ou de JANUS. Contrôle négatif hors `Hg=0` : `Fz=0,Hg=2,R=244/125≠0`.
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** `JANUS_TRANSCRIPTION_ONLY=1 python -m unittest -v test_hr_b3c3d6_bn_full_ideal` : **6 PASS, 1 SKIP** (contrôle originaux), 0 FAIL ; `compileall` source/test PASS. Blobs code/test égaux aux octets exécutés : `numerics/hr_b3c3d6_bn_full_ideal.py` = `bc9b371c3d66f6b2491009e631fa4ed4a29a676f`, `tests/test_hr_b3c3d6_bn_full_ideal.py` = `69fb0eebac239e2c34e837a240cb6aa60f4f8c9f`. Rapport `research/reports/gate2b-b3c3d6-BN-first-jet-ideal-transcription.json` blob `7e021effb37d2ee7e1774f4d381c9535b5f535cf` ; audit `research/STEP68AD_B3C3D6_BN_FIRST_JET_IDEAL_TRANSCRIPTION_AUDIT.md` blob `d868ed9775314693022a2611503b3103f333b587`.
+
+**PROCHAINE ÉTAPE PRIORITAIRE :** exécuter le nouveau test en mode ORIGINAL Step45/58 SHA-authentifié, contrôler la factorisation universelle sur les moteurs authentiques, puis certifier les six coefficients physiques Step58 A/B/E aux quatre rayons exacts `1/4,1/2,7/10,17/20` et notamment `A_N+A_M` au bord ; BVP de deux lapses strictement positifs aux deux vrais bords, Dirac complet/4D/stabilité/observables. **Aucune enclosure physique ni BVP positif deux bords certifié.** Historique complet conservé ci-dessous.
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉDUCTION EXACTE DES HAUTS JETS DE B_N (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de reprise lu directement sur GitHub : `d7b4e3e046efb4939b2ecbdffb9654381181df20`. Sources Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` lues sur GitHub ; **non exécutées localement** faute de DNS. Les calculs exacts SymPy ont été exécutés sur une **transcription indépendante** des formules, et les tests publiés appellent les originaux SHA-authentifiés par défaut. Aucun résultat physique original ne doit être attribué à ce rejeu local.

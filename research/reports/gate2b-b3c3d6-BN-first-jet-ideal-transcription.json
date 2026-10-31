@@ -1,0 +1,36 @@
+{
+  "step": "b3c3d6_BN_FIRST_JET_IDEAL_EXACT_TRANSCRIPTION",
+  "date": "2026-10-31",
+  "proof_scope": "independent Step45/58 formula transcription, NOT authenticated original engine execution",
+  "original_step45_git_blob_read": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+  "original_step58_git_blob_read": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+  "originals_executed": false,
+  "high_canonical_jet_Fz_factors_exact": 4,
+  "shift_zrr_zrrr_absent": true,
+  "eliminations": [
+    "Fz=0 solves pLg_r",
+    "Hg=0 solves Sg_rr"
+  ],
+  "reduced_first_jet_remainder": "0",
+  "identity": "Fz=Hg=0 => B_N=z*C/Lg-(1-z^2)/(Lg*Lf)*D_r(Hg)",
+  "consequence": "Fz=Hg=Hg_r=C=0 => B_N=0",
+  "off_shell_negative": {
+    "Fz": "0",
+    "Hg": "2",
+    "R": "244/125"
+  },
+  "tests": {
+    "unittest_passed": 6,
+    "skipped": 1,
+    "failed": 0,
+    "compileall": "PASS",
+    "mode": "JANUS_TRANSCRIPTION_ONLY=1"
+  },
+  "source_blob": "bc9b371c3d66f6b2491009e631fa4ed4a29a676f",
+  "test_blob": "69fb0eebac239e2c34e837a240cb6aa60f4f8c9f",
+  "physical_step55_six_enclosures": "NOT_CERTIFIED",
+  "positive_two_boundary_BVP": "NOT_CERTIFIED",
+  "dirac_4D_stability_observables": "OPEN",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
