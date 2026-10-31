@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-31",
+  "step": "b3c3d6_PARTIAL",
+  "status": "EXACT_LOCAL_NONPHYSICAL_FAMILY",
+  "source_original_git_blobs": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "original_execution": "Step45+Step58 original byte-authentic; minimal Step57 import shim, full Step57 not run",
+  "local_shell": "Fz=dFz=Hg=dHg=Hf=0 for all real a=zr",
+  "chart": "Lg=Lf=Sg=Sf=Mg2=Mf2=m2=1, K=1, z=3/5; pg=7/4,pf=1,tgr=tfr=0",
+  "free_parameter": "a=zr",
+  "dependent_jets": {
+    "pLg_r": "1/4",
+    "pLg_rr": "-3/2 - 125*a/64",
+    "Sg_rrr": "29/16 - 75*a/128"
+  },
+  "identities": {
+    "C": "-9/5 - 5*a/4",
+    "B_N": "-27/25 - 3*a/4",
+    "B_M": "0",
+    "B_N_minus_zC_over_Lg": "0",
+    "E_N": "0",
+    "E_M": "0"
+  },
+  "secondary_shell": "a=-36/25 gives C=B_N=B_M=E_N=E_M=0",
+  "counterexample": "a=0 has Fz=dFz=Hg=dHg=Hf=0 but C=-9/5, B_N=-27/25, so primaries alone do not set B_N=0",
+  "tests": {
+    "unittest_pass": 9,
+    "fail": 0,
+    "skip": 0,
+    "compileall": "PASS",
+    "cli": "PASS",
+    "independence": "not independent of original Step45+Step58"
+  },
+  "published_source_blob": "814c62f2c37baea304bb64863c73fdf176a84fb2",
+  "published_test_blob": "90753aa949bb9e70424d551b31d00510307f7887",
+  "limits": [
+    "single local jet family, not universal factorization",
+    "not physical Step55 radial profile",
+    "no rigorous physical A/B/E interval enclosures at four radii",
+    "no positive two-boundary lapse BVP",
+    "no full Dirac, 4D, stability or observables"
+  ],
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
