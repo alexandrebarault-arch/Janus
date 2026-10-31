@@ -31,16 +31,16 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "e934bf34245bae9caa516105febd4e971d68b079",
+  "verified_research_head_before_state_file": "bbb7a90b3f81befffbee33d108ae47f725c9c396",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_REPLAY_PHYSICAL_DOP853_FOUR_EXACT_RADII_CERTIFY_COMPOSED_G_S_G_U_G_F_THEN_DIRECT_U_SS_PLF_SECOND_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
+  "next_pending_step": "b3c3d6_EXECUTE_AUTHENTIC_COMPOSED_INTERVAL_AD_FOUR_EXACT_RADII_VALIDATE_G_S_G_U_DIRECT_SECOND_JETS_THEN_DOP853_REFINEMENT_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_DIRECT_FIRST_PARTIAL_SECOND_JET_AND_GEOMETRY_CHAIN_RULE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_COMPOSED_INTERVAL_AD_PHYSICAL_JETS_EXECUTION_CANDIDATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_DIRECT_FIRST_PARTIAL_SECOND_JET_ENCLOSURE_NO_PHYSICAL_G_S",
-    "last_step_scope": "Exact conditional U_ss and pLf'' direct interval enclosure from U,G,G_s,G_U; physical G_s must include chain rule for prescribed Step55 geometry. 10 tests passed. No physical derivative boxes, DOP853 replay, Step58 A/B/E or BVP certified.",
+    "latest_stage": "b3c3d6_PARTIAL_COMPOSED_INTERVAL_AD_EXECUTION_CANDIDATE_NO_PHYSICAL_REPLAY",
+    "last_step_scope": "Candidate forward-mode outward interval AD through all prescribed Step55 geometry(s), with original-global clone to avoid I*Dual dispatch. Four exact radius candidate and direct second-jet enclosure integrated. 9 rational mock tests pass; authentic physical original and DOP853 not executed, no physical G_s or Step58 BVP certified.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -52,11 +52,11 @@
     "radial_second_jet_unknown_multiplier_float": 0.000007007595420061098,
     "physical_radial_second_jet_error": "NOT_CERTIFIED",
     "physical_step58_coefficients": "NOT_CERTIFIED",
-    "physical_G_s_total_composed": "NOT_CERTIFIED",
+    "physical_G_s_total_composed": "EXECUTION_CANDIDATE_ONLY_NOT_CERTIFIED",
     "direct_second_jet_route": "EXACT_CONDITIONAL_NO_G_SU_OR_G_UU_REQUIRED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 10,
+    "unittest_cases_passed": 9,
     "failed_final": 0,
     "python_compileall_pass": true,
     "original_step45_46_55_58_executed_this_session": false,
@@ -70,13 +70,11 @@
     "method": "mcp__GitHub__create_file/update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 3,
-    "checkpoint_updated": true,
+    "checkpoint_updated": false,
     "state_updated": true,
-    "README_updated": true,
+    "README_updated": false,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
-    "full_restart_prefix_written": true,
-    "full_restart_history_preserved": true,
     "full_physical_four_radius_Step58_replay_this_session": false
   },
   "required_per_run": [
@@ -95,7 +93,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical Step55 G_s(s,U) must be differentiated through all prescribed geometry(s) and interval-certified on the common tube; exact-radius DOP853 values at four radii and Step58 A/B/E and positive two-boundary lapse BVP remain unproved.",
+  "current_blocker": "The original physical Step45/46/55/58 engine and DOP853 could not be run in the computation container (direct raw GitHub DNS unavailable). The new composed interval AD candidate has only 9 toy/rational tests; execute it on SHA-authenticated originals at four exact radii to certify physical G_s/G_U and second jets before Step58 A/B/E and positive two-boundary BVP.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -290,7 +288,10 @@
     "research/STEP68AD_B3C3D6_STEP55_BINARY64_INITIALIZATION_PRECISION_AUDIT.md": "a2185291391fd5e12729cb789ca617c111e9238d",
     "numerics/hr_b3c3d6_corrected_step58_point_probe_candidate.py": "84ed9fe05f2f1f9c10c994ae7408784e87ab6791",
     "tests/test_b3c3d6_holonomic_cubic_transport.py": "1bee3f1f70dd7ba12463705ff7978b08d1b26249",
-    "research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md": "9d09b16df2c535b5500f1af197aa4c61ade06b7a"
+    "research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md": "9d09b16df2c535b5500f1af197aa4c61ade06b7a",
+    "numerics/hr_b3c3d6_composed_dual_interval_jets.py": "170598ab5ceff3ba6e9fa26575b4c0fed3a36c0a",
+    "tests/test_hr_b3c3d6_composed_dual_interval_jets.py": "9d35930b07603e94e40088e81eea887d6d5d87a2",
+    "research/STEP68AD_B3C3D6_COMPOSED_INTERVAL_AD_PHYSICAL_JETS_EXECUTION_CANDIDATE.md": "969be0107e8afa724c540c65403e6df0b81bfa6c"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
