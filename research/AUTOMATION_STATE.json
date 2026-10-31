@@ -8,13 +8,13 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 95460,
-    "new_prompt_characters": 96253,
+    "old_prompt_characters": 96253,
+    "new_prompt_characters": 97205,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_UNIVERSAL_BN_FULL_HOLONOMIC_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
+    "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_REPLAY_AND_FIRST_JET_BN_RESIDUAL_IDEAL_TEST"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_bn_high_jet_elimination.py": "086b6bae543c0ee497ca9154c5a055921f018423",
@@ -127,18 +127,19 @@
     "physical_Step58_coefficients_certified": 0
   },
   "github_write_probe": {
-    "status": "SUCCESS_EXPECTED_ON_ATOMIC_FAST_FORWARD_COMMIT",
+    "status": "SUCCESS",
     "method": "mcp__GitHub__create_blob/create_tree/create_commit/update_ref",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 4,
     "checkpoint_updated": true,
     "state_updated": true,
     "README_updated": true,
-    "readback_verified": false,
+    "readback_verified": true,
     "local_executed_source_blob_matches": true,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
-    "physical_step58_enclosures_certified": 0
+    "physical_step58_enclosures_certified": 0,
+    "branch_commit_verified": "5ee69e751cca853dfb708dae3d3b51245a740c81"
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -812,5 +813,21 @@
     "originals_read_via_connector": true,
     "originals_executed_locally": false,
     "independent_transcription_sympy_executed": true
+  },
+  "previous_automation_update": {
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 95460,
+    "new_prompt_characters": 96253,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_UNIVERSAL_BN_FULL_HOLONOMIC_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
+  },
+  "verified_research_head_after_scientific_publication": "5ee69e751cca853dfb708dae3d3b51245a740c81",
+  "verified_untouched_branch_heads": {
+    "main": "aead63f4098f0d15a849e579105af034b6317b30",
+    "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
   }
 }
