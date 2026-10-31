@@ -6,10 +6,15 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_YET_ATTEMPTED_THIS_SESSION",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_BN_LOWER_RESIDUAL_ON_FULL_HG_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 91485,
+    "new_prompt_characters": 92516,
     "permanent_instructions_preserved": true,
-    "schedule_unchanged": true
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
+    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_BN_LOWER_RESIDUAL_ON_FULL_HG_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_step58_BN_lower_jet_witness.py": "e49d8c61d24528ff88198d486d8b07996b7108a2",
