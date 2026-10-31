@@ -1,0 +1,89 @@
+{
+  "scope": "FROZEN_NONPHYSICAL_THREE_PARAMETER_SLICE_WITH_C=Hf=0_ONLY",
+  "radial_residuals": {
+    "Fz_rr": "(-204*b**3 + 72*b**2 + 141*b + 56)/(64*b)",
+    "C_r": "(144*b**3 + 224*b**2 + b - 20)/(100*b)"
+  },
+  "uniform_result": "For every real b != 0, max(abs(Fz_rr),abs(C_r)) > 7/8",
+  "negative_b_proof": "x=-b>0; h(x)>0 by exact positive Bernstein coefficients on [0,2] and direct x>=2 inequality",
+  "negative_b_bernstein_cells": [
+    {
+      "interval": [
+        "0",
+        "1/4"
+      ],
+      "coefficients": [
+        "56",
+        "475/12",
+        "74/3",
+        "231/16"
+      ]
+    },
+    {
+      "interval": [
+        "1/4",
+        "3/8"
+      ],
+      "coefficients": [
+        "231/16",
+        "895/96",
+        "1033/192",
+        "385/128"
+      ]
+    },
+    {
+      "interval": [
+        "3/8",
+        "7/16"
+      ],
+      "coefficients": [
+        "385/128",
+        "1399/768",
+        "1579/1536",
+        "693/1024"
+      ]
+    },
+    {
+      "interval": [
+        "7/16",
+        "1/2"
+      ],
+      "coefficients": [
+        "693/1024",
+        "125/384",
+        "5/12",
+        "1"
+      ]
+    },
+    {
+      "interval": [
+        "1/2",
+        "1"
+      ],
+      "coefficients": [
+        "1",
+        "17/3",
+        "251/6",
+        "135"
+      ]
+    },
+    {
+      "interval": [
+        "1",
+        "2"
+      ],
+      "coefficients": [
+        "135",
+        "964/3",
+        "2207/3",
+        "1582"
+      ]
+    }
+  ],
+  "positive_b_small": "0<b<=1/2 implies P<-56 and abs(Fz_rr)>7/4",
+  "positive_b_large": "b>=1/2 implies C_r>=109/100",
+  "original_engines_executed_this_run": false,
+  "physical_Step55_six_enclosures": 0,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
