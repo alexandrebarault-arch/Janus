@@ -1,3 +1,15 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANCHE PRIMAIRE EXACTE À DEUX PARAMÈTRES (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub vérifié au démarrage : `7da475400f486a9ad0b62e7a6aa0b7333bee04c8`. Sources originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` reconstruits octet pour octet, importés et **réellement exécutés** avec shim Step57 minimal (Step57 complet non exécuté).
+
+**NOUVEAU RÉSULTAT EXACT MAIS NON PHYSIQUE :** famille locale à deux paramètres indépendants `a=z_r`, `b=Sf_r`, avec `K=1,z=3/5,pg=7/4,pf=1`. Les quatre contraintes `Fz=Fz_r=Hg=Hg_r=0` sont satisfaites identiquement en ajustant `pLg_r=1/4,Sg_rr=0,pLg_rr=-(125a+96)/64,Sg_rrr=-(75a+128b-360)/128`. Sur cette famille, `C=-(25a+24b+12)/20`, `B_N=-3(25a+24b+12)/100=(3/5)C`, `B_M=E_N=E_M=0`. La droite `b=-(25a+12)/24` impose aussi `C=B_N=0`, tandis que `a=0,b=1` donne `C=-9/5,B_N=-27/25`. **Ce n'est ni une factorisation universelle ni le vrai profil Step55 ni un BVP.**
+
+**TESTS RÉELLEMENT EXÉCUTÉS :** 9 unittest PASS, 0 FAIL/0 SKIP au rejeu final ; compileall PASS ; CLI PASS. Premier essai : 4 FAIL de comparaison structurelle SymPy (factorisé/développé), corrigés par annulation de la différence. **BLOBS PUBLIÉS ET RELUS = OCTETS TESTÉS :** `numerics/hr_b3c3d6_step58_two_parameter_primary_shell.py` `93ae66920b69d8da0f439d54b9d04a1f3338cac8` ; `tests/test_hr_b3c3d6_step58_two_parameter_primary_shell.py` `a1631a005931ca5291e8362d92c928f9b000d6be` ; `research/reports/gate2b-b3c3d6-Step58-two-parameter-primary-shell.json` `7e951cfe36348c5282e8033ff9c6bd9f79590e02` ; audit `research/STEP68AD_B3C3D6_TWO_PARAMETER_PRIMARY_SHELL_AUDIT.md` ; README synchronisé.
+
+**PROCHAINE ÉTAPE b3c3d6 INCHANGÉE :** factoriser/réfuter le résidu inférieur `B_N-zC/Lg-beta Hg_r` sur la coquille **universelle** `Fz=Fz_r=Hg=Hg_r=0` ; appliquer ensuite `C=0` au vrai Step55 et certifier six enclosures `A_N,A_M,B_N,B_M,E_N,E_M` aux rayons `1/4,1/2,7/10,17/20`, DOP853 rigoureux si nécessaire ; BVP de deux lapses strictement positifs aux vrais bords, puis Dirac/4D/stabilité/observables. **Aucun des six coefficients physiques, aucun BVP ni Dirac certifié cette session.** Branches `main`, `research/v2-flrw` et workflows non modifiés. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉSIDU INFÉRIEUR B_N NON NUL HORS Hg=0 (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `35f28ea03e3fe55ca09535eb487b8c43e6395151`. **Original Step45** blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et **original Step58** blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` reproduits octet pour octet et **exécutés** avec un shim Step57 minimal (Step57 complet NON exécuté).
