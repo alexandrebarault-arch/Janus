@@ -6,7 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "PENDING_ATTEMPT",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 95460,
+    "new_prompt_characters": 96253,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_UNIVERSAL_BN_FULL_HOLONOMIC_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
   },
   "latest_session_published_blobs": {
