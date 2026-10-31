@@ -1,0 +1,24 @@
+{
+  "scope": "RESTRICTED_FROZEN_JETS_THREE_PARAMETER_SLICE_NOT_PHYSICAL_STEP55",
+  "shell": "Fz=Fz_r=Hg=Hg_r=0",
+  "secondary_conditions": "C=0,Hf=0",
+  "radial_closure_test": "Fz_rr=0,C_r=0",
+  "substitution": {
+    "a": "-(24*b+12)/25",
+    "c": "(b**2-1)/(2*b)",
+    "b_nonzero": true
+  },
+  "P": "204*b**3 - 72*b**2 - 141*b - 56",
+  "T": "144*b**3 + 224*b**2 + b - 20",
+  "resultant": "4727954587584",
+  "bezout_constant": "98499053908",
+  "bezout_U": "4708409040*b**2 + 5217306528*b - 2808576443",
+  "bezout_V": "-6670246140*b**2 + 5338958712*b + 2939061345",
+  "groebner_basis": [
+    "1"
+  ],
+  "conclusion": "NO COMPLEX (a,b,c) solves all four conditions on this frozen-jet slice",
+  "not_concluded": "No global Step55 no-go, no universal B_N factorization, no lapse BVP or Dirac result",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
