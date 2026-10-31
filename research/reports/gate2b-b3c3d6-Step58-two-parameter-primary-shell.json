@@ -1,0 +1,34 @@
+{
+  "original_git_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "scope": "EXACT TWO-PARAMETER NONPHYSICAL LOCAL SLICE, NOT UNIVERSAL",
+  "parameters": [
+    "a=z_r",
+    "b=Sf_r"
+  ],
+  "K": "1",
+  "z": "3/5",
+  "positive_dust": [
+    "pg=7/4",
+    "pf=1"
+  ],
+  "solved_jets": {
+    "pLgr": "1/4",
+    "Sgrr": "0",
+    "pLgrr": "-(125*a + 96)/64",
+    "Sgrrr": "-(75*a + 128*b - 360)/128"
+  },
+  "full_primary_and_first_jet": "Fz=Fz_r=Hg=Hg_r=0",
+  "C": "-(25*a + 24*b + 12)/20",
+  "B_N": "-3*(25*a + 24*b + 12)/100",
+  "B_M_E_N_E_M": "EXACT_ZERO",
+  "C_zero_curve": "b=-(25*a+12)/24",
+  "identity_on_slice": "B_N=3*C/5",
+  "universal_B_N_factorization": "NOT_PROVED",
+  "physical_step55_six_coefficients": "NOT_CERTIFIED",
+  "two_boundary_positive_lapse_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
