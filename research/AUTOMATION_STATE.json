@@ -20,7 +20,9 @@
     "numerics/hr_b3c3d6_monotone_physical_four_radii.py": "c68eba7cf5eba4679c437b8d6c82d00455e2dbfa",
     "tests/test_hr_b3c3d6_monotone_physical_four_radii.py": "1e5d0fffecac6d410471c25391c73f240d416ce4",
     "research/reports/gate2b-b3c3d6-physical-monotone-G-four-exact-radii.json": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
-    "research/STEP68AD_B3C3D6_AUTHENTIC_PHYSICAL_MONOTONE_G_FOUR_RADII_CERTIFICATE.md": "a32a8aef43f2baeedac711d5e79150bf12c7d2a1"
+    "research/STEP68AD_B3C3D6_AUTHENTIC_PHYSICAL_MONOTONE_G_FOUR_RADII_CERTIFICATE.md": "a32a8aef43f2baeedac711d5e79150bf12c7d2a1",
+    "README.md": "c38228fedfb949f1feade3e2cc8f4660030a7a05",
+    "00_CURRENT_RESTART.md": "ad6b6581d7d40958da8dffeeec9e9983a252c275"
   },
   "verified_research_head_at_session_start": "b38ef125ed8fadb5b48c76a19ce8694d3413120b",
   "next_priority": "Execute original SHA-authenticated Step58 with certified Step55 monotone endpoint U,G,G_s,G_U and U_s,U_ss,pLf'' at exact radii 1/4,1/2,7/10,17/20; obtain six A/B/E enclosures and exact cancellations; if boxes too wide refine exact-radius DOP853. Then positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
@@ -30,7 +32,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2eb3ce36b4437b03c9cf47d648c60336b8570f4d",
+  "verified_research_head_before_state_file": "af7940649e62ba614122cf13d56896cab1c38a98",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -73,13 +75,13 @@
     "method": "mcp__GitHub__create_file/update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 4,
-    "checkpoint_updated": false,
+    "checkpoint_updated": true,
     "state_updated": true,
-    "README_updated": false,
+    "README_updated": true,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
     "full_physical_four_radius_Step58_replay_this_session": false,
-    "full_restart_prefix_written": false,
+    "full_restart_prefix_written": true,
     "full_restart_history_preserved": true
   },
   "required_per_run": [
