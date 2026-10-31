@@ -6,24 +6,19 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 85741,
-    "new_prompt_characters": 86605,
-    "permanent_instructions_preserved": true,
-    "schedule_unchanged": true,
-    "enabled": true,
-    "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP"
+    "status": "NOT_ATTEMPTED_YET_THIS_SESSION",
+    "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
+    "schedule_unchanged": true
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "d7530900082696d7b4fc6f1bd720010da71c37f0",
-    "tests/test_hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "70b8052d89d1c49318a43222b2a287aa6ffdd3eb",
-    "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md": "baf16b21608e33cb7353d3b79bf43660838f78fb",
-    "README.md": "3022b5c52c8fb880b8be6a6260302099ded55ae4",
-    "00_CURRENT_RESTART.md": "d522e8f8f880159c89beb00f1bdf854bacc2d3cb"
+    "numerics/hr_b3c3d6_center_step58_affine_gap.py": "2643747e9cbfc12110de444d5237adf465ed7f6c",
+    "tests/test_hr_b3c3d6_center_step58_affine_gap.py": "f028193f27351f5b26d5fe81c9ec8d9baf367ec6",
+    "research/STEP68AD_B3C3D6_CENTER_STEP58_HOLONOMIC_AFFINE_GAP.md": "8a137bcbc6d3f141273fcb345007e2a4b14f7e4b",
+    "research/reports/gate2b-b3c3d6-center-holonomic-affine-gap.json": "e4f1899f94bd5131abcf4e560508c9ee2f181e1e",
+    "README.md": "96e84075bc23edc827e735ab26fba9b4dbef709d",
+    "00_CURRENT_RESTART.md": "b267bdd4227be56f09cb255aaca26ac96a96893e"
   },
-  "verified_research_head_at_session_start": "1602e797879f8df99e984582c5f7627f3610d82b",
+  "verified_research_head_at_session_start": "ea6ba96c90931df16ab34c68785e871123730aa6",
   "next_priority": "Execute SHA-authenticated original Step58 on exact Step55 pointwise U/U_s/U_ss jets at four exact radii, certify all six A/B/E coefficient enclosures and exact cancellations, refine with exact-radius DOP853 as needed, then global positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
@@ -31,16 +26,16 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "7ab6d1763c7524f0e1d7a686055b5092b407ebb1",
+  "verified_research_head_before_state_file": "5841603f7e7a91ea66b4f371655b8d8e08457da3",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CENTER_STEP58_HOLONOMIC_AFFINE_GAP.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_GLOBAL_EXACT_STEP58_AM_USS_SENSITIVITY",
-    "last_step_scope": "Exact-rational global bound on original Step58 dA_M/dU_ss on physical Step55 shell, conditional on previously certified global U barrier; strictly negative for all 0<r<=17/20, magnitude O(r^6); conditional four-point isolated U_ss contribution bounds <1/1000,<1/300,<1/150,<1/100. This is NOT an enclosure of A_M or any of six original Step58 A/B/E coefficients. No original physical engines replayed this run.",
+    "latest_stage": "b3c3d6_PARTIAL_CONDITIONAL_CONTINUUM_CENTER_STEP58_AFFINE_GAP",
+    "last_step_scope": "Conditional exact-rational continuum 0<r<=1/32, combining archived physical Step68ad-B2 U_ss<0 and original Step58 sensitivity dA_M/dU_ss<0: 63/100000 < (A_M(physical)-A_M(genuinely holonomic affine))/r^6 < 13/20000, at fixed U,U_s. Historical mixed affine is different. No original physical engines rerun. No enclosure of A_M or six A/B/E.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -83,7 +78,13 @@
       "1/300",
       "1/150",
       "1/100"
-    ]
+    ],
+    "center_holonomic_affine_gap_normalized_strict": [
+      "63/100000",
+      "13/20000"
+    ],
+    "center_holonomic_affine_gap_r_domain": "0<r<=1/32 ONLY",
+    "center_holonomic_affine_gap_physical_conditional": true
   },
   "last_reported_tests": {
     "unittest_cases_passed": 6,
@@ -95,14 +96,13 @@
     "physical_DOP853_candidate_executed_this_session": false,
     "physical_Step58_coefficients_certified": 0,
     "github_source_and_test_blobs_equal_local_tested_bytes": true,
-    "original_step55_and_step58_blobs_read_but_not_replayed": true,
-    "initial_incorrect_python_module_command_failed_then_corrected": true
+    "prior_B2_archive_read_on_GitHub_not_replayed": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
     "method": "mcp__GitHub__create_file/update_file",
     "branch": "research/gate2b-nonhomothetic-transfer",
-    "scientific_files_created": 3,
+    "scientific_files_created": 4,
     "checkpoint_updated": true,
     "state_updated": true,
     "README_updated": true,
@@ -128,7 +128,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step58 six A_N/A_M/B_N/B_M/E_N/E_M physical interval enclosures and exact B/E cancellations remain missing; current result bounds only dA_M/dU_ss, not A_M. Global positive two-boundary lapse BVP, Dirac/4D/stability/observables unproved.",
+  "current_blocker": "The continuum center gap is a conditional comparison only; six original Step58 physical A/B/E interval enclosures and exact B/E cancellations at four exact radii remain missing, as do positive two-boundary lapse BVP and Dirac/4D/stability/observables.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
