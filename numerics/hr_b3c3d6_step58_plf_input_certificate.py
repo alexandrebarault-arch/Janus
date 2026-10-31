@@ -35,3 +35,39 @@ def certify(root=None):
 
 if __name__=='__main__':
     print(json.dumps(certify(),indent=2))
+
+
+def certify_correlated_growth(root=None):
+    """Global U<0 via Step55 barrier; pointwise d_s G>0 by correlated boxes."""
+    from .hr_b3c3d6_independent_uss_archive import mul
+    root=Path(root) if root else Path(__file__).resolve().parents[1]
+    certify(root)  # authenticates archive and original three radial jets
+    rows=json.loads((root/ARCHIVE).read_bytes())['radii']
+    u0=original_u0_interval()
+    S,delta=F(289,400),F(1,10000)
+    assert U1[0]>0 and U2[1]<0
+    ulo=u0[0]+U2[0]*S*S-delta
+    uhi=u0[1]+U1[1]*S+delta
+    assert -F(67,12500)<ulo<=uhi<-F(229,50000)<0
+    out=[]
+    for r,row in zip(RADII,rows):
+        s=r*r
+        assert F(row['r'])==r and F(row['s'])==s
+        u=(u0[0]+U1[0]*s+U2[0]*s*s-delta,
+           u0[1]+U1[1]*s+U2[1]*s*s+delta)
+        g,gs,gu=(tuple(map(F,row[k])) for k in
+                 ('G_monotone','G_s_composed','G_U'))
+        assert g[1]<0 and gs[0]>0 and gu[1]<0
+        us=((g[0]-2*u[1])/(2*s),(g[1]-2*u[0])/(2*s))
+        product=mul(gu,us)
+        total=(gs[0]+product[0],gs[1]+product[1])
+        assert total[0]>F(1,2000) and total[0]<=total[1]
+        out.append({'r':str(r),'U_s':[str(x) for x in us],
+                    'dG_ds_total':[str(x) for x in total],
+                    'dG_dr':[str(2*r*x) for x in total],
+                    'pLf_rr_minus_pLf_r_over_r':[str(2*s*x) for x in total]})
+    return {'archive_blob':ARCHIVE_SHA,
+            'global_U_actual':[str(ulo),str(uhi)],
+            'global_U_strict':['-67/12500','-229/50000'],
+            'four_exact_radii':out,'Step58_A_B_E':'NOT_CERTIFIED',
+            'BVP':'NOT_CERTIFIED','GATE_2B':'OPEN','JANUS_R':'NOT_VALIDATED'}
