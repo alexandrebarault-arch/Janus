@@ -59,10 +59,13 @@ def exact_family():
     solved = {x: xv, w: wv, v: vv, u: uv}
     results = {key: S.factor(S.cancel(ev(expr).subs(solved))) for key, expr in {
         'Fz': F, 'Fz_r': Fr, 'Hg': H, 'Hg_r': Hr,
-        'C': o['C'], 'B_N': o['operator']['N'][1],
+        'C': o['C'], 'A_N':o['operator']['N'][0], 'A_M':o['operator']['M'][0],
+        'B_N': o['operator']['N'][1],
         'B_M': o['operator']['M'][1],
         'E_N': o['operator']['N'][2], 'E_M': o['operator']['M'][2],
-        'K': o['K'],
+        'Hf':p['Hf'],
+        'Fz_rr':o['Dt'](Fr), 'Hf_r':o['Dt'](p['Hf']),
+        'C_r':o['Dt'](o['C']), 'K': o['K'],
     }.items()}
     return a, b, solved, results
 
