@@ -1,0 +1,26 @@
+{
+  "GATE_2B": "OPEN",
+  "Hg_Sg_rr_coefficient": "2*Mg2*Sg/Lg",
+  "JANUS_R": "NOT_VALIDATED",
+  "coefficient_identities_proved": 4,
+  "conclusion": "Fz=Hg=0 reduces R to a first-jet-only algebraic residual; its vanishing is NOT proved",
+  "execution_provenance": "LOCAL_INDEPENDENT_STEP45_STEP58_TRANSCRIPTION_NOT_AUTHENTIC_ORIGINAL_REPLAY",
+  "high_jet_dependencies_before_Fz": [
+    "Lgrr",
+    "Sgrr",
+    "Sgrrr",
+    "pLgrr",
+    "tgrr"
+  ],
+  "on_full_primary": "Fz=Fz_r=Hg=Hg_r=0 implies B_N-z*C/Lg equals that unproved first-jet residual",
+  "original_sha_read_from_github": {
+    "Step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "Step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "physical_step55_enclosures": "NOT_CERTIFIED",
+  "remaining_after_Fz_zero": "Sgrr",
+  "remaining_jet_affine": true,
+  "scope": "EXACT_FORMAL_STEP45_STEP58_K_POSITIVE_SHIFT_CHART",
+  "tests_executed": "4 PASS, 1 SKIP original SHA in explicit transcription mode",
+  "two_boundary_positive_lapse_BVP": "NOT_CERTIFIED"
+}

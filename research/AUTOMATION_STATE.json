@@ -17,30 +17,30 @@
     "next_step_marker": "b3c3d6_UNIVERSAL_BN_FULL_HOLONOMIC_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_uniform_frozen_slice_gap.py": "a553c251bb1a2c35ce6383d2f694b282362ec99f",
-    "tests/test_hr_b3c3d6_uniform_frozen_slice_gap.py": "70421a2002336ecdd4bd3f1e46733b150fe2e8d3",
-    "research/reports/gate2b-b3c3d6-uniform-frozen-slice-gap.json": "b109f9b9cb8dbeb7c9e02ff1f996819651ec4a88",
-    "research/STEP68AD_B3C3D6_UNIFORM_FROZEN_SLICE_RADIAL_GAP.md": "e845e0089e00664ad087593e379b51499f6353c0",
-    "00_CURRENT_RESTART.md": "6f1af19f0c2ebab511cc94a9cb2a9b864fa65e1c",
-    "README.md": "4f8af7830a3c5ae8c74bc7ed47b8e5ec991fcc6c"
+    "numerics/hr_b3c3d6_bn_high_jet_elimination.py": "086b6bae543c0ee497ca9154c5a055921f018423",
+    "tests/test_hr_b3c3d6_bn_high_jet_elimination.py": "bb78fc93db3ad66fd8dd25c3a627220297974adb",
+    "research/reports/gate2b-b3c3d6-BN-high-jet-elimination.json": "dc507b43c5fc69368bbdcc0325d3f89427d37efd",
+    "research/STEP68AD_B3C3D6_BN_HIGH_JET_ELIMINATION_AUDIT.md": "a86367dbfc51f31f8aaf3005b6f58b6436e27ba1",
+    "00_CURRENT_RESTART.md": "862ef23d8891c53861fab2dcb0113b83746467ee",
+    "README.md": "30e90cc53f59af1ebb3097b0c9c6be7853a12e8f"
   },
-  "verified_research_head_at_session_start": "2cc4e429391ada2fd11ab67cb1b512fd137c8736",
-  "next_priority": "Authentic original Step45/58 replay; universal B_N-z*C/Lg-beta*Hg_r on full holonomic Fz=Fz_r=Hg=Hg_r=0 shell; six physical Step58 A/B/E enclosures at exact radii 1/4,1/2,7/10,17/20; two-positive-lapse two-boundary BVP; Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "d7b4e3e046efb4939b2ecbdffb9654381181df20",
+  "next_priority": "Replay authentic SHA Step45/58; reduce first-jet-only R=B_N-z*C/Lg+(1-z²)/(Lg*Lf)*Hg_r after Fz=Hg=0 without frozen jets; prove/refute zero on full primary; physical six Step58 A/B/E enclosures at 1/4,1/2,7/10,17/20; positive two-boundary lapse BVP; Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "d52ba5c063cedb80dd9f7136cfdc3dc4763c084b",
-  "latest_verified_completed_step": "b3c3d6_RESTRICTED_UNIFORM_FROZEN_JET_RADIAL_RESIDUAL_GAP",
-  "next_pending_step": "b3c3d6_UNIVERSAL_BN_LOWER_RESIDUAL_HOLONOMIC_FULL_PRIMARY_SHELL_THEN_STEP55_SIX_ENCLOSURES",
+  "verified_research_head_before_state_file": "d7b4e3e046efb4939b2ecbdffb9654381181df20",
+  "latest_verified_completed_step": "b3c3d6_BN_UNIVERSAL_HIGH_JET_ORDER_REDUCTION_TRANSCRIPTION",
+  "next_pending_step": "b3c3d6_AUTHENTIC_STEP45_STEP58_REPLAY_AND_FIRST_JET_BN_RESIDUAL_IDEAL_TEST",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_THREE_PARAMETER_RADIAL_CLOSURE_BEZOUT_NO_GO.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BN_HIGH_JET_ELIMINATION_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_RESTRICTED_THREE_PARAMETER_RADIAL_CLOSURE_BEZOUT_NO_GO",
+    "latest_stage": "b3c3d6_PARTIAL_UNIVERSAL_HIGH_JET_ORDER_REDUCTION",
     "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim; exact two-parameter nonphysical local family, Hf=b²-1, C=-(25a+24b+12)/20, two Hf=C=0 points: (-36/25,1) A_N=451/50,A_M=-919/250, formal M/N=2255/919 positive; (12/25,-1) A_N=-149/50,A_M=-547/250, formal M/N=-745/547 negative. Both fail Fz_rr,Hf_r,C_r with frozen higher jets, so neither is holonomic Step55 or a BVP.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
@@ -110,30 +110,31 @@
     "three_parameter_no_go_resultant": "4727954587584",
     "three_parameter_no_go_scope": "ONLY frozen remaining jets, not universal full shell or physical Step55",
     "original_step45_step58_executed_this_session": false,
-    "restricted_three_parameter_frozen_slice_uniform_residual_gap": ">7/8 for every real b != 0; exact rational proof; no physical Step55 implication"
+    "restricted_three_parameter_frozen_slice_uniform_residual_gap": ">7/8 for every real b != 0; exact rational proof; no physical Step55 implication",
+    "original_step58_lower_BN_high_jet_elimination": "FOUR_EXACT_COEFFICIENT_IDENTITIES_MULTIPLES_OF_FZ_ON_INDEPENDENT_TRANSCRIPTION",
+    "original_step58_lower_BN_surviving_jet": "Sg_rr_AFFINE_ELIMINATED_BY_Hg_ZERO",
+    "original_step58_lower_BN_remaining_first_jet_residual": "NOT_PROVED_ZERO"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 8,
+    "unittest_cases_passed": 4,
+    "skipped_final": 1,
     "failed_final": 0,
-    "skipped_final": 0,
     "python_compileall_pass": true,
-    "cli_pass": true,
-    "exact_bernstein_cells": 6,
-    "exact_uniform_gap": "max(|Fz_rr|,|C_r|)>7/8 on frozen real b!=0",
+    "exact_high_jet_factors": 4,
+    "independent_transcription_executed": true,
     "original_step45_step58_sha_authenticated_and_executed": false,
     "original_step45_step58_read_via_github": true,
-    "physical_Step58_coefficients_certified": 0,
-    "github_source_and_test_blobs_equal_local_tested_bytes": true
+    "physical_Step58_coefficients_certified": 0
   },
   "github_write_probe": {
-    "status": "SUCCESS",
-    "method": "mcp__GitHub__create_file/update_file",
+    "status": "SUCCESS_EXPECTED_ON_ATOMIC_FAST_FORWARD_COMMIT",
+    "method": "mcp__GitHub__create_blob/create_tree/create_commit/update_ref",
     "branch": "research/gate2b-nonhomothetic-transfer",
     "scientific_files_created": 4,
     "checkpoint_updated": true,
     "state_updated": true,
     "README_updated": true,
-    "readback_verified": true,
+    "readback_verified": false,
     "local_executed_source_blob_matches": true,
     "full_restart_prefix_written": true,
     "full_restart_history_preserved": true,
@@ -155,7 +156,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Universal lower-jet B_N residual on full holonomic primary shell remains unresolved. Physical six Step58 enclosures, positive two-boundary lapse BVP, Dirac/4D/stability/observables not certified. This session proves only a uniform gap on a nonphysical frozen-jet slice.",
+  "current_blocker": "High-jet dependence of lower B_N residual eliminated modulo Fz and Hg, but remaining first-jet residual is not proved zero. Original engines were read via GitHub but not executed locally (DNS). Six physical Step58 enclosures, positive two-boundary BVP, Dirac/4D/stability/observables remain unproved.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -791,5 +792,25 @@
     "tested_bytes_equal_github_blobs": true,
     "physical_originals_executed": 0
   },
-  "latest_session_checkpoint_suffix_exact_preserved": true
+  "latest_session_checkpoint_suffix_exact_preserved": true,
+  "previous_last_reported_tests": {
+    "unittest_cases_passed": 8,
+    "failed_final": 0,
+    "skipped_final": 0,
+    "python_compileall_pass": true,
+    "cli_pass": true,
+    "exact_bernstein_cells": 6,
+    "exact_uniform_gap": "max(|Fz_rr|,|C_r|)>7/8 on frozen real b!=0",
+    "original_step45_step58_sha_authenticated_and_executed": false,
+    "original_step45_step58_read_via_github": true,
+    "physical_Step58_coefficients_certified": 0,
+    "github_source_and_test_blobs_equal_local_tested_bytes": true
+  },
+  "latest_session_source_provenance": {
+    "original_step45_blob": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "original_step58_blob": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "originals_read_via_connector": true,
+    "originals_executed_locally": false,
+    "independent_transcription_sympy_executed": true
+  }
 }
