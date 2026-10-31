@@ -1,3 +1,11 @@
+# JANUS b3c3d6 — contrôle indépendant des boîtes U_ss Step55 (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Les boîtes physiques déjà authentifiées de `G,G_s,G_U` aux quatre vrais rayons permettent, après reconstruction rationnelle de `Ustar±1/10000`, de certifier les bornes strictes ponctuelles `|U_ss|<1/10,1/160,1/590,1/1200` à `r=1/4,1/2,7/10,17/20`. Le signe de `U_ss` reste inconnu. L'identité `pLf''=G+2sG_s+G_U(G-2U)` a été revérifiée par fractions exactes contre les quatre enclosures archivées : négativité maintenue.
+
+Code `numerics/hr_b3c3d6_independent_uss_archive.py`, tests `tests/test_hr_b3c3d6_independent_uss_archive.py`, rapport `research/reports/gate2b-b3c3d6-Uss-pointwise-independent-audit.json`, audit `research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md`. **7 unittest PASS, compileall PASS**, archive d'entrée Git blob SHA vérifiée. **Aucun** moteur original physique ou Step58 rejoué cette session ; six A/B/E, lapses positifs aux deux bords, Dirac/4D/stabilité/observables **non certifiés**. Prochaine étape : vrai Step58 original six coefficients aux quatre rayons puis DOP853 raffinement si nécessaire et BVP positif deux bords.
+
+---
+
 ## JANUS b3c3d6 — certificat physique Step55 à quatre rayons exacts (31/10/2026)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Quatre sources originales Step45/46/55 authentifiées SHA et exécutées ; barrière Step55 256 cellules PASS. Le candidat AD composé `G_s,G_U` a été réellement rejoué sur les originaux aux rayons `1/4,1/2,7/10,17/20`. Le signe `G_U<0` certifié sur les tubes permet une enclosure de `G` par valeurs aux extrémités, **18,5 à 19 fois plus serrée** que l'évaluation naïve ; `G_s>0` et `pLf''<0` aux quatre rayons, `U_s>0` aux trois derniers. **4 unittest PASS, compileall PASS** ; aucune borne Step58 A/B/E, aucun BVP positif deux bords, aucun DOP853 rejoué, aucun Dirac/4D certifié. Sources et tests publiés avec blobs conformes aux octets exécutés. Voir `research/STEP68AD_B3C3D6_AUTHENTIC_PHYSICAL_MONOTONE_G_FOUR_RADII_CERTIFICATE.md`, `research/reports/gate2b-b3c3d6-physical-monotone-G-four-exact-radii.json`, `numerics/hr_b3c3d6_monotone_physical_four_radii.py`, `tests/test_hr_b3c3d6_monotone_physical_four_radii.py`. Prochaine étape : six enclosures Step58 originales puis BVP positif deux bords et Dirac.
