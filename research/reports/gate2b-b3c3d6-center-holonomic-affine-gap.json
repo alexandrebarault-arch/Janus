@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-31",
+  "stage": "b3c3d6_PARTIAL_CENTER_AFFINE_GAP",
+  "scope": "CONDITIONAL_PHYSICAL_CONTINUUM_R_LE_1_OVER_32_ONLY",
+  "source_blobs": {
+    "research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json": "ac961b5b83667a83497497d22a701c24584cb561",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "d7530900082696d7b4fc6f1bd720010da71c37f0"
+  },
+  "domain_r": [
+    "0 (excluded)",
+    "1/32 (included)"
+  ],
+  "comparison": "A_M(actual U_ss)-A_M(holonomic affine U_ss=0), at same r,U,U_s and other shell jets",
+  "normalized_gap_strict": [
+    "63/100000",
+    "13/20000"
+  ],
+  "gap_sign": "STRICTLY_POSITIVE_CONDITIONAL",
+  "original_physical_engines_executed_this_session": false,
+  "tests": {
+    "unittest_pass": 6,
+    "fail": 0,
+    "skip": 0,
+    "compileall": "PASS",
+    "module_cli": "PASS"
+  },
+  "six_original_step58_enclosures": "NOT_CERTIFIED",
+  "positive_two_boundary_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
