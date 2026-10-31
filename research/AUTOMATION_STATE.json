@@ -6,7 +6,14 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "NOT_ATTEMPTED_YET",
+    "status": "SUCCESS",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "old_prompt_characters": 87488,
+    "new_prompt_characters": 88442,
+    "permanent_instructions_preserved": true,
+    "schedule_unchanged": true,
+    "enabled": true,
+    "timezone": "Europe/Paris",
     "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
@@ -14,7 +21,8 @@
     "tests/test_hr_b3c3d6_step55_taylor_residual_endpoint_recovery.py": "582cb9afdd5ab03bf33a5f52d9b7b6190198c528",
     "research/reports/gate2b-b3c3d6-step55-taylor-residual-endpoint-recovery.json": "5f846ef72b6341ee5c544d2a48e3b9dd8228b968",
     "research/STEP68AD_B3C3D6_CORRELATED_STEP55_TAYLOR_RESIDUAL_RECOVERY.md": "bb0be1b454125e0b98a5047193ba031e97ef4ad3",
-    "00_CURRENT_RESTART.md": "dd9fc0c86abca5de5d2ac2d177db85a45ec2f0dd"
+    "00_CURRENT_RESTART.md": "dd9fc0c86abca5de5d2ac2d177db85a45ec2f0dd",
+    "README.md": "ebfc54ebb5b8c62ec3c295fa8d20eabb95c51957"
   },
   "verified_research_head_at_session_start": "c235176a63fb5cc13ed6e61183bea6bc0cfad161",
   "next_priority": "SHA-authenticated original Step58 six A/B/E interval enclosures at exact four radii, exact B/E factorization, continuous Step55 defect refinement if needed, positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
@@ -24,7 +32,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "ffb4ce04074b3f6f20721f541de45a9c9642b5f7",
+  "verified_research_head_before_state_file": "3ed3153691f5b58182d3089bbce57ae480060638",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
@@ -106,7 +114,7 @@
     "scientific_files_created": 4,
     "checkpoint_updated": true,
     "state_updated": true,
-    "README_updated": false,
+    "README_updated": true,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
     "full_physical_four_radius_Step58_replay_this_session": false,
@@ -680,9 +688,11 @@
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
   },
   "latest_session_branch_guard": {
-    "main_sha": "aead63f4098f0d15a849e579105af034b6317b30",
-    "v2_flrw_sha": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
-    "research_branch_only": true
+    "main_before": "aead63f4098f0d15a849e579105af034b6317b30",
+    "main_after": "aead63f4098f0d15a849e579105af034b6317b30",
+    "v2_before": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "v2_after": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb",
+    "workflows_modified": false
   },
   "latest_session_original_sources_read": {
     "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
