@@ -8,8 +8,8 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 81735,
-    "new_prompt_characters": 82837,
+    "old_prompt_characters": 82837,
+    "new_prompt_characters": 83760,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
@@ -17,31 +17,31 @@
     "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_monotone_physical_four_radii.py": "c68eba7cf5eba4679c437b8d6c82d00455e2dbfa",
-    "tests/test_hr_b3c3d6_monotone_physical_four_radii.py": "1e5d0fffecac6d410471c25391c73f240d416ce4",
-    "research/reports/gate2b-b3c3d6-physical-monotone-G-four-exact-radii.json": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
-    "research/STEP68AD_B3C3D6_AUTHENTIC_PHYSICAL_MONOTONE_G_FOUR_RADII_CERTIFICATE.md": "a32a8aef43f2baeedac711d5e79150bf12c7d2a1",
-    "README.md": "c38228fedfb949f1feade3e2cc8f4660030a7a05",
-    "00_CURRENT_RESTART.md": "ad6b6581d7d40958da8dffeeec9e9983a252c275"
+    "numerics/hr_b3c3d6_independent_uss_archive.py": "801ca6c384d1b12f8443e5b8624f416f6954c618",
+    "tests/test_hr_b3c3d6_independent_uss_archive.py": "118dbaaf8e2493679fd1c4460d736e95c8088ed6",
+    "research/reports/gate2b-b3c3d6-Uss-pointwise-independent-audit.json": "f07733027344a93fb67e32853672b1ebb2099836",
+    "research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md": "ae2d66326d0e829492c90b7ce01338194153048b",
+    "README.md": "95556012832bbda737e79f259adfe0b306df2816",
+    "00_CURRENT_RESTART.md": "267d538944d5c7e81636b1b254c05179b0754105"
   },
-  "verified_research_head_at_session_start": "b38ef125ed8fadb5b48c76a19ce8694d3413120b",
-  "next_priority": "Execute original SHA-authenticated Step58 with certified Step55 monotone endpoint U,G,G_s,G_U and U_s,U_ss,pLf'' at exact radii 1/4,1/2,7/10,17/20; obtain six A/B/E enclosures and exact cancellations; if boxes too wide refine exact-radius DOP853. Then positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "d6758b93b7294fda5f147c3a26c23df0bfeaea3d",
+  "next_priority": "Execute SHA-authenticated original Step58 on exact Step55 pointwise U/U_s/U_ss jets at four exact radii, certify all six A/B/E coefficient enclosures and exact cancellations, refine with exact-radius DOP853 as needed, then global positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "245f8b0355ba683353f1e116b52d9634a09b4f26",
+  "verified_research_head_before_state_file": "ea3432cdf6beb04dd89035743a0610ecfd52c956",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_PHYSICAL_MONOTONE_G_FOUR_RADII_CERTIFICATE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_AUTHENTIC_PHYSICAL_COMPOSED_G_S_G_U_FOUR_RADII_MONOTONE_INTERVAL_ENCLOSURES",
-    "last_step_scope": "Four original Step45/46/55 blobs SHA-authenticated and physically executed; 256-cell original barrier PASS; composed interval AD physically evaluated at four exact radii; G_U<0 and G_s>0, pLf''<0 at all four, U_s>0 at last three. Monotone G endpoint enclosures ~18.5-19x tighter than naive natural interval. Step58 six coefficients and BVP/Dirac not certified.",
+    "latest_stage": "b3c3d6_PARTIAL_INDEPENDENT_EXACT_RATIONAL_STEP55_POINTWISE_U_SS_BUDGET",
+    "last_step_scope": "Authenticated original four-radius physical interval JSON, exact-rational recombination of Step55 U0/U1/U2, G/G_s/G_U and U_ss. Strict bounds |U_ss|<1/10,1/160,1/590,1/1200 at r=1/4,1/2,7/10,17/20; U_ss sign unresolved. Independent pLf''<0 inclusion checks at four points. No original physics engines replayed this run, no Step58 six coefficients.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -56,19 +56,36 @@
     "physical_G_s_total_composed": "CERTIFIED_AT_FOUR_EXACT_RADII_ONLY",
     "direct_second_jet_route": "EXACT_CONDITIONAL_NO_G_SU_OR_G_UU_REQUIRED",
     "physical_pLf_second_negative_at_four_radii": true,
-    "physical_U_s_positive_at_three_outer_radii": true
+    "physical_U_s_positive_at_three_outer_radii": true,
+    "physical_U_ss_four_radii_abs_strict_bounds": [
+      "1/10",
+      "1/160",
+      "1/590",
+      "1/1200"
+    ],
+    "physical_U_ss_four_radii_exact_r": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "physical_U_ss_four_radii_sign": "UNRESOLVED",
+    "physical_pLf_second_negative_independently_recombined_from_archive": true
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 4,
+    "unittest_cases_passed": 7,
     "failed_final": 0,
+    "skipped_final": 0,
     "python_compileall_pass": true,
     "original_step45_46_55_58_executed_this_session": false,
-    "original_step45_46_55_executed_this_session": true,
+    "original_step45_46_55_executed_this_session": false,
     "original_step58_executed_this_session": false,
     "physical_DOP853_candidate_executed_this_session": false,
     "physical_Step58_coefficients_certified": 0,
-    "physical_G_s_total_certified": true,
-    "github_source_and_test_blobs_equal_local_tested_bytes": true
+    "archive_sha_authenticated": true,
+    "archive_local_fixture_git_blob_equal": true,
+    "github_source_and_test_blobs_equal_local_tested_bytes": true,
+    "four_negative_controls_passed": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -100,7 +117,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Original Step55 physical G_s/G_U and direct jets now certified at four exact radii with monotone endpoint sharpening; original Step58 six coefficient interval propagation and global positive two-boundary lapse BVP remain unexecuted/uncertified. DOP853 not replayed in this session; U_ss sign remains indeterminate.",
+  "current_blocker": "Six original Step58 A_N/A_M/B_N/B_M/E_N/E_M interval enclosures and positive two-boundary lapse BVP remain unexecuted/uncertified. New U_ss bounds are only pointwise and inherit the previous physical Step55 boxes; no original physics replay this run.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -109,7 +126,7 @@
     "tests/test_hr_step68ad_c2d2a_temporal_replay.py": "1efb3dc7515c5af00cd487bc98aa49ad6edcf8d9",
     "research/STEP68AD_C2D2B_INTERFACE_GUARD_AUDIT.md": "f24af3485b68b264c3088258fa6752a38d61008a",
     "research/reports/gate2b-step68ad-C2d2b-interface-guard.json": "7b9f3b21a3bc88801d9602b54a0ef9b8ded111bc",
-    "00_CURRENT_RESTART.md": "550bc4abed49f591ce670da70729321831a6e03b",
+    "00_CURRENT_RESTART.md": "267d538944d5c7e81636b1b254c05179b0754105",
     "research/STEP68AD_C2D2B_SIGN_ENCLOSURE_INTEGRITY_AUDIT.md": "d154d54d767224edb24016a6c8109c05c357aa8a",
     "research/reports/gate2b-step68ad-C2d2b-sign-enclosure-integrity.json": "8007c76e369ef07198f8797db47b15bf1a2b86ac",
     "numerics/hr_step68ad_c2d2b_shift_second_jet.py": "b10085e6c8cbfc562f3b2cc1a120eb6448535a57",
@@ -132,7 +149,7 @@
     "tests/test_hr_step68ad_c2d2e_bn_psf_transversality.py": "a2f715c3bd8925ecfae4cc0c92e80587db36c1c2",
     "research/reports/gate2b-step68ad-C2d2e-Step60-BN-pSf-transversality.json": "0edd2a168efea3064abf9b948fb5c6de61293496",
     "research/STEP68AD_C2D2E_STEP60_BN_PSF_TRANSVERSALITY.md": "f5921c5a602a0aa2ae47dbf735cd2129c680baea",
-    "README.md": "a3340f0daf053eb137cfe320e4f6baeb2d6095ba",
+    "README.md": "95556012832bbda737e79f259adfe0b306df2816",
     "numerics/hr_step68ad_c2d2e2_spatial_shell_closure.py": "63deac8423b9352cd3ed0c37c66247648e3d876b",
     "tests/test_hr_step68ad_c2d2e2_spatial_shell_closure.py": "f551d7ab14323424da478befd95617413e969274",
     "research/reports/gate2b-step68ad-C2d2e2-conditional-spatial-shell.json": "30d69cbe0796cba9851cdd48d21d15c6f8b33349",
@@ -298,7 +315,11 @@
     "research/STEP68AD_B3C3D6_HOLONOMIC_CUBIC_THIRD_JET_CORRECTION.md": "9d09b16df2c535b5500f1af197aa4c61ade06b7a",
     "numerics/hr_b3c3d6_composed_dual_interval_jets.py": "170598ab5ceff3ba6e9fa26575b4c0fed3a36c0a",
     "tests/test_hr_b3c3d6_composed_dual_interval_jets.py": "9d35930b07603e94e40088e81eea887d6d5d87a2",
-    "research/STEP68AD_B3C3D6_COMPOSED_INTERVAL_AD_PHYSICAL_JETS_EXECUTION_CANDIDATE.md": "969be0107e8afa724c540c65403e6df0b81bfa6c"
+    "research/STEP68AD_B3C3D6_COMPOSED_INTERVAL_AD_PHYSICAL_JETS_EXECUTION_CANDIDATE.md": "969be0107e8afa724c540c65403e6df0b81bfa6c",
+    "numerics/hr_b3c3d6_independent_uss_archive.py": "801ca6c384d1b12f8443e5b8624f416f6954c618",
+    "tests/test_hr_b3c3d6_independent_uss_archive.py": "118dbaaf8e2493679fd1c4460d736e95c8088ed6",
+    "research/reports/gate2b-b3c3d6-Uss-pointwise-independent-audit.json": "f07733027344a93fb67e32853672b1ebb2099836",
+    "research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md": "ae2d66326d0e829492c90b7ce01338194153048b"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
