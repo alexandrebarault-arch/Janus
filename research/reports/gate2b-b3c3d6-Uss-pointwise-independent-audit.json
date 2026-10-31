@@ -1,0 +1,60 @@
+{
+  "step": "b3c3d6_PARTIAL_INDEPENDENT_ARCHIVED_STEP55_U_SS_BUDGET",
+  "provenance": {
+    "archived_physical_boxes_blob": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
+    "original_step55_barrier_blob": "a6e7004120d0a166a3a8973c2fbe1487a8eb70fe",
+    "original_step58_blob": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "method": "Exact rational reconstruction of Step55 U0 via isqrt at 10^-40, exact U1/U2 intervals and archived G,G_s,G_U; interval formula U_ss=(G_s+(G_U-4)*(G-2U)/(2s))/(2s).",
+  "strict_pointwise_bounds": [
+    {
+      "r": "1/4",
+      "s": "1/16",
+      "U_ss_abs_lt": "1/10",
+      "approx_U_ss": [
+        -0.09682571743204924,
+        0.09678417231071543
+      ]
+    },
+    {
+      "r": "1/2",
+      "s": "1/4",
+      "U_ss_abs_lt": "1/160",
+      "approx_U_ss": [
+        -0.006223060875736609,
+        0.006181851925921783
+      ]
+    },
+    {
+      "r": "7/10",
+      "s": "49/100",
+      "U_ss_abs_lt": "1/590",
+      "approx_U_ss": [
+        -0.001686532724772144,
+        0.001645746464912056
+      ]
+    },
+    {
+      "r": "17/20",
+      "s": "289/400",
+      "U_ss_abs_lt": "1/1200",
+      "approx_U_ss": [
+        -0.0008101005611650391,
+        0.000769445996959889
+      ]
+    }
+  ],
+  "independent_pLf_second_negative_checks": 4,
+  "tests": {
+    "unittest_pass": 7,
+    "fail": 0,
+    "skip": 0,
+    "compileall": "PASS",
+    "archive_git_blob_identical_to_reconstructed_test_fixture": true
+  },
+  "scope": "Recombination of previous physical pointwise enclosures; original physics engines not executed in this session; not six Step58 coefficient enclosures.",
+  "Step58_six_A_B_E": "NOT_CERTIFIED",
+  "positive_two_boundary_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
