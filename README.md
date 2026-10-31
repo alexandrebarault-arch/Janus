@@ -1,3 +1,5 @@
+> **JANUS / recherche b3c3d6, 31/10/2026 — PARTIEL :** les entrées physiques ponctuelles `pLf,pLf_r,pLf_rr` sont enclosées par fractions et strictement négatives aux quatre rayons exacts ; archive Step55 SHA authentifiée, 2 tests PASS. Aucune enclosure des six coefficients Step58 ni BVP positif deux bords ; `GATE_2B OPEN`, `JANUS_R NOT_VALIDATED`. Audit : `research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md`. Prochaine étape inchangée : original Step58 six A/B/E, factorisation, DOP853 si nécessaire, BVP puis Dirac/4D.
+
 # JANUS b3c3d6 — contrôle indépendant des boîtes U_ss Step55 (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** Les boîtes physiques déjà authentifiées de `G,G_s,G_U` aux quatre vrais rayons permettent, après reconstruction rationnelle de `Ustar±1/10000`, de certifier les bornes strictes ponctuelles `|U_ss|<1/10,1/160,1/590,1/1200` à `r=1/4,1/2,7/10,17/20`. Le signe de `U_ss` reste inconnu. L'identité `pLf''=G+2sG_s+G_U(G-2U)` a été revérifiée par fractions exactes contre les quatre enclosures archivées : négativité maintenue.
