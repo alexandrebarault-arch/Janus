@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : DEUX BRANCHES SECONDAIRES LOCALES ET CONTRÔLE NÉGATIF D'HOLONOMIE (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de la branche recherche vérifié avant publication du checkpoint : `501cccef24c93b466f74b02ec492d1e30602b15d`. Step45 original blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 original blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` : octets reconstitués, SHA Git vérifiés et moteurs originaux **réellement exécutés** avec shim Step57 minimal (Step57 complet NON exécuté).
+
+**RÉSULTAT EXACT, LOCAL ET NON PHYSIQUE :** sur la famille précédente à `K=1,z=3/5,pg=7/4,pf=1`, `a=z_r,b=Sf_r`, les quatre contraintes `Fz=Fz_r=Hg=Hg_r=0` donnent `Hf=b²-1`, `C=-(25a+24b+12)/20`, `B_N=3C/5`, `B_M=E_N=E_M=0`, ainsi que les polynômes exacts `A_N=(1200ab-3775a-2048b²+2952b+4408)/1000`, `A_M=(625a²-9600ab+3600a+2400b²-4704b-22336)/4000`. Imposer `Hf=C=0` sélectionne exactement `(a,b)=(-36/25,1)` avec `(A_N,A_M)=(451/50,-919/250)` et ratio formel `M/N=2255/919>0`, ou `(12/25,-1)` avec `(A_N,A_M)=(-149/50,-547/250)` et ratio formel négatif `-745/547`, donc aucune paire positive pour la **seule équation ponctuelle** de cette branche.
+
+**CONTRÔLE NÉGATIF DÉCISIF :** `(Fz_{rr},Hf_r,C_r)` vaut respectivement `(65/64,-51/16,349/100)` et `(-191/64,113/16,-59/100)` sur les deux branches. Les jets gelés ne sont donc PAS une solution radiale des contraintes fonctionnelles ; ces signes ne prouvent rien sur le BVP physique Step55. AUCUNE factorisation universelle de `B_N` ni enclosure physique des six A/B/E n'est obtenue.
+
+**EXÉCUTION :** 10 unittest PASS, 0 FAIL/0 SKIP après correction d'un premier échec de comparaison SymPy structurelle ; `python -m compileall -q numerics tests` PASS ; CLI du certificat PASS. Fichiers GitHub publiés et relus, blobs égaux aux octets exécutés : `numerics/hr_b3c3d6_step58_two_branch_secondary_lapse.py` `5779c731313055f34a9b70a02f1767f24cd703bb` ; `tests/test_hr_b3c3d6_step58_two_branch_secondary_lapse.py` `197f050d3ae93d4f92aba12c044ee2c343330295` ; `research/reports/gate2b-b3c3d6-Step58-two-branch-secondary-lapse.json` `64b392d64167d6db95644764bb0497848924af6b` ; audit `research/STEP68AD_B3C3D6_TWO_BRANCH_SECONDARY_LAPSE_AND_HOLONOMIC_AUDIT.md` `98e761b0f584af0c245c7d7162f3db9c5d5f82de` ; README `332f76623dc807bd5b38c2b6d5b9dace3765cdd3`. `main`, `research/v2-flrw` et workflows inchangés.
+
+**PROCHAINE ÉTAPE b3c3d6 :** prouver ou réfuter le résidu inférieur universel `B_N-z*C/Lg-beta*Hg_r` sur `Fz=Fz_r=Hg=Hg_r=0` **avec jets holonomes** ; puis Step55 `C=0` et six enclosures originales `A_N,A_M,B_N,B_M,E_N,E_M` aux quatre rayons `1/4,1/2,7/10,17/20`, DOP853 rigoureux si besoin, BVP de deux lapses strictement positifs aux deux vrais bords, Dirac/4D/stabilité/observables. **TOUT L'HISTORIQUE ANTÉRIEUR EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : TRANCHE PRIMAIRE EXACTE À DEUX PARAMÈTRES (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub vérifié au démarrage : `7da475400f486a9ad0b62e7a6aa0b7333bee04c8`. Sources originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f` reconstruits octet pour octet, importés et **réellement exécutés** avec shim Step57 minimal (Step57 complet non exécuté).
