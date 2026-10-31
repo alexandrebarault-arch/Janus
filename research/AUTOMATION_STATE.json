@@ -6,24 +6,22 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
+    "status": "NOT_ATTEMPTED_THIS_SESSION",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
     "old_prompt_characters": 76699,
     "new_prompt_characters": 77719,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
-    "next_step_marker": "b3c3d6_CERTIFY_PHYSICAL_G_SU_G_UU_SECOND_ODE_JET_AND_BINARY64_TO_EXACT_RADIUS_THEN_SIX_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_BVP"
+    "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DENSE_AT_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_AND_U_SS_THEN_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_endpoint_ode_jet_transfer.py": "06bc2eaf9bce60e70f0e05b85cce3b8f385e04ea",
-    "tests/test_hr_b3c3d6_endpoint_ode_jet_transfer.py": "5476716f4abd8e9a86681a3812177668a739a345",
-    "research/STEP68AD_B3C3D6_EXACT_STEP55_ENDPOINT_ODE_JET_TRANSFER_AND_STEP58_LIMITS.md": "abe1da916b278fd2fd58705c710a17e177f1bcd8",
-    "README.md": "a7f1e336fd8d47e8c9e3c8ed4519a85948da5750",
-    "00_CURRENT_RESTART.md": "6baeb9dbb21434e98016609412da9fe5dbd7bc54"
+    "numerics/hr_b3c3d6_exact_radius_prefix_ledger.py": "bb88b8eb407ca4b2c05f43d5bc1862544ceb4391",
+    "tests/test_hr_b3c3d6_exact_radius_prefix_ledger.py": "28e22099c95931b5e7c74fe0a6d340008abaf7b7",
+    "research/STEP68AD_B3C3D6_BINARY64_OVERSHOOT_AND_EXACT_RADIUS_PREFIX_CERTIFICATE.md": "e26556cc057322561a8bc2c90ef915785250c06f"
   },
-  "verified_research_head_at_session_start": "b024b82b66d29d24e183445cd4f0c79316c19ed0",
-  "next_priority": "Certify original physical G_sU, G_UU, F on common Step55 tube to bound second ODE jet; transport binary64 endpoint to exact r=17/20 and all four Step58 radii; then six original A/B/E enclosures, factorization, strictly positive two-boundary lapse BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "62976a37358229f13a4139afc3bafae6705aa2f9",
+  "next_priority": "Replay physical DOP853 dense partition and evaluate P at exact r=17/20 and four Step58 radii; certify G_sU/G_UU/F on original tube, U_ss, six original Step58 A/B/E enclosures and strictly positive two-boundary lapse BVP, then Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -32,22 +30,24 @@
   "research_branch": "research/gate2b-nonhomothetic-transfer",
   "verified_research_head_before_state_file": "62976a37358229f13a4139afc3bafae6705aa2f9",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_CERTIFY_PHYSICAL_G_SU_G_UU_SECOND_ODE_JET_AND_BINARY64_TO_EXACT_RADIUS_THEN_SIX_STEP58_ENCLOSURES_AND_POSITIVE_TWO_BOUNDARY_BVP",
+  "next_pending_step": "b3c3d6_REPLAY_PHYSICAL_DENSE_AT_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_AND_U_SS_THEN_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_EXACT_STEP55_ENDPOINT_ODE_JET_TRANSFER_AND_STEP58_LIMITS.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BINARY64_OVERSHOOT_AND_EXACT_RADIUS_PREFIX_CERTIFICATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_STEP55_BINARY64_TERMINAL_FIRST_ODE_JETS_SECOND_JET_UNCERTIFIED",
-    "last_step_scope": "Exact rational transfer of previously certified Step55 terminal U error and common-tube G_U into ODE-consistent U_s, pLf=sU, and pLf_prime/r=G at binary64 s_end; 5 local tests PASS. No original physical Step55/Step58 rerun this session. Second jet requires G_sU/G_UU physical enclosures; exact radius transport and six Step58 coefficients/BVP/Dirac/4D remain open.",
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_RADIUS_PREFIX_LEDGER_CORRECTS_BINARY64_OVERSHOOT",
+    "last_step_scope": "Identified binary64 endpoint beyond Step55 certified tube; physical error at binary endpoint NOT certified. Exact nonnegative ledger prefix at s*=289/400 gives conditional U and first ODE jet errors at true r=17/20. No original physics rerun or U_ss/Step58 coefficient/BVP proof.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
     "binary64_s_end": "6507701461550367/9007199254740992",
-    "physical_r_exact_transport": "NOT_CERTIFIED"
+    "physical_r_exact_transport": "CONDITIONAL_FIRST_ODE_JETS_CERTIFIED_AT_17_OVER_20_BY_PREFIX_LEDGER",
+    "binary64_terminal_physical_error": "NOT_CERTIFIED_OUTSIDE_ORIGINAL_TUBE",
+    "second_ode_jet_physical_enclosure": "NOT_CERTIFIED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 5,
+    "unittest_cases_passed": 7,
     "failed_final": 0,
     "python_compileall_pass": true,
     "new_source_module_executed": true,
@@ -90,7 +90,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical outgoing interval bounds for G_sU, G_UU and F on same Step55 tube, plus binary64-to-exact-radius transport and exact Step58 coefficient dependency/enclosures; terminal first-jet ODE bounds do not certify the six A/B/E or a positive two-boundary lapse BVP.",
+  "current_blocker": "Physical G_sU/G_UU/F on common Step55 tube, exact dense P(s*) extraction, U_ss and six Step58 enclosures/BVP. Corrected scope: no physical error certificate at binary64 s_b outside original tube; exact-radius prefix ledger valid conditionally at s*=289/400.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
