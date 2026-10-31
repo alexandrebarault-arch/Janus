@@ -6,42 +6,38 @@
     "status": "NO_CLEANUP_NEEDED"
   },
   "latest_session_automation_update": {
-    "status": "SUCCESS",
-    "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 91485,
-    "new_prompt_characters": 92516,
-    "permanent_instructions_preserved": true,
+    "status": "PENDING_OPTIONAL_PROMPT_MARKER_UPDATE",
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_ORIGINAL_STEP58_BN_LOWER_RESIDUAL_ON_FULL_HG_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES"
+    "next_step_marker": "b3c3d6_UNIVERSAL_BN_LOWER_RESIDUAL_FULL_PRIMARY_SHELL_THEN_STEP55_SIX_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step58_BN_lower_jet_witness.py": "e49d8c61d24528ff88198d486d8b07996b7108a2",
-    "tests/test_hr_b3c3d6_step58_BN_lower_jet_witness.py": "1110a9ebb368bb9470093b5a9a57d08e557d75fb",
-    "research/reports/gate2b-b3c3d6-Step58-BN-lower-jet-primary-necessity.json": "df15cf758f7307fcd41d77eea69b08270f78dfc1",
-    "research/STEP68AD_B3C3D6_BN_LOWER_JET_PRIMARY_NECESSITY_WITNESS.md": "dcc0eb27349edd2970d2f10075fa0f879ad141cf",
-    "README.md": "0de3b89e5aa9d32e328372aea9f1815fb75b0eed",
-    "00_CURRENT_RESTART.md": "76eb116d343a27be59b61ac7f3671e74b00c4fe6"
+    "numerics/hr_b3c3d6_step58_two_parameter_primary_shell.py": "93ae66920b69d8da0f439d54b9d04a1f3338cac8",
+    "tests/test_hr_b3c3d6_step58_two_parameter_primary_shell.py": "a1631a005931ca5291e8362d92c928f9b000d6be",
+    "research/reports/gate2b-b3c3d6-Step58-two-parameter-primary-shell.json": "7e951cfe36348c5282e8033ff9c6bd9f79590e02",
+    "research/STEP68AD_B3C3D6_TWO_PARAMETER_PRIMARY_SHELL_AUDIT.md": "fa9302cf043c038a968895e0d537799a6bf52a8b",
+    "README.md": "0cf252151994c8a1525cca62e570a0719ddafc07",
+    "00_CURRENT_RESTART.md": "e9c93cad4bad95d3fc24e367f75568b5e2b33693"
   },
-  "verified_research_head_at_session_start": "35f28ea03e3fe55ca09535eb487b8c43e6395151",
-  "next_priority": "Prove/refute lower residual B_N-z*C/Lg-beta*Hg_r on FULL Fz=Fz_r=Hg=Hg_r=0 shell; a new exact one-parameter witness proves the residual need not vanish if Hg is omitted, even with Fz=Fz_r=Hg_r=Hf=C=0. Then Step55 physical six A/B/E enclosures at 1/4,1/2,7/10,17/20, two-positive-lapse BVP, Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "7da475400f486a9ad0b62e7a6aa0b7333bee04c8",
+  "next_priority": "Universal exact factorization or counterexample for BN-z*C/Lg-beta*Hg_r on full Fz=Fz_r=Hg=Hg_r=0 shell; then Step55 C=0 physical six Step58 A/B/E enclosures at 1/4,1/2,7/10,17/20; positive two-boundary BVP; Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "456a47e4a31a2d70e1e6e6ff7cb5f7637dbc4637",
+  "verified_research_head_before_state_file": "23af9678a52778ed5e91ba8c4111883cc3652bba",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
-  "next_pending_step": "b3c3d6_ORIGINAL_STEP58_BN_LOWER_RESIDUAL_ON_FULL_HG_SHELL_THEN_PHYSICAL_SIX_ENCLOSURES",
+  "next_pending_step": "b3c3d6_UNIVERSAL_BN_LOWER_RESIDUAL_FULL_PRIMARY_SHELL_THEN_STEP55_SIX_ENCLOSURES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_BN_LOWER_JET_PRIMARY_NECESSITY_WITNESS.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_TWO_PARAMETER_PRIMARY_SHELL_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_EXACT_BN_LOWER_RESIDUAL_NONZERO_OFF_HG_PRIMARY",
-    "last_step_scope": "Authentic original Step45/58 executed with minimal Step57 shim. On exact nonphysical one-parameter family K=1,z=3/5,pg=7/4,pf=1,Fz=Fz_r=Hg_r=Hf=C=B_M=E_M=0, Hg=2t, B_N=-416t/125, E_N=-32t/25; lower residual B_N-zC/Lg-beta Hg_r=-208Hg/125 on THIS family. No counterexample to full Fz=Hg=0 shell; universal BN factorization remains open.",
+    "latest_stage": "b3c3d6_PARTIAL_EXACT_TWO_PARAMETER_FULL_PRIMARY_LOCAL_SHELL",
+    "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim. Two-parameter nonphysical local family a=z_r,b=Sf_r, K=1,z=3/5, positive dust, Fz=Fz_r=Hg=Hg_r=0, C=-(25a+24b+12)/20, BN=3*C/5, BM=EN=EM=0; C=0 on b=-(25a+12)/24. Universal BN ideal membership and physical Step55 NOT proved.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -101,12 +97,14 @@
     "original_step58_universal_B_factorization": "PARTIAL_BM_ONLY",
     "original_step58_universal_BM_factorization": "PROVED_EXACT_ON_Fz_ZERO_WITH_Fzr_FACTOR",
     "original_step58_universal_BN_factorization": "NOT_PROVED_OR_REFUTED_ON_FULL_PRIMARY_SHELL",
-    "original_step58_lower_jet_primary_necessity_witness": "EXACT_NONPHYSICAL_1_PARAMETER_HG_OMISSION_COUNTEREXAMPLE"
+    "original_step58_lower_jet_primary_necessity_witness": "EXACT_NONPHYSICAL_1_PARAMETER_HG_OMISSION_COUNTEREXAMPLE",
+    "original_step58_two_parameter_primary_shell_exact": true
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 8,
+    "unittest_cases_passed": 9,
     "failed_final": 0,
     "skipped_final": 0,
+    "initial_sympy_structural_equality_failures_corrected": 4,
     "python_compileall_pass": true,
     "cli_pass": true,
     "original_step45_step58_sha_authenticated_and_executed": true,
@@ -126,10 +124,9 @@
     "README_updated": true,
     "readback_verified": true,
     "local_executed_source_blob_matches": true,
-    "original_step58_exact_full_BM_factor_this_session": false,
-    "full_physical_four_radius_Step58_replay_this_session": false,
     "full_restart_prefix_written": true,
-    "full_restart_history_preserved": true
+    "full_restart_history_preserved": true,
+    "physical_step58_enclosures_certified": 0
   },
   "required_per_run": [
     "Read current branch HEAD and top of 00_CURRENT_RESTART.md",
@@ -147,7 +144,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The full-shell BN lower-jet residual is NOT proved zero or refuted; the new exact witness shows Hg cannot be omitted. Six physical Step55 A/B/E enclosures, two-positive-lapse BVP, Dirac/4D/stability/observables remain open.",
+  "current_blocker": "Universal lower residual BN-z*C/Lg-beta*Hg_r remains unproved on Fz=Fz_r=Hg=Hg_r=0. Two-parameter exact family only verifies it on a nonphysical slice; Step55 physical six A/B/E enclosures, positive two-boundary BVP, Dirac/4D/stability/observables remain open.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
