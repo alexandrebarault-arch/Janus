@@ -12,7 +12,7 @@ Sur la géométrie Step55 : `s=r^2`, `z=Z1*r`, `Sf=r*Lf`, `K=m2*Mg2*Lg*Lf*r^2*T(
 
 `-dA_M/dU_ss = C(r)*sqrt(1-Z1^2*s)/(1+q)`, avec `C(r)=2*Z1*m2*Mg2*r^6*T/(Mf2*Lf*Sfr)` et `q=s*U*KF/(2*Mf2*Sfr*beta)`.
 
-En utilisant uniquement les constantes rationnelles Step55 et **la barrière globale U déjà certifiée**, `-67/12500<U<-229/50000<0`, l'arithmétique rationnelle donne `1/10<T(s)<1/9`, `0<q<1/500`, `Sfr>0` sur `0<=s<=289/400`. Donc **globalement**, pour `0<r<=17/20`, `dA_M/dU_ss<0` et
+En utilisant uniquement les constantes rationnelles Step55 et **la barrière globale U déjà certifiée**, `-67/12500<U<-229/50000<0`, l'arithmétique rationnelle donne `1/10<T(s)<1/9`, `0<=q<1/500`, `Sfr>0` sur `0<=s<=289/400` (et `q>0` si `s>0`). Donc **globalement**, pour `0<r<=17/20`, `dA_M/dU_ss<0` et
 
 `C(r)*(1-Z1^2*s)/(1+qmax(s)) < -dA_M/dU_ss < C(r)`, où `qmax(s)=s*(-67/12500)*KF/(2*Mf2*Sfr(s))`.
 
