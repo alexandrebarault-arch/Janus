@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉSIDU INFÉRIEUR B_N NON NUL HORS Hg=0 (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `35f28ea03e3fe55ca09535eb487b8c43e6395151`. **Original Step45** blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et **original Step58** blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` reproduits octet pour octet et **exécutés** avec un shim Step57 minimal (Step57 complet NON exécuté).
+
+**NOUVEAU TÉMOIN ALGÉBRIQUE EXACT NON PHYSIQUE :** sur une famille à paramètre `t=Sg_rr` avec `K=1,z=3/5,pg=7/4>0,pf=1>0`, `Fz=Fz_r=Hg_r=Hf=C=B_M=E_M=0` identiquement ; mais `Hg=2t`, `B_N=-416t/125`, `E_N=-32t/25`. Le résidu de jets inférieurs après retrait de `beta*Hg_r` (`beta=-(1-z²)/(Lg Lf)`) vaut **`B_N-zC/Lg-beta Hg_r=-208Hg/125` sur cette famille uniquement**. À `t=1`, le résidu vaut `-416/125` alors que les autres équations listées s'annulent. **Ceci réfute la disparition automatique du résidu en n'imposant que Fz,Fz_r,Hg_r=0 (même C=Hf=0) ; ne réfute PAS la conjecture sur la coquille physique complète, puisque Hg=2 ≠0.** À `t=0`, Hg=B_N=E_N=0. La factorisation universelle antérieure de B_M reste valide.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_step58_BN_lower_jet_witness.py' -v` : **8 PASS, 0 FAIL, 0 SKIP** ; `python -m compileall -q numerics tests` : **PASS** ; CLI du module : **PASS**. Tests SymPy non indépendants des originaux. Rejeu Step46/55, DOP853 physique, six enclosures A/B/E, BVP positif aux deux vrais bords, Dirac/4D/stabilité/observables **NON effectués ou NON certifiés**.
+
+**FICHIERS PUBLIÉS ET SHA BLOBS RELUS :** `numerics/hr_b3c3d6_step58_BN_lower_jet_witness.py` `e49d8c61d24528ff88198d486d8b07996b7108a2` = octets exécutés ; `tests/test_hr_b3c3d6_step58_BN_lower_jet_witness.py` `1110a9ebb368bb9470093b5a9a57d08e557d75fb` = octets testés ; `research/reports/gate2b-b3c3d6-Step58-BN-lower-jet-primary-necessity.json` `df15cf758f7307fcd41d77eea69b08270f78dfc1` = CLI ; `research/STEP68AD_B3C3D6_BN_LOWER_JET_PRIMARY_NECESSITY_WITNESS.md` `dcc0eb27349edd2970d2f10075fa0f879ad141cf` ; `README.md` préfixé. Branches `main` et `research/v2-flrw` et workflows intouchés.
+
+**PROCHAINE ÉTAPE b3c3d6 :** factoriser ou réfuter **le résidu inférieur B_N sur la coquille COMPLÈTE `Fz=Fz_r=Hg=Hg_r=0`**, sans confondre avec le témoin hors Hg=0 ; imposer C=0 sur vraie Step55, encloser les **six** `A_N,A_M,B_N,B_M,E_N,E_M` aux rayons exacts `1/4,1/2,7/10,17/20`, DOP853 exact si nécessaire, BVP de lapses strictement positifs aux deux vrais bords, puis Dirac/4D/stabilité/observables. **HISTORIQUE ANTÉRIEUR INTÉGRALEMENT CONSERVÉ CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : B_M UNIVERSELLEMENT FACTORISÉ SUR Fz=0 (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de la branche recherche lu au démarrage : `65375bbd907437077bcf19f66b79454855c24430`. Sources originales Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, **octets Git authentifiés et opérateur original exécuté** avec shim d'import Step57 minimal. **NOUVEAU THÉORÈME UNIVERSEL EXACT, mais limité à B_M :** sur `K>0,Lg>0,Lf>0,|z|<1` et `Fz=0`, `B_M=-3z(1-z²)/(Lg Lf²)*D_r Fz`. Donc `Fz=Fz_r=0 => B_M=0` pour tous les autres jets canoniques et paramètres admissibles. Preuve machine : substitution de `pLg_r` obtenue par `Fz=0`, expansion et `cancel` du résidu **complet** du vrai Step58, exactement zéro ; contrôle de degré quadratique en `pLg_r`.
