@@ -8,13 +8,13 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 78812,
-    "new_prompt_characters": 79797,
+    "old_prompt_characters": 79797,
+    "new_prompt_characters": 80859,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DOP853_EXACT_FOUR_RADII_CERTIFY_G_SU_G_UU_F_THEN_U_SS_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
+    "next_step_marker": "b3c3d6_REPLAY_PHYSICAL_DOP853_FOUR_EXACT_RADII_CERTIFY_COMPOSED_G_S_G_U_G_F_THEN_DIRECT_U_SS_PLF_SECOND_AND_SIX_STEP58_ENCLOSURES_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d6_direct_first_partial_jet_enclosure.py": "7fc1a2b775e4407e2ba9f79ed8934ad588147b24",
