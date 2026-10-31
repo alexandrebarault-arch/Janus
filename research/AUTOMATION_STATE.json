@@ -17,13 +17,13 @@
     "next_step_marker": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_step58_plf_input_certificate.py": "7655039bcfb9878262f8d63051f53f17836619a7",
-    "tests/test_hr_b3c3d6_step58_plf_input_certificate.py": "32f5b11cbab16fd31b0a02de2fa89e9efca38d2f",
-    "research/STEP68AD_B3C3D6_CORRELATED_G_RADIAL_GROWTH_AND_GLOBAL_U_SIGN.md": "43fd8fe2690c94dccf768cc4b54994573ab73ebb",
-    "README.md": "d73ca823a8306d40cb2aa2b237dd29229c050ea5",
-    "00_CURRENT_RESTART.md": "6fbb58f62526f453aedcf33eb0495ccfce0a00b1"
+    "numerics/hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "d7530900082696d7b4fc6f1bd720010da71c37f0",
+    "tests/test_hr_b3c3d6_step58_am_uss_sensitivity_bound.py": "70b8052d89d1c49318a43222b2a287aa6ffdd3eb",
+    "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md": "da7cd2cef8735c1a1d767ded7ad69519ce2e99d1",
+    "README.md": "3022b5c52c8fb880b8be6a6260302099ded55ae4",
+    "00_CURRENT_RESTART.md": "27ed122f6dcb9add0083c78d94101b2d5870f71c"
   },
-  "verified_research_head_at_session_start": "06ee13dd991b38c53919107ac107a6c8d3fcd2d7",
+  "verified_research_head_at_session_start": "1602e797879f8df99e984582c5f7627f3610d82b",
   "next_priority": "Execute SHA-authenticated original Step58 on exact Step55 pointwise U/U_s/U_ss jets at four exact radii, certify all six A/B/E coefficient enclosures and exact cancellations, refine with exact-radius DOP853 as needed, then global positive two-boundary lapse BVP and full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
@@ -31,16 +31,16 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-10-31",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
-  "verified_research_head_before_state_file": "2fc4f86bf878f37a4d56d07faeb33926461b0330",
+  "verified_research_head_before_state_file": "3991709246704f71becbccc37fe38fddea998b54",
   "latest_verified_completed_step": "68ad-C2d2e5b3b2c2b2d2d2b3c3d5_POINTWISE_TEMPORAL_JET_PROJECTION_CONDITIONAL_CENTER_DRIFT",
   "next_pending_step": "b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_CORRELATED_G_RADIAL_GROWTH_AND_GLOBAL_U_SIGN.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_GLOBAL_STEP58_AM_USS_SENSITIVITY_BUDGET.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_PARTIAL_GLOBAL_U_SIGN_AND_FOUR_POINT_CORRELATED_G_GROWTH",
-    "last_step_scope": "Exact-rational pLf,pLf_r,pLf_rr interval enclosures, all strictly negative at r=1/4,1/2,7/10,17/20, using byte-identical SHA-authenticated archived Step55 physical boxes and previous independently verified rational U_ss module. Formal toy counterexample shows G,G_s,G_U pointwise do not bound U_sss. Original Step58 six A/B/E coefficients and positive two-boundary BVP not certified; original physical engines not replayed this run.",
+    "latest_stage": "b3c3d6_PARTIAL_GLOBAL_EXACT_STEP58_AM_USS_SENSITIVITY",
+    "last_step_scope": "Exact-rational global bound on original Step58 dA_M/dU_ss on physical Step55 shell, conditional on previously certified global U barrier; strictly negative for all 0<r<=17/20, magnitude O(r^6); conditional four-point isolated U_ss contribution bounds <1/1000,<1/300,<1/150,<1/100. This is NOT an enclosure of A_M or any of six original Step58 A/B/E coefficients. No original physical engines replayed this run.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -76,21 +76,27 @@
       "-67/12500",
       "-229/50000"
     ],
-    "total_dG_ds_strict_lower_four_radii": "1/2000"
+    "total_dG_ds_strict_lower_four_radii": "1/2000",
+    "global_step58_AM_Uss_sensitivity_sign": "STRICTLY_NEGATIVE_ON_0_LT_R_LE_17_OVER_20_CONDITIONAL_ON_PREVIOUS_STEP55_BARRIER",
+    "four_point_AM_isolated_Uss_contribution_upper": [
+      "1/1000",
+      "1/300",
+      "1/150",
+      "1/100"
+    ]
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 7,
+    "unittest_cases_passed": 6,
     "failed_final": 0,
     "skipped_final": 0,
     "python_compileall_pass": true,
+    "exact_rational_module_run_pass": true,
     "original_step45_46_55_58_executed_this_session": false,
     "physical_DOP853_candidate_executed_this_session": false,
     "physical_Step58_coefficients_certified": 0,
-    "archive_sha_authenticated": true,
-    "archive_local_fixture_git_blob_equal": true,
-    "previous_independent_rational_module_local_blob_equal": true,
     "github_source_and_test_blobs_equal_local_tested_bytes": true,
-    "formal_toy_third_jet_nonidentifiability_test_passed": true
+    "original_step55_and_step58_blobs_read_but_not_replayed": true,
+    "initial_incorrect_python_module_command_failed_then_corrected": true
   },
   "github_write_probe": {
     "status": "SUCCESS",
@@ -122,7 +128,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Six original Step58 A_N/A_M/B_N/B_M/E_N/E_M physical interval enclosures remain missing. Only pLf input radial jets 0/1/2 are now certified at four isolated radii; full canonical jets, exact B/E cancellations and positive two-boundary lapse BVP still open.",
+  "current_blocker": "Original Step58 six A_N/A_M/B_N/B_M/E_N/E_M physical interval enclosures and exact B/E cancellations remain missing; current result bounds only dA_M/dU_ss, not A_M. Global positive two-boundary lapse BVP, Dirac/4D/stability/observables unproved.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
