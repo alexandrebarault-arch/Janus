@@ -1,0 +1,33 @@
+{
+  "original_git_blobs": {
+    "hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+  },
+  "scope": "exact one-parameter NONPHYSICAL local Step58 slice, minimal Step57 import shim",
+  "identically_zero": [
+    "Fz",
+    "Fz_r",
+    "Hg_r",
+    "Hf",
+    "C",
+    "B_M",
+    "E_M"
+  ],
+  "K": "1",
+  "z": "3/5",
+  "positive_dust": [
+    "7/4",
+    "1"
+  ],
+  "Hg": "2*t",
+  "B_N": "-416*t/125",
+  "E_N": "-32*t/25",
+  "lower_residual": "B_N-z*C/Lg-beta*Hg_r=-208*Hg/125 on this slice",
+  "counterexample_t_1": "Fz=Fz_r=Hg_r=Hf=C=B_M=E_M=0 but Hg=2, B_N=-416/125",
+  "on_full_primary_t_0": "Hg=B_N=E_N=0; does not prove universal factorization",
+  "universal_B_N_factorization": "NOT_PROVED_OR_REFUTED_ON_FULL_PRIMARY_SHELL",
+  "physical_six_A_B_E": "NOT_CERTIFIED",
+  "two_boundary_BVP": "NOT_CERTIFIED",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
