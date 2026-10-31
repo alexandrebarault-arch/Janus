@@ -16,7 +16,7 @@
     "BN_minus_zC_over_Lg_minus_beta_Hgr": "(z**2 - 1)/(Lf*Lg)"
   },
   "scope": "B_M fully reduced on Fz=0; B_N only principal jets; lower-jet B_N residual NOT proved zero",
-  "universal_B_factorization": "B_M PROVED; B_N-z*C/Lg NOT PROVED",
+  "universal_B_factorization": "B_M PROVED; B_N-z*C/Lg NOT_PROVED",
   "physical_Step55_six_coefficients": "NOT_CERTIFIED",
   "GATE_2B": "OPEN",
   "JANUS_R": "NOT_VALIDATED"
