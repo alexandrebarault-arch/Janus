@@ -1,3 +1,25 @@
+# JANUS — CHECKPOINT b3c3d6 PARTIEL : COMPARAISON STEP58 CONTINUE AU CENTRE, AFFINE HOLONOME (2026-10-31)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié au démarrage : `ea6ba96c90931df16ab34c68785e871123730aa6`. Nouvelle conséquence **physique conditionnelle et limitée** : les certificats antérieurs originaux Step68ad-B2 prouvent `U_ss<0` sur **tout** `0<=s<=1/1024` (`r<=1/32`), tandis que le certificat Step58 original prouve `dA_M/dU_ss=-r^6 c(r)<0` sur la famille Step55. En fixant `r,U,U_s` et les autres jets de la coquille, la comparaison avec un prolongement **affine réellement holonome** `U_ss=0` donne, par fractions exactes, **pour tout** `0<r<=1/32` :
+
+`63/100000 < (A_M(phys)-A_M(affine-hol))/r^6 < 13/20000`.
+
+**IMPORTANT :** le comparateur affine historique **mixte** Step58 utilise `pLfr=rG` et n'est pas cet affine holonome ; il a les mêmes six coefficients ponctuels que le quadratique/cubique sur la même solution. Cette preuve n'enclose PAS `A_M` lui-même, n'enclose aucun des six `A_N,A_M,B_N,B_M,E_N,E_M`, et ne s'étend PAS aux quatre rayons `1/4,1/2,7/10,17/20`. Les hypothèses historiques Step49/68v/B2 sont importées et NON rejouées.
+
+**PROVENANCE GITHUB AUTHENTIFIÉE :** archive physique B2 `research/reports/gate2b-step68ad-B2-original-G-Uss-Usss.json` blob `ac961b5b83667a83497497d22a701c24584cb561` ; source B2 `numerics/hr_step68ad_b2_physical_center_higher_jets.py` blob `89ce02af12145eb8ab6bdcc354649571dd5da179` ; original Step58 `numerics/hr_step58_temporal_operator.py` blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` ; sensibilité précédente `numerics/hr_b3c3d6_step58_am_uss_sensitivity_bound.py` blob `d7530900082696d7b4fc6f1bd720010da71c37f0`.
+
+**TESTS EFFECTIVEMENT EXÉCUTÉS :** dans `/mnt/data/janus_20261031_center`, `PYTHONPATH=. python -m unittest discover -s tests -v` : **6 PASS, 0 FAIL, 0 SKIP** ; `python -m compileall -q numerics tests` : **PASS** ; `PYTHONPATH=. python -m numerics.hr_b3c3d6_center_step58_affine_gap` : **PASS**. AUCUN moteur physique original Step45/46/55/58, DOP853, BVP ou Dirac exécuté cette session.
+
+**NOUVEAUX LIVRABLES PUBLIÉS ET RELUS SUR LA SEULE BRANCHE RECHERCHE :**
+- `numerics/hr_b3c3d6_center_step58_affine_gap.py` blob `2643747e9cbfc12110de444d5237adf465ed7f6c` = octets testés ;
+- `tests/test_hr_b3c3d6_center_step58_affine_gap.py` blob `f028193f27351f5b26d5fe81c9ec8d9baf367ec6` = octets testés ;
+- `research/STEP68AD_B3C3D6_CENTER_STEP58_HOLONOMIC_AFFINE_GAP.md` blob `8a137bcbc6d3f141273fcb345007e2a4b14f7e4b` ;
+- `research/reports/gate2b-b3c3d6-center-holonomic-affine-gap.json` blob `e4f1899f94bd5131abcf4e560508c9ee2f181e1e`.
+
+**PROCHAINE ÉTAPE EFFECTIVE INCHANGÉE :** `b3c3d6_STEP58_ORIGINAL_SIX_A_B_E_INTERVAL_ENCLOSURES_FROM_AUTHENTIC_STEP55_MONOTONE_POINTWISE_JETS_THEN_DOP853_REFINEMENT_POSITIVE_TWO_BOUNDARY_BVP`. Rejouer le vrai Step58 sur jets physiques aux quatre rayons exacts, encloser les six coefficients et factoriser B/E, resserrer DOP853 si besoin ; ensuite BVP lapses positifs deux vrais bords, Dirac six couples/charges/jauge, 4D/stabilité/observables. `main`, `research/v2-flrw` et workflows ne sont pas modifiés. **TOUT L'HISTORIQUE PRÉCÉDENT EST CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : SENSIBILITÉ GLOBALE EXACTE DE A_M À U_ss (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD authentifié à la reprise : `1602e797879f8df99e984582c5f7627f3610d82b`. Résultat scientifique **restreint mais nouveau** : sur la géométrie physique Step55 et **sous la barrière globale U précédemment certifiée**, l'identité exacte de sensibilité du Step58 original sur Fz=Hg=0 implique `dA_M/dU_ss<0` pour **tout** `0<r<=17/20`, avec magnitude d'ordre `r^6` au centre. Certificat par fractions : `1/10<T(s)<1/9`, `0<=q<1/500` (strict pour `r>0`), et `C(r)*(1-Z1²s)/(1+qmax(s)) < -dA_M/dU_ss < C(r)`, `C=2*Z1*m2*Mg2*r^6*T/(Mf2*Lf*Sfr)`. Sous les **anciennes** bornes physiques archivées `|U_ss|<1/10,1/160,1/590,1/1200`, la contribution **isolée** de U_ss à A_M est strictement inférieure à `1/1000,1/300,1/150,1/100` aux quatre vrais rayons `1/4,1/2,7/10,17/20`, à U et U_s fixés. **Ce ne sont pas des enclosures de A_M ni des six coefficients Step58**.
