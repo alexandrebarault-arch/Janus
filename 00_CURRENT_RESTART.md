@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT 02/11/2026 : REJEU AUTHENTIQUE STEP45/58 ET IDENTITÉ EXACTE B_N
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD d'entrée GitHub vérifié : `4f7037cb40093558a3f2878c741cf0d1ed8acb62`. Réexécution locale des sources originales byte-identiques avec SHA Git authentifiés : Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, élimination hauts jets `086b6bae543c0ee497ca9154c5a055921f018423`, réduction idéale `bc9b371c3d66f6b2491009e631fa4ed4a29a676f`, test existant `5862735ecc5c7c43e71ee3f6fec558fbab71a6a5`. Shim minimal d'import Step57 uniquement ; **moteur Step57 complet NON rejoué**.
+
+**NOUVEAU RÉSULTAT EXACT SUR SOURCES ORIGINALES** : pour K>0, Fz=Hg=0, `B_N=z*C/Lg-(1-z²)*D_r(Hg)/(Lg*Lf)` universellement sur les jets formels de Step45/58, sans geler les autres premiers jets. Sur C=Hg_r=0, B_N=0 exactement. Quatre coefficients de hauts jets multiples de Fz ; résidu des premiers jets =0 après élimination Fz et Hg ; contrôle négatif Fz=0,Hg=2 donne R=244/125. Plus hauts jets lapses E_N,E_M annulés sur Fz=Hg=0 dans l'original Step58.
+
+**TESTS RÉELLEMENT EXÉCUTÉS** : `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_*bn*.py' -v` : **12 PASS, 0 FAIL, 0 SKIP**, dont 7 anciens tests et 5 gardes nouvelles. `PYTHONPATH=. python -m numerics.hr_b3c3d6_authentic_bn_replay` : PASS ; `python -m compileall -q numerics tests` : PASS. Sources/test nouvelles vérifiées comme octets testés : `numerics/hr_b3c3d6_authentic_bn_replay.py` = `fd3a76fffd78adcb585a24613b4e1357d1d00f5c`, `tests/test_hr_b3c3d6_authentic_bn_replay.py` = `348cc8c0d5f5585473f3a81e9e009ed8e335217a`. Rapport `research/reports/gate2b-b3c3d6-authentic-BN-original-replay.json` blob `955e8fa9eace8de866aede620171fd22531025ee`, audit `research/STEP68AD_B3C3D6_AUTHENTIC_BN_IDEAL_REPLAY.md` blob `c602f7dab827a527ee546355977776f347a638ba`.
+
+**PROCHAINE PRIORITÉ** : certifier `A_N+A_M` au vrai bord R=17/20, puis bornes physiques des **SIX A/B/E** sur Step55 aux rayons exacts 1/4,1/2,7/10,17/20 ; démontrer ou exclure le BVP de deux lapses strictement positifs avec vrais deux bords ; Dirac complet, charges, 4D, stabilité, observables. AUCUNE nouvelle enclosure physique ni BVP certifié ce jour. Toutes les branches autres que recherche et workflows désactivés restent interdits.
+
+**HISTORIQUE ANTÉRIEUR CONSERVÉ INTÉGRALEMENT CI-DESSOUS.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d6 PARTIEL : RÉSIDU UNIVERSEL B_N ANNULÉ SUR TRANSCRIPTION (2026-10-31)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de départ lu : `b5ffb830228c21624ce2d54909a0d4ad7d1fe503`. Original Step45 blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e` et Step58 blob `802c23aebd41780d8c462f1aa1711707fe4ee88f` lus via connecteur, **NON exécutés localement** (DNS conteneur). Le calcul exact a été exécuté sur une **transcription indépendante des formules originales**.

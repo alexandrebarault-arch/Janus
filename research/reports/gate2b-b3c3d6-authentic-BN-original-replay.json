@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-02",
+  "research_branch": "research/gate2b-nonhomothetic-transfer",
+  "input_head": "4f7037cb40093558a3f2878c741cf0d1ed8acb62",
+  "scope": "BYTE_AUTHENTIC_ORIGINAL_STEP45_STEP58_K_POSITIVE_FORMAL_JET_SHELL",
+  "source_blob_sha": {
+    "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "numerics/hr_b3c3d6_bn_high_jet_elimination.py": "086b6bae543c0ee497ca9154c5a055921f018423",
+    "numerics/hr_b3c3d6_bn_full_ideal.py": "bc9b371c3d66f6b2491009e631fa4ed4a29a676f",
+    "tests/test_hr_b3c3d6_bn_full_ideal.py": "5862735ecc5c7c43e71ee3f6fec558fbab71a6a5",
+    "numerics/hr_b3c3d6_authentic_bn_replay.py": "fd3a76fffd78adcb585a24613b4e1357d1d00f5c",
+    "tests/test_hr_b3c3d6_authentic_bn_replay.py": "348cc8c0d5f5585473f3a81e9e009ed8e335217a"
+  },
+  "commands": [
+    "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_*bn*.py' -v",
+    "PYTHONPATH=. python -m numerics.hr_b3c3d6_authentic_bn_replay",
+    "python -m compileall -q numerics tests"
+  ],
+  "tests": {
+    "passed": 12,
+    "failed": 0,
+    "skipped": 0,
+    "compileall_pass": true,
+    "original_ward_and_original_step58_executed": true,
+    "step57_import_shim_minimal": true
+  },
+  "results": {
+    "BN_on_Fz_Hg": "BN=z*C/Lg-(1-z²)*D_r(Hg)/(Lg*Lf)",
+    "BN_on_Fz_Hg_Hgr_C": "0",
+    "four_high_jet_coefficients": "MULTIPLES_OF_Fz",
+    "E_N_E_M_on_Fz_Hg": "EXACT_ZERO",
+    "off_shell_negative": "Fz=0,Hg=2,R=244/125"
+  },
+  "limits": [
+    "Source Step57 full not executed; import shim delegates to exact original Step45",
+    "No certified A_N or A_M intervals at four Step55 radii",
+    "No 2-lapse positive two-boundary BVP",
+    "No full Dirac/4D/stability/observables conclusion"
+  ],
+  "scientific_status": {
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
+  }
+}
