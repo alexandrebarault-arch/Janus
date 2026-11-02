@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT b3c3d7 (02/11/2026) : critère de signe continu conditionnel et contre-exemple de zéro intérieur
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main réellement relu au démarrage : f016fbcb0958ee06129c2235c12fee1067eb4c02. Étape terminée : **b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE**. Ce progrès est un théorème rationnel conditionnel, NON une enclosure physique continue.
+
+**Résultat exact :** avec s=r², a(s)=A_N/r² et q(s)=-A_M/r², les quatre boîtes physiques Step58 archivées imposent, sur r dans [1/4,17/20], a>0, q>0 et rho=a/q>0 **SI** les vraies fonctions sont C1 et si les bornes globales non encore démontrées |da/ds|<4123900/147 et |dq/ds|<378550/7 sont établies. Pour les hypothèses illustratives L_N=L_M=1000, on déduit strictement 181641335/392415471<rho<5897045/10163981 sur tout cet anneau. Ces bornes de dérivées ne sont PAS acquises physiquement.
+
+**Contre-modèle analytique NON PHYSIQUE :** deux couples de coefficients pairs ont exactement les mêmes huit valeurs aux quatre rayons et les mêmes deux premiers coefficients centraux ; l'un permet N,M>0 partout pour l'unique équation algébrique, l'autre a A_M=0 à r=3/8 et A_N>0, ce qui interdit N>0 à ce point. Le coefficient perturbatif exact est -2130706432000000/10929009 et la borne de dérivée imposée par le théorème des accroissements finis est 86100. Les données ponctuelles ne décident donc pas le signe global. Ce n'est PAS un zéro de la vraie branche Step55/58.
+
+**Sources :** rapport des quatre boîtes Step58 blob c502b9779056e8a493c43d330696515a661128c4, originaux Step45 blob 66aa43841dccfe4a5d586a49be9c10af3a67a10e et Step58 blob 802c23aebd41780d8c462f1aa1711707fe4ee88f lus sur main ; archive Step55 blob e74057dcf741bcdb655c7d9be48c6a9650d7ff3f. Moteurs originaux et barrière 256 cellules NON rejoués dans cette session.
+
+**Fichiers nouveaux :** numerics/hr_b3c3d7_annular_lipschitz_sign_gate.py (blob e281e230ce3a0e14a7865c62edbba89386aab282), tests/test_hr_b3c3d7_annular_lipschitz_sign_gate.py (blob 748b2fdffd7b3f123303b5ae7268de207a508db6), research/reports/gate2b-b3c3d7-annular-lipschitz-sign-gate.json (blob f4d559ad5a879349a61c0f88fb917096ebe6d8aa), research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md (blob 5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad).
+
+**Tests réellement exécutés sur les octets publiables :** PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_annular_lipschitz_sign_gate.py' -v : 11 PASS, 0 FAIL, 0 SKIP ; PYTHONPATH=. python -m numerics.hr_b3c3d7_annular_lipschitz_sign_gate : PASS ; python -m compileall -q numerics tests : PASS. Contrôle négatif de mutation du rapport SHA : PASS.
+
+**Prochaine étape prioritaire :** certifier sur la vraie branche Step55/58 les bornes de dérivées d(A_N/r²)/ds et d(-A_M/r²)/ds sur toutes les cellules de [1/16,289/400], ou substituer des bornes locales plus fines ; traiter 0<=r<=1/4, les zéros de A_M et les deux vrais bords temporels, puis Dirac complet, charges/jauge, 4D, stabilité, observables. Aucun BVP JANUS positif complet ni rang Dirac certifié. GitHub Actions désactivées inchangées, écriture exclusivement main.
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # Mise à jour administrative — consolidation vers `main` (2026-11-02)
 
 **Branche de reprise et d’écriture visée : `main`.** Le HEAD scientifique source vérifié est `1ad7f0e48a42b0b61619c401a198637c1110945b` ; `main` était son ancêtre, donc la promotion est un fast-forward sans réécriture. Les têtes d’origine ont été archivées sous les tags annotés `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer` et `archive/pre-consolidation-2026-11-02/research-v2-flrw`. `research/v2-flrw` garde son historique au tag et son contenu n’est pas réintroduit dans les fichiers de recherche récents.

@@ -31,30 +31,67 @@
     "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_lapse_boundary_compatibility.py": "b41cbadc7d5a144d4f98b09da57ffa6d99c188da",
-    "tests/test_hr_b3c3d6_lapse_boundary_compatibility.py": "9c7ef57a26258b70126223c2bca61f9a10301b14",
-    "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md": "3ddc9a0cfdb2daf71a50221d408aec08469cc6a4",
-    "research/reports/gate2b-b3c3d6-lapse-two-boundary-compatibility.json": "2e30ec901fdae0c7dcbf6752fef1df0a49b02fef"
+    "numerics/hr_b3c3d7_annular_lipschitz_sign_gate.py": "e281e230ce3a0e14a7865c62edbba89386aab282",
+    "tests/test_hr_b3c3d7_annular_lipschitz_sign_gate.py": "748b2fdffd7b3f123303b5ae7268de207a508db6",
+    "research/reports/gate2b-b3c3d7-annular-lipschitz-sign-gate.json": "f4d559ad5a879349a61c0f88fb917096ebe6d8aa",
+    "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
   },
-  "verified_research_head_at_session_start": "f3d7422eb6ba36c47a9dc161b6f7c0861e2fffbd",
-  "next_priority": "Enclose physical rho=-A_N/A_M continuously over 0<r<=17/20 (not only four points), handle center and A_M zeros, admissible positive-lapse two genuine temporal boundaries, full Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
+  "next_priority": "Certify actual physical Step55/58 derivatives d(A_N/r²)/ds and d(-A_M/r²)/ds on all annular cells s in [1/16,289/400], compare exact sufficient thresholds 4123900/147 and 378550/7 or use local cells; then center [0,1/4], A_M zeros, two genuine temporal boundaries, full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-11-02",
   "research_branch": "main",
-  "branch_consolidation": {"date":"2026-11-02","status":"SINGLE_BRANCH_MAIN_VERIFIED; AUTOMATION_NEXT_CYCLE_PENDING","target_branch":"main","source_branch":"research/gate2b-nonhomothetic-transfer","source_head":"1ad7f0e48a42b0b61619c401a198637c1110945b","promotion_commit":"31715a9ee96dc5df4114fafd349eee71ba395906","original_heads":{"main":"aead63f4098f0d15a849e579105af034b6317b30","research/gate2b-nonhomothetic-transfer":"1ad7f0e48a42b0b61619c401a198637c1110945b","research/v2-flrw":"dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"},"archive_tags":{"main":"archive/pre-consolidation-2026-11-02/main","research/gate2b-nonhomothetic-transfer":"archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer","research/v2-flrw":"archive/pre-consolidation-2026-11-02/research-v2-flrw"},"main_was_ancestor_of_source":true,"source_commits_ahead_of_main_before_migration":2501,"v2_commits_unique_vs_main_at_snapshot":321,"v2_content_merged":false,"deleted_branches":["research/gate2b-nonhomothetic-transfer","research/v2-flrw"],"final_branch_count":1,"main_head_before_final_checkpoint_update":"612b1ec74bb5e85dc230995b446d7e41639fecbc","automation_prompt_status":"CONFIGURATION_REPORTED_VERIFIED_BY_SEPARATE_CHATGPT_AGENT; Codex view exposes no fields; main-only read/write; hourly Europe/Paris; prompt 6223 chars; no post-migration cycle observed","legacy_branch_deletion":"COMPLETE 2026-11-02; both refs deleted normally and archive tags retained","github_actions":"disabled; no workflow files changed"},
-  "migration_verification": {"python_targeted":"35 passed across five b3c3d6 boundary/lapse suites","candidate_c_subset":"16 passed before interruption; test_principal_character_is_distinct_from_continuous_pair_identity failed and reproduced identically on unmodified source HEAD 1ad7f0e48a42b0b61619c401a198637c1110945b; remaining subset not completed","javascript_cjs":"21 passed","compileall":"passed","critical_scientific_files":"unchanged relative to source HEAD","git_diff_check":"passed"},
+  "branch_consolidation": {
+    "date": "2026-11-02",
+    "status": "SINGLE_BRANCH_MAIN_VERIFIED; AUTOMATION_NEXT_CYCLE_PENDING",
+    "target_branch": "main",
+    "source_branch": "research/gate2b-nonhomothetic-transfer",
+    "source_head": "1ad7f0e48a42b0b61619c401a198637c1110945b",
+    "promotion_commit": "31715a9ee96dc5df4114fafd349eee71ba395906",
+    "original_heads": {
+      "main": "aead63f4098f0d15a849e579105af034b6317b30",
+      "research/gate2b-nonhomothetic-transfer": "1ad7f0e48a42b0b61619c401a198637c1110945b",
+      "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+    },
+    "archive_tags": {
+      "main": "archive/pre-consolidation-2026-11-02/main",
+      "research/gate2b-nonhomothetic-transfer": "archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer",
+      "research/v2-flrw": "archive/pre-consolidation-2026-11-02/research-v2-flrw"
+    },
+    "main_was_ancestor_of_source": true,
+    "source_commits_ahead_of_main_before_migration": 2501,
+    "v2_commits_unique_vs_main_at_snapshot": 321,
+    "v2_content_merged": false,
+    "deleted_branches": [
+      "research/gate2b-nonhomothetic-transfer",
+      "research/v2-flrw"
+    ],
+    "final_branch_count": 1,
+    "main_head_before_final_checkpoint_update": "612b1ec74bb5e85dc230995b446d7e41639fecbc",
+    "automation_prompt_status": "CONFIGURATION_REPORTED_VERIFIED_BY_SEPARATE_CHATGPT_AGENT; Codex view exposes no fields; main-only read/write; hourly Europe/Paris; prompt 6223 chars; no post-migration cycle observed",
+    "legacy_branch_deletion": "COMPLETE 2026-11-02; both refs deleted normally and archive tags retained",
+    "github_actions": "disabled; no workflow files changed"
+  },
+  "migration_verification": {
+    "python_targeted": "35 passed across five b3c3d6 boundary/lapse suites",
+    "candidate_c_subset": "16 passed before interruption; test_principal_character_is_distinct_from_continuous_pair_identity failed and reproduced identically on unmodified source HEAD 1ad7f0e48a42b0b61619c401a198637c1110945b; remaining subset not completed",
+    "javascript_cjs": "21 passed",
+    "compileall": "passed",
+    "critical_scientific_files": "unchanged relative to source HEAD",
+    "git_diff_check": "passed"
+  },
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
-  "next_pending_step": "b3c3d6_GLOBAL_PHYSICAL_RHO_CONTINUOUS_ENCLOSURE_CENTRE_AND_TRUE_BOUNDARY_DIRAC",
+  "latest_verified_completed_step": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
+  "next_pending_step": "b3c3d7_AUTHENTIC_STEP55_STEP58_CONTINUOUS_DERIVATIVE_BOUNDS_AND_CENTER",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
+    "latest_stage": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
     "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim; exact two-parameter nonphysical local family, Hf=b²-1, C=-(25a+24b+12)/20, two Hf=C=0 points: (-36/25,1) A_N=451/50,A_M=-919/250, formal M/N=2255/919 positive; (12/25,-1) A_N=-149/50,A_M=-547/250, formal M/N=-745/547 negative. Both fail Fz_rr,Hf_r,C_r with frozen higher jets, so neither is holonomic Step55 or a BVP.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
@@ -130,19 +167,20 @@
     "original_step58_lower_BN_remaining_first_jet_residual": "EXACT_ZERO_ORIGINAL_STEP45_58",
     "original_step58_lower_BN_universal_identity": "EXACT_ON_ORIGINAL_STEP45_58",
     "positive_two_lapse_two_boundary_BVP": "NOT_SOLVED_OR_EXCLUDED_FOR_PHYSICAL_STEP55;ANALYTIC_TWO_BOUNDARY_TOY_ONLY",
-    "physical_lapse_outer_ratio": "R=17/20 1/2<M/N<11/20 NECESSARY, CONDITIONED ON EXACT SHELL AND PREVIOUS PHYSICAL_BOXES"
+    "physical_lapse_outer_ratio": "R=17/20 1/2<M/N<11/20 NECESSARY, CONDITIONED ON EXACT SHELL AND PREVIOUS PHYSICAL_BOXES",
+    "physical_continuum_rho": "NOT_CERTIFIED",
+    "physical_two_boundary_lapse_BVP": "NOT_CERTIFIED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 12,
-    "skipped_final": 0,
+    "unittest_cases_passed": 11,
     "failed_final": 0,
+    "skipped_final": 0,
+    "python_module_run_pass": true,
     "python_compileall_pass": true,
-    "original_step45_step58_sha_authenticated_and_executed": true,
-    "original_step45_step58_read_via_github": true,
-    "first_jet_remainder": "0",
-    "physical_Step58_coefficients_certified": 0,
-    "step57_full_original_executed": false,
-    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_*bn*.py' -v"
+    "original_step45_step58_sha_read_via_github": true,
+    "original_step45_step58_executed_this_session": false,
+    "step55_barrier_reexecuted_this_session": false,
+    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_annular_lipschitz_sign_gate.py' -v"
   },
   "github_write_probe": {
     "status": "STAGING_FOR_SINGLE_ATOMIC_REF_COMMIT",
@@ -170,7 +208,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Authentic original Step45/58 B_N formal first-jet identity NOW EXECUTED AND EXACT. Physical Step55->Step58 enclosures and positive two-lapse two-boundary BVP remain uncertified.",
+  "current_blocker": "The two continuous physical derivative bounds required for the new sufficient annular sign gate have NOT been computed. The four pointwise boxes and center leading/subleading jets alone do not exclude an interior A_M zero (synthetic nonphysical countermodel).",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -375,7 +413,11 @@
     "research/STEP68AD_B3C3D6_INDEPENDENT_RATIONAL_USS_FOUR_EXACT_RADII_AUDIT.md": "ae2d66326d0e829492c90b7ce01338194153048b",
     "numerics/hr_b3c3d6_step58_plf_input_certificate.py": "274ec8798751623e065b55222f36eb1d4121a2c1",
     "tests/test_hr_b3c3d6_step58_plf_input_certificate.py": "7c8590e622b9ac02f8d882817d97fb06e7764f7e",
-    "research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md": "9b012d934c408225dca5b0afcc887795b7ccb3c2"
+    "research/STEP68AD_B3C3D6_EXACT_PHYSICAL_PLF_JET_INPUT_BUNDLE.md": "9b012d934c408225dca5b0afcc887795b7ccb3c2",
+    "numerics/hr_b3c3d7_annular_lipschitz_sign_gate.py": "e281e230ce3a0e14a7865c62edbba89386aab282",
+    "tests/test_hr_b3c3d7_annular_lipschitz_sign_gate.py": "748b2fdffd7b3f123303b5ae7268de207a508db6",
+    "research/reports/gate2b-b3c3d7-annular-lipschitz-sign-gate.json": "f4d559ad5a879349a61c0f88fb917096ebe6d8aa",
+    "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
   },
   "current_proven_result": "On restricted Step55 spatial lambda-family at outer R=17/20 with independent lapse variations and V=Vrel preserving relative clock, cM-(Lg/Lf)cN=-(Lg*a+Lf*b)*(sf+(Lg/Lf)*sg)/(T+U)<0; cannot annihilate both mixed lapse curvatures. Not physical Dirac tangent.",
   "last_original_reports_verified": {
@@ -619,7 +661,7 @@
     "00_CURRENT_RESTART.md": "bf64066f758408e61d0cc3eb2c1206ea9286fde8",
     "README.md": "08b3ad759575f19065df1c4ee705810a61cb885e"
   },
-  "latest_session_date": "2026-10-30",
+  "latest_session_date": "2026-11-02",
   "latest_session_verified_pre_state_head": "68c239371b1302336dc264130b655a5005037cd2",
   "latest_session_full_original_probe": {
     "radii": [
@@ -785,16 +827,20 @@
     "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
   },
   "latest_session_scientific_result": {
-    "scope": "NECESSARY_CONSEQUENCES_OF_PREVIOUS_FOUR_STEP55_ORIGINAL_STEP58_A_N_A_M_INTERVALS_PLUS_FULL_SHELL;SYNTHETIC_TOY_CONTRAEXAMPLE",
-    "source_four_radius_archive_blob": "c502b9779056e8a493c43d330696515a661128c4",
-    "outer_necessary_rho": "1/2<M(R)/N(R)<11/20 for R=17/20",
-    "central_rho_bounds": "1037/2000<rho(0)<2593/5000 FROM HISTORICAL CERTIFICATE",
-    "new_global_physical_enclosures": false,
-    "single_algebraic_equation_two_boundary_compatibility": "PROVED_IF_RHO_POSITIVE_SMOOTH",
-    "positive_analytic_two_lapse_construct": "SYNTHETIC_NONPHYSICAL_AND_WITH_FREE_OUTER_RATIO",
-    "original_physical_engines_rerun_this_session": false,
-    "not_full_BVP": true,
-    "not_full_Dirac": true
+    "scope": "EXACT_CONDITIONAL_ANNULAR_LIPSCHITZ_THEOREM_PLUS_NONPHYSICAL_ANALYTIC_COUNTERMODEL",
+    "source_four_radius_report_blob": "c502b9779056e8a493c43d330696515a661128c4",
+    "physical_derivative_bounds_computed": false,
+    "annulus_r": "[1/4,17/20]",
+    "sufficient_L_N_strict": "4123900/147",
+    "sufficient_L_M_strict": "378550/7",
+    "illustrative_conditional_rho": [
+      "181641335/392415471",
+      "5897045/10163981"
+    ],
+    "nonphysical_interior_zero_r": "3/8",
+    "nonphysical_mean_value_derivative_lower_bound": "86100",
+    "center_0_to_1_over_4_certified": false,
+    "full_Dirac_or_4D": false
   },
   "latest_session_tests": {
     "new_unittests": 8,
@@ -840,5 +886,67 @@
   "verified_untouched_branch_heads": {
     "main": "aead63f4098f0d15a849e579105af034b6317b30",
     "research/v2-flrw": "dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"
+  },
+  "pre_b3c3d7_2026_11_02_index_snapshot": {
+    "latest_verified_completed_step": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
+    "next_pending_step": "b3c3d6_GLOBAL_PHYSICAL_RHO_CONTINUOUS_ENCLOSURE_CENTRE_AND_TRUE_BOUNDARY_DIRAC",
+    "next_priority": "Enclose physical rho=-A_N/A_M continuously over 0<r<=17/20 (not only four points), handle center and A_M zeros, admissible positive-lapse two genuine temporal boundaries, full Dirac/4D/stability/observables.",
+    "latest_scientific_audit": "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md",
+    "last_reported_tests": {
+      "unittest_cases_passed": 12,
+      "skipped_final": 0,
+      "failed_final": 0,
+      "python_compileall_pass": true,
+      "original_step45_step58_sha_authenticated_and_executed": true,
+      "original_step45_step58_read_via_github": true,
+      "first_jet_remainder": "0",
+      "physical_Step58_coefficients_certified": 0,
+      "step57_full_original_executed": false,
+      "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_*bn*.py' -v"
+    },
+    "latest_session_scientific_result": {
+      "scope": "NECESSARY_CONSEQUENCES_OF_PREVIOUS_FOUR_STEP55_ORIGINAL_STEP58_A_N_A_M_INTERVALS_PLUS_FULL_SHELL;SYNTHETIC_TOY_CONTRAEXAMPLE",
+      "source_four_radius_archive_blob": "c502b9779056e8a493c43d330696515a661128c4",
+      "outer_necessary_rho": "1/2<M(R)/N(R)<11/20 for R=17/20",
+      "central_rho_bounds": "1037/2000<rho(0)<2593/5000 FROM HISTORICAL CERTIFICATE",
+      "new_global_physical_enclosures": false,
+      "single_algebraic_equation_two_boundary_compatibility": "PROVED_IF_RHO_POSITIVE_SMOOTH",
+      "positive_analytic_two_lapse_construct": "SYNTHETIC_NONPHYSICAL_AND_WITH_FREE_OUTER_RATIO",
+      "original_physical_engines_rerun_this_session": false,
+      "not_full_BVP": true,
+      "not_full_Dirac": true
+    },
+    "latest_session_published_blobs": {
+      "numerics/hr_b3c3d6_lapse_boundary_compatibility.py": "b41cbadc7d5a144d4f98b09da57ffa6d99c188da",
+      "tests/test_hr_b3c3d6_lapse_boundary_compatibility.py": "9c7ef57a26258b70126223c2bca61f9a10301b14",
+      "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md": "3ddc9a0cfdb2daf71a50221d408aec08469cc6a4",
+      "research/reports/gate2b-b3c3d6-lapse-two-boundary-compatibility.json": "2e30ec901fdae0c7dcbf6752fef1df0a49b02fef"
+    }
+  },
+  "b3c3d7_2026_11_02_session": {
+    "read_head_at_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
+    "completed_step": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
+    "next_step": "b3c3d7_AUTHENTIC_STEP55_STEP58_CONTINUOUS_DERIVATIVE_BOUNDS_AND_CENTER",
+    "blobs": {
+      "numerics/hr_b3c3d7_annular_lipschitz_sign_gate.py": "e281e230ce3a0e14a7865c62edbba89386aab282",
+      "tests/test_hr_b3c3d7_annular_lipschitz_sign_gate.py": "748b2fdffd7b3f123303b5ae7268de207a508db6",
+      "research/reports/gate2b-b3c3d7-annular-lipschitz-sign-gate.json": "f4d559ad5a879349a61c0f88fb917096ebe6d8aa",
+      "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
+    },
+    "tests": {
+      "unittest_cases_passed": 11,
+      "failed_final": 0,
+      "skipped_final": 0,
+      "python_module_run_pass": true,
+      "python_compileall_pass": true,
+      "original_step45_step58_sha_read_via_github": true,
+      "original_step45_step58_executed_this_session": false,
+      "step55_barrier_reexecuted_this_session": false,
+      "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_annular_lipschitz_sign_gate.py' -v"
+    },
+    "scientific_status": "GATE_2B OPEN; JANUS_R NOT_VALIDATED",
+    "workflows": "unchanged disabled",
+    "branch": "main",
+    "atomic_commit": "PUBLISHED_ONLY_IF_UPDATE_REF_SUCCEEDS"
   }
 }

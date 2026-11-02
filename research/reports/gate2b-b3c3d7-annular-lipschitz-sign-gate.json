@@ -1,0 +1,62 @@
+{
+  "step": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
+  "archive_git_blob": "c502b9779056e8a493c43d330696515a661128c4",
+  "original_step45_step58_read_sha": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "physical_step55_four_radius_archive": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f"
+  },
+  "domain_r": [
+    "1/4",
+    "17/20"
+  ],
+  "domain_s": [
+    "1/16",
+    "289/400"
+  ],
+  "critical_derivative_in_s": {
+    "A_N_over_s": "4123900/147",
+    "minus_A_M_over_s": "378550/7"
+  },
+  "example_assumed_derivatives": {
+    "A_N_over_s": "1000",
+    "minus_A_M_over_s": "1000"
+  },
+  "example_conditional_rho": {
+    "annulus_r": [
+      "1/4",
+      "17/20"
+    ],
+    "a_strict": [
+      "181641335/56644",
+      "14575/4"
+    ],
+    "q_strict": [
+      "50819905/8092",
+      "27711/4"
+    ],
+    "rho_strict": [
+      "181641335/392415471",
+      "5897045/10163981"
+    ],
+    "assumed_derivative_bounds_in_s": [
+      "1000",
+      "1000"
+    ],
+    "scope": "CONDITIONAL_ONLY_NOT_ACTUAL_PHYSICAL_CONTINUUM_ENCLOSURE"
+  },
+  "nonphysical_analytic_countermodel": {
+    "r_interior_zero": "3/8",
+    "s_interior_zero": "9/64",
+    "perturbation_coefficient": "-2130706432000000/10929009",
+    "lower_bound_on_sup_abs_m_derivative_from_MVT": "86100",
+    "center_m_value": "-6750",
+    "center_m_s_derivative": "375",
+    "sample_values": "IDENTICAL_TO_POSITIVE_TOY_AT_ALL_FOUR_RADII"
+  },
+  "physical_continuum_derivative_bound_computed": false,
+  "physical_center_0_to_1_over_4_certified": false,
+  "physical_dirac_BVP_certified": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
