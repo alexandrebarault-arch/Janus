@@ -4,7 +4,13 @@
 
 La consolidation Git **ne valide pas** JANUS : **GATE_2B OPEN ; JANUS_R NOT_VALIDATED**. Les instructions de branche des anciens checkpoints ci-dessous décrivent leur contexte historique et sont remplacées par la cible `main` présente dans ce bloc.
 
-Le retrait des anciennes refs reste en attente de la vérification que l’automatisation horaire relit et publie bien sur `main`. Son outil a rendu une carte de consultation sans exposer le prompt ni les champs de calendrier nécessaires à une mise à jour complète ; aucune fréquence ni programmation n’a été changée. Garder les refs de recherche jusqu’à cette vérification. Les workflows GitHub Actions restent désactivés et inchangés.
+**Consolidation finale vérifiée sur GitHub :** `main` est la seule branche restante et reste la branche par défaut. Les refs `research/gate2b-nonhomothetic-transfer` et `research/v2-flrw` ont été supprimées par des suppressions normales après vérification de l’ascendance, des fichiers et des sauvegardes. Les tags annotés `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer` et `archive/pre-consolidation-2026-11-02/research-v2-flrw` préservent exactement les HEAD antérieurs ; aucun contenu de l’arbre V2 n’a été fusionné.
+
+**Transmission à l’automatisation ChatGPT :** un autre agent rapporte que `JANUS — recherche autonome` est activée, horaire (`RRULE:FREQ=HOURLY`), `Europe/Paris`, lit et écrit uniquement sur `main`, et conserve les consignes permanentes dans un prompt de 6 223 caractères. Codex ne peut pas inspecter les champs de cette automatisation ; son outil de consultation ne renvoie qu’une carte. Le prochain cycle après migration n’a pas encore été observé et n’est donc pas déclaré réussi. Il devra relire le HEAD réel de `main`, ce checkpoint et `research/AUTOMATION_STATE.json`, puis reprendre la prochaine priorité scientifique enregistrée. Les GitHub Actions restent désactivées et inchangées.
+
+**Prochaine priorité scientifique enregistrée :** certifier continûment le rapport physique `rho=-A_N/A_M` sur `0<r<=17/20`, y compris le centre, les vrais bords et les éventuels zéros de `A_M`, puis poursuivre la vérification des contraintes Dirac. Ne pas modifier les conclusions scientifiques pendant la consolidation.
+
+La consolidation Git ne change aucune conclusion scientifique : **GATE_2B OPEN ; JANUS_R NOT_VALIDATED**.
 
 
 # JANUS — CHECKPOINT 02/11/2026 : rapport nécessaire M/N et deux vrais bords pour Step58, contre-modèle non physique

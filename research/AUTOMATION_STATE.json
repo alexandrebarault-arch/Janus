@@ -1,4 +1,18 @@
 {
+  "latest_external_automation_handoff": {
+    "source": "User-provided status verified by a separate ChatGPT agent; Codex view does not expose configuration fields",
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "name": "JANUS — recherche autonome",
+    "status": "CONFIGURATION_REPORTED_VERIFIED",
+    "enabled": true,
+    "rrule": "RRULE:FREQ=HOURLY",
+    "timezone": "Europe/Paris",
+    "branch_read_target": "main",
+    "branch_write_target": "main",
+    "prompt_characters_reported": 6223,
+    "permanent_instructions_preserved_reported": true,
+    "post_migration_successful_cycle": "NOT_YET_OBSERVED"
+  },
   "latest_session_cleanup": {
     "attempted": 0,
     "succeeded": 0,
@@ -30,7 +44,7 @@
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
   "verified_session_date": "2026-11-02",
   "research_branch": "main",
-  "branch_consolidation": {"date":"2026-11-02","status":"MAIN_PROMOTED; LEGACY_BRANCH_RETIREMENT_PENDING_AUTOMATION_TARGET_VERIFICATION","target_branch":"main","source_branch":"research/gate2b-nonhomothetic-transfer","source_head":"1ad7f0e48a42b0b61619c401a198637c1110945b","promotion_commit":"31715a9ee96dc5df4114fafd349eee71ba395906","original_heads":{"main":"aead63f4098f0d15a849e579105af034b6317b30","research/gate2b-nonhomothetic-transfer":"1ad7f0e48a42b0b61619c401a198637c1110945b","research/v2-flrw":"dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"},"archive_tags":{"main":"archive/pre-consolidation-2026-11-02/main","research/gate2b-nonhomothetic-transfer":"archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer","research/v2-flrw":"archive/pre-consolidation-2026-11-02/research-v2-flrw"},"main_was_ancestor_of_source":true,"source_commits_ahead_of_main_before_migration":2501,"v2_commits_unique_vs_main_at_snapshot":321,"v2_content_merged":false,"automation_prompt_status":"NOT_UPDATED; complete existing prompt and schedule fields were not exposed; no schedule changed","legacy_branch_deletion":"PENDING until the hourly automation is verified to target main","github_actions":"disabled; no workflow files changed"},
+  "branch_consolidation": {"date":"2026-11-02","status":"SINGLE_BRANCH_MAIN_VERIFIED; AUTOMATION_NEXT_CYCLE_PENDING","target_branch":"main","source_branch":"research/gate2b-nonhomothetic-transfer","source_head":"1ad7f0e48a42b0b61619c401a198637c1110945b","promotion_commit":"31715a9ee96dc5df4114fafd349eee71ba395906","original_heads":{"main":"aead63f4098f0d15a849e579105af034b6317b30","research/gate2b-nonhomothetic-transfer":"1ad7f0e48a42b0b61619c401a198637c1110945b","research/v2-flrw":"dfa497ccb8ee28f7a0b4eceaefef5f922474c4bb"},"archive_tags":{"main":"archive/pre-consolidation-2026-11-02/main","research/gate2b-nonhomothetic-transfer":"archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer","research/v2-flrw":"archive/pre-consolidation-2026-11-02/research-v2-flrw"},"main_was_ancestor_of_source":true,"source_commits_ahead_of_main_before_migration":2501,"v2_commits_unique_vs_main_at_snapshot":321,"v2_content_merged":false,"deleted_branches":["research/gate2b-nonhomothetic-transfer","research/v2-flrw"],"final_branch_count":1,"main_head_before_final_checkpoint_update":"612b1ec74bb5e85dc230995b446d7e41639fecbc","automation_prompt_status":"CONFIGURATION_REPORTED_VERIFIED_BY_SEPARATE_CHATGPT_AGENT; Codex view exposes no fields; main-only read/write; hourly Europe/Paris; prompt 6223 chars; no post-migration cycle observed","legacy_branch_deletion":"COMPLETE 2026-11-02; both refs deleted normally and archive tags retained","github_actions":"disabled; no workflow files changed"},
   "migration_verification": {"python_targeted":"35 passed across five b3c3d6 boundary/lapse suites","candidate_c_subset":"16 passed before interruption; test_principal_character_is_distinct_from_continuous_pair_identity failed and reproduced identically on unmodified source HEAD 1ad7f0e48a42b0b61619c401a198637c1110945b; remaining subset not completed","javascript_cjs":"21 passed","compileall":"passed","critical_scientific_files":"unchanged relative to source HEAD","git_diff_check":"passed"},
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
   "latest_verified_completed_step": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",

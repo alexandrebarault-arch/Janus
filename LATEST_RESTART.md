@@ -1,6 +1,6 @@
 # Avis de consolidation — 2026-11-02
 
-Ce fichier conserve un checkpoint historique. Pour toute reprise actuelle, utiliser exclusivement le HEAD GitHub réel de `main`, puis lire `00_CURRENT_RESTART.md` et `research/AUTOMATION_STATE.json`. Les consignes ci-dessous visant `research/gate2b-nonhomothetic-transfer` ou protégeant `main` datent de checkpoints antérieurs et sont supersédées. Les anciennes refs restent à conserver jusqu’à validation de la cible `main` par l’automatisation horaire.
+Ce journal conserve des checkpoints historiques. Pour toute reprise actuelle, utiliser exclusivement le HEAD GitHub réel de l’unique branche `main`, puis lire `00_CURRENT_RESTART.md` et `research/AUTOMATION_STATE.json`. Les deux anciennes refs ont été supprimées ; leurs HEAD restent préservés par les tags annotés d’archive. Un autre agent rapporte que l’automatisation ChatGPT horaire lit et écrit sur `main`; Codex ne peut pas inspecter ses champs et n’a pas observé de cycle post-migration réussi. Toutes les anciennes consignes de branche ci-dessous sont historiques et supersédées.
 
 
 # JANUS — CURRENT RESTART 2026-10-20 STEP35 (read before historical journal)

@@ -4,13 +4,13 @@ Date: 2026-11-02
 Active branch: `main`
 Status: **GATE_2B OPEN / JANUS_R NOT_VALIDATED**
 
-> **Migration notice (2026-11-02):** Current restart and all new research writes target `main`. Its source is the fast-forward promotion of `research/gate2b-nonhomothetic-transfer` at `1ad7f0e48a42b0b61619c401a198637c1110945b`. Original branch heads remain available at `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer`, and `archive/pre-consolidation-2026-11-02/research-v2-flrw`. The V2 tree was not merged. Keep both research branch refs until the hourly automation is verified to resume and publish on `main`; its prompt and schedule could not be safely inspected or updated, and its frequency was not changed. GitHub Actions remain disabled and untouched.
+> **Migration finalisée (2026-11-02):** `main` est l’unique branche GitHub, la branche par défaut et la cible de toute reprise/écriture. Les deux refs de recherche ont été supprimées ; les HEAD d’origine restent accessibles par les trois tags annotés `archive/pre-consolidation-2026-11-02/*`. L’arbre divergent V2 n’a pas été fusionné. Un autre agent rapporte que l’automatisation native ChatGPT est activée, horaire, en `Europe/Paris`, et lit/écrit uniquement sur `main`; Codex ne peut pas en consulter la configuration et aucun cycle après migration n’a été observé. GitHub Actions restent désactivées et inchangées.
 
 This file is the concise project-status page. For interruption recovery, read this file first, then `00_CURRENT_RESTART.md`, `research/AUTOMATION_STATE.json`, `research/GATE2B_LATEST_RESTART.md`, and `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
 
 ## 1. Branch strategy
 
-`main` is the default branch and the sole target for future JANUS research and checkpoint writes. It contains the full Gate-2B source history through the fast-forward promotion recorded above. The older Gate-2B and V2 branch heads are preserved by the migration tags; the V2 branch's divergent files were not copied into the current research tree. Both old refs remain temporarily while automation resumption on `main` is unverified. Retire them only after that operational check succeeds.
+`main` is the only branch, the default branch and the sole target for future JANUS research and checkpoint writes. It contains the full Gate-2B source history through the fast-forward promotion recorded above. The old Gate-2B and V2 branch refs were deleted after their annotated backup tags and migration state were verified; the V2 branch's divergent files were not copied into the current research tree.
 
 ## 2. Executive scientific status
 
