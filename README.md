@@ -1,3 +1,12 @@
+# Mise à jour administrative — consolidation vers `main` (2026-11-02)
+
+**Branche de reprise et d’écriture visée : `main`.** Le HEAD scientifique source vérifié est `1ad7f0e48a42b0b61619c401a198637c1110945b` ; `main` était son ancêtre, donc la promotion est un fast-forward sans réécriture. Les têtes d’origine ont été archivées sous les tags annotés `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer` et `archive/pre-consolidation-2026-11-02/research-v2-flrw`. `research/v2-flrw` garde son historique au tag et son contenu n’est pas réintroduit dans les fichiers de recherche récents.
+
+La consolidation Git **ne valide pas** JANUS : **GATE_2B OPEN ; JANUS_R NOT_VALIDATED**. Les instructions de branche des anciens checkpoints ci-dessous décrivent leur contexte historique et sont remplacées par la cible `main` présente dans ce bloc.
+
+Le retrait des anciennes refs reste en attente de la vérification que l’automatisation horaire relit et publie bien sur `main`. Son outil a rendu une carte de consultation sans exposer le prompt ni les champs de calendrier nécessaires à une mise à jour complète ; aucune fréquence ni programmation n’a été changée. Garder les refs de recherche jusqu’à cette vérification. Les workflows GitHub Actions restent désactivés et inchangés.
+
+
 > **02/11/2026 — b3c3d6, lapses et vrais bords (limité)** : à `R=17/20`, les bornes physiques Step58 précédentes imposent sur la coquille complète `1/2<M(R)/N(R)<11/20`. Un théorème pour **une seule** équation algébrique fixe les rapports nécessaires/suffisants aux deux bords ; un **contre-modèle non physique** à lapses analytiques positifs respecte les quatre boîtes ponctuelles et les bornes centrales, montrant que ces seules données ne prouvent pas un no-go général. [Audit](research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md). **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**
 
 > **JANUS — 2 novembre 2026 (Step58, certificat limité)** : sur la géométrie radiale physique prescrite Step55, les coefficients originaux `A_N>0`, `A_M<0`, `A_N+A_M<0` sont désormais encadrés par arithmétique rationnelle aux rayons `1/4,1/2,7/10,17/20`. À `R=17/20`, `-2383<A_N+A_M<-2099`. Sur la coquille complète où `B/E=0` exactement, la **condition additionnelle** `N(R)=M(R)>0` est incompatible avec cette branche, **sans exclure un BVP avec autre rapport extérieur**. Voir [audit physique Step58](research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md). **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.**

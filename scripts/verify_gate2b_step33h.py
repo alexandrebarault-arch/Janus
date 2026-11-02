@@ -45,7 +45,7 @@ def main():
         localized.append({'n':n,'width':width,'bracket_over_norm':B/float(w@(shape*shape))})
     success=ps.returncode==0 and '21 passed' in ps.stdout and all(i['primary_residual']<1e-12 for i in nums)
     result={
-      'step':'33h','date':'2026-10-20','branch':'research/gate2b-nonhomothetic-transfer',
+      'step':'33h','date':'2026-10-20','branch':'main',
       'execution':'independent nodal Gauss-Legendre finite-difference Poisson gradients',
       'test_result':ps.stdout[-2500:],'test_exit':ps.returncode,'new_tests_passed':21 if success else None,
       'test_run_seconds':round(time.monotonic()-start,2),

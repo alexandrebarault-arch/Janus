@@ -77,7 +77,7 @@ def exact_certificates():
 def manifest():
     c=exact_certificates()
     return {'step':'68a','date':'2026-10-24',
-            'branch':'research/gate2b-nonhomothetic-transfer',
+            'branch':'main',
             'headline':'Exact center regular Frechet response of z,zprime,zsecond on prescribed Step55 radial shift chart',
             'premises':'Genuine Step58 shift algebra; K=r²k, Dg=r³d, z=r/250, k>229/1000 on fixed Step55 initial data; historical physical module NOT imported in this run',
             'delta_w':'A ed+B ek, A=t^(3/2)/k, B=-w*t/k, t=1-sw²',

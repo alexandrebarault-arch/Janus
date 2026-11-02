@@ -53,7 +53,7 @@ def main():
     metrics=assert_regular(build_primary())
     status=all(r['exit_code']==0 for r in runs)
     rep={
-        'step':'33g','test_group':group,'date':'2026-10-19','branch':'research/gate2b-nonhomothetic-transfer',
+        'step':'33g','test_group':group,'date':'2026-10-19','branch':'main',
         'python':sys.version.split()[0],'workspace_origin':'new_standalone_non_git_workspace',
         'runs':runs,'tests_total_across_separate_processes':sum(r['passed'] for r in runs),
         'all_passed':status,'curved_noncomoving_primary_witness':metrics,

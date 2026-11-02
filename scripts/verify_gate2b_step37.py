@@ -36,7 +36,7 @@ def main():
            'numerics/hr_step37_curved_solver.py',
            'numerics/hr_step37_original_nonibp_oracle.py',
            'tests/test_hr_step37_curved_solver.py']
-    out={'step':'37','date':'2026-10-20','branch':'research/gate2b-nonhomothetic-transfer',
+    out={'step':'37','date':'2026-10-20','branch':'main',
          'phase_space':'two positive canonical dust pairs; curved noncomoving spherical ADM',
          'solver':r,'original_nonibp_nodal_finite_variation':independent,
          'derivative_stencils':fixed_stencils,

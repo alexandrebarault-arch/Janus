@@ -1,27 +1,16 @@
 # JANUS research status and roadmap
 
-Date: 2026-10-15
-Active branch: `research/gate2b-nonhomothetic-transfer`
-Status: **Gate 2B OPEN / NOT VALIDATED**
+Date: 2026-11-02
+Active branch: `main`
+Status: **GATE_2B OPEN / JANUS_R NOT_VALIDATED**
 
-This file is the concise project-status page.  For interruption recovery, read this file first, then `research/GATE2B_LATEST_RESTART.md`, `research/GATE2B_CHECKPOINT.md`, and the active execution plan `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
+> **Migration notice (2026-11-02):** Current restart and all new research writes target `main`. Its source is the fast-forward promotion of `research/gate2b-nonhomothetic-transfer` at `1ad7f0e48a42b0b61619c401a198637c1110945b`. Original branch heads remain available at `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer`, and `archive/pre-consolidation-2026-11-02/research-v2-flrw`. The V2 tree was not merged. Keep both research branch refs until the hourly automation is verified to resume and publish on `main`; its prompt and schedule could not be safely inspected or updated, and its frequency was not changed. GitHub Actions remain disabled and untouched.
+
+This file is the concise project-status page. For interruption recovery, read this file first, then `00_CURRENT_RESTART.md`, `research/AUTOMATION_STATE.json`, `research/GATE2B_LATEST_RESTART.md`, and `research/NONHOMOTHETIC_OSCILLATION_ACTION_PLAN.md`.
 
 ## 1. Branch strategy
 
-The repository currently contains three branches:
-
-- `main` — stable historical baseline.  It is intentionally far behind the active research line and should remain untouched until a later consolidation/merge decision.
-- `research/v2-flrw` — historical V2 research line.  It is **not redundant** with the current Gate-2B line: the branches have diverged substantially and this branch still contains a large body of V2/NR/initial-data experiments and documentation that are not all present on the current branch.
-- `research/gate2b-nonhomothetic-transfer` — **the only active branch for the present Gate-2B scalar-transfer research**.
-
-Recommended policy now:
-
-1. work only on `research/gate2b-nonhomothetic-transfer`;
-2. keep `main` as the stable baseline;
-3. keep `research/v2-flrw` frozen as an archive/reference until Gate 2B reaches a scientific verdict and any unique material has been reviewed/cherry-picked or explicitly archived;
-4. do **not** actively maintain three parallel lines and do not delete `research/v2-flrw` yet.
-
-A future cleanup can reduce the repository to two branches after Gate 2B closes: stable `main` plus one consolidated research/history branch.
+`main` is the default branch and the sole target for future JANUS research and checkpoint writes. It contains the full Gate-2B source history through the fast-forward promotion recorded above. The older Gate-2B and V2 branch heads are preserved by the migration tags; the V2 branch's divergent files were not copied into the current research tree. Both old refs remain temporarily while automation resumption on `main` is unverified. Retire them only after that operational check succeeds.
 
 ## 2. Executive scientific status
 
@@ -400,9 +389,9 @@ Two new independent *interaction-only* geometry/chain-rule controls have been ad
 
 **Combined locally reconstructed regression: 11 passed**, not a full GitHub or repository suite. These new matrices are NOT the final physical Hessian after EH, two-dust phase terms, metric constraints and time-dependent BD null elimination. In particular, treating the derivative slots as independent physical modes would be an error.
 
-**The single authoritative restart record is `research/GATE2B_LATEST_RESTART.md`, section 18.** The detailed scientific caveats and next mathematical step are in `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md`.
+The current authoritative restart record is `00_CURRENT_RESTART.md`, with machine state in `research/AUTOMATION_STATE.json`. `research/GATE2B_LATEST_RESTART.md` and `research/COMPACT_RADIAL_HR_INTERACTION_AUDIT.md` preserve the detailed scientific history and caveats.
 
-Branch policy remains unchanged: active work only on `research/gate2b-nonhomothetic-transfer`, with `main` retained as a stable baseline and `research/v2-flrw` archived intact.
+Historical note (18 Oct 2026): the branch policy stated at that checkpoint targeted `research/gate2b-nonhomothetic-transfer` while retaining `main` as a baseline. It is superseded by the migration notice and current policy at the top of this file.
 
 
 ## Addendum 2026-10-18 — full compact beta4 Ward checked on exact GitHub sources

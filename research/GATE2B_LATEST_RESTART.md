@@ -1,3 +1,8 @@
+# Avis de consolidation — 2026-11-02
+
+Ce fichier conserve un checkpoint historique. Pour toute reprise actuelle, utiliser exclusivement le HEAD GitHub réel de `main`, puis lire `00_CURRENT_RESTART.md` et `research/AUTOMATION_STATE.json`. Les consignes ci-dessous visant `research/gate2b-nonhomothetic-transfer` ou protégeant `main` datent de checkpoints antérieurs et sont supersédées. Les anciennes refs restent à conserver jusqu’à validation de la cible `main` par l’automatisation horaire.
+
+
 # Gate 2B — latest restart checkpoint
 
 Date: 2026-10-16

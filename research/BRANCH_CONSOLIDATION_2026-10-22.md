@@ -1,3 +1,8 @@
+# Mise à jour administrative du 2026-11-02 — ce plan est historique et supersédé
+
+L’objectif courant est `main` comme branche par défaut et unique cible d’écriture. Les instructions historiques ci-dessous de définir `research/gate2b-nonhomothetic-transfer` par défaut, puis de supprimer `main`, ne s’appliquent plus. Les HEAD originaux restent conservés par les tags `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer` et `archive/pre-consolidation-2026-11-02/research-v2-flrw` ; le contenu de `research/v2-flrw` reste archivé uniquement. Ne supprimer aucune ref de recherche avant d’avoir vérifié que l’automatisation horaire cible `main`.
+
+
 # JANUS — Consolidation de branches (22 octobre 2026)
 
 ## Objectif demandé

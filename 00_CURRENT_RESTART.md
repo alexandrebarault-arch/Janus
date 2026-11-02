@@ -1,3 +1,12 @@
+# Mise à jour administrative — consolidation vers `main` (2026-11-02)
+
+**Branche de reprise et d’écriture visée : `main`.** Le HEAD scientifique source vérifié est `1ad7f0e48a42b0b61619c401a198637c1110945b` ; `main` était son ancêtre, donc la promotion est un fast-forward sans réécriture. Les têtes d’origine ont été archivées sous les tags annotés `archive/pre-consolidation-2026-11-02/main`, `archive/pre-consolidation-2026-11-02/research-gate2b-nonhomothetic-transfer` et `archive/pre-consolidation-2026-11-02/research-v2-flrw`. `research/v2-flrw` garde son historique au tag et son contenu n’est pas réintroduit dans les fichiers de recherche récents.
+
+La consolidation Git **ne valide pas** JANUS : **GATE_2B OPEN ; JANUS_R NOT_VALIDATED**. Les instructions de branche des anciens checkpoints ci-dessous décrivent leur contexte historique et sont remplacées par la cible `main` présente dans ce bloc.
+
+Le retrait des anciennes refs reste en attente de la vérification que l’automatisation horaire relit et publie bien sur `main`. Son outil a rendu une carte de consultation sans exposer le prompt ni les champs de calendrier nécessaires à une mise à jour complète ; aucune fréquence ni programmation n’a été changée. Garder les refs de recherche jusqu’à cette vérification. Les workflows GitHub Actions restent désactivés et inchangés.
+
+
 # JANUS — CHECKPOINT 02/11/2026 : rapport nécessaire M/N et deux vrais bords pour Step58, contre-modèle non physique
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de début de reprise : `f3d7422eb6ba36c47a9dc161b6f7c0861e2fffbd`. Nouvelle étape **b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL** ; les données physiques en intervalles sont **REPRISES** du certificat antérieur (blob `c502b9779056e8a493c43d330696515a661128c4`), moteurs physiques originaux **NON REJOUÉS** cette session.

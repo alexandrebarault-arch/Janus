@@ -103,7 +103,7 @@ def manifest():
     checks=check_profile_cancellations()
     return {'step':67,'date':'2026-10-24',
             'title':'Exact radial shift chain rule and prescribed-profile jet compatibility',
-            'branch':'research/gate2b-nonhomothetic-transfer',
+            'branch':'main',
             'premises':'Step55 positive k>229/1000, z=r/250; previous physical module not rerun',
             's_partial_at_fixed_dk':'-w**3/2',
             's_second_at_fixed_dk':'3*w**5/4',
