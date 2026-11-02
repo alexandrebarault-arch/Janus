@@ -91,8 +91,8 @@
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
-    "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim; exact two-parameter nonphysical local family, Hf=b²-1, C=-(25a+24b+12)/20, two Hf=C=0 points: (-36/25,1) A_N=451/50,A_M=-919/250, formal M/N=2255/919 positive; (12/25,-1) A_N=-149/50,A_M=-547/250, formal M/N=-745/547 negative. Both fail Fz_rr,Hf_r,C_r with frozen higher jets, so neither is holonomic Step55 or a BVP.",
+    "latest_stage": "b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY",
+    "last_step_scope": "Exact generic Step55 ODE jet closure and nonphysical witness: physical continuous derivative enclosures not computed, center and Dirac remain open.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
