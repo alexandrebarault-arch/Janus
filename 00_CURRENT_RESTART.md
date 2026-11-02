@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT b3c3d8 (03/11/2026) : audit indépendant des domaines de signe, aucune nouvelle certification physique continue
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD `main` lu au démarrage : `222217d3067305d469a88274cfbe875dffd8d5bb`. HEAD avant checkpoint : `deba279dd727a01968679043105e2a3e39c2b0dd`. Étape **b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT**.
+
+**Résultat authentifié (audit de cohérence, non rejeu des équations physiques) :** les 7 cellules/225 feuilles du certificat Step68ad-C2d2e3 ont été relues sur GitHub et contrôlées indépendamment par fractions BigInt exactes : couverture jointive `r∈[1/64,1/32]`, 225/225 signes stricts `A_N>0,A_M<0`, extrema rationnels annoncés recalculés sans divergence. Les quatre boîtes Step58 b3c3d6 ont aussi été relues : signes ponctuels à `r=1/4,1/2,7/10,17/20`. **AUCUNE preuve de signe continu sur l'anneau cible `r∈[1/4,17/20]`**, ni centre, zéros, bords temporels, Dirac ou BVP complet.
+
+**Domaines ouverts sans certificat de signe :** `(0,1/64)`, `(1/32,1/4)`, `(1/4,1/2)`, `(1/2,7/10)`, `(7/10,17/20)`. Les rayons ponctuels ne comblent pas ces intervalles.
+
+**Fichiers nouveaux publiés et blobs relus :** `numerics/hr_b3c3d8_sign_coverage_integrity.py` = `c8d6a0c7182bd5405db09f56b0c212bbef1a015c`; `tests/test_hr_b3c3d8_sign_coverage_integrity.py` = `1d171527c542ff1d75a1cb58b4031c5a260f50fe`; `research/STEP68AD_B3C3D8_ARCHIVED_SIGN_COVERAGE_INTEGRITY_AUDIT.md` = `ff8ed63aab575f55452d28ada2783692faf3e6d8`; `research/reports/gate2b-b3c3d8-archived-sign-coverage-integrity.json` = `20f9b150fd65daccaf1855a2ab85e0ea731b0631`. Sources anciennes : rapport C2d2e3 blob `0c688d6648e16064b1eb4e8ad9c55e7b44a95947` ; rapport b3c3d6 blob `c502b9779056e8a493c43d330696515a661128c4`.
+
+**Tests réellement exécutés :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d8_sign_coverage_integrity.py' -v` : **14 PASS, 0 FAIL, 0 SKIP**, sur fixtures synthétiques et octets code/test publiés ; `python -m compileall -q numerics tests` : PASS sur mini-arbre. Les 225 feuilles physiques ont été vérifiées séparément en JS rationnel exact depuis les rapports GitHub. **Step55/58 physique, suite globale et CLI Python sur rapports réels NON rejoués**.
+
+**Prochaine priorité :** exécuter les enclosures physiques directes `G,G_s,G_U,U_s,U_ss,A_N,A_M` sur **chaque cellule de `s∈[1/16,289/400]`**, avec source Step55/58 authentifiée, subdivisions adaptatives et certificat rationnel ; puis combler `r∈[1/32,1/4]` et `r∈[0,1/64]`, traiter zéros, deux vrais bords, Dirac, charges, 4D, stabilité, observables. Ne pas transformer cet audit de couverture en validation scientifique.
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d7 STEP58 JET ORDER (02/11/2026) : ordre des jets physiques démontré, enclosures continues NON calculées
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD `main` relu avant ce checkpoint : `01538d27b6ee1bb821b067817907e4cae84abb74`. Étape **b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE**. Sources originales Step45/46/58 authentifiées par SHA Git, exécutées sur mini-arbre local ; seul l'import Step57 utilise un shim transparent.
