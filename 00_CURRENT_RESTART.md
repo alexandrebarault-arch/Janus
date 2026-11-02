@@ -1,3 +1,23 @@
+# JANUS — CHECKPOINT 02/11/2026 : rapport nécessaire M/N et deux vrais bords pour Step58, contre-modèle non physique
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de début de reprise : `f3d7422eb6ba36c47a9dc161b6f7c0861e2fffbd`. Nouvelle étape **b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL** ; les données physiques en intervalles sont **REPRISES** du certificat antérieur (blob `c502b9779056e8a493c43d330696515a661128c4`), moteurs physiques originaux **NON REJOUÉS** cette session.
+
+**Résultat exact conditionnel :** sur la coquille complète Step58 où B_N=B_M=E_N=E_M=0 et N,M>0, l'équation temporelle fixe `rho=M/N=-A_N/A_M`. Les bornes physiques déjà publiées, exploitées par divisions rationnelles sans arrondi flottant, donnent à `R=17/20` le **nouveau critère nécessaire** `1/2 < M(R)/N(R) < 11/20`. Autres rayons : `1/4: 107/215<rho<223/413`, `1/2: 847/1697<rho<883/1634`, `7/10: 1639/3279<rho<1709/3157`. Ces résultats sont ponctuels, pas continus.
+
+**Théorème de compatibilité (UNE équation algébrique, PAS Dirac complet) :** si `rho=-A_N/A_M>0` est C^k sur `[0,R]` et si `A_M != 0` pour r>0, les quatre amplitudes de Dirichlet positives sont réalisables par `N>0,M=rho*N>0` ssi leurs deux rapports valent `rho(0),rho(R)`. Construction paire analytique des lapses lorsque `rho` est paire analytique.
+
+**Contre-modèle explicitement NON PHYSIQUE :** `A_N=r²(3500-175r²)`, `A_M=-r²(6750-375r²)`, `N=1`, `M=(3500-175r²)/(6750-375r²)>0`, `B=E=0`. Cette famille vérifie l'équation algébrique sur `[0,17/20]`, admet les deux vrais bords à **rapports non égaux à 1**, les quatre vraies boîtes ponctuelles Step58 et le ratio central historique ouvert `1037/2000<14/27<2593/5000`. Elle démontre **une insuffisance logique des seules données ponctuelles** ; elle n'est pas la solution physique JANUS Step55.
+
+**Tests exécutés dans cette reprise :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_lapse_boundary_compatibility.py' -v` : **8 PASS, 0 FAIL, 0 SKIP** ; `PYTHONPATH=. python -m numerics.hr_b3c3d6_lapse_boundary_compatibility` : **PASS** ; `python -m compileall -q numerics tests` : **PASS**. Les SHA Git source/test publiés égalent les octets testés.
+
+**Fichiers nouveaux** : `numerics/hr_b3c3d6_lapse_boundary_compatibility.py` Git blob `b41cbadc7d5a144d4f98b09da57ffa6d99c188da` ; `tests/test_hr_b3c3d6_lapse_boundary_compatibility.py` Git blob `9c7ef57a26258b70126223c2bca61f9a10301b14` ; audit `research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md` Git blob `3ddc9a0cfdb2daf71a50221d408aec08469cc6a4` ; rapport `research/reports/gate2b-b3c3d6-lapse-two-boundary-compatibility.json` Git blob `2e30ec901fdae0c7dcbf6752fef1df0a49b02fef`.
+
+**Prochaine priorité :** calcul physique **CONTINU** de `rho(r)=-A_N/A_M` sur `0<r<=17/20`, centre et zéros de `A_M`, admissibilité des deux vrais bords temporels et complément Dirac ; puis 24 boîtes indépendantes Step58 A/B/E, charges/jauge, K=0/J=0, 4D, stabilité et observables. Ne pas confondre contre-modèle et BVP physique résolu.
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT 02/11/2026 : Step58 physique A_N/A_M certifiés par intervalles à quatre vrais rayons
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de départ lu en direct : `cb70fcb062363d87b0173baa5e53070b93226874`. **Avancée b3c3d6 limitée à la branche physique spatiale Step55 et à son certificat ponctuel existant.**

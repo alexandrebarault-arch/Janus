@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-02",
+  "step": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
+  "head_at_start": "f3d7422eb6ba36c47a9dc161b6f7c0861e2fffbd",
+  "provenance": {
+    "physical_ANAM_legacy_report_git_blob": "c502b9779056e8a493c43d330696515a661128c4",
+    "new_code_git_blob": "b41cbadc7d5a144d4f98b09da57ffa6d99c188da",
+    "new_tests_git_blob": "9c7ef57a26258b70126223c2bca61f9a10301b14"
+  },
+  "physical_ratio_open_bounds": {
+    "1/4": [
+      "107/215",
+      "223/413"
+    ],
+    "1/2": [
+      "847/1697",
+      "883/1634"
+    ],
+    "7/10": [
+      "1639/3279",
+      "1709/3157"
+    ],
+    "17/20": [
+      "2385/4768",
+      "2489/4588"
+    ]
+  },
+  "outer_necessary_screen": "1/2 < M(17/20)/N(17/20) < 11/20, on full Step55 Step58 shell with positive lapses",
+  "exact_toy": {
+    "A_N": "r^2*(3500-175*r^2)",
+    "A_M": "-r^2*(6750-375*r^2)",
+    "N": "1",
+    "M": "(3500-175*r^2)/(6750-375*r^2)",
+    "center_ratio": "14/27",
+    "d_rho_d_s_num": 131250,
+    "physical_solution": false
+  },
+  "tests": {
+    "new_unittest_pass": 8,
+    "failed": 0,
+    "skipped": 0,
+    "compileall": "PASS",
+    "cli": "PASS"
+  },
+  "original_engines_replayed_this_session": false,
+  "novel_physical_continuous_enclosures": false,
+  "full_BVP_Dirac_certified": false,
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}

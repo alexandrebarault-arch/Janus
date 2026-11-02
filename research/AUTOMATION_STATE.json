@@ -17,13 +17,13 @@
     "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_boundary_ANAM_interval_certificate.py": "7e998fbbda8f3854093d530dc5e7e07703d70624",
-    "tests/test_hr_b3c3d6_boundary_ANAM_interval_certificate.py": "b5cf16826424bc624e15e18a8b18813a0251f859",
-    "research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md": "12b5e64fadb7e7db81ef22cba44ae4578424e717",
-    "research/reports/gate2b-b3c3d6-step58-physical-ANAM-four-radii-sign.json": "c502b9779056e8a493c43d330696515a661128c4"
+    "numerics/hr_b3c3d6_lapse_boundary_compatibility.py": "b41cbadc7d5a144d4f98b09da57ffa6d99c188da",
+    "tests/test_hr_b3c3d6_lapse_boundary_compatibility.py": "9c7ef57a26258b70126223c2bca61f9a10301b14",
+    "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md": "3ddc9a0cfdb2daf71a50221d408aec08469cc6a4",
+    "research/reports/gate2b-b3c3d6-lapse-two-boundary-compatibility.json": "2e30ec901fdae0c7dcbf6752fef1df0a49b02fef"
   },
-  "verified_research_head_at_session_start": "cb70fcb062363d87b0173baa5e53070b93226874",
-  "next_priority": "Investigate genuine positive two-lapse global BVP under admissible boundary data and ratio M(R)/N(R)=-A_N/A_M; extend 24 physical A/B/E rigorous boxes, full Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "f3d7422eb6ba36c47a9dc161b6f7c0861e2fffbd",
+  "next_priority": "Enclose physical rho=-A_N/A_M continuously over 0<r<=17/20 (not only four points), handle center and A_M zeros, admissible positive-lapse two genuine temporal boundaries, full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -31,14 +31,14 @@
   "verified_session_date": "2026-11-02",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d6_PHYSICAL_STEP58_AN_AM_FOUR_RADII_OUTWARD_INTERVAL_CONDITIONAL_BOUNDARY_OBSTRUCTION",
-  "next_pending_step": "b3c3d6_GENUINE_POSITIVE_TWO_LAPSE_BVP_WITH_FREE_OUTER_RATIO_FULL_DIRAC",
+  "latest_verified_completed_step": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
+  "next_pending_step": "b3c3d6_GLOBAL_PHYSICAL_RHO_CONTINUOUS_ENCLOSURE_CENTRE_AND_TRUE_BOUNDARY_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_LAPSE_TWO_BOUNDARY_RATIO_COMPATIBILITY.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_AN_AM_FOUR_RADII_PHYSICAL_INTERVAL_CERTIFIED_CONDITIONAL_NO_EQUAL_OUTER_LAPSES",
+    "latest_stage": "b3c3d6_TWO_BOUNDARY_LAPSE_RATIO_NECESSARY_CONDITIONAL_SYNTHETIC_COUNTERMODEL",
     "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim; exact two-parameter nonphysical local family, Hf=b²-1, C=-(25a+24b+12)/20, two Hf=C=0 points: (-36/25,1) A_N=451/50,A_M=-919/250, formal M/N=2255/919 positive; (12/25,-1) A_N=-149/50,A_M=-547/250, formal M/N=-745/547 negative. Both fail Fz_rr,Hf_r,C_r with frozen higher jets, so neither is holonomic Step55 or a BVP.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
@@ -113,7 +113,8 @@
     "original_step58_lower_BN_surviving_jet": "Sg_rr_AFFINE_ELIMINATED_BY_Hg_ZERO",
     "original_step58_lower_BN_remaining_first_jet_residual": "EXACT_ZERO_ORIGINAL_STEP45_58",
     "original_step58_lower_BN_universal_identity": "EXACT_ON_ORIGINAL_STEP45_58",
-    "positive_two_lapse_two_boundary_BVP": "NOT_SOLVED_OR_EXCLUDED_FOR_GENERAL_ADMISSIBLE_BORDERS"
+    "positive_two_lapse_two_boundary_BVP": "NOT_SOLVED_OR_EXCLUDED_FOR_PHYSICAL_STEP55;ANALYTIC_TWO_BOUNDARY_TOY_ONLY",
+    "physical_lapse_outer_ratio": "R=17/20 1/2<M/N<11/20 NECESSARY, CONDITIONED ON EXACT SHELL AND PREVIOUS PHYSICAL_BOXES"
   },
   "last_reported_tests": {
     "unittest_cases_passed": 12,
@@ -768,28 +769,24 @@
     "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
   },
   "latest_session_scientific_result": {
-    "scope": "STEP55_PRESCRIBED_SPHERICAL_SPATIAL_BRANCH_CONDITIONAL_ON_CERTIFIED_ARCHIVE",
-    "exact_radii": [
-      "1/4",
-      "1/2",
-      "7/10",
-      "17/20"
-    ],
-    "interval_archive_blob": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
-    "certified_signs": "A_N>0,A_M<0,A_N+A_M<0 all four",
-    "R_boundary_sum_strict": "-2383<A_N(17/20)+A_M(17/20)<-2099",
-    "conditional_obstruction": "N(R)=M(R)>0 impossible on this exact Step55 spatial shell, NOT all BVPs",
-    "physical_barrier_rerun_this_session": false,
-    "all_24_physical_coefficients_independently_enclosed": false
+    "scope": "NECESSARY_CONSEQUENCES_OF_PREVIOUS_FOUR_STEP55_ORIGINAL_STEP58_A_N_A_M_INTERVALS_PLUS_FULL_SHELL;SYNTHETIC_TOY_CONTRAEXAMPLE",
+    "source_four_radius_archive_blob": "c502b9779056e8a493c43d330696515a661128c4",
+    "outer_necessary_rho": "1/2<M(R)/N(R)<11/20 for R=17/20",
+    "central_rho_bounds": "1037/2000<rho(0)<2593/5000 FROM HISTORICAL CERTIFICATE",
+    "new_global_physical_enclosures": false,
+    "single_algebraic_equation_two_boundary_compatibility": "PROVED_IF_RHO_POSITIVE_SMOOTH",
+    "positive_analytic_two_lapse_construct": "SYNTHETIC_NONPHYSICAL_AND_WITH_FREE_OUTER_RATIO",
+    "original_physical_engines_rerun_this_session": false,
+    "not_full_BVP": true,
+    "not_full_Dirac": true
   },
   "latest_session_tests": {
-    "unittest_bn_pass": 12,
-    "unittest_anam_pass": 10,
-    "total_pass": 22,
+    "new_unittests": 8,
     "failed": 0,
     "skipped": 0,
     "compileall": "PASS",
-    "exact_new_source_test_blob_match": true
+    "cli": "PASS",
+    "new_git_blobs_match_tested_bytes": true
   },
   "latest_session_checkpoint_suffix_exact_preserved": true,
   "previous_last_reported_tests": {
