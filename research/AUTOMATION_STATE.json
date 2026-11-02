@@ -37,7 +37,7 @@
     "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
   },
   "verified_research_head_at_session_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
-  "next_priority": "Certify actual physical Step55/58 derivatives d(A_N/r²)/ds and d(-A_M/r²)/ds on all annular cells s in [1/16,289/400], compare exact sufficient thresholds 4123900/147 and 378550/7 or use local cells; then center [0,1/4], A_M zeros, two genuine temporal boundaries, full Dirac/4D/stability/observables.",
+  "next_priority": "Enclose actual G_ss,G_sU,G_UU on Step55 physical interval tube; verify exact reduced Step58 A_N/A_M dependencies and continuous derivatives; then center and true two-boundary lapse/Dirac. No physical derivative bound certified.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -84,10 +84,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE",
-  "next_pending_step": "b3c3d7_AUTHENTIC_STEP55_STEP58_CONTINUOUS_DERIVATIVE_BOUNDS_AND_CENTER",
+  "latest_verified_completed_step": "b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY",
+  "next_pending_step": "b3c3d7_PHYSICAL_G_SECOND_PARTIALS_AND_AN_AM_CONTINUOUS_ENCLOSURE",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D7_STEP55_DERIVATIVE_JET_BUDGET.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -172,15 +172,14 @@
     "physical_two_boundary_lapse_BVP": "NOT_CERTIFIED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 11,
+    "unittest_cases_passed": 9,
     "failed_final": 0,
     "skipped_final": 0,
     "python_module_run_pass": true,
     "python_compileall_pass": true,
-    "original_step45_step58_sha_read_via_github": true,
-    "original_step45_step58_executed_this_session": false,
-    "step55_barrier_reexecuted_this_session": false,
-    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_annular_lipschitz_sign_gate.py' -v"
+    "full_repo_suite_executed": false,
+    "original_physical_engines_executed": false,
+    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_step55_derivative_jet_budget.py' -v"
   },
   "github_write_probe": {
     "status": "STAGING_FOR_SINGLE_ATOMIC_REF_COMMIT",
@@ -948,5 +947,36 @@
     "workflows": "unchanged disabled",
     "branch": "main",
     "atomic_commit": "PUBLISHED_ONLY_IF_UPDATE_REF_SUCCEEDS"
+  },
+  "b3c3d7_2026_11_02_derivative_budget_session": {
+    "read_head_at_start": "88bbe8e78a736180e84ee9e8d3ae04333a230598",
+    "verified_science_head_before_checkpoint": "e0600f4fda0916baabdc681d3088f58d8184ed54",
+    "completed_step": "b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY",
+    "next_step": "b3c3d7_PHYSICAL_G_SECOND_PARTIALS_AND_AN_AM_CONTINUOUS_ENCLOSURE",
+    "scope": "EXACT_GENERIC_ODE_JET_CLOSURE_AND_NONPHYSICAL_WITNESS_ONLY",
+    "source_originals_read": {
+      "numerics/hr_step55_normalized_secondary.py": "a54a6acf2f7ad2f64c500faecfa1406ecbf7b862",
+      "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+    },
+    "published_blobs": {
+      "numerics/hr_b3c3d7_step55_derivative_jet_budget.py": "d389f89dbadca05c965b522e3652562f6f85b308",
+      "tests/test_hr_b3c3d7_step55_derivative_jet_budget.py": "01fc6b6ba05dcb68a78b7bfe9048147b62412cf2",
+      "research/STEP68AD_B3C3D7_STEP55_DERIVATIVE_JET_BUDGET.md": "cf9f2ff03643cbd7a267a751bb6028a0a5cb44ae"
+    },
+    "tests": {
+      "unittest_cases_passed": 9,
+      "failed_final": 0,
+      "skipped_final": 0,
+      "python_module_run_pass": true,
+      "python_compileall_pass": true,
+      "full_repo_suite_executed": false,
+      "original_physical_engines_executed": false,
+      "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_step55_derivative_jet_budget.py' -v"
+    },
+    "physical_continuum_certified": false,
+    "center_certified": false,
+    "full_Dirac_certified": false,
+    "branch": "main",
+    "workflows_modified": false
   }
 }
