@@ -1,0 +1,75 @@
+{
+  "step": "b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT",
+  "date": "2026-11-03",
+  "main_head_at_start": "222217d3067305d469a88274cfbe875dffd8d5bb",
+  "method": "Independent BigInt rational parser and consistency checks of two authentic GitHub JSON reports; separate Python integrity checker with synthetic mutation tests",
+  "source_report_git_blobs": {
+    "research/reports/gate2b-step68ad-C2d2e3-Step58-correlated-MVT.json": "0c688d6648e16064b1eb4e8ad9c55e7b44a95947",
+    "research/reports/gate2b-b3c3d6-step58-physical-ANAM-four-radii-sign.json": "c502b9779056e8a493c43d330696515a661128c4"
+  },
+  "source_code_git_blobs": {
+    "numerics/hr_b3c3d8_sign_coverage_integrity.py": "c8d6a0c7182bd5405db09f56b0c212bbef1a015c",
+    "tests/test_hr_b3c3d8_sign_coverage_integrity.py": "1d171527c542ff1d75a1cb58b4031c5a260f50fe"
+  },
+  "actual_report_validation": {
+    "cells": 7,
+    "leaves": 225,
+    "adaptive_bisections_reported": 1,
+    "rational_bounds_strict": true,
+    "all_leaf_edges_contiguous": true,
+    "extrema_match_report": true,
+    "continuum_r": [
+      "1/64",
+      "1/32"
+    ],
+    "min_A_N_lower": "738081248225184126420269/312500000000000000000000000",
+    "max_A_M_upper": "-1514435823797833476506571291/1250000000000000000000000000",
+    "pointwise_r": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "pointwise_signs": "A_N>0, A_M<0, A_N+A_M<0 on four isolated radii"
+  },
+  "uncovered_open_intervals_r": [
+    [
+      "0",
+      "1/64"
+    ],
+    [
+      "1/32",
+      "1/4"
+    ],
+    [
+      "1/4",
+      "1/2"
+    ],
+    [
+      "1/2",
+      "7/10"
+    ],
+    [
+      "7/10",
+      "17/20"
+    ]
+  ],
+  "target_annulus_r": [
+    "1/4",
+    "17/20"
+  ],
+  "physical_continuum_sign_on_target_annulus": "NOT_CERTIFIED",
+  "physical_step55_step58_reexecuted": false,
+  "tests": {
+    "local_synthetic_unittest_pass": 14,
+    "local_synthetic_unittest_fail": 0,
+    "local_synthetic_unittest_skip": 0,
+    "compileall_pass": true,
+    "original_report_independent_rational_leaf_checks": 225,
+    "original_ODE_or_operators_run": false
+  },
+  "scope": "Integrity and gap-map of existing physical conditional certificates; does not establish any new physical sign",
+  "next": "Run authentic Step55/Step58 direct interval evaluator on all cells r in [1/4,17/20] (s in [1/16,289/400]), then bridge [1/32,1/4] and [0,1/64], zero and two boundaries, Dirac",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
