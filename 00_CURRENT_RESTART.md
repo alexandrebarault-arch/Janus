@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT b3c3d7 STEP58 JET ORDER (02/11/2026) : ordre des jets physiques démontré, enclosures continues NON calculées
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD `main` relu avant ce checkpoint : `01538d27b6ee1bb821b067817907e4cae84abb74`. Étape **b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE**. Sources originales Step45/46/58 authentifiées par SHA Git, exécutées sur mini-arbre local ; seul l'import Step57 utilise un shim transparent.
+
+**Résultat exact :** sur la carte spatiale Step55 avec les primaires Step46, les coefficients sans dérivée de lapse du vrai opérateur Step58 vérifient structurellement `A_N=A_N(r,U,U_s)` et `A_M=A_M(r,U,U_s,U_ss)` ; **aucun ne dépend de `U_sss`**. Sur Fz=0, `dA_M/dU_ss = 4*r^4*z*C1/Lf` où `C1=dC/d(pLf')` est le coefficient non nul de Step46 ; `dA_N/dU_ss=0`. Cette identité est prouvée sur les expressions originales, pas sur une approximation ponctuelle.
+
+**Nouvelle voie prioritaire :** une certification directe de signe de `A_N,A_M` par intervalles rationnels cellule par cellule peut utiliser `U,U_s,U_ss` et seulement `G,G_s,G_U`, sans `G_ss,G_sU,G_UU`. Les dérivées secondes de G restent nécessaires si l'on préfère certifier les bornes Lipschitz des dérivées de A. **AUCUN signe physique continu, zéro de A_M, centre, BVP à deux lapses ou Dirac complet n'est certifié par ce checkpoint.**
+
+**Nouveaux fichiers relus sur GitHub :** `numerics/hr_b3c3d7_step58_reduced_jet_order_audit.py` blob `d5a3d214b586a238d275df281a0a03ca683ac774` ; `tests/test_hr_b3c3d7_step58_reduced_jet_order_audit.py` blob `255bd2a98ead4539f1ac5de1e74344839ed01acc` ; `research/STEP68AD_B3C3D7_STEP58_REDUCED_JET_ORDER_AUDIT.md` blob `95a2c05632c302ba862a09c45d8da0a6710be1a0`. Code/test publiés byte-identiques aux fichiers testés localement.
+
+**Tests réellement exécutés :** 13 PASS, 0 FAIL, 0 SKIP dans `test_hr_b3c3d7_step58_reduced_jet_order_audit.py` ; CLI du module PASS ; compileall des deux fichiers PASS. Un premier test de substitution symbolique a échoué puis été corrigé avant le rejeu complet. Originaux Step45/46/58 exécutés ; Step55 barrière globale, 256 cellules, Step57 complet et suite globale du dépôt NON rejoués.
+
+**Prochaine étape :** construire un évaluateur intervalle direct sur les cellules physiques Step55 de `s∈[1/16,289/400]`, certifier `G,G_s,G_U` sur chaque cellule, recomposer `U_s,U_ss` et les `A_N,A_M` originaux, vérifier le signe continu ou identifier exactement le verrou. Ensuite centre, éventuels zéros, deux vrais bords, Dirac, charges, 4D, stabilité et observables. Préserver `main` seule branche de travail et les GitHub Actions désactivés.
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d7 JET-BUDGET (02/11/2026) : dérivées requises pour la preuve continue, NON certifiées physiquement
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main lu à la reprise : `88bbe8e78a736180e84ee9e8d3ae04333a230598`. HEAD après les trois nouveaux fichiers : `e0600f4fda0916baabdc681d3088f58d8184ed54`. Étape **b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY**. La vraie branche physique n'a PAS reçu de nouvelles enclosures continues.
