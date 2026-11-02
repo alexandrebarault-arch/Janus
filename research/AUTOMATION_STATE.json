@@ -31,18 +31,19 @@
     "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d7_annular_lipschitz_sign_gate.py": "e281e230ce3a0e14a7865c62edbba89386aab282",
-    "tests/test_hr_b3c3d7_annular_lipschitz_sign_gate.py": "748b2fdffd7b3f123303b5ae7268de207a508db6",
-    "research/reports/gate2b-b3c3d7-annular-lipschitz-sign-gate.json": "f4d559ad5a879349a61c0f88fb917096ebe6d8aa",
-    "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
+    "numerics/hr_b3c3d8_sign_coverage_integrity.py": "c8d6a0c7182bd5405db09f56b0c212bbef1a015c",
+    "tests/test_hr_b3c3d8_sign_coverage_integrity.py": "1d171527c542ff1d75a1cb58b4031c5a260f50fe",
+    "research/STEP68AD_B3C3D8_ARCHIVED_SIGN_COVERAGE_INTEGRITY_AUDIT.md": "ff8ed63aab575f55452d28ada2783692faf3e6d8",
+    "research/reports/gate2b-b3c3d8-archived-sign-coverage-integrity.json": "20f9b150fd65daccaf1855a2ab85e0ea731b0631",
+    "00_CURRENT_RESTART.md": "fe7c9455bebd299a3ecd790cbc1160bfe3dd5be5"
   },
   "verified_research_head_at_session_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
-  "next_priority": "Direct outward rational cell-by-cell Step55 G,G_s,G_U and Step58 A_N,A_M evaluation on s=[1/16,289/400], with verified original operators; then center, zero handling, two true boundaries, Dirac. No physical continuum sign yet.",
+  "next_priority": "Run original authenticated Step55/58 direct outward-rational cell-by-cell G,G_s,G_U, U_s, U_ss, A_N,A_M on r=[1/4,17/20], s=[1/16,289/400]; then bridge [1/32,1/4] and [0,1/64], zeros, true temporal boundaries and Dirac. Existing physical sign continuum only r=[1/64,1/32].",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
   "tracking_policy": "GitHub checkpoint is authoritative; rescan real branch HEAD and 00_CURRENT_RESTART.md on every run; do not trust stale stage markers.",
-  "verified_session_date": "2026-11-02",
+  "verified_session_date": "2026-11-03",
   "research_branch": "main",
   "branch_consolidation": {
     "date": "2026-11-02",
@@ -83,16 +84,16 @@
     "critical_scientific_files": "unchanged relative to source HEAD",
     "git_diff_check": "passed"
   },
-  "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE",
-  "next_pending_step": "b3c3d7_PHYSICAL_STEP55_STEP58_DIRECT_CELL_INTERVAL_SIGN_CERTIFICATION",
+  "verified_research_head_before_state_file": "60327f7e4635cb9987bfb3252649c5215456c070",
+  "latest_verified_completed_step": "b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT",
+  "next_pending_step": "b3c3d8_PHYSICAL_STEP55_STEP58_DIRECT_CONTINUUM_ANNULAR_ENCLOSURES",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D7_STEP58_REDUCED_JET_ORDER_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D8_ARCHIVED_SIGN_COVERAGE_INTEGRITY_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE",
-    "last_step_scope": "Exact authentic Step45/46/58 symbolic dependency audit: A_N needs U,U_s; A_M needs U,U_s,U_ss; direct sign enclosure bypasses G second partials, but not yet physically executed on continuum.",
+    "latest_stage": "b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT",
+    "last_step_scope": "Independent exact-rational consistency audit of archived 225 continuous sign leaves on r=[1/64,1/32] and four isolated physical sign radii. NO new physical continuum signs, ODE replay or Step58 recomputation.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -168,18 +169,24 @@
     "original_step58_lower_BN_universal_identity": "EXACT_ON_ORIGINAL_STEP45_58",
     "positive_two_lapse_two_boundary_BVP": "NOT_SOLVED_OR_EXCLUDED_FOR_PHYSICAL_STEP55;ANALYTIC_TWO_BOUNDARY_TOY_ONLY",
     "physical_lapse_outer_ratio": "R=17/20 1/2<M/N<11/20 NECESSARY, CONDITIONED ON EXACT SHELL AND PREVIOUS PHYSICAL_BOXES",
-    "physical_continuum_rho": "NOT_CERTIFIED",
-    "physical_two_boundary_lapse_BVP": "NOT_CERTIFIED"
+    "physical_continuum_rho": "NOT_CERTIFIED_ON_TARGET_ANNULUS",
+    "physical_two_boundary_lapse_BVP": "NOT_CERTIFIED",
+    "physical_annular_sign_r": "NOT_CERTIFIED",
+    "archived_conditional_continuum_sign_r": [
+      "1/64",
+      "1/32"
+    ],
+    "archived_conditional_continuum_sign_leaf_count": 225
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 13,
+    "unittest_cases_passed": 14,
     "failed_final": 0,
     "skipped_final": 0,
-    "python_module_run_pass": true,
+    "python_module_run_pass": false,
     "python_compileall_pass": true,
     "full_repo_suite_executed": false,
-    "original_physical_engines_executed": "STEP45_46_58_SYMBOLIC_ONLY; STEP55_GLOBAL_BARRIER_NOT_RERUN",
-    "run_command": "PYTHONPATH=<mini-tree> python -m unittest discover -s <mini-tree>/tests -p 'test_hr_b3c3d7_step58_reduced_jet_order_audit.py' -v"
+    "original_physical_engines_executed": "NO; ARCHIVED_JSON_REPORTS_RATIONALLY_RECHECKED",
+    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d8_sign_coverage_integrity.py' -v"
   },
   "github_write_probe": {
     "status": "STAGING_FOR_SINGLE_ATOMIC_REF_COMMIT",
@@ -207,7 +214,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Physical continuous A_N/A_M sign still NOT certified. Exact Step58 reduced U-jet dependency now verified; next compute outward rational cell enclosures G,G_s,G_U and directly evaluate original A_N,A_M on every Step55 annulus cell. Center, two true temporal boundaries and Dirac remain open.",
+  "current_blocker": "Only archived Step68ad-C2d2e3 conditional continuum sign on r=[1/64,1/32] and four isolated Step58 sign radii authenticated; full annular direct Step55/58 enclosures NOT run. This session independently checked 225 leaf interval report, did not execute physical ODE/operators.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -1015,5 +1022,51 @@
     "full_Dirac_certified": false,
     "branch": "main",
     "workflows_modified": false
+  },
+  "latest_session_research": {
+    "date": "2026-11-03",
+    "kind": "INDEPENDENT_RATIONAL_CERTIFICATE_INTEGRITY_AUDIT_NOT_NEW_PHYSICAL_PROOF",
+    "source_head_at_start": "222217d3067305d469a88274cfbe875dffd8d5bb",
+    "continuum_sign_certified_r": [
+      "1/64",
+      "1/32"
+    ],
+    "continuous_leaf_boxes_verified": 225,
+    "original_cell_count": 7,
+    "four_isolated_sign_radii": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "annulus_sign_continuum_certified": false,
+    "physical_originals_executed": false,
+    "tests_local_synthetic_pass": 14,
+    "tests_fail": 0,
+    "tests_skip": 0,
+    "compileall_pass": true,
+    "real_report_independent_rational_consistency_check": true,
+    "gap_intervals": [
+      [
+        "0",
+        "1/64"
+      ],
+      [
+        "1/32",
+        "1/4"
+      ],
+      [
+        "1/4",
+        "1/2"
+      ],
+      [
+        "1/2",
+        "7/10"
+      ],
+      [
+        "7/10",
+        "17/20"
+      ]
+    ]
   }
 }
