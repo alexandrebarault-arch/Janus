@@ -1,3 +1,19 @@
+# JANUS — CHECKPOINT b3c3d7 JET-BUDGET (02/11/2026) : dérivées requises pour la preuve continue, NON certifiées physiquement
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main lu à la reprise : `88bbe8e78a736180e84ee9e8d3ae04333a230598`. HEAD après les trois nouveaux fichiers : `e0600f4fda0916baabdc681d3088f58d8184ed54`. Étape **b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY**. La vraie branche physique n'a PAS reçu de nouvelles enclosures continues.
+
+**Résultat exact :** sur `s=r²>0`, `2s U_s=G(s,U)-2U` entraîne `U_sss=(G_ss+2G_sU*U_s+G_UU*U_s²+(G_U-6)*U_ss)/(2s)`. Pour tout coefficient réduit `A(s,U,U_s,U_ss)`, `d(A/s)/ds=[s*(A_s+A_U U_s+A_(U_s)U_ss+A_(U_ss)U_sss)-A]/s²`. L'exemple analytique NON PHYSIQUE `G1=G0+(s-s0)²` conserve les valeurs `G,G_s,G_U` au point `s0=1/4` mais change `U_sss` de **4**. Les seules données ponctuelles précédentes ne suffisent donc pas à borner ce jet. Les conditions non résonantes de récurrence analytique centrale pour `U1,U2` sont établies, mais aucun reste Taylor physique n'est borné.
+
+**Nouveaux fichiers vérifiés après publication :** `numerics/hr_b3c3d7_step55_derivative_jet_budget.py` blob `d389f89dbadca05c965b522e3652562f6f85b308`, `tests/test_hr_b3c3d7_step55_derivative_jet_budget.py` blob `01fc6b6ba05dcb68a78b7bfe9048147b62412cf2`, audit `research/STEP68AD_B3C3D7_STEP55_DERIVATIVE_JET_BUDGET.md` blob `cf9f2ff03643cbd7a267a751bb6028a0a5cb44ae`. Blobs code/test identiques aux octets testés localement. Sources physiques originales Step55 et Step58 lues, mais NON exécutées dans cette session.
+
+**Tests réellement exécutés :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_step55_derivative_jet_budget.py' -v` : **9 PASS, 0 FAIL, 0 SKIP** ; `PYTHONPATH=. python -m numerics.hr_b3c3d7_step55_derivative_jet_budget` : PASS ; `python -m compileall -q numerics tests` : PASS sur le mini-arbre des deux nouveaux fichiers. Un premier essai de test a échoué à cause d'une comparaison syntaxique SymPy non simplifiée ; corrigé et tous les tests repassés. Aucun rejeu de l'ensemble des tests du dépôt.
+
+**Prochaine priorité :** sur les sources physiques authentiques Step55/58, construire des enclosures rationnelles de `G_ss,G_sU,G_UU` sur chaque cellule du tube Step55, confirmer les dépendances exactes de `A_N,A_M` et borner continûment `d(A_N/r²)/ds` et `d(-A_M/r²)/ds`. Comparer aux seuils suffisants conditionnels `4123900/147` et `378550/7`. Puis centre, éventuels zéros, deux vrais bords, Dirac complet, charges, 4D, stabilité, observables. Pas de BVP JANUS ni preuve générale.
+
+**Historique antérieur conservé intégralement ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d7 (02/11/2026) : critère de signe continu conditionnel et contre-exemple de zéro intérieur
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main réellement relu au démarrage : f016fbcb0958ee06129c2235c12fee1067eb4c02. Étape terminée : **b3c3d7_CONDITIONAL_ANNULAR_SHARP_LIPSCHITZ_SIGN_GATE**. Ce progrès est un théorème rationnel conditionnel, NON une enclosure physique continue.
