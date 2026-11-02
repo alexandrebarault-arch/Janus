@@ -37,7 +37,7 @@
     "research/STEP68AD_B3C3D7_ANNULAR_LIPSCHITZ_SIGN_GATE.md": "5e7c2d0e7c59bfc5b8d4d44d8d554505371209ad"
   },
   "verified_research_head_at_session_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
-  "next_priority": "Enclose actual G_ss,G_sU,G_UU on Step55 physical interval tube; verify exact reduced Step58 A_N/A_M dependencies and continuous derivatives; then center and true two-boundary lapse/Dirac. No physical derivative bound certified.",
+  "next_priority": "Direct outward rational cell-by-cell Step55 G,G_s,G_U and Step58 A_N,A_M evaluation on s=[1/16,289/400], with verified original operators; then center, zero handling, two true boundaries, Dirac. No physical continuum sign yet.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -46,7 +46,7 @@
   "research_branch": "main",
   "branch_consolidation": {
     "date": "2026-11-02",
-    "status": "SINGLE_BRANCH_MAIN_VERIFIED; AUTOMATION_NEXT_CYCLE_PENDING",
+    "status": "SINGLE_BRANCH_MAIN_VERIFIED; POST_MIGRATION_RESEARCH_WRITES_OBSERVED",
     "target_branch": "main",
     "source_branch": "research/gate2b-nonhomothetic-transfer",
     "source_head": "1ad7f0e48a42b0b61619c401a198637c1110945b",
@@ -84,15 +84,15 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY",
-  "next_pending_step": "b3c3d7_PHYSICAL_G_SECOND_PARTIALS_AND_AN_AM_CONTINUOUS_ENCLOSURE",
+  "latest_verified_completed_step": "b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE",
+  "next_pending_step": "b3c3d7_PHYSICAL_STEP55_STEP58_DIRECT_CELL_INTERVAL_SIGN_CERTIFICATION",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D7_STEP55_DERIVATIVE_JET_BUDGET.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D7_STEP58_REDUCED_JET_ORDER_AUDIT.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d7_STEP55_DERIVATIVE_JET_BUDGET_EXACT_GENERIC_ONLY",
-    "last_step_scope": "Exact generic Step55 ODE jet closure and nonphysical witness: physical continuous derivative enclosures not computed, center and Dirac remain open.",
+    "latest_stage": "b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE",
+    "last_step_scope": "Exact authentic Step45/46/58 symbolic dependency audit: A_N needs U,U_s; A_M needs U,U_s,U_ss; direct sign enclosure bypasses G second partials, but not yet physically executed on continuum.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -172,14 +172,14 @@
     "physical_two_boundary_lapse_BVP": "NOT_CERTIFIED"
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 9,
+    "unittest_cases_passed": 13,
     "failed_final": 0,
     "skipped_final": 0,
     "python_module_run_pass": true,
     "python_compileall_pass": true,
     "full_repo_suite_executed": false,
-    "original_physical_engines_executed": false,
-    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d7_step55_derivative_jet_budget.py' -v"
+    "original_physical_engines_executed": "STEP45_46_58_SYMBOLIC_ONLY; STEP55_GLOBAL_BARRIER_NOT_RERUN",
+    "run_command": "PYTHONPATH=<mini-tree> python -m unittest discover -s <mini-tree>/tests -p 'test_hr_b3c3d7_step58_reduced_jet_order_audit.py' -v"
   },
   "github_write_probe": {
     "status": "STAGING_FOR_SINGLE_ATOMIC_REF_COMMIT",
@@ -207,7 +207,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "The two continuous physical derivative bounds required for the new sufficient annular sign gate have NOT been computed. The four pointwise boxes and center leading/subleading jets alone do not exclude an interior A_M zero (synthetic nonphysical countermodel).",
+  "current_blocker": "Physical continuous A_N/A_M sign still NOT certified. Exact Step58 reduced U-jet dependency now verified; next compute outward rational cell enclosures G,G_s,G_U and directly evaluate original A_N,A_M on every Step55 annulus cell. Center, two true temporal boundaries and Dirac remain open.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -505,7 +505,10 @@
     "research/STEP68AD_B3C3D6_DIVISION_FREE_LAPSE_FRAME.md": "8111bb36e9d29ed13a3d7d8287b2aca4cd77367a",
     "research/reports/gate2b-step68ad-b3c3d6-division-free-lapse-frame.json": "ef417eb03b9419897fcf45343cfcb6c9c208cdfa",
     "README.md": "60d4e355e9ac52a40417441a3238a35b2a007975",
-    "00_CURRENT_RESTART.md": "ff82a27ed8fcbad45c6f3883bdfc51eaad1410df"
+    "00_CURRENT_RESTART.md": "c78df4825dcfdd00e2f4f698874ac93744520710",
+    "numerics/hr_b3c3d7_step58_reduced_jet_order_audit.py": "d5a3d214b586a238d275df281a0a03ca683ac774",
+    "tests/test_hr_b3c3d7_step58_reduced_jet_order_audit.py": "255bd2a98ead4539f1ac5de1e74344839ed01acc",
+    "research/STEP68AD_B3C3D7_STEP58_REDUCED_JET_ORDER_AUDIT.md": "95a2c05632c302ba862a09c45d8da0a6710be1a0"
   },
   "latest_conditional_composition": {
     "step": "68ad-C2d2e2",
@@ -594,7 +597,7 @@
     "status": "NOT_DELETED"
   },
   "previous_completed_step": "68ad-C2d2e5b3b2b2b-CONDITIONAL_FULL_RADIAL_PARAMETER_TANGENT",
-  "latest_verified_research_head_before_state_update": "fdbfd88dd1643794c2f87249367b2728ac246795",
+  "latest_verified_research_head_before_state_update": "b8fd8c32fd402d9ac3da1349551b672c64039e5f",
   "last_verified_research_head_after_restart": "fd5690ab03dc8f62fdbb3b87a0291f38b816883a",
   "latest_session_original_source_blobs": {
     "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
@@ -975,6 +978,40 @@
     },
     "physical_continuum_certified": false,
     "center_certified": false,
+    "full_Dirac_certified": false,
+    "branch": "main",
+    "workflows_modified": false
+  },
+  "b3c3d7_2026_11_02_step58_jet_order_session": {
+    "read_head_at_session_start": "f9e9e4295565150e33aca3862c24b7f2592d480f",
+    "verified_head_before_state_update": "b8fd8c32fd402d9ac3da1349551b672c64039e5f",
+    "completed_step": "b3c3d7_STEP58_EXACT_REDUCED_JET_ORDER_DIRECT_INTERVAL_ROUTE",
+    "next_step": "b3c3d7_PHYSICAL_STEP55_STEP58_DIRECT_CELL_INTERVAL_SIGN_CERTIFICATION",
+    "original_sources_executed": {
+      "numerics/hr_step45_exact_physical_ward.py": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+      "numerics/hr_step46_exact_secondary_ode.py": "bac025c28dbe1561c0c36c56dbfda46dc326f804",
+      "numerics/hr_step58_temporal_operator.py": "802c23aebd41780d8c462f1aa1711707fe4ee88f"
+    },
+    "step57_import": "minimal local shim returning authenticated Step45; full Step57 not executed",
+    "published_blobs": {
+      "numerics/hr_b3c3d7_step58_reduced_jet_order_audit.py": "d5a3d214b586a238d275df281a0a03ca683ac774",
+      "tests/test_hr_b3c3d7_step58_reduced_jet_order_audit.py": "255bd2a98ead4539f1ac5de1e74344839ed01acc",
+      "research/STEP68AD_B3C3D7_STEP58_REDUCED_JET_ORDER_AUDIT.md": "95a2c05632c302ba862a09c45d8da0a6710be1a0"
+    },
+    "restart_checkpoint_blob": "c78df4825dcfdd00e2f4f698874ac93744520710",
+    "tests": {
+      "passed": 13,
+      "failed": 0,
+      "skipped": 0,
+      "cli_pass": true,
+      "compileall_pass": true,
+      "original_step45_46_58_executed": true,
+      "step55_global_barrier_executed": false,
+      "full_repo_suite_executed": false
+    },
+    "exact_result": "A_N(r,U,U_s), A_M(r,U,U_s,U_ss); dA_M/dU_ss=4*r^4*z*C1/Lf on Fz=0; direct sign interval route does not require G second partials",
+    "physical_continuum_sign_certified": false,
+    "physical_center_certified": false,
     "full_Dirac_certified": false,
     "branch": "main",
     "workflows_modified": false
