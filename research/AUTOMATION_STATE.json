@@ -17,13 +17,13 @@
     "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d6_authentic_bn_replay.py": "fd3a76fffd78adcb585a24613b4e1357d1d00f5c",
-    "tests/test_hr_b3c3d6_authentic_bn_replay.py": "348cc8c0d5f5585473f3a81e9e009ed8e335217a",
-    "research/reports/gate2b-b3c3d6-authentic-BN-original-replay.json": "955e8fa9eace8de866aede620171fd22531025ee",
-    "research/STEP68AD_B3C3D6_AUTHENTIC_BN_IDEAL_REPLAY.md": "c602f7dab827a527ee546355977776f347a638ba"
+    "numerics/hr_b3c3d6_boundary_ANAM_interval_certificate.py": "7e998fbbda8f3854093d530dc5e7e07703d70624",
+    "tests/test_hr_b3c3d6_boundary_ANAM_interval_certificate.py": "b5cf16826424bc624e15e18a8b18813a0251f859",
+    "research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md": "12b5e64fadb7e7db81ef22cba44ae4578424e717",
+    "research/reports/gate2b-b3c3d6-step58-physical-ANAM-four-radii-sign.json": "c502b9779056e8a493c43d330696515a661128c4"
   },
-  "verified_research_head_at_session_start": "4f7037cb40093558a3f2878c741cf0d1ed8acb62",
-  "next_priority": "Certify physical Step58 A_N+A_M at exact 17/20, then all six coefficients A_N,A_M,B_N,B_M,E_N,E_M at 1/4,1/2,7/10,17/20; positive genuine two-boundary lapses BVP; full Dirac/4D/stability/observables.",
+  "verified_research_head_at_session_start": "cb70fcb062363d87b0173baa5e53070b93226874",
+  "next_priority": "Investigate genuine positive two-lapse global BVP under admissible boundary data and ratio M(R)/N(R)=-A_N/A_M; extend 24 physical A/B/E rigorous boxes, full Dirac/4D/stability/observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -31,14 +31,14 @@
   "verified_session_date": "2026-11-02",
   "research_branch": "research/gate2b-nonhomothetic-transfer",
   "verified_research_head_before_state_file": "b5ffb830228c21624ce2d54909a0d4ad7d1fe503",
-  "latest_verified_completed_step": "b3c3d6_AUTHENTIC_ORIGINAL_STEP45_STEP58_BN_FIRST_JET_IDEAL_REPLAY",
-  "next_pending_step": "b3c3d6_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES_AND_BOUNDARY_AN_PLUS_AM",
+  "latest_verified_completed_step": "b3c3d6_PHYSICAL_STEP58_AN_AM_FOUR_RADII_OUTWARD_INTERVAL_CONDITIONAL_BOUNDARY_OBSTRUCTION",
+  "next_pending_step": "b3c3d6_GENUINE_POSITIVE_TWO_LAPSE_BVP_WITH_FREE_OUTER_RATIO_FULL_DIRAC",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D6_AUTHENTIC_BN_IDEAL_REPLAY.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d6_AUTHENTIC_BN_IDEAL_REPLAY_DONE_PHYSICAL_SIX_BVP_OPEN",
+    "latest_stage": "b3c3d6_AN_AM_FOUR_RADII_PHYSICAL_INTERVAL_CERTIFIED_CONDITIONAL_NO_EQUAL_OUTER_LAPSES",
     "last_step_scope": "Original Step45/58 SHA-authenticated and executed with minimal Step57 shim; exact two-parameter nonphysical local family, Hf=b²-1, C=-(25a+24b+12)/20, two Hf=C=0 points: (-36/25,1) A_N=451/50,A_M=-919/250, formal M/N=2255/919 positive; (12/25,-1) A_N=-149/50,A_M=-547/250, formal M/N=-745/547 negative. Both fail Fz_rr,Hf_r,C_r with frozen higher jets, so neither is holonomic Step55 or a BVP.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
@@ -50,7 +50,7 @@
     "radial_second_jet_known_term_float": 0.000009715095122174026,
     "radial_second_jet_unknown_multiplier_float": 0.000007007595420061098,
     "physical_radial_second_jet_error": "DIRECT_OUTWARD_ENCLOSURE_AT_FOUR_RADII_NO_DOP853_ERROR_BOUND",
-    "physical_step58_coefficients": "NOT_CERTIFIED",
+    "physical_step58_coefficients": "A_N_AND_A_M_CERTIFIED_AT_FOUR_RADII_CONDITIONAL_ON_ARCHIVED_STEP55_TUBE;B_E_EXACT_ON_FULL_SHELL;NO_INDEPENDENT_24_BOXES",
     "physical_G_s_total_composed": "CERTIFIED_AT_FOUR_EXACT_RADII_ONLY",
     "direct_second_jet_route": "EXACT_CONDITIONAL_NO_G_SU_OR_G_UU_REQUIRED",
     "physical_pLf_second_negative_at_four_radii": true,
@@ -112,7 +112,8 @@
     "original_step58_lower_BN_high_jet_elimination": "FOUR_EXACT_COEFFICIENT_IDENTITIES_MULTIPLES_OF_FZ_ON_INDEPENDENT_TRANSCRIPTION",
     "original_step58_lower_BN_surviving_jet": "Sg_rr_AFFINE_ELIMINATED_BY_Hg_ZERO",
     "original_step58_lower_BN_remaining_first_jet_residual": "EXACT_ZERO_ORIGINAL_STEP45_58",
-    "original_step58_lower_BN_universal_identity": "EXACT_ON_ORIGINAL_STEP45_58"
+    "original_step58_lower_BN_universal_identity": "EXACT_ON_ORIGINAL_STEP45_58",
+    "positive_two_lapse_two_boundary_BVP": "NOT_SOLVED_OR_EXCLUDED_FOR_GENERAL_ADMISSIBLE_BORDERS"
   },
   "last_reported_tests": {
     "unittest_cases_passed": 12,
@@ -767,26 +768,28 @@
     "00_CURRENT_RESTART.md": "3b29531c708dab1a1a10d1f77c380f8c46985e4a"
   },
   "latest_session_scientific_result": {
-    "stage": "b3c3d6_PARTIAL_BARRIER_BOOTSTRAP_INITIAL_DOP853_ERROR",
-    "kind": "EXACT_RATIONAL_CONDITIONAL_INITIAL_ERROR_FROM_INDEPENDENT_STEP55_GLOBAL_BARRIER",
-    "theorem": "E0 <= delta + max(abs(lo),abs(hi)); if candidate correlated tube at binary64 s0 passes, E0<=2delta=1/5000",
-    "true_binary64_initial_contribution_upper": "819855292164869/29617272429455892480000",
-    "center_taylor_C_required_for_this_coarse_bound": false,
-    "original_step55_barrier_replayed_this_session": false,
-    "original_DOP853_replayed_this_session": false,
-    "original_Step58_replayed_this_session": false,
-    "physical_Ri_Ji_Gu_certified_this_session": false,
-    "physical_six_ABE_enclosures_certified": 0,
-    "positive_lapse_BVP": "NOT_CERTIFIED",
-    "GATE_2B": "OPEN",
-    "JANUS_R": "NOT_VALIDATED"
+    "scope": "STEP55_PRESCRIBED_SPHERICAL_SPATIAL_BRANCH_CONDITIONAL_ON_CERTIFIED_ARCHIVE",
+    "exact_radii": [
+      "1/4",
+      "1/2",
+      "7/10",
+      "17/20"
+    ],
+    "interval_archive_blob": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
+    "certified_signs": "A_N>0,A_M<0,A_N+A_M<0 all four",
+    "R_boundary_sum_strict": "-2383<A_N(17/20)+A_M(17/20)<-2099",
+    "conditional_obstruction": "N(R)=M(R)>0 impossible on this exact Step55 spatial shell, NOT all BVPs",
+    "physical_barrier_rerun_this_session": false,
+    "all_24_physical_coefficients_independently_enclosed": false
   },
   "latest_session_tests": {
-    "unittest_passed": 11,
-    "unittest_failed": 0,
+    "unittest_bn_pass": 12,
+    "unittest_anam_pass": 10,
+    "total_pass": 22,
+    "failed": 0,
+    "skipped": 0,
     "compileall": "PASS",
-    "tested_bytes_equal_github_blobs": true,
-    "physical_originals_executed": 0
+    "exact_new_source_test_blob_match": true
   },
   "latest_session_checkpoint_suffix_exact_preserved": true,
   "previous_last_reported_tests": {

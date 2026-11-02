@@ -1,3 +1,21 @@
+# JANUS — CHECKPOINT 02/11/2026 : Step58 physique A_N/A_M certifiés par intervalles à quatre vrais rayons
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD GitHub de départ lu en direct : `cb70fcb062363d87b0173baa5e53070b93226874`. **Avancée b3c3d6 limitée à la branche physique spatiale Step55 et à son certificat ponctuel existant.**
+
+**NOUVEAU CERTIFICAT :** évaluations des expressions symboliques **originales** Step45/58 des deux coefficients `A_N,A_M` par jets radiaux holonomes et intervalles rationnels sortants `10^-34`, à `r=1/4,1/2,7/10,17/20`. SHA du certificat physique Step55 archivé vérifié : `e74057dcf741bcdb655c7d9be48c6a9650d7ff3f`. Le moteur Step55 original/barrière 256 cellules **N'A PAS été réexécuté dans cette session**. Les signes exacts sont `A_N>0`, `A_M<0`, **`A_N+A_M<0`** aux quatre rayons, avec au vrai bord `R=17/20` marge **`-2383 < A_N+A_M < -2099`**. Aux autres rayons, bornes et méthode dans `research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md`.
+
+**CONSÉQUENCE CONDITIONNELLE PRÉCISE :** sur la coquille physique complète `Fz=Hg=C=Fz_r=Hg_r=0`, les identités originales b3c3d6 déjà démontrées donnent `B_N=B_M=E_N=E_M=0`. Alors `A_N N+A_M M=0` et **la condition extérieure `N(R)=M(R)>0` est incompatible** avec cette branche Step55 à `R=17/20`. CELA **NE** démontre **PAS** l'inexistence des deux lapses strictement positifs pour d'autres conditions aux bords, ni un no-go JANUS global.
+
+**TESTS REJOUÉS :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_*bn*.py' -q` **12 PASS**, `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d6_boundary_ANAM_interval_certificate.py' -q` **10 PASS** ; **22 PASS, 0 FAIL, 0 SKIP** ; `python -m compileall -q numerics tests` **PASS**. Une tentative de factorisation monolithique supplémentaire de `B_M` a expiré avant ce rejeu et n'est pas comptée.
+
+**FICHIERS NOUVEAUX :** `numerics/hr_b3c3d6_boundary_ANAM_interval_certificate.py` SHA blob `7e998fbbda8f3854093d530dc5e7e07703d70624`, `tests/test_hr_b3c3d6_boundary_ANAM_interval_certificate.py` SHA `b5cf16826424bc624e15e18a8b18813a0251f859` : octets vérifiés égaux aux octets testés ; audit `research/STEP68AD_B3C3D6_PHYSICAL_ANAM_BOUNDARY_NO_EQUAL_LAPSES.md` blob `12b5e64fadb7e7db81ef22cba44ae4578424e717`, certificat JSON sommaire `research/reports/gate2b-b3c3d6-step58-physical-ANAM-four-radii-sign.json` blob `c502b9779056e8a493c43d330696515a661128c4`. Le JSON exact détaillé est également régénérable par `certified_report()`.
+
+**À POURSUIVRE EN PREMIER :** formaliser l'admissibilité des vrais bords temporels et du rapport extérieur libre `M(R)/N(R)=-A_N/A_M` avec deux lapses strictement positifs (plutôt que postuler `M=N`), puis 24 boîtes indépendantes A/B/E aux quatre rayons, Dirac complet (rang, charges/jauge, K=0/J=0), 4D, stabilité et observables. Aucun no-go global ni validation de JANUS.
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT 02/11/2026 : REJEU AUTHENTIQUE STEP45/58 ET IDENTITÉ EXACTE B_N
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD d'entrée GitHub vérifié : `4f7037cb40093558a3f2878c741cf0d1ed8acb62`. Réexécution locale des sources originales byte-identiques avec SHA Git authentifiés : Step45 `66aa43841dccfe4a5d586a49be9c10af3a67a10e`, Step58 `802c23aebd41780d8c462f1aa1711707fe4ee88f`, élimination hauts jets `086b6bae543c0ee497ca9154c5a055921f018423`, réduction idéale `bc9b371c3d66f6b2491009e631fa4ed4a29a676f`, test existant `5862735ecc5c7c43e71ee3f6fec558fbab71a6a5`. Shim minimal d'import Step57 uniquement ; **moteur Step57 complet NON rejoué**.

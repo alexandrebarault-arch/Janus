@@ -1,0 +1,83 @@
+{
+  "step": "b3c3d6_STEP58_PHYSICAL_AN_AM_FOUR_RADII_BOUNDARY_SUM_CERTIFIED_CONDITIONAL",
+  "date": "2026-11-02",
+  "initial_head": "cb70fcb062363d87b0173baa5e53070b93226874",
+  "branch": "research/gate2b-nonhomothetic-transfer",
+  "source_blobs": {
+    "step45": "66aa43841dccfe4a5d586a49be9c10af3a67a10e",
+    "step58": "802c23aebd41780d8c462f1aa1711707fe4ee88f",
+    "physical_step55_four_radius_archive": "e74057dcf741bcdb655c7d9be48c6a9650d7ff3f",
+    "code": "7e998fbbda8f3854093d530dc5e7e07703d70624",
+    "tests": "b5cf16826424bc624e15e18a8b18813a0251f859"
+  },
+  "strict_bounds_integer": {
+    "1/4": {
+      "A_N": [
+        214,
+        223
+      ],
+      "A_M": [
+        -430,
+        -413
+      ],
+      "sum": [
+        -215,
+        -190
+      ]
+    },
+    "1/2": {
+      "A_N": [
+        847,
+        883
+      ],
+      "A_M": [
+        -1697,
+        -1634
+      ],
+      "sum": [
+        -850,
+        -751
+      ]
+    },
+    "7/10": {
+      "A_N": [
+        1639,
+        1709
+      ],
+      "A_M": [
+        -3279,
+        -3157
+      ],
+      "sum": [
+        -1640,
+        -1448
+      ]
+    },
+    "17/20": {
+      "A_N": [
+        2385,
+        2489
+      ],
+      "A_M": [
+        -4768,
+        -4588
+      ],
+      "sum": [
+        -2383,
+        -2099
+      ]
+    }
+  },
+  "tests_executed": {
+    "b3c3d6_BN_authentic": 12,
+    "b3c3d6_AN_AM_interval": 10,
+    "total_passed": 22,
+    "failed": 0,
+    "compileall": true
+  },
+  "provenance": "Original Step45/58 symbolic expressions executed; Step55 archive blob verified and reused, 256-cell physical barrier NOT rerun this session.",
+  "conclusion": "Conditional impossibility of N(R)=M(R)>0 at R=17/20 for exact prescribed Step55 spatial shell. General positive two-lapse BVP not excluded.",
+  "limitations": "Not new enclosures of 4 B/E (identities on shell only); not full Dirac, 4D, stability, observables.",
+  "GATE_2B": "OPEN",
+  "JANUS_R": "NOT_VALIDATED"
+}
