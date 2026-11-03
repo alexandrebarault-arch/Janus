@@ -32,13 +32,11 @@
     "note": "Added non-authoritative marker only; repository checkpoint remains authoritative."
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d9_annular_direct_enclosure.py": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
-    "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "21506f95f2122a07aa82a63fc6b5194e41b040a2",
-    "research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md": "9221aec8813c59e3409a43ac99fc2e37469526ce",
-    "00_CURRENT_RESTART.md": "0c32771e559761cc52caf5f369fa406e1aa5948a"
+    "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
+    "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "9db1a838f3be4ec5ca8a4b8d4ac3401045e90285",
-  "next_priority": "Run patched verifier regression suite on complete checkout; then authentic Step55/58 pilot --cells 256 --max-cells 1, then 256 cells. No physical certification yet.",
+  "verified_research_head_at_session_start": "fd857c71e0fbc32ff5d32bff97c4252dc2def48c",
+  "next_priority": "Run full patched 9-test repository suite, then authentic Step55/58 pilot --cells 256 --max-cells 1 and full 256-cell run; no physical certification yet.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -85,8 +83,8 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "b3c3d9_INTERVAL_ENDPOINT_VALIDATOR_FIXED_NOT_PHYSICALLY_EXECUTED",
-  "next_pending_step": "b3c3d9_RUN_PATCHED_TESTS_AND_AUTHENTIC_STEP55_STEP58_FIRST_CELL_THEN_256",
+  "latest_verified_completed_step": "b3c3d9_PRELIMINARY_CLASSIFIER_REVERSED_BOX_FIX",
+  "next_pending_step": "b3c3d9_RUN_FULL_PATCHED_TESTS_AND_AUTHENTIC_STEP55_STEP58_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
   "latest_scientific_audit": "research/STEP68AD_B3C3D9_INTERVAL_ENDPOINT_VALIDATOR_FIX.md",
   "scientific_status": {
@@ -1071,13 +1069,12 @@
     ]
   },
   "latest_session_execution": {
-    "date": "2026-11-03",
-    "kind": "INFRASTRUCTURE_PREPARED_NOT_PHYSICAL_PROOF",
+    "isolated_python_assertions_passed": 5,
+    "repository_tests_executed": 0,
     "physical_cells_executed": 0,
-    "synthetic_tests_passed": 7,
-    "full_repo_tests_run": false,
-    "physical_runner_source_blob": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
-    "original_engine_execution_blocker": "DNS failure on direct git; original repo not mounted in Python runtime"
+    "physical_certification": false,
+    "git_error": "Could not resolve host: github.com",
+    "scope": "preliminary classifier malformed box rejection"
   },
   "latest_session_integrity_fix": {
     "date": "2026-11-03",
