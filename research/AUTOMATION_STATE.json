@@ -37,8 +37,8 @@
     "research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md": "9221aec8813c59e3409a43ac99fc2e37469526ce",
     "00_CURRENT_RESTART.md": "0c32771e559761cc52caf5f369fa406e1aa5948a"
   },
-  "verified_research_head_at_session_start": "f398a26ab157edde87440983e676a8ee8d50a322",
-  "next_priority": "Execute authentic Step55/58 on main: first PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1, then full 256 cells with rational JSON report. Diagnose and refine inconclusive intervals; no physical signs inferred until all cells pass. Then center, true boundaries, Dirac/charges, 4D, stability, observables.",
+  "verified_research_head_at_session_start": "9db1a838f3be4ec5ca8a4b8d4ac3401045e90285",
+  "next_priority": "Run patched verifier regression suite on complete checkout; then authentic Step55/58 pilot --cells 256 --max-cells 1, then 256 cells. No physical certification yet.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -85,15 +85,15 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED",
-  "next_pending_step": "b3c3d9_EXECUTE_ORIGINAL_STEP55_STEP58_PHYSICAL_INTERVAL_RUNNER_FIRST_CELL_THEN_FULL_256",
+  "latest_verified_completed_step": "b3c3d9_INTERVAL_ENDPOINT_VALIDATOR_FIXED_NOT_PHYSICALLY_EXECUTED",
+  "next_pending_step": "b3c3d9_RUN_PATCHED_TESTS_AND_AUTHENTIC_STEP55_STEP58_FIRST_CELL_THEN_256",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D9_INTERVAL_ENDPOINT_VALIDATOR_FIX.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED",
-    "last_step_scope": "Executable rational interval pipeline prepared and tested synthetically; 0 physical Step55/58 annular cells executed; no new continuum sign certificate.",
+    "latest_stage": "b3c3d9_INTERVAL_ENDPOINT_VALIDATOR_FIXED_NOT_PHYSICALLY_EXECUTED",
+    "last_step_scope": "Verifier integrity fix only; no Step55/58 physical execution.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -1078,5 +1078,17 @@
     "full_repo_tests_run": false,
     "physical_runner_source_blob": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
     "original_engine_execution_blocker": "DNS failure on direct git; original repo not mounted in Python runtime"
+  },
+  "latest_session_integrity_fix": {
+    "date": "2026-11-03",
+    "finding": "Reversed rational interval endpoints were accepted by old certify_cover",
+    "old_behavior_reproduced": true,
+    "new_regression_executed": false,
+    "physical_cells_executed": 0,
+    "files": [
+      "numerics/hr_b3c3d9_annular_direct_enclosure.py",
+      "tests/test_hr_b3c3d9_annular_direct_enclosure.py",
+      "research/STEP68AD_B3C3D9_INTERVAL_ENDPOINT_VALIDATOR_FIX.md"
+    ]
   }
 }
