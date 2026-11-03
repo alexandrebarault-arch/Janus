@@ -1,3 +1,17 @@
+# JANUS — CHECKPOINT b3c3d9 (03/11/2026) : moteur d'enclosures Step55/58 préparé, 0 cellule physique exécutée
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main authentifié au démarrage : `f398a26ab157edde87440983e676a8ee8d50a322`. Étape **b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED**.
+
+**Avancée technique réelle, NON preuve physique :** nouveau moteur `numerics/hr_b3c3d9_annular_direct_enclosure.py` prêt à calculer, sur les sources originales Step45/46/55/58 authentifiées, `G,G_s,G_U,U_s,U_ss,A_N,A_M` par intervalles rationnels sur la partition exacte `r=[1/4,17/20]` (`s=[1/16,289/400]`). Il impose le rejeu de la barrière Step55 à 256 cellules et refuse toute certification globale si une seule cellule manque, reste inconclusive ou présente une borne non strictement signée. Les erreurs d'intervalle ne sont pas assimilées à des zéros physiques. **Aucun de ces calculs physiques n'a été exécuté dans cette session** : l'accès Git direct depuis le conteneur échoue par DNS et le connecteur GitHub n'exécute pas Python.
+
+**Tests exécutés :** 7/7 PASS sur fixtures synthétiques et identités rationnelles, 0 FAIL, 0 SKIP ; `compileall` PASS ; CLI `--help` PASS. **Cellules physiques Step55/58 nouvelles réellement calculées : 0/256.** Aucune preuve de signe continu nouvelle. Fichiers publiés et relus : code blob `d2de0887170fc7048c312fe620d4ab2a0ee0c8cc` ; tests blob `21506f95f2122a07aa82a63fc6b5194e41b040a2` ; audit `research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md` blob `9221aec8813c59e3409a43ac99fc2e37469526ce`. Blobs code/test identiques aux octets exécutés.
+
+**Prochaine priorité :** exécuter physiquement le pilote `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1` depuis un checkout complet de main, puis les 256 cellules avec certificat JSON ; corriger les vrais blocages de l'évaluateur, subdiviser les cellules inconclusives et certifier uniquement des signes continus effectivement prouvés. Puis `r=[0,1/4]`, zéros, deux vrais bords, Dirac/charges, 4D, stabilité, observables. **Ne pas présenter cette préparation comme un rejeu Step55/58 ou une validation JANUS.**
+
+**Historique intégral conservé ci-dessous.**
+
+---
+
 # JANUS — CHECKPOINT b3c3d8 (03/11/2026) : audit indépendant des domaines de signe, aucune nouvelle certification physique continue
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD `main` lu au démarrage : `222217d3067305d469a88274cfbe875dffd8d5bb`. HEAD avant checkpoint : `deba279dd727a01968679043105e2a3e39c2b0dd`. Étape **b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT**.
