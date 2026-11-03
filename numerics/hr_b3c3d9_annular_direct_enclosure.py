@@ -31,7 +31,11 @@ def certify_cover(rows, left=R0, right=R1):
         lo, hi = map(F, row['r'])
         if lo != at or lo >= hi or row.get('status') != 'CERTIFIED':
             return False
-        if F(row['A_N'][0]) <= 0 or F(row['A_M'][1]) >= 0:
+        an_lo, an_hi = map(F, row['A_N'])
+        am_lo, am_hi = map(F, row['A_M'])
+        if an_lo > an_hi or am_lo > am_hi:
+            return False
+        if an_lo <= 0 or am_hi >= 0:
             return False
         at = hi
     return at == F(right)
