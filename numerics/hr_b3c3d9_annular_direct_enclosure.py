@@ -43,6 +43,8 @@ def certify_cover(rows, left=R0, right=R1):
 
 def classify(a_n, a_m):
     """Never confuse an inconclusive interval with a physical zero."""
+    if a_n.lo > a_n.hi or a_m.lo > a_m.hi:
+        return 'INCONCLUSIVE'
     if a_n.lo > 0 and a_m.hi < 0:
         return 'CERTIFIED'
     return 'INCONCLUSIVE'
