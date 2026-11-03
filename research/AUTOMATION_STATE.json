@@ -22,13 +22,14 @@
   "latest_session_automation_update": {
     "status": "SUCCESS",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
-    "old_prompt_characters": 97205,
-    "new_prompt_characters": 98362,
+    "old_prompt_characters": 6936,
+    "new_prompt_characters": 7502,
     "permanent_instructions_preserved": true,
     "schedule_unchanged": true,
     "enabled": true,
     "timezone": "Europe/Paris",
-    "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
+    "next_step_marker": "b3c3d9_EXECUTE_AUTHENTIC_STEP55_STEP58_FIRST_CELL_THEN_256",
+    "note": "Added non-authoritative marker only; repository checkpoint remains authoritative."
   },
   "latest_session_published_blobs": {
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
@@ -83,7 +84,7 @@
     "critical_scientific_files": "unchanged relative to source HEAD",
     "git_diff_check": "passed"
   },
-  "verified_research_head_before_state_file": "e9e66358794cbf756c3d0d19698e50a544b96def",
+  "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
   "latest_verified_completed_step": "b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED",
   "next_pending_step": "b3c3d9_EXECUTE_ORIGINAL_STEP55_STEP58_PHYSICAL_INTERVAL_RUNNER_FIRST_CELL_THEN_FULL_256",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
