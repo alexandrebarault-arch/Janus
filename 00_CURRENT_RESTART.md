@@ -1,3 +1,15 @@
+# JANUS — 03/11/2026 : garde supplémentaire du classifieur d'intervalles b3c3d9
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de départ vérifié : `fd857c71e0fbc32ff5d32bff97c4252dc2def48c`.
+
+**Défaut corrigé :** `classify` pouvait déclarer `CERTIFIED` une boîte inversée (`A_N=[2,1]` ou `A_M=[-1,-3]`). Le contrôle global `certify_cover` rejetait déjà ces boîtes : aucune fausse certification globale démontrée, mais un compteur `certified_cells` potentiellement trompeur. `classify` rejette désormais les bornes inversées ; test de régression ajouté. Audit : `research/STEP68AD_B3C3D9_PRELIMINARY_CLASSIFIER_REVERSED_BOX_FIX.md`.
+
+**Exécution réelle :** 5 assertions Python isolées sur la logique corrigée PASS. **Suite complète du dépôt : NON EXÉCUTÉE.** `git ls-remote` échoue : `Could not resolve host: github.com`. **Step55/58 : 0/256 cellule physique exécutée**, aucune nouvelle preuve physique. Code, test et audit publiés sur `main`, sans toucher aux branches archivées ni aux workflows.
+
+**Prochaine priorité :** exécuter la suite complète corrigée (9 tests) depuis un checkout authentifié, puis le pilote `--cells 256 --max-cells 1`, puis 256 cellules ; contrôler les jets, les bornes et la couverture ; ensuite centre, deux vrais bords, Dirac, 4D, stabilité et observables. Conserver toute distinction entre tests isolés, tests du dépôt et certificats physiques.
+
+---
+
 # JANUS — 03/11/2026 : correction du vérificateur d'intervalles b3c3d9 (aucune cellule physique exécutée)
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD initial authentifié : `9db1a838f3be4ec5ca8a4b8d4ac3401045e90285`.
