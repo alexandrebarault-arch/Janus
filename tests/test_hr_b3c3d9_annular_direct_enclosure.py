@@ -26,6 +26,11 @@ class Tests(unittest.TestCase):
         self.assertEqual(classify(Box(1,2),Box(-3,-1)),'CERTIFIED')
         self.assertEqual(classify(Box(-1,2),Box(-3,-1)),'INCONCLUSIVE')
         self.assertEqual(classify(Box(1,2),Box(-3,0)),'INCONCLUSIVE')
+    def test_classify_rejects_reversed_intervals(self):
+        self.assertEqual(classify(Box(2,1),Box(-3,-1)),'INCONCLUSIVE')
+        self.assertEqual(classify(Box(1,2),Box(-1,-3)),'INCONCLUSIVE')
+        self.assertEqual(classify(Box(1,2),Box(-3,-1)),'CERTIFIED')
+
     def test_coverage_requires_every_cell(self):
         cells=uniform_r_cells(3)
         rows=[{'r':[str(a),str(b)],'A_N':['1','2'],'A_M':['-3','-1'],'status':'CERTIFIED'} for a,b in cells]
