@@ -1,3 +1,17 @@
+# JANUS — 03/11/2026 : correction du vérificateur d'intervalles b3c3d9 (aucune cellule physique exécutée)
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD initial authentifié : `9db1a838f3be4ec5ca8a4b8d4ac3401045e90285`.
+
+**Défaut logique reproduit :** l'ancien `certify_cover` acceptait un rapport `CERTIFIED` avec `A_N=[2,1]` et `A_M=[-1,-2]` malgré les bornes inversées. Une exécution Python locale de l'ancienne fonction a retourné `True`. Cela démontre un défaut du contrôle de rapports, **pas** une inversion effectivement produite par le moteur physique.
+
+**Correction publiée :** `numerics/hr_b3c3d9_annular_direct_enclosure.py` vérifie désormais `lower<=upper` pour les deux coefficients avant les tests de signes stricts ; `tests/test_hr_b3c3d9_annular_direct_enclosure.py` ajoute une régression sur les deux inversions et sur le cas valide. Audit : `research/STEP68AD_B3C3D9_INTERVAL_ENDPOINT_VALIDATOR_FIX.md`.
+
+**Exécution :** reproduction de l'ancien défaut par Python : 1 cas observé ; suite du nouveau code : **0 test exécuté** faute de checkout complet (git direct : `Could not resolve host: github.com`). **Step55/58 : 0/256 cellule exécutée, aucune certification de signe continue.** Ne pas présenter la correction comme une preuve physique.
+
+**Prochaine étape :** exécuter la suite de tests du vérificateur corrigé, puis le pilote physique `--cells 256 --max-cells 1`, puis les 256 cellules ; vérifier indépendamment l'ordre des bornes et la validité des jets, et ensuite centre, vrais bords, Dirac/charges, 4D, stabilité, observables. Historique intégral conservé ci-dessous.
+
+---
+
 # JANUS — CHECKPOINT b3c3d9 (03/11/2026) : moteur d'enclosures Step55/58 préparé, 0 cellule physique exécutée
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD main authentifié au démarrage : `f398a26ab157edde87440983e676a8ee8d50a322`. Étape **b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED**.
