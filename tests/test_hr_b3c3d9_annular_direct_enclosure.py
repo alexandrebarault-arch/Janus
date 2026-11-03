@@ -40,6 +40,14 @@ class Tests(unittest.TestCase):
         self.assertFalse(certify_cover(rows))
         rows[1]['r'][0]=str(F(rows[1]['r'][0])-F(2,100))
         self.assertFalse(certify_cover(rows))
+    def test_coverage_rejects_reversed_interval_endpoints(self):
+        row={'r':['1/4','17/20'],'A_N':['2','1'],'A_M':['-3','-1'],'status':'CERTIFIED'}
+        self.assertFalse(certify_cover([row]))
+        row['A_N']=['1','2'];row['A_M']=['-1','-3']
+        self.assertFalse(certify_cover([row]))
+        row['A_M']=['-3','-1']
+        self.assertTrue(certify_cover([row]))
+
     def test_coverage_rejects_non_strict_signs(self):
         rows=[{'r':['1/4','17/20'],'A_N':['0','2'],'A_M':['-3','-1'],'status':'CERTIFIED'}]
         self.assertFalse(certify_cover(rows))
