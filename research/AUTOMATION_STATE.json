@@ -31,14 +31,13 @@
     "next_step_marker": "b3c3d6_AUTHENTIC_STEP45_STEP58_FIRST_JET_IDEAL_REPLAY_THEN_PHYSICAL_SIX_COEFFICIENT_ENCLOSURES"
   },
   "latest_session_published_blobs": {
-    "numerics/hr_b3c3d8_sign_coverage_integrity.py": "c8d6a0c7182bd5405db09f56b0c212bbef1a015c",
-    "tests/test_hr_b3c3d8_sign_coverage_integrity.py": "1d171527c542ff1d75a1cb58b4031c5a260f50fe",
-    "research/STEP68AD_B3C3D8_ARCHIVED_SIGN_COVERAGE_INTEGRITY_AUDIT.md": "ff8ed63aab575f55452d28ada2783692faf3e6d8",
-    "research/reports/gate2b-b3c3d8-archived-sign-coverage-integrity.json": "20f9b150fd65daccaf1855a2ab85e0ea731b0631",
-    "00_CURRENT_RESTART.md": "fe7c9455bebd299a3ecd790cbc1160bfe3dd5be5"
+    "numerics/hr_b3c3d9_annular_direct_enclosure.py": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
+    "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "21506f95f2122a07aa82a63fc6b5194e41b040a2",
+    "research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md": "9221aec8813c59e3409a43ac99fc2e37469526ce",
+    "00_CURRENT_RESTART.md": "0c32771e559761cc52caf5f369fa406e1aa5948a"
   },
-  "verified_research_head_at_session_start": "f016fbcb0958ee06129c2235c12fee1067eb4c02",
-  "next_priority": "Run original authenticated Step55/58 direct outward-rational cell-by-cell G,G_s,G_U, U_s, U_ss, A_N,A_M on r=[1/4,17/20], s=[1/16,289/400]; then bridge [1/32,1/4] and [0,1/64], zeros, true temporal boundaries and Dirac. Existing physical sign continuum only r=[1/64,1/32].",
+  "verified_research_head_at_session_start": "f398a26ab157edde87440983e676a8ee8d50a322",
+  "next_priority": "Execute authentic Step55/58 on main: first PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1, then full 256 cells with rational JSON report. Diagnose and refine inconclusive intervals; no physical signs inferred until all cells pass. Then center, true boundaries, Dirac/charges, 4D, stability, observables.",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -84,16 +83,16 @@
     "critical_scientific_files": "unchanged relative to source HEAD",
     "git_diff_check": "passed"
   },
-  "verified_research_head_before_state_file": "60327f7e4635cb9987bfb3252649c5215456c070",
-  "latest_verified_completed_step": "b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT",
-  "next_pending_step": "b3c3d8_PHYSICAL_STEP55_STEP58_DIRECT_CONTINUUM_ANNULAR_ENCLOSURES",
+  "verified_research_head_before_state_file": "e9e66358794cbf756c3d0d19698e50a544b96def",
+  "latest_verified_completed_step": "b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED",
+  "next_pending_step": "b3c3d9_EXECUTE_ORIGINAL_STEP55_STEP58_PHYSICAL_INTERVAL_RUNNER_FIRST_CELL_THEN_FULL_256",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/STEP68AD_B3C3D8_ARCHIVED_SIGN_COVERAGE_INTEGRITY_AUDIT.md",
+  "latest_scientific_audit": "research/STEP68AD_B3C3D9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARATION.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
-    "latest_stage": "b3c3d8_ARCHIVED_SIGN_COVERAGE_INDEPENDENT_INTEGRITY_AUDIT",
-    "last_step_scope": "Independent exact-rational consistency audit of archived 225 continuous sign leaves on r=[1/64,1/32] and four isolated physical sign radii. NO new physical continuum signs, ODE replay or Step58 recomputation.",
+    "latest_stage": "b3c3d9_ANNULAR_DIRECT_INTERVAL_RUNNER_PREPARED_NOT_PHYSICALLY_EXECUTED",
+    "last_step_scope": "Executable rational interval pipeline prepared and tested synthetically; 0 physical Step55/58 annular cells executed; no new continuum sign certificate.",
     "terminal_first_ode_jet_bound_float": 0.000010071953468232841,
     "terminal_pLf_bound_float": 0.000003503797710030549,
     "terminal_pLf_prime_over_r_bound_float": 0.000004854878754591478,
@@ -161,7 +160,7 @@
     "three_parameter_no_go_bezout": "U*P+V*T=98499053908",
     "three_parameter_no_go_resultant": "4727954587584",
     "three_parameter_no_go_scope": "ONLY frozen remaining jets, not universal full shell or physical Step55",
-    "original_step45_step58_executed_this_session": true,
+    "original_step45_step58_executed_this_session": false,
     "restricted_three_parameter_frozen_slice_uniform_residual_gap": ">7/8 for every real b != 0; exact rational proof; no physical Step55 implication",
     "original_step58_lower_BN_high_jet_elimination": "FOUR_EXACT_COEFFICIENT_IDENTITIES_MULTIPLES_OF_FZ_ON_INDEPENDENT_TRANSCRIPTION",
     "original_step58_lower_BN_surviving_jet": "Sg_rr_AFFINE_ELIMINATED_BY_Hg_ZERO",
@@ -179,22 +178,23 @@
     "archived_conditional_continuum_sign_leaf_count": 225
   },
   "last_reported_tests": {
-    "unittest_cases_passed": 14,
+    "unittest_cases_passed": 7,
     "failed_final": 0,
     "skipped_final": 0,
-    "python_module_run_pass": false,
+    "python_module_help_pass": true,
     "python_compileall_pass": true,
     "full_repo_suite_executed": false,
-    "original_physical_engines_executed": "NO; ARCHIVED_JSON_REPORTS_RATIONALLY_RECHECKED",
-    "run_command": "PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d8_sign_coverage_integrity.py' -v"
+    "original_physical_engines_executed": "NO; NEW RUNNER NOT PHYSICALLY EXECUTED",
+    "physical_cells_executed": 0,
+    "run_command": "PYTHONPATH=/mnt/data/janus_b3c3d9 python -m unittest discover -s /mnt/data/janus_b3c3d9/tests -v"
   },
   "github_write_probe": {
-    "status": "STAGING_FOR_SINGLE_ATOMIC_REF_COMMIT",
-    "method": "mcp__GitHub__create_blob/create_tree/create_commit/update_ref",
-    "branch": "research/gate2b-nonhomothetic-transfer",
-    "verified_research_head_at_session_start": "4f7037cb40093558a3f2878c741cf0d1ed8acb62",
-    "readback_verified": false,
-    "originals_executed": true,
+    "status": "SUCCESS",
+    "method": "mcp__GitHub__create_file/update_file",
+    "branch": "main",
+    "verified_research_head_at_session_start": "f398a26ab157edde87440983e676a8ee8d50a322",
+    "readback_verified": true,
+    "originals_executed": false,
     "physical_step58_enclosures_certified": 0,
     "full_restart_history_preserved": true
   },
@@ -214,7 +214,7 @@
     "research/v2-flrw"
   ],
   "workflows": "user-disabled; do not reactivate",
-  "current_blocker": "Only archived Step68ad-C2d2e3 conditional continuum sign on r=[1/64,1/32] and four isolated Step58 sign radii authenticated; full annular direct Step55/58 enclosures NOT run. This session independently checked 225 leaf interval report, did not execute physical ODE/operators.",
+  "current_blocker": "Original physical Step55/58 code cannot be run in this automation container: Git direct DNS resolution failed, GitHub connector only supports file read/write, no remote Python execution. New physical annular runner and 7 synthetic tests published; physical cells executed 0/256, annular signs not certified.",
   "task_self_update": "2026-10-30: prepended exact DOP853 dense-domain/jump and conditional center-error marker; original 71466-character prompt preserved, hourly schedule/timezone/enabled unchanged. GitHub state/checkpoint remain authoritative.",
   "last_verified_published_blobs": {
     "numerics/hr_step68ad_c2d2b_guard.py": "7ea03654054632d1ca8ecbe9dbf8df0d66cf582c",
@@ -1068,5 +1068,14 @@
         "17/20"
       ]
     ]
+  },
+  "latest_session_execution": {
+    "date": "2026-11-03",
+    "kind": "INFRASTRUCTURE_PREPARED_NOT_PHYSICAL_PROOF",
+    "physical_cells_executed": 0,
+    "synthetic_tests_passed": 7,
+    "full_repo_tests_run": false,
+    "physical_runner_source_blob": "d2de0887170fc7048c312fe620d4ab2a0ee0c8cc",
+    "original_engine_execution_blocker": "DNS failure on direct git; original repo not mounted in Python runtime"
   }
 }
