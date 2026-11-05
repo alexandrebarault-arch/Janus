@@ -1,3 +1,9 @@
+# JANUS — 05/11/2026 : tests authentifiés 9/9 PASS, pilote bloqué sur import physique
+
+**GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de départ `eb7229c4328a3da59a4a35f3b2367dd0ac649f49`. Moteur et tests reconstruits sous `/mnt/data/janus_cycle11`, empreintes `git hash-object` égales aux blobs GitHub `b6fcee9e410b5702f94030ce8b0c6ec818004344` et `13252b2bb83fe148c6aa0d04d08053f332654f1c`. `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d9_annular_direct_enclosure.py' -v` : **9 PASS, 0 FAIL, 0 SKIP**. `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1` : **ImportError** sur `hr_step55_global_barrier`, première dépendance physique absente. **0/256 cellules physiques calculées, 0 certifiée.** `git ls-remote` : `Could not resolve host: github.com`. Audit : `research/STEP68AD_B3C3D9_AUTHENTIC_NINE_TEST_EXECUTION_20261105.md`. Prochaine étape : récupérer les dépendances Step55/58 et historiques authentifiées, relancer le pilote, puis 256 cellules. Aucun certificat continu nouveau.
+
+---
+
 # JANUS — 03/11/2026 : garde supplémentaire du classifieur d'intervalles b3c3d9
 
 **GATE_2B OPEN ; JANUS_R NOT_VALIDATED.** HEAD de départ vérifié : `fd857c71e0fbc32ff5d32bff97c4252dc2def48c`.
