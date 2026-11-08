@@ -1,4 +1,21 @@
 {
+  "operational_work_queue": {
+    "path": "research/AUTONOMOUS_WORK_QUEUE.md",
+    "role": "authoritative_operational_tasks_resume_cursor_and_verified_milestones",
+    "created_on": "2026-11-08",
+    "initialization_commit": "affc09bcdd74c575ef43d245ee766826e050f491",
+    "initialization_blob": "9447c26dc29172cc37730c9e296add447edb9cee",
+    "current_cursor_at_initialization": "JANUS-001",
+    "policy": "read_at_real_main_HEAD_every_cycle; resume_last_verified_milestone; append_and_update_as_work_progresses; preserve_evidence"
+  },
+  "automation_configuration_observed_2026_11_08": {
+    "automation_id": "6ade8d316f108191a3537bced5363a3b",
+    "enabled": false,
+    "schedule": "FREQ=HOURLY",
+    "prompt": "JANUS autonomous scientific research with persistent work queue and maximal within-session work",
+    "source": "Automations tool verified on 2026-11-08",
+    "note": "Older enabled=true fields are historical observations, not current status. Do not infer future status from this checkpoint; query Automations live."
+  },
   "latest_external_automation_handoff": {
     "source": "User-provided status verified by a separate ChatGPT agent; Codex view does not expose configuration fields",
     "automation_id": "6ade8d316f108191a3537bced5363a3b",
