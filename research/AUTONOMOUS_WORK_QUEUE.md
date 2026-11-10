@@ -49,6 +49,12 @@
 - **Prochaine action :** rechercher un contre-exemple au vérificateur de couverture, aux signes, aux bornes invalides et aux hypothèses de provenance ; distinguer un défaut du logiciel d'une invalidation du modèle physique.
 - **Acceptation :** test contradictoire reproductible ou preuve de cohérence circonscrite, avec limites et résultat négatif conservés.
 
+### JANUS-004A — JET RADIAL TROISIÈME ORDRE : CONDITION DE CERTIFICATION
+- **Statut : READY** ; **Priorité : P0** ; **Dépendances :** expressions Step58 authentiques et calcul symbolique de dépendance aux jets.
+- **Preuve :** `research/STEP68AD_B3C3D9_THIRD_RADIAL_JET_MISSING_DERIVATIVE_AUDIT_20261110.md` ; contre-exemple SymPy exact PASS : pour `U(s)=s^3`, l'approximation quadratique du runner sous-estime `(sU)_{rrr}` de `48*r0**5`, soit `3/2` à `r0=1/2`.
+- **Portée :** défaut générique de reconstruction du troisième jet ; **pas** de faux certificat physique établi ; vérifier la dépendance réelle des opérateurs `A_N,A_M` à `qppp` avant de conclure.
+- **NEXT_ACTION_EXACT :** reconstruire `physical_operator()` authentique, évaluer `sp.diff(op['operator'][label][0], v)` pour chaque `v in op['qppp']` et `label in ('N','M')`, contrôler la simplification sur la coquille Step55/58 ; si non nul, certifier `U_{sss}` ou éliminer exactement la dépendance avant tout signe global.
+
 ### JANUS-005 — COMPLÉTUDE CENTRE, DEUX VRAIS BORDS ET CONTRAINTES
 - **Statut : READY** ; **Priorité : P1** ; **Dépendances :** lire les preuves existantes avant de choisir la sous-proposition.
 - **Prochaine action :** dresser la matrice des hypothèses et lacunes exactes pour centre, deux vrais bords, contraintes de Dirac, fixation des lapses et rang ; isoler une proposition falsifiable, la démontrer ou chercher un contre-exemple.
