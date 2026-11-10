@@ -31,6 +31,7 @@
 - **Commandes cibles :** `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d9_annular_direct_enclosure.py' -v`, puis `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1 --out /tmp/janus_b3c3d9_pilot.json`.
 - **Acceptation :** compte rendu horodaté, provenance des sources, résultats effectivement exécutés, barrière Step55 authentique, une cellule réellement évaluée **ou** premier échec concret avec commande/trace et contournement vérifiable.
 - **Preuve précédente :** `research/STEP68AD_B3C3D9_AUTHENTIC_NINE_TEST_EXECUTION_20261105.md` ; 9/9 PASS antérieurs, pilote arrêté avant calcul physique.
+- **Jalon technique vérifié 2026-11-11 :** `research/JANUS001_RUNTIME_FILES_AND_DEPENDENCIES_20261111.md` (blob `31aee2e386351afe585ad7d7ae6b50ddf49dafdf`) complète la fermeture statique : source de provenance `tests/test_hr_b3c3d6_bn_full_ideal.py` et archive JSON présentes sur GitHub mais lues sur des chemins d'appel conditionnels ; import SciPy dans une dépendance. Python 3.13.5, SymPy 1.14.0, SciPy 1.17.0 et mpmath 1.3.0 importables localement. **Aucun test moteur ni cellule physique nouvelle.** NEXT_ACTION_EXACT inchangée : transfert authentifié des modules + test, empreintes locales, suite ciblée puis pilote une cellule.
 - **Blocage hérité :** DNS du Git CLI et arbre local incomplet ; le connecteur GitHub en lecture fonctionne.
 
 ### JANUS-002 — ESSAI ANNULAIRE INTÉGRAL ET TRAITEMENT DES INCONCLUSIFS
