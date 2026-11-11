@@ -1129,5 +1129,17 @@
     "next_action": "Check sp.diff(Step58 operator N/M, each qppp); derive missing U_sss enclosure if nonzero; continue authentic Step55 reconstruction",
     "gate_2b": "OPEN",
     "janus_r": "NOT_VALIDATED"
+  },
+  "latest_verified_janus005_outer_trace_tangent": {
+    "date": "2026-11-11",
+    "source_head": "6534aa3b9c0408201ff432c40bacb55294161565",
+    "report": "research/JANUS005_CONDITIONAL_OUTER_F_MOMENTUM_TRACE_TANGENT_BOUNDS_20261111.md",
+    "report_commit": "700217440a41bdcb6545bc60739f579ebef64f83",
+    "queue_commit": "54ed8966fcf675cfdd6ff49a83bba143f13746ba",
+    "arithmetic": "4 exact Fraction assertions PASS",
+    "scope": "conditional positive tangents of pLf and pLf_prime at R=17/20; other two traces not bounded",
+    "new_physical_cells_evaluated": 0,
+    "new_physical_cells_certified": 0,
+    "next_action": "JANUS-005 bound H and Step46 jacobian coefficients at true outer boundary; JANUS-001 authentic pilot remains P0"
   }
 }
