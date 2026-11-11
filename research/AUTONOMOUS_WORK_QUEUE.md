@@ -63,6 +63,8 @@
 - **Prochaine action :** dresser la matrice des hypothèses et lacunes exactes pour centre, deux vrais bords, contraintes de Dirac, fixation des lapses et rang ; isoler une proposition falsifiable, la démontrer ou chercher un contre-exemple.
 - **Acceptation :** résultat mathématique vérifiable (positif ou négatif), pas un simple récit de l'état des connaissances.
 
+**Jalon nouveau 2026-11-11 (JANUS-005, calcul exact conditionnel) :** `research/JANUS005_CONDITIONAL_PHYSICAL_G_PARAMETER_TOTAL_VARIATION_SIGN_20261111.md` (blob `06e8f76b1346694626775d5191fcf1d99005cd57`). Sur les hypothèses Step49/55 et les bornes physiques déjà publiées pour `G_U,G_Pg,v=partial_lambda U`, l'identité `partial_lambda G(s,U(s,lambda),Pg+lambda)=G_U*v+G_Pg` donne par calcul BigInt exact `0.01353783698071681 < partial_lambda V < 0.01380949877341742`, donc un signe positif uniforme **conditionnel**. Aucun nouveau calcul Step55/58 ni certificat de bord. **NEXT_ACTION_EXACT JANUS-005 :** calculer les quatre dérivées de traces f au vrai bord extérieur sur les sources physiques authentiques ; ne pas assimiler ce signe à une fermeture de Dirac. JANUS-001 reste prioritaire pour son pilote authentifié.
+
 ### JANUS-006 — DYNAMIQUE 4D, STABILITÉ ET OBSERVABLES
 - **Statut : READY** ; **Priorité : P2** ; **Dépendances :** conditions mathématiques utiles issues de JANUS-005.
 - **Prochaine action :** sélectionner une prédiction quantitative discriminante ou un obstacle de stabilité qui puisse être calculé ou réfuté avec les sources disponibles.
