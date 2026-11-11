@@ -60,6 +60,9 @@
 
 **Jalon 2026-11-11 (JANUS-005, tangente centrale PG-only) :** `research/JANUS005_PG_ONLY_CENTRAL_TANGENT_CONDITIONAL_20261111.md` (commit `ffc9369858e00ae08d7f587b2d53b0153624d822`). Calcul exact `dU0/dPG=MF*Y>0` dans la carte prescrite Step55, vérifié par fractions rationnelles Python ; une hypothétique condition supplémentaire `U0=const` éliminerait ce tangent, mais aucune preuve que cette condition physique soit imposée. **NEXT_ACTION_EXACT :** examiner Step45/49/55 et les vrais bords pour déterminer le statut de U0 et construire le jacobien des contraintes en (PG,U0). JANUS-001 : transfert authentifié, tests et pilote. 0 cellule physique nouvelle.
 
+
+**Jalon 2026-11-11 — JANUS-005, tangente élargie M2 :** `research/JANUS005_EXPANDED_M2_FRIEDMANN_TANGENT_20261111.md` (commit `cc274106af27be994f65147c11f7b1151c294884`). Cinq assertions SymPy PASS : avec M2 variable et A,Y,MF,Z1 fixes, le jacobien central (PG,U0,M2) est de rang 2 et possède la tangente algébrique `(1,MF*Y,PG/(2*A**4*K))`, K>0 exact. Le NO-GO PG-only à M2 fixé reste vrai. **Aucune admissibilité physique de la variation M2 établie, aucun test moteur/cellule physique. NEXT_ACTION_EXACT :** inspecter la liberté physique de M2, puis linéariser les équations radiales et les deux vrais bords sur cette tangente ; JANUS-001 transfert authentifié, neuf tests, pilote.
+
 ### JANUS-005 — COMPLÉTUDE CENTRE, DEUX VRAIS BORDS ET CONTRAINTES
 - **Statut : READY** ; **Priorité : P1** ; **Dépendances :** lire les preuves existantes avant de choisir la sous-proposition.
 - **Prochaine action :** dresser la matrice des hypothèses et lacunes exactes pour centre, deux vrais bords, contraintes de Dirac, fixation des lapses et rang ; isoler une proposition falsifiable, la démontrer ou chercher un contre-exemple.
