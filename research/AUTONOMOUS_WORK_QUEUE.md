@@ -102,3 +102,5 @@ HEAD relu après publication : ...
 ```
 
 **Règle finale :** si interrompu brutalement, le prochain lancement doit pouvoir comprendre **en quelques minutes de lecture** quelle est la prochaine commande utile, sans dépendre du contexte de conversation ou du répertoire éphémère du cycle précédent.
+
+**Jalon 2026-11-11 (JANUS-005, rang central) :** `research/JANUS005_CENTRAL_CONSTRAINT_TANGENT_RANK_20261111.md` (commit `eacb266bd7d9c65b416332daef7be122a3e6b842`). Exécution Python/SymPy PASS : la relation prescrite Step55 `C=U0-MF*Y*PG+2*A*MF*Y*Z1=0` a jacobien `(-MF*Y,1)` de rang 1 et annule exactement le tangent `(1,MF*Y)`. Donc la variation centrale déjà calculée n'est **pas** une contradiction interne. Une condition supplémentaire `U0=const` serait indépendante mais n'est pas établie. 0 cellule physique nouvelle. **NEXT_ACTION_EXACT JANUS-005 :** identifier une vraie contrainte supplémentaire de Step45/49/55 ou aux deux bords, calculer sa différentielle totale sur les variables autorisées, tester le tangent ; ne pas inventer Dirichlet central. JANUS-001 : transfert authentifié et pilote.
