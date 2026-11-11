@@ -58,6 +58,8 @@
 - **Portée :** défaut générique de reconstruction du troisième jet ; **pas** de faux certificat physique établi ; vérifier la dépendance réelle des opérateurs `A_N,A_M` à `qppp` avant de conclure.
 - **NEXT_ACTION_EXACT :** reconstruire `physical_operator()` authentique, évaluer `sp.diff(op['operator'][label][0], v)` pour chaque `v in op['qppp']` et `label in ('N','M')`, contrôler la simplification sur la coquille Step55/58 ; si non nul, certifier `U_{sss}` ou éliminer exactement la dépendance avant tout signe global.
 
+**Jalon 2026-11-11 (JANUS-005, tangente centrale PG-only) :** `research/JANUS005_PG_ONLY_CENTRAL_TANGENT_CONDITIONAL_20261111.md` (commit `ffc9369858e00ae08d7f587b2d53b0153624d822`). Calcul exact `dU0/dPG=MF*Y>0` dans la carte prescrite Step55, vérifié par fractions rationnelles Python ; une hypothétique condition supplémentaire `U0=const` éliminerait ce tangent, mais aucune preuve que cette condition physique soit imposée. **NEXT_ACTION_EXACT :** examiner Step45/49/55 et les vrais bords pour déterminer le statut de U0 et construire le jacobien des contraintes en (PG,U0). JANUS-001 : transfert authentifié, tests et pilote. 0 cellule physique nouvelle.
+
 ### JANUS-005 — COMPLÉTUDE CENTRE, DEUX VRAIS BORDS ET CONTRAINTES
 - **Statut : READY** ; **Priorité : P1** ; **Dépendances :** lire les preuves existantes avant de choisir la sous-proposition.
 - **Prochaine action :** dresser la matrice des hypothèses et lacunes exactes pour centre, deux vrais bords, contraintes de Dirac, fixation des lapses et rang ; isoler une proposition falsifiable, la démontrer ou chercher un contre-exemple.
