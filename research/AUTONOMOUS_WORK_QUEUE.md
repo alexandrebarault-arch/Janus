@@ -112,3 +112,8 @@ HEAD relu après publication : ...
 
 
 **Jalon 2026-11-11 — JANUS-005, dépendance M2 de la géométrie Step55 :** `research/JANUS005_M2_GEOMETRY_VARIATION_AUDIT_20261111.md` (commit `e54e6aa518ed5f6d1829c3d7d169444216a3a7ee`). Calcul SymPy rationnel : `partial_M2 Dbar` et `partial_M2 Wfbar` sont non nuls dès s=0, respectivement ~4.00866e-5 et ~-0.00499853. La tangente centrale élargie M2 ne peut donc pas être interprétée comme une variation de M2 à géométrie/potentiel Step55 fixes. NO-GO circonscrit à cette interprétation, aucune réfutation de la famille physique complète. **NEXT_ACTION_EXACT :** calculer `G_M2` par différentiation totale de `geometry(s)` et la variation `2s*dU_s=(G_U-2)*dU+G_M2*dM2`, puis vérifier centre, deux vrais bords et Dirac. JANUS-001 : transfert authentifié, neuf tests, pilote. 0 nouvelle cellule physique.
+
+### Jalon JANUS-005 du 2026-11-12 — dérivées totales M2 au centre
+- **Preuve :** `research/JANUS005_M2_TOTAL_CENTRAL_DERIVATIVES_20261112.md`, commit `b8c08bf3dec65928cb180aae59fb09438ad01629`.
+- **Calcul :** Python/SymPy 1.14, retranscription indépendante des définitions Step55 ; trois identités exactes PASS. `dRhog(0)/dM2=0`, mais `d_s d_M2 Rhog(0)≈0.0002433824117500686` ; `dPsg0(0)/dM2=2*dPG/dM2`. Pas de moteur physique rejoué, 0 cellule évaluée/certifiée.
+- **NEXT_ACTION_EXACT :** former `G_M2` par dérivation totale de `geometry(s)` authentifiée (PG, Wgbar, Dbar, Wfbar, Rhog, Psg0), intégrer la variation radiale et tester les deux vrais bords. JANUS-001 demeure prioritaire pour transfert des modules authentiques, tests et pilote.
