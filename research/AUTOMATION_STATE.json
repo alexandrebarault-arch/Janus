@@ -1141,5 +1141,15 @@
     "new_physical_cells_evaluated": 0,
     "new_physical_cells_certified": 0,
     "next_action": "JANUS-005 bound H and Step46 jacobian coefficients at true outer boundary; JANUS-001 authentic pilot remains P0"
+  },
+  "latest_scientific_checkpoint_2026_11_11_geometry_scope": {
+    "task": "JANUS-005",
+    "report": "research/JANUS005_FIXED_GEOMETRY_TANGENT_SCOPE_COUNTEREXAMPLE_20261111.md",
+    "report_commit": "68b21cd20f5bab7b46cc35b65e3e291269c77f61",
+    "result": "Exact symbolic counterexample: fixed-geometry Step46 tangent is not a total tangent if Wfbar varies; physical Wfbar variation NOT established",
+    "checks": "5 exact SymPy assertions PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action_exact": "Inspect Step45/46/55 whether Wfbar and geometric coefficients are lambda-fixed; derive constrained total tangent before bounding H and remaining traces"
   }
 }
