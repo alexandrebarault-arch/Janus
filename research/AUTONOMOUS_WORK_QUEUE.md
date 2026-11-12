@@ -137,3 +137,8 @@ HEAD relu après publication : ...
 
 
 **Jalon 2026-11-12 — JANUS-005, dérivées partielles géométriques M2 au bord de la carte :** `research/JANUS005_M2_GEOMETRIC_SOURCE_PARTIALS_20261112.md` (blob `192983ee2a61ded6fcdcd9c5aecaf687e7b33cbc`, commit `031d45bce0aa2190e049e22457971ee3faafe865`). Trois dérivées partielles exactes `∂M2 Dbar, ∂M2 Wgbar, ∂M2 Wfbar` depuis `geometry(s)` Step55, enclosures rationnelles strictes à `s=289/400` : signes +,+,-. Assertions `Fraction` PASS et contrôle `Decimal` indépendant. **Ce ne sont pas des dérivées totales le long de Friedmann, ni une solution physique à M2 variable.** 0 cellule Step55/58 nouvelle. **NEXT_ACTION_EXACT JANUS-005 :** dériver `dPG/dM2`, propager aux sources Rhog/Psg et à G, puis étudier la sensibilité radiale et les deux vrais bords sous contraintes ; JANUS-001 transfert authentifié des modules, neuf tests, pilote.
+
+
+### Jalon JANUS-005 — 2026-11-12, dérivées totales Rhog/Psg
+- **Preuve :** `research/JANUS005_M2_TOTAL_RHOG_PSG_SENSITIVITY_20261112.md` ; différentiation exacte SymPy + 3 contrôles de différences centrales PASS au point s=289/400, M2=23.3348939346. `dPG/dM2=-0.0028891577835134484`, `dRhog/dM2=+0.00017546349698079373`, `dPsg/dM2=-0.00571421168451978`. Variation algébrique, non admissibilité physique. **0 cellule physique nouvelle.**
+- **NEXT_ACTION_EXACT :** calculer G_M2|U et G_U depuis les sources authentiques, résoudre/borner 2s (U_M2)'=(G_U-2)U_M2+G_M2|U, tester les vrais bords et Dirac. JANUS-001 reste prioritaire dès reconstruction authentifiée.
