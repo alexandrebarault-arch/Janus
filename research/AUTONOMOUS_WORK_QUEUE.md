@@ -63,6 +63,9 @@
 
 **Jalon 2026-11-11 — JANUS-005, tangente élargie M2 :** `research/JANUS005_EXPANDED_M2_FRIEDMANN_TANGENT_20261111.md` (commit `cc274106af27be994f65147c11f7b1151c294884`). Cinq assertions SymPy PASS : avec M2 variable et A,Y,MF,Z1 fixes, le jacobien central (PG,U0,M2) est de rang 2 et possède la tangente algébrique `(1,MF*Y,PG/(2*A**4*K))`, K>0 exact. Le NO-GO PG-only à M2 fixé reste vrai. **Aucune admissibilité physique de la variation M2 établie, aucun test moteur/cellule physique. NEXT_ACTION_EXACT :** inspecter la liberté physique de M2, puis linéariser les équations radiales et les deux vrais bords sur cette tangente ; JANUS-001 transfert authentifié, neuf tests, pilote.
 
+
+**Jalon 2026-11-12 — JANUS-005, différentielle totale extérieure f :** `research/JANUS005_FULL_OUTER_F_TOTAL_DIFFERENTIAL_IDENTITY_20261112.md` (commit `5a0e2fe6e4c861c88cb3f042114a5d6a8f0a81f3`). Quatre assertions SymPy 1.14 PASS (2 identités symboliques, 2 perturbations rationnelles simultanées indépendantes) : différentielles exactes de `rho`, `pf`, `pSf` avec 11 variables géométriques/source et U,V variables. **Résultat algébrique, non dérivée physique ; 0 cellule Step55/58.** NEXT_ACTION_EXACT : déterminer les onze variations imposées par Step45/46/49/55 et les contraintes, substituer, encloser den et traces, confronter les deux vrais bords. JANUS-001 toujours en attente de transfert authentifié puis neuf tests et pilote.
+
 ### JANUS-005 — COMPLÉTUDE CENTRE, DEUX VRAIS BORDS ET CONTRAINTES
 - **Statut : READY** ; **Priorité : P1** ; **Dépendances :** lire les preuves existantes avant de choisir la sous-proposition.
 - **Prochaine action :** dresser la matrice des hypothèses et lacunes exactes pour centre, deux vrais bords, contraintes de Dirac, fixation des lapses et rang ; isoler une proposition falsifiable, la démontrer ou chercher un contre-exemple.
