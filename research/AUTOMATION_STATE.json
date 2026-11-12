@@ -1207,5 +1207,15 @@
     "new_physical_cells_evaluated": 0,
     "new_physical_cells_certified": 0,
     "next_action_exact": "Derive dPG/dM2, propagate through Rhog/Psg/G and radial sensitivity; authenticate JANUS-001 dependencies and run targeted tests/pilot"
+  },
+  "latest_verified_janus005_m2_total_source_sensitivity": {
+    "date": "2026-11-12",
+    "report": "research/JANUS005_M2_TOTAL_RHOG_PSG_SENSITIVITY_20261112.md",
+    "source_head": "ec460cbc20746b061787f8bb19ad1c564a9fcccd",
+    "tests": "3/3 SymPy derivative versus central difference PASS",
+    "scope": "pointwise prescribed-data algebra; physical admissibility NOT proved",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action_exact": "Compute authentic G_M2|U and G_U; solve linearized radial ODE with differentiated center; check two true boundaries and Dirac; reconstruct JANUS-001 and execute pilot."
   }
 }
