@@ -1196,5 +1196,16 @@
     "next_action_exact": "Parametric outward enclosure of Step55 geometry(s), G(s,U) over explicit M2 interval; true boundaries and Dirac; JANUS-001 authentic dependency reconstruction and pilot",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0
+  },
+  "latest_verified_scientific_milestone": {
+    "date": "2026-11-12",
+    "task": "JANUS-005",
+    "report": "research/JANUS005_M2_GEOMETRIC_SOURCE_PARTIALS_20261112.md",
+    "report_blob_sha": "192983ee2a61ded6fcdcd9c5aecaf687e7b33cbc",
+    "scope": "Exact partial M2 derivatives of prescribed Step55 Dbar,Wgbar,Wfbar at s=289/400; rational sign enclosures +,+,-; not total physical tangent",
+    "tests": "Fraction rational assertions PASS; independent Decimal evaluation PASS",
+    "new_physical_cells_evaluated": 0,
+    "new_physical_cells_certified": 0,
+    "next_action_exact": "Derive dPG/dM2, propagate through Rhog/Psg/G and radial sensitivity; authenticate JANUS-001 dependencies and run targeted tests/pilot"
   }
 }
