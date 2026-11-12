@@ -1186,5 +1186,15 @@
     "next_action": "Verify physical M2-variable admissibility and U<0 preservation, both true boundaries; JANUS-001 authentic dependency reconstruction and pilot",
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
+  },
+  "latest_janus005_central_m2_sign": {
+    "date": "2026-11-12",
+    "report": "research/JANUS005_M2_CENTRAL_SIGN_DOMAIN_20261112.md",
+    "result": "EXACT_CENTRAL_SIGN_ONLY",
+    "evidence": "Fraction rational assertions PASS; K>0; M2>-C/K implies PG<0 and U0<0",
+    "limitations": "No physical freedom of M2, no radial sign transport, no Step55/58 execution",
+    "next_action_exact": "Parametric outward enclosure of Step55 geometry(s), G(s,U) over explicit M2 interval; true boundaries and Dirac; JANUS-001 authentic dependency reconstruction and pilot",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0
   }
 }
