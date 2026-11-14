@@ -46,6 +46,9 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 compensation conditionnelle KG du premier jet :** script original `research/repro/janus005_center_radial_density_jet_20261114.py` rejoué depuis octets Git exacts, blob `bdb3eaabb2bd9afea3ec8856134920fde1d5c51d`, SymPy 1.14 PASS. Nouvelle identité exacte `partial_KG rho_g'(0)=-rho_g(0)*(KG+PG/(2*A))`; au point prescrit sensibilité `+0.8441439672407285`, donc une compensation algébrique locale `dKG/dA=+0.10203059109879736` annule la variation de premier jet `-0.08612850795`. Rapport `research/JANUS005_KG_FIRST_RADIAL_JET_COMPENSATION_20261114.md`. Liberté physique de KG NON ÉTABLIE ; Dirac, deux vrais bords et profil complet non testés ; 0 cellule physique. **NEXT_ACTION_EXACT :** auditer le statut de KG dans Step45/49/55 et imposer contraintes et bords ; JANUS-001 reconstruire dépendances authentifiées, neuf tests, pilote.
 
+
+**Jalon 2026-11-14 — JANUS-005 audit KG :** le certificat Step55 fixe KG=0.0012 ; KG intervient dans betag, Rhog, Psg, tg0. Compensation locale du premier jet NON couverte par la barrière existante. Liberté physique de KG non démontrée. Rapport `research/JANUS005_KG_PARAMETER_STATUS_SOURCE_AUDIT_20261114.md` commit `348ffc2dc4221d2d99a0210bad2103a071eec467`. 0 cellule physique. **NEXT_ACTION_EXACT :** JANUS-001 reconstruire sources authentifiées, neuf tests et pilote ; JANUS-005 recalculer la barrière avec KG variable et contrôler Dirac/deux vrais bords.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
