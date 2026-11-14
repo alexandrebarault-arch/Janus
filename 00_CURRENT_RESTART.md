@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : couplage M2 de Wfbar et Dbar, NO-GO conditionnel
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** HEAD de départ `ca111a4d37d65933747fc1b17e31731b7fefcf32`. Sur les formules authentiques `geometry(s)` Step55 : `∂M2 Wfbar=Wfbar/M2`, `∂M2 Dbar=Dbar/M2`, `∂Z1 Wfbar=-s Dbar/Lf` ; SymPy exact 3/3 PASS. Si Dbar non nul et seule M2 varie à géométrie fixée, `dDbar=0` impose `dM2=dWfbar=0`. Ce NO-GO circonscrit exclut le noyau à Wfbar libre/Dbar fixe par M2 seule, pas par toutes les variations physiques. Rapport `research/JANUS005_M2_WFBAR_DBAR_COUPLED_VARIATION_20261114.md`, blob `d4fea5cfd31915c96df8515f5febdfb703fc1cb6`. Tests moteur nouveaux 0, cellules physiques évaluées/certifiées 0/0. **NEXT_ACTION_EXACT :** jacobien total avec PG et géométrie autorisés, puis deux vrais bords/Dirac ; JANUS-001 reconstruire sources authentiques, neuf tests, pilote une cellule.
+
+---
+
 # JANUS — 14/11/2026 : Wfbar prescrit, restriction du noyau algébrique
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis HEAD `eff739a3411300fb2c33a40b5970acb522b0bf83`, audit de `geometry(s)` Step55 : `Wfbar` est prescrit par `M2,MG,Lf,Tf,Lg,T,Z1,s`, sans dépendance en U à paramètres fixés. SymPy : 2 identités exactes et 3 contrôles rationnels PASS. La variation libre `dw` du contre-exemple étendu antérieur n'est donc pas admissible dans cette sous-famille fixée ; sa validité algébrique générale est préservée. Rapport `research/JANUS005_WFBAR_PRESCRIBED_KERNEL_RESTRICTION_20261114.md`, blob `d29db8bd7878036c11c117dcea3e6d510ceb2fda`. **Aucune preuve de rang Dirac, de bord ou de solution 4D.** Tests moteur nouveaux 0 ; cellules physiques évaluées 0, certifiées 0. **NEXT_ACTION_EXACT :** calculer les variations induites de Wfbar pour les paramètres physiquement libres, les confronter au noyau, aux contraintes et aux deux vrais bords ; JANUS-001 : transférer sources authentiques et exécuter neuf tests puis pilote une cellule.
