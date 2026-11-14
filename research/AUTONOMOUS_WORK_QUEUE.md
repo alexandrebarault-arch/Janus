@@ -156,3 +156,6 @@ HEAD relu après publication : ...
 
 
 **Jalon 2026-11-14 — JANUS-005, couplage M2 :** `research/JANUS005_M2_WFBAR_DBAR_COUPLED_VARIATION_20261114.md` (blob `d4fea5cfd31915c96df8515f5febdfb703fc1cb6`, commit `03003c92c7d826abeffd004335e6eb4f817adb5c`). SymPy 3/3 PASS : Wfbar_M2=Wfbar/M2, Dbar_M2=Dbar/M2, Wfbar_Z1=-s*Dbar/Lf. Sous géométrie fixée et Dbar non nul, dDbar=0 avec M2 seule variable impose dM2=dWfbar=0 : le noyau à dw libre et Dbar fixe n'est pas réalisable par M2 seule. Pas de preuve de rang physique, deux bords ou Dirac. 0 test moteur nouveau, 0 cellule physique. **NEXT_ACTION_EXACT :** jacobien total Wfbar/Dbar/Rhog/Psg avec PG et géométrie physiquement autorisés, puis bords/Dirac ; JANUS-001 transfert authentifié, neuf tests et pilote.
+
+
+**Jalon 2026-11-14 — JANUS-005, jacobien (M2,Z1) de Wfbar/Dbar :** `research/JANUS005_M2_Z1_WFBAR_DBAR_JACOBIAN_20261114.md`. Deux identités SymPy exactes et deux signes rationnels au centre PASS ; déterminant non nul et négatif au centre dans la sous-carte à coefficients fixés. Ce résultat ne prouve aucune variation physique admissible, aucun signe continu annulaire, aucun rang Dirac. **NEXT_ACTION_EXACT :** contraintes Step45/49/55 sur M2,Z1,PG et géométrie ; jacobien total des traces et deux vrais bords. JANUS-001 : transfert authentifié, neuf tests et pilote. 0 cellule physique nouvelle.

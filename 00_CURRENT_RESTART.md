@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : jacobien exact M2/Z1 des coefficients Step55
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** HEAD initial `a48a825aeb2651cf6626ca672e22ce04159f6d49`. Calcul SymPy 2 identités exactes PASS et 2 signes rationnels PASS : `det(d(Wfbar,Dbar)/d(M2,Z1))=M2*MG²*Lg*Lf*T*(Lf*Tf+Lg*T*sqrt(1-Z1²*s)*(1+s*Z1²))/(1-Z1²*s)^(3/2)` à autres coefficients figés. Au centre Step55, déterminant strictement négatif ; aucune conclusion sur la liberté physique de M2/Z1, les deux vrais bords ou Dirac. Rapport `research/JANUS005_M2_Z1_WFBAR_DBAR_JACOBIAN_20261114.md`. 0 test moteur nouveau, 0 cellule physique évaluée/certifiée. **NEXT_ACTION_EXACT :** filtrer les variations M2,Z1,PG par Step45/49/55 et les vrais bords, calculer le jacobien total des traces ; JANUS-001 transférer les dépendances authentifiées, puis neuf tests et pilote.
+
+---
+
 # JANUS — 14/11/2026 : couplage M2 de Wfbar et Dbar, NO-GO conditionnel
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** HEAD de départ `ca111a4d37d65933747fc1b17e31731b7fefcf32`. Sur les formules authentiques `geometry(s)` Step55 : `∂M2 Wfbar=Wfbar/M2`, `∂M2 Dbar=Dbar/M2`, `∂Z1 Wfbar=-s Dbar/Lf` ; SymPy exact 3/3 PASS. Si Dbar non nul et seule M2 varie à géométrie fixée, `dDbar=0` impose `dM2=dWfbar=0`. Ce NO-GO circonscrit exclut le noyau à Wfbar libre/Dbar fixe par M2 seule, pas par toutes les variations physiques. Rapport `research/JANUS005_M2_WFBAR_DBAR_COUPLED_VARIATION_20261114.md`, blob `d4fea5cfd31915c96df8515f5febdfb703fc1cb6`. Tests moteur nouveaux 0, cellules physiques évaluées/certifiées 0/0. **NEXT_ACTION_EXACT :** jacobien total avec PG et géométrie autorisés, puis deux vrais bords/Dirac ; JANUS-001 reconstruire sources authentiques, neuf tests, pilote une cellule.
