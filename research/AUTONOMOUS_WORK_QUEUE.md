@@ -24,6 +24,8 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 script exact persisté :** `research/repro/janus005_continuous_m2_z1_sign_20261114.py` blob Git `794400b08c4e88b8a4fbbc83dd2194bb73680844`, identique aux octets locaux exécutés (`git hash-object`), rejoué Python : 256/256 cellules ALGÉBRIQUES avec T>0, Q<0, J<0 ; 0 cellule PHYSIQUE Step55/58. Commit `6ce35da7284143ed3f1bf529ab4913a25607fe53`. **NEXT_ACTION_EXACT :** authentifier et transférer les dépendances physiques JANUS-001, lancer neuf tests et pilote ; JANUS-005 vérifier liberté physique M2/Z1/PG et deux vrais bords/Dirac.
 
+**Jalon vérifié 2026-11-14 — JANUS-005 robustesse Z1 :** sur `s=[0,289/400]` et simultanément `Z1=[-1/100,1/100]`, 256/256 cellules ALGÉBRIQUES certifient par fractions `T>0`, `Q<0`, `J<0` (M2 et géométrie prescrits). Rapport `research/JANUS005_Z1_PARAMETER_INTERVAL_SIGN_ROBUSTNESS_20261114.md`, commit `b2db055bd70cf59d375ed03bf961b01e09c35c04`. Aucune cellule physique b3c3d9 évaluée ou certifiée. **NEXT_ACTION_EXACT :** filtrer les variations Z1/M2/PG par les équations et vrais bords ; JANUS-001 reconstruire les dépendances originales, neuf tests puis pilote une cellule.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
