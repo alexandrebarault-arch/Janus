@@ -41,6 +41,8 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 contre-vérification radiale :** la tangente compensée (A,M2,Z1,CG) préserve rho_g(0), mais la dérivée directionnelle de Rhog(s) du Step55 est non nulle aux points s=0.1 (-0.0086118826268), s=0.5 (-0.0430385286086), s=0.7225 (-0.0621723737240). SymPy exact au centre, évaluations ponctuelles et contrôle mpmath par différences finies à 60 chiffres. Rapport `research/JANUS005_RADIAL_CG_COMPENSATION_COUNTERCHECK_20261114.md` (commit `dac91afd5c75edd6b9b52edf18dede49b20f7f05`). **Pas de preuve physique**, 0 cellule b3c3d9. **NEXT_ACTION_EXACT :** déterminer quelles variations radiales et traces aux deux vrais bords sont autorisées par Step45/46/Dirac ; JANUS-001 reconstruire les sources originales et exécuter neuf tests et pilote.
 
+**Jalon vérifié 2026-11-14 — JANUS-005 premier jet radial :** retranscription des formules originales Step55, calcul SymPy 1.14 exécuté : D(Rhog(0))=0 exactement, mais D(d Rhog/ds)(0)=-0.08612850795005535994645936 à coefficients restants fixes. Vérification de cohérence avec la dérivée ponctuelle précédente à s=.1. Rapport `research/JANUS005_CENTER_RADIAL_DENSITY_JET_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_radial_density_jet_20261114.py` (source publiée équivalente au calcul local, rejeu octet pour octet restant à faire). Obstruction au profil fixé, PAS Dirac/physique. **0 cellule physique**. **NEXT_ACTION_EXACT :** rejouer le script publié puis déterminer si le premier jet de densité est une donnée fixée par les vraies contraintes/bords ; JANUS-001 authentifier dépendances, neuf tests, pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
