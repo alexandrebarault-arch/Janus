@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : noyau algébrique étendu des traces f (NON physique)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis HEAD `2993c15d2a8cbed4c8ab71594467506205f32ccb`, contrôle SymPy exact 4/4 PASS : `dU=1`, `dV=0`, `dw=-num_U-rho*den_U`, autres coefficients fixes donnent `d(rho)=d(pSf)=d(pf)=0`. Le rang figé ne se transpose pas sans hypothèses sur `Wfbar`. Rapport `research/JANUS005_EXTENDED_TRACE_KERNEL_COUNTEREXAMPLE_20261114.md`, blob `e66c2d3fb590247f53861ace1c183d64c814f81a`. Aucune variation physique admissible démontrée, 0 cellule Step55/58 évaluée/certifiée, aucun test moteur nouveau. **NEXT_ACTION_EXACT :** vérifier dans Step45/46/49/55 si `Wfbar` peut varier ; substituer les dérivées physiques et les deux vrais bords. JANUS-001 : transfert authentifié, neuf tests, pilote une cellule.
+
+---
+
 # JANUS — 14/11/2026 : rang algébrique des traces f (non physique)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** HEAD initial `6d46c9d286885de484f5f9e4a3c6d44cfd6534e4`. JANUS-005 : SymPy a vérifié exactement `det(∂(rho,pSf)/∂(U,V))=(R*L/T)*∂rho/∂U` à coefficients extérieurs figés, plus deux dérivées et un contrôle rationnel. Rapport : `research/JANUS005_FIXED_COEFFICIENT_F_TRACE_JACOBIAN_RANK_20261114.md`, blob `abb70c1b0de3e582e62c8c2af9c52eb52acc147f`. **Aucune admissibilité physique des variations, aucun rang Dirac démontré.** Tests moteur nouveaux : 0 ; cellules Step55/58 évaluées : 0, certifiées : 0. JANUS-001 toujours bloqué sur le transfert authentifié des sources ; aucune nouvelle tentative DNS identique. **NEXT_ACTION_EXACT :** substituer les dérivées des coefficients imposées par Step45/46/49/55 dans le jacobien total, tester les deux vrais bords et Dirac ; pour JANUS-001, transférer les sources originales, vérifier leurs SHA Git, exécuter les neuf tests et le pilote une cellule.
