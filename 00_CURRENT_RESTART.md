@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : contre-exemple à la fixation centrale si A varie
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : tangente exacte conservant PG,U0 avec dA=1 et dM2/dA=-(4*A³*M2*C+9/10)/(A⁴*C), dZ1/dA=-Z1/A ; contrôle SymPy PASS et reconstruction finie A=0.401 PASS. Rapport `research/JANUS005_A_VARIATION_CENTRAL_INVERSE_COUNTEREXAMPLE_20261114.md`, script `research/repro/janus005_a_variation_counterexample_20261114.py`. **Aucune admissibilité physique de dA établie ; 0 cellule physique évaluée/certifiée.** **NEXT_ACTION_EXACT :** lire Step45/49 et deux vrais bords pour tester la liberté de A et filtrer la tangente par Dirac ; JANUS-001 transfert authentifié, neuf tests, pilote.
+
+---
+
 # JANUS — 14/11/2026 : carte centrale (M2,Z1) ↔ (PG,U0) inversible sous hypothèses prescrites
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** SymPy exact PASS : jacobien `2*MF*B*A²*C/(3*sqrt(H2))>0` sur branche PG<0, H2>0 et C>0, paramètres Step55 fixés ; inverse explicite. Rapport `research/JANUS005_CENTRAL_M2_Z1_TO_PG_U0_INVERSE_20261114.md`, publication commit `601952606bc1a6ecde218d8b3ef7814177396fae`. Ce n'est PAS une preuve de rang physique Dirac ; 0 cellule Step55/58 évaluée/certifiée. **NEXT_ACTION_EXACT :** vérifier dans Step45/49 et les deux vrais bords si PG et U0 sont fixés ; JANUS-001 transférer les sources originales authentifiées, neuf tests puis pilote une cellule.
