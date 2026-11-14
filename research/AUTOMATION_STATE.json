@@ -1198,15 +1198,14 @@
     "physical_cells_certified": 0
   },
   "latest_verified_scientific_milestone": {
-    "date": "2026-11-12",
+    "date": "2026-11-14",
     "task": "JANUS-005",
-    "report": "research/JANUS005_M2_GEOMETRIC_SOURCE_PARTIALS_20261112.md",
-    "report_blob_sha": "192983ee2a61ded6fcdcd9c5aecaf687e7b33cbc",
-    "scope": "Exact partial M2 derivatives of prescribed Step55 Dbar,Wgbar,Wfbar at s=289/400; rational sign enclosures +,+,-; not total physical tangent",
-    "tests": "Fraction rational assertions PASS; independent Decimal evaluation PASS",
+    "report": "research/JANUS005_WFBAR_PRESCRIBED_KERNEL_RESTRICTION_20261114.md",
+    "blob": "d29db8bd7878036c11c117dcea3e6d510ceb2fda",
+    "scope": "NO_GO_FOR_FREE_WFBAR_VARIATION_AT_FIXED_STEP55_PRESCRIBED_PARAMETERS_ONLY",
     "new_physical_cells_evaluated": 0,
     "new_physical_cells_certified": 0,
-    "next_action_exact": "Derive dPG/dM2, propagate through Rhog/Psg/G and radial sensitivity; authenticate JANUS-001 dependencies and run targeted tests/pilot"
+    "next_action_exact": "Derive total Wfbar differential along physically admissible parameter variations; test kernel compatibility, original constraints and two true boundaries. JANUS-001 authentic dependency reconstruction then 9 tests and one-cell pilot."
   },
   "latest_verified_janus005_m2_total_source_sensitivity": {
     "date": "2026-11-12",
