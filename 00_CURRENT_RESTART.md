@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : la compensation CG centrale ne conserve pas Rhog(s) radial
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : dérivée directionnelle SymPy de la densité g radiale prescrite Step55 : exactement 0 au centre, mais -0.0086118826268 à s=0.1, -0.0430385286086 à s=0.5, -0.0621723737240 à s=0.7225 ; différences finies mpmath 60 chiffres cohérentes. Cela réfute uniquement la conservation automatique du profil Rhog(s) par la tangente algébrique centrale compensée, pas la liberté physique de CG ni JANUS. Rapport `research/JANUS005_RADIAL_CG_COMPENSATION_COUNTERCHECK_20261114.md`. **0 cellule physique évaluée/certifiée. NEXT_ACTION_EXACT :** filtrer les variations radiales par Step45/46, Dirac et les deux vrais bords ; JANUS-001 reconstruire les dépendances authentiques et lancer neuf tests puis pilote.
+
+---
+
 # JANUS — 14/11/2026 : compensation exacte de la poussière centrale par CG
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : Step49/55 se simplifie exactement en `rho_g_center=9/10-24*A*CG` pour la famille prescrite. SymPy PASS : dCG/dA=-CG/A avec les variations précédentes de M2 et Z1 conserve PG, U0 et rho_g au premier ordre. **Admissibilité physique NON ÉTABLIE**, 0 cellule b3c3d9 évaluée/certifiée. Rapport `research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md`, script `research/repro/janus005_cg_compensated_center_20261114.py` blob vérifié `1ccb5e0e079456bc94b5b14a234a97f1aca81b7c`. **NEXT_ACTION_EXACT :** tester liberté de CG par contraintes Dirac et deux vrais bords ; JANUS-001 authentifier dépendances puis neuf tests et pilote.
