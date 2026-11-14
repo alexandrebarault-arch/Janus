@@ -1299,5 +1299,16 @@
     "physical_cells_certified": 0,
     "scope": "prescribed algebraic map only",
     "next_action": "JANUS-001 authentic source closure and pilot; JANUS-005 physical admissibility and Dirac/two boundaries"
+  },
+  "latest_verified_janus005_geometry_variation": {
+    "date": "2026-11-14",
+    "report": "research/JANUS005_A_VARIATION_CENTRAL_INVERSE_COUNTEREXAMPLE_20261114.md",
+    "repro": "research/repro/janus005_a_variation_counterexample_20261114.py",
+    "symbolic_tangent": "PASS",
+    "finite_reconstruction": "PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "scope": "Algebraic only; A physical freedom unproved",
+    "next_action_exact": "Check Step45/49 and true boundaries for admissible dA; then Dirac linearization. JANUS-001 authenticate dependencies and run nine tests plus pilot."
   }
 }
