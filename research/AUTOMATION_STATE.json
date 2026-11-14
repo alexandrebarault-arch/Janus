@@ -1200,13 +1200,19 @@
   "latest_verified_scientific_milestone": {
     "date": "2026-11-14",
     "task": "JANUS-005",
-    "result": "Exact invertibility of prescribed central (M2,Z1)->(PG,U0) map, not physical Dirac rank",
-    "report": "research/JANUS005_CENTRAL_M2_Z1_TO_PG_U0_INVERSE_20261114.md",
-    "report_commit": "601952606bc1a6ecde218d8b3ef7814177396fae",
-    "symbolic_checks_pass": 1,
+    "kind": "EXACT_ALGEBRAIC_IDENTITY_AND_COUNTER_TANGENT",
+    "result": "rho_g_center=9/10-24*A*CG; dCG/dA=-CG/A compensates A variation while dPG=dU0=0",
+    "report": "research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md",
+    "report_blob": "5583b69add6971e7bbb221f913057197347d5933",
+    "script": "research/repro/janus005_cg_compensated_center_20261114.py",
+    "script_blob": "1ccb5e0e079456bc94b5b14a234a97f1aca81b7c",
+    "symbolic_test": "PASS",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
-    "next_action_exact": "Read Step45/49 and both true boundary conditions to establish whether PG,U0 are physically fixed; JANUS-001 authenticate dependencies, run nine tests then one-cell pilot."
+    "physical_admissibility": "NOT_PROVED",
+    "next_action_exact": "Check whether CG variations preserve linearized Dirac constraints and both actual boundaries; JANUS-001 authenticate sources and execute nine tests and one-cell pilot",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
   },
   "latest_verified_janus005_m2_total_source_sensitivity": {
     "date": "2026-11-12",
