@@ -1342,5 +1342,18 @@
     "second_taylor_coefficient_direction_compensated": "0.000531688448564059244385291354039",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0
+  },
+  "latest_scientific_milestone_2026_11_15": {
+    "task": "JANUS-005",
+    "result": "KG_CF_TWO_RADIAL_JETS_FIRST_ORDER_COMPENSATION_ONLY",
+    "report": "research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md",
+    "determinant_KG_CF": "0.0705311892633288825986689031316",
+    "dKG_dA": "0.0755874817043977411888280492553",
+    "dCF_dA": "-0.00636344858203444131023741494235",
+    "independent_finite_difference": "PASS_h_1e-4_and_1e-6",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_admissibility": "NOT_ESTABLISHED",
+    "next_action_exact": "Audit KG/CF physical freedom under Dirac and two true boundaries; compute third radial jet; reconstruct JANUS-001 authentic 18 dependencies and run tests plus one-cell pilot."
   }
 }
