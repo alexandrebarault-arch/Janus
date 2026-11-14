@@ -34,6 +34,8 @@
 
 **Jalon 2026-11-14 — JANUS-005, contre-exemple géométrique :** `research/JANUS005_A_VARIATION_CENTRAL_INVERSE_COUNTEREXAMPLE_20261114.md` et `research/repro/janus005_a_variation_counterexample_20261114.py`. Tangente symbolique exacte dA=1, dM2/dA=-(4*A³*M2*C+9/10)/(A⁴*C), dZ1/dA=-Z1/A conservant PG et U0 ; contre-exemple fini A=0.401, M2≈22.8337018656, Z1≈0.00399002494. Résidu exact symbolique nul et reconstruction numérique <1e-20. Ceci invalide l'inférence de fixation M2/Z1 **si A est autorisé à varier**, sans prouver sa liberté physique. 0 cellule physique. **NEXT_ACTION_EXACT :** lire Step45/49 et vrais bords pour déterminer si A peut varier ; filtrer tangente par Dirac. JANUS-001 : transférer dépendances authentiques, neuf tests et pilote.
 
+**Jalon vérifié 2026-11-14 — JANUS-005 obstruction poussière centrale :** `research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md`, reproduction `research/repro/janus005_center_dust_tangent_20261114.py`. SymPy exact exécuté PASS : pour la tangente dPG=dU0=0 avec dA=1 et Y, b_i, CG fixes, `d(rho_g_center)/dA=-24*CG=-0.036`. Si rho_g_center est imposée, cette direction est exclue ; si elle est libre, aucune obstruction. **0 cellule physique**. **NEXT_ACTION_EXACT :** établir si la densité g centrale est fixée par Step45/49/Dirac et les vrais bords ; JANUS-001 sources authentifiées puis tests/pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
