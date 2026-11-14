@@ -1226,16 +1226,12 @@
   },
   "latest_verified_scientific_milestone_2026_11_14": {
     "task": "JANUS-005",
-    "kind": "CONTINUOUS_ALGEBRAIC_INTERVAL_SIGN_NOT_PHYSICAL",
-    "report": "research/JANUS005_CONTINUOUS_M2_Z1_JACOBIAN_SIGN_20261114.md",
-    "source_head": "0120aa63b3e4871e105b15ff27a77ce2edc6667f",
-    "report_commit": "dbd7512477c6f5deeb94d626878569d8dfe13ed4",
-    "cells_algebraic": 256,
-    "cells_physical_evaluated": 0,
-    "cells_physical_certified": 0,
-    "script_git_blob_local": "794400b08c4e88b8a4fbbc83dd2194bb73680844",
-    "script_persisted_to_repo": false,
-    "next_action_exact": "Publish exact interval script, rerun; filter M2,Z1,PG by physical constraints and both boundaries; JANUS-001 authentic dependency transfer then nine tests and one-cell pilot."
+    "type": "radial_countercheck",
+    "report": "research/JANUS005_RADIAL_CG_COMPENSATION_COUNTERCHECK_20261114.md",
+    "result": "central compensated tangent does not preserve prescribed Rhog(s) at s=0.1,0.5,0.7225; pointwise not interval or Dirac proof",
+    "physical_cells_evaluated_this_run": 0,
+    "physical_cells_certified_this_run": 0,
+    "next_action": "audit allowed radial variations and two true boundaries; reconstruct JANUS-001 authentic modules and run 9 tests then one-cell pilot"
   },
   "latest_verified_janus005_extended_kernel": {
     "date": "2026-11-14",
