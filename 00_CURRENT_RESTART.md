@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : audit du statut KG et limite du certificat Step55
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Lecture des sources Step45/55 au HEAD `f5c112c80f3733b2624a09dd8e1b98fd90d3b25a` : KG=0.0012 est fixé dans le certificat Step55, mais KG intervient dans betag, Rhog, Psg et tg0. La compensation du premier jet par variation de KG n'est PAS couverte par ce certificat à paramètre fixe ; liberté physique et contraintes de Dirac/deux vrais bords restent inconnues. Rapport `research/JANUS005_KG_PARAMETER_STATUS_SOURCE_AUDIT_20261114.md`. Audit statique uniquement ; 0 cellule physique. **NEXT_ACTION_EXACT :** reconstruire JANUS-001 authentifié, neuf tests et pilote ; puis re-certifier Step55 à KG variable et vérifier Dirac et les deux bords.
+
+---
+
 # JANUS — 14/11/2026 : compensation algébrique conditionnelle du premier jet par KG
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Rejeu exact du script Git original du premier jet, blob `bdb3eaabb2bd9afea3ec8856134920fde1d5c51d`, PASS SymPy 1.14. Nouvelle identité `partial_KG rho_g'(0)=-rho_g(0)*(KG+PG/(2*A))` : au point prescrit sensibilité +0.8441439672407285 et compensation conditionnelle `dKG/dA=+0.10203059109879736` pour annuler `D rho'_g(0)=-0.08612850795`. KG libre physiquement NON ÉTABLI ; aucune preuve Dirac, deux vrais bords, profil radial complet. Rapport `research/JANUS005_KG_FIRST_RADIAL_JET_COMPENSATION_20261114.md`. **0 cellule physique évaluée/certifiée. NEXT_ACTION_EXACT :** auditer liberté de KG dans Step45/49/55 et contraintes/bords ; JANUS-001 reconstruire sources authentifiées, neuf tests puis pilote une cellule.
