@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : Wfbar prescrit, restriction du noyau algébrique
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis HEAD `eff739a3411300fb2c33a40b5970acb522b0bf83`, audit de `geometry(s)` Step55 : `Wfbar` est prescrit par `M2,MG,Lf,Tf,Lg,T,Z1,s`, sans dépendance en U à paramètres fixés. SymPy : 2 identités exactes et 3 contrôles rationnels PASS. La variation libre `dw` du contre-exemple étendu antérieur n'est donc pas admissible dans cette sous-famille fixée ; sa validité algébrique générale est préservée. Rapport `research/JANUS005_WFBAR_PRESCRIBED_KERNEL_RESTRICTION_20261114.md`, blob `d29db8bd7878036c11c117dcea3e6d510ceb2fda`. **Aucune preuve de rang Dirac, de bord ou de solution 4D.** Tests moteur nouveaux 0 ; cellules physiques évaluées 0, certifiées 0. **NEXT_ACTION_EXACT :** calculer les variations induites de Wfbar pour les paramètres physiquement libres, les confronter au noyau, aux contraintes et aux deux vrais bords ; JANUS-001 : transférer sources authentiques et exécuter neuf tests puis pilote une cellule.
+
+---
+
 # JANUS — 14/11/2026 : noyau algébrique étendu des traces f (NON physique)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis HEAD `2993c15d2a8cbed4c8ab71594467506205f32ccb`, contrôle SymPy exact 4/4 PASS : `dU=1`, `dV=0`, `dw=-num_U-rho*den_U`, autres coefficients fixes donnent `d(rho)=d(pSf)=d(pf)=0`. Le rang figé ne se transpose pas sans hypothèses sur `Wfbar`. Rapport `research/JANUS005_EXTENDED_TRACE_KERNEL_COUNTEREXAMPLE_20261114.md`, blob `e66c2d3fb590247f53861ace1c183d64c814f81a`. Aucune variation physique admissible démontrée, 0 cellule Step55/58 évaluée/certifiée, aucun test moteur nouveau. **NEXT_ACTION_EXACT :** vérifier dans Step45/46/49/55 si `Wfbar` peut varier ; substituer les dérivées physiques et les deux vrais bords. JANUS-001 : transfert authentifié, neuf tests, pilote une cellule.
