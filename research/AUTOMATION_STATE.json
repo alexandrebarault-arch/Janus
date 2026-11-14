@@ -53,7 +53,7 @@
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
   "verified_research_head_at_session_start": "eb7229c4328a3da59a4a35f3b2367dd0ac649f49",
-  "next_priority": "Replay published radial first-jet script; check whether rho_g'(0) is fixed by actual Dirac/boundary constraints; reconstruct authenticated Step55/58 dependencies and execute physical pilot.",
+  "next_priority": "JANUS-001 authenticated reconstruction, nine tests and one-cell pilot; JANUS-005 KG-varying Step55 recertification, Dirac and two true boundaries",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS005_CENTER_RADIAL_DENSITY_JET_POINT_OBSTRUCTION",
+  "latest_verified_completed_step": "JANUS005_KG_FIXED_CHART_SOURCE_AUDIT_ONLY",
   "next_pending_step": "JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT_AND_JANUS005_DIRAC_BOUNDARY_JET",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS005_CENTER_RADIAL_DENSITY_JET_OBSTRUCTION_20261114.md",
+  "latest_scientific_audit": "research/JANUS005_KG_PARAMETER_STATUS_SOURCE_AUDIT_20261114.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
