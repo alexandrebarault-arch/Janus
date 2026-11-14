@@ -1238,5 +1238,16 @@
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
     "next_action_exact": "Inspect Wfbar physical dependence in Step45/46/49/55, substitute admissible variations and real boundary conditions; reconstruct JANUS-001 authentic imports and execute nine tests then one-cell pilot."
+  },
+  "latest_verified_janus005_m2_coupling": {
+    "date": "2026-11-14",
+    "source_head": "ca111a4d37d65933747fc1b17e31731b7fefcf32",
+    "report": "research/JANUS005_M2_WFBAR_DBAR_COUPLED_VARIATION_20261114.md",
+    "report_blob": "d4fea5cfd31915c96df8515f5febdfb703fc1cb6",
+    "symbolic_tests_passed": 3,
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "scope": "fixed geometry; Dbar nonzero; M2-only variation; no physical rank proof",
+    "next_action": "compute full physically allowed Jacobian with PG/geometry, true boundaries and Dirac; reconstruct JANUS-001 authentic dependencies and run tests/pilot"
   }
 }
