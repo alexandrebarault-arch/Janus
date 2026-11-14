@@ -22,7 +22,7 @@
 9. Ne pas présenter une intention `RUNNING`, une simple tentative, un test synthétique ou une enclosion inconclusive comme une preuve physique. Séparer **cellules planifiées, tentées, effectivement évaluées, certifiées, inconclusives**. Une borne contenant zéro, une couverture trouée et des points isolés ne démontrent pas le signe strict continu.
 10. Si la piste principale reste bloquée : continuer sur les audits symboliques, contre-exemples, preuves de contraintes, conditions aux vrais bords, rang, 4D, stabilité ou observables avec des livrables vérifiables. Éviter de tourner en rond. Faire figurer le premier prérequis réellement externe et l'action minimale requise ; ne pas exiger l'intervention humaine tant qu'une alternative autonome est disponible.
 
-## Liste ordonnée des travaux
+**Jalon vérifié 2026-11-14 — JANUS-005 script exact persisté :** `research/repro/janus005_continuous_m2_z1_sign_20261114.py` blob Git `794400b08c4e88b8a4fbbc83dd2194bb73680844`, identique aux octets locaux exécutés (`git hash-object`), rejoué Python : 256/256 cellules ALGÉBRIQUES avec T>0, Q<0, J<0 ; 0 cellule PHYSIQUE Step55/58. Commit `6ce35da7284143ed3f1bf529ab4913a25607fe53`. **NEXT_ACTION_EXACT :** authentifier et transférer les dépendances physiques JANUS-001, lancer neuf tests et pilote ; JANUS-005 vérifier liberté physique M2/Z1/PG et deux vrais bords/Dirac.\n\n## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
 - **Statut : READY** ; **Priorité : P0** ; **Dépendances :** aucune.
