@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : compensation algébrique conditionnelle du premier jet par KG
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Rejeu exact du script Git original du premier jet, blob `bdb3eaabb2bd9afea3ec8856134920fde1d5c51d`, PASS SymPy 1.14. Nouvelle identité `partial_KG rho_g'(0)=-rho_g(0)*(KG+PG/(2*A))` : au point prescrit sensibilité +0.8441439672407285 et compensation conditionnelle `dKG/dA=+0.10203059109879736` pour annuler `D rho'_g(0)=-0.08612850795`. KG libre physiquement NON ÉTABLI ; aucune preuve Dirac, deux vrais bords, profil radial complet. Rapport `research/JANUS005_KG_FIRST_RADIAL_JET_COMPENSATION_20261114.md`. **0 cellule physique évaluée/certifiée. NEXT_ACTION_EXACT :** auditer liberté de KG dans Step45/49/55 et contraintes/bords ; JANUS-001 reconstruire sources authentifiées, neuf tests puis pilote une cellule.
+
+---
+
 # JANUS — 14/11/2026 : premier jet radial de poussière non préservé
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : à partir de la formule Step55 de Rhog(s), SymPy 1.14 calcule pour la tangente compensée `D Rhog(0)=0` exactement mais `D (d Rhog/ds)(0)=-0.08612850795005535994645936` aux paramètres prescrits. Obstruction au profil radial **si imposé**, non preuve Dirac ni de conditions aux bords. Rapport `research/JANUS005_CENTER_RADIAL_DENSITY_JET_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_radial_density_jet_20261114.py` publié, équivalent au calcul local ; rejeu exact du blob encore à faire. **0 cellule physique**. **NEXT_ACTION_EXACT :** rejouer script Git exact ; vérifier si jet de densité est fixé par Step45/46/Dirac et deux vrais bords ; JANUS-001 authentifier imports, tests et pilote.
