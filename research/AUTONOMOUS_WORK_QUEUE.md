@@ -36,6 +36,8 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 obstruction poussière centrale :** `research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md`, reproduction `research/repro/janus005_center_dust_tangent_20261114.py`. SymPy exact exécuté PASS : pour la tangente dPG=dU0=0 avec dA=1 et Y, b_i, CG fixes, `d(rho_g_center)/dA=-24*CG=-0.036`. Si rho_g_center est imposée, cette direction est exclue ; si elle est libre, aucune obstruction. **0 cellule physique**. **NEXT_ACTION_EXACT :** établir si la densité g centrale est fixée par Step45/49/Dirac et les vrais bords ; JANUS-001 sources authentifiées puis tests/pilote.
 
+**Jalon vérifié 2026-11-14 — JANUS-005 compensation CG :** identité exacte Step49/55 `rho_g_center=9/10-24*A*CG` (b0=0, MG=1, B=A*Y), indépendance de M2 et Z1 ; SymPy PASS et script exact publié/relu (blob `1ccb5e0e079456bc94b5b14a234a97f1aca81b7c`). Si CG varie selon dCG/dA=-CG/A, la tangente antérieure préserve PG, U0 ET rho_g au premier ordre ; ceci **n'établit aucune admissibilité physique**. Rapport `research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md`, blob `5583b69add6971e7bbb221f913057197347d5933`. 0 cellule physique. **NEXT_ACTION_EXACT :** vérifier si CG peut varier dans les contraintes Dirac linéarisées et les deux vrais bords ; JANUS-001 sources authentifiées, neuf tests, pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
