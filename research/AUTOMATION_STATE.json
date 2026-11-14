@@ -1319,5 +1319,17 @@
     "test": "SymPy PASS; zero physical cells",
     "report": "research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md",
     "next_action": "Determine whether rho_g_center is fixed or free under Step45/49, Dirac and true boundaries; JANUS-001 authentic source reconstruction"
+  },
+  "janus005_kg_radial_jet_20261114": {
+    "status": "ALGEBRAIC_CONDITIONAL_PASS",
+    "report": "research/JANUS005_KG_FIRST_RADIAL_JET_COMPENSATION_20261114.md",
+    "source_blob": "bdb3eaabb2bd9afea3ec8856134920fde1d5c51d",
+    "exact_source_replayed": true,
+    "partial_KG_radial_density_jet": "0.8441439672407285042776946",
+    "required_dKG_dA": "0.1020305910987973552154485",
+    "physical_admissibility": "NOT_ESTABLISHED",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action": "Audit KG freedom in Step45/49/55 and Dirac/two true boundaries; reconstruct JANUS-001 authentic imports then tests and pilot"
   }
 }
