@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : signe continu algébrique du jacobien Step55 M2/Z1
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis HEAD `0120aa63b3e4871e105b15ff27a77ce2edc6667f`, calcul exact par fractions et bornes rationnelles de racines sur 256 cellules couvrant `s=[0,289/400]` : `T>0`, `Q<0`, `det(d(Wfbar,Dbar)/d(M2,Z1))<0` partout dans la carte prescrite. SymPy a indépendamment confirmé la formule du déterminant. **256 cellules algébriques, 0 cellule physique b3c3d9 évaluée/certifiée.** Rapport `research/JANUS005_CONTINUOUS_M2_Z1_JACOBIAN_SIGN_20261114.md`. Script local exécuté blob Git `794400b08c4e88b8a4fbbc83dd2194bb73680844`, **non encore publié**. **NEXT_ACTION_EXACT :** publier le script original et rejouer, puis tester l'admissibilité physique M2/Z1/PG (Step45/49/55, Dirac, deux vrais bords) ; JANUS-001 transférer les dépendances authentiques, neuf tests et pilote physique.
+
+---
+
 # JANUS — 14/11/2026 : jacobien exact M2/Z1 des coefficients Step55
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** HEAD initial `a48a825aeb2651cf6626ca672e22ce04159f6d49`. Calcul SymPy 2 identités exactes PASS et 2 signes rationnels PASS : `det(d(Wfbar,Dbar)/d(M2,Z1))=M2*MG²*Lg*Lf*T*(Lf*Tf+Lg*T*sqrt(1-Z1²*s)*(1+s*Z1²))/(1-Z1²*s)^(3/2)` à autres coefficients figés. Au centre Step55, déterminant strictement négatif ; aucune conclusion sur la liberté physique de M2/Z1, les deux vrais bords ou Dirac. Rapport `research/JANUS005_M2_Z1_WFBAR_DBAR_JACOBIAN_20261114.md`. 0 test moteur nouveau, 0 cellule physique évaluée/certifiée. **NEXT_ACTION_EXACT :** filtrer les variations M2,Z1,PG par Step45/49/55 et les vrais bords, calculer le jacobien total des traces ; JANUS-001 transférer les dépendances authentifiées, puis neuf tests et pilote.
