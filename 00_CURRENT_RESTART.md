@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : extension algébrique Z1 à ±0,18
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Script une boîte authentifié et rejoué exactement (blob `09ef33f702321d99886ef00d64df3c18ccd153a2`, PASS). Fractions exactes : sur `s=[0,289/400]`, `Z1=[-9/50,9/50]`, `T>0`, `Tf<0`, `Q<0`, `J<0` à paramètres prescrits. Rapport `research/JANUS005_ONE_BOX_Z1_EXTENDED_018_20261114.md`. 0 cellule physique évaluée/certifiée. **NEXT_ACTION_EXACT :** JANUS-001 reconstruire les sources authentifiées, tests puis pilote ; JANUS-005 examiner les tangentes physiques et les deux vrais bords/Dirac.
+
+---
+
 # JANUS — 14/11/2026 : contre-vérification indépendante sans subdivisions
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : une preuve rationnelle sur une seule boîte `s=[0,289/400]`, `Z1=[-1/100,1/100]` démontre `T>0`, `Tf<0`, `Q<0`, donc `J<0` dans la carte Step55 prescrite. Implémentation indépendante équivalente exécutée PASS ; script source GitHub `research/repro/janus005_one_box_rational_sign_20261114.py` blob `09ef33f702321d99886ef00d64df3c18ccd153a2`, non encore rejoué octet pour octet. Rapport `research/JANUS005_INDEPENDENT_ONE_BOX_RATIONAL_SIGN_20261114.md`. **0 cellule physique b3c3d9 évaluée/certifiée. NEXT_ACTION_EXACT :** reconstruire les dépendances originales JANUS-001, neuf tests puis pilote une cellule ; JANUS-005 examiner la liberté physique M2/Z1/PG et les deux vrais bords/Dirac.
