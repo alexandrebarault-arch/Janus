@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : obstruction conditionnelle par poussière g centrale
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la tangente algébrique dPG=dU0=0 de JANUS-005 avec dA=1, Y, b_i et CG fixes, calcul SymPy exact PASS : d(rho_g_center)/dA=-24 CG=-0.036. Si rho_g(0) est une donnée imposée, cette tangente est exclue ; sa fixation physique reste NON DÉMONTRÉE. Rapport `research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_dust_tangent_20261114.py`. **0 cellule physique**. **NEXT_ACTION_EXACT :** établir si rho_g(0) est imposée par contraintes/conditions aux bords ; JANUS-001 reconstruire sources authentifiées puis tests/pilote.
+
+---
+
 # JANUS — 14/11/2026 : contre-exemple à la fixation centrale si A varie
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : tangente exacte conservant PG,U0 avec dA=1 et dM2/dA=-(4*A³*M2*C+9/10)/(A⁴*C), dZ1/dA=-Z1/A ; contrôle SymPy PASS et reconstruction finie A=0.401 PASS. Rapport `research/JANUS005_A_VARIATION_CENTRAL_INVERSE_COUNTEREXAMPLE_20261114.md`, script `research/repro/janus005_a_variation_counterexample_20261114.py`. **Aucune admissibilité physique de dA établie ; 0 cellule physique évaluée/certifiée.** **NEXT_ACTION_EXACT :** lire Step45/49 et deux vrais bords pour tester la liberté de A et filtrer la tangente par Dirac ; JANUS-001 transfert authentifié, neuf tests, pilote.
