@@ -49,6 +49,9 @@
 
 **Jalon 2026-11-14 — JANUS-005 audit KG :** le certificat Step55 fixe KG=0.0012 ; KG intervient dans betag, Rhog, Psg, tg0. Compensation locale du premier jet NON couverte par la barrière existante. Liberté physique de KG non démontrée. Rapport `research/JANUS005_KG_PARAMETER_STATUS_SOURCE_AUDIT_20261114.md` commit `348ffc2dc4221d2d99a0210bad2103a071eec467`. 0 cellule physique. **NEXT_ACTION_EXACT :** JANUS-001 reconstruire sources authentifiées, neuf tests et pilote ; JANUS-005 recalculer la barrière avec KG variable et contrôler Dirac/deux vrais bords.
 
+
+**Jalon vérifié 2026-11-15 — JANUS-005 compensation KG+CF :** calcul local mpmath 1.3.0 (45 décimales) : matrice de sensibilité des jets a1,a2 en KG,CF de déterminant +0.07053118926332888 ; dKG/dA=+0.07558748170439774, dCF/dA=-0.00636344858203444 annulent les deux jets au premier ordre. Contrôle indépendant par différences finies h=1e-4,1e-6 PASS (résidus O(h²)). Rapport `research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md`, commit `70a1bc20d6647a95e41ac612b85334d4486f71d0`. 0 cellule physique. **NEXT_ACTION_EXACT :** auditer liberté physique de KG/CF, contraintes Dirac/deux vrais bords, troisième jet ; JANUS-001 transfert authentifié des 18 dépendances, tests et pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
