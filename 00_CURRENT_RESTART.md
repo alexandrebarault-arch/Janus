@@ -1,3 +1,9 @@
+# JANUS — 15/11/2026 : deux jets compensables algébriquement par KG et CF
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : mpmath 1.3.0 à 45 chiffres, déterminant du jacobien (a1,a2)/(KG,CF) = +0.07053118926332888 ; compensation dKG/dA=+0.07558748170439774 et dCF/dA=-0.00636344858203444. Résidus différentiels nuls à la précision de calcul ; différences finies centrées 1e-4/1e-6 confirment O(h²). Rapport `research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md`. **Résultat algébrique local seulement ; liberté physique de KG/CF non démontrée ; 0 cellule physique. NEXT_ACTION_EXACT :** troisième jet, contraintes Dirac/deux vrais bords, et reconstruction JANUS-001 authentifiée avec neuf tests et pilote.
+
+---
+
 # JANUS — 14/11/2026 : second jet radial non compensé par KG
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : avec dKG/dA=+0.1020305910987973552 annulant le premier jet, le coefficient de s² de rho_g conserve une dérivée directionnelle +0.0005316884485640592444, vérifiée par mpmath 60 chiffres et différences finies t=1e-5,1e-7. Cela réfute seulement la conservation du profil complet par cette tangente à coefficients restants figés. Rapport `research/JANUS005_KG_COMPENSATED_SECOND_RADIAL_JET_20261114.md`. **0 cellule physique. NEXT_ACTION_EXACT :** JANUS-001 reconstruction authentique, neuf tests et pilote ; JANUS-005 Dirac, jets radiaux et deux vrais bords.
