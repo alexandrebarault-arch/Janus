@@ -43,6 +43,9 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 premier jet radial :** retranscription des formules originales Step55, calcul SymPy 1.14 exécuté : D(Rhog(0))=0 exactement, mais D(d Rhog/ds)(0)=-0.08612850795005535994645936 à coefficients restants fixes. Vérification de cohérence avec la dérivée ponctuelle précédente à s=.1. Rapport `research/JANUS005_CENTER_RADIAL_DENSITY_JET_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_radial_density_jet_20261114.py` (source publiée équivalente au calcul local, rejeu octet pour octet restant à faire). Obstruction au profil fixé, PAS Dirac/physique. **0 cellule physique**. **NEXT_ACTION_EXACT :** rejouer le script publié puis déterminer si le premier jet de densité est une donnée fixée par les vraies contraintes/bords ; JANUS-001 authentifier dépendances, neuf tests, pilote.
 
+
+**Jalon vérifié 2026-11-14 — JANUS-005 compensation conditionnelle KG du premier jet :** script original `research/repro/janus005_center_radial_density_jet_20261114.py` rejoué depuis octets Git exacts, blob `bdb3eaabb2bd9afea3ec8856134920fde1d5c51d`, SymPy 1.14 PASS. Nouvelle identité exacte `partial_KG rho_g'(0)=-rho_g(0)*(KG+PG/(2*A))`; au point prescrit sensibilité `+0.8441439672407285`, donc une compensation algébrique locale `dKG/dA=+0.10203059109879736` annule la variation de premier jet `-0.08612850795`. Rapport `research/JANUS005_KG_FIRST_RADIAL_JET_COMPENSATION_20261114.md`. Liberté physique de KG NON ÉTABLIE ; Dirac, deux vrais bords et profil complet non testés ; 0 cellule physique. **NEXT_ACTION_EXACT :** auditer le statut de KG dans Step45/49/55 et imposer contraintes et bords ; JANUS-001 reconstruire dépendances authentifiées, neuf tests, pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
