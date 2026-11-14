@@ -142,3 +142,9 @@ HEAD relu après publication : ...
 ### Jalon JANUS-005 — 2026-11-12, dérivées totales Rhog/Psg
 - **Preuve :** `research/JANUS005_M2_TOTAL_RHOG_PSG_SENSITIVITY_20261112.md` ; différentiation exacte SymPy + 3 contrôles de différences centrales PASS au point s=289/400, M2=23.3348939346. `dPG/dM2=-0.0028891577835134484`, `dRhog/dM2=+0.00017546349698079373`, `dPsg/dM2=-0.00571421168451978`. Variation algébrique, non admissibilité physique. **0 cellule physique nouvelle.**
 - **NEXT_ACTION_EXACT :** calculer G_M2|U et G_U depuis les sources authentiques, résoudre/borner 2s (U_M2)'=(G_U-2)U_M2+G_M2|U, tester les vrais bords et Dirac. JANUS-001 reste prioritaire dès reconstruction authentifiée.
+
+
+### Jalon 2026-11-14 — JANUS-005, rang des traces f à coefficients figés
+- **Preuve :** `research/JANUS005_FIXED_COEFFICIENT_F_TRACE_JACOBIAN_RANK_20261114.md` (blob `abb70c1b0de3e582e62c8c2af9c52eb52acc147f`).
+- **Calcul réellement exécuté :** SymPy, `simplify(det(Matrix([rho,pSf]).jacobian([U,V]))-R*L/T*diff(rho,U)) == 0` ; dérivées `rho_V`, `pSf_V` et substitution rationnelle contrôlées. Identité exacte sur la carte Step46 à coefficients figés ; aucune inférence sur le rang physique ou Dirac. Tests moteur 0 ; cellules physiques évaluées 0, certifiées 0.
+- **NEXT_ACTION_EXACT JANUS-005 :** substituer les variations géométriques et de sources imposées par Step45/46/49/55 dans le jacobien total des deux traces, vérifier le rang et les deux vrais bords. JANUS-001 : reconstruire les octets authentiques et lancer tests puis pilote, sans répéter inutilement le Git CLI DNS.
