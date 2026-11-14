@@ -1310,5 +1310,12 @@
     "physical_cells_certified": 0,
     "scope": "Algebraic only; A physical freedom unproved",
     "next_action_exact": "Check Step45/49 and true boundaries for admissible dA; then Dirac linearization. JANUS-001 authenticate dependencies and run nine tests plus pilot."
+  },
+  "latest_verified_scientific_milestone_20261114": {
+    "task": "JANUS-005",
+    "result": "Exact d(rho_g_center)/dA=-24*CG along dPG=dU0=0 tangent, conditional on fixed Y,b_i,CG",
+    "test": "SymPy PASS; zero physical cells",
+    "report": "research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md",
+    "next_action": "Determine whether rho_g_center is fixed or free under Step45/49, Dirac and true boundaries; JANUS-001 authentic source reconstruction"
   }
 }
