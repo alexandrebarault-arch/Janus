@@ -26,6 +26,8 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 robustesse Z1 :** sur `s=[0,289/400]` et simultanément `Z1=[-1/100,1/100]`, 256/256 cellules ALGÉBRIQUES certifient par fractions `T>0`, `Q<0`, `J<0` (M2 et géométrie prescrits). Rapport `research/JANUS005_Z1_PARAMETER_INTERVAL_SIGN_ROBUSTNESS_20261114.md`, commit `b2db055bd70cf59d375ed03bf961b01e09c35c04`. Aucune cellule physique b3c3d9 évaluée ou certifiée. **NEXT_ACTION_EXACT :** filtrer les variations Z1/M2/PG par les équations et vrais bords ; JANUS-001 reconstruire les dépendances originales, neuf tests puis pilote une cellule.
 
+**Jalon vérifié 2026-11-14 — JANUS-005 extension Z1 :** script une boîte authentifié et rejoué (blob `09ef33f702321d99886ef00d64df3c18ccd153a2`, PASS) ; nouvelle preuve par fractions pour `s=[0,289/400]`, `Z1=[-9/50,9/50]` : Tlo>0, Tfhi<0, Qhi<0 (≈-0.00004021437439), J<0 à coefficients prescrits. Rapport `research/JANUS005_ONE_BOX_Z1_EXTENDED_018_20261114.md`. **0 cellule physique**. **NEXT_ACTION_EXACT :** JANUS-001 sources authentifiées, neuf tests et pilote ; JANUS-005 variations physiquement admissibles, Dirac et vrais bords.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
