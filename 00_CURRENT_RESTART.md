@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : second jet radial non compensé par KG
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : avec dKG/dA=+0.1020305910987973552 annulant le premier jet, le coefficient de s² de rho_g conserve une dérivée directionnelle +0.0005316884485640592444, vérifiée par mpmath 60 chiffres et différences finies t=1e-5,1e-7. Cela réfute seulement la conservation du profil complet par cette tangente à coefficients restants figés. Rapport `research/JANUS005_KG_COMPENSATED_SECOND_RADIAL_JET_20261114.md`. **0 cellule physique. NEXT_ACTION_EXACT :** JANUS-001 reconstruction authentique, neuf tests et pilote ; JANUS-005 Dirac, jets radiaux et deux vrais bords.
+
+---
+
 # JANUS — 14/11/2026 : audit du statut KG et limite du certificat Step55
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Lecture des sources Step45/55 au HEAD `f5c112c80f3733b2624a09dd8e1b98fd90d3b25a` : KG=0.0012 est fixé dans le certificat Step55, mais KG intervient dans betag, Rhog, Psg et tg0. La compensation du premier jet par variation de KG n'est PAS couverte par ce certificat à paramètre fixe ; liberté physique et contraintes de Dirac/deux vrais bords restent inconnues. Rapport `research/JANUS005_KG_PARAMETER_STATUS_SOURCE_AUDIT_20261114.md`. Audit statique uniquement ; 0 cellule physique. **NEXT_ACTION_EXACT :** reconstruire JANUS-001 authentifié, neuf tests et pilote ; puis re-certifier Step55 à KG variable et vérifier Dirac et les deux bords.
