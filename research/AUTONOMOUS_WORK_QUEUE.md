@@ -31,6 +31,9 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 carte centrale inverse :** `research/JANUS005_CENTRAL_M2_Z1_TO_PG_U0_INVERSE_20261114.md` (commit `601952606bc1a6ecde218d8b3ef7814177396fae`) : SymPy identité exacte PASS, `det(d(PG,U0)/d(M2,Z1))=2*MF*B*A²*C/(3*sqrt(H2))>0` pour les paramètres prescrits et H2>0. Inverse explicite démontré sur branche PG<0. Résultat algébrique, non rang Dirac ; 0 cellule physique. **NEXT_ACTION_EXACT :** inspecter Step45/49 et les deux vrais bords pour savoir si PG/U0 sont fixés physiquement ; JANUS-001 reconstruire les sources authentiques, neuf tests et pilote.
 
+
+**Jalon 2026-11-14 — JANUS-005, contre-exemple géométrique :** `research/JANUS005_A_VARIATION_CENTRAL_INVERSE_COUNTEREXAMPLE_20261114.md` et `research/repro/janus005_a_variation_counterexample_20261114.py`. Tangente symbolique exacte dA=1, dM2/dA=-(4*A³*M2*C+9/10)/(A⁴*C), dZ1/dA=-Z1/A conservant PG et U0 ; contre-exemple fini A=0.401, M2≈22.8337018656, Z1≈0.00399002494. Résidu exact symbolique nul et reconstruction numérique <1e-20. Ceci invalide l'inférence de fixation M2/Z1 **si A est autorisé à varier**, sans prouver sa liberté physique. 0 cellule physique. **NEXT_ACTION_EXACT :** lire Step45/49 et vrais bords pour déterminer si A peut varier ; filtrer tangente par Dirac. JANUS-001 : transférer dépendances authentiques, neuf tests et pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
