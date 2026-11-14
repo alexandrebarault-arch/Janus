@@ -38,6 +38,9 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 compensation CG :** identité exacte Step49/55 `rho_g_center=9/10-24*A*CG` (b0=0, MG=1, B=A*Y), indépendance de M2 et Z1 ; SymPy PASS et script exact publié/relu (blob `1ccb5e0e079456bc94b5b14a234a97f1aca81b7c`). Si CG varie selon dCG/dA=-CG/A, la tangente antérieure préserve PG, U0 ET rho_g au premier ordre ; ceci **n'établit aucune admissibilité physique**. Rapport `research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md`, blob `5583b69add6971e7bbb221f913057197347d5933`. 0 cellule physique. **NEXT_ACTION_EXACT :** vérifier si CG peut varier dans les contraintes Dirac linéarisées et les deux vrais bords ; JANUS-001 sources authentifiées, neuf tests, pilote.
 
+
+**Jalon vérifié 2026-11-14 — JANUS-005 contre-vérification radiale :** la tangente compensée (A,M2,Z1,CG) préserve rho_g(0), mais la dérivée directionnelle de Rhog(s) du Step55 est non nulle aux points s=0.1 (-0.0086118826268), s=0.5 (-0.0430385286086), s=0.7225 (-0.0621723737240). SymPy exact au centre, évaluations ponctuelles et contrôle mpmath par différences finies à 60 chiffres. Rapport `research/JANUS005_RADIAL_CG_COMPENSATION_COUNTERCHECK_20261114.md` (commit `dac91afd5c75edd6b9b52edf18dede49b20f7f05`). **Pas de preuve physique**, 0 cellule b3c3d9. **NEXT_ACTION_EXACT :** déterminer quelles variations radiales et traces aux deux vrais bords sont autorisées par Step45/46/Dirac ; JANUS-001 reconstruire les sources originales et exécuter neuf tests et pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
