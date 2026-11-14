@@ -1266,5 +1266,18 @@
     "replay": "PASS 256 algebraic cells; physical evaluated 0 certified 0",
     "commit": "6ce35da7284143ed3f1bf529ab4913a25607fe53",
     "next_action": "JANUS-001 authentic dependencies and physical pilot; JANUS-005 admissible variations, Dirac, two true boundaries"
+  },
+  "janus005_one_box_crosscheck_20261114": {
+    "status": "ALGEBRAIC_CONDITIONAL_PASS",
+    "report": "research/JANUS005_INDEPENDENT_ONE_BOX_RATIONAL_SIGN_20261114.md",
+    "repro": "research/repro/janus005_one_box_rational_sign_20261114.py",
+    "repro_blob": "09ef33f702321d99886ef00d64df3c18ccd153a2",
+    "local_equivalent_execution": "PASS",
+    "exact_published_script_replay": "NOT_EXECUTED",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action": "JANUS-001 authentic dependency reconstruction then nine tests and one-cell pilot; JANUS-005 physically admissible M2/Z1/PG tangent and two true boundaries/Dirac",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
   }
 }
