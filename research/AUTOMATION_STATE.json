@@ -1229,5 +1229,15 @@
     "physical_cells_certified": 0,
     "physical_rank": "NOT_ESTABLISHED",
     "next_action_exact": "Substitute physically constrained coefficient derivatives from Step45/46/49/55 into total f-boundary trace Jacobian, verify rank and both actual boundaries; JANUS-001 authenticated transfer then 9 tests and one-cell pilot."
+  },
+  "latest_verified_janus005_extended_kernel": {
+    "date": "2026-11-14",
+    "report": "research/JANUS005_EXTENDED_TRACE_KERNEL_COUNTEREXAMPLE_20261114.md",
+    "blob": "e66c2d3fb590247f53861ace1c183d64c814f81a",
+    "checks": "4/4 exact SymPy identities PASS",
+    "scope": "algebraic only; Wfbar freedom not established",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action_exact": "Inspect Wfbar physical dependence in Step45/46/49/55, substitute admissible variations and real boundary conditions; reconstruct JANUS-001 authentic imports and execute nine tests then one-cell pilot."
   }
 }
