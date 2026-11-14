@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : carte centrale (M2,Z1) ↔ (PG,U0) inversible sous hypothèses prescrites
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** SymPy exact PASS : jacobien `2*MF*B*A²*C/(3*sqrt(H2))>0` sur branche PG<0, H2>0 et C>0, paramètres Step55 fixés ; inverse explicite. Rapport `research/JANUS005_CENTRAL_M2_Z1_TO_PG_U0_INVERSE_20261114.md`, publication commit `601952606bc1a6ecde218d8b3ef7814177396fae`. Ce n'est PAS une preuve de rang physique Dirac ; 0 cellule Step55/58 évaluée/certifiée. **NEXT_ACTION_EXACT :** vérifier dans Step45/49 et les deux vrais bords si PG et U0 sont fixés ; JANUS-001 transférer les sources originales authentifiées, neuf tests puis pilote une cellule.
+
+---
+
 # JANUS — 14/11/2026 : extension algébrique Z1 à ±0,18
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Script une boîte authentifié et rejoué exactement (blob `09ef33f702321d99886ef00d64df3c18ccd153a2`, PASS). Fractions exactes : sur `s=[0,289/400]`, `Z1=[-9/50,9/50]`, `T>0`, `Tf<0`, `Q<0`, `J<0` à paramètres prescrits. Rapport `research/JANUS005_ONE_BOX_Z1_EXTENDED_018_20261114.md`. 0 cellule physique évaluée/certifiée. **NEXT_ACTION_EXACT :** JANUS-001 reconstruire les sources authentifiées, tests puis pilote ; JANUS-005 examiner les tangentes physiques et les deux vrais bords/Dirac.
