@@ -28,6 +28,9 @@
 
 **Jalon vérifié 2026-11-14 — JANUS-005 extension Z1 :** script une boîte authentifié et rejoué (blob `09ef33f702321d99886ef00d64df3c18ccd153a2`, PASS) ; nouvelle preuve par fractions pour `s=[0,289/400]`, `Z1=[-9/50,9/50]` : Tlo>0, Tfhi<0, Qhi<0 (≈-0.00004021437439), J<0 à coefficients prescrits. Rapport `research/JANUS005_ONE_BOX_Z1_EXTENDED_018_20261114.md`. **0 cellule physique**. **NEXT_ACTION_EXACT :** JANUS-001 sources authentifiées, neuf tests et pilote ; JANUS-005 variations physiquement admissibles, Dirac et vrais bords.
 
+
+**Jalon vérifié 2026-11-14 — JANUS-005 carte centrale inverse :** `research/JANUS005_CENTRAL_M2_Z1_TO_PG_U0_INVERSE_20261114.md` (commit `601952606bc1a6ecde218d8b3ef7814177396fae`) : SymPy identité exacte PASS, `det(d(PG,U0)/d(M2,Z1))=2*MF*B*A²*C/(3*sqrt(H2))>0` pour les paramètres prescrits et H2>0. Inverse explicite démontré sur branche PG<0. Résultat algébrique, non rang Dirac ; 0 cellule physique. **NEXT_ACTION_EXACT :** inspecter Step45/49 et les deux vrais bords pour savoir si PG/U0 sont fixés physiquement ; JANUS-001 reconstruire les sources authentiques, neuf tests et pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
