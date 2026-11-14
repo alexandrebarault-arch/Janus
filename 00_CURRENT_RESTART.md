@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : compensation exacte de la poussière centrale par CG
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : Step49/55 se simplifie exactement en `rho_g_center=9/10-24*A*CG` pour la famille prescrite. SymPy PASS : dCG/dA=-CG/A avec les variations précédentes de M2 et Z1 conserve PG, U0 et rho_g au premier ordre. **Admissibilité physique NON ÉTABLIE**, 0 cellule b3c3d9 évaluée/certifiée. Rapport `research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md`, script `research/repro/janus005_cg_compensated_center_20261114.py` blob vérifié `1ccb5e0e079456bc94b5b14a234a97f1aca81b7c`. **NEXT_ACTION_EXACT :** tester liberté de CG par contraintes Dirac et deux vrais bords ; JANUS-001 authentifier dépendances puis neuf tests et pilote.
+
+---
+
 # JANUS — 14/11/2026 : obstruction conditionnelle par poussière g centrale
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la tangente algébrique dPG=dU0=0 de JANUS-005 avec dA=1, Y, b_i et CG fixes, calcul SymPy exact PASS : d(rho_g_center)/dA=-24 CG=-0.036. Si rho_g(0) est une donnée imposée, cette tangente est exclue ; sa fixation physique reste NON DÉMONTRÉE. Rapport `research/JANUS005_CENTER_DUST_TANGENT_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_dust_tangent_20261114.py`. **0 cellule physique**. **NEXT_ACTION_EXACT :** établir si rho_g(0) est imposée par contraintes/conditions aux bords ; JANUS-001 reconstruire sources authentifiées puis tests/pilote.
