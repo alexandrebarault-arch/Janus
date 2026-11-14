@@ -1,3 +1,9 @@
+# JANUS — 14/11/2026 : premier jet radial de poussière non préservé
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : à partir de la formule Step55 de Rhog(s), SymPy 1.14 calcule pour la tangente compensée `D Rhog(0)=0` exactement mais `D (d Rhog/ds)(0)=-0.08612850795005535994645936` aux paramètres prescrits. Obstruction au profil radial **si imposé**, non preuve Dirac ni de conditions aux bords. Rapport `research/JANUS005_CENTER_RADIAL_DENSITY_JET_OBSTRUCTION_20261114.md`, script `research/repro/janus005_center_radial_density_jet_20261114.py` publié, équivalent au calcul local ; rejeu exact du blob encore à faire. **0 cellule physique**. **NEXT_ACTION_EXACT :** rejouer script Git exact ; vérifier si jet de densité est fixé par Step45/46/Dirac et deux vrais bords ; JANUS-001 authentifier imports, tests et pilote.
+
+---
+
 # JANUS — 14/11/2026 : la compensation CG centrale ne conserve pas Rhog(s) radial
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : dérivée directionnelle SymPy de la densité g radiale prescrite Step55 : exactement 0 au centre, mais -0.0086118826268 à s=0.1, -0.0430385286086 à s=0.5, -0.0621723737240 à s=0.7225 ; différences finies mpmath 60 chiffres cohérentes. Cela réfute uniquement la conservation automatique du profil Rhog(s) par la tangente algébrique centrale compensée, pas la liberté physique de CG ni JANUS. Rapport `research/JANUS005_RADIAL_CG_COMPENSATION_COUNTERCHECK_20261114.md`. **0 cellule physique évaluée/certifiée. NEXT_ACTION_EXACT :** filtrer les variations radiales par Step45/46, Dirac et les deux vrais bords ; JANUS-001 reconstruire les dépendances authentiques et lancer neuf tests puis pilote.
