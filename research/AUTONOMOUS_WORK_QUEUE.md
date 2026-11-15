@@ -1,4 +1,6 @@
 # JANUS — FILE DE TRAVAUX AUTONOME ET POINT DE REPRISE
+**Jalon technique vérifié 2026-11-15 — JANUS-001 provenance de cinq sources :** audit des deux validateurs réellement appelés par `run_physical`, 5/5 SHA attendus égaux aux blobs GitHub au HEAD `f48183abd5a9bb2f47334e7aa7a2f818efdbca44` ; rapport `research/JANUS001_FIVE_SOURCE_PROVENANCE_CHECK_20261115.md` (blob `d25ed975a6ceffb298bc6d9b8fed45e005adcb7e`). L'archive historique n'est pas appelée directement sur le chemin `physical_jet`. Aucun transfert local complet, aucun test moteur, 0 cellule physique. **NEXT_ACTION_EXACT :** transférer les sources et imports transitifs octet pour octet, `git hash-object` local, neuf tests puis pilote à une cellule ; si bloqué, JANUS-005/006 Dirac/deux vrais bords.
+
 
 **Version :** 1 — 2026-11-08. **Branche :** `main` exclusivement.
 **HEAD de référence lors de l'initialisation :** `058ca4a8fd211efe6552883cfd389e02741a50fa`.
