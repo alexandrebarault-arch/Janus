@@ -1,3 +1,9 @@
+# JANUS — 15/11/2026 : troisième jet radial non conservé après compensation KG+CF
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : calcul mpmath 1.3.0 à 45 décimales, tangente dA=1 compensée par dKG/dA=0.07558748170439774 et dCF/dA=-0.00636344858203444, avec D a1≈0 et D a2≈0, mais **D a3=+0.000010685985596652940205640797930702548**, contrôlé par différences finies centrées h=1e-4 et 1e-6. Rapport `research/JANUS005_KG_CF_THIRD_RADIAL_JET_OBSTRUCTION_20261115.md`, commit `6bf9152a785ea97e7f9203218a9a84810370f8c2`. Résultat algébrique local, **0 cellule physique**, aucune conclusion Dirac/bords. **NEXT_ACTION_EXACT :** archiver script exact, tester liberté du troisième jet dans les contraintes et aux deux vrais bords ; JANUS-001 transférer dépendances authentifiées puis neuf tests et pilote une cellule.
+
+---
+
 # JANUS — 15/11/2026 : deux jets compensables algébriquement par KG et CF
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : mpmath 1.3.0 à 45 chiffres, déterminant du jacobien (a1,a2)/(KG,CF) = +0.07053118926332888 ; compensation dKG/dA=+0.07558748170439774 et dCF/dA=-0.00636344858203444. Résidus différentiels nuls à la précision de calcul ; différences finies centrées 1e-4/1e-6 confirment O(h²). Rapport `research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md`. **Résultat algébrique local seulement ; liberté physique de KG/CF non démontrée ; 0 cellule physique. NEXT_ACTION_EXACT :** troisième jet, contraintes Dirac/deux vrais bords, et reconstruction JANUS-001 authentifiée avec neuf tests et pilote.
