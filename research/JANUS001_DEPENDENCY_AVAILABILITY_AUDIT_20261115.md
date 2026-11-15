@@ -25,11 +25,13 @@ Six dépendances transitives également récupérées et inspectées :
 | hr_b3c3d6_authentic_bn_replay.py | fd3a76fffd78adcb585a24613b4e1357d1d00f5c |
 | hr_step57_secondary_principal_symbol.py | bf8e0bdfb7c6705d8c30d4afc79003483e3ab33f |
 
+Trois dépendances supplémentaires ont ensuite été lues au même HEAD : `hr_b3c3d6_dop853_dense_rational_defect.py` (blob `b1c8909983171b7161b28e68ca442d9a17c21cfc`), `hr_b3c3d6_correlated_tube_guard.py` (blob `3801625ac5cb0a7681ade369f4c28b761bab73eb`) et `hr_b3c3d6_bn_full_ideal.py` (blob `bc9b371c3d66f6b2491009e631fa4ed4a29a676f`). Le dernier importe `hr_b3c3d6_bn_high_jet_elimination` : la fermeture reste ouverte. **Total : 16 modules de dépendances distincts inspectés, plus le moteur.**
+
 La fermeture des imports **n'est pas achevée** : le module correlated_replay importe notamment `hr_b3c3d6_dop853_dense_rational_defect` et `hr_b3c3d6_correlated_tube_guard`; authentic_bn_replay importe `hr_b3c3d6_bn_full_ideal`. Les lectures de fichiers historiques par Path et leurs SHA requis n'ont pas encore été audités. Il serait erroné de conclure que 13 fichiers suffisent pour exécuter le moteur.
 
 Environnement local contrôlé : Python avec SymPy 1.14.0, SciPy 1.17.0 et mpmath 1.3.0 importables. Commande `git ls-remote https://github.com/alexandrebarault-arch/Janus.git HEAD` : `fatal: unable to access 'https://github.com/alexandrebarault-arch/Janus.git/': Could not resolve host: github.com`. Le connecteur GitHub fonctionne néanmoins.
 
-**Résultat vérifié :** les 13 sources de la première partie du graphe sont présentes et lisibles au HEAD, avec blobs Git identifiés. **Non vérifié :** correspondance avec octets exécutés localement, fermeture des imports, sources historiques, tests et pilote. Cellules physiques évaluées/certifiées/inconclusives pendant ce cycle : **0/0/0**.
+**Résultat vérifié :** les 16 sources de la première partie du graphe sont présentes et lisibles au HEAD, avec blobs Git identifiés. **Non vérifié :** correspondance avec octets exécutés localement, fermeture des imports, sources historiques, tests et pilote. Cellules physiques évaluées/certifiées/inconclusives pendant ce cycle : **0/0/0**.
 
 **NEXT_ACTION_EXACT :** poursuivre la fermeture récursive des imports et lectures Path jusqu'aux sources historiques ; transférer les octets des fichiers Git authentifiés et comparer `git hash-object` local aux SHA listés ; puis exécuter `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d9_annular_direct_enclosure.py' -v` et, si l'environnement est authentique, `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1 --out /tmp/janus_b3c3d9_pilot.json`. En cas de blocage persistant, reprendre JANUS-005/006 sur les contraintes de Dirac et les deux bords.
 
