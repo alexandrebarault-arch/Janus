@@ -53,7 +53,7 @@
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
   "verified_research_head_at_session_start": "6df57efafb424a3bcd829081ec74c80d208d5b3a",
-  "next_priority": "JANUS-001 authentic reconstruction and pilot; JANUS-005 test full radial and Dirac admissibility of KG compensation",
+  "next_priority": "JANUS-001 authentic reconstruction and physical pilot; JANUS-005 third jet Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -1345,15 +1345,13 @@
   },
   "latest_scientific_milestone_2026_11_15": {
     "task": "JANUS-005",
-    "result": "KG_CF_TWO_RADIAL_JETS_FIRST_ORDER_COMPENSATION_ONLY",
-    "report": "research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md",
-    "determinant_KG_CF": "0.0705311892633288825986689031316",
-    "dKG_dA": "0.0755874817043977411888280492553",
-    "dCF_dA": "-0.00636344858203444131023741494235",
-    "independent_finite_difference": "PASS_h_1e-4_and_1e-6",
+    "result": "KG+CF compensation of a1,a2 leaves nonzero a3 directional derivative +0.000010685985596652940205640797930702548; mpmath 45 dps and two centered finite-difference checks",
+    "report": "research/JANUS005_KG_CF_THIRD_RADIAL_JET_OBSTRUCTION_20261115.md",
+    "report_commit": "6bf9152a785ea97e7f9203218a9a84810370f8c2",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
-    "physical_admissibility": "NOT_ESTABLISHED",
-    "next_action_exact": "Audit KG/CF physical freedom under Dirac and two true boundaries; compute third radial jet; reconstruct JANUS-001 authentic 18 dependencies and run tests plus one-cell pilot."
+    "physical_cells_inconclusive": 0,
+    "physical_status": "NOT_EXECUTED",
+    "next_action_exact": "Archive full reproduction script; check third-jet physical freedom against Dirac/two true boundaries; reconstruct authentic JANUS-001 imports and run nine tests then one-cell pilot"
   }
 }
