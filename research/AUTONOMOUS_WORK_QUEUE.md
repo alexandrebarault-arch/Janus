@@ -52,6 +52,9 @@
 
 **Jalon vérifié 2026-11-15 — JANUS-005 compensation KG+CF :** calcul local mpmath 1.3.0 (45 décimales) : matrice de sensibilité des jets a1,a2 en KG,CF de déterminant +0.07053118926332888 ; dKG/dA=+0.07558748170439774, dCF/dA=-0.00636344858203444 annulent les deux jets au premier ordre. Contrôle indépendant par différences finies h=1e-4,1e-6 PASS (résidus O(h²)). Rapport `research/JANUS005_KG_CF_TWO_RADIAL_JETS_20261115.md`, commit `70a1bc20d6647a95e41ac612b85334d4486f71d0`. 0 cellule physique. **NEXT_ACTION_EXACT :** auditer liberté physique de KG/CF, contraintes Dirac/deux vrais bords, troisième jet ; JANUS-001 transfert authentifié des 18 dépendances, tests et pilote.
 
+
+**Jalon vérifié 2026-11-15 — JANUS-005 troisième jet :** calcul mpmath 1.3.0 à 45 décimales, tangente compensée KG+CF des deux premiers jets, mais `D a3=+0.000010685985596652940205640797930702548` non nul ; différences finies centrées h=1e-4 et 1e-6 convergentes. Rapport `research/JANUS005_KG_CF_THIRD_RADIAL_JET_OBSTRUCTION_20261115.md` (commit `6bf9152a785ea97e7f9203218a9a84810370f8c2`). Résultat algébrique ponctuel, non preuve physique ; 0 cellule physique. **NEXT_ACTION_EXACT :** script reproductible archivé, audit Dirac/deux vrais bords et liberté du troisième jet ; JANUS-001 reconstruire 18 dépendances authentiques puis neuf tests et pilote.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
