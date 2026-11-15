@@ -52,8 +52,8 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "6df57efafb424a3bcd829081ec74c80d208d5b3a",
-  "next_priority": "JANUS-001 authentic reconstruction; JANUS-005 replay published exact script and test Dirac/two-boundary admissibility",
+  "verified_research_head_at_session_start": "c7119cda560ff29a8bc4a143d4d061c418d15bbf",
+  "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS005_KG_COMPENSATED_SECOND_RADIAL_TAYLOR_COEFFICIENT_NONZERO",
+  "latest_verified_completed_step": "JANUS005_THIRD_RADIAL_JET_EXACT_PUBLISHED_BLOB_REPLAY_PASS",
   "next_pending_step": "JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT_AND_JANUS005_DIRAC_BOUNDARY_FULL_RADIAL",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS005_KG_COMPENSATED_SECOND_RADIAL_JET_20261114.md",
+  "latest_scientific_audit": "research/repro/janus005_third_radial_jet_replay_20261115.py",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -1364,5 +1364,15 @@
     "physical_cells_certified": 0,
     "physical_cells_inconclusive": 0,
     "next_action_exact": "Fetch published script blob at current HEAD, verify Git blob SHA against local bytes, execute published bytes; reconstruct JANUS-001 authenticated dependency closure, run nine tests then one-cell pilot; test Dirac and true two-boundary admissibility."
+  },
+  "latest_exact_replay": {
+    "date": "2026-11-15",
+    "script": "research/repro/janus005_third_radial_jet_replay_20261115.py",
+    "git_blob": "4a83603fa13f00efc2a60f4f45ad26c55b97c797",
+    "local_hash_object_match": true,
+    "command": "python /mnt/data/janus/replay.py",
+    "result": "PASS",
+    "physical_cells_evaluated_this_cycle": 0,
+    "physical_cells_certified_this_cycle": 0
   }
 }

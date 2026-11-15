@@ -9,6 +9,8 @@
 **Curseur de reprise :** `JANUS-001`, reconstruire les dépendances transitives et les sources historiques exactes, puis rejouer le pilote.
 **Dernière mise à jour de ce document :** 2026-11-08 (initialisation organisationnelle, aucun nouveau calcul).
 
+**Jalon vérifié 2026-11-15 — JANUS-005 rejeu exact du troisième jet :** source `research/repro/janus005_third_radial_jet_replay_20261115.py` lue au HEAD `c7119cda560ff29a8bc4a143d4d061c418d15bbf`, blob Git `4a83603fa13f00efc2a60f4f45ad26c55b97c797` égal à `git hash-object` du fichier exécuté localement. Commande `python /mnt/data/janus/replay.py` PASS (mpmath 1.3.0, 45 décimales) : dKG/dA=0.07558748170439774119 ; dCF/dA=-0.00636344858203444131 ; D_a1=-2.7369e-48 ; D_a2=0 ; D_a3=+0.00001068598559665294020564 ; différences finies h=1e-4 et 1e-6 cohérentes. Résultat uniquement algébrique ; aucune cellule Step55/58 physique évaluée ou certifiée dans ce cycle. **NEXT_ACTION_EXACT :** JANUS-001 reconstruire les dépendances authentifiées Step45/46/55/58 et leurs blobs historiques, exécuter `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d9_annular_direct_enclosure.py' -v` puis `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1 --out /tmp/janus_b3c3d9_pilot.json`; JANUS-005 vérifier liberté des paramètres et contraintes Dirac/deux bords.
+
 ## Contrat de reprise — impératif à chaque lancement du job
 
 1. Lire le HEAD réel de `main`, puis à ce SHA : ce fichier, `research/AUTOMATION_STATE.json` et le début de `00_CURRENT_RESTART.md`. Vérifier les preuves associées à l'étape annoncée. En cas de divergence, les résultats et leurs preuves prévalent sur les marqueurs ; ne pas déclarer `DONE` sans preuve.
