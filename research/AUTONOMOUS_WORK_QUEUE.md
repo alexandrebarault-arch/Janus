@@ -14,6 +14,9 @@
 
 **Jalon vérifié 2026-11-15 — JANUS-005 rang des trois jets :** mpmath 1.3.0 à 45 décimales, jacobien 3×3 de (a1,a2,a3) en (direction A/M2/Z1/CG, KG, CF) de déterminant +7.5369527258273493968183894735334654e-7, contrôle indépendant par produit det 2×2 × résidu a3 PASS. Rapport `research/JANUS005_THREE_JET_LOCAL_RANK_20261115.md` au commit `08b8442fc9cd582839d4646a1ed4b36e985d8849`. NO-GO local pour une tangente préservant les trois jets dans cette sous-famille seulement ; aucune preuve Dirac/bords ni cellule physique. **NEXT_ACTION_EXACT :** JANUS-001 transférer les 18 sources authentifiées, vérifier les SHA puis tests et pilote ; JANUS-005 déterminer si les jets sont physiquement imposés.
 
+
+**Jalon technique vérifié 2026-11-15 — JANUS-001 disponibilité des dépendances :** audit GitHub au HEAD `1c1cca4cf432ce200cfcc1788cbc5103abb73d42` : 7 imports directs et 6 dépendances transitives authentiquement lisibles avec SHA Git ; SciPy 1.17.0, SymPy 1.14.0, mpmath 1.3.0 importables localement. Rapport `research/JANUS001_DEPENDENCY_AVAILABILITY_AUDIT_20261115.md` (commit `2d289093e459bb096e7050214a9c5a3f29698afc`). **Pas de fermeture complète**, fichiers historiques et comparaison octets locaux en attente, Git CLI DNS `Could not resolve host: github.com`. Tests et pilote SKIP ; cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** compléter imports transitifs et fichiers Path historiques, transférer les octets et vérifier `git hash-object`, puis neuf tests et pilote ; en parallèle JANUS-005/006 Dirac et deux bords.
+
 ## Contrat de reprise — impératif à chaque lancement du job
 
 1. Lire le HEAD réel de `main`, puis à ce SHA : ce fichier, `research/AUTOMATION_STATE.json` et le début de `00_CURRENT_RESTART.md`. Vérifier les preuves associées à l'étape annoncée. En cas de divergence, les résultats et leurs preuves prévalent sur les marqueurs ; ne pas déclarer `DONE` sans preuve.
