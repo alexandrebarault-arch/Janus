@@ -1,3 +1,9 @@
+# JANUS — 15/11/2026 : rang local complet des trois jets radiaux
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : jacobien 3×3 de (a1,a2,a3) pour la sous-famille (direction A/M2/Z1/CG, KG, CF) recalculé sous mpmath 1.3.0, 45 décimales ; déterminant +0.00000075369527258273493968183894735334654, contrôlé indépendamment par det 2×2 × résidu compensé du troisième jet. Rang 3 : aucune tangente non nulle ne préserve les trois jets **dans cette seule sous-famille**. Rapport `research/JANUS005_THREE_JET_LOCAL_RANK_20261115.md`. Aucune preuve Dirac/bords, 0 cellule physique b3c3d9. **NEXT_ACTION_EXACT :** JANUS-001 transférer les 18 sources authentiques, vérifier SHA, neuf tests puis pilote ; JANUS-005 tester si les jets sont physiquement contraints par Dirac et les deux vrais bords.
+
+---
+
 # JANUS — 15/11/2026 : rejeu octet pour octet du troisième jet publié — PASS
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Au HEAD `c7119cda560ff29a8bc4a143d4d061c418d15bbf`, fichier `research/repro/janus005_third_radial_jet_replay_20261115.py` transféré sans modification, `git hash-object` local = blob Git `4a83603fa13f00efc2a60f4f45ad26c55b97c797`. Commande `python /mnt/data/janus/replay.py` PASS sous mpmath 1.3.0 : D_a1≈-2.74e-48, D_a2=0, D_a3=+0.00001068598559665294020564, différences finies h=1e-4 et 1e-6 PASS. Résultat algébrique local uniquement ; 0 cellule physique b3c3d9 évaluée/certifiée/inconclusive. **NEXT_ACTION_EXACT :** JANUS-001 authentifier et reconstruire les dépendances Step45/46/55/58, neuf tests puis pilote une cellule ; JANUS-005 confronter les paramètres compensateurs aux contraintes Dirac et aux deux vrais bords.
