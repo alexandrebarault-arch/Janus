@@ -1,3 +1,9 @@
+# JANUS — 15/11/2026 : troisième jet rejoué indépendamment et script archivé
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Reconstitution Python/mpmath 1.3.0 à 45 décimales de la formule Step55 du rapport précédent : dKG/dA=0.0755874817043977411888280492553, dCF/dA=-0.00636344858203444131023741494235, D_a1≈0, D_a2=0, **D_a3=+0.000010685985596652940205640797930702548**. Contrôle différences finies centrées h=1e-4 et 1e-6 PASS. Script reproductible publié : `research/repro/janus005_third_radial_jet_replay_20261115.py`, commit `864e6e4b56e31109e1ea0f8622caf47b84946023`. **Attention :** calcul local équivalent exécuté, mais rejeu des octets publiés pas encore effectué. JANUS-001 : aucun test moteur ni pilote pendant ce cycle ; cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** relire blob Git du script et rejouer octet pour octet, puis reconstruire JANUS-001 avec sources historiques et dépendances authentifiées, neuf tests et pilote ; filtrer les jets par Dirac et deux vrais bords.
+
+---
+
 # JANUS — 15/11/2026 : troisième jet radial non conservé après compensation KG+CF
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : calcul mpmath 1.3.0 à 45 décimales, tangente dA=1 compensée par dKG/dA=0.07558748170439774 et dCF/dA=-0.00636344858203444, avec D a1≈0 et D a2≈0, mais **D a3=+0.000010685985596652940205640797930702548**, contrôlé par différences finies centrées h=1e-4 et 1e-6. Rapport `research/JANUS005_KG_CF_THIRD_RADIAL_JET_OBSTRUCTION_20261115.md`, commit `6bf9152a785ea97e7f9203218a9a84810370f8c2`. Résultat algébrique local, **0 cellule physique**, aucune conclusion Dirac/bords. **NEXT_ACTION_EXACT :** archiver script exact, tester liberté du troisième jet dans les contraintes et aux deux vrais bords ; JANUS-001 transférer dépendances authentifiées puis neuf tests et pilote une cellule.
