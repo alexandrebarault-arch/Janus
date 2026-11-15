@@ -55,6 +55,9 @@
 
 **Jalon vérifié 2026-11-15 — JANUS-005 troisième jet :** calcul mpmath 1.3.0 à 45 décimales, tangente compensée KG+CF des deux premiers jets, mais `D a3=+0.000010685985596652940205640797930702548` non nul ; différences finies centrées h=1e-4 et 1e-6 convergentes. Rapport `research/JANUS005_KG_CF_THIRD_RADIAL_JET_OBSTRUCTION_20261115.md` (commit `6bf9152a785ea97e7f9203218a9a84810370f8c2`). Résultat algébrique ponctuel, non preuve physique ; 0 cellule physique. **NEXT_ACTION_EXACT :** script reproductible archivé, audit Dirac/deux vrais bords et liberté du troisième jet ; JANUS-001 reconstruire 18 dépendances authentiques puis neuf tests et pilote.
 
+
+**Jalon vérifié 2026-11-15 — JANUS-005 reproduction troisième jet :** script autonome `research/repro/janus005_third_radial_jet_replay_20261115.py` publié sur `main` au commit `864e6e4b56e31109e1ea0f8622caf47b84946023`. Reconstruction indépendante locale de la même formule Step55, Python 3/mpmath 1.3.0 à 45 décimales : dKG=0.0755874817043977411888280492553, dCF=-0.00636344858203444131023741494235, D_a1≈0, D_a2=0, D_a3=+0.000010685985596652940205640797930702548 ; différences finies h=1e-4/1e-6 concordantes. **Le script publié n'a pas encore été rejoué octet pour octet** ; ne pas confondre équivalence numérique et exécution du blob. Aucune cellule physique. **NEXT_ACTION_EXACT :** rejouer les octets GitHub du script et comparer le SHA Git ; JANUS-001 authentifier 18 modules et exécuter neuf tests puis pilote ; JANUS-005 filtrer les jets par Dirac et les deux vrais bords.
+
 ## Liste ordonnée des travaux
 
 ### JANUS-001 — RECONSTRUCTION ET REJEU DU PILOTE
