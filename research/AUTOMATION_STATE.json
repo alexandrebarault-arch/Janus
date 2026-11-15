@@ -53,7 +53,7 @@
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
   "verified_research_head_at_session_start": "6df57efafb424a3bcd829081ec74c80d208d5b3a",
-  "next_priority": "JANUS-001 authentic reconstruction and physical pilot; JANUS-005 third jet Dirac/two-boundary admissibility",
+  "next_priority": "JANUS-001 authentic reconstruction; JANUS-005 replay published exact script and test Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
   "task": "JANUS — recherche autonome",
@@ -1353,5 +1353,16 @@
     "physical_cells_inconclusive": 0,
     "physical_status": "NOT_EXECUTED",
     "next_action_exact": "Archive full reproduction script; check third-jet physical freedom against Dirac/two true boundaries; reconstruct authentic JANUS-001 imports and run nine tests then one-cell pilot"
+  },
+  "latest_verified_janus005_third_jet_replay_20261115": {
+    "status": "LOCAL_EQUIVALENT_REPLAY_PASS_PUBLISHED_BLOB_NOT_YET_REEXECUTED",
+    "source_head": "24267e5f25c8f80693b0b335ff9411dfcc6c2c3d",
+    "script": "research/repro/janus005_third_radial_jet_replay_20261115.py",
+    "publication_commit": "864e6e4b56e31109e1ea0f8622caf47b84946023",
+    "local_equivalent_replay": "Python 3 mpmath 1.3.0 45 dps; D_a1 ~ 0, D_a2 = 0, D_a3 = 0.000010685985596652940205640797930702548; finite differences 1e-4,1e-6 PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_cells_inconclusive": 0,
+    "next_action_exact": "Fetch published script blob at current HEAD, verify Git blob SHA against local bytes, execute published bytes; reconstruct JANUS-001 authenticated dependency closure, run nine tests then one-cell pilot; test Dirac and true two-boundary admissibility."
   }
 }
