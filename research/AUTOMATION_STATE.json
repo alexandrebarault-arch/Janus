@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS005_THIRD_RADIAL_JET_EXACT_PUBLISHED_BLOB_REPLAY_PASS",
-  "next_pending_step": "JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT_AND_JANUS005_DIRAC_BOUNDARY_FULL_RADIAL",
+  "latest_verified_completed_step": "JANUS001_SECOND_ORDER_JET_NONUNIQUENESS_EXACT_SYMBOLIC_20261117",
+  "next_pending_step": "JANUS001_STEP58_ON_SHELL_THIRD_JET_COEFFICIENT_AND_AUTHENTIC_TEST_PILOT; JANUS005_006_DIRAC_TWO_BORDERS",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/repro/janus005_third_radial_jet_replay_20261115.py",
+  "latest_scientific_audit": "research/JANUS001_SECOND_ORDER_JET_NONUNIQUENESS_20261117.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -1384,5 +1384,16 @@
     "physical_cells_certified": 0,
     "scope": "Only prescribed three-parameter tangent subfamily; Dirac and true boundaries not established",
     "next_action": "JANUS-001 authentic dependency transfer and pilot; JANUS-005 Dirac/two-boundary admissibility"
+  },
+  "latest_janus001_jet_audit": {
+    "date": "2026-11-17",
+    "kind": "exact_symbolic_nonphysical",
+    "third_radial_derivative_difference": "48*epsilon*r0**5",
+    "fourth_radial_derivative_difference": "672*epsilon*r0**4",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "report": "research/JANUS001_SECOND_ORDER_JET_NONUNIQUENESS_20261117.md",
+    "gate_2b": "OPEN",
+    "janus_r": "NOT_VALIDATED"
   }
 }
