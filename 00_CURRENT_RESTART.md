@@ -1,3 +1,9 @@
+# JANUS — 17/11/2026 : non-unicité exacte du jet radial d'ordre 3
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Au rayon r0>0, U_A et U_B=U_A+epsilon*(s-r0²)³ ont les mêmes U,U_s,U_ss, mais leurs pLf=r²U(r²) diffèrent au troisième jet de **48 epsilon r0⁵**, au quatrième de **672 epsilon r0⁴**. SymPy 1.14.0 PASS et contrôle binomial indépendant PASS. **Résultat algébrique, non physique** : l'annulation éventuelle dans les opérateurs Step58 sur la coquille Step55 reste à vérifier. Rapport `research/JANUS001_SECOND_ORDER_JET_NONUNIQUENESS_20261117.md`. Tests moteur/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** sur sources authentifiées, extraire les coefficients des jets supérieurs dans N/M Step58, les réduire sous Fz=Hg=Hf=C=0 ; si non nuls, calculer U_sss par différentiation de l'ODE Step55 et corriger les enclosures. En parallèle reconstituer les imports originaux, vérifier les SHA et lancer les neuf tests et le pilote. Si bloqué, JANUS-005/006 Dirac et deux vrais bords.
+
+---
+
 # JANUS — 15/11/2026 : rang local complet des trois jets radiaux
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** JANUS-005 : jacobien 3×3 de (a1,a2,a3) pour la sous-famille (direction A/M2/Z1/CG, KG, CF) recalculé sous mpmath 1.3.0, 45 décimales ; déterminant +0.00000075369527258273493968183894735334654, contrôlé indépendamment par det 2×2 × résidu compensé du troisième jet. Rang 3 : aucune tangente non nulle ne préserve les trois jets **dans cette seule sous-famille**. Rapport `research/JANUS005_THREE_JET_LOCAL_RANK_20261115.md`. Aucune preuve Dirac/bords, 0 cellule physique b3c3d9. **NEXT_ACTION_EXACT :** JANUS-001 transférer les 18 sources authentiques, vérifier SHA, neuf tests puis pilote ; JANUS-005 tester si les jets sont physiquement contraints par Dirac et les deux vrais bords.
