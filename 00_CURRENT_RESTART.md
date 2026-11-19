@@ -1,3 +1,9 @@
+# JANUS — 20/11/2026 : obstruction Hg du graphe fixe-Z (portée circonscrite)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** À champs et jets restants fixés, le graphe compensateur Sgr/pr du 19/11 conserve D,Z et ferme la forme de bord, mais le Hamiltonien original Hg possède en pLg un coefficient quadratique strictement positif `Lg*(1+Z²*(1+rho*Lg/Lf)²)/(4*mg*Sg²)`. SymPy 1.14.0 et seconde différence exacte PASS : il ne peut satisfaire Hg=0 sur un intervalle de pLg. Ce NO-GO est limité à cette tranche ; tangence ponctuelle, compensations supplémentaires, Dirac et deux vrais bords non tranchés. Rapport `research/JANUS006_HG_QUADRATIC_FIXED_Z_GRAPH_NO_GO_20261120.md`. Tests b3c3d9 SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** calculer le noyau conjoint de dHg,dHf,dC_red,dFz et des deux traces de bord en laissant varier les jets requis ; JANUS-001 reconstruction authentifiée puis neuf tests/pilote.
+
+---
+
 # JANUS — 17/11/2026 : non-unicité exacte du jet radial d'ordre 3
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Au rayon r0>0, U_A et U_B=U_A+epsilon*(s-r0²)³ ont les mêmes U,U_s,U_ss, mais leurs pLf=r²U(r²) diffèrent au troisième jet de **48 epsilon r0⁵**, au quatrième de **672 epsilon r0⁴**. SymPy 1.14.0 PASS et contrôle binomial indépendant PASS. **Résultat algébrique, non physique** : l'annulation éventuelle dans les opérateurs Step58 sur la coquille Step55 reste à vérifier. Rapport `research/JANUS001_SECOND_ORDER_JET_NONUNIQUENESS_20261117.md`. Tests moteur/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** sur sources authentifiées, extraire les coefficients des jets supérieurs dans N/M Step58, les réduire sous Fz=Hg=Hf=C=0 ; si non nuls, calculer U_sss par différentiation de l'ODE Step55 et corriger les enclosures. En parallèle reconstituer les imports originaux, vérifier les SHA et lancer les neuf tests et le pilote. Si bloqué, JANUS-005/006 Dirac et deux vrais bords.
