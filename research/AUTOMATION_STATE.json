@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "ac0e9a2631ac59d017ab9079f5c210264cd7e22f",
+  "verified_research_head_at_session_start": "5ecd3adad40559a7c07531276dbb920846398eba",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_PROPORTIONAL_LAPSE_AMBIENT_BOUNDARY_CURVATURE_20261119",
-  "next_pending_step": "JANUS006_FULL_DIRAC_TWO_TRUE_BOUNDARIES_TOTAL_JACOBIAN_KERNEL; JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_AMBIENT_BOUNDARY_JET_COMPENSATION_20261119",
+  "next_pending_step": "JANUS006_FULL_DIRAC_TWO_TRUE_BOUNDARIES_TOTAL_JACOBIAN_KERNEL_WITH_Z_COMPENSATION; JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_PROPORTIONAL_LAPSE_BOUNDARY_CURVATURE_20261119.md",
+  "latest_scientific_audit": "research/JANUS006_BOUNDARY_JET_COMPENSATION_COUNTERCHECK_20261119.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -1406,5 +1406,15 @@
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
     "next_action": "Construct total Dirac and two-true-boundary Jacobian and restrict boundary curvature to its kernel"
+  },
+  "latest_session_scientific_checkpoint": {
+    "date": "2026-11-19",
+    "scope": "ambient algebraic graph only, no Dirac or two true boundary admissibility",
+    "result": "theta=-V*Lg dp on compensating Sgr graph, curvature zero",
+    "tests": "SymPy differentiation and exact rectangle circulation PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_cells_inconclusive": 0,
+    "report_commit": "eaeb4d8fef7840532d3c8a072c4b9da5792f6c04"
   }
 }
