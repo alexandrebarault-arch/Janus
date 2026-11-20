@@ -1200,15 +1200,21 @@
   "latest_verified_scientific_milestone": {
     "date": "2026-11-20",
     "task": "JANUS-006",
-    "scope": "Fz-only pullback of boundary two-form",
-    "result": "K>0, Fz=0 implies Z=z and pullback dTheta=dP wedge dz at fixed canonical configuration and lapses; coefficient a on pLg,z tangent pair",
-    "limits": "Not tangent to Hg,Hf,C_exact or two physical boundaries; not a Dirac or physical no-go",
-    "report": "research/JANUS006_FZ_PULLBACK_BOUNDARY_TWO_FORM_20261120.md",
-    "report_commit": "5fa24904073d699b53f0e7ba7381cfb7a7600c0c",
-    "tests": "SymPy symbolic and independent chain rule PASS; original local Step45 replay SKIP; b3c3d9 tests/pilot SKIP",
+    "kind": "CONDITIONAL_FOUR_CONSTRAINT_AMBIENT_PULLBACK",
+    "result": "IFT at on-shell algebraic witness: det J_y=32; pullback dTheta=2 dpLg wedge dz on four-constraint ambient jet manifold",
+    "report": "research/JANUS006_FOUR_CONSTRAINT_AMBIENT_PULLBACK_20261120.md",
+    "report_commit": "af8a666e3f6e5cf84430a16a45b8daa64b94a5b5",
+    "sympy": "PASS",
+    "independent_IFT": "PASS",
+    "scope": "Conditional on unauthenticated local Step45 transcription; no holonomy, Dirac/lapse fixing, two true boundaries",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
-    "next_action_exact": "Construct joint kernel of dHg,dHf,dFz,dC_exact using authenticated Step45, evaluate boundary 2-form on that kernel and holonomic two-boundary traces; independently rebuild authentic JANUS-001 dependencies and run tests/pilot"
+    "physical_cells_inconclusive": 0,
+    "engine_tests": "SKIP",
+    "pilot": "SKIP",
+    "next_action_exact": "Authenticate original Step45 bytes and replay witness/J; impose radial holonomy, Dirac/lapses, two true boundaries; JANUS-001 authenticate historical dependency closure then nine tests and one-cell pilot",
+    "gate_2b": "OPEN",
+    "janus_r": "NOT_VALIDATED"
   },
   "latest_verified_janus005_m2_total_source_sensitivity": {
     "date": "2026-11-12",
