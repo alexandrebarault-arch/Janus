@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "bc83e8bd095a560b6196c07a93f7a0f6e0b47aee",
+  "verified_research_head_at_session_start": "e7c8842f575dd7730732cfb76ec691dd94cd41e9",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120",
-  "next_pending_step": "JANUS006_CHECK_TRUE_BOUNDARY_TRACE_ON_T_AND_PLGR_INTEGRABILITY; JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120",
+  "next_pending_step": "JANUS006_SUBSTITUTE_PLGR_IN_HG_HF_CEXACT_AND_TWO_TRUE_BOUNDARIES;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120.md",
+  "latest_scientific_audit": "research/JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -1443,5 +1443,12 @@
     "next_action_exact": "Allow sigma=delta Sg with sigma'=c*t; recompute D,Z,Hg and joint Dirac/two-boundary tangent constraints; JANUS-001 authenticate historical imports then run nine tests and pilot.",
     "gate_2b": "OPEN",
     "janus_r": "NOT_VALIDATED"
+  },
+  "latest_scientific_milestone_2026_11_20": {
+    "result": "Fz solved exactly for plgr, holonomic local quadrature; not a full physical solution",
+    "symbolic_test": "PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "report": "research/JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120.md"
   }
 }
