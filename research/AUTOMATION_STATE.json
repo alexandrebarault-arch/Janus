@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "e7c8842f575dd7730732cfb76ec691dd94cd41e9",
+  "verified_research_head_at_session_start": "97376ea0798c1b737a50c2cd5a597e9b5e402d2b",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120",
-  "next_pending_step": "JANUS006_SUBSTITUTE_PLGR_IN_HG_HF_CEXACT_AND_TWO_TRUE_BOUNDARIES;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_REDUCED_SHIFT_CHAIN_RULE_20261120",
+  "next_pending_step": "JANUS006_REDUCE_HG_HF_CEXACT_HOLONOMIC_JACOBIAN_TWO_TRUE_BOUNDARIES;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120.md",
+  "latest_scientific_audit": "research/JANUS006_REDUCED_SHIFT_CHAIN_RULE_20261120.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
