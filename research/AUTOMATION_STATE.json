@@ -1416,5 +1416,18 @@
     "physical_cells_certified": 0,
     "physical_cells_inconclusive": 0,
     "report_commit": "eaeb4d8fef7840532d3c8a072c4b9da5792f6c04"
+  },
+  "latest_janus006_double_radial_integrability_20261120": {
+    "status": "VERIFIED_CONDITIONAL_CRITERION",
+    "source_head": "6c1cc46519c7e95f99a1ae2c80bde9f2fe8078c6",
+    "report": "research/JANUS006_DOUBLE_RADIAL_JET_COMPATIBILITY_20261120.md",
+    "report_commit": "f4300ca8f9950ed84cec8cc0a9d1e5b8a2a6ed81",
+    "sympy": "PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_runner": "SKIP",
+    "next_action_exact": "Substitute authenticated Step45/55 radial profiles into c,A,B,k and compute R=T'-k*T; independently verify, then joint Dirac and both physical boundaries.",
+    "gate_2b": "OPEN",
+    "janus_r": "NOT_VALIDATED"
   }
 }
