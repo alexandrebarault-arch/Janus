@@ -1,3 +1,9 @@
+# JANUS — 20/11/2026 : non-fermeture sur les quatre contraintes algébriques ambiantes (conditionnelle)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Au témoin algébrique du 20/11 (transcription Step45 non authentifiée octet à octet), le mineur de (Hg,Hf,Fz,C_exact) par (Sgrr,Sfrr,plgr,pSf) vaut 32 ; le théorème des fonctions implicites autorise un graphe local de ces quatre jets en fonction de (pLg,z), conservant les quatre contraintes. Sur Fz=0, K>0, Z=z, et avec lapses et Lg/Lf fixes, dTheta=a dpLg∧dz, a=2 au témoin : **non-fermeture sur le noyau des quatre contraintes algébriques ambiantes**, mais **pas sur l'espace des variations holonomes/Dirac/deux vrais bords**. SymPy 1.14.0 et contrôle indépendant IFT PASS. Rapport `research/JANUS006_FOUR_CONSTRAINT_AMBIENT_PULLBACK_20261120.md` ; tests moteur/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45 et rejouer le témoin, puis imposer holonomie, Dirac/lapses et deux vraies traces ; JANUS-001 dépendances authentiques, neuf tests et pilote.
+
+---
+
 # JANUS — 20/11/2026 : intégrabilité radiale du lift Hg et unicité à donnée nulle
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la tranche compensatrice JANUS-006, imposer effectivement Sg''=dSg'/dr produit l'ODE de Riccati `c*t'=(A-c')*t+B*t²`. Conservation Hg contrôlée SymPy 1.14.0 PASS. Si c≠0 et les coefficients sont réguliers, l'unicité ODE implique que `t(r*)=0` en un point force la solution triviale sur la composante. **Conditionnel** : aucune vraie trace de bord n'a encore été prouvée imposer cette donnée ; plgr, Dirac, Hf/Fz/C_exact non testés. Rapport `research/JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120.md`. Tests b3c3d9 SKIP, 0 cellule physique. **NEXT_ACTION_EXACT :** lire les deux vraies traces et tester si elles imposent t=0, puis intégrabilité plgr et jacobien conjoint ; JANUS-001 reconstruire sources authentifiées et exécuter tests/pilote.
