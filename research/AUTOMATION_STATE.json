@@ -100,8 +100,8 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_TWO_COLUMN_JOINT_MINOR_STRATA_20261120",
-  "next_pending_step": "JANUS006_FULL_CANONICAL_JACOBIAN_C_EXACT_HOLONOMY_TWO_BOUNDARIES;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_THREE_CONSTRAINT_AMBIENT_JET_RANK_20261120",
+  "next_pending_step": "JANUS006_C_EXACT_FOUR_BY_FOUR_MINOR_THEN_HOLONOMY_TWO_BOUNDARIES;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
   "latest_scientific_audit": "research/JANUS006_TWO_COLUMN_JOINT_MINOR_STRATA_20261120.md",
   "scientific_status": {
@@ -1450,5 +1450,13 @@
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
     "report": "research/JANUS006_FZ_MOMENT_JET_EXACT_ELIMINATION_20261120.md"
+  },
+  "latest_session_scientific_milestone_20261120": {
+    "result": "ambient rank 3 of (Hg,Hf,Fz) on (Sgrr,Sfrr,plgr)",
+    "determinant": "-4*Mg2*Mf2*Sg*Sf/Lf",
+    "proof": "research/JANUS006_THREE_CONSTRAINT_AMBIENT_JET_RANK_20261120.md",
+    "scope": "ambient jets only; C_exact, holonomy, two boundaries untested",
+    "tests": "SymPy PASS; independent triangular determinant PASS; physical runner SKIP",
+    "physical_cells_evaluated": 0
   }
 }
