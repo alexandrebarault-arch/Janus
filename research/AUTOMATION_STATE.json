@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "cfa50467ce5c94d4734414f7ff28bb74b297ff4e",
+  "verified_research_head_at_session_start": "97a30fbe0331bfe5e446b3cbb02bd252dcd003bd",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -1458,5 +1458,21 @@
     "scope": "ambient jets only; C_exact, holonomy, two boundaries untested",
     "tests": "SymPy PASS; independent triangular determinant PASS; physical runner SKIP",
     "physical_cells_evaluated": 0
+  },
+  "latest_scientific_milestone_2026_11_20_18": {
+    "task": "JANUS-006",
+    "result": "conditional continuous minor-zero locus x=1+2/sqrt(1-z^2), x>=3, At=K=(x+1)^2>0",
+    "evidence": "research/JANUS006_CONTINUOUS_MINOR_ZERO_LOCUS_20261120.md",
+    "report_commit": "c2523ceaf40aaccaa3eab83bed9290c4de1f5788",
+    "sympy": "PASS",
+    "independent_algebra": "PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "engine_tests": "SKIP",
+    "pilot": "SKIP",
+    "limits": "P derived from unauthenticated manual Step45 transcription; no four-constraint compatibility or boundary solution",
+    "next_action_exact": "Replay derivative from byte-authenticated Step45; intersect locus with Hg=Hf=Fz=C_exact=0 and other minors; radial holonomy/two true boundaries; reconstruct JANUS-001 imports then tests/pilot",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
   }
 }
