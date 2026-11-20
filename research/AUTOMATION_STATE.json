@@ -1429,5 +1429,19 @@
     "next_action_exact": "Substitute authenticated Step45/55 radial profiles into c,A,B,k and compute R=T'-k*T; independently verify, then joint Dirac and both physical boundaries.",
     "gate_2b": "OPEN",
     "janus_r": "NOT_VALIDATED"
+  },
+  "latest_janus006_fixed_Sg_holonomy_20261120": {
+    "status": "VERIFIED_SCOPED_NO_GO",
+    "source_head": "57058a64bb5b1cb06c369cbab0c09bbbf6f106ee",
+    "report": "research/JANUS006_FIXED_SG_HOLONOMY_NO_GO_20261120.md",
+    "report_commit": "908c1be56bad8d7720e66a932939ae9475546979",
+    "sympy": "PASS",
+    "independent_fundamental_theorem": "PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_runner": "SKIP",
+    "next_action_exact": "Allow sigma=delta Sg with sigma'=c*t; recompute D,Z,Hg and joint Dirac/two-boundary tangent constraints; JANUS-001 authenticate historical imports then run nine tests and pilot.",
+    "gate_2b": "OPEN",
+    "janus_r": "NOT_VALIDATED"
   }
 }
