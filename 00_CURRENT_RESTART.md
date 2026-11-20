@@ -1,3 +1,9 @@
+# JANUS — 20/11/2026 : levée algébrique exacte de Hg par Sg''
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Contrôle contradictoire du NO-GO quadratique : en autorisant Sg2 à varier, construction d'une famille finie maintenant D, Z et Hg exactement ; mineur jacobien de (D,Hg) par rapport à (plgr,Sg2) = -2*mg*Sg, non nul. SymPy PASS (tangence et identités finies), contrôle indépendant par résolution linéaire en Sg2. Ce résultat ne démontre ni Hf/C_red, ni les deux véritables bords, ni l'intégrabilité radiale. Rapport `research/JANUS006_HG_SECOND_JET_EXACT_LIFT_20261120.md`. Tests b3c3d9 SKIP, 0 cellule physique. **NEXT_ACTION_EXACT :** construire le jacobien conjoint Hg,Hf,Fz,C_exact et deux traces, vérifier intégrabilité radiale de Sg2 ; JANUS-001 transférer/authentifier Step45/46/55/58 puis neuf tests et pilote.
+
+---
+
 # JANUS — 20/11/2026 : obstruction Hg du graphe fixe-Z (portée circonscrite)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** À champs et jets restants fixés, le graphe compensateur Sgr/pr du 19/11 conserve D,Z et ferme la forme de bord, mais le Hamiltonien original Hg possède en pLg un coefficient quadratique strictement positif `Lg*(1+Z²*(1+rho*Lg/Lf)²)/(4*mg*Sg²)`. SymPy 1.14.0 et seconde différence exacte PASS : il ne peut satisfaire Hg=0 sur un intervalle de pLg. Ce NO-GO est limité à cette tranche ; tangence ponctuelle, compensations supplémentaires, Dirac et deux vrais bords non tranchés. Rapport `research/JANUS006_HG_QUADRATIC_FIXED_Z_GRAPH_NO_GO_20261120.md`. Tests b3c3d9 SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** calculer le noyau conjoint de dHg,dHf,dC_red,dFz et des deux traces de bord en laissant varier les jets requis ; JANUS-001 reconstruction authentifiée puis neuf tests/pilote.
