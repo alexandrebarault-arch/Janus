@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "60f91c634b77c8724350a6e80514821f1daaf103",
+  "verified_research_head_at_session_start": "318c50778bdbcd8fb9c22983ec9973f726b50c46",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -1198,21 +1198,17 @@
     "physical_cells_certified": 0
   },
   "latest_verified_scientific_milestone": {
-    "date": "2026-11-14",
-    "task": "JANUS-005",
-    "kind": "EXACT_ALGEBRAIC_IDENTITY_AND_COUNTER_TANGENT",
-    "result": "rho_g_center=9/10-24*A*CG; dCG/dA=-CG/A compensates A variation while dPG=dU0=0",
-    "report": "research/JANUS005_CG_COMPENSATED_CENTER_DUST_IDENTITY_20261114.md",
-    "report_blob": "5583b69add6971e7bbb221f913057197347d5933",
-    "script": "research/repro/janus005_cg_compensated_center_20261114.py",
-    "script_blob": "1ccb5e0e079456bc94b5b14a234a97f1aca81b7c",
-    "symbolic_test": "PASS",
+    "date": "2026-11-20",
+    "task": "JANUS-006",
+    "scope": "Fz-only pullback of boundary two-form",
+    "result": "K>0, Fz=0 implies Z=z and pullback dTheta=dP wedge dz at fixed canonical configuration and lapses; coefficient a on pLg,z tangent pair",
+    "limits": "Not tangent to Hg,Hf,C_exact or two physical boundaries; not a Dirac or physical no-go",
+    "report": "research/JANUS006_FZ_PULLBACK_BOUNDARY_TWO_FORM_20261120.md",
+    "report_commit": "5fa24904073d699b53f0e7ba7381cfb7a7600c0c",
+    "tests": "SymPy symbolic and independent chain rule PASS; original local Step45 replay SKIP; b3c3d9 tests/pilot SKIP",
     "physical_cells_evaluated": 0,
     "physical_cells_certified": 0,
-    "physical_admissibility": "NOT_PROVED",
-    "next_action_exact": "Check whether CG variations preserve linearized Dirac constraints and both actual boundaries; JANUS-001 authenticate sources and execute nine tests and one-cell pilot",
-    "GATE_2B": "OPEN",
-    "JANUS_R": "NOT_VALIDATED"
+    "next_action_exact": "Construct joint kernel of dHg,dHf,dFz,dC_exact using authenticated Step45, evaluate boundary 2-form on that kernel and holonomic two-boundary traces; independently rebuild authentic JANUS-001 dependencies and run tests/pilot"
   },
   "latest_verified_janus005_m2_total_source_sensitivity": {
     "date": "2026-11-12",
