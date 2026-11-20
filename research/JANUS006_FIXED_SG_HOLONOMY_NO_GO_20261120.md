@@ -28,3 +28,11 @@ Tests b3c3d9 et pilote : SKIP ; cellules demandées/tentées/évaluées/certifi�
 **NEXT_ACTION_EXACT :** introduire une variation radiale `sigma=delta Sg`, imposer `sigma'=c*t` et recalculer `delta D,delta Z,delta Hg` avec la dépendance explicite de c,A,B aux champs variables ; ensuite construire le jacobien conjoint `Hg,Hf,Fz,C_exact` et les deux traces. JANUS-001 : transférer les dépendances historiques authentifiées et exécuter les neuf tests puis pilote.
 
 GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.
+
+## Second contrôle contradictoire : Fz lorsque Sg est libéré
+
+Sur une tranche encore plus restreinte où `z,Lg,Lf,Sf,psg,pg,tgr` sont fixés, la relation canonique Step45 est `Fz=D-m2*mg*Lg*Lf*At*z/sqrt(1-z*z)` avec `At=b1*Sg**2+2*b2*Sg*Sf+b3*Sf**2`. Si l'on conserve `D` exactement mais autorise `sigma=delta Sg`, alors au premier ordre
+
+`delta Fz = -2*m2*mg*Lg*Lf*z*(b1*Sg+b2*Sf)*sigma/sqrt(1-z*z)`.
+
+Calcul SymPy exécuté : `factor(-m2*mg*Lg*Lf*z/sqrt(1-z*z)*diff(At,Sg)*sigma)` donne exactement cette expression (**PASS**). Contrôle indépendant : dériver directement le polynôme quadratique `At` par développement de `At(Sg+epsilon*sigma)-At(Sg)` et prendre le coefficient de epsilon. Donc, hors dégénérescences `z=0`, `b1*Sg+b2*Sf=0`, ou facteurs nuls, conserver à la fois `D`, `z` et `Fz=0` force `sigma=0` au premier ordre. C'est une **obstruction supplémentaire sur cette tranche restreinte**, non une preuve sur l'espace physique complet : `D`, `z`, les autres configurations et les moments peuvent tous varier dans le véritable problème. Pour rechercher une direction admissible, libérer au moins `delta D` ou `delta z` (et éventuellement d'autres champs), plutôt que supposer simultanément leurs constances.
