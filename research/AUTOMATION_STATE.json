@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "b2899794282708587f8f94175d81712e98df830d",
+  "verified_research_head_at_session_start": "dbfe9ee6dab535b13f546274b4e7e9bdf16f6154",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_C_EXACT_PLG_DERIVATIVE_CONDITIONAL_RECONSTRUCTION_20261120",
+  "latest_verified_completed_step": "JANUS006_POSITIVE_PARAMETER_MINOR_ZERO_COUNTEREXAMPLE_20261120",
   "next_pending_step": "JANUS006_AUTHENTIC_STEP45_REPLAY_AND_CONSTRAINT_SURFACE_ZERO_STRATA;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_C_EXACT_MOMENT_DERIVATIVE_20261120.md",
+  "latest_scientific_audit": "research/JANUS006_POSITIVE_PARAMETER_MINOR_ZERO_COUNTEREXAMPLE_20261120.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
