@@ -1,3 +1,9 @@
+# JANUS — 20/11/2026 : intégrabilité radiale du lift Hg et unicité à donnée nulle
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la tranche compensatrice JANUS-006, imposer effectivement Sg''=dSg'/dr produit l'ODE de Riccati `c*t'=(A-c')*t+B*t²`. Conservation Hg contrôlée SymPy 1.14.0 PASS. Si c≠0 et les coefficients sont réguliers, l'unicité ODE implique que `t(r*)=0` en un point force la solution triviale sur la composante. **Conditionnel** : aucune vraie trace de bord n'a encore été prouvée imposer cette donnée ; plgr, Dirac, Hf/Fz/C_exact non testés. Rapport `research/JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120.md`. Tests b3c3d9 SKIP, 0 cellule physique. **NEXT_ACTION_EXACT :** lire les deux vraies traces et tester si elles imposent t=0, puis intégrabilité plgr et jacobien conjoint ; JANUS-001 reconstruire sources authentifiées et exécuter tests/pilote.
+
+---
+
 # JANUS — 20/11/2026 : levée algébrique exacte de Hg par Sg''
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Contrôle contradictoire du NO-GO quadratique : en autorisant Sg2 à varier, construction d'une famille finie maintenant D, Z et Hg exactement ; mineur jacobien de (D,Hg) par rapport à (plgr,Sg2) = -2*mg*Sg, non nul. SymPy PASS (tangence et identités finies), contrôle indépendant par résolution linéaire en Sg2. Ce résultat ne démontre ni Hf/C_red, ni les deux véritables bords, ni l'intégrabilité radiale. Rapport `research/JANUS006_HG_SECOND_JET_EXACT_LIFT_20261120.md`. Tests b3c3d9 SKIP, 0 cellule physique. **NEXT_ACTION_EXACT :** construire le jacobien conjoint Hg,Hf,Fz,C_exact et deux traces, vérifier intégrabilité radiale de Sg2 ; JANUS-001 transférer/authentifier Step45/46/55/58 puis neuf tests et pilote.
