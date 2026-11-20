@@ -28,3 +28,6 @@ La conclusion d'unicité suit directement du théorème standard d'unicité ODE 
 Tests moteur b3c3d9 SKIP ; pilote SKIP ; cellules physiques demandées/tentées/évaluées/certifiées/inconclusives : 0/0/0/0/0.
 
 **NEXT_ACTION_EXACT :** lire les définitions canoniques des deux vraies traces de bord et déterminer si elles imposent effectivement une donnée homogène sur `t` ; imposer aussi l'intégrabilité de `plgr` et construire le jacobien conjoint `Hg,Hf,Fz,C_exact`. JANUS-001 : reconstruire les imports historiques authentifiés Step45/46/55/58, puis neuf tests et pilote. GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.
+
+## Contrôle de portée sur la vraie convention Dirichlet du dépôt
+Lecture authentifiée au même cycle de `numerics/hr_step68ad_b3c3d2_full_dirichlet_boundary.py` (blob `6898c88760cc0766e949f9bade4908b9bc176c58`) : commentaire explicite `Fixed canonical configuration q=(Lg,Sg,tg,Lf,Sf,tf), fixed N,M,V` et `Other endpoint momenta and first jets are independent ambient variables`. Donc **cette convention Dirichlet ne fixe pas pLg aux bords**. Le corollaire `t(r*)=0 => t≡0` est mathématiquement correct mais **n'est pas applicable à la seule condition Dirichlet canonique telle qu'écrite dans cette source**. L'audit des conditions physiques complètes reste nécessaire ; ne pas interpréter ce corollaire comme une obstruction au problème Dirichlet du dépôt.
