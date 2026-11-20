@@ -52,7 +52,7 @@
     "numerics/hr_b3c3d9_annular_direct_enclosure.py": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
     "tests/test_hr_b3c3d9_annular_direct_enclosure.py": "13252b2bb83fe148c6aa0d04d08053f332654f1c"
   },
-  "verified_research_head_at_session_start": "eb2abcb4f6bae7d9fa2ead30750d721df7567432",
+  "verified_research_head_at_session_start": "bc83e8bd095a560b6196c07a93f7a0f6e0b47aee",
   "next_priority": "JANUS-001 authentic dependencies and pilot; JANUS-005 Dirac/two-boundary admissibility",
   "schema_version": 1,
   "project": "JANUS",
@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_HG_SECOND_JET_EXACT_LIFT_20261120",
-  "next_pending_step": "JANUS006_FULL_DIRAC_TWO_BOUNDARY_JACOBIAN_AND_RADIAL_INTEGRABILITY; JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120",
+  "next_pending_step": "JANUS006_CHECK_TRUE_BOUNDARY_TRACE_ON_T_AND_PLGR_INTEGRABILITY; JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_HG_SECOND_JET_EXACT_LIFT_20261120.md",
+  "latest_scientific_audit": "research/JANUS006_RADIAL_RICCATI_INTEGRABILITY_20261120.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
