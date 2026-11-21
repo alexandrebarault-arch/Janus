@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : coefficient de z'' dans la double holonomie (conditionnel)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la branche compensatrice transcrite, `R=T'-(pSg*c/Lg)*T` et `c=Lg*q*z/(2*Mg2*Sg)` donnent exactement `∂R/∂z''=-4*Sg²*Mg2*q/(Lg*(1+q²*z²))<0` pour Lg,Sg,Mg2,q positifs. SymPy 1.14.0 PASS et dérivation totale indépendante PASS. Cela fixe z'' si les autres jets sont prescrits, **pas** après contraintes/Dirac : aucun NO-GO physique. Rapport `research/JANUS006_SHIFT_SECOND_JET_COMPATIBILITY_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45, calculer D_r(Fz), D_r²(Fz), réduire conjointement R sous Hg/Hf/C_exact, puis Dirac et les deux vrais bords ; JANUS-001 imports historiques, neuf tests et pilote.
+
+---
+
 # JANUS — 21/11/2026 : coefficient non dégénéré du jet radial supérieur (conditionnel)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la branche non triviale du test de double holonomie, `∂T/∂cprime=-8*Sg³*mg²/(Lg²*(1+q²*z²))≠0` sur domaine réel régulier. La condition différentielle `T'=(pSg*c/Lg)*T` a donc un coefficient non nul devant `c''`, imposant une valeur déterminée lorsque les autres jets sont fixés. SymPy PASS, contrôle manuel PASS ; **aucun NO-GO physique**, les jets peuvent être liés par Dirac/contraintes et les deux vrais bords ne sont pas testés. Rapport `research/JANUS006_HIGHER_RADIAL_JET_COMPATIBILITY_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45, développer `c''`, réduire la compatibilité sur les contraintes complètes/Dirac et deux bords ; JANUS-001 reconstruire les dépendances originales, neuf tests et pilote.
