@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_HOLONOMIC_TWO_JET_RANK_CONDITIONAL",
-  "next_pending_step": "JANUS006_HAMILTONIAN_DIRAC_THIRD_JET_REDUCED_RANK;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS001_NINE_AUTHENTIC_RATIONAL_TESTS_PASS",
+  "next_pending_step": "JANUS001_AUTHENTIC_TRANSITIVE_DEPENDENCIES_STEP55_STEP58_PILOT;JANUS006_HAMILTONIAN_DIRAC_REDUCED_RANK",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_HOLONOMIC_TWO_JET_RANK_20261121.md",
+  "latest_scientific_audit": "research/JANUS001_AUTHENTIC_NINE_TEST_REPLAY_20261121.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -1488,5 +1488,16 @@
     "next_action": "derive authentic Hamiltonian evolution and Dirac restrictions on pLg third jet, then reduced rank and both true boundaries",
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
+  },
+  "latest_test_replay_2026_11_21": {
+    "source_head": "e2255f7230d637ac5eb8c7283828bb93bbc55c8d",
+    "engine_blob": "b6fcee9e410b5702f94030ce8b0c6ec818004344",
+    "test_blob": "13252b2bb83fe148c6aa0d04d08053f332654f1c",
+    "tests_pass": 9,
+    "tests_fail": 0,
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "physical_pilot": "SKIP",
+    "report": "research/JANUS001_AUTHENTIC_NINE_TEST_REPLAY_20261121.md"
   }
 }
