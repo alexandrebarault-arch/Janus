@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : neuf tests b3c3d9 authentifiés exécutés
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sources moteur/test récupérées via GitHub au HEAD `e2255f7230d637ac5eb8c7283828bb93bbc55c8d`, empreintes `git hash-object` égales aux blobs GitHub (`b6fcee9e410b5702f94030ce8b0c6ec818004344` / `13252b2bb83fe148c6aa0d04d08053f332654f1c`). Commande `PYTHONPATH=. python -m unittest discover -s tests -p 'test_hr_b3c3d9_annular_direct_enclosure.py' -v` : **9 PASS, 0 FAIL**. Tests purement rationnels/synthétiques ; pilote physique SKIP, cellules physiques 0/0/0. Rapport `research/JANUS001_AUTHENTIC_NINE_TEST_REPLAY_20261121.md`. **NEXT_ACTION_EXACT :** transférer les imports transitifs authentiques Step45/46/55/58 et les sources historiques, vérifier les SHA, exécuter `PYTHONPATH=. python -m numerics.hr_b3c3d9_annular_direct_enclosure --cells 256 --max-cells 1 --out /tmp/janus_b3c3d9_pilot.json` ; poursuivre JANUS-005/006 sur Dirac, Hamilton et deux vrais bords.
+
+---
+
 # JANUS — 21/11/2026 : rang à deux jets après substitution holonome
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis Step45, le rang de (R,Fz'') par (z'',pLg''') reste 2 tant que pLg''' est libre : det=-Lg*a=4*Sg²*Mg2*q/(1+q²z²) non nul sur domaine régulier. SymPy PASS, inverse PASS, expansion indépendante PASS. **Résultat cinématique conditionnel uniquement ; Dirac, équations d'évolution et deux vrais bords non imposés.** Rapport `research/JANUS006_HOLONOMIC_TWO_JET_RANK_20261121.md`. JANUS-001 Git CLI DNS FAIL, tests/pilote SKIP, cellules 0/0/0. **NEXT_ACTION_EXACT :** extraire équations Hamiltoniennes/Dirac authentiques et tester la liberté de pLg''' après prolongement et conditions de bord ; reconstruire imports JANUS-001 authentifiés puis neuf tests/pilote.
