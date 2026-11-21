@@ -1477,5 +1477,16 @@
     "next_action_exact": "Replay derivative from byte-authenticated Step45; intersect locus with Hg=Hf=Fz=C_exact=0 and other minors; radial holonomy/two true boundaries; reconstruct JANUS-001 imports then tests/pilot",
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED"
+  },
+  "janus006_latest_verified_holonomic_jet_milestone": {
+    "date": "2026-11-21",
+    "report": "research/JANUS006_HOLONOMIC_D_SECOND_JET_AUDIT_20261121.md",
+    "result": "D_second_contains_minus_Lg_times_pLg_third; no physical no-go",
+    "checks": "sympy_and_manual_leibniz_PASS",
+    "physical_cells_evaluated": 0,
+    "physical_cells_certified": 0,
+    "next_action": "derive authentic Hamiltonian evolution and Dirac restrictions on pLg third jet, then reduced rank and both true boundaries",
+    "GATE_2B": "OPEN",
+    "JANUS_R": "NOT_VALIDATED"
   }
 }
