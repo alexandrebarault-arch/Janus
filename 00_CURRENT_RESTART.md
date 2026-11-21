@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : contrôle négatif de rang des deux prolongements (conditionnel)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Le système (R,D_r²Fz) possède un jacobien triangulaire de déterminant a=∂R/∂z''≠0 par rapport aux jets (z'',D'') traités indépendamment : il n'existe **pas** de contradiction algébrique à ce niveau tant que D'' reste libre. Contrôle algébrique de rang et substitution PASS ; indépendance des jets sous Step45 complet/Dirac non établie. Rapport `research/JANUS006_TWO_JET_RANK_NEGATIVE_CONTROL_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** développer D'' depuis D=pSg*Sgr-Lg*pLgr+pg*tgr, tester la dépendance de Q et le rang réduit Dirac/holonomie puis les deux vrais bords ; JANUS-001 reconstruire les dépendances authentifiées et exécuter neuf tests/pilote.
+
+---
+
 # JANUS — 21/11/2026 : prolongement holonome de Fz (conditionnel)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Lecture Step45 authentifiée via GitHub, blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`. Pour `Fz=D-K*z/sqrt(1-z²)`, `D_r²Fz=D''-K''z/root-2K'z'/root³-3Kz(z')²/root⁵-Kz''/root³` ; coefficient de z'' = `-K/root³`, sauf strate K=0 où aucune division n'est permise. Calcul SymPy PASS, contrôle chaîne PASS, mais **aucun test Dirac ni contradiction physique**. Rapport `research/JANUS006_SHIFT_CONSTRAINT_PROLONGATION_20261121.md`. JANUS-001 tests/pilote SKIP ; cellules 0/0/0. **NEXT_ACTION_EXACT :** éliminer z'' entre R et D_r²Fz sur K≠0, réduire les jets sous Hg/Hf/C_exact, Dirac/lapses et deux vrais bords ; JANUS-001 dépendances authentiques, neuf tests et pilote.
