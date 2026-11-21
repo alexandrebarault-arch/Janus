@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : coefficient non dégénéré du jet radial supérieur (conditionnel)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la branche non triviale du test de double holonomie, `∂T/∂cprime=-8*Sg³*mg²/(Lg²*(1+q²*z²))≠0` sur domaine réel régulier. La condition différentielle `T'=(pSg*c/Lg)*T` a donc un coefficient non nul devant `c''`, imposant une valeur déterminée lorsque les autres jets sont fixés. SymPy PASS, contrôle manuel PASS ; **aucun NO-GO physique**, les jets peuvent être liés par Dirac/contraintes et les deux vrais bords ne sont pas testés. Rapport `research/JANUS006_HIGHER_RADIAL_JET_COMPATIBILITY_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45, développer `c''`, réduire la compatibilité sur les contraintes complètes/Dirac et deux bords ; JANUS-001 reconstruire les dépendances originales, neuf tests et pilote.
+
+---
+
 # JANUS — 21/11/2026 : compatibilité simultanée des deux holonomies radiales (conditionnelle)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la tranche compensatrice JANUS-006, les deux holonomies imposent `c*t'=(A-c')*t+B*t²` et `t'=(psg*c/Lg)*t`. Élimination exacte : `t*(B*t+A-c'-psg*c²/Lg)=0`, avec `B<0` sur le domaine régulier. Une branche non nulle doit donc coïncider avec `T=(c'-A+psg*c²/Lg)/B` et satisfaire encore `T'=(psg*c/Lg)*T`. SymPy 1.14.0 PASS, contrôle algébrique indépendant PASS. **C'est une condition nécessaire sur une tranche transcrite, pas une réfutation physique** ; Step45 non authentifié localement, Dirac, Hf/Fz/C_exact et les deux vraies traces non imposés. Rapport `research/JANUS006_DOUBLE_RADIAL_JET_INTEGRABILITY_20261121.md`. JANUS-001 tests/pilote SKIP, cellules 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45 et calculer la dérivée totale radiale de T sur solution de référence, puis quatre contraintes et deux bords ; JANUS-001 transférer les dépendances historiques authentifiées, neuf tests et pilote.
