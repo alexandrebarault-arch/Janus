@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : prolongement holonome de Fz (conditionnel)
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Lecture Step45 authentifiée via GitHub, blob `66aa43841dccfe4a5d586a49be9c10af3a67a10e`. Pour `Fz=D-K*z/sqrt(1-z²)`, `D_r²Fz=D''-K''z/root-2K'z'/root³-3Kz(z')²/root⁵-Kz''/root³` ; coefficient de z'' = `-K/root³`, sauf strate K=0 où aucune division n'est permise. Calcul SymPy PASS, contrôle chaîne PASS, mais **aucun test Dirac ni contradiction physique**. Rapport `research/JANUS006_SHIFT_CONSTRAINT_PROLONGATION_20261121.md`. JANUS-001 tests/pilote SKIP ; cellules 0/0/0. **NEXT_ACTION_EXACT :** éliminer z'' entre R et D_r²Fz sur K≠0, réduire les jets sous Hg/Hf/C_exact, Dirac/lapses et deux vrais bords ; JANUS-001 dépendances authentiques, neuf tests et pilote.
+
+---
+
 # JANUS — 21/11/2026 : coefficient de z'' dans la double holonomie (conditionnel)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Sur la branche compensatrice transcrite, `R=T'-(pSg*c/Lg)*T` et `c=Lg*q*z/(2*Mg2*Sg)` donnent exactement `∂R/∂z''=-4*Sg²*Mg2*q/(Lg*(1+q²*z²))<0` pour Lg,Sg,Mg2,q positifs. SymPy 1.14.0 PASS et dérivation totale indépendante PASS. Cela fixe z'' si les autres jets sont prescrits, **pas** après contraintes/Dirac : aucun NO-GO physique. Rapport `research/JANUS006_SHIFT_SECOND_JET_COMPATIBILITY_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** authentifier Step45, calculer D_r(Fz), D_r²(Fz), réduire conjointement R sous Hg/Hf/C_exact, puis Dirac et les deux vrais bords ; JANUS-001 imports historiques, neuf tests et pilote.
