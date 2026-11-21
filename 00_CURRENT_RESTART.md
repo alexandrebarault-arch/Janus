@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : D'' holonome et troisième jet de pLg
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Audit cinématique depuis la source Step45 authentifiée via GitHub : D=pSg*Sg'−Lg*pLg'+pg*tg' implique ∂D''/∂pLg'''=−Lg, non nul pour Lg>0. SymPy PASS et contrôle Leibniz PASS ; cela invalide l'indépendance cinématique littérale de D'' mais ne produit aucun NO-GO : pLg''' reste un paramètre possible tant que Dirac/évolution et les deux vrais bords ne sont pas imposés. Rapport `research/JANUS006_HOLONOMIC_D_SECOND_JET_AUDIT_20261121.md`. JANUS-001 neuf tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** obtenir les équations Hamiltoniennes originales et tester les contraintes sur pLg''', puis recalculer le rang de (R,Fz'') sous Dirac et les deux bords ; pour JANUS-001 authentifier les imports et lancer tests/pilote.
+
+---
+
 # JANUS — 21/11/2026 : contrôle négatif de rang des deux prolongements (conditionnel)
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Le système (R,D_r²Fz) possède un jacobien triangulaire de déterminant a=∂R/∂z''≠0 par rapport aux jets (z'',D'') traités indépendamment : il n'existe **pas** de contradiction algébrique à ce niveau tant que D'' reste libre. Contrôle algébrique de rang et substitution PASS ; indépendance des jets sous Step45 complet/Dirac non établie. Rapport `research/JANUS006_TWO_JET_RANK_NEGATIVE_CONTROL_20261121.md`. JANUS-001 tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** développer D'' depuis D=pSg*Sgr-Lg*pLgr+pg*tgr, tester la dépendance de Q et le rang réduit Dirac/holonomie puis les deux vrais bords ; JANUS-001 reconstruire les dépendances authentifiées et exécuter neuf tests/pilote.
