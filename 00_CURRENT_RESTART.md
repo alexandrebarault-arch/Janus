@@ -1,3 +1,9 @@
+# JANUS — 21/11/2026 : rang à deux jets après substitution holonome
+
+**GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Depuis Step45, le rang de (R,Fz'') par (z'',pLg''') reste 2 tant que pLg''' est libre : det=-Lg*a=4*Sg²*Mg2*q/(1+q²z²) non nul sur domaine régulier. SymPy PASS, inverse PASS, expansion indépendante PASS. **Résultat cinématique conditionnel uniquement ; Dirac, équations d'évolution et deux vrais bords non imposés.** Rapport `research/JANUS006_HOLONOMIC_TWO_JET_RANK_20261121.md`. JANUS-001 Git CLI DNS FAIL, tests/pilote SKIP, cellules 0/0/0. **NEXT_ACTION_EXACT :** extraire équations Hamiltoniennes/Dirac authentiques et tester la liberté de pLg''' après prolongement et conditions de bord ; reconstruire imports JANUS-001 authentifiés puis neuf tests/pilote.
+
+---
+
 # JANUS — 21/11/2026 : D'' holonome et troisième jet de pLg
 
 **GATE_2B=OPEN ; JANUS_R=NOT_VALIDATED.** Audit cinématique depuis la source Step45 authentifiée via GitHub : D=pSg*Sg'−Lg*pLg'+pg*tg' implique ∂D''/∂pLg'''=−Lg, non nul pour Lg>0. SymPy PASS et contrôle Leibniz PASS ; cela invalide l'indépendance cinématique littérale de D'' mais ne produit aucun NO-GO : pLg''' reste un paramètre possible tant que Dirac/évolution et les deux vrais bords ne sont pas imposés. Rapport `research/JANUS006_HOLONOMIC_D_SECOND_JET_AUDIT_20261121.md`. JANUS-001 neuf tests/pilote SKIP, cellules physiques 0/0/0. **NEXT_ACTION_EXACT :** obtenir les équations Hamiltoniennes originales et tester les contraintes sur pLg''', puis recalculer le rang de (R,Fz'') sous Dirac et les deux bords ; pour JANUS-001 authentifier les imports et lancer tests/pilote.
