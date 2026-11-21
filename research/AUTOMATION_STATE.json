@@ -100,10 +100,10 @@
     "git_diff_check": "passed"
   },
   "verified_research_head_before_state_file": "1a2a52ed993b2a52bd305f8aae5e75f40c1514a0",
-  "latest_verified_completed_step": "JANUS006_HIGHER_RADIAL_JET_COMPATIBILITY_CONDITIONAL",
-  "next_pending_step": "JANUS006_AUTHENTICATE_STEP45_EXPAND_C_SECOND_DERIVATIVE_AND_REDUCE_DIRAC_BORDERS;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
+  "latest_verified_completed_step": "JANUS006_SHIFT_SECOND_JET_COMPATIBILITY_CONDITIONAL",
+  "next_pending_step": "JANUS006_AUTHENTICATE_STEP45_DIFFERENTIATE_FZ_COMPARE_JET_RANK_DIRAC_BORDERS;JANUS001_AUTHENTIC_IMPORTS_TESTS_PILOT",
   "primary_checkpoint": "00_CURRENT_RESTART.md",
-  "latest_scientific_audit": "research/JANUS006_HIGHER_RADIAL_JET_COMPATIBILITY_20261121.md",
+  "latest_scientific_audit": "research/JANUS006_SHIFT_SECOND_JET_COMPATIBILITY_20261121.md",
   "scientific_status": {
     "GATE_2B": "OPEN",
     "JANUS_R": "NOT_VALIDATED",
@@ -191,7 +191,8 @@
       "1/64",
       "1/32"
     ],
-    "archived_conditional_continuum_sign_leaf_count": 225
+    "archived_conditional_continuum_sign_leaf_count": 225,
+    "janus006_shift_second_jet_coefficient": "CONDITIONAL_EXACT_NEGATIVE_FOR_POSITIVE_L_S_M_Q_NOT_DIRAC_REDUCED"
   },
   "last_reported_tests": {
     "unittest_cases_passed": 7,
